@@ -1,264 +1,124 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
   <title>شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان</title>
-  <meta name="description" content="Landing Page مینیمال با سبک اپل برای معرفی محصولات و برند" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root{
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #6e6e73;
-      --link: #06c;
-      --black: #000000;
-      --dark: #0f0f12;
-      --accent: #e11d48; /* می‌تونی برای CTA تغییر بدی */
-      --maxw: 1100px;
+    body {
+      font-family: Vazir, Tahoma, Arial, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #111;
+      line-height: 1.8;
     }
-    /* ریست سبک‌ها */
-    *,*::before,*::after{box-sizing:border-box}
-    html{-webkit-text-size-adjust:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
-      line-height:1.6;
+    a { text-decoration: none; }
+    header.nav {
+      position: sticky; top: 0;
+      background: rgba(0,0,0,0.85);
+      color: #fff; padding: 12px 20px;
+      display: flex; justify-content: space-between; align-items: center;
     }
-    a{color:var(--link);text-decoration:none}
-    img{max-width:100%;display:block}
-    /* ناوبار مینیمال */
-    .nav{
-      position:sticky;top:0;z-index:50;
-      background:rgba(0,0,0,0.85);
-      backdrop-filter:saturate(120%) blur(6px);
-      color:#fff;
+    header.nav .brand { font-weight: bold; }
+    header.nav nav a { color: #ddd; margin: 0 10px; }
+    header.nav nav a:hover { color: #fff; }
+
+    .hero {
+      background: #000 url('hero.jpg') center/cover no-repeat;
+      color: #fff; text-align: center; padding: 100px 20px;
     }
-    .nav .wrap{
-      max-width:var(--maxw);margin:0 auto;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 16px;
+    .hero h1 { font-size: 42px; margin-bottom: 20px; }
+    .hero p { max-width: 700px; margin: 0 auto 20px; color: #ccc; }
+    .btn {
+      display: inline-block; padding: 12px 24px;
+      border-radius: 30px; font-weight: bold;
+      margin: 10px; transition: 0.3s;
     }
-    .brand{
-      display:flex;align-items:center;gap:10px;color:#fff;font-weight:600;
+    .btn.primary { background: #fff; color: #000; }
+    .btn.secondary { border: 1px solid #fff; color: #fff; }
+    .btn:hover { background: #e11d48; color: #fff; }
+
+    section { padding: 60px 20px; text-align: center; }
+    section h2 { font-size: 26px; margin-bottom: 20px; }
+
+    .clients { background: #f5f5f7; }
+    .logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+    .logos img { max-height: 60px; opacity: 0.7; transition: 0.3s; }
+    .logos img:hover { opacity: 1; transform: scale(1.05); }
+
+    .downloads { background: #f5f5f7; }
+    .downloads .btn { background: #0f172a; color: #fff; }
+    .downloads .btn:hover { background: #e11d48; }
+
+    footer {
+      background: #0f172a; color: #fff;
+      text-align: center; padding: 30px; font-size: 14px;
     }
-    .brand img{width:26px;height:26px;border-radius:4px}
-    .nav ul{
-      display:flex;gap:18px;list-style:none;margin:0;padding:0
-    }
-    .nav a{color:#ddd;font-size:14px}
-    .nav a:hover{color:#fff}
-    /* هدر قهرمان (Hero) */
-    .hero{
-      background:#000 url('hero.jpg') center/cover no-repeat; /* تصویر بزرگ صفحه اول */
-      color:#fff;text-align:center;
-    }
-    .hero .wrap{
-      max-width:var(--maxw);margin:0 auto;padding:90px 20px;
-    }
-    .hero h1{
-      margin:0 0 10px;font-size:clamp(28px,6vw,54px);
-      font-weight:700;letter-spacing:-0.02em;
-    }
-    .hero p{
-      margin:0 auto;max-width:720px;color:#cfcfd3;
-      font-size:clamp(16px,2.5vw,20px)
-    }
-    .cta{
-      margin-top:24px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap
-    }
-    .btn{
-      display:inline-block;padding:12px 20px;border-radius:32px;
-      font-weight:600;font-size:15px
-    }
-    .btn.primary{background:#fff;color:#000}
-    .btn.secondary{border:1px solid #fff;color:#fff}
-    .btn.accent{background:var(--accent);color:#fff}
-    .note{margin-top:14px;color:#9f9fa5;font-size:13px}
-    /* سکشن‌های محصول تمام‌عرض با سبک اپل */
-    .panel{
-      text-align:center;padding:60px 20px
-    }
-    .panel.dark{background:#000;color:#fff}
-    .panel.light{background:#f5f5f7;color:#000}
-    .panel .wrap{max-width:var(--maxw);margin:0 auto}
-    .panel h2{
-      margin:0 0 10px;font-size:clamp(24px,4.5vw,40px);font-weight:700;letter-spacing:-0.01em
-    }
-    .panel p{
-      margin:0 auto 18px;max-width:720px;color:inherit;font-size:clamp(15px,2.2vw,18px)
-    }
-    .panel .media{
-      margin-top:26px;border-radius:16px;overflow:hidden
-    }
-    .panel .media img{width:100%;height:auto}
-    /* شبکه دو ستونه مثل پروموهای اپل */
-    .grid{
-      display:grid;grid-template-columns:1fr;gap:12px;margin:12px auto;max-width:calc(var(--maxw) + 40px);padding:0 20px
-    }
-    @media(min-width:900px){
-      .grid{grid-template-columns:1fr 1fr}
-    }
-    .tile{
-      position:relative;overflow:hidden;border-radius:16px;min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center
-    }
-    .tile.dark{background:#000;color:#fff}
-    .tile.light{background:#f5f5f7;color:#000}
-    .tile .content{padding:26px;max-width:520px;z-index:2}
-    .tile h3{margin:0 0 8px;font-size:clamp(20px,3.6vw,30px)}
-    .tile p{margin:0 0 16px;color:inherit}
-    .tile .bg{
-      position:absolute;inset:0;opacity:0.35;background:center/cover no-repeat;
-      filter:saturate(120%) contrast(105%)
-    }
-    /* فوتر مینیمال با لینک‌ها */
-    .footer{
-      background:#f5f5f7;color:#6e6e73;font-size:13px
-    }
-    .footer .wrap{max-width:var(--maxw);margin:0 auto;padding:30px 20px}
-    .foot-links{
-      display:flex;flex-wrap:wrap;gap:14px;margin-top:12px
-    }
-    .foot-links a{color:#6e6e73}
-    .legal{
-      margin-top:12px;border-top:1px solid #ddd;padding-top:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between
-    }
-    /* راست‌چین/چپ‌چین سوئیچر ساده */
-    .lang{
-      position:fixed;bottom:16px;right:16px;z-index:60;display:flex;gap:8px
-    }
-    .lang button{
-      padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#fff;color:#111;cursor:pointer;font-size:13px
-    }
-    .lang button.active{background:#000;color:#fff;border-color:#000}
+    footer .social a { margin: 0 8px; color: #e11d48; }
   </style>
 </head>
 <body>
 
-  <!-- ناوبار -->
-  <header class="nav" aria-label="primary">
-    <div class="wrap">
-      <a class="brand" href="#">
-        <!-- لوگو: جایگزین کن -->
-        <img src="logo.png" alt="TPE Co Logo">
-        <span>توسعه پردازان</span>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="#hero">خانه</a></li>
-          <li><a href="#product-a">محصولات</a></li>
-          <li><a href="#contact">تماس</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header class="nav">
+  <div class="brand">توسعه پردازان</div>
+  <nav>
+    <a href="#hero">خانه</a>
+    <a href="#products">محصولات</a>
+    <a href="#clients">مشتریان</a>
+    <a href="#downloads">دانلودها</a>
+    <a href="#contact">تماس</a>
+  </nav>
+</header>
 
-  <!-- هدر قهرمان -->
-  <section id="hero" class="hero" role="banner">
-    <div class="wrap">
-      <h1>سادگی، قدرت، مهندسی.</h1>
-      <p>مهندسی و طراحی صنعتی با استانداردهای جهانی. هر جزئیات، دقیق؛ هر تجربه، مینیمال و کاربردی.</p>
-      <div class="cta">
-        <a class="btn primary" href="#product-a">اطلاعات بیشتر</a>
-        <a class="btn secondary" href="#contact">تماس با ما</a>
-      </div>
-      <div class="note">تصویر پس‌زمینه را با یک عکس قهرمان باکیفیت جایگزین کنید (hero.jpg).</div>
-    </div>
-  </section>
+<section id="hero" class="hero">
+  <h1>سادگی، قدرت، مهندسی</h1>
+  <p>شرکت دانش‌بنیان توسعه پردازان الکترونیک فیدار پارس راویس، فعال در طراحی صنعتی، تجهیزات پزشکی و پروژه‌های فناورانه.</p>
+  <a href="#products" class="btn primary">محصولات</a>
+  <a href="#contact" class="btn secondary">تماس با ما</a>
+</section>
 
-  <!-- پانل محصول A (سبک اپل: تیتر، توضیح، تصویر تمام‌عرض) -->
-  <section id="product-a" class="panel light">
-    <div class="wrap">
-      <h2>Deadman Handswitch – نسل جدید ایمنی صنعتی</h2>
-      <p>طراحی ارگونومیک، تست‌شده در شرایط واقعی، آماده‌ برای ادغام در خطوط تولید و دستگاه‌های حساس.</p>
-      <div class="cta">
-        <a class="btn accent" href="#contact">درخواست دمو</a>
-        <a class="btn" href="#">جزئیات فنی</a>
-      </div>
-      <div class="media">
-        <!-- تصویر/رندر محصول -->
-        <img src="product-a.jpg" alt="Deadman Handswitch Render">
-      </div>
-    </div>
-  </section>
+<section id="products">
+  <h2>برخی محصولات ما</h2>
+  <p>ECG Simulator، Vein Scope، Deadman Handswitch، Air Purifier، Biometric Lock و ...</p>
+</section>
 
-  <!-- پانل محصول B (پس‌زمینه تیره) -->
-  <section class="panel dark">
-    <div class="wrap">
-      <h2>Ravand Innovation Café – فضاهایی که الهام می‌بخشند</h2>
-      <p>معماری مینیمال، نورپردازی دقیق، و جریان حرکت هوشمند؛ ترکیب سنت و تکنولوژی برای تجربه‌ای مدرن.</p>
-      <div class="media">
-        <img src="project-b.jpg" alt="Ravand Innovation Café Concept">
-      </div>
-    </div>
-  </section>
-
-  <!-- شبکه دو ستونه پروموها (مثل اپل) -->
-  <div class="grid" aria-label="promos">
-    <article class="tile light">
-      <div class="bg" style="background-image:url('promo-1.jpg')"></div>
-      <div class="content">
-        <h3>طراحی مکانیک با دقت میکرونی</h3>
-        <p>CATIA، شبیه‌سازی، و مستندسازی کامل؛ آماده تولید.</p>
-        <a class="btn" href="#">بیشتر بدانید</a>
-      </div>
-    </article>
-    <article class="tile dark">
-      <div class="bg" style="background-image:url('promo-2.jpg')"></div>
-      <div class="content">
-        <h3 style="color:#fff">معماری و تجربه فضا</h3>
-        <p style="color:#ddd">فرم‌های ساده، کاربری واضح، تاثیر ماندگار.</p>
-        <a class="btn primary" href="#">مشاهده نمونه‌ها</a>
-      </div>
-    </article>
+<section id="clients" class="clients">
+  <h2>برخی از مشتریان ما</h2>
+  <div class="logos">
+    <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
+    <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+    <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
+    <img src="clients/innovation.png" alt="مجتمع نوآوری">
   </div>
+</section>
 
-  <!-- تماس -->
-  <section id="contact" class="panel light">
-    <div class="wrap">
-      <h2>تماس با ما</h2>
-      <p>برای همکاری، دمو محصول، یا مشاوره فنی پیام بده.</p>
-      <p>
-        ایمیل: javadisazadeh24@gmail.com — تلفن/واتس‌اپ/تلگرام: 09226704205
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="https://www.linkedin.com/company/tpe-co" target="_blank">LinkedIn</a>
-        <a class="btn" href="https://instagram.com/TPE_CO" target="_blank">Instagram</a>
-      </div>
-    </div>
-  </section>
+<section id="downloads" class="downloads">
+  <h2>دانلود کاتالوگ و رزومه شرکت</h2>
+  <p>برای آشنایی بیشتر با پروژه‌ها و خدمات ما، فایل‌های رسمی شرکت را دانلود کنید.</p>
+  <a href="files/catalog.pdf" class="btn">📘 دانلود کاتالوگ</a>
+  <a href="files/resume.pdf" class="btn">📄 دانلود رزومه</a>
+</section>
 
-  <!-- فوتر مینیمال با لینک‌های کم‌رنگ -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="foot-links">
-        <a href="#">حریم خصوصی</a>
-        <a href="#">شرایط استفاده</a>
-        <a href="#">دسترس‌پذیری</a>
-        <a href="#">سوالات متداول</a>
-      </div>
-      <div class="legal">
-        <small>© TPE Co. – شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان</small>
-        <small>Developed by Javad Isazadeh</small>
-      </div>
-    </div>
-  </footer>
+<section id="contact">
+  <h2>تماس با ما</h2>
+  <p>
+    📧 ایمیل: javadisazadeh24@gmail.com<br>
+    📞 تلفن / واتس‌اپ / تلگرام: 09226704205<br>
+    🔗 لینکدین: <a href="https://www.linkedin.com/company/tpe-co" target="_blank">TPE Co</a><br>
+    📷 اینستاگرام: <a href="https://instagram.com/TPE_CO" target="_blank">@TPE_CO</a>
+  </p>
+</section>
 
-  <!-- سوئیچر زبان (نمایشی) -->
-  <div class="lang" aria-label="language switcher">
-    <button class="active" onclick="setLang('fa')">FA</button>
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('ar')">AR</button>
+<footer>
+  © TPE Co. – شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان<br>
+  Developed & Managed by Javad Isazadeh
+  <div class="social">
+    <a href="https://www.linkedin.com/company/tpe-co">LinkedIn</a>
+    <a href="https://instagram.com/TPE_CO">Instagram</a>
+    <a href="https://wa.me/989226704205">WhatsApp</a>
+    <a href="https://t.me/+989226704205">Telegram</a>
   </div>
+</footer>
 
-  <script>
-    /* سوئیچ ساده زبان: به پوشه‌های en/ar هدایت می‌کند */
-    function setLang(code){
-      if(code==='fa'){window.location.href='/'}
-      if(code==='en'){window.location.href='/en/'}
-      if(code==='ar'){window.location.href='/ar/'}
-    }
-  </script>
 </body>
 </html>
