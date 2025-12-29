@@ -2,8 +2,8 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>رزومه مهندس جواد عیسی زاده | توسعه پردازان</title>
-  <link rel="icon" href="images/logo.png" type="image/png">
+  <title>رزومه پرسنل - شرکت توسعه پردازان</title>
+  <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- فونت‌ها -->
@@ -11,8 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
+  <!-- آیکون شبکه‌های اجتماعی -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    /* استایل های مشابه صفحه اصلی */
+    /* استایل های اصلی */
     :root {
       --bg: #f8fafc;
       --text: #0f172a;
@@ -21,9 +24,6 @@
       --surface: rgba(255, 255, 255, 0.9);
       --accent: #dc2626;
       --maxw: 1200px;
-      --glass-bg: rgba(255, 255, 255, 0.15);
-      --glass-border: rgba(255, 255, 255, 0.2);
-      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,6 +33,7 @@
       line-height: 1.6;
       color: var(--text);
       background: var(--bg);
+      overflow-x: hidden;
     }
     
     h1, h2, h3, h4 {
@@ -41,6 +42,9 @@
     }
     
     a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    
+    section { padding: 60px 20px; }
     
     .container {
       max-width: var(--maxw);
@@ -48,16 +52,38 @@
       padding: 0 20px;
     }
     
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
     /* ناوبری */
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: var(--glass-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
     
     .nav-wrap {
@@ -69,37 +95,168 @@
       align-items: center;
     }
     
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
     .brand img {
-      height: 32px;
+      height: 50px;
+      transition: transform 0.3s;
+    }
+    
+    .brand img:hover {
+      transform: scale(1.05);
+    }
+    
+    .company-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0f172a;
+      white-space: nowrap;
     }
     
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 5px;
       list-style: none;
+      align-items: center;
     }
     
     .nav-links a {
-      color: #1e293b;
-      font-weight: 500;
-      font-size: 15px;
-      padding: 8px 12px;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 14.5px;
+      padding: 6px 10px;
       border-radius: 8px;
       transition: all 0.3s;
     }
     
     .nav-links a:hover {
-      background: rgba(30, 64, 175, 0.1);
+      background: rgba(30, 64, 175, 0.15);
       color: var(--primary);
     }
     
-    /* محتوای رزومه */
+    /* انتخابگر زبان */
+    .language-selector {
+      display: flex;
+      gap: 5px;
+      margin-right: 0;
+      background: transparent;
+      padding: 0;
+      border-radius: 8px;
+      border: none;
+    }
+    
+    .lang-btn {
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      width: 28px;
+      height: 18px;
+      border-radius: 2px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lang-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1px;
+    }
+    
+    .lang-btn.active {
+      box-shadow: 0 0 0 2px var(--primary);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn:hover {
+      transform: scale(1.05);
+    }
+    
+    /* صفحه رزومه */
+    .resume-section {
+      padding: 120px 20px 60px;
+      min-height: 100vh;
+      background: #f8fafc;
+    }
+    
+    .team-selection {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .team-member-btn {
+      padding: 15px 30px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+    }
+    
+    .team-member-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 5px 20px rgba(30, 64, 175, 0.3);
+    }
+    
+    .team-member-btn:hover:not(.active) {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .member-icon {
+      font-size: 18px;
+    }
+    
+    .resume-content {
+      display: none;
+    }
+    
+    .resume-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .resume-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+    
     .resume-header {
       background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
       color: white;
       padding: 60px 20px;
       text-align: center;
       margin-bottom: 40px;
+      border-radius: 16px;
     }
     
     .resume-header h1 {
@@ -112,196 +269,176 @@
       opacity: 0.9;
     }
     
-    .resume-content {
-      max-width: 1000px;
-      margin: 0 auto 60px;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-    }
-    
-    /* اطلاعات شخصی */
-    .personal-info {
-      display: flex;
-      gap: 40px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    
-    .profile-image {
-      flex: 0 0 200px;
-    }
-    
-    .profile-image img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid var(--primary);
-    }
-    
-    .profile-details {
-      flex: 1;
-      min-width: 300px;
-    }
-    
-    .profile-details h2 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 28px;
-    }
-    
-    .contact-list {
-      list-style: none;
-      margin: 20px 0;
-    }
-    
-    .contact-list li {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .contact-list li:before {
-      content: "•";
-      color: var(--accent);
-      font-size: 20px;
-    }
-    
-    /* بخش‌های رزومه */
-    .resume-section {
-      margin-bottom: 40px;
-      padding-bottom: 30px;
-      border-bottom: 2px solid #f1f5f9;
-    }
-    
-    .resume-section:last-child {
-      border-bottom: none;
-    }
-    
-    .section-title {
-      color: var(--primary);
-      margin-bottom: 25px;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .section-title:before {
-      content: '';
-      width: 30px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-    
-    /* مهارت‌ها */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-    
-    .skill-item {
-      margin-bottom: 20px;
-    }
-    
-    .skill-name {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    
-    .skill-bar {
-      height: 10px;
-      background: #e2e8f0;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    
-    .skill-level {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), #3b82f6);
-      border-radius: 5px;
-    }
-    
-    /* جدول پروژه‌ها */
-    .projects-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    
-    .projects-table th {
-      background: var(--primary);
-      color: white;
-      padding: 15px;
-      text-align: right;
-    }
-    
-    .projects-table td {
-      padding: 15px;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    
-    .projects-table tr:nth-child(even) {
-      background: #f8fafc;
-    }
-    
-    /* دکمه بازگشت */
     .back-btn {
       display: inline-block;
-      margin: 20px 0 40px;
+      margin: 0 0 40px;
       padding: 12px 30px;
       background: var(--primary);
       color: white;
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
     
     .back-btn:hover {
       background: var(--accent);
       transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
     }
     
-    /* فوتر */
-    footer {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 60px;
+    .resume-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
     }
     
+    .resume-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .resume-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .info-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    
+    .info-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .info-label {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    
+    .info-value {
+      color: var(--text);
+      font-size: 16px;
+    }
+    
+    .skill-bar {
+      margin-bottom: 12px;
+    }
+    
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    
+    .skill-level {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), #3b82f6);
+      border-radius: 4px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    
+    .contact-icon {
+      color: var(--primary);
+      font-size: 18px;
+      min-width: 24px;
+    }
+    
+    /* موبایل */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        gap: 5px;
+      }
+      
+      .nav-links a {
+        font-size: 13px;
+        padding: 5px 8px;
+      }
+      
+      .company-name {
+        font-size: 16px;
+      }
+      
+      .brand {
+        gap: 8px;
+      }
+      
+      .brand img {
+        height: 42px;
+      }
+      
+      .resume-section {
+        padding: 100px 15px 40px;
+      }
+      
+      .team-selection {
+        gap: 10px;
+      }
+      
+      .team-member-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+      
+      .resume-container {
+        padding: 25px;
+      }
+      
+      .resume-header {
+        padding: 40px 15px;
       }
       
       .resume-header h1 {
         font-size: 28px;
       }
-      
-      .personal-info {
+    }
+    
+    @media (max-width: 480px) {
+      .team-selection {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
       }
       
-      .profile-image {
-        margin: 0 auto;
+      .team-member-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
       }
       
-      .projects-table {
-        display: block;
-        overflow-x: auto;
+      .resume-container {
+        padding: 20px;
       }
       
-      .skills-grid {
+      .resume-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -310,559 +447,362 @@
 <body>
 
   <!-- ناوبری -->
-  <header class="nav">
+  <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+        <span class="company-name">توسعه پردازان</span>
       </a>
       <nav>
         <ul class="nav-links">
-          <li><a href="index.html">خانه</a></li>
+          <li><a href="index.html#hero">خانه</a></li>
           <li><a href="index.html#services">خدمات</a></li>
-          <li><a href="products.html">محصولات</a></li>
+          <li><a href="products.html">نمونه خدمات و محصولات</a></li>
           <li><a href="resume.html">رزومه پرسنل</a></li>
+          <li><a href="index.html#projects">پروژه‌های توسعه</a></li>
           <li><a href="index.html#contact">تماس</a></li>
+          <li class="language-selector">
+            <button class="lang-btn active" data-lang="fa" title="فارسی">
+              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+            </button>
+            <button class="lang-btn" data-lang="en" title="English">
+              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
+            </button>
+            <button class="lang-btn" data-lang="ar" title="العربية">
+              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- هدر رزومه -->
-  <div class="resume-header">
-    <h1>رزومه مهندس جواد عیسی زاده لنگرودی</h1>
-    <p class="subtitle">مهندس مکانیک - طراح صنعتی</p>
-  </div>
-
-  <div class="container">
-    <a href="index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
-    
-    <div class="resume-content">
-      <!-- اطلاعات شخصی -->
-      <div class="personal-info">
-        <div class="profile-image">
-          <img src="images/javad-profile.jpg" alt="عکس جواد عیسی زاده">
-        </div>
-        <div class="profile-details">
-          <h2>جواد عیسی زاده لنگرودی</h2>
-          <h3>مهندس مکانیک - طراح صنعتی</h3>
-          
-          <ul class="contact-list">
-            <li>متولد: ۱۳۷۵/۹/۲۸</li>
-            <li>وضعیت تأهل: متأهل</li>
-            <li>وضعیت سربازی: در حال خدمت</li>
-            <li>📧 javadisazadeh24@gmail.com</li>
-            <li>📞 (+۹۸)۹۱۱۷۶۶۸۶۱۰</li>
-            <li>🌐 www.tpe-co.ir</li>
-            <li>📍 اصفهان</li>
-            <li>
-              <a href="https://linkedin.com/in/javad-isazadeh-00a518154" target="_blank">
-                LinkedIn: javad-isazadeh-00a518154
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/javad_isazadeh" target="_blank">
-                Instagram: javad_isazadeh
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/tpe_co" target="_blank">
-                Instagram: tpe_co
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- مهارت‌ها -->
-      <div class="resume-section">
-        <h3 class="section-title">مهارت‌ها</h3>
-        <div class="skills-grid">
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>مدلسازی سه‌بعدی و طراحی CAD</span>
-              <span>100%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 100%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>کاربری CNC</span>
-              <span>100%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 100%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>تحلیل المان محدود Ansys و COMSOL MultiPhysics</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>مدیریت پروژه</span>
-              <span>100%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 100%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>مواد و فرآیندها</span>
-              <span>60%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 60%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>مهندسی تولید</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>طراحی انواع مکانیزم‌ها</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>بهینه‌سازی طراحی</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Plant design management system PDMS</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Microsoft Office</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Adobe Photoshop</span>
-              <span>60%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 60%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Delcam PowerMILL</span>
-              <span>100%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 100%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Vertcam Aspire</span>
-              <span>100%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 100%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>میکروکنترلرهای Arduino و برنامه‌نویسی آن</span>
-              <span>60%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 60%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>برنامه‌نویسی MATLAB</span>
-              <span>60%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 60%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>3D Print</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>تعمیرات تجهیزات پزشکی</span>
-              <span>60%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 60%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>تعمیرات تجهیزات دندانپزشکی</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>مهندسی معکوس و مدلسازی سریع</span>
-              <span>100%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 100%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>انواع ماشینکاری</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 80%"></div>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>تعمیر برد به روش مهندسی معکوس</span>
-              <span>40%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 40%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- سوابق تحصیلی -->
-      <div class="resume-section">
-        <h3 class="section-title">سوابق تحصیلی</h3>
-        
-        <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px;">کارشناسی مهندسی مکانیک</h4>
-          <p style="color: var(--muted); margin-bottom: 5px;">گرایش: جامدات</p>
-          <p style="margin-bottom: 5px;">موسسه/دانشگاه: دانشگاه سیستان و بلوچستان دولتی</p>
-          <p style="margin-bottom: 5px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="margin-bottom: 5px;">۱۳۹۴ - ۱۳۹۸</p>
-          <p style="font-weight: 600;">معدل: ۱۷.۶۷</p>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px;">کارشناسی ارشد مهندسی مکاترونیک</h4>
-          <p style="color: var(--muted); margin-bottom: 5px;">گرایش: مکاترونیک</p>
-          <p style="margin-bottom: 5px;">موسسه/دانشگاه: دانشگاه سیستان و بلوچستان دولتی</p>
-          <p style="margin-bottom: 5px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="margin-bottom: 5px;">۱۳۹۸ - ۱۴۰۲</p>
-          <p style="font-weight: 600;">معدل: انصراف در ترم چهارم</p>
-        </div>
-        
-        <div>
-          <h4 style="color: var(--primary); margin-bottom: 10px;">دکتری مهندسی مکانیک</h4>
-          <p style="color: var(--muted); margin-bottom: 5px;">گرایش: طراحی کاربردی</p>
-          <p style="margin-bottom: 5px;">موسسه/دانشگاه: دانشگاه سیستان و بلوچستان دولتی</p>
-          <p style="margin-bottom: 5px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="font-weight: 600;">۱۴۰۳ - اکنون</p>
-        </div>
-      </div>
-
-      <!-- سوابق شغلی -->
-      <div class="resume-section">
-        <h3 class="section-title">سوابق شغلی</h3>
-        
-        <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px;">موسس و مدیرعامل</h4>
-          <p style="margin-bottom: 10px;">شرکت دانش بنیان فنی و مهندسی توسعه پردازان الکترونیک فیدار پارس راویس</p>
-          <p style="color: var(--muted); margin-bottom: 10px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="font-weight: 600; margin-bottom: 15px;">آبان ۱۳۹۵ - اکنون</p>
-          <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border-right: 4px solid var(--accent);">
-            <p style="font-weight: 600; margin-bottom: 10px;">وظایف و دستاوردها:</p>
-            <p>مهندس مکانیک با تخصص در طراحی صنعتی و تجربه بیش از ۱۰ سال در زمینه توسعه و بهبود محصولات. دارای مهارتهای قوی در مدلسازی سه‌بعدی و تحلیلهای مهندسی، با تمرکز بر کارایی، خلاقیت و نوآوری. متعهد به ارتقاء کیفیت و بهینه‌سازی فرآیندها برای دستیابی به نتایج مورد نظر.</p>
-            <ul style="margin-top: 10px; padding-right: 20px;">
-              <li>طراحی و توسعه محصولات صنعتی با استفاده از نرم‌افزارهای CAD و CAE</li>
-              <li>مدیریت پروژه‌های طراحی مکانیکی از مرحله مفهومی تا تولید نهایی</li>
-              <li>تحلیل و بهبود سیستم‌های مکانیکی برای افزایش کارایی و کاهش هزینه‌ها</li>
-              <li>همکاری با تیم‌های چندرشته‌ای برای تحقق اهداف پروژه و حل مسائل فنی</li>
-              <li>آموزش و راهنمایی مهندسان جوان در زمینه طراحی و مهندسی مکانیک</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px;">طراح صنعتی واحد R&D</h4>
-          <p style="margin-bottom: 10px;">شرکت پرواز یاران سیرنگ</p>
-          <p style="color: var(--muted); margin-bottom: 10px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="font-weight: 600; margin-bottom: 15px;">مهر ۱۴۰۲ - اسفند ۱۴۰۲</p>
-          <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border-right: 4px solid var(--accent);">
-            <p style="font-weight: 600; margin-bottom: 10px;">وظایف و دستاوردها:</p>
-            <ul style="padding-right: 20px;">
-              <li>طراحی و توسعه محصولات جدید با استفاده از نرم‌افزارهای CAD و CAE</li>
-              <li>ایجاد مدل‌های سه‌بعدی و پروتوتایپ‌های اولیه برای آزمایش کاربران</li>
-              <li>همکاری با تیم‌های چند رشته‌ای برای بهبود فرآیند تولید و کاهش هزینه‌ها</li>
-              <li>تحقیق و تحلیل روند بازار و معرفی نوآوری‌های طراحی به تیم</li>
-              <li>هدایت پروژه‌های تحقیق و توسعه با نتایج مثبت در افزایش کیفیت و کارایی محصولات</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px;">مدیر مسئول و طراح</h4>
-          <p style="margin-bottom: 10px;">مرکز طراحی صنعتی و طراحی محصول (دیزاین لب) پارک علم و فناوری سیستان و بلوچستان</p>
-          <p style="color: var(--muted); margin-bottom: 10px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="font-weight: 600; margin-bottom: 15px;">شهریور ۱۴۰۲ - فروردین ۱۴۰۳</p>
-          <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border-right: 4px solid var(--accent);">
-            <p style="font-weight: 600; margin-bottom: 10px;">وظایف و دستاوردها:</p>
-            <ul style="padding-right: 20px;">
-              <li>مدیریت تیم پروژه و هماهنگی بین بخش‌ها برای دستیابی به اهداف تعیین شده</li>
-              <li>طراحی و پیاده‌سازی استراتژی‌های بهبود فرآیندهای کاری و افزایش بهره‌وری</li>
-              <li>نظارت بر عملکرد کارکنان و ارائه بازخوردها به منظور ارتقاء کیفیت کار</li>
-              <li>برگزاری جلسات بازنگری دورهای برای ارزیابی عملکرد پروژه‌ها و ارائه پیشنهادات کاربردی</li>
-              <li>مدیریت بودجه پروژه‌ها و اطمینان از استفاده بهینه از منابع مالی</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px;">مدیر و طراح صنعتی</h4>
-          <p style="margin-bottom: 10px;">شرکت بهبود رایان</p>
-          <p style="color: var(--muted); margin-bottom: 10px;">سیستان و بلوچستان، زاهدان</p>
-          <p style="font-weight: 600; margin-bottom: 15px;">تیر ۱۳۹۸ - مرداد ۱۳۹۸</p>
-          <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border-right: 4px solid var(--accent);">
-            <p style="font-weight: 600; margin-bottom: 10px;">وظایف و دستاوردها:</p>
-            <ul style="padding-right: 20px;">
-              <li>مدیریت تیم طراحی و توسعه محصول، تضمین کیفیت و تحویل به موقع پروژه‌ها</li>
-              <li>تحلیل داده‌های کاربری و ارائه پیشنهادات کاربردی برای بهبود تجربه مشتری</li>
-              <li>ایجاد و نگهداری از روابط موثر با تامین‌کنندگان و مشتریان کلیدی</li>
-              <li>برگزاری کارگاه‌های آموزشی برای تیم به منظور ارتقاء مهارت‌ها و دانش فنی</li>
-              <li>طراحی و توسعه محصولات جدید با استفاده از نرم‌افزارهای CAD و 3D modeling</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div>
-          <h4 style="color: var(--primary); margin-bottom: 10px;">کارشناس معاونت طراحی و مهندسی</h4>
-          <p style="margin-bottom: 10px;">سازمان انرژی اتمی</p>
-          <p style="color: var(--muted); margin-bottom: 10px;">اصفهان، کاشان</p>
-          <p style="font-weight: 600; margin-bottom: 15px;">شهریور ۱۴۰۳ - اکنون</p>
-          <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border-right: 4px solid var(--accent);">
-            <p style="font-weight: 600; margin-bottom: 10px;">وظایف و دستاوردها:</p>
-            <ul style="padding-right: 20px;">
-              <li>مدیریت پروژه‌های طراحی صنعتی، از مرحله ایده تا تولید نهایی</li>
-              <li>همکاری با تیم‌های بازاریابی و فروش برای شناسایی نیازهای بازار و تولید محصولات مطابق با آن</li>
-              <li>بهینه‌سازی فرآیندهای تولید با هدف کاهش هزینه‌ها و بهبود کیفیت محصولات</li>
-              <li>آموزش و راهنمایی تیم طراحی و مهندسی در استفاده از تکنولوژی‌های نوین</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- پروژه‌ها -->
-      <div class="resume-section">
-        <h3 class="section-title">پروژه‌ها</h3>
-        
-        <div style="overflow-x: auto;">
-          <table class="projects-table">
-            <thead>
-              <tr>
-                <th>عنوان پروژه</th>
-                <th>کارفرما / درخواست کننده</th>
-                <th>سال</th>
-                <th>نقش</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>طراحی و ساخت دستگاه تست رفلکس کالریک</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۴۰۰</td>
-                <td>پروژه کارشناسی ارشد با ایده نوین</td>
-              </tr>
-              <tr>
-                <td>طراحی دستگاه تصفیه هوا و پاکسازی محیط با لامپ UV</td>
-                <td>شرکت بهبودرایان</td>
-                <td>۱۳۹۹</td>
-                <td>طراح و مدیر فنی - همکاری با شرکت بهبود رایان</td>
-              </tr>
-              <tr>
-                <td>دستگاه رگ یاب</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۳۹۹</td>
-                <td>طراح و سازنده - طراحی و مدلینگ صنعتی - عضو تیم اجرایی</td>
-              </tr>
-              <tr>
-                <td>دستگاه ECG Simulator</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۳۹۷</td>
-                <td>طراح و سازنده - طراحی و مدلینگ صنعتی - عضو تیم اجرایی</td>
-              </tr>
-              <tr>
-                <td>افزونه دستگاه رادیولوژی پری اپتیکال دندان</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۳۹۷</td>
-                <td>طراح و سازنده - طراحی و مدلینگ صنعتی - عضو تیم اجرایی</td>
-              </tr>
-              <tr>
-                <td>دستگاه سبد شور</td>
-                <td>شرکت مرغ مادر پروتیین سپید</td>
-                <td>۱۳۹۶</td>
-                <td>طراح صنعتی</td>
-              </tr>
-              <tr>
-                <td>دستگاه Defibration</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۳۹۶</td>
-                <td>طراحی و ساخت - طراحی و مدلینگ صنعتی - مجری</td>
-              </tr>
-              <tr>
-                <td>دستگاه دست خشک کن آنتی باکتریال</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۳۹۶</td>
-                <td>طراحی و ساخت</td>
-              </tr>
-              <tr>
-                <td>طراحی و ساخت گجت پوشیدنی Pulse Oximeter</td>
-                <td>دانشگاه سیستان و بلوچستان</td>
-                <td>۱۳۹۹</td>
-                <td>طراحی و ساخت</td>
-              </tr>
-              <tr>
-                <td>طراحی و ساخت دستگاه Sanitizer با آپشن لامپ UV برای وسایل شخصی</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>۱۳۹۹</td>
-                <td>طراحی و ساخت</td>
-              </tr>
-              <tr>
-                <td>سایر پروژه های خدماتی در حوزه طراحی صنعتی و مشاوره تولید</td>
-                <td>شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</td>
-                <td>مستمر</td>
-                <td>مشاوره و طراحی</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- زبان، دوره‌ها و افتخارات -->
-      <div class="resume-section">
-        <h3 class="section-title">زبان، دوره‌ها و افتخارات</h3>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-          <div>
-            <h4 style="color: var(--primary); margin-bottom: 15px;">زبان انگلیسی</h4>
-            <div style="background: #f8fafc; padding: 20px; border-radius: 10px;">
-              <div style="margin-bottom: 15px;">
-                <span style="font-weight: 600;">مهارت خواندن:</span> متوسط
-              </div>
-              <div style="margin-bottom: 15px;">
-                <span style="font-weight: 600;">مهارت نوشتن:</span> متوسط
-              </div>
-              <div style="margin-bottom: 15px;">
-                <span style="font-weight: 600;">مهارت گفتاری:</span> متوسط
-              </div>
-              <div>
-                <span style="font-weight: 600;">مهارت شنیداری:</span> متوسط
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <h4 style="color: var(--primary); margin-bottom: 15px;">دوره‌ها و گواهینامه‌ها</h4>
-            <div style="background: #f8fafc; padding: 20px; border-radius: 10px;">
-              <ul style="padding-right: 20px;">
-                <li style="margin-bottom: 10px;">باز و بست موتور خودرو ملی لوگان - دانشگاه سیستان و بلوچستان (اردیبهشت ۱۳۹۷)</li>
-                <li style="margin-bottom: 10px;">داور تجهیزات پزشکی پنجمین فن بازار ملی سلامت - دانشگاه‌های علوم پزشکی ایران و زاهدان (آبان ۱۳۹۸)</li>
-                <li style="margin-bottom: 10px;">توسعه مهارت‌های فردی و اجتماعی - انجمن علمی تعالی کسب و کار ایرانیان (آبان ۱۴۰۱)</li>
-                <li style="margin-bottom: 10px;">تعمیرات تجهیزات پزشکی و دندانپزشکی - شرکت‌های آرمد و چابک تجهیز (شهریور ۱۳۹۷)</li>
-                <li>کارورزی CNC - سازمان آموزشی فنی و حرفه‌ای کشور (مهر ۱۳۹۶)</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div>
-            <h4 style="color: var(--primary); margin-bottom: 15px;">افتخارات</h4>
-            <div style="background: #f8fafc; padding: 20px; border-radius: 10px;">
-              <ul style="padding-right: 20px;">
-                <li style="margin-bottom: 10px;">داوری رویداد inotex pitch (۱۴۰۳)</li>
-                <li style="margin-bottom: 10px;">داوری رویداد پنجمین فن بازار ملی سلامت - چابهار (۱۳۹۸)</li>
-                <li style="margin-bottom: 10px;">داوری رویداد صنعتی نوفن - پارک علم و فناوری سیستان و بلوچستان (۱۴۰۲)</li>
-                <li style="margin-bottom: 10px;">نخبه پژوهشی دانشگاه سیستان و بلوچستان (آذر ۱۳۹۸)</li>
-                <li>کسب رتبه برتر در نمایشگاه بین‌المللی فناوری و نوآوری تهران (آذر ۱۳۹۷)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- فوتر -->
-  <footer>
+  <!-- صفحه رزومه -->
+  <section class="resume-section">
     <div class="container">
-      <h3>تماس با ما</h3>
-      <div style="margin: 20px 0; line-height: 1.8;">
-        <p>📧 javadisazadeh24@gmail.com</p>
-        <p>📞 09226704205</p>
-        <p>📍 زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
+      <button class="back-btn" onclick="window.location.href='index.html'">← بازگشت به صفحه اصلی</button>
+      
+      <h2>رزومه پرسنل</h2>
+      
+      <div class="team-selection">
+        <button class="team-member-btn active" data-member="javad">
+          <i class="fas fa-user-tie member-icon"></i>
+          دکتر جواد عیسی‌زاده لنگرودی
+        </button>
+        <button class="team-member-btn" data-member="mina">
+          <i class="fas fa-user-graduate member-icon"></i>
+          مهندس مینا واصفیان
+        </button>
       </div>
-      <div style="margin-top: 30px; font-size: 14px; color: #94a3b8;">
-        © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
+      
+      <!-- رزومه دکتر جواد -->
+      <div class="resume-content active" id="javad-resume">
+        <div class="resume-container">
+          <div class="resume-header">
+            <h1>دکتر جواد عیسی‌زاده لنگرودی</h1>
+            <div class="subtitle">موسس و مدیرعامل شرکت دانش بنیان فنی و مهندسی توسعه پردازان</div>
+          </div>
+          
+          <div class="resume-grid">
+            <div class="resume-card">
+              <h3>اطلاعات تماس</h3>
+              <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <span>javadisazadeh24@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone contact-icon"></i>
+                <span>09226704205</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>تحصیلات</h3>
+              <div class="info-item">
+                <div class="info-label">مقطع تحصیلی</div>
+                <div class="info-value">دکترای تخصصی</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">رشته</div>
+                <div class="info-value">مهندسی مکانیک</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">دانشگاه</div>
+                <div class="info-value">دانشگاه سیستان و بلوچستان</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>سوابق شغلی</h3>
+              <div class="info-item">
+                <div class="info-label">سمت</div>
+                <div class="info-value">موسس و مدیرعامل</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">شرکت</div>
+                <div class="info-value">توسعه پردازان</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">دوره فعالیت</div>
+                <div class="info-value">۱۴۰۱ - تاکنون</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>مهارت‌های تخصصی</h3>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>طراحی صنعتی</span>
+                  <span>۹۵%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>مهندسی معکوس</span>
+                  <span>۹۰%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>مدیریت پروژه</span>
+                  <span>۸۵%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- رزومه مهندس مینا -->
+      <div class="resume-content" id="mina-resume">
+        <div class="resume-container">
+          <div class="resume-header">
+            <h1>مهندس مینا واصفیان</h1>
+            <div class="subtitle">طراح و مهندس مکانیک - شرکت توسعه پردازان</div>
+          </div>
+          
+          <div class="resume-grid">
+            <div class="resume-card">
+              <h3>اطلاعات تماس</h3>
+              <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <span>m.vasefyan80@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone contact-icon"></i>
+                <span>۰۹۹۱۶۳۷۷۲۶۹</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+              </div>
+              <div class="contact-item">
+                <i class="fab fa-instagram contact-icon"></i>
+                <span>mina_vn</span>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>تحصیلات</h3>
+              <div class="info-item">
+                <div class="info-label">مقطع تحصیلی</div>
+                <div class="info-value">کارشناسی مهندسی مکانیک</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">گرایش</div>
+                <div class="info-value">طراحی کاربردی</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">دانشگاه</div>
+                <div class="info-value">دانشگاه سیستان و بلوچستان (دولتی)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">سال فارغ‌التحصیلی</div>
+                <div class="info-value">۱۳۹۹</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>مهارت‌ها</h3>
+              <div class="info-item">
+                <div class="info-label">آموزش کامپیوتر</div>
+                <div class="info-value">ICDL هفتگانه</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">نرم‌افزارها</div>
+                <div class="info-value">CATIA, Photoshop, Artcam</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">تخصص‌ها</div>
+                <div class="info-value">اپراتوری CNC، تراشکاری، کار با چوب</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>زبان انگلیسی</h3>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>خواندن</span>
+                  <span>۱۰۰%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 100%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>نوشتن</span>
+                  <span>۸۰%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>گفتاری</span>
+                  <span>۸۰%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>شنیداری</span>
+                  <span>۶۰%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 60%"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>سوابق شغلی</h3>
+              <div class="info-item">
+                <div class="info-label">طراح صنعتی با کتیا</div>
+                <div class="info-value">مرکز طراحی صنعتی پارک علم و فناوری (۱۴۰۲ - اکنون)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">مهندس طراح - اپراتور CNC</div>
+                <div class="info-value">دفتر مهندسی جدیدالاسلام (۱۴۰۲ مرداد - اکنون)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">مهندس طراح - اپراتور CNC</div>
+                <div class="info-value">شرکت توسعه پردازان (۱۴۰۱ مهر - اکنون)</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>علاقمندی‌ها</h3>
+              <div class="info-item">
+                <div class="info-value">کار با انواع دستگاه‌ها جهت ساخت</div>
+              </div>
+              <div class="info-item">
+                <div class="info-value">کار با چوب و اکسسوری</div>
+              </div>
+              <div class="info-item">
+                <div class="info-value">جوشکاری</div>
+              </div>
+              <div class="info-item">
+                <div class="info-value">کارهای هنری</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
+  <script>
+    // سیستم انتخاب فرد
+    document.addEventListener('DOMContentLoaded', function() {
+      const memberButtons = document.querySelectorAll('.team-member-btn');
+      const resumeContents = document.querySelectorAll('.resume-content');
+      
+      memberButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const member = this.dataset.member;
+          
+          // حذف حالت فعال از همه دکمه‌ها
+          memberButtons.forEach(btn => btn.classList.remove('active'));
+          // اضافه کردن حالت فعال به دکمه کلیک شده
+          this.classList.add('active');
+          
+          // مخفی کردن همه رزومه‌ها
+          resumeContents.forEach(content => content.classList.remove('active'));
+          // نمایش رزومه انتخاب شده
+          document.getElementById(`${member}-resume`).classList.add('active');
+        });
+      });
+      
+      // سیستم چندزبانه
+      const langButtons = document.querySelectorAll('.lang-btn');
+      
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          
+          langButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // تغییر جهت صفحه
+          if (lang === 'ar') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+          } else if (lang === 'fa') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'fa';
+          } else if (lang === 'en') {
+            document.documentElement.dir = 'ltr';
+            document.documentElement.lang = 'en';
+          }
+        });
+      });
+      
+      // تنظیم حالت اولیه
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang) {
+        const activeBtn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
+        if (activeBtn) {
+          langButtons.forEach(b => b.classList.remove('active'));
+          activeBtn.classList.add('active');
+          
+          if (savedLang === 'ar') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+          } else if (savedLang === 'fa') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'fa';
+          } else if (savedLang === 'en') {
+            document.documentElement.dir = 'ltr';
+            document.documentElement.lang = 'en';
+          }
+        }
+      }
+      
+      // کنترل خطا برای لوگو
+      const logoImg = document.querySelector('.brand img');
+      if (logoImg) {
+        logoImg.onerror = function() {
+          this.src = 'https://via.placeholder.com/50x50/1e40af/ffffff?text=TPE';
+        };
+      }
+    });
+  </script>
 </body>
 </html>
