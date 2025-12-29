@@ -2,10 +2,12 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان</title>
-  <link rel="icon" type="image/png" href="images/logo.png"> <!-- تغییر شماره 1: favicon -->
+  <title>شرکت دانش‌بنیان توسعه پردازان الکترونیک فیدار پارس راویس</title>
+  <!-- تغییر 1: افزودن فاوآیکن -->
+  <link rel="icon" href="images/logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* تایپوگرافی رسمی و خوانا (بدون ایموجی) */
     :root{
       --bg:#ffffff;--text:#111111;--muted:#6e6e73;--ink:#000000;
       --surface:#f5f5f7;--primary:#000;--accent:#e11d48;--maxw:1100px;
@@ -16,13 +18,16 @@
     a{text-decoration:none;color:#0a84ff}
     img{max-width:100%;display:block}
 
+    /* ناوبار با لوگو مینیمال */
     header.nav{position:sticky;top:0;z-index:50;background:#000;color:#fff}
     .nav .wrap{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{display:flex;align-items:center;gap:10px}
     .brand img{height:26px;width:auto}
     .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     .nav a{color:#ddd;font-size:14px}
     .nav a:hover{color:#fff}
 
+    /* هرو رسمی با تصویر */
     .hero{background:#000 url('images/hero.jpg') center/cover no-repeat;color:#fff;text-align:center}
     .hero .wrap{max-width:var(--maxw);margin:0 auto;padding:90px 20px}
     .hero h1{margin:0 0 12px;font-size:clamp(28px,5.5vw,44px);font-weight:700;letter-spacing:-0.02em}
@@ -33,15 +38,18 @@
     .btn.secondary{border:1px solid #fff;color:#fff}
     .btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 
+    /* سکشن‌ها */
     section{padding:60px 20px}
     section h2{text-align:center;margin:0 0 18px;font-size:24px;font-weight:700}
 
+    /* خدمات با جلوه بصری */
     .services{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr;gap:16px}
     @media(min-width:900px){.services{grid-template-columns:1fr 1fr 1fr}}
     .service{background:var(--surface);border-radius:12px;padding:22px;text-align:justify}
     .service h3{margin:0 0 10px;font-size:18px}
     .service p{margin:0;color:#333}
 
+    /* پروژه‌های کلیدی (فقط دو مورد) */
     .projects{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:900px){.projects{grid-template-columns:1fr 1fr}}
     .project{background:#fff;border:1px solid #e5e5ea;border-radius:12px;overflow:hidden}
@@ -50,22 +58,31 @@
     .project h3{margin:0 0 8px;font-size:18px}
     .project p{margin:0;color:#333}
 
-    .clients{background:var(--surface)}
-    .clients .wrap{max-width:var(--maxw);margin:0 auto;overflow:hidden}
-    .logos-scroll{display:flex;gap:40px;animation:scroll 25s linear infinite}
-    .logos-scroll img{max-height:60px;opacity:0.75;transition:opacity .2s,transform .2s}
+    /* مشتریان (لوگوها) - تغییر 4: اسکرول اتوماتیک */
+    .clients{background:var(--surface); overflow:hidden}
+    .clients .wrap{max-width:var(--maxw);margin:0 auto}
+    .logos-container{position:relative; width:100%; overflow:hidden}
+    .logos-scroll{display:flex; animation: scrollLogos 25s linear infinite; gap:40px}
+    .logos-scroll img{max-height:60px;opacity:0.75;transition:opacity .2s,transform .2s; flex-shrink:0}
     .logos-scroll img:hover{opacity:1;transform:scale(1.03)}
-    @keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+    @keyframes scrollLogos {
+      0% {transform:translateX(0)}
+      100% {transform:translateX(-50%)}
+    }
+    .logos-scroll:hover{animation-play-state:paused}
 
+    /* دانلود */
     .downloads{background:var(--surface)}
     .downloads .wrap{max-width:var(--maxw);margin:0 auto;text-align:center}
     .download-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:10px}
     .download-actions .btn{background:#0f172a;color:#fff}
     .download-actions .btn:hover{background:var(--accent)}
 
+    /* تماس */
     .contact .wrap{max-width:var(--maxw);margin:0 auto;text-align:center}
     .contact p{color:#333}
 
+    /* فوتر */
     footer{background:#0f172a;color:#fff}
     footer .wrap{max-width:var(--maxw);margin:0 auto;padding:26px 20px;text-align:center}
     .social{margin-top:8px}
@@ -74,14 +91,18 @@
 </head>
 <body>
 
+  <!-- ناوبار -->
   <header class="nav">
     <div class="wrap">
-      <a class="brand" href="#"><img src="images/logo.png" alt="لوگوی TPE Co"></a>
+      <a class="brand" href="#">
+        <img src="images/logo.png" alt="لوگوی TPE Co">
+      </a>
       <nav>
         <ul>
           <li><a href="#hero">خانه</a></li>
           <li><a href="#services">خدمات</a></li>
-          <li><a href="#projects">پروژه‌های توسعه شرکت</a></li> <!-- تغییر شماره 2 -->
+          <!-- تغییر 8: به روزرسانی عنوان -->
+          <li><a href="#projects">پروژه‌های توسعه شرکت</a></li>
           <li><a href="#clients">مشتریان</a></li>
           <li><a href="#downloads">دانلودها</a></li>
           <li><a href="#contact">تماس</a></li>
@@ -90,38 +111,150 @@
     </div>
   </header>
 
+  <!-- هرو -->
   <section id="hero" class="hero">
     <div class="wrap">
-      <h1>شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان</h1> <!-- تغییر شماره 5 -->
-      <p>صفر تا صد ایده تا محصول را به ما بسپار… از طراحی صنعتی تا ساخت افزایشی و کاهشی.</p> <!-- تغییر شماره 6 -->
+      <!-- تغییر 5: خلاصه کردن نام شرکت -->
+      <h1>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
+      <!-- تغییر 6: تغییر متن به شعار جدید -->
+      <p>صفر تا صد ایده تا محصول را به ما بسپارید؛ از طراحی مفهومی تا تولید نهایی با فناوری‌های ساخت کاهشی و افزایشی.</p>
       <div class="cta">
         <a class="btn primary" href="#services">مشاهده خدمات</a>
-        <a class="btn secondary" href="#projects">پروژه‌های توسعه شرکت</a>
+        <a class="btn secondary" href="#projects">پروژه‌های کلیدی</a>
       </div>
     </div>
   </section>
 
+  <!-- خدمات (بخش‌بندی‌شده و بصری) -->
   <section id="services">
     <h2>خدمات ما</h2>
     <div class="services">
-      <div class="service"><h3>ماشینکاری CNC</h3><p>تراش، فرز و وایرکات؛ تولید قطعات فلزی و پلاستیکی با دقت بالا.</p></div>
-      <div class="service"><h3>چاپ سه‌بعدی</h3><p>رزین و فیلامنت؛ نمونه‌سازی سریع و دقیق با تکنیک‌های ساخت افزایشی.</p></div>
-      <div class="service"><h3>مهندسی معکوس</h3><p>بازطراحی و تولید مجدد قطعات و دستگاه‌ها با بهینه‌سازی عملکرد.</p></div>
-      <div class="service"><h3>طراحی صنعتی</h3><p>مدلینگ سه‌بعدی، شبیه‌سازی عددی و طراحی محصولات نوآورانه.</p></div>
-      <div class="service"><h3>ساخت و تولید</h3><p>ساخت افزایشی و کاهشی؛ مونتاژ، آزمون عملکرد و تضمین کیفیت.</p></div>
-      <div class="service"><h3>آموزش و مشاوره</h3><p>دوره‌های تخصصی نرم‌افزارهای مهندسی و مشاوره توسعه محصول.</p></div>
+      <div class="service">
+        <h3>ماشینکاری CNC (ساخت کاهشی)</h3>
+        <p>تراش، فرز و وایرکات؛ تولید قطعات فلزی و پلاستیکی با تلرانس‌های دقیق و کنترل کیفیت مستند.</p>
+      </div>
+      <div class="service">
+        <h3>چاپ سه‌بعدی (ساخت افزایشی)</h3>
+        <p>رزین (SLA/DLP) و فیلامنت (FDM)؛ نمونه‌سازی سریع، قطعات نهایی سفارشی و پس‌پردازش حرفه‌ای.</p>
+      </div>
+      <div class="service">
+        <h3>مهندسی معکوس</h3>
+        <p>اسکن، مدل‌سازی پارامتریک و بازتولید بهینه؛ جایگزینی قطعات ناموجود و ارتقای کارایی.</p>
+      </div>
+      <div class="service">
+        <h3>طراحی صنعتی و مدلینگ</h3>
+        <p>کانسپت تا دیتیل؛ ارگونومی، زیبایی‌شناسی و ساخت‌پذیری با مستندات کامل فنی.</p>
+      </div>
+      <div class="service">
+        <h3>ساخت و تولید</h3>
+        <p>تولید جِدی/سری؛ مونتاژ، آزمون عملکرد و تضمین کیفیت برای عرضه به بازار.</p>
+      </div>
+      <div class="service">
+        <h3>آموزش و مشاوره</h3>
+        <p>دوره‌های تخصصی نرم‌افزارهای مهندسی و مشاوره توسعه محصول، فرایند و استانداردسازی.</p>
+      </div>
     </div>
   </section>
 
+  <!-- پروژه‌های کلیدی -->
   <section id="projects">
+    <!-- تغییر 8: به روزرسانی عنوان -->
     <h2>پروژه‌های توسعه شرکت</h2>
+    <!-- تغییر 2: به روزرسانی توضیحات -->
+    <p style="text-align:center; color:var(--muted); margin-bottom:30px">مجموعه‌های زیرمجموعه و درحال تاسیس</p>
     <div class="projects">
       <article class="project">
-        <div class="media"><img src="images/saravan.jpg" alt="کارخانه تولید یونولیت سراوان"></div>
+        <div class="media">
+          <img src="images/saravan.jpg" alt="کارخانه تولید یونولیت سراوان">
+        </div>
         <div class="body">
-          <h3>کارخانه تولید یونولیت سراوان – بزودی</h3>
-          <p>طراحی و راه‌اندازی واحد تولید یونولیت در شهرک صنعتی سراوان جهت اشتغال‌زایی.</p> <!-- تغییر شماره 3 -->
+          <!-- تغییر 7: به روزرسانی عنوان پروژه -->
+          <h3>کارخانه تولید یونولیت سراوان (بزودی)</h3>
+          <!-- تغییر 3: به روزرسانی توضیحات پروژه -->
+          <p>طراحی و راه‌اندازی واحد تولید یونولیت در شهرک صنعتی سراوان جهت اشتغال‌زایی و توسعه صنعتی منطقه.</p>
         </div>
       </article>
+
       <article class="project">
-        <div class="media"><img src
+        <div class="media">
+          <img src="images/ravand.jpg" alt="کافه فب‌لب روند">
+        </div>
+        <div class="body">
+          <h3>کافه فب‌لب روند – بزودی</h3>
+          <p>فضای عمومیِ الهام‌بخش برای پیوند سنت و تکنولوژی؛ محلی برای تجربه‌سازی، ارائه و همکاری میان دانشجویان، صنعتگران و کارآفرینان.</p>
+          <img src="images/ravand-logo.png" alt="لوگوی کافه روند" style="height:56px;margin-top:10px">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- مشتریان (لوگوهای کسانی که خدمات گرفته‌اند) -->
+  <section id="clients" class="clients">
+    <h2>برخی از مشتریان ما</h2>
+    <div class="wrap">
+      <!-- تغییر 4: ساختار جدید برای اسکرول اتوماتیک -->
+      <div class="logos-container">
+        <div class="logos-scroll">
+          <!-- تغییر 3: اضافه کردن لوگوهای جدید -->
+          <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
+          <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
+          <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+          <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
+          <img src="clients/innovation.png" alt="مجتمع نوآوری">
+          <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
+          <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
+          <img src="clients/design-lab.png" alt="دیزاین لب پارک علم و فناوری سیستان و بلوچستان">
+          <!-- تکرار مجموعه برای اسکرول پیوسته -->
+          <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
+          <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
+          <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+          <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
+          <img src="clients/innovation.png" alt="مجتمع نوآوری">
+          <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
+          <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
+          <img src="clients/design-lab.png" alt="دیزاین لب پارک علم و فناوری سیستان و بلوچستان">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- دانلود کاتالوگ و رزومه -->
+  <section id="downloads" class="downloads">
+    <div class="wrap">
+      <h2>دانلود کاتالوگ و رزومه شرکت</h2>
+      <p>برای آشنایی بیشتر با سوابق و توانمندی‌ها، مستندات رسمی شرکت را دانلود کنید.</p>
+      <div class="download-actions">
+        <a class="btn" href="files/catalog.pdf">دانلود کاتالوگ</a>
+        <a class="btn" href="files/resume.pdf">دانلود رزومه</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- تماس -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>تماس با ما</h2>
+      <p>
+        ایمیل: javadisazadeh24@gmail.com<br>
+        تلفن / واتس‌اپ / تلگرام: 09226704205<br>
+        لینکدین: <a href="https://www.linkedin.com/company/tpe-co" target="_blank">TPE Co</a> — اینستاگرام: <a href="https://instagram.com/TPE_CO" target="_blank">@TPE_CO</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- فوتر -->
+  <footer>
+    <div class="wrap">
+      <!-- تغییر 5: تطابق نام شرکت در فوتر -->
+      <div>© شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان (TPE Co)</div>
+      <div class="social">
+        <a href="https://www.linkedin.com/company/tpe-co">LinkedIn</a>
+        <a href="https://instagram.com/TPE_CO">Instagram</a>
+        <a href="https://wa.me/989226704205">WhatsApp</a>
+        <a href="https://t.me/+989226704205">Telegram</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
