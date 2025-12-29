@@ -107,89 +107,86 @@
       margin-bottom: 10px;
     }
     
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-    
-    .product-card {
+    /* جدول پروژه‌ها */
+    .projects-table-container {
       background: white;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      border: 1px solid #e2e8f0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      margin: 40px 0 60px;
+      overflow-x: auto;
     }
     
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    .projects-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
     }
     
-    .product-img {
-      height: 200px;
-      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    .projects-table th {
+      background: var(--primary);
+      color: white;
+      padding: 20px;
+      text-align: right;
+      font-weight: 600;
+      white-space: nowrap;
     }
     
-    .product-content {
-      padding: 25px;
+    .projects-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
     }
     
-    .product-content h3 {
+    .projects-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    
+    .projects-table tr:hover {
+      background: #f1f5f9;
+    }
+    
+    .project-number {
+      font-weight: 600;
       color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 20px;
+      font-size: 18px;
     }
     
-    .product-content p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-    
-    .product-tag {
+    .project-type {
       display: inline-block;
-      background: #dbeafe;
-      color: var(--primary);
-      padding: 5px 12px;
+      padding: 4px 12px;
       border-radius: 20px;
       font-size: 13px;
       font-weight: 500;
     }
     
-    .product-tag.company {
+    .type-student {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    
+    .type-creative {
       background: #dcfce7;
       color: #166534;
     }
     
-    /* دسته‌بندی محصولات */
-    .category-tabs {
-      display: flex;
-      gap: 10px;
-      margin: 30px 0;
-      flex-wrap: wrap;
-      justify-content: center;
+    .type-original {
+      background: #fef3c7;
+      color: #92400e;
     }
     
-    .category-tab {
-      padding: 12px 24px;
-      background: white;
-      border-radius: 50px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-      border: 2px solid transparent;
+    .type-reverse {
+      background: #fce7f3;
+      color: #9d174d;
     }
     
-    .category-tab.active {
-      background: var(--primary);
-      color: white;
+    .project-field {
+      color: var(--muted);
+      font-size: 14px;
     }
     
-    .category-tab:hover:not(.active) {
-      border-color: var(--primary);
+    .designer {
+      font-weight: 600;
       color: var(--primary);
     }
     
@@ -210,14 +207,32 @@
       transform: translateY(-3px);
     }
     
+    /* توضیح انواع طراحی */
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      justify-content: center;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    
     /* فوتر */
     footer {
-      background: var(--glass-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-top: 1px solid var(--glass-border);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
       padding: 40px 20px;
-      color: var(--text);
       text-align: center;
       margin-top: 60px;
     }
@@ -231,8 +246,15 @@
         font-size: 28px;
       }
       
-      .products-grid {
-        grid-template-columns: 1fr;
+      .projects-table th,
+      .projects-table td {
+        padding: 12px 15px;
+      }
+      
+      .legend {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
       }
     }
   </style>
@@ -259,144 +281,370 @@
 
   <!-- هدر محصولات -->
   <div class="products-header">
-    <h1>نمونه خدمات و محصولات</h1>
+    <h1>لیست پروژه‌های طراحی شرکت</h1>
     <p style="max-width: 600px; margin: 0 auto; font-size: 18px; opacity: 0.9;">
-      مجموعه کاملی از محصولات و خدمات طراحی و تولید شده توسط تیم توسعه پردازان
+      شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس
     </p>
   </div>
 
   <div class="container">
     <a href="index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
     
-    <div class="category-tabs">
-      <div class="category-tab active" onclick="filterProducts('all')">همه محصولات</div>
-      <div class="category-tab" onclick="filterProducts('medical')">دستگاه‌های پزشکی</div>
-      <div class="category-tab" onclick="filterProducts('industrial')">صنعتی</div>
-      <div class="category-tab" onclick="filterProducts('electronic')">الکترونیکی</div>
-      <div class="category-tab" onclick="filterProducts('services')">خدمات</div>
+    <!-- توضیح انواع طراحی -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color" style="background: #dbeafe;"></div>
+        <span>دانش بنیان</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #dcfce7;"></div>
+        <span>خلاق</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #fef3c7;"></div>
+        <span>اورجینال</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #fce7f3;"></div>
+        <span>مهندسی معکوس</span>
+      </div>
     </div>
     
-    <div class="products-grid" id="productsContainer">
-      <!-- محصولات -->
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Air Purifier UV Plus</h3>
-          <p>دستگاه تصفیه هوا پیشرفته با سیستم ضدعفونی UV - حذف ۹۹٫۹٪ باکتری‌ها و ویروس‌ها</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Biometric Lock</h3>
-          <p>قفل بیومتریک با سنسور اثر انگشت پیشرفته - امنیت بالا با قابلیت ذخیره ۱۰۰ اثر انگشت</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Caloric Irrigator</h3>
-          <p>دستگاه تست رفلکس کالریک برای تشخیص اختلالات دهلیزی - دقت بالا در کنترل دما</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="industrial">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Defibration Machine</h3>
-          <p>دستگاه تفکیک کننده الیاف برای صنایع نساجی - بهره‌وری بالا و مصرف انرژی بهینه</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">صنعتی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>ECG Simulator</h3>
-          <p>شبیه‌ساز سیگنال الکتروکاردیوگرام برای آموزش پزشکی - قابلیت تولید انواع آریتمی</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="electronic">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Hand Dryer</h3>
-          <p>دست خشک کن آنتی باکتریال با حسگر حرکتی - مصرف انرژی پایین و سرعت خشک‌کنندگی بالا</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">الکترونیکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Veinscope</h3>
-          <p>دستگاه مشاهده رگ با نور مادون قرمز - کمک به پرسنل پزشکی برای تزریق آسان‌تر</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>UV Sterilization</h3>
-          <p>دستگاه استریلیزاسیون با UV برای اتاق‌های عمل و لباس‌های پزشکی</p>
-          <span class="product-tag company">توسعه پردازان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="medical">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Pulse Oximeter</h3>
-          <p>پالس اکسیمتر پوشیدنی برای مانیتورینگ مداوم سطح اکسیژن خون</p>
-          <span class="product-tag">دانشگاه سیستان و بلوچستان</span>
-          <span class="product-tag">پزشکی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="services">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Arm Porter Robot</h3>
-          <p>ربوت حمل کننده بازو - مهندسی معکوس و بهینه‌سازی برای مشتری ترکیه</p>
-          <span class="product-tag">خدمات مهندسی</span>
-          <span class="product-tag">مهندسی معکوس</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="services">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Air Purifier</h3>
-          <p>دستگاه تصفیه هوا با فیلتر هپا و لامپ UV - طراحی و تولید برای شرکت بهبود رایان</p>
-          <span class="product-tag">شرکت بهبود رایان</span>
-          <span class="product-tag">خدمات طراحی</span>
-        </div>
-      </div>
-      
-      <div class="product-card" data-category="services">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>طراحی صنعتی</h3>
-          <p>خدمات کامل طراحی صنعتی از کانسپت تا مدل سه‌بعدی</p>
-          <span class="product-tag">خدمات تخصصی</span>
-          <span class="product-tag">CAD/CAM</span>
-        </div>
-      </div>
+    <div class="projects-table-container">
+      <table class="projects-table">
+        <thead>
+          <tr>
+            <th>ردیف</th>
+            <th>عنوان پروژه</th>
+            <th>مشتری</th>
+            <th>نوع طراحی</th>
+            <th>حوزه/کاربرد</th>
+            <th>سرطراح</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="project-number">1</td>
+            <td>Air Purifier</td>
+            <td>شرکت بهبود رایان</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">2</td>
+            <td>Air Purifier UV Plus</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">3</td>
+            <td>Arm Porter Robot</td>
+            <td>شخصی حقیقی در ترکیه - استانبول</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">4</td>
+            <td>Biometric Lock</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات IoT</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">5</td>
+            <td>Caloric Irrigator</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">6</td>
+            <td>Camera Sliding Part</td>
+            <td>استودیو ایما</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات تصویربرداری</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">7</td>
+            <td>Chain rests and Bites</td>
+            <td>مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">8</td>
+            <td>Clock with Poet</td>
+            <td>فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">-</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">9</td>
+            <td>Defibration Machine</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">10</td>
+            <td>Dental Suction Frame Cover</td>
+            <td>پیشگامان ایرانیان طب کیانسه</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس علی کیخا</td>
+          </tr>
+          <tr>
+            <td class="project-number">11</td>
+            <td>ECG Simulator</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">12</td>
+            <td>Economic Pin Lock</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">13</td>
+            <td>Face Guide</td>
+            <td>-</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">14</td>
+            <td>Floater</td>
+            <td>-</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس مصطفی خیاطی</td>
+          </tr>
+          <tr>
+            <td class="project-number">15</td>
+            <td>Gear (Worm)</td>
+            <td>پیشگامان ایرانیان طب کیانسه</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">16</td>
+            <td>Hand Dryer</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس علی کیخا</td>
+          </tr>
+          <tr>
+            <td class="project-number">17</td>
+            <td>Handy Tools (Screw drivers)</td>
+            <td>دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">18</td>
+            <td>Holographic</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">-</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">19</td>
+            <td>Labor Bed</td>
+            <td>کشاورزی</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">20</td>
+            <td>Labor Bed</td>
+            <td>-</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس علی کیخا</td>
+          </tr>
+          <tr>
+            <td class="project-number">21</td>
+            <td>Lamp Cover</td>
+            <td>مهرنور الکترونیک پیشگام</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">22</td>
+            <td>Light Box</td>
+            <td>آوام گستر اینترنت اشیاء</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">23</td>
+            <td>Mask Production Line</td>
+            <td>دانشگاه سیستان و بلوچستان</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">24</td>
+            <td>Mirror</td>
+            <td>آوام گستر اینترنت اشیاء</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">-</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">25</td>
+            <td>PCB Cutter</td>
+            <td>مهرنور الکترونیک پیشگام</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">26</td>
+            <td>PET&PVC Shredder</td>
+            <td>شهرک صنعتی سراوان – آقای محمود درویشی</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">27</td>
+            <td>Pizza Machine</td>
+            <td>مهندس سعید میرکی اناری</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">28</td>
+            <td>Pulp Tester</td>
+            <td>شرکت طب تجهیز آبادیس پارس</td>
+            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">29</td>
+            <td>Pulse Oximeter</td>
+            <td>دانشگاه سیستان و بلوچستان</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس علی کیخا</td>
+          </tr>
+          <tr>
+            <td class="project-number">30</td>
+            <td>Puzzle Home Instruments</td>
+            <td>دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">-</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">31</td>
+            <td>روشویی</td>
+            <td>مصطفی صاحبالزمانی</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">32</td>
+            <td>Step Generator</td>
+            <td>مصطفی صاحبالزمانی</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس علی کیخا</td>
+          </tr>
+          <tr>
+            <td class="project-number">33</td>
+            <td>Taftan Trophy</td>
+            <td>فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">-</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">34</td>
+            <td>Trophy</td>
+            <td>فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">-</td>
+            <td class="designer">مهندس مینا واصفیان</td>
+          </tr>
+          <tr>
+            <td class="project-number">35</td>
+            <td>UV Plus Sanitizer</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">36</td>
+            <td>UV Sterilization</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">37</td>
+            <td>Veinscope</td>
+            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات پزشکی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+          <tr>
+            <td class="project-number">38</td>
+            <td>Water Consumption</td>
+            <td>پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس مصطفی خیاطی</td>
+          </tr>
+          <tr>
+            <td class="project-number">39</td>
+            <td>Water Purifier</td>
+            <td>پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original">اورجینال</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس مصطفی خیاطی</td>
+          </tr>
+          <tr>
+            <td class="project-number">40</td>
+            <td>انژکتور شور پویا خودرو ایرانیان آدلی</td>
+            <td>بزودی</td>
+            <td><span class="project-type type-student">دانش بنیان</span></td>
+            <td class="project-field">تجهیزات صنعتی</td>
+            <td class="designer">مهندس جواد عیسی زاده</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -407,40 +655,13 @@
       <div style="margin: 20px 0; line-height: 1.8;">
         <p>📧 javadisazadeh24@gmail.com</p>
         <p>📞 09226704205</p>
+        <p>📍 زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
       </div>
-      <div style="margin-top: 30px; font-size: 14px; color: #64748b;">
-        © ۱۴۰۳ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
+      <div style="margin-top: 30px; font-size: 14px; color: #94a3b8;">
+        © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
       </div>
     </div>
   </footer>
 
-  <script>
-    // فیلتر محصولات
-    function filterProducts(category) {
-      const products = document.querySelectorAll('.product-card');
-      const tabs = document.querySelectorAll('.category-tab');
-      
-      // فعال کردن تب انتخاب شده
-      tabs.forEach(tab => tab.classList.remove('active'));
-      event.target.classList.add('active');
-      
-      // نمایش/مخفی کردن محصولات
-      products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-          product.style.display = 'block';
-          setTimeout(() => {
-            product.style.opacity = '1';
-            product.style.transform = 'translateY(0)';
-          }, 10);
-        } else {
-          product.style.opacity = '0';
-          product.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            product.style.display = 'none';
-          }, 300);
-        }
-      });
-    }
-  </script>
 </body>
 </html>
