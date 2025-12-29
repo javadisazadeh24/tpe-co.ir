@@ -6,20 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      font-family: Vazir, Tahoma, Arial, sans-serif;
+      font-family: "IRANSans", Tahoma, Arial, sans-serif;
       margin: 0; background: #fff; color: #111; line-height: 1.8;
     }
     a { text-decoration: none; }
 
-    /* ناوبار */
+    /* ناوبار با لوگو مینیمال */
     header.nav {
       position: sticky; top: 0;
-      background: rgba(0,0,0,0.85); color: #fff;
+      background: #000; color: #fff;
       padding: 12px 20px; display: flex;
       justify-content: space-between; align-items: center;
     }
-    header.nav .brand { font-weight: bold; }
-    header.nav nav a { color: #ddd; margin: 0 10px; }
+    header.nav .brand img {
+      height: 28px; width: auto;
+    }
+    header.nav nav a { color: #ddd; margin: 0 10px; font-size: 14px; }
     header.nav nav a:hover { color: #fff; }
 
     /* Hero Section */
@@ -27,8 +29,9 @@
       background: #000 url('images/hero.jpg') center/cover no-repeat;
       color: #fff; text-align: center; padding: 120px 20px;
     }
-    .hero h1 { font-size: 46px; margin-bottom: 20px; }
+    .hero h1 { font-size: 42px; margin-bottom: 20px; }
     .hero p { max-width: 700px; margin: 0 auto 20px; color: #ccc; }
+
     .btn {
       display: inline-block; padding: 12px 24px;
       border-radius: 30px; font-weight: bold;
@@ -38,11 +41,10 @@
     .btn.secondary { border: 1px solid #fff; color: #fff; }
     .btn:hover { background: #e11d48; color: #fff; }
 
-    /* سکشن عمومی */
     section { padding: 60px 20px; text-align: center; }
     section h2 { font-size: 26px; margin-bottom: 20px; }
 
-    /* محصولات */
+    /* نمونه کارها */
     .panel { max-width: 1000px; margin: 0 auto; }
     .panel img { max-width: 100%; border-radius: 12px; margin-top: 20px; }
 
@@ -68,10 +70,11 @@
 <body>
 
 <header class="nav">
-  <div class="brand">توسعه پردازان</div>
+  <div class="brand"><img src="images/logo.png" alt="TPE Co Logo"></div>
   <nav>
     <a href="#hero">خانه</a>
-    <a href="#products">محصولات</a>
+    <a href="#portfolio">نمونه‌کارها</a>
+    <a href="#services">خدمات</a>
     <a href="#clients">مشتریان</a>
     <a href="#downloads">دانلودها</a>
     <a href="#contact">تماس</a>
@@ -80,28 +83,37 @@
 
 <!-- Hero -->
 <section id="hero" class="hero">
-  <h1>سادگی، قدرت، مهندسی</h1>
-  <p>شرکت دانش‌بنیان توسعه پردازان الکترونیک فیدار پارس راویس، فعال در طراحی صنعتی، تجهیزات پزشکی و پروژه‌های فناورانه.</p>
-  <a href="#products" class="btn primary">محصولات</a>
+  <h1>شرکت دانش‌بنیان توسعه پردازان</h1>
+  <p>طراحی صنعتی، تجهیزات پزشکی، پروژه‌های فناورانه و خدمات مهندسی با استانداردهای جهانی.</p>
+  <a href="#portfolio" class="btn primary">نمونه‌کارها</a>
   <a href="#contact" class="btn secondary">تماس با ما</a>
 </section>
 
-<!-- محصولات -->
-<section id="products">
-  <h2>محصولات شاخص</h2>
+<!-- نمونه کارها -->
+<section id="portfolio">
+  <h2>نمونه‌کارها</h2>
   <div class="panel">
+    <h3>کارخانه تولید یونولیت سراوان</h3>
+    <p>پروژه طراحی و راه‌اندازی کارخانه تولید یونولیت در سراوان – بزودی تکمیل.</p>
+    <img src="images/saravan.jpg" alt="کارخانه یونولیت سراوان">
+
+    <h3>طرح کافه روند</h3>
+    <p>فضای نوآوری و الهام‌بخش، ترکیب سنت و تکنولوژی – بزودی افتتاح.</p>
+    <img src="images/ravand.jpg" alt="طرح کافه روند">
+
     <h3>ECG Simulator</h3>
     <p>شبیه‌ساز بیمار جهت کالیبراسیون ECG</p>
     <img src="images/ecg.jpg" alt="ECG Simulator">
-
-    <h3>Vein Scope</h3>
-    <p>دستگاه رگ‌یاب پرتابل در سه نسخه</p>
-    <img src="images/veinscope.jpg" alt="Vein Scope">
-
-    <h3>Deadman Handswitch</h3>
-    <p>کلید ایمنی صنعتی با طراحی ارگونومیک</p>
-    <img src="images/deadman.jpg" alt="Deadman Handswitch">
   </div>
+</section>
+
+<!-- خدمات -->
+<section id="services">
+  <h2>خدمات ما</h2>
+  <p>
+    طراحی و مدلینگ صنعتی – مهندسی معکوس – بهینه‌سازی خطوط تولید – تعمیرات تجهیزات پزشکی و دندانپزشکی –  
+    طراحی و ساخت گجت‌های هوشمند – آموزش تخصصی نرم‌افزارهای مهندسی – مشاوره در توسعه محصولات فناورانه.
+  </p>
 </section>
 
 <!-- مشتریان -->
@@ -119,18 +131,18 @@
 <section id="downloads" class="downloads">
   <h2>دانلود کاتالوگ و رزومه شرکت</h2>
   <p>برای آشنایی بیشتر با پروژه‌ها و خدمات ما، فایل‌های رسمی شرکت را دانلود کنید.</p>
-  <a href="files/catalog.pdf" class="btn">📘 دانلود کاتالوگ</a>
-  <a href="files/resume.pdf" class="btn">📄 دانلود رزومه</a>
+  <a href="files/catalog.pdf" class="btn">دانلود کاتالوگ</a>
+  <a href="files/resume.pdf" class="btn">دانلود رزومه</a>
 </section>
 
 <!-- تماس -->
 <section id="contact">
   <h2>تماس با ما</h2>
   <p>
-    📧 ایمیل: javadisazadeh24@gmail.com<br>
-    📞 تلفن / واتس‌اپ / تلگرام: 09226704205<br>
-    🔗 لینکدین: <a href="https://www.linkedin.com/company/tpe-co" target="_blank">TPE Co</a><br>
-    📷 اینستاگرام: <a href="https://instagram.com/TPE_CO" target="_blank">@TPE_CO</a>
+    ایمیل: javadisazadeh24@gmail.com<br>
+    تلفن / واتس‌اپ / تلگرام: 09226704205<br>
+    لینکدین: <a href="https://www.linkedin.com/company/tpe-co" target="_blank">TPE Co</a><br>
+    اینستاگرام: <a href="https://instagram.com/TPE_CO" target="_blank">@TPE_CO</a>
   </p>
 </section>
 
