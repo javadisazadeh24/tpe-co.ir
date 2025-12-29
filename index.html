@@ -317,6 +317,12 @@
       justify-content: center;
     }
     
+    .client-logo img {
+      max-height: 100%;
+      max-width: 120px;
+      object-fit: contain;
+    }
+    
     .client-logo:hover {
       filter: grayscale(0);
       opacity: 1;
@@ -341,6 +347,7 @@
       position: relative;
       margin-top: 40px;
       padding: 20px 0;
+      overflow: hidden;
     }
     
     .gallery-scroll {
@@ -365,7 +372,8 @@
     
     .gallery-img {
       height: 220px;
-      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+      width: 100%;
+      object-fit: cover;
     }
     
     .gallery-content {
@@ -405,7 +413,8 @@
     
     .project-img {
       height: 200px;
-      background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+      width: 100%;
+      object-fit: cover;
     }
     
     .project-content {
@@ -585,6 +594,10 @@
         padding: 0 25px;
       }
       
+      .gallery-item {
+        width: 280px;
+      }
+      
       .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -633,7 +646,7 @@
 
   <!-- هرو با فیلم -->
   <section id="hero" class="hero">
-    <video autoplay muted loop playsinline class="video-background">
+    <video autoplay muted loop playsinline class="video-background" poster="images/hero.jpg">
       <source src="videos/hero-video.mp4" type="video/mp4">
       <source src="videos/hero-video.webm" type="video/webm">
       مرورگر شما از تگ ویدیو پشتیبانی نمی‌کند.
@@ -689,73 +702,77 @@
       <h2>نمونه کارهای ما</h2>
       <div class="gallery-container">
         <div class="gallery-scroll">
-          <!-- تکرار آیتم‌ها برای اسکرول پیوسته -->
+          <!-- نمونه کار 1 -->
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-1.jpg" alt="Air Purifier" class="gallery-img">
             <div class="gallery-content">
               <h3>Air Purifier</h3>
               <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
             </div>
           </div>
+          <!-- نمونه کار 2 -->
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-2.jpg" alt="Biometric Lock" class="gallery-img">
             <div class="gallery-content">
               <h3>Biometric Lock</h3>
               <p>سیستم قفل بیومتریک امنیتی</p>
             </div>
           </div>
+          <!-- نمونه کار 3 -->
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-3.jpg" alt="ECG Simulator" class="gallery-img">
             <div class="gallery-content">
               <h3>ECG Simulator</h3>
               <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
             </div>
           </div>
+          <!-- نمونه کار 4 -->
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-4.jpg" alt="Hand Dryer" class="gallery-img">
             <div class="gallery-content">
               <h3>Hand Dryer</h3>
               <p>دستگاه دست خشک کن اتوماتیک</p>
             </div>
           </div>
+          <!-- نمونه کار 5 -->
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-5.jpg" alt="Veinscope" class="gallery-img">
             <div class="gallery-content">
               <h3>Veinscope</h3>
               <p>دستگاه مشاهده رگ برای پزشکی</p>
             </div>
           </div>
-          <!-- تکرار مجموعه -->
+          <!-- تکرار مجموعه برای اسکرول پیوسته -->
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-1.jpg" alt="Air Purifier" class="gallery-img">
             <div class="gallery-content">
               <h3>Air Purifier</h3>
               <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-2.jpg" alt="Biometric Lock" class="gallery-img">
             <div class="gallery-content">
               <h3>Biometric Lock</h3>
               <p>سیستم قفل بیومتریک امنیتی</p>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-3.jpg" alt="ECG Simulator" class="gallery-img">
             <div class="gallery-content">
               <h3>ECG Simulator</h3>
               <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-4.jpg" alt="Hand Dryer" class="gallery-img">
             <div class="gallery-content">
               <h3>Hand Dryer</h3>
               <p>دستگاه دست خشک کن اتوماتیک</p>
             </div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-img"></div>
+            <img src="images/gallery-5.jpg" alt="Veinscope" class="gallery-img">
             <div class="gallery-content">
               <h3>Veinscope</h3>
               <p>دستگاه مشاهده رگ برای پزشکی</p>
@@ -787,27 +804,67 @@
       <div class="clients-wrapper">
         <div class="clients-track">
           <!-- ردیف اول -->
-          <div class="client-logo">دانشگاه سیستان و بلوچستان</div>
-          <div class="client-logo">پارک علم و فناوری سیستان و بلوچستان</div>
-          <div class="client-logo">پارک علم و فناوری سلامت زاهدان</div>
-          <div class="client-logo">مرکز بهداشت زاهدان</div>
-          <div class="client-logo">دانشگاه علوم پزشکی زاهدان</div>
-          <div class="client-logo">دیزاین لب</div>
-          <div class="client-logo">کارخانه حریر انار کرمان</div>
-          <div class="client-logo">شرکت پروتئین سپید تنکابن</div>
-          <div class="client-logo">مجتمع نوآوری</div>
-          <div class="client-logo">شرکت پرواز یاران سیرنگ</div>
+          <div class="client-logo">
+            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/design-lab.png" alt="دیزاین لب">
+          </div>
+          <div class="client-logo">
+            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
+          </div>
+          <div class="client-logo">
+            <img src="clients/innovation.png" alt="مجتمع نوآوری">
+          </div>
+          <div class="client-logo">
+            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ">
+          </div>
           <!-- تکرار برای اسکرول پیوسته -->
-          <div class="client-logo">دانشگاه سیستان و بلوچستان</div>
-          <div class="client-logo">پارک علم و فناوری سیستان و بلوچستان</div>
-          <div class="client-logo">پارک علم و فناوری سلامت زاهدان</div>
-          <div class="client-logo">مرکز بهداشت زاهدان</div>
-          <div class="client-logo">دانشگاه علوم پزشکی زاهدان</div>
-          <div class="client-logo">دیزاین لب</div>
-          <div class="client-logo">کارخانه حریر انار کرمان</div>
-          <div class="client-logo">شرکت پروتئین سپید تنکابن</div>
-          <div class="client-logo">مجتمع نوآوری</div>
-          <div class="client-logo">شرکت پرواز یاران سیرنگ</div>
+          <div class="client-logo">
+            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/design-lab.png" alt="دیزاین لب">
+          </div>
+          <div class="client-logo">
+            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+          </div>
+          <div class="client-logo">
+            <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
+          </div>
+          <div class="client-logo">
+            <img src="clients/innovation.png" alt="مجتمع نوآوری">
+          </div>
+          <div class="client-logo">
+            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ">
+          </div>
         </div>
       </div>
     </div>
@@ -819,7 +876,7 @@
       <h2>پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <div class="project-img"></div>
+          <img src="images/project-1.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
           <div class="project-content">
             <h3>کارخانه تولید یونولیت سراوان</h3>
             <p>احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
@@ -827,7 +884,7 @@
           </div>
         </div>
         <div class="project-card fade-in">
-          <div class="project-img"></div>
+          <img src="images/project-2.jpg" alt="کافه فب‌لب روند" class="project-img">
           <div class="project-content">
             <h3>کافه فب‌لب روند</h3>
             <p>ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
