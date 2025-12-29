@@ -5,151 +5,519 @@
   <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</title>
   <link rel="icon" href="images/logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- فونت‌ها -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <style>
     /* استایل های اصلی */
     :root {
-      --bg: #ffffff; --text: #111111; --muted: #6e6e73; --primary: #000;
-      --surface: #f5f5f7; --accent: #e11d48; --maxw: 1100px;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #1e40af;
+      --surface: rgba(255, 255, 255, 0.9);
+      --accent: #dc2626;
+      --maxw: 1200px;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
+    
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      font-family: Tahoma, "IRANSans", Arial, sans-serif;
-      line-height: 1.6; color: var(--text); background: var(--bg);
+      font-family: 'Vazirmatn', 'Inter', Tahoma, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
     }
-    a { text-decoration: none; color: #0a84ff; }
+    
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
-    section { padding: 50px 20px; }
-    h2 { text-align: center; margin-bottom: 30px; font-size: 24px; }
-
-    /* ناوبری */
-    .nav { background: #000; position: sticky; top: 0; z-index: 50; }
-    .nav-wrap {
-      max-width: var(--maxw); margin: 0 auto; padding: 10px 16px;
-      display: flex; justify-content: space-between; align-items: center;
+    
+    section { padding: 60px 20px; }
+    
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .brand img { height: 26px; }
-    .nav-links { display: flex; gap: 15px; list-style: none; }
-    .nav-links a { color: #ddd; font-size: 14px; }
-    .nav-links a:hover { color: #fff; }
-
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* افکت شیشه‌ای */
+    .glass-effect {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+    
+    /* ناوبری */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .nav.scrolled {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .nav-wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand img {
+      height: 32px;
+      transition: transform 0.3s;
+    }
+    
+    .brand img:hover {
+      transform: scale(1.05);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: #1e293b;
+      font-weight: 500;
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    
+    .nav-links a:hover {
+      background: rgba(30, 64, 175, 0.1);
+      color: var(--primary);
+    }
+    
     /* هرو */
     .hero {
-      background: #000 url('images/hero.jpg') center/cover no-repeat;
-      color: #fff; text-align: center; padding: 80px 20px;
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('images/hero.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 100px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .hero h1 { font-size: 32px; margin-bottom: 15px; }
-    .hero p { max-width: 600px; margin: 0 auto 20px; color: #cfcfd3; }
-    .cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #e2e8f0;
+      margin-bottom: 30px;
+    }
+    
+    /* دکمه‌ها */
     .btn {
-      display: inline-block; padding: 10px 20px; border-radius: 25px;
-      font-weight: 600; font-size: 14px; transition: all 0.3s;
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
     }
-    .btn-primary { background: #fff; color: #000; }
-    .btn-secondary { border: 1px solid #fff; color: #fff; }
-    .btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #3b82f6);
+      color: white;
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+      transform: translateY(-3px);
+    }
+    
+    .cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    
     /* خدمات */
     .services-grid {
-      max-width: var(--maxw); margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
     }
+    
     .service-card {
-      background: var(--surface); border-radius: 10px; padding: 20px;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
     }
-    .service-card h3 { margin-bottom: 10px; color: var(--primary); }
-
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .service-card h3:before {
+      content: "✓";
+      background: var(--primary);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    
     /* مشتریان */
-    .clients { overflow: hidden; }
-    .logos-scroll {
-      display: flex; gap: 40px; padding: 20px 0;
-      animation: scrollLogos 20s linear infinite;
-    }
-    .logos-scroll img { height: 50px; opacity: 0.7; transition: opacity 0.3s; }
-    .logos-scroll img:hover { opacity: 1; }
-    @keyframes scrollLogos {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* گالری نمونه کارها */
-    .portfolio-gallery { overflow: hidden; margin-top: 30px; }
-    .gallery-scroll {
-      display: flex; gap: 20px; padding: 20px 0;
-      animation: scrollGallery 30s linear infinite;
-    }
-    .gallery-item {
-      flex: 0 0 auto; width: 300px; border-radius: 10px;
-      overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .gallery-img { height: 200px; background: #f0f0f0; }
-    .gallery-content { padding: 15px; background: #fff; }
-    .gallery-content h3 { margin-bottom: 8px; font-size: 16px; }
-    .gallery-content p { font-size: 14px; color: #666; }
-    @keyframes scrollGallery {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* پروژه‌های توسعه */
-    .projects-grid {
-      max-width: var(--maxw); margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      background: #fff; border: 1px solid #e5e5ea; border-radius: 10px;
+    .clients-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      position: relative;
       overflow: hidden;
     }
-    .project-img { height: 200px; background: #000; }
-    .project-content { padding: 15px; }
-
-    /* رزومه پرسنل */
-    .resume-container {
-      max-width: 800px; margin: 0 auto; background: #fff;
-      border-radius: 10px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
+    .logos-container {
+      position: relative;
+      height: 120px;
+      overflow: hidden;
+      margin-top: 30px;
     }
-    .resume-header { text-align: center; margin-bottom: 30px; }
-    .resume-section { margin-bottom: 25px; }
-    .resume-section h3 { color: var(--primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid var(--surface); }
-    .resume-list { list-style: none; }
-    .resume-list li { margin-bottom: 8px; padding-right: 20px; position: relative; }
-    .resume-list li:before { content: "•"; color: var(--accent); position: absolute; right: 0; }
-
-    /* نمونه خدمات و محصولات */
-    .products-grid {
-      max-width: var(--maxw); margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    
+    .logos-scroll {
+      display: flex;
+      gap: 60px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      animation: scrollLogos 40s linear infinite;
+    }
+    
+    .client-logo {
+      height: 60px;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s;
+      padding: 10px 20px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .client-logo:hover {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    @keyframes scrollLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+    
+    /* گالری نمونه کارها */
+    .gallery-container {
+      position: relative;
+      margin-top: 40px;
+      padding: 20px 0;
+    }
+    
+    .gallery-scroll {
+      display: flex;
       gap: 25px;
+      animation: scrollGallery 40s linear infinite;
     }
-    .product-card {
-      background: #fff; border-radius: 10px; overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s;
+    
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 350px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background: white;
+      transition: all 0.3s;
     }
-    .product-card:hover { transform: translateY(-5px); }
-    .product-img { height: 200px; background: #f5f5f5; }
-    .product-content { padding: 20px; }
-    .product-content h3 { margin-bottom: 10px; color: var(--primary); }
-    .product-content p { color: #666; font-size: 14px; line-height: 1.6; }
-
-    /* دانلود */
-    .downloads { background: var(--surface); text-align: center; }
-    .download-links { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
-    .download-links .btn { background: #0f172a; color: #fff; }
-
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-img {
+      height: 220px;
+      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    }
+    
+    .gallery-content {
+      padding: 20px;
+    }
+    
+    .gallery-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    @keyframes scrollGallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+    
+    /* پروژه‌های توسعه */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .project-img {
+      height: 200px;
+      background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    }
+    
+    .project-content {
+      padding: 25px;
+    }
+    
+    .project-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .coming-soon {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    
+    /* لینک‌های صفحات */
+    .page-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+    
+    .page-link {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      min-width: 200px;
+    }
+    
+    .page-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: var(--primary);
+    }
+    
+    .page-link h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .page-link p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
     /* فوتر */
-    footer { background: #0f172a; color: #fff; text-align: center; padding: 30px 20px; }
-    .contact-info { margin: 15px 0; line-height: 1.8; }
-    .social-links { margin-top: 15px; }
-    .social-links a { color: #e11d48; margin: 0 10px; }
+    footer {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-top: 1px solid var(--glass-border);
+      padding: 40px 20px;
+      color: var(--text);
+      text-align: center;
+    }
+    
+    .contact-info {
+      margin: 20px 0;
+      line-height: 1.8;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      color: var(--primary);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      color: var(--accent);
+    }
+    
+    /* موبایل */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      h2 {
+        font-size: 28px;
+      }
+    }
+    
+    /* انیمیشن‌ها */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
   </style>
 </head>
 <body>
 
   <!-- ناوبری -->
-  <header class="nav">
+  <header class="nav glass-effect" id="navbar">
     <div class="nav-wrap">
-      <a class="brand" href="#">
+      <a class="brand" href="index.html">
         <img src="images/logo.png" alt="لوگوی توسعه پردازان">
       </a>
       <nav>
@@ -157,8 +525,8 @@
           <li><a href="#hero">خانه</a></li>
           <li><a href="#services">خدمات</a></li>
           <li><a href="#portfolio">نمونه کارها</a></li>
-          <li><a href="#products">نمونه خدمات و محصولات</a></li>
-          <li><a href="#resume">رزومه پرسنل</a></li>
+          <li><a href="products.html">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html">رزومه پرسنل</a></li>
           <li><a href="#clients">مشتریان</a></li>
           <li><a href="#projects">پروژه‌های توسعه</a></li>
           <li><a href="#contact">تماس</a></li>
@@ -169,352 +537,296 @@
 
   <!-- هرو -->
   <section id="hero" class="hero">
-    <div style="max-width: var(--maxw); margin: 0 auto;">
+    <div class="hero-content fade-in">
       <h1>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
-      <p>صفر تا صد ایده تا محصول را به ما بسپارید</p>
+      <p>تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی</p>
       <div class="cta">
-        <a href="#services" class="btn btn-primary">خدمات ما</a>
-        <a href="#products" class="btn btn-secondary">محصولات ما</a>
+        <a href="#services" class="btn btn-primary">مشاهده خدمات</a>
+        <a href="#contact" class="btn btn-secondary">درخواست مشاوره</a>
       </div>
     </div>
   </section>
 
   <!-- خدمات -->
   <section id="services">
-    <h2>خدمات ما</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>طراحی صنعتی و مدلینگ</h3>
-        <p>از کانسپت اولیه تا مدل‌سازی سه‌بعدی با نرم‌افزارهای پیشرفته</p>
-      </div>
-      <div class="service-card">
-        <h3>ماشینکاری CNC (ساخت کاهشی)</h3>
-        <p>تولید دقیق قطعات فلزی و پلاستیکی با دستگاه‌های CNC پیشرفته</p>
-      </div>
-      <div class="service-card">
-        <h3>چاپ سه‌بعدی (ساخت افزایشی)</h3>
-        <p>نمونه‌سازی سریع با تکنولوژی‌های FDM و SLA/DLP</p>
-      </div>
-      <div class="service-card">
-        <h3>مهندسی معکوس</h3>
-        <p>اسکن سه‌بعدی، مدل‌سازی و بازتولید قطعات</p>
-      </div>
-      <div class="service-card">
-        <h3>ساخت و تولید</h3>
-        <p>تولید انبوه، مونتاژ و کنترل کیفیت</p>
-      </div>
-      <div class="service-card">
-        <h3>مشاوره فنی</h3>
-        <p>مشاوره در زمینه توسعه محصول و بهینه‌سازی فرآیندها</p>
+    <div class="container">
+      <h2>خدمات ما</h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <h3>طراحی صنعتی و مدلینگ</h3>
+          <p>از کانسپت اولیه تا مدل‌سازی سه‌بعدی با نرم‌افزارهای پیشرفته</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>ماشینکاری CNC</h3>
+          <p>تولید دقیق قطعات فلزی و پلاستیکی با دستگاه‌های CNC پیشرفته</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>چاپ سه‌بعدی</h3>
+          <p>نمونه‌سازی سریع با تکنولوژی‌های FDM و SLA/DLP</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>مهندسی معکوس</h3>
+          <p>اسکن سه‌بعدی، مدل‌سازی و بازتولید قطعات</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>ساخت و تولید</h3>
+          <p>تولید انبوه، مونتاژ و کنترل کیفیت</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>مشاوره فنی</h3>
+          <p>مشاوره در زمینه توسعه محصول و بهینه‌سازی فرآیندها</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- گالری نمونه کارها -->
-  <section id="portfolio">
-    <h2>نمونه کارهای ما</h2>
-    <div class="portfolio-gallery">
-      <div class="gallery-scroll">
-        <!-- تکرار آیتم‌ها برای اسکرول پیوسته -->
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #e0e0e0;"></div>
-          <div class="gallery-content">
-            <h3>Air Purifier</h3>
-            <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
+  <section id="portfolio" style="background: #f8fafc;">
+    <div class="container">
+      <h2>نمونه کارهای ما</h2>
+      <div class="gallery-container">
+        <div class="gallery-scroll">
+          <!-- تکرار آیتم‌ها برای اسکرول پیوسته -->
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Air Purifier</h3>
+              <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #d0d0d0;"></div>
-          <div class="gallery-content">
-            <h3>Biometric Lock</h3>
-            <p>سیستم قفل بیومتریک امنیتی</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Biometric Lock</h3>
+              <p>سیستم قفل بیومتریک امنیتی</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #c0c0c0;"></div>
-          <div class="gallery-content">
-            <h3>ECG Simulator</h3>
-            <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>ECG Simulator</h3>
+              <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #b0b0b0;"></div>
-          <div class="gallery-content">
-            <h3>Hand Dryer</h3>
-            <p>دستگاه دست خشک کن اتوماتیک</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Hand Dryer</h3>
+              <p>دستگاه دست خشک کن اتوماتیک</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #a0a0a0;"></div>
-          <div class="gallery-content">
-            <h3>Veinscope</h3>
-            <p>دستگاه مشاهده رگ برای پزشکی</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Veinscope</h3>
+              <p>دستگاه مشاهده رگ برای پزشکی</p>
+            </div>
           </div>
-        </div>
-        <!-- تکرار مجموعه -->
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #e0e0e0;"></div>
-          <div class="gallery-content">
-            <h3>Air Purifier</h3>
-            <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
+          <!-- تکرار مجموعه -->
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Air Purifier</h3>
+              <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #d0d0d0;"></div>
-          <div class="gallery-content">
-            <h3>Biometric Lock</h3>
-            <p>سیستم قفل بیومتریک امنیتی</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Biometric Lock</h3>
+              <p>سیستم قفل بیومتریک امنیتی</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #c0c0c0;"></div>
-          <div class="gallery-content">
-            <h3>ECG Simulator</h3>
-            <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>ECG Simulator</h3>
+              <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #b0b0b0;"></div>
-          <div class="gallery-content">
-            <h3>Hand Dryer</h3>
-            <p>دستگاه دست خشک کن اتوماتیک</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Hand Dryer</h3>
+              <p>دستگاه دست خشک کن اتوماتیک</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-img" style="background: #a0a0a0;"></div>
-          <div class="gallery-content">
-            <h3>Veinscope</h3>
-            <p>دستگاه مشاهده رگ برای پزشکی</p>
+          <div class="gallery-item">
+            <div class="gallery-img"></div>
+            <div class="gallery-content">
+              <h3>Veinscope</h3>
+              <p>دستگاه مشاهده رگ برای پزشکی</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- نمونه خدمات و محصولات -->
-  <section id="products" style="background: var(--surface);">
-    <h2>نمونه خدمات و محصولات</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Air Purifier</h3>
-          <p>دستگاه تصفیه هوا با فیلتر هپا و لامپ UV - شرکت بهبود رایان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Air Purifier UV Plus</h3>
-          <p>تصفیه هوا پیشرفته با سیستم ضدعفونی UV - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Arm Porter Robot</h3>
-          <p>ربوت حمل کننده بازو - مهندسی معکوس برای مشتری ترکیه</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Biometric Lock</h3>
-          <p>قفل بیومتریک با سنسور اثر انگشت - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Caloric Irrigator</h3>
-          <p>دستگاه تست رفلکس کالریک - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Defibration Machine</h3>
-          <p>دستگاه تفکیک کننده الیاف - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>ECG Simulator</h3>
-          <p>شبیه‌ساز سیگنال الکتروکاردیوگرام - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Hand Dryer</h3>
-          <p>دست خشک کن آنتی باکتریال - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Veinscope</h3>
-          <p>دستگاه مشاهده رگ - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>UV Sterilization</h3>
-          <p>دستگاه استریلیزاسیون با UV - توسعه پردازان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Pulse Oximeter</h3>
-          <p>پالس اکسیمتر پوشیدنی - دانشگاه سیستان و بلوچستان</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img"></div>
-        <div class="product-content">
-          <h3>Sun Ovens</h3>
-          <p>اجاق‌های خورشیدی - پارک علم و فناوری سیستان و بلوچستان</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- رزومه پرسنل -->
-  <section id="resume">
-    <h2>رزومه پرسنل</h2>
-    <div class="resume-container">
-      <div class="resume-header">
-        <h3>مهندس جواد عیسی‌زاده</h3>
-        <p>مهندس مکانیک - طراح صنعتی</p>
-      </div>
-      
-      <div class="resume-section">
-        <h3>سوابق تحصیلی</h3>
-        <ul class="resume-list">
-          <li>کارشناسی مهندسی مکانیک - دانشگاه سیستان و بلوچستان (۱۳۹۴-۱۳۹۸)</li>
-          <li>کارشناسی ارشد مهندسی مکاترونیک - دانشگاه سیستان و بلوچستان (۱۳۹۸-۱۴۰۲)</li>
-          <li>دکتری مهندسی مکانیک (انصراف در ترم چهارم) - دانشگاه سیستان و بلوچستان</li>
-        </ul>
-      </div>
-      
-      <div class="resume-section">
-        <h3>سوابق شغلی</h3>
-        <ul class="resume-list">
-          <li>موسس و مدیرعامل شرکت دانش بنیان توسعه پردازان (۱۳۹۵-اکنون)</li>
-          <li>طراح صنعتی واحد R&D شرکت پرواز باران سیرنگ (۱۴۰۲-۱۴۰۳)</li>
-          <li>مدیر مسئول مرکز طراحی صنعتی پارک علم و فناوری سیستان و بلوچستان</li>
-          <li>مدیر و طراح صنعتی شرکت بهبود رایان (۱۳۹۸)</li>
-        </ul>
-      </div>
-      
-      <div class="resume-section">
-        <h3>مهارت‌ها</h3>
-        <ul class="resume-list">
-          <li>مدل‌سازی سه‌بعدی و طراحی CAD/CAM</li>
-          <li>تحلیل المان محدود (Ansys, COMSOL)</li>
-          <li>مدیریت پروژه‌های مهندسی</li>
-          <li>طراحی مکانیزم‌ها و بهینه‌سازی</li>
-          <li>برنامه‌نویسی MATLAB و Arduino</li>
-        </ul>
-      </div>
-      
-      <div class="resume-section">
-        <h3>پروژه‌های شاخص</h3>
-        <ul class="resume-list">
-          <li>طراحی و ساخت دستگاه تست رفلکس کالریک</li>
-          <li>طراحی دستگاه تصفیه هوا با UV</li>
-          <li>توسعه دستگاه ECG Simulator</li>
-          <li>طراحی دستگاه دست خشک کن آنتی باکتریال</li>
-          <li>توسعه Veinscope و دستگاه‌های پزشکی</li>
-        </ul>
-      </div>
+  <!-- لینک به صفحات مجزا -->
+  <section class="container">
+    <div class="page-links">
+      <a href="products.html" class="page-link">
+        <h3>نمونه خدمات و محصولات</h3>
+        <p>مشاهده کامل محصولات و خدمات شرکت</p>
+      </a>
+      <a href="resume.html" class="page-link">
+        <h3>رزومه پرسنل</h3>
+        <p>اطلاعات کامل پرسنل و تیم متخصص</p>
+      </a>
     </div>
   </section>
 
   <!-- مشتریان -->
-  <section id="clients" class="clients">
-    <h2>مشتریان ما</h2>
-    <div class="logos-scroll">
-      <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
-      <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
-      <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
-      <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
-      <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
-      <img src="clients/design-lab.png" alt="دیزاین لب">
-      <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
-      <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
-      <img src="clients/innovation.png" alt="مجتمع نوآوری">
-      <img src="clients/atomic-energy.png" alt="سازمان انرژی اتمی">
-      <img src="clients/fly-bar.png" alt="شرکت پرواز باران سیرنگ">
-      <!-- تکرار برای اسکرول پیوسته -->
-      <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
-      <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
-      <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
-      <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
-      <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
-      <img src="clients/design-lab.png" alt="دیزاین لب">
-      <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
-      <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
-      <img src="clients/innovation.png" alt="مجتمع نوآوری">
-      <img src="clients/atomic-energy.png" alt="سازمان انرژی اتمی">
-      <img src="clients/fly-bar.png" alt="شرکت پرواز باران سیرنگ">
+  <section id="clients" class="clients-section">
+    <div class="container">
+      <h2>مشتریان ما</h2>
+      <div class="logos-container">
+        <div class="logos-scroll">
+          <div class="client-logo">دانشگاه سیستان و بلوچستان</div>
+          <div class="client-logo">پارک علم و فناوری سیستان و بلوچستان</div>
+          <div class="client-logo">پارک علم و فناوری سلامت زاهدان</div>
+          <div class="client-logo">مرکز بهداشت زاهدان</div>
+          <div class="client-logo">دانشگاه علوم پزشکی زاهدان</div>
+          <div class="client-logo">دیزاین لب</div>
+          <div class="client-logo">کارخانه حریر انار کرمان</div>
+          <div class="client-logo">شرکت پروتئین سپید تنکابن</div>
+          <div class="client-logo">مجتمع نوآوری</div>
+          <div class="client-logo">شرکت پرواز یاران سیرنگ</div>
+          <!-- تکرار برای اسکرول پیوسته -->
+          <div class="client-logo">دانشگاه سیستان و بلوچستان</div>
+          <div class="client-logo">پارک علم و فناوری سیستان و بلوچستان</div>
+          <div class="client-logo">پارک علم و فناوری سلامت زاهدان</div>
+          <div class="client-logo">مرکز بهداشت زاهدان</div>
+          <div class="client-logo">دانشگاه علوم پزشکی زاهدان</div>
+          <div class="client-logo">دیزاین لب</div>
+          <div class="client-logo">کارخانه حریر انار کرمان</div>
+          <div class="client-logo">شرکت پروتئین سپید تنکابن</div>
+          <div class="client-logo">مجتمع نوآوری</div>
+          <div class="client-logo">شرکت پرواز یاران سیرنگ</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- پروژه‌های توسعه -->
   <section id="projects">
-    <h2>پروژه‌های توسعه شرکت</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-img"></div>
-        <div class="project-content">
-          <h3>کارخانه تولید یونولیت سراوان</h3>
-          <p>احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
+    <div class="container">
+      <h2>پروژه‌های توسعه شرکت</h2>
+      <div class="projects-grid">
+        <div class="project-card fade-in">
+          <div class="project-img"></div>
+          <div class="project-content">
+            <h3>کارخانه تولید یونولیت سراوان</h3>
+            <p>احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
+            <span class="coming-soon">بزودی</span>
+          </div>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-img"></div>
-        <div class="project-content">
-          <h3>کافه فب‌لب روند</h3>
-          <p>ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
+        <div class="project-card fade-in">
+          <div class="project-img"></div>
+          <div class="project-content">
+            <h3>کافه فب‌لب روند</h3>
+            <p>ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
+            <span class="coming-soon">بزودی</span>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-img"></div>
+          <div class="project-content">
+            <h3>خط تولید دستگاه‌های پزشکی</h3>
+            <p>ایجاد خط تولید انبوه دستگاه‌های پزشکی طراحی شده</p>
+            <span class="coming-soon">بزودی</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- دانلود -->
-  <section id="downloads" class="downloads">
-    <div style="max-width: var(--maxw); margin: 0 auto;">
-      <h2>مستندات شرکت</h2>
-      <p>برای دریافت اطلاعات کامل شرکت، مستندات زیر را دانلود کنید</p>
-      <div class="download-links">
-        <a href="files/catalog.pdf" class="btn">کاتالوگ شرکت</a>
-        <a href="files/resume.pdf" class="btn">رزومه شرکت</a>
+  <section style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: white;">
+    <div class="container" style="text-align: center;">
+      <h2 style="color: white;">مستندات شرکت</h2>
+      <p style="max-width: 600px; margin: 0 auto 30px; color: #e2e8f0; font-size: 18px;">
+        برای دریافت اطلاعات کامل شرکت، مستندات زیر را دانلود کنید
+      </p>
+      <div class="cta">
+        <a href="files/catalog.pdf" class="btn btn-secondary">کاتالوگ شرکت</a>
+        <a href="files/resume.pdf" class="btn btn-primary">رزومه شرکت</a>
       </div>
     </div>
   </section>
 
   <!-- فوتر -->
   <footer id="contact">
-    <div style="max-width: var(--maxw); margin: 0 auto;">
+    <div class="container">
       <h3>تماس با ما</h3>
       <div class="contact-info">
         <p>📧 javadisazadeh24@gmail.com</p>
         <p>📞 09226704205</p>
+        <p>📍 زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
       </div>
       <div class="social-links">
-        <a href="https://www.linkedin.com/company/tpe-co">LinkedIn</a>
-        <a href="https://instagram.com/TPE_CO">Instagram</a>
-        <a href="https://wa.me/989226704205">WhatsApp</a>
+        <a href="https://www.linkedin.com/company/tpe-co" class="social-link">
+          <span style="font-size: 20px;">LinkedIn</span>
+        </a>
+        <a href="https://instagram.com/TPE_CO" class="social-link">
+          <span style="font-size: 20px;">Instagram</span>
+        </a>
+        <a href="https://wa.me/989226704205" class="social-link">
+          <span style="font-size: 20px;">WhatsApp</span>
+        </a>
       </div>
-      <p style="margin-top: 20px; font-size: 14px; color: #aaa;">
-        © شرکت دانش بنیان فنی و مهندسی توسعه پردازان
+      <p style="margin-top: 30px; font-size: 14px; color: #64748b;">
+        © ۱۴۰۳ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
       </p>
     </div>
   </footer>
 
+  <script>
+    // ناوبری ثابت با تغییر پس زمینه
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // انیمیشن اسکرول نرم
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // انیمیشن برای عناصر هنگام اسکرول
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.service-card, .project-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
