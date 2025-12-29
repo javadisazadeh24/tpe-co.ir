@@ -59,31 +59,34 @@
     }
     .service-card h3 { margin-bottom: 10px; color: var(--primary); }
 
-    /* نمونه خدمات */
-    .portfolio {
-      background: var(--surface);
-    }
-    .portfolio-grid {
-      max-width: var(--maxw); margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .portfolio-item {
-      background: #fff; border-radius: 10px; overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .portfolio-img { height: 200px; background: #ddd; }
-    .portfolio-content { padding: 15px; }
-    .portfolio-content h3 { margin-bottom: 8px; }
-
     /* مشتریان */
     .clients { overflow: hidden; }
     .logos-scroll {
       display: flex; gap: 40px; padding: 20px 0;
-      animation: scrollLogos 15s linear infinite;
+      animation: scrollLogos 20s linear infinite;
     }
-    .logos-scroll img { height: 50px; opacity: 0.7; }
+    .logos-scroll img { height: 50px; opacity: 0.7; transition: opacity 0.3s; }
+    .logos-scroll img:hover { opacity: 1; }
     @keyframes scrollLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* گالری نمونه کارها */
+    .portfolio-gallery { overflow: hidden; margin-top: 30px; }
+    .gallery-scroll {
+      display: flex; gap: 20px; padding: 20px 0;
+      animation: scrollGallery 30s linear infinite;
+    }
+    .gallery-item {
+      flex: 0 0 auto; width: 300px; border-radius: 10px;
+      overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .gallery-img { height: 200px; background: #f0f0f0; }
+    .gallery-content { padding: 15px; background: #fff; }
+    .gallery-content h3 { margin-bottom: 8px; font-size: 16px; }
+    .gallery-content p { font-size: 14px; color: #666; }
+    @keyframes scrollGallery {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
@@ -100,6 +103,34 @@
     }
     .project-img { height: 200px; background: #000; }
     .project-content { padding: 15px; }
+
+    /* رزومه پرسنل */
+    .resume-container {
+      max-width: 800px; margin: 0 auto; background: #fff;
+      border-radius: 10px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .resume-header { text-align: center; margin-bottom: 30px; }
+    .resume-section { margin-bottom: 25px; }
+    .resume-section h3 { color: var(--primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid var(--surface); }
+    .resume-list { list-style: none; }
+    .resume-list li { margin-bottom: 8px; padding-right: 20px; position: relative; }
+    .resume-list li:before { content: "•"; color: var(--accent); position: absolute; right: 0; }
+
+    /* نمونه خدمات و محصولات */
+    .products-grid {
+      max-width: var(--maxw); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .product-card {
+      background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-5px); }
+    .product-img { height: 200px; background: #f5f5f5; }
+    .product-content { padding: 20px; }
+    .product-content h3 { margin-bottom: 10px; color: var(--primary); }
+    .product-content p { color: #666; font-size: 14px; line-height: 1.6; }
 
     /* دانلود */
     .downloads { background: var(--surface); text-align: center; }
@@ -125,7 +156,9 @@
         <ul class="nav-links">
           <li><a href="#hero">خانه</a></li>
           <li><a href="#services">خدمات</a></li>
-          <li><a href="#portfolio">نمونه خدمات</a></li>
+          <li><a href="#portfolio">نمونه کارها</a></li>
+          <li><a href="#products">نمونه خدمات و محصولات</a></li>
+          <li><a href="#resume">رزومه پرسنل</a></li>
           <li><a href="#clients">مشتریان</a></li>
           <li><a href="#projects">پروژه‌های توسعه</a></li>
           <li><a href="#contact">تماس</a></li>
@@ -141,7 +174,7 @@
       <p>صفر تا صد ایده تا محصول را به ما بسپارید</p>
       <div class="cta">
         <a href="#services" class="btn btn-primary">خدمات ما</a>
-        <a href="#portfolio" class="btn btn-secondary">نمونه کارها</a>
+        <a href="#products" class="btn btn-secondary">محصولات ما</a>
       </div>
     </div>
   </section>
@@ -177,37 +210,226 @@
     </div>
   </section>
 
-  <!-- نمونه خدمات -->
-  <section id="portfolio" class="portfolio">
-    <h2>نمونه خدمات ارائه شده</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <div class="portfolio-img" style="background: #e0e0e0;"></div>
-        <div class="portfolio-content">
+  <!-- گالری نمونه کارها -->
+  <section id="portfolio">
+    <h2>نمونه کارهای ما</h2>
+    <div class="portfolio-gallery">
+      <div class="gallery-scroll">
+        <!-- تکرار آیتم‌ها برای اسکرول پیوسته -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #e0e0e0;"></div>
+          <div class="gallery-content">
+            <h3>Air Purifier</h3>
+            <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #d0d0d0;"></div>
+          <div class="gallery-content">
+            <h3>Biometric Lock</h3>
+            <p>سیستم قفل بیومتریک امنیتی</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #c0c0c0;"></div>
+          <div class="gallery-content">
+            <h3>ECG Simulator</h3>
+            <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #b0b0b0;"></div>
+          <div class="gallery-content">
+            <h3>Hand Dryer</h3>
+            <p>دستگاه دست خشک کن اتوماتیک</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #a0a0a0;"></div>
+          <div class="gallery-content">
+            <h3>Veinscope</h3>
+            <p>دستگاه مشاهده رگ برای پزشکی</p>
+          </div>
+        </div>
+        <!-- تکرار مجموعه -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #e0e0e0;"></div>
+          <div class="gallery-content">
+            <h3>Air Purifier</h3>
+            <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #d0d0d0;"></div>
+          <div class="gallery-content">
+            <h3>Biometric Lock</h3>
+            <p>سیستم قفل بیومتریک امنیتی</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #c0c0c0;"></div>
+          <div class="gallery-content">
+            <h3>ECG Simulator</h3>
+            <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #b0b0b0;"></div>
+          <div class="gallery-content">
+            <h3>Hand Dryer</h3>
+            <p>دستگاه دست خشک کن اتوماتیک</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background: #a0a0a0;"></div>
+          <div class="gallery-content">
+            <h3>Veinscope</h3>
+            <p>دستگاه مشاهده رگ برای پزشکی</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- نمونه خدمات و محصولات -->
+  <section id="products" style="background: var(--surface);">
+    <h2>نمونه خدمات و محصولات</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
           <h3>Air Purifier</h3>
-          <p>طراحی و تولید دستگاه تصفیه هوا برای شرکت بهبود رایان</p>
+          <p>دستگاه تصفیه هوا با فیلتر هپا و لامپ UV - شرکت بهبود رایان</p>
         </div>
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img" style="background: #d0d0d0;"></div>
-        <div class="portfolio-content">
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Air Purifier UV Plus</h3>
+          <p>تصفیه هوا پیشرفته با سیستم ضدعفونی UV - توسعه پردازان</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Arm Porter Robot</h3>
+          <p>ربوت حمل کننده بازو - مهندسی معکوس برای مشتری ترکیه</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
           <h3>Biometric Lock</h3>
-          <p>طراحی سیستم قفل بیومتریک برای پروژه‌های امنیتی</p>
+          <p>قفل بیومتریک با سنسور اثر انگشت - توسعه پردازان</p>
         </div>
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img" style="background: #c0c0c0;"></div>
-        <div class="portfolio-content">
-          <h3>Dental Equipment</h3>
-          <p>تجهیزات دندانپزشکی برای مراکز درمانی</p>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Caloric Irrigator</h3>
+          <p>دستگاه تست رفلکس کالریک - توسعه پردازان</p>
         </div>
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img" style="background: #b0b0b0;"></div>
-        <div class="portfolio-content">
-          <h3>Industrial Machines</h3>
-          <p>ماشین‌آلات صنعتی سفارشی برای واحدهای تولیدی</p>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Defibration Machine</h3>
+          <p>دستگاه تفکیک کننده الیاف - توسعه پردازان</p>
         </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>ECG Simulator</h3>
+          <p>شبیه‌ساز سیگنال الکتروکاردیوگرام - توسعه پردازان</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Hand Dryer</h3>
+          <p>دست خشک کن آنتی باکتریال - توسعه پردازان</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Veinscope</h3>
+          <p>دستگاه مشاهده رگ - توسعه پردازان</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>UV Sterilization</h3>
+          <p>دستگاه استریلیزاسیون با UV - توسعه پردازان</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Pulse Oximeter</h3>
+          <p>پالس اکسیمتر پوشیدنی - دانشگاه سیستان و بلوچستان</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"></div>
+        <div class="product-content">
+          <h3>Sun Ovens</h3>
+          <p>اجاق‌های خورشیدی - پارک علم و فناوری سیستان و بلوچستان</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- رزومه پرسنل -->
+  <section id="resume">
+    <h2>رزومه پرسنل</h2>
+    <div class="resume-container">
+      <div class="resume-header">
+        <h3>مهندس جواد عیسی‌زاده</h3>
+        <p>مهندس مکانیک - طراح صنعتی</p>
+      </div>
+      
+      <div class="resume-section">
+        <h3>سوابق تحصیلی</h3>
+        <ul class="resume-list">
+          <li>کارشناسی مهندسی مکانیک - دانشگاه سیستان و بلوچستان (۱۳۹۴-۱۳۹۸)</li>
+          <li>کارشناسی ارشد مهندسی مکاترونیک - دانشگاه سیستان و بلوچستان (۱۳۹۸-۱۴۰۲)</li>
+          <li>دکتری مهندسی مکانیک (انصراف در ترم چهارم) - دانشگاه سیستان و بلوچستان</li>
+        </ul>
+      </div>
+      
+      <div class="resume-section">
+        <h3>سوابق شغلی</h3>
+        <ul class="resume-list">
+          <li>موسس و مدیرعامل شرکت دانش بنیان توسعه پردازان (۱۳۹۵-اکنون)</li>
+          <li>طراح صنعتی واحد R&D شرکت پرواز باران سیرنگ (۱۴۰۲-۱۴۰۳)</li>
+          <li>مدیر مسئول مرکز طراحی صنعتی پارک علم و فناوری سیستان و بلوچستان</li>
+          <li>مدیر و طراح صنعتی شرکت بهبود رایان (۱۳۹۸)</li>
+        </ul>
+      </div>
+      
+      <div class="resume-section">
+        <h3>مهارت‌ها</h3>
+        <ul class="resume-list">
+          <li>مدل‌سازی سه‌بعدی و طراحی CAD/CAM</li>
+          <li>تحلیل المان محدود (Ansys, COMSOL)</li>
+          <li>مدیریت پروژه‌های مهندسی</li>
+          <li>طراحی مکانیزم‌ها و بهینه‌سازی</li>
+          <li>برنامه‌نویسی MATLAB و Arduino</li>
+        </ul>
+      </div>
+      
+      <div class="resume-section">
+        <h3>پروژه‌های شاخص</h3>
+        <ul class="resume-list">
+          <li>طراحی و ساخت دستگاه تست رفلکس کالریک</li>
+          <li>طراحی دستگاه تصفیه هوا با UV</li>
+          <li>توسعه دستگاه ECG Simulator</li>
+          <li>طراحی دستگاه دست خشک کن آنتی باکتریال</li>
+          <li>توسعه Veinscope و دستگاه‌های پزشکی</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -219,20 +441,26 @@
       <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
       <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
       <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
+      <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
       <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
       <img src="clients/design-lab.png" alt="دیزاین لب">
       <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
       <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
       <img src="clients/innovation.png" alt="مجتمع نوآوری">
+      <img src="clients/atomic-energy.png" alt="سازمان انرژی اتمی">
+      <img src="clients/fly-bar.png" alt="شرکت پرواز باران سیرنگ">
       <!-- تکرار برای اسکرول پیوسته -->
       <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
       <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
       <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
+      <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
       <img src="clients/university.png" alt="دانشگاه علوم پزشکی زاهدان">
       <img src="clients/design-lab.png" alt="دیزاین لب">
       <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
       <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
       <img src="clients/innovation.png" alt="مجتمع نوآوری">
+      <img src="clients/atomic-energy.png" alt="سازمان انرژی اتمی">
+      <img src="clients/fly-bar.png" alt="شرکت پرواز باران سیرنگ">
     </div>
   </section>
 
