@@ -3,134 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>شرکت دانش بنیان توسعه پردازان</title>
-    <!-- اصلاح مسیر CSS -->
-    <link rel="stylesheet" href="./style.css">
-    <!-- فونت فارسی -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Vazirmatn, Tahoma, sans-serif;
-        }
-    </style>
+    <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IranSans&family=Tanha&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ناوبری ساده -->
-    <header style="background: #000; color: white; padding: 15px 20px; position: fixed; width: 100%; top: 0; z-index: 1000;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <a href="index.html" style="color: white; text-decoration: none; font-size: 20px; font-weight: bold;">
-                توسعه پردازان
+    <!-- ناوبری شیشه‌ای -->
+    <header class="nav glass-nav">
+        <div class="nav-wrap">
+            <a class="brand" href="index.html">
+                <div class="logo-text">TPE Co</div>
+                <!-- <img src="images/logo.png" alt="لوگوی توسعه پردازان"> -->
             </a>
             <nav>
-                <ul style="display: flex; list-style: none; gap: 20px; margin: 0;">
-                    <li><a href="index.html" style="color: white; text-decoration: none;">خانه</a></li>
-                    <li><a href="products.html" style="color: white; text-decoration: none;">محصولات</a></li>
-                    <li><a href="resume.html" style="color: white; text-decoration: none;">رزومه</a></li>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">خانه</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#projects">پروژه‌های توسعه</a></li>
+                    <li><a href="#clients">مشتریان</a></li>
+                    <li><a href="#products">محصولات</a></li>
+                    <li><a href="resume.html">رزومه</a></li>
+                    <li><a href="#contact">تماس</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- هرو -->
-    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 150px 20px 100px; margin-top: 60px;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-size: 48px; margin-bottom: 20px;">شرکت دانش بنیان توسعه پردازان</h1>
-            <p style="font-size: 20px; margin-bottom: 30px;">تحقق ایده‌ها با فناوری‌های پیشرفته ساخت افزایشی و کاهشی</p>
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <a href="#services" style="background: white; color: #667eea; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold;">خدمات ما</a>
-                <a href="products.html" style="border: 2px solid white; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none;">محصولات</a>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1 class="hero-title">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
+            <p class="hero-subtitle">طراحی صنعتی، ماشینکاری دقیق CNC، چاپ سه‌بعدی رزین و فیلامنت، مهندسی معکوس و اجرای پروژه‌های فناورانه</p>
+            <div class="hero-cta">
+                <a href="#services" class="btn btn-primary">مشاهده خدمات</a>
+                <a href="#projects" class="btn btn-outline">پروژه‌های کلیدی</a>
             </div>
         </div>
     </section>
 
     <!-- خدمات -->
-    <section id="services" style="padding: 80px 20px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px;">خدمات تخصصی ما</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
-                    <div style="font-size: 40px; margin-bottom: 20px;">🎯</div>
-                    <h3 style="font-size: 20px; margin-bottom: 15px;">طراحی صنعتی</h3>
-                    <p style="color: #666;">از ایده اولیه تا مدل‌سازی سه‌بعدی حرفه‌ای</p>
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">خدمات ما</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>ماشینکاری CNC</h3>
+                    <p>تراش، فرز و وایرکات؛ تولید قطعات فلزی و پلاستیکی با تلرانس‌های دقیق و کنترل کیفیت مستند.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
-                    <div style="font-size: 40px; margin-bottom: 20px;">⚙️</div>
-                    <h3 style="font-size: 20px; margin-bottom: 15px;">ماشینکاری CNC</h3>
-                    <p style="color: #666;">تولید دقیق قطعات با دستگاه‌های CNC مدرن</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                    </div>
+                    <h3>چاپ سه‌بعدی</h3>
+                    <p>رزین (SLA/DLP) و فیلامنت (FDM)؛ نمونه‌سازی سریع، قطعات نهایی سفارشی و پس‌پردازش حرفه‌ای.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
-                    <div style="font-size: 40px; margin-bottom: 20px;">🖨️</div>
-                    <h3 style="font-size: 20px; margin-bottom: 15px;">چاپ سه‌بعدی</h3>
-                    <p style="color: #666;">نمونه‌سازی سریع با تکنولوژی‌های پیشرفته</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                            <line x1="16" y1="8" x2="2" y2="22"></line>
+                            <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3>مهندسی معکوس</h3>
+                    <p>اسکن، مدل‌سازی پارامتریک و بازتولید بهینه؛ جایگزینی قطعات ناموجود و ارتقای کارایی.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                            <line x1="7" y1="2" x2="7" y2="22"></line>
+                            <line x1="17" y1="2" x2="17" y2="22"></line>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <line x1="2" y1="7" x2="7" y2="7"></line>
+                            <line x1="2" y1="17" x2="7" y2="17"></line>
+                            <line x1="17" y1="17" x2="22" y2="17"></line>
+                            <line x1="17" y1="7" x2="22" y2="7"></line>
+                        </svg>
+                    </div>
+                    <h3>طراحی صنعتی</h3>
+                    <p>کانسپت تا دیتیل؛ ارگونومی، زیبایی‌شناسی و ساخت‌پذیری با مستندات کامل فنی.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- پروژه‌های توسعه -->
+    <section id="projects" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">پروژه‌های توسعه شرکت</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(45deg, #1e3c72, #2a5298);"></div>
+                    <div class="project-content">
+                        <h3>کارخانه تولید یونولیت سراوان <span class="badge">بزودی</span></h3>
+                        <p>طراحی و راه‌اندازی واحد تولید یونولیت در شهرک صنعتی سراوان جهت اشتغال‌زایی و توسعه صنعتی منطقه.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(45deg, #654ea3, #da98b4);"></div>
+                    <div class="project-content">
+                        <h3>کافه فب‌لب روند <span class="badge">بزودی</span></h3>
+                        <p>فضای عمومیِ الهام‌بخش برای پیوند سنت و تکنولوژی؛ محلی برای تجربه‌سازی و همکاری میان جامعه فناور.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- مشتریان -->
-    <section style="background: #f8f9fa; padding: 60px 20px; text-align: center;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="font-size: 36px; margin-bottom: 40px;">مشتریان ما</h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-                <div style="background: white; padding: 20px; border-radius: 10px; min-width: 200px;">
-                    <div style="font-size: 24px; margin-bottom: 10px;">🏛️</div>
-                    <p>دانشگاه سیستان و بلوچستان</p>
+    <section id="clients" class="section">
+        <div class="container">
+            <h2 class="section-title">مشتریان ما</h2>
+            <p class="section-subtitle">با افتخار با سازمان‌های معتبر همکاری داشته‌ایم</p>
+            <div class="clients-grid">
+                <div class="client-item">
+                    <div class="client-icon">🏛️</div>
+                    <h4>دانشگاه سیستان و بلوچستان</h4>
                 </div>
-                <div style="background: white; padding: 20px; border-radius: 10px; min-width: 200px;">
-                    <div style="font-size: 24px; margin-bottom: 10px;">🔬</div>
-                    <p>پارک علم و فناوری</p>
+                <div class="client-item">
+                    <div class="client-icon">🔬</div>
+                    <h4>پارک علم و فناوری</h4>
                 </div>
-                <div style="background: white; padding: 20px; border-radius: 10px; min-width: 200px;">
-                    <div style="font-size: 24px; margin-bottom: 10px;">🏥</div>
-                    <p>مرکز بهداشت زاهدان</p>
+                <div class="client-item">
+                    <div class="client-icon">🏥</div>
+                    <h4>مرکز بهداشت زاهدان</h4>
+                </div>
+                <div class="client-item">
+                    <div class="client-icon">👨‍⚕️</div>
+                    <h4>دانشگاه علوم پزشکی</h4>
+                </div>
+                <div class="client-item">
+                    <div class="client-icon">🏭</div>
+                    <h4>کارخانه حریر انار</h4>
+                </div>
+                <div class="client-item">
+                    <div class="client-icon">🥩</div>
+                    <h4>شرکت پروتئین سپید</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- فوتر -->
-    <footer style="background: #1a1a1a; color: white; padding: 50px 20px 20px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
-                <div>
-                    <h3 style="font-size: 24px; margin-bottom: 20px;">توسعه پردازان</h3>
-                    <p>شرکت دانش بنیان فنی و مهندسی</p>
+    <!-- لینک به صفحه محصولات -->
+    <section id="products" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">نمونه خدمات و محصولات</h2>
+            <p class="section-subtitle">طراحی و تولید بیش از ۴۰ محصول صنعتی و پزشکی</p>
+            <div class="products-preview">
+                <div class="product-preview-item">
+                    <h3>Air Purifier</h3>
+                    <p>دستگاه تصفیه هوا با فیلتر هپا و UV</p>
                 </div>
-                <div>
-                    <h4 style="font-size: 18px; margin-bottom: 20px;">تماس با ما</h4>
-                    <p>📧 javadisazadeh24@gmail.com</p>
-                    <p>📞 09226704205</p>
+                <div class="product-preview-item">
+                    <h3>ECG Simulator</h3>
+                    <p>شبیه‌ساز سیگنال قلب پزشکی</p>
                 </div>
-                <div>
-                    <h4 style="font-size: 18px; margin-bottom: 20px;">شبکه‌های اجتماعی</h4>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://instagram.com/TPE_CO" style="color: #e11d48; text-decoration: none;">اینستاگرام</a>
-                        <a href="https://wa.me/989226704205" style="color: #25D366; text-decoration: none;">واتساپ</a>
+                <div class="product-preview-item">
+                    <h3>Biometric Lock</h3>
+                    <p>سیستم قفل بیومتریک امنیتی</p>
+                </div>
+                <div class="product-preview-item">
+                    <h3>Veinscope</h3>
+                    <p>دستگاه مشاهده رگ پزشکی</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="products.html" class="btn btn-primary">مشاهده همه محصولات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر شیشه‌ای -->
+    <footer id="contact" class="glass-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>شرکت توسعه پردازان</h3>
+                    <p>شرکت دانش بنیان فنی و مهندسی توسعه پردازان الکترونیک فیدار پارس راویس</p>
+                </div>
+                <div class="footer-col">
+                    <h4>تماس با ما</h4>
+                    <p><strong>ایمیل:</strong> javadisazadeh24@gmail.com</p>
+                    <p><strong>تلفن:</strong> ۰۹۲۲۶۷۰۴۲۰۵</p>
+                    <p><strong>واتساپ/تلگرام:</strong> ۰۹۲۲۶۷۰۴۲۰۵</p>
+                </div>
+                <div class="footer-col">
+                    <h4>لینک‌های مفید</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="#services">خدمات</a></li>
+                        <li><a href="products.html">محصولات</a></li>
+                        <li><a href="resume.html">رزومه</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>شبکه‌های اجتماعی</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/tpe-co" class="social-link">LinkedIn</a>
+                        <a href="https://instagram.com/TPE_CO" class="social-link">Instagram</a>
+                        <a href="https://wa.me/989226704205" class="social-link">WhatsApp</a>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; padding-top: 20px; border-top: 1px solid #333; color: #999;">
-                <p>© ۱۴۰۳ شرکت دانش بنیان فنی و مهندسی توسعه پردازان</p>
+            <div class="footer-bottom">
+                <p>© ۱۴۰۳ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // اسکرول نرم
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
