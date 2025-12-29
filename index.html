@@ -92,28 +92,36 @@
       width: 100%;
       z-index: 1000;
       transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .nav.scrolled {
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     
     .nav-wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 15px 20px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
     .brand img {
-      height: 48px;
+      height: 50px;
       transition: transform 0.3s;
     }
     
@@ -121,9 +129,16 @@
       transform: scale(1.05);
     }
     
+    .company-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1e293b;
+      white-space: nowrap;
+    }
+    
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       list-style: none;
       align-items: center;
     }
@@ -131,7 +146,7 @@
     .nav-links a {
       color: #1e293b;
       font-weight: 500;
-      font-size: 15px;
+      font-size: 14.5px;
       padding: 8px 12px;
       border-radius: 8px;
       transition: all 0.3s;
@@ -412,11 +427,12 @@
       animation-play-state: paused;
     }
     
-    /* گالری نمونه کارها */
+    /* گالری نمونه کارها - اسکرول اتوماتیک و دستی */
     .gallery-section {
       background: #f8fafc;
       position: relative;
       padding: 60px 0;
+      overflow: hidden;
     }
     
     .gallery-container {
@@ -460,6 +476,7 @@
       gap: 25px;
       width: max-content;
       padding: 10px 20px;
+      animation: scrollGallery 40s linear infinite;
     }
     
     .gallery-item {
@@ -481,7 +498,6 @@
       height: 220px;
       width: 100%;
       object-fit: cover;
-      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
     }
     
     .gallery-content {
@@ -519,6 +535,19 @@
       color: #dc2626;
     }
     
+    @keyframes scrollGallery {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    .gallery-track:hover {
+      animation-play-state: paused;
+    }
+    
     /* پروژه‌های توسعه */
     .projects-grid {
       display: grid;
@@ -545,7 +574,6 @@
       height: 200px;
       width: 100%;
       object-fit: cover;
-      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
     }
     
     .project-content {
@@ -604,11 +632,11 @@
       font-size: 14px;
     }
     
-    /* استایل‌های رزومه */
+    /* صفحه رزومه */
     .resume-section {
       padding: 40px 20px;
       min-height: 100vh;
-      display: none;
+      background: #f8fafc;
     }
     
     .resume-container {
@@ -618,6 +646,50 @@
       border-radius: 16px;
       padding: 40px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-selection {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .team-member-btn {
+      padding: 15px 30px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .team-member-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .team-member-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .member-icon {
+      font-size: 18px;
+    }
+    
+    .resume-content {
+      display: none;
+    }
+    
+    .resume-content.active {
+      display: block;
     }
     
     .resume-header {
@@ -742,12 +814,20 @@
     /* موبایل */
     @media (max-width: 768px) {
       .nav-links {
-        gap: 15px;
+        gap: 10px;
       }
       
       .nav-links a {
-        font-size: 14px;
-        padding: 6px 10px;
+        font-size: 13px;
+        padding: 6px 8px;
+      }
+      
+      .company-name {
+        font-size: 16px;
+      }
+      
+      .brand img {
+        height: 42px;
       }
       
       .language-selector {
@@ -811,20 +891,18 @@
         grid-template-columns: 1fr;
         gap: 30px;
       }
-      
-      .brand img {
-        height: 40px;
-      }
     }
     
     /* موبایل کوچک */
     @media (max-width: 480px) {
       .nav-links {
-        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
       }
       
       .nav-links a {
-        font-size: 13px;
+        font-size: 12px;
         padding: 5px 8px;
       }
       
@@ -845,8 +923,16 @@
         font-size: 15px;
       }
       
+      .brand {
+        gap: 10px;
+      }
+      
       .brand img {
-        height: 36px;
+        height: 38px;
+      }
+      
+      .company-name {
+        font-size: 14px;
       }
     }
     
@@ -870,19 +956,18 @@
 <body>
 
   <!-- ناوبری -->
-  <header class="nav" id="navbar">
+  <header class="nav glass-effect" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+        <span class="company-name">توسعه پردازان</span>
       </a>
       <nav>
         <ul class="nav-links">
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات</a></li>
-          <!-- حذف نمونه کارها از نوار اصلی -->
-          <li><a href="#products" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
           <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
-          <li><a href="#clients" data-i18n="nav.clients">مشتریان</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
           <li><a href="#contact" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
@@ -1148,12 +1233,7 @@
       <h2 data-i18n="projects.title">پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <div class="project-img">
-            <!-- استفاده از placeholder با پس‌زمینه رنگی -->
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:20px;">
-              کارخانه تولید یونولیت سراوان
-            </div>
-          </div>
+          <img src="images/projects/yunolit-factory.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project1.title">کارخانه تولید یونولیت سراوان</h3>
             <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
@@ -1161,12 +1241,7 @@
           </div>
         </div>
         <div class="project-card fade-in">
-          <div class="project-img">
-            <!-- استفاده از placeholder با پس‌زمینه رنگی -->
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#14b8a6 0%,#0f766e 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:20px;">
-              کافه فب‌لب روند
-            </div>
-          </div>
+          <img src="images/projects/fablab-cafe.jpg" alt="کافه فب‌لب روند" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
             <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
@@ -1219,7 +1294,7 @@
             <a href="#services" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ما</a>
             <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">نمونه خدمات و محصولات</a>
             <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.resume">رزومه پرسنل</a>
-            <a href="#clients" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.clients">مشتریان</a>
+            <a href="#projects" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.projects">پروژه‌های توسعه</a>
           </div>
         </div>
         
@@ -1254,7 +1329,6 @@
         "nav.services": "خدمات",
         "nav.products": "نمونه خدمات و محصولات",
         "nav.resume": "رزومه پرسنل",
-        "nav.clients": "مشتریان",
         "nav.projects": "پروژه‌های توسعه",
         "nav.contact": "تماس",
         
@@ -1355,7 +1429,6 @@
         "nav.services": "Services",
         "nav.products": "Products & Services",
         "nav.resume": "Personnel Resume",
-        "nav.clients": "Clients",
         "nav.projects": "Development Projects",
         "nav.contact": "Contact",
         
@@ -1456,7 +1529,6 @@
         "nav.services": "الخدمات",
         "nav.products": "الخدمات والمنتجات",
         "nav.resume": "سيرة الموظفين",
-        "nav.clients": "العملاء",
         "nav.projects": "مشاريع التطوير",
         "nav.contact": "اتصل بنا",
         
@@ -1552,70 +1624,70 @@
       }
     };
 
-    // داده‌های نمونه کارها
+    // داده‌های نمونه کارها با تصاویر واقعی
     const portfolioData = [
       { 
-        img: 'images/gallery-1.jpg', 
+        img: 'images/portfolio/air-purifier.jpg', 
         title: 'Air Purifier', 
         client: 'شرکت بهبود رایان', 
         type: 'original', 
-        descKey: 'دستگاه تصفیه هوا با تکنولوژی UV'
+        desc: 'دستگاه تصفیه هوا با تکنولوژی UV'
       },
       { 
-        img: 'images/gallery-2.jpg', 
+        img: 'images/portfolio/biometric-lock.jpg', 
         title: 'Biometric Lock', 
         client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
         type: 'original', 
-        descKey: 'سیستم قفل بیومتریک امنیتی'
+        desc: 'سیستم قفل بیومتریک امنیتی'
       },
       { 
-        img: 'images/gallery-3.jpg', 
+        img: 'images/portfolio/ecg-simulator.jpg', 
         title: 'ECG Simulator', 
         client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
         type: 'original', 
-        descKey: 'شبیه‌ساز سیگنال قلب برای آموزش پزشکی'
+        desc: 'شبیه‌ساز سیگنال قلب برای آموزش پزشکی'
       },
       { 
-        img: 'images/injector-cleaner.jpg', 
+        img: 'images/portfolio/injector-cleaner.jpg', 
         title: 'دستگاه انژکتور شور', 
         client: 'پویا خودرو ایرانیان آدلی', 
         type: 'original', 
-        descKey: 'دستگاه انژکتور شور برای شرکت پویا خودرو'
+        desc: 'دستگاه انژکتور شور برای شرکت پویا خودرو'
       },
       { 
-        img: 'images/gallery-5.jpg', 
+        img: 'images/portfolio/veinscope.jpg', 
         title: 'Veinscope', 
         client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
         type: 'original', 
-        descKey: 'دستگاه مشاهده رگ برای پزشکی'
+        desc: 'دستگاه مشاهده رگ برای پزشکی'
       },
       { 
-        img: 'images/arm-porter.jpg', 
+        img: 'images/portfolio/arm-porter.jpg', 
         title: 'Arm Porter Robot', 
         client: 'شخصی حقیقی در ترکیه - استانبول', 
         type: 'reverse', 
-        descKey: 'ربات حمل بازو برای مشتری ترکیه‌ای'
+        desc: 'ربات حمل بازو برای مشتری ترکیه‌ای'
       },
       { 
-        img: 'images/taftan-trophy.jpg', 
+        img: 'images/portfolio/taftan-trophy.jpg', 
         title: 'Taftan Trophy', 
         client: 'فبلب صنایع خلاق پارک علم و فناوری', 
         type: 'original', 
-        descKey: 'تندیس تفتان برای پارک علم و فناوری'
+        desc: 'تندیس تفتان برای پارک علم و فناوری'
       },
       { 
-        img: 'images/pulp-tester.jpg', 
+        img: 'images/portfolio/pulp-tester.jpg', 
         title: 'Pulp Tester', 
         client: 'شرکت طب تجهیز آبادیس پارس', 
         type: 'reverse', 
-        descKey: 'دستگاه تست پالپ دندانپزشکی'
+        desc: 'دستگاه تست پالپ دندانپزشکی'
       },
       { 
-        img: 'images/lamp-cover.jpg', 
+        img: 'images/portfolio/lamp-cover.jpg', 
         title: 'Lamp Cover', 
         client: 'مهرنور الکترونیک پیشگام', 
         type: 'original', 
-        descKey: 'کاور لامپ خیابانی برای شرکت مهرنور'
+        desc: 'کاور لامپ خیابانی برای شرکت مهرنور'
       }
     ];
 
@@ -1657,40 +1729,38 @@
       localStorage.setItem('preferredLanguage', lang);
     }
 
-    // ==================== گالری نمونه کارها - اسکرول دستی ====================
-    function setupGalleryManualScroll() {
+    // ==================== گالری نمونه کارها - اسکرول اتوماتیک و دستی ====================
+    function setupGalleryAutoScroll() {
       const galleryTrack = document.getElementById('galleryTrack');
-      const galleryScrollable = document.getElementById('galleryScrollable');
       
       // پاک کردن محتوای قبلی
       galleryTrack.innerHTML = '';
       
-      // ایجاد آیتم‌های گالری
-      portfolioData.forEach(item => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-        
-        const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
-        const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
-        
-        galleryItem.innerHTML = `
-          <div class="gallery-img">
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:16px;padding:10px;text-align:center;">
-              ${item.title}
+      // ایجاد 2 سری از آیتم‌ها برای اسکرول بی‌نهایت
+      for (let i = 0; i < 2; i++) {
+        portfolioData.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          
+          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
+          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
+          
+          galleryItem.innerHTML = `
+            <img src="${item.img}" alt="${item.title}" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/320x220/1e40af/ffffff?text=${encodeURIComponent(item.title)}'">
+            <div class="gallery-content">
+              <h3>${item.title}</h3>
+              <div class="client-name">${item.client}</div>
+              <p style="font-size:13px;color:#64748b;margin-top:8px;">${item.desc}</p>
+              <span class="project-type ${typeClass}">${typeText}</span>
             </div>
-          </div>
-          <div class="gallery-content">
-            <h3>${item.title}</h3>
-            <div class="client-name">${item.client}</div>
-            <p style="font-size:13px;color:#64748b;margin-top:8px;">${item.descKey}</p>
-            <span class="project-type ${typeClass}">${typeText}</span>
-          </div>
-        `;
-        
-        galleryTrack.appendChild(galleryItem);
-      });
+          `;
+          
+          galleryTrack.appendChild(galleryItem);
+        });
+      }
       
       // اسکرول دستی با ماوس
+      const galleryScrollable = document.getElementById('galleryScrollable');
       let isDown = false;
       let startX;
       let scrollLeft;
@@ -1716,7 +1786,7 @@
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - galleryScrollable.offsetLeft;
-        const walk = (x - startX) * 2; // سرعت اسکرول
+        const walk = (x - startX) * 2;
         galleryScrollable.scrollLeft = scrollLeft - walk;
       });
       
@@ -1736,6 +1806,15 @@
         const x = e.touches[0].pageX - galleryScrollable.offsetLeft;
         const walk = (x - startX) * 2;
         galleryScrollable.scrollLeft = scrollLeft - walk;
+      });
+      
+      // توقف انیمیشن هنگام هاور
+      galleryTrack.addEventListener('mouseenter', () => {
+        galleryTrack.style.animationPlayState = 'paused';
+      });
+      
+      galleryTrack.addEventListener('mouseleave', () => {
+        galleryTrack.style.animationPlayState = 'running';
       });
     }
 
@@ -1770,13 +1849,7 @@
       }
       
       // تنظیم گالری
-      setupGalleryManualScroll();
-      
-      // ترمیم لینک نمونه خدمات و محصولات
-      const productsLink = document.querySelector('a[href="#products"]');
-      if (productsLink) {
-        productsLink.href = 'products.html';
-      }
+      setupGalleryAutoScroll();
       
       // کنترل خطا برای تصاویر مشتریان
       document.querySelectorAll('.client-logo img').forEach(img => {
@@ -1792,11 +1865,25 @@
         };
       });
       
+      // کنترل خطا برای تصاویر پروژه‌ها
+      document.querySelectorAll('.project-img').forEach(img => {
+        img.onerror = function() {
+          const altText = this.alt;
+          let text = '';
+          if (altText.includes('یونولیت')) {
+            text = 'کارخانه یونولیت سراوان';
+          } else if (altText.includes('فب‌لب')) {
+            text = 'کافه فب‌لب روند';
+          }
+          this.src = `https://via.placeholder.com/400x200/0f766e/ffffff?text=${encodeURIComponent(text)}`;
+        };
+      });
+      
       // کنترل خطا برای لوگو
       const logoImg = document.querySelector('.brand img');
       if (logoImg) {
         logoImg.onerror = function() {
-          this.src = 'https://via.placeholder.com/192x192/1e40af/ffffff?text=TPE';
+          this.src = 'https://via.placeholder.com/50x50/1e40af/ffffff?text=TPE';
         };
       }
     });
@@ -1873,7 +1960,7 @@
     
     // تنظیم مجدد گالری هنگام تغییر سایز پنجره
     window.addEventListener('resize', function() {
-      setupGalleryManualScroll();
+      setupGalleryAutoScroll();
     });
   </script>
 </body>
