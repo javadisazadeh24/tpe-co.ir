@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</title>
-  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- فونت‌ها -->
@@ -13,9 +13,6 @@
   
   <!-- آیکون شبکه‌های اجتماعی -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- فلگ کشورها -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
   
   <style>
     /* استایل های اصلی */
@@ -114,7 +111,7 @@
     }
     
     .brand img {
-      height: 32px;
+      height: 40px;
       transition: transform 0.3s;
     }
     
@@ -143,46 +140,43 @@
       color: var(--primary);
     }
     
-    /* انتخابگر زبان با پرچم */
+    /* انتخابگر زبان با پرچم PNG */
     .language-selector {
       display: flex;
-      gap: 5px;
+      gap: 8px;
       margin-right: 15px;
     }
     
     .lang-btn {
-      padding: 5px 10px;
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 4px;
+      padding: 0;
+      border: none;
+      background: transparent;
       cursor: pointer;
-      font-size: 0;
       width: 40px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 25px;
+      border-radius: 3px;
+      overflow: hidden;
       transition: all 0.3s;
       position: relative;
     }
     
-    .lang-btn span {
-      font-size: 14px;
-      margin-right: 5px;
+    .lang-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .lang-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary);
+      transform: scale(1.1);
     }
     
     .lang-btn:hover {
-      background: #f0f0f0;
+      transform: scale(1.05);
     }
     
     .lang-btn.active:hover {
-      background: var(--primary);
+      transform: scale(1.1);
     }
     
     /* هرو با فیلم */
@@ -371,7 +365,7 @@
       right: 0;
       height: 100%;
       align-items: center;
-      animation: scrollClients 40s linear infinite;
+      animation: scrollClients 30s linear infinite;
       will-change: transform;
     }
     
@@ -412,7 +406,13 @@
       animation-play-state: paused;
     }
     
-    /* گالری نمونه کارها - تکرار پیوسته */
+    /* گالری نمونه کارها - حلقه بی‌نهایت روان */
+    .gallery-section {
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+    }
+    
     .gallery-container {
       position: relative;
       margin-top: 40px;
@@ -423,7 +423,7 @@
     .gallery-track {
       display: flex;
       gap: 25px;
-      width: max-content;
+      will-change: transform;
     }
     
     .gallery-item {
@@ -452,7 +452,32 @@
     
     .gallery-content h3 {
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+    }
+    
+    .gallery-content .client-name {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .gallery-content .project-type {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+    
+    .type-original {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    
+    .type-reverse {
+      background: #fce7f3;
+      color: #9d174d;
     }
     
     /* پروژه‌های توسعه */
@@ -481,12 +506,6 @@
       height: 200px;
       width: 100%;
       object-fit: cover;
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 14px;
     }
     
     .project-content {
@@ -549,10 +568,11 @@
     .resume-section {
       padding: 40px 20px;
       min-height: 100vh;
+      display: none;
     }
     
     .resume-container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       background: white;
       border-radius: 16px;
@@ -561,31 +581,38 @@
     }
     
     .resume-header {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+      color: white;
+      padding: 60px 20px;
       text-align: center;
       margin-bottom: 40px;
+      border-radius: 16px;
     }
     
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 20px;
-      border: 5px solid var(--primary);
-    }
-    
-    .resume-person {
-      margin-bottom: 40px;
-    }
-    
-    .resume-person h3 {
-      color: var(--primary);
+    .resume-header h1 {
+      font-size: 36px;
       margin-bottom: 10px;
     }
     
-    .resume-person p {
-      color: var(--muted);
-      line-height: 1.8;
+    .resume-header .subtitle {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      margin: 0 0 40px;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .back-btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
     }
     
     /* فوتر بهبود یافته */
@@ -730,6 +757,10 @@
         grid-template-columns: 1fr;
         gap: 30px;
       }
+      
+      .brand img {
+        height: 32px;
+      }
     }
     
     /* انیمیشن‌ها */
@@ -746,11 +777,6 @@
     
     .fade-in {
       animation: fadeInUp 0.8s ease-out;
-    }
-    
-    @keyframes scrollGallery {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
   </style>
 </head>
@@ -774,13 +800,13 @@
           <li><a href="#contact" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
-              <span class="flag-icon flag-icon-ir"></span>
+              <img src="images/flags/iran.png" alt="پرچم ایران">
             </button>
             <button class="lang-btn" data-lang="en" title="English">
-              <span class="flag-icon flag-icon-us"></span>
+              <img src="images/flags/usa.png" alt="پرچم آمریکا">
             </button>
             <button class="lang-btn" data-lang="ar" title="العربية">
-              <span class="flag-icon flag-icon-sa"></span>
+              <img src="images/flags/saudi.png" alt="پرچم عربستان">
             </button>
           </li>
         </ul>
@@ -943,80 +969,23 @@
   </section>
 
   <!-- گالری نمونه کارها -->
-  <section id="portfolio" style="background: #f8fafc;">
+  <section id="portfolio" class="gallery-section">
     <div class="container">
       <h2 data-i18n="portfolio.title">نمونه کارهای ما</h2>
       <div class="gallery-container">
-        <div class="gallery-track">
-          <!-- نمونه کارها - این مجموعه تکرار خواهد شد -->
-        </div>
+        <div class="gallery-track" id="galleryTrack"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- نمونه خدمات و محصولات -->
-  <section id="products">
-    <div class="container">
-      <h2 data-i18n="products.title">نمونه خدمات و محصولات</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: var(--muted);" data-i18n="products.description">
-        در این بخش می‌توانید نمونه‌ای از خدمات و محصولات شرکت ما را مشاهده نمایید
-      </p>
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <h3 data-i18n="products.item1.title">دستگاه تصفیه هوا</h3>
-          <p data-i18n="products.item1.description">طراحی و ساخت دستگاه تصفیه هوای صنعتی با قابلیت فیلتراسیون پیشرفته</p>
-        </div>
-        <div class="service-card fade-in">
-          <h3 data-i18n="products.item2.title">سیستم قفل بیومتریک</h3>
-          <p data-i18n="products.item2.description">تولید سیستم‌های امنیتی پیشرفته با تکنولوژی تشخیص اثر انگشت</p>
-        </div>
-        <div class="service-card fade-in">
-          <h3 data-i18n="products.item3.title">دستگاه شبیه‌ساز قلب</h3>
-          <p data-i18n="products.item3.description">شبیه‌ساز سیگنال ECG برای آموزش مراقبت‌های پزشکی</p>
-        </div>
-        <div class="service-card fade-in">
-          <h3 data-i18n="products.item4.title">دستگاه انژکتور شور</h3>
-          <p data-i18n="products.item4.description">طراحی و ساخت برای شرکت پویا خودرو ایرانیان آدلی</p>
-        </div>
-        <div class="service-card fade-in">
-          <h3 data-i18n="products.item5.title">دستگاه مشاهده رگ</h3>
-          <p data-i18n="products.item5.description">تجهیزات پزشکی برای مشاهده رگ‌ها در مراکز درمانی</p>
-        </div>
-        <div class="service-card fade-in">
-          <h3 data-i18n="products.item6.title">خدمات مشاوره فنی</h3>
-          <p data-i18n="products.item6.description">مشاوره تخصصی در زمینه توسعه محصول و بهینه‌سازی فرآیندها</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- رزومه پرسنل -->
-  <section id="resume" class="resume-section" style="display: none;">
-    <div class="resume-container">
-      <div class="resume-header">
-        <img src="images/profile.jpg" alt="عکس پرسنل" class="profile-img" id="profileImage">
-        <h2 data-i18n="resume.title">رزومه پرسنل</h2>
-        <p data-i18n="resume.subtitle">تیم متخصص و با تجربه شرکت توسعه پردازان</p>
-      </div>
-      
-      <div class="resume-person fade-in">
-        <h3 data-i18n="resume.person1.name">سجاد جوادی سازنده</h3>
-        <p data-i18n="resume.person1.position">مدیر فنی و مهندس ارشد</p>
-        <p data-i18n="resume.person1.bio">کارشناسی ارشد مهندسی مکاترونیک با 10 سال سابقه در طراحی و ساخت تجهیزات صنعتی و پزشکی. تخصص در طراحی سه‌بعدی، ماشینکاری CNC و توسعه محصولات نوآورانه.</p>
-      </div>
-      
-      <!-- سایر پرسنل می‌توانند در آینده اضافه شوند -->
     </div>
   </section>
 
   <!-- لینک به صفحات مجزا -->
   <section class="container">
     <div class="page-links">
-      <a href="javascript:void(0)" onclick="showProducts()" class="page-link">
+      <a href="products.html" class="page-link">
         <h3 data-i18n="links.products.title">نمونه خدمات و محصولات</h3>
         <p data-i18n="links.products.desc">مشاهده کامل محصولات و خدمات شرکت</p>
       </a>
-      <a href="javascript:void(0)" onclick="showResume()" class="page-link">
+      <a href="resume.html" class="page-link">
         <h3 data-i18n="links.resume.title">رزومه پرسنل</h3>
         <p data-i18n="links.resume.desc">اطلاعات کامل پرسنل و تیم متخصص</p>
       </a>
@@ -1090,9 +1059,7 @@
       <h2 data-i18n="projects.title">پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <div class="project-img">
-            <span data-i18n="projects.image1">کارخانه تولید یونولیت سراوان</span>
-          </div>
+          <img src="images/project-yonolit.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project1.title">کارخانه تولید یونولیت سراوان</h3>
             <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
@@ -1100,9 +1067,7 @@
           </div>
         </div>
         <div class="project-card fade-in">
-          <div class="project-img">
-            <span data-i18n="projects.image2">کافه فب‌لب روند</span>
-          </div>
+          <img src="images/project-fablab.jpg" alt="کافه فب‌لب روند" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
             <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
@@ -1154,7 +1119,7 @@
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <a href="#services" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ما</a>
             <a href="#products" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">محصولات</a>
-            <a href="#resume" style="color: #cbd5e1; transition: color 0.3s;" onclick="showResume()" data-i18n="nav.resume">رزومه پرسنل</a>
+            <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.resume">رزومه پرسنل</a>
             <a href="#clients" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.clients">مشتریان</a>
           </div>
         </div>
@@ -1255,29 +1220,6 @@
         // نمونه کارها
         "portfolio.title": "نمونه کارهای ما",
         
-        // نمونه خدمات و محصولات
-        "products.title": "نمونه خدمات و محصولات",
-        "products.description": "در این بخش می‌توانید نمونه‌ای از خدمات و محصولات شرکت ما را مشاهده نمایید",
-        "products.item1.title": "دستگاه تصفیه هوا",
-        "products.item1.description": "طراحی و ساخت دستگاه تصفیه هوای صنعتی با قابلیت فیلتراسیون پیشرفته",
-        "products.item2.title": "سیستم قفل بیومتریک",
-        "products.item2.description": "تولید سیستم‌های امنیتی پیشرفته با تکنولوژی تشخیص اثر انگشت",
-        "products.item3.title": "دستگاه شبیه‌ساز قلب",
-        "products.item3.description": "شبیه‌ساز سیگنال ECG برای آموزش مراقبت‌های پزشکی",
-        "products.item4.title": "دستگاه انژکتور شور",
-        "products.item4.description": "طراحی و ساخت برای شرکت پویا خودرو ایرانیان آدلی",
-        "products.item5.title": "دستگاه مشاهده رگ",
-        "products.item5.description": "تجهیزات پزشکی برای مشاهده رگ‌ها در مراکز درمانی",
-        "products.item6.title": "خدمات مشاوره فنی",
-        "products.item6.description": "مشاوره تخصصی در زمینه توسعه محصول و بهینه‌سازی فرآیندها",
-        
-        // رزومه
-        "resume.title": "رزومه پرسنل",
-        "resume.subtitle": "تیم متخصص و با تجربه شرکت توسعه پردازان",
-        "resume.person1.name": "سجاد جوادی سازنده",
-        "resume.person1.position": "مدیر فنی و مهندس ارشد",
-        "resume.person1.bio": "کارشناسی ارشد مهندسی مکاترونیک با 10 سال سابقه در طراحی و ساخت تجهیزات صنعتی و پزشکی. تخصص در طراحی سه‌بعدی، ماشینکاری CNC و توسعه محصولات نوآورانه.",
-        
         // لینک‌ها
         "links.products.title": "نمونه خدمات و محصولات",
         "links.products.desc": "مشاهده کامل محصولات و خدمات شرکت",
@@ -1289,10 +1231,8 @@
         
         // پروژه‌ها
         "projects.title": "پروژه‌های توسعه شرکت",
-        "projects.image1": "کارخانه تولید یونولیت سراوان",
         "projects.project1.title": "کارخانه تولید یونولیت سراوان",
         "projects.project1.desc": "احداث واحد تولید یونولیت در شهرک صنعتی سراوان",
-        "projects.image2": "کافه فب‌لب روند",
         "projects.project2.title": "کافه فب‌لب روند",
         "projects.project2.desc": "ایجاد فضای همکاری و نوآوری برای جامعه فناور",
         "projects.soon": "بزودی",
@@ -1382,29 +1322,6 @@
         // Portfolio
         "portfolio.title": "Our Portfolio",
         
-        // Products & Services
-        "products.title": "Products & Services",
-        "products.description": "In this section you can view samples of our company's services and products",
-        "products.item1.title": "Air Purifier",
-        "products.item1.description": "Design and manufacturing of industrial air purifier with advanced filtration capability",
-        "products.item2.title": "Biometric Lock System",
-        "products.item2.description": "Production of advanced security systems with fingerprint recognition technology",
-        "products.item3.title": "Heart Simulator",
-        "products.item3.description": "ECG signal simulator for medical care training",
-        "products.item4.title": "Injector Cleaner",
-        "products.item4.description": "Design and manufacturing for Pouya Khodro Iran Adli Company",
-        "products.item5.title": "Veinscope",
-        "products.item5.description": "Medical equipment for vein visualization in treatment centers",
-        "products.item6.title": "Technical Consulting Services",
-        "products.item6.description": "Specialized consulting in product development and process optimization",
-        
-        // Resume
-        "resume.title": "Personnel Resume",
-        "resume.subtitle": "Expert and experienced team of Tose Pardazan Company",
-        "resume.person1.name": "Sajad Javadi Sazandeh",
-        "resume.person1.position": "Technical Manager & Senior Engineer",
-        "resume.person1.bio": "Master's degree in Mechatronics Engineering with 10 years of experience in design and manufacturing of industrial and medical equipment. Specialized in 3D design, CNC machining and innovative product development.",
-        
         // Links
         "links.products.title": "Products & Services",
         "links.products.desc": "View all company products and services",
@@ -1416,10 +1333,8 @@
         
         // Projects
         "projects.title": "Company Development Projects",
-        "projects.image1": "Saravan EPS Foam Production Factory",
         "projects.project1.title": "Saravan EPS Foam Production Factory",
         "projects.project1.desc": "Establishment of EPS production unit in Saravan Industrial Town",
-        "projects.image2": "Round Fab Lab Cafe",
         "projects.project2.title": "Round Fab Lab Cafe",
         "projects.project2.desc": "Creating collaboration and innovation space for tech community",
         "projects.soon": "Coming Soon",
@@ -1509,29 +1424,6 @@
         // الأعمال السابقة
         "portfolio.title": "أعمالنا السابقة",
         
-        // المنتجات والخدمات
-        "products.title": "الخدمات والمنتجات",
-        "products.description": "في هذا القسم يمكنك مشاهدة نماذج من خدمات ومنتجات شركتنا",
-        "products.item1.title": "جهاز تنقية الهواء",
-        "products.item1.description": "تصميم وتصنيع جهاز تنقية الهواء الصناعي بقدرة ترشيح متقدمة",
-        "products.item2.title": "نظام قفل القياسات الحيوية",
-        "products.item2.description": "إنتاج أنظمة أمنية متقدمة بتقنية التعرف على البصمة",
-        "products.item3.title": "محاكي القلب",
-        "products.item3.description": "محاكي إشارات القلب للتدريب على الرعاية الطبية",
-        "products.item4.title": "جهاز تنظيف الحقن",
-        "products.item4.description": "التصميم والتصنيع لشركة بویا خودرو ایرانیان عدلی",
-        "products.item5.title": "جهاز عرض الأوردة",
-        "products.item5.description": "معدات طبية لعرض الأوردة في مراكز العلاج",
-        "products.item6.title": "خدمات الاستشارات الفنية",
-        "products.item6.description": "استشارات متخصصة في تطوير المنتجات وتحسين العمليات",
-        
-        // السيرة الذاتية
-        "resume.title": "سيرة الموظفين",
-        "resume.subtitle": "فريق متخصص وذو خبرة في شركة توسع پردازان",
-        "resume.person1.name": "سجاد جوادی سازنده",
-        "resume.person1.position": "المدير الفني والمهندس الأول",
-        "resume.person1.bio": "ماجستير في هندسة الميكاترونيك مع 10 سنوات من الخبرة في تصميم وتصنيع المعدات الصناعية والطبية. متخصص في التصميم ثلاثي الأبعاد، التشغيل الآلي وتطوير المنتجات المبتكرة.",
-        
         // الروابط
         "links.products.title": "الخدمات والمنتجات",
         "links.products.desc": "عرض جميع منتجات وخدمات الشركة",
@@ -1543,10 +1435,8 @@
         
         // المشاريع
         "projects.title": "مشاريع تطوير الشركة",
-        "projects.image1": "مصنع إنتاج مادة البوليسترين في سراوان",
         "projects.project1.title": "مصنع إنتاج مادة البوليسترين في سراوان",
         "projects.project1.desc": "إنشاء وحدة إنتاج مادة البوليسترين في المدينة الصناعية سراوان",
-        "projects.image2": "مقهى المختبر الرقمي روند",
         "projects.project2.title": "مقهى المختبر الرقمي روند",
         "projects.project2.desc": "خلق مساحة للتعاون والابتكار لمجتمع التكنولوجيا",
         "projects.soon": "قريباً",
@@ -1566,8 +1456,62 @@
       }
     };
 
+    // داده‌های نمونه کارها از جدول
+    const portfolioData = [
+      { img: 'images/gallery-1.jpg', title: 'Air Purifier', client: 'شرکت بهبود رایان', type: 'original', descKey: 'portfolio.item1' },
+      { img: 'images/gallery-2.jpg', title: 'Biometric Lock', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original', descKey: 'portfolio.item2' },
+      { img: 'images/gallery-3.jpg', title: 'ECG Simulator', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original', descKey: 'portfolio.item3' },
+      { img: 'images/injector-cleaner.jpg', title: 'دستگاه انژکتور شور', client: 'پویا خودرو ایرانیان آدلی', type: 'original', descKey: 'portfolio.item4' },
+      { img: 'images/gallery-5.jpg', title: 'Veinscope', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original', descKey: 'portfolio.item5' },
+      { img: 'images/arm-porter.jpg', title: 'Arm Porter Robot', client: 'شخصی حقیقی در ترکیه - استانبول', type: 'reverse', descKey: 'portfolio.item6' },
+      { img: 'images/taftan-trophy.jpg', title: 'Taftan Trophy', client: 'فبلب صنایع خلاق پارک علم و فناوری', type: 'original', descKey: 'portfolio.item7' },
+      { img: 'images/pulp-tester.jpg', title: 'Pulp Tester', client: 'شرکت طب تجهیز آبادیس پارس', type: 'reverse', descKey: 'portfolio.item8' },
+      { img: 'images/lamp-cover.jpg', title: 'Lamp Cover', client: 'مهرنور الکترونیک پیشگام', type: 'original', descKey: 'portfolio.item9' }
+    ];
+
+    // ترجمه‌های نمونه کارها
+    const portfolioTranslations = {
+      fa: {
+        'portfolio.item1': 'دستگاه تصفیه هوا با تکنولوژی UV',
+        'portfolio.item2': 'سیستم قفل بیومتریک امنیتی',
+        'portfolio.item3': 'شبیه‌ساز سیگنال قلب برای آموزش پزشکی',
+        'portfolio.item4': 'دستگاه انژکتور شور برای شرکت پویا خودرو',
+        'portfolio.item5': 'دستگاه مشاهده رگ برای پزشکی',
+        'portfolio.item6': 'ربات حمل بازو برای مشتری ترکیه‌ای',
+        'portfolio.item7': 'تندیس تفتان برای پارک علم و فناوری',
+        'portfolio.item8': 'دستگاه تست پالپ دندانپزشکی',
+        'portfolio.item9': 'کاور لامپ خیابانی برای شرکت مهرنور'
+      },
+      en: {
+        'portfolio.item1': 'Air purifier with UV technology',
+        'portfolio.item2': 'Biometric security lock system',
+        'portfolio.item3': 'ECG signal simulator for medical training',
+        'portfolio.item4': 'Injector cleaner device for Pouya Khodro',
+        'portfolio.item5': 'Vein visualization device for medical use',
+        'portfolio.item6': 'Arm porter robot for Turkish customer',
+        'portfolio.item7': 'Taftan trophy for Science and Technology Park',
+        'portfolio.item8': 'Dental pulp testing device',
+        'portfolio.item9': 'Street lamp cover for Mehrnoor Electronic'
+      },
+      ar: {
+        'portfolio.item1': 'جهاز تنقية الهواء بتقنية الأشعة فوق البنفسجية',
+        'portfolio.item2': 'نظام قفل القياسات الحيوية الأمني',
+        'portfolio.item3': 'محاكي إشارات القلب للتدريب الطبي',
+        'portfolio.item4': 'جهاز تنظيف الحقن لشركة بویا خودرو',
+        'portfolio.item5': 'جهاز عرض الأوردة للاستخدام الطبي',
+        'portfolio.item6': 'روبوت حمل الذراع للعميل التركي',
+        'portfolio.item7': 'كأس تفتان لحديقة العلوم والتكنولوجيا',
+        'portfolio.item8': 'جهاز اختبار لب الأسنان',
+        'portfolio.item9': 'غطاء مصباح الشارع لشركة مهرنور الإلكترونية'
+      }
+    };
+
     // سیستم تغییر زبان
+    let currentLang = 'fa';
+    
     function changeLanguage(lang) {
+      currentLang = lang;
+      
       // تغییر فعال بودن دکمه‌ها
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -1584,7 +1528,7 @@
         }
       });
       
-      // تغییر جهت صفحه برای عربی (راست به چپ)
+      // تغییر جهت صفحه
       if (lang === 'ar') {
         document.documentElement.dir = 'rtl';
         document.documentElement.lang = 'ar';
@@ -1598,64 +1542,44 @@
       
       // ذخیره زبان انتخابی
       localStorage.setItem('preferredLanguage', lang);
+      
+      // به‌روزرسانی گالری نمونه کارها
+      updateGalleryContent();
     }
 
-    // ==================== نمونه کارها - حلقه بی‌نهایت ====================
+    // ==================== گالری نمونه کارها - حلقه بی‌نهایت روان ====================
     function setupGalleryInfiniteLoop() {
-      const galleryTrack = document.querySelector('.gallery-track');
-      
-      // محتوای نمونه کارها
-      const galleryItems = [
-        {
-          img: 'images/gallery-1.jpg',
-          title: 'Air Purifier',
-          descKey: 'portfolio.item1.desc'
-        },
-        {
-          img: 'images/gallery-2.jpg',
-          title: 'Biometric Lock',
-          descKey: 'portfolio.item2.desc'
-        },
-        {
-          img: 'images/gallery-3.jpg',
-          title: 'ECG Simulator',
-          descKey: 'portfolio.item3.desc'
-        },
-        {
-          img: 'images/injector-cleaner.jpg',
-          title: 'Injector Cleaner',
-          descKey: 'portfolio.item4.desc'
-        },
-        {
-          img: 'images/gallery-5.jpg',
-          title: 'Veinscope',
-          descKey: 'portfolio.item5.desc'
-        }
-      ];
+      const galleryTrack = document.getElementById('galleryTrack');
       
       // پاک کردن محتوای قبلی
       galleryTrack.innerHTML = '';
       
-      // ایجاد 4 مجموعه از آیتم‌ها برای حلقه بی‌نهایت روان
-      for (let i = 0; i < 4; i++) {
-        galleryItems.forEach(item => {
+      // ایجاد 3 مجموعه از آیتم‌ها برای حلقه بی‌نهایت روان
+      for (let i = 0; i < 3; i++) {
+        portfolioData.forEach(item => {
           const galleryItem = document.createElement('div');
           galleryItem.className = 'gallery-item';
+          
+          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
+          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
+          
           galleryItem.innerHTML = `
             <img src="${item.img}" alt="${item.title}" class="gallery-img">
             <div class="gallery-content">
               <h3>${item.title}</h3>
-              <p data-i18n="${item.descKey}">${translations[currentLang][item.descKey] || item.title}</p>
+              <div class="client-name">${item.client}</div>
+              <span class="project-type ${typeClass}">${typeText}</span>
             </div>
           `;
+          
           galleryTrack.appendChild(galleryItem);
         });
       }
       
       // تنظیم عرض گالری
-      const itemCount = galleryItems.length * 4;
-      const itemWidth = 350; // عرض هر آیتم
-      const gap = 25; // فاصله بین آیتم‌ها
+      const itemCount = portfolioData.length * 3;
+      const itemWidth = 350;
+      const gap = 25;
       const totalWidth = itemCount * (itemWidth + gap);
       
       galleryTrack.style.width = totalWidth + 'px';
@@ -1663,13 +1587,13 @@
       // انیمیشن اسکرول
       let animationId;
       let position = 0;
-      const speed = 0.5; // سرعت اسکرول
+      const speed = 1; // افزایش سرعت
       
       function animateGallery() {
         position -= speed;
         
         // اگر از انتهای اولین مجموعه گذشتیم، به ابتدا برگردیم
-        const setWidth = galleryItems.length * (itemWidth + gap);
+        const setWidth = portfolioData.length * (itemWidth + gap);
         if (position <= -setWidth) {
           position += setWidth;
         }
@@ -1692,70 +1616,22 @@
       animationId = requestAnimationFrame(animateGallery);
     }
 
-    // ==================== عملکرد رزومه و محصولات ====================
-    function showResume() {
-      // مخفی کردن تمام بخش‌ها
-      document.querySelectorAll('section').forEach(section => {
-        section.style.display = 'none';
+    // به‌روزرسانی محتوای گالری بر اساس زبان
+    function updateGalleryContent() {
+      const galleryItems = document.querySelectorAll('.gallery-item .client-name');
+      galleryItems.forEach((item, index) => {
+        const dataIndex = index % portfolioData.length;
+        item.textContent = portfolioData[dataIndex].client;
       });
-      
-      // نمایش بخش رزومه
-      const resumeSection = document.getElementById('resume');
-      resumeSection.style.display = 'block';
-      
-      // اسکرول به بالا
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      
-      // بارگذاری عکس پروفایل
-      const profileImage = document.getElementById('profileImage');
-      profileImage.onerror = function() {
-        this.src = 'https://via.placeholder.com/150/1e40af/ffffff?text=عکس+پرسنل';
-      };
-    }
-
-    function showProducts() {
-      // مخفی کردن تمام بخش‌ها
-      document.querySelectorAll('section').forEach(section => {
-        section.style.display = 'none';
-      });
-      
-      // نمایش بخش محصولات
-      const productsSection = document.getElementById('products');
-      productsSection.style.display = 'block';
-      
-      // اسکرول به بالا
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-
-    function showMainPage() {
-      // نمایش تمام بخش‌های اصلی
-      document.querySelectorAll('section').forEach(section => {
-        if (section.id !== 'resume') {
-          section.style.display = 'block';
-        }
-      });
-      
-      // مخفی کردن رزومه
-      document.getElementById('resume').style.display = 'none';
     }
 
     // ==================== رویدادهای صفحه ====================
-    let currentLang = 'fa';
-    
     document.addEventListener('DOMContentLoaded', function() {
       // تنظیم رویداد برای دکمه‌های زبان
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           const lang = this.dataset.lang;
-          currentLang = lang;
           changeLanguage(lang);
-          setupGalleryInfiniteLoop(); // به‌روزرسانی گالری با زبان جدید
         });
       });
       
@@ -1782,31 +1658,36 @@
       // تنظیم گالری
       setupGalleryInfiniteLoop();
       
-      // تنظیم رویداد برای لینک‌های ناوبری
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href === '#resume') {
-            e.preventDefault();
-            showResume();
-          } else if (href === '#products') {
-            e.preventDefault();
-            showProducts();
-          } else if (href === '#hero') {
-            e.preventDefault();
-            showMainPage();
-          }
-        });
+      // کنترل خطا برای تصاویر گالری
+      document.querySelectorAll('.gallery-img').forEach(img => {
+        img.onerror = function() {
+          this.src = 'https://via.placeholder.com/350x220/1e40af/ffffff?text=' + encodeURIComponent(this.alt);
+        };
       });
       
-      // رویداد برای لینک لوگو
-      document.querySelector('.brand').addEventListener('click', function(e) {
-        e.preventDefault();
-        showMainPage();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+      // کنترل خطا برای تصاویر پروژه‌ها
+      document.querySelectorAll('.project-img').forEach(img => {
+        img.onerror = function() {
+          if (this.alt.includes('یونولیت')) {
+            this.src = 'https://via.placeholder.com/400x200/0f766e/ffffff?text=کارخانه+یونولیت+سراوان';
+          } else if (this.alt.includes('فب‌لب')) {
+            this.src = 'https://via.placeholder.com/400x200/14b8a6/ffffff?text=کافه+فب‌لب+روند';
+          }
+        };
+      });
+      
+      // کنترل خطا برای پرچم‌ها
+      document.querySelectorAll('.lang-btn img').forEach(img => {
+        img.onerror = function() {
+          const lang = this.parentElement.dataset.lang;
+          if (lang === 'fa') {
+            this.src = 'https://flagcdn.com/w40/ir.png';
+          } else if (lang === 'en') {
+            this.src = 'https://flagcdn.com/w40/us.png';
+          } else if (lang === 'ar') {
+            this.src = 'https://flagcdn.com/w40/sa.png';
+          }
+        };
       });
     });
     
@@ -1825,10 +1706,10 @@
     // انیمیشن اسکرول نرم برای بخش‌ها
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#' || targetId === '#resume' || targetId === '#products') return;
-        
         e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           window.scrollTo({
@@ -1853,23 +1734,9 @@
       });
     }, observerOptions);
     
-    document.querySelectorAll('.service-card, .project-card, .resume-person').forEach(card => {
+    document.querySelectorAll('.service-card, .project-card').forEach(card => {
       observer.observe(card);
     });
-    
-    // اسکرول پیوسته مشتریان
-    const clientsTrack = document.querySelector('.clients-track');
-    
-    // کپی کردن لوگوها برای اسکرول بی‌نهایت
-    function duplicateLogos() {
-      const logos = clientsTrack.querySelectorAll('.client-logo');
-      logos.forEach(logo => {
-        const clone = logo.cloneNode(true);
-        clientsTrack.appendChild(clone);
-      });
-    }
-    
-    window.addEventListener('load', duplicateLogos);
     
     // کنترل ویدیو برای موبایل
     const video = document.querySelector('.video-background');
