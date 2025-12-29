@@ -373,6 +373,25 @@
       min-width: 24px;
     }
     
+    .project-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+    
+    .project-list li {
+      margin-bottom: 10px;
+      padding-right: 15px;
+      position: relative;
+    }
+    
+    .project-list li:before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      position: absolute;
+      right: 0;
+    }
+    
     /* موبایل */
     @media (max-width: 768px) {
       .nav-links {
@@ -505,6 +524,22 @@
           
           <div class="resume-grid">
             <div class="resume-card">
+              <h3>اطلاعات شخصی</h3>
+              <div class="info-item">
+                <div class="info-label">تاریخ تولد</div>
+                <div class="info-value">۱ مهر ۱۳۷۸</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">وضعیت تأهل</div>
+                <div class="info-value">مجرد</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">وضعیت نظام وظیفه</div>
+                <div class="info-value">معافیت تحصیلی</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
               <h3>اطلاعات تماس</h3>
               <div class="contact-item">
                 <i class="fas fa-envelope contact-icon"></i>
@@ -512,27 +547,31 @@
               </div>
               <div class="contact-item">
                 <i class="fas fa-phone contact-icon"></i>
-                <span>09226704205</span>
+                <span>۰۹۲۲۶۷۰۴۲۰۵</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt contact-icon"></i>
                 <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+              </div>
+              <div class="contact-item">
+                <i class="fab fa-telegram contact-icon"></i>
+                <span>t.me/javad_isazadeh</span>
               </div>
             </div>
             
             <div class="resume-card">
               <h3>تحصیلات</h3>
               <div class="info-item">
-                <div class="info-label">مقطع تحصیلی</div>
-                <div class="info-value">دکترای تخصصی</div>
+                <div class="info-label">دکتری</div>
+                <div class="info-value">مهندسی مکانیک - دانشگاه سیستان و بلوچستان</div>
               </div>
               <div class="info-item">
-                <div class="info-label">رشته</div>
-                <div class="info-value">مهندسی مکانیک</div>
+                <div class="info-label">کارشناسی ارشد</div>
+                <div class="info-value">مهندسی مکاترونیک - دانشگاه سیستان و بلوچستان (معدل: ۱۶.۷)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">دانشگاه</div>
-                <div class="info-value">دانشگاه سیستان و بلوچستان</div>
+                <div class="info-label">کارشناسی</div>
+                <div class="info-value">مهندسی مکانیک (گرایش جامدات) - دانشگاه سیستان و بلوچستان (معدل: ۱۴.۶)</div>
               </div>
             </div>
             
@@ -544,11 +583,11 @@
               </div>
               <div class="info-item">
                 <div class="info-label">شرکت</div>
-                <div class="info-value">توسعه پردازان</div>
+                <div class="info-value">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</div>
               </div>
               <div class="info-item">
-                <div class="info-label">دوره فعالیت</div>
-                <div class="info-value">۱۴۰۱ - تاکنون</div>
+                <div class="info-label">حوزه تخصصی</div>
+                <div class="info-value">تجهیزات پزشکی و TEC</div>
               </div>
             </div>
             
@@ -556,7 +595,7 @@
               <h3>مهارت‌های تخصصی</h3>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>طراحی صنعتی</span>
+                  <span>طراحی صنعتی با CATIA</span>
                   <span>۹۵%</span>
                 </div>
                 <div class="skill-level">
@@ -565,7 +604,7 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>مهندسی معکوس</span>
+                  <span>تحلیل صنعتی با ABAQUS</span>
                   <span>۹۰%</span>
                 </div>
                 <div class="skill-level">
@@ -574,12 +613,108 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>مدیریت پروژه</span>
+                  <span>برنامه‌نویسی CNC</span>
+                  <span>۹۰%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>COMSOL Multiphysics</span>
                   <span>۸۵%</span>
                 </div>
                 <div class="skill-level">
                   <div class="skill-progress" style="width: 85%"></div>
                 </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>Matlab</span>
+                  <span>۸۵%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>Microsoft Office</span>
+                  <span>۹۵%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>زبان انگلیسی</h3>
+              <div class="skill-bar">
+                <div class="skill-name">
+                  <span>مهارت کلی</span>
+                  <span>۸۵%</span>
+                </div>
+                <div class="skill-level">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">توضیح</div>
+                <div class="info-value">توانایی مطالعه مقالات تخصصی، مکالمه فنی و نگارش گزارش‌های علمی</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>پروژه‌های مهم</h3>
+              <ul class="project-list">
+                <li>طراحی و ساخت دستگاه تست رفلکس کالریک (۱۴۰۰)</li>
+                <li>طراحی و ساخت دستگاه رگ‌یاب (۱۳۹۹)</li>
+                <li>طراحی و ساخت دستگاه ECG test (۱۳۹۷)</li>
+                <li>افزونه دستگاه رادیولوژی برای دندانپزشکی (۱۳۹۷)</li>
+                <li>طراحی و ساخت دستگاه Defibrillation (۱۳۹۶)</li>
+                <li>طراحی و ساخت دستگاه سبدشور (۱۳۹۶)</li>
+                <li>طراحی و ساخت دستگاه دست‌خشک‌کن آنتی‌باکتریال (۱۳۹۶)</li>
+                <li>طراحی و ساخت پوشیدنی Pulse Oximeter (۱۳۹۹)</li>
+                <li>طراحی و ساخت دستگاه Sanitizer با لامپ UV (۱۳۹۹)</li>
+                <li>طراحی دستگاه تصفیه هوا با لامپ UV</li>
+              </ul>
+            </div>
+            
+            <div class="resume-card">
+              <h3>گواهینامه‌ها و دوره‌ها</h3>
+              <div class="info-item">
+                <div class="info-label">تعمیرات تجهیزات پزشکی و دندانپزشکی</div>
+                <div class="info-value">شرکت‌های آرمد و چابک تجهیز (شهریور ۱۳۹۷)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">داور تجهیزات پزشکی</div>
+                <div class="info-value">پنجمین فن‌بازار ملی سلامت (آبان ۱۳۹۸)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">کاروری CNC</div>
+                <div class="info-value">سازمان آموزشی فنی و حرفه‌ای کشور (مهر ۱۳۹۶)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">باز و بست موتور خودرو</div>
+                <div class="info-value">دانشگاه سیستان و بلوچستان (اردیبهشت ۱۳۹۷)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">توسعه مهارت‌های فردی و اجتماعی</div>
+                <div class="info-value">انجمن علمی تعالی کسب و کار ایرانیان (آبان ۱۳۹۰)</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>افتخارات و جوایز</h3>
+              <div class="info-item">
+                <div class="info-label">نخبه پژوهشی</div>
+                <div class="info-value">دانشگاه سیستان و بلوچستان (۱۳۹۸)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">رتبه برتر</div>
+                <div class="info-value">نمایشگاه بین‌المللی فناوری و نوآوری تهران (۱۳۹۷)</div>
               </div>
             </div>
           </div>
@@ -599,11 +734,11 @@
               <h3>اطلاعات تماس</h3>
               <div class="contact-item">
                 <i class="fas fa-envelope contact-icon"></i>
-                <span>m.vasefyan80@gmail.com</span>
+                <span>m.vasefyan.ke@gmail.com</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-phone contact-icon"></i>
-                <span>۰۹۹۱۶۳۷۷۲۶۹</span>
+                <span>۰۹۱۶۳۷۷۲۶۹</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt contact-icon"></i>
@@ -633,6 +768,40 @@
                 <div class="info-label">سال فارغ‌التحصیلی</div>
                 <div class="info-value">۱۳۹۹</div>
               </div>
+              <div class="info-item">
+                <div class="info-label">موقعیت</div>
+                <div class="info-value">سیستان و بلوچستان، زاهدان</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>سوابق شغلی</h3>
+              <div class="info-item">
+                <div class="info-label">طراح صنعتی با کتیا</div>
+                <div class="info-value">مرکز طراحی صنعتی پارک علم و فناوری (آبان ۱۴۰۲ - اکنون)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">وظایف</div>
+                <div class="info-value">طراحی و توسعه محصولات جدید، طراحی قطعات و مجموعه‌ها با کتیا، همکاری با تیم‌های تولید و تحقیق و توسعه</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-label">مهندس طراح - اپراتور CNC</div>
+                <div class="info-value">دفتر مهندسی جدیدالاسلام (مرداد ۱۴۰۲ - اکنون)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">وظایف</div>
+                <div class="info-value">تدوین و طراحی نقشه‌های فنی، طراحی نقشه‌های قطعات صنعتی، برنامه‌ریزی و راه‌اندازی CNC، کنترل و نظارت بر عملکرد CNC، برنامه‌نویسی و تنظیم ابزاربرداری</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-label">مهندس طراح - اپراتور CNC</div>
+                <div class="info-value">شرکت دانش بنیان فنی و مهندسی توسعه پردازان (مهر ۱۴۰۱ - اکنون)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">وظایف</div>
+                <div class="info-value">طراحی و نگارش نقشه‌های فنی قطعات صنعتی، برنامه‌ریزی و کنترل تولید با نرم‌افزارهای مرتبط، تنظیم و راه‌اندازی دستگاه‌های CNC، تولید و قطعه‌سازی با CNC</div>
+              </div>
             </div>
             
             <div class="resume-card">
@@ -642,12 +811,16 @@
                 <div class="info-value">ICDL هفتگانه</div>
               </div>
               <div class="info-item">
-                <div class="info-label">نرم‌افزارها</div>
-                <div class="info-value">CATIA, Photoshop, Artcam</div>
+                <div class="info-label">نرم‌افزارهای تخصصی</div>
+                <div class="info-value">CATIA (طراحی صنعتی)، Artcam، Photoshop</div>
               </div>
               <div class="info-item">
-                <div class="info-label">تخصص‌ها</div>
+                <div class="info-label">مهارت‌های عملی</div>
                 <div class="info-value">اپراتوری CNC، تراشکاری، کار با چوب</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">سایر مهارت‌ها</div>
+                <div class="info-value">جوشکاری، کارهای هنری، کار با انواع دستگاه‌های ساخت</div>
               </div>
             </div>
             
@@ -674,10 +847,10 @@
               <div class="skill-bar">
                 <div class="skill-name">
                   <span>گفتاری</span>
-                  <span>۸۰%</span>
+                  <span>۶۰%</span>
                 </div>
                 <div class="skill-level">
-                  <div class="skill-progress" style="width: 80%"></div>
+                  <div class="skill-progress" style="width: 60%"></div>
                 </div>
               </div>
               <div class="skill-bar">
@@ -688,22 +861,6 @@
                 <div class="skill-level">
                   <div class="skill-progress" style="width: 60%"></div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="resume-card">
-              <h3>سوابق شغلی</h3>
-              <div class="info-item">
-                <div class="info-label">طراح صنعتی با کتیا</div>
-                <div class="info-value">مرکز طراحی صنعتی پارک علم و فناوری (۱۴۰۲ - اکنون)</div>
-              </div>
-              <div class="info-item">
-                <div class="info-label">مهندس طراح - اپراتور CNC</div>
-                <div class="info-value">دفتر مهندسی جدیدالاسلام (۱۴۰۲ مرداد - اکنون)</div>
-              </div>
-              <div class="info-item">
-                <div class="info-label">مهندس طراح - اپراتور CNC</div>
-                <div class="info-value">شرکت توسعه پردازان (۱۴۰۱ مهر - اکنون)</div>
               </div>
             </div>
             
@@ -720,6 +877,13 @@
               </div>
               <div class="info-item">
                 <div class="info-value">کارهای هنری</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3>خلاصه رزومه</h3>
+              <div class="info-item">
+                <div class="info-value">طراح و مهندس مکانیک با تخصص در طراحی صنعتی با نرم‌افزار CATIA و اپراتوری دستگاه‌های CNC. دارای تجربه کاری در شرکت‌های مهندسی و مراکز طراحی صنعتی. مسلط به مراحل طراحی تا تولید قطعات صنعتی.</div>
               </div>
             </div>
           </div>
@@ -771,6 +935,9 @@
             document.documentElement.dir = 'ltr';
             document.documentElement.lang = 'en';
           }
+          
+          // ذخیره زبان انتخابی
+          localStorage.setItem('preferredLanguage', lang);
         });
       });
       
