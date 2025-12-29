@@ -24,6 +24,8 @@
       --surface: rgba(255, 255, 255, 0.9);
       --accent: #dc2626;
       --maxw: 1200px;
+      --glass-bg: rgba(255, 255, 255, 0.2);
+      --glass-border: rgba(255, 255, 255, 0.3);
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,23 +75,31 @@
       border-radius: 2px;
     }
     
-    /* ناوبری */
+    /* ناوبری شیشه‌ای */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
     }
     
     .nav-wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 15px 20px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -474,12 +484,12 @@
       </a>
       <nav>
         <ul class="nav-links">
-          <li><a href="index.html#hero">خانه</a></li>
-          <li><a href="index.html#services">خدمات</a></li>
-          <li><a href="products.html">نمونه خدمات و محصولات</a></li>
-          <li><a href="resume.html">رزومه پرسنل</a></li>
-          <li><a href="index.html#projects">پروژه‌های توسعه</a></li>
-          <li><a href="index.html#contact">تماس</a></li>
+          <li><a href="index.html#hero" data-i18n="nav.home">خانه</a></li>
+          <li><a href="index.html#services" data-i18n="nav.services">خدمات</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="index.html#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
               <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
@@ -501,16 +511,16 @@
     <div class="container">
       <button class="back-btn" onclick="window.location.href='index.html'">← بازگشت به صفحه اصلی</button>
       
-      <h2>رزومه پرسنل</h2>
+      <h2 data-i18n="resume.title">رزومه پرسنل</h2>
       
       <div class="team-selection">
         <button class="team-member-btn active" data-member="javad">
           <i class="fas fa-user-tie member-icon"></i>
-          دکتر جواد عیسی‌زاده لنگرودی
+          <span data-i18n="resume.javad.name">دکتر جواد عیسی‌زاده لنگرودی</span>
         </button>
         <button class="team-member-btn" data-member="mina">
           <i class="fas fa-user-graduate member-icon"></i>
-          مهندس مینا واصفیان
+          <span data-i18n="resume.mina.name">مهندس مینا واصفیان</span>
         </button>
       </div>
       
@@ -518,29 +528,29 @@
       <div class="resume-content active" id="javad-resume">
         <div class="resume-container">
           <div class="resume-header">
-            <h1>دکتر جواد عیسی‌زاده لنگرودی</h1>
-            <div class="subtitle">موسس و مدیرعامل شرکت دانش بنیان فنی و مهندسی توسعه پردازان</div>
+            <h1 data-i18n="resume.javad.fullname">دکتر جواد عیسی‌زاده لنگرودی</h1>
+            <div class="subtitle" data-i18n="resume.javad.position">موسس و مدیرعامل شرکت دانش بنیان فنی و مهندسی توسعه پردازان</div>
           </div>
           
           <div class="resume-grid">
             <div class="resume-card">
-              <h3>اطلاعات شخصی</h3>
+              <h3 data-i18n="resume.personalInfo">اطلاعات شخصی</h3>
               <div class="info-item">
-                <div class="info-label">تاریخ تولد</div>
+                <div class="info-label" data-i18n="resume.birthdate">تاریخ تولد</div>
                 <div class="info-value">۱ مهر ۱۳۷۸</div>
               </div>
               <div class="info-item">
-                <div class="info-label">وضعیت تأهل</div>
-                <div class="info-value">مجرد</div>
+                <div class="info-label" data-i18n="resume.maritalStatus">وضعیت تأهل</div>
+                <div class="info-value" data-i18n="resume.single">مجرد</div>
               </div>
               <div class="info-item">
-                <div class="info-label">وضعیت نظام وظیفه</div>
-                <div class="info-value">معافیت تحصیلی</div>
+                <div class="info-label" data-i18n="resume.militaryStatus">وضعیت نظام وظیفه</div>
+                <div class="info-value" data-i18n="resume.educationExemption">معافیت تحصیلی</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>اطلاعات تماس</h3>
+              <h3 data-i18n="resume.contactInfo">اطلاعات تماس</h3>
               <div class="contact-item">
                 <i class="fas fa-envelope contact-icon"></i>
                 <span>javadisazadeh24@gmail.com</span>
@@ -551,7 +561,7 @@
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt contact-icon"></i>
-                <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+                <span data-i18n="resume.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
               </div>
               <div class="contact-item">
                 <i class="fab fa-telegram contact-icon"></i>
@@ -560,42 +570,42 @@
             </div>
             
             <div class="resume-card">
-              <h3>تحصیلات</h3>
+              <h3 data-i18n="resume.education">تحصیلات</h3>
               <div class="info-item">
-                <div class="info-label">دکتری</div>
-                <div class="info-value">مهندسی مکانیک - دانشگاه سیستان و بلوچستان</div>
+                <div class="info-label" data-i18n="resume.phd">دکتری</div>
+                <div class="info-value" data-i18n="resume.javad.phd">مهندسی مکانیک - دانشگاه سیستان و بلوچستان</div>
               </div>
               <div class="info-item">
-                <div class="info-label">کارشناسی ارشد</div>
-                <div class="info-value">مهندسی مکاترونیک - دانشگاه سیستان و بلوچستان (معدل: ۱۶.۷)</div>
+                <div class="info-label" data-i18n="resume.masters">کارشناسی ارشد</div>
+                <div class="info-value" data-i18n="resume.javad.masters">مهندسی مکاترونیک - دانشگاه سیستان و بلوچستان (معدل: ۱۶.۷)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">کارشناسی</div>
-                <div class="info-value">مهندسی مکانیک (گرایش جامدات) - دانشگاه سیستان و بلوچستان (معدل: ۱۴.۶)</div>
-              </div>
-            </div>
-            
-            <div class="resume-card">
-              <h3>سوابق شغلی</h3>
-              <div class="info-item">
-                <div class="info-label">سمت</div>
-                <div class="info-value">موسس و مدیرعامل</div>
-              </div>
-              <div class="info-item">
-                <div class="info-label">شرکت</div>
-                <div class="info-value">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</div>
-              </div>
-              <div class="info-item">
-                <div class="info-label">حوزه تخصصی</div>
-                <div class="info-value">تجهیزات پزشکی و TEC</div>
+                <div class="info-label" data-i18n="resume.bachelors">کارشناسی</div>
+                <div class="info-value" data-i18n="resume.javad.bachelors">مهندسی مکانیک (گرایش جامدات) - دانشگاه سیستان و بلوچستان (معدل: ۱۴.۶)</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>مهارت‌های تخصصی</h3>
+              <h3 data-i18n="resume.workExperience">سوابق شغلی</h3>
+              <div class="info-item">
+                <div class="info-label" data-i18n="resume.position">سمت</div>
+                <div class="info-value" data-i18n="resume.javad.positionShort">موسس و مدیرعامل</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label" data-i18n="resume.company">شرکت</div>
+                <div class="info-value" data-i18n="resume.javad.company">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label" data-i18n="resume.specialty">حوزه تخصصی</div>
+                <div class="info-value" data-i18n="resume.javad.specialty">تجهیزات پزشکی و TEC</div>
+              </div>
+            </div>
+            
+            <div class="resume-card">
+              <h3 data-i18n="resume.skills">مهارت‌های تخصصی</h3>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>طراحی صنعتی با CATIA</span>
+                  <span data-i18n="resume.javad.skill1">طراحی صنعتی با CATIA</span>
                   <span>۹۵%</span>
                 </div>
                 <div class="skill-level">
@@ -604,7 +614,7 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>تحلیل صنعتی با ABAQUS</span>
+                  <span data-i18n="resume.javad.skill2">تحلیل صنعتی با ABAQUS</span>
                   <span>۹۰%</span>
                 </div>
                 <div class="skill-level">
@@ -613,7 +623,7 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>برنامه‌نویسی CNC</span>
+                  <span data-i18n="resume.javad.skill3">برنامه‌نویسی CNC</span>
                   <span>۹۰%</span>
                 </div>
                 <div class="skill-level">
@@ -650,10 +660,10 @@
             </div>
             
             <div class="resume-card">
-              <h3>زبان انگلیسی</h3>
+              <h3 data-i18n="resume.english">زبان انگلیسی</h3>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>مهارت کلی</span>
+                  <span data-i18n="resume.overall">مهارت کلی</span>
                   <span>۸۵%</span>
                 </div>
                 <div class="skill-level">
@@ -661,59 +671,59 @@
                 </div>
               </div>
               <div class="info-item">
-                <div class="info-label">توضیح</div>
-                <div class="info-value">توانایی مطالعه مقالات تخصصی، مکالمه فنی و نگارش گزارش‌های علمی</div>
+                <div class="info-label" data-i18n="resume.description">توضیح</div>
+                <div class="info-value" data-i18n="resume.javad.englishDesc">توانایی مطالعه مقالات تخصصی، مکالمه فنی و نگارش گزارش‌های علمی</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>پروژه‌های مهم</h3>
+              <h3 data-i18n="resume.projects">پروژه‌های مهم</h3>
               <ul class="project-list">
-                <li>طراحی و ساخت دستگاه تست رفلکس کالریک (۱۴۰۰)</li>
-                <li>طراحی و ساخت دستگاه رگ‌یاب (۱۳۹۹)</li>
-                <li>طراحی و ساخت دستگاه ECG test (۱۳۹۷)</li>
-                <li>افزونه دستگاه رادیولوژی برای دندانپزشکی (۱۳۹۷)</li>
-                <li>طراحی و ساخت دستگاه Defibrillation (۱۳۹۶)</li>
-                <li>طراحی و ساخت دستگاه سبدشور (۱۳۹۶)</li>
-                <li>طراحی و ساخت دستگاه دست‌خشک‌کن آنتی‌باکتریال (۱۳۹۶)</li>
-                <li>طراحی و ساخت پوشیدنی Pulse Oximeter (۱۳۹۹)</li>
-                <li>طراحی و ساخت دستگاه Sanitizer با لامپ UV (۱۳۹۹)</li>
-                <li>طراحی دستگاه تصفیه هوا با لامپ UV</li>
+                <li data-i18n="resume.javad.project1">طراحی و ساخت دستگاه تست رفلکس کالریک (۱۴۰۰)</li>
+                <li data-i18n="resume.javad.project2">طراحی و ساخت دستگاه رگ‌یاب (۱۳۹۹)</li>
+                <li data-i18n="resume.javad.project3">طراحی و ساخت دستگاه ECG test (۱۳۹۷)</li>
+                <li data-i18n="resume.javad.project4">افزونه دستگاه رادیولوژی برای دندانپزشکی (۱۳۹۷)</li>
+                <li data-i18n="resume.javad.project5">طراحی و ساخت دستگاه Defibrillation (۱۳۹۶)</li>
+                <li data-i18n="resume.javad.project6">طراحی و ساخت دستگاه سبدشور (۱۳۹۶)</li>
+                <li data-i18n="resume.javad.project7">طراحی و ساخت دستگاه دست‌خشک‌کن آنتی‌باکتریال (۱۳۹۶)</li>
+                <li data-i18n="resume.javad.project8">طراحی و ساخت پوشیدنی Pulse Oximeter (۱۳۹۹)</li>
+                <li data-i18n="resume.javad.project9">طراحی و ساخت دستگاه Sanitizer با لامپ UV (۱۳۹۹)</li>
+                <li data-i18n="resume.javad.project10">طراحی دستگاه تصفیه هوا با لامپ UV</li>
               </ul>
             </div>
             
             <div class="resume-card">
-              <h3>گواهینامه‌ها و دوره‌ها</h3>
+              <h3 data-i18n="resume.certificates">گواهینامه‌ها و دوره‌ها</h3>
               <div class="info-item">
-                <div class="info-label">تعمیرات تجهیزات پزشکی و دندانپزشکی</div>
+                <div class="info-label" data-i18n="resume.javad.cert1">تعمیرات تجهیزات پزشکی و دندانپزشکی</div>
                 <div class="info-value">شرکت‌های آرمد و چابک تجهیز (شهریور ۱۳۹۷)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">داور تجهیزات پزشکی</div>
+                <div class="info-label" data-i18n="resume.javad.cert2">داور تجهیزات پزشکی</div>
                 <div class="info-value">پنجمین فن‌بازار ملی سلامت (آبان ۱۳۹۸)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">کاروری CNC</div>
+                <div class="info-label" data-i18n="resume.javad.cert3">کاروری CNC</div>
                 <div class="info-value">سازمان آموزشی فنی و حرفه‌ای کشور (مهر ۱۳۹۶)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">باز و بست موتور خودرو</div>
+                <div class="info-label" data-i18n="resume.javad.cert4">باز و بست موتور خودرو</div>
                 <div class="info-value">دانشگاه سیستان و بلوچستان (اردیبهشت ۱۳۹۷)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">توسعه مهارت‌های فردی و اجتماعی</div>
+                <div class="info-label" data-i18n="resume.javad.cert5">توسعه مهارت‌های فردی و اجتماعی</div>
                 <div class="info-value">انجمن علمی تعالی کسب و کار ایرانیان (آبان ۱۳۹۰)</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>افتخارات و جوایز</h3>
+              <h3 data-i18n="resume.honors">افتخارات و جوایز</h3>
               <div class="info-item">
-                <div class="info-label">نخبه پژوهشی</div>
+                <div class="info-label" data-i18n="resume.javad.honor1">نخبه پژوهشی</div>
                 <div class="info-value">دانشگاه سیستان و بلوچستان (۱۳۹۸)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">رتبه برتر</div>
+                <div class="info-label" data-i18n="resume.javad.honor2">رتبه برتر</div>
                 <div class="info-value">نمایشگاه بین‌المللی فناوری و نوآوری تهران (۱۳۹۷)</div>
               </div>
             </div>
@@ -725,13 +735,13 @@
       <div class="resume-content" id="mina-resume">
         <div class="resume-container">
           <div class="resume-header">
-            <h1>مهندس مینا واصفیان</h1>
-            <div class="subtitle">طراح و مهندس مکانیک - شرکت توسعه پردازان</div>
+            <h1 data-i18n="resume.mina.fullname">مهندس مینا واصفیان</h1>
+            <div class="subtitle" data-i18n="resume.mina.position">طراح و مهندس مکانیک - شرکت توسعه پردازان</div>
           </div>
           
           <div class="resume-grid">
             <div class="resume-card">
-              <h3>اطلاعات تماس</h3>
+              <h3 data-i18n="resume.contactInfo">اطلاعات تماس</h3>
               <div class="contact-item">
                 <i class="fas fa-envelope contact-icon"></i>
                 <span>m.vasefyan.ke@gmail.com</span>
@@ -742,7 +752,7 @@
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt contact-icon"></i>
-                <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+                <span data-i18n="resume.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
               </div>
               <div class="contact-item">
                 <i class="fab fa-instagram contact-icon"></i>
@@ -751,84 +761,84 @@
             </div>
             
             <div class="resume-card">
-              <h3>تحصیلات</h3>
+              <h3 data-i18n="resume.education">تحصیلات</h3>
               <div class="info-item">
-                <div class="info-label">مقطع تحصیلی</div>
-                <div class="info-value">کارشناسی مهندسی مکانیک</div>
+                <div class="info-label" data-i18n="resume.degree">مقطع تحصیلی</div>
+                <div class="info-value" data-i18n="resume.mina.degree">کارشناسی مهندسی مکانیک</div>
               </div>
               <div class="info-item">
-                <div class="info-label">گرایش</div>
-                <div class="info-value">طراحی کاربردی</div>
+                <div class="info-label" data-i18n="resume.field">گرایش</div>
+                <div class="info-value" data-i18n="resume.mina.field">طراحی کاربردی</div>
               </div>
               <div class="info-item">
-                <div class="info-label">دانشگاه</div>
-                <div class="info-value">دانشگاه سیستان و بلوچستان (دولتی)</div>
+                <div class="info-label" data-i18n="resume.university">دانشگاه</div>
+                <div class="info-value" data-i18n="resume.mina.university">دانشگاه سیستان و بلوچستان (دولتی)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">سال فارغ‌التحصیلی</div>
+                <div class="info-label" data-i18n="resume.graduationYear">سال فارغ‌التحصیلی</div>
                 <div class="info-value">۱۳۹۹</div>
               </div>
               <div class="info-item">
-                <div class="info-label">موقعیت</div>
-                <div class="info-value">سیستان و بلوچستان، زاهدان</div>
+                <div class="info-label" data-i18n="resume.location">موقعیت</div>
+                <div class="info-value" data-i18n="resume.mina.location">سیستان و بلوچستان، زاهدان</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>سوابق شغلی</h3>
+              <h3 data-i18n="resume.workExperience">سوابق شغلی</h3>
               <div class="info-item">
-                <div class="info-label">طراح صنعتی با کتیا</div>
-                <div class="info-value">مرکز طراحی صنعتی پارک علم و فناوری (آبان ۱۴۰۲ - اکنون)</div>
+                <div class="info-label" data-i18n="resume.mina.job1">طراح صنعتی با کتیا</div>
+                <div class="info-value" data-i18n="resume.mina.job1Desc">مرکز طراحی صنعتی پارک علم و فناوری (آبان ۱۴۰۲ - اکنون)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">وظایف</div>
-                <div class="info-value">طراحی و توسعه محصولات جدید، طراحی قطعات و مجموعه‌ها با کتیا، همکاری با تیم‌های تولید و تحقیق و توسعه</div>
-              </div>
-              
-              <div class="info-item">
-                <div class="info-label">مهندس طراح - اپراتور CNC</div>
-                <div class="info-value">دفتر مهندسی جدیدالاسلام (مرداد ۱۴۰۲ - اکنون)</div>
-              </div>
-              <div class="info-item">
-                <div class="info-label">وظایف</div>
-                <div class="info-value">تدوین و طراحی نقشه‌های فنی، طراحی نقشه‌های قطعات صنعتی، برنامه‌ریزی و راه‌اندازی CNC، کنترل و نظارت بر عملکرد CNC، برنامه‌نویسی و تنظیم ابزاربرداری</div>
+                <div class="info-label" data-i18n="resume.responsibilities">وظایف</div>
+                <div class="info-value" data-i18n="resume.mina.job1Duties">طراحی و توسعه محصولات جدید، طراحی قطعات و مجموعه‌ها با کتیا، همکاری با تیم‌های تولید و تحقیق و توسعه</div>
               </div>
               
               <div class="info-item">
-                <div class="info-label">مهندس طراح - اپراتور CNC</div>
-                <div class="info-value">شرکت دانش بنیان فنی و مهندسی توسعه پردازان (مهر ۱۴۰۱ - اکنون)</div>
+                <div class="info-label" data-i18n="resume.mina.job2">مهندس طراح - اپراتور CNC</div>
+                <div class="info-value" data-i18n="resume.mina.job2Desc">دفتر مهندسی جدیدالاسلام (مرداد ۱۴۰۲ - اکنون)</div>
               </div>
               <div class="info-item">
-                <div class="info-label">وظایف</div>
-                <div class="info-value">طراحی و نگارش نقشه‌های فنی قطعات صنعتی، برنامه‌ریزی و کنترل تولید با نرم‌افزارهای مرتبط، تنظیم و راه‌اندازی دستگاه‌های CNC، تولید و قطعه‌سازی با CNC</div>
+                <div class="info-label" data-i18n="resume.responsibilities">وظایف</div>
+                <div class="info-value" data-i18n="resume.mina.job2Duties">تدوین و طراحی نقشه‌های فنی، طراحی نقشه‌های قطعات صنعتی، برنامه‌ریزی و راه‌اندازی CNC، کنترل و نظارت بر عملکرد CNC، برنامه‌نویسی و تنظیم ابزاربرداری</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-label" data-i18n="resume.mina.job3">مهندس طراح - اپراتور CNC</div>
+                <div class="info-value" data-i18n="resume.mina.job3Desc">شرکت دانش بنیان فنی و مهندسی توسعه پردازان (مهر ۱۴۰۱ - اکنون)</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label" data-i18n="resume.responsibilities">وظایف</div>
+                <div class="info-value" data-i18n="resume.mina.job3Duties">طراحی و نگارش نقشه‌های فنی قطعات صنعتی، برنامه‌ریزی و کنترل تولید با نرم‌افزارهای مرتبط، تنظیم و راه‌اندازی دستگاه‌های CNC، تولید و قطعه‌سازی با CNC</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>مهارت‌ها</h3>
+              <h3 data-i18n="resume.skills">مهارت‌ها</h3>
               <div class="info-item">
-                <div class="info-label">آموزش کامپیوتر</div>
+                <div class="info-label" data-i18n="resume.mina.skill1">آموزش کامپیوتر</div>
                 <div class="info-value">ICDL هفتگانه</div>
               </div>
               <div class="info-item">
-                <div class="info-label">نرم‌افزارهای تخصصی</div>
+                <div class="info-label" data-i18n="resume.software">نرم‌افزارهای تخصصی</div>
                 <div class="info-value">CATIA (طراحی صنعتی)، Artcam، Photoshop</div>
               </div>
               <div class="info-item">
-                <div class="info-label">مهارت‌های عملی</div>
-                <div class="info-value">اپراتوری CNC، تراشکاری، کار با چوب</div>
+                <div class="info-label" data-i18n="resume.practicalSkills">مهارت‌های عملی</div>
+                <div class="info-value" data-i18n="resume.mina.practical">اپراتوری CNC، تراشکاری، کار با چوب</div>
               </div>
               <div class="info-item">
-                <div class="info-label">سایر مهارت‌ها</div>
-                <div class="info-value">جوشکاری، کارهای هنری، کار با انواع دستگاه‌های ساخت</div>
+                <div class="info-label" data-i18n="resume.otherSkills">سایر مهارت‌ها</div>
+                <div class="info-value" data-i18n="resume.mina.other">جوشکاری، کارهای هنری، کار با انواع دستگاه‌های ساخت</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>زبان انگلیسی</h3>
+              <h3 data-i18n="resume.english">زبان انگلیسی</h3>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>خواندن</span>
+                  <span data-i18n="resume.reading">خواندن</span>
                   <span>۱۰۰%</span>
                 </div>
                 <div class="skill-level">
@@ -837,7 +847,7 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>نوشتن</span>
+                  <span data-i18n="resume.writing">نوشتن</span>
                   <span>۸۰%</span>
                 </div>
                 <div class="skill-level">
@@ -846,7 +856,7 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>گفتاری</span>
+                  <span data-i18n="resume.speaking">گفتاری</span>
                   <span>۶۰%</span>
                 </div>
                 <div class="skill-level">
@@ -855,7 +865,7 @@
               </div>
               <div class="skill-bar">
                 <div class="skill-name">
-                  <span>شنیداری</span>
+                  <span data-i18n="resume.listening">شنیداری</span>
                   <span>۶۰%</span>
                 </div>
                 <div class="skill-level">
@@ -865,25 +875,25 @@
             </div>
             
             <div class="resume-card">
-              <h3>علاقمندی‌ها</h3>
+              <h3 data-i18n="resume.interests">علاقمندی‌ها</h3>
               <div class="info-item">
-                <div class="info-value">کار با انواع دستگاه‌ها جهت ساخت</div>
+                <div class="info-value" data-i18n="resume.mina.interest1">کار با انواع دستگاه‌ها جهت ساخت</div>
               </div>
               <div class="info-item">
-                <div class="info-value">کار با چوب و اکسسوری</div>
+                <div class="info-value" data-i18n="resume.mina.interest2">کار با چوب و اکسسوری</div>
               </div>
               <div class="info-item">
-                <div class="info-value">جوشکاری</div>
+                <div class="info-value" data-i18n="resume.mina.interest3">جوشکاری</div>
               </div>
               <div class="info-item">
-                <div class="info-value">کارهای هنری</div>
+                <div class="info-value" data-i18n="resume.mina.interest4">کارهای هنری</div>
               </div>
             </div>
             
             <div class="resume-card">
-              <h3>خلاصه رزومه</h3>
+              <h3 data-i18n="resume.summary">خلاصه رزومه</h3>
               <div class="info-item">
-                <div class="info-value">طراح و مهندس مکانیک با تخصص در طراحی صنعتی با نرم‌افزار CATIA و اپراتوری دستگاه‌های CNC. دارای تجربه کاری در شرکت‌های مهندسی و مراکز طراحی صنعتی. مسلط به مراحل طراحی تا تولید قطعات صنعتی.</div>
+                <div class="info-value" data-i18n="resume.mina.summary">طراح و مهندس مکانیک با تخصص در طراحی صنعتی با نرم‌افزار CATIA و اپراتوری دستگاه‌های CNC. دارای تجربه کاری در شرکت‌های مهندسی و مراکز طراحی صنعتی. مسلط به مراحل طراحی تا تولید قطعات صنعتی.</div>
               </div>
             </div>
           </div>
@@ -893,6 +903,393 @@
   </section>
 
   <script>
+    // ==================== سیستم چندزبانه برای رزومه ====================
+    const resumeTranslations = {
+      fa: {
+        // عمومی
+        "resume.title": "رزومه پرسنل",
+        "resume.personalInfo": "اطلاعات شخصی",
+        "resume.contactInfo": "اطلاعات تماس",
+        "resume.education": "تحصیلات",
+        "resume.workExperience": "سوابق شغلی",
+        "resume.skills": "مهارت‌های تخصصی",
+        "resume.english": "زبان انگلیسی",
+        "resume.projects": "پروژه‌های مهم",
+        "resume.certificates": "گواهینامه‌ها و دوره‌ها",
+        "resume.honors": "افتخارات و جوایز",
+        "resume.interests": "علاقمندی‌ها",
+        "resume.summary": "خلاصه رزومه",
+        
+        "resume.birthdate": "تاریخ تولد",
+        "resume.maritalStatus": "وضعیت تأهل",
+        "resume.militaryStatus": "وضعیت نظام وظیفه",
+        "resume.single": "مجرد",
+        "resume.educationExemption": "معافیت تحصیلی",
+        
+        "resume.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
+        
+        "resume.phd": "دکتری",
+        "resume.masters": "کارشناسی ارشد",
+        "resume.bachelors": "کارشناسی",
+        "resume.degree": "مقطع تحصیلی",
+        "resume.field": "گرایش",
+        "resume.university": "دانشگاه",
+        "resume.graduationYear": "سال فارغ‌التحصیلی",
+        "resume.location": "موقعیت",
+        
+        "resume.position": "سمت",
+        "resume.company": "شرکت",
+        "resume.specialty": "حوزه تخصصی",
+        "resume.responsibilities": "وظایف",
+        
+        "resume.software": "نرم‌افزارهای تخصصی",
+        "resume.practicalSkills": "مهارت‌های عملی",
+        "resume.otherSkills": "سایر مهارت‌ها",
+        
+        "resume.overall": "مهارت کلی",
+        "resume.description": "توضیح",
+        "resume.reading": "خواندن",
+        "resume.writing": "نوشتن",
+        "resume.speaking": "گفتاری",
+        "resume.listening": "شنیداری",
+        
+        // دکتر جواد
+        "resume.javad.name": "دکتر جواد عیسی‌زاده لنگرودی",
+        "resume.javad.fullname": "دکتر جواد عیسی‌زاده لنگرودی",
+        "resume.javad.position": "موسس و مدیرعامل شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+        "resume.javad.positionShort": "موسس و مدیرعامل",
+        "resume.javad.company": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+        "resume.javad.specialty": "تجهیزات پزشکی و TEC",
+        
+        "resume.javad.phd": "مهندسی مکانیک - دانشگاه سیستان و بلوچستان",
+        "resume.javad.masters": "مهندسی مکاترونیک - دانشگاه سیستان و بلوچستان (معدل: ۱۶.۷)",
+        "resume.javad.bachelors": "مهندسی مکانیک (گرایش جامدات) - دانشگاه سیستان و بلوچستان (معدل: ۱۴.۶)",
+        
+        "resume.javad.skill1": "طراحی صنعتی با CATIA",
+        "resume.javad.skill2": "تحلیل صنعتی با ABAQUS",
+        "resume.javad.skill3": "برنامه‌نویسی CNC",
+        
+        "resume.javad.englishDesc": "توانایی مطالعه مقالات تخصصی، مکالمه فنی و نگارش گزارش‌های علمی",
+        
+        "resume.javad.project1": "طراحی و ساخت دستگاه تست رفلکس کالریک (۱۴۰۰)",
+        "resume.javad.project2": "طراحی و ساخت دستگاه رگ‌یاب (۱۳۹۹)",
+        "resume.javad.project3": "طراحی و ساخت دستگاه ECG test (۱۳۹۷)",
+        "resume.javad.project4": "افزونه دستگاه رادیولوژی برای دندانپزشکی (۱۳۹۷)",
+        "resume.javad.project5": "طراحی و ساخت دستگاه Defibrillation (۱۳۹۶)",
+        "resume.javad.project6": "طراحی و ساخت دستگاه سبدشور (۱۳۹۶)",
+        "resume.javad.project7": "طراحی و ساخت دستگاه دست‌خشک‌کن آنتی‌باکتریال (۱۳۹۶)",
+        "resume.javad.project8": "طراحی و ساخت پوشیدنی Pulse Oximeter (۱۳۹۹)",
+        "resume.javad.project9": "طراحی و ساخت دستگاه Sanitizer با لامپ UV (۱۳۹۹)",
+        "resume.javad.project10": "طراحی دستگاه تصفیه هوا با لامپ UV",
+        
+        "resume.javad.cert1": "تعمیرات تجهیزات پزشکی و دندانپزشکی",
+        "resume.javad.cert2": "داور تجهیزات پزشکی",
+        "resume.javad.cert3": "کاروری CNC",
+        "resume.javad.cert4": "باز و بست موتور خودرو",
+        "resume.javad.cert5": "توسعه مهارت‌های فردی و اجتماعی",
+        
+        "resume.javad.honor1": "نخبه پژوهشی",
+        "resume.javad.honor2": "رتبه برتر",
+        
+        // مهندس مینا
+        "resume.mina.name": "مهندس مینا واصفیان",
+        "resume.mina.fullname": "مهندس مینا واصفیان",
+        "resume.mina.position": "طراح و مهندس مکانیک - شرکت توسعه پردازان",
+        
+        "resume.mina.degree": "کارشناسی مهندسی مکانیک",
+        "resume.mina.field": "طراحی کاربردی",
+        "resume.mina.university": "دانشگاه سیستان و بلوچستان (دولتی)",
+        "resume.mina.location": "سیستان و بلوچستان، زاهدان",
+        
+        "resume.mina.job1": "طراح صنعتی با کتیا",
+        "resume.mina.job1Desc": "مرکز طراحی صنعتی پارک علم و فناوری (آبان ۱۴۰۲ - اکنون)",
+        "resume.mina.job1Duties": "طراحی و توسعه محصولات جدید، طراحی قطعات و مجموعه‌ها با کتیا، همکاری با تیم‌های تولید و تحقیق و توسعه",
+        
+        "resume.mina.job2": "مهندس طراح - اپراتور CNC",
+        "resume.mina.job2Desc": "دفتر مهندسی جدیدالاسلام (مرداد ۱۴۰۲ - اکنون)",
+        "resume.mina.job2Duties": "تدوین و طراحی نقشه‌های فنی، طراحی نقشه‌های قطعات صنعتی، برنامه‌ریزی و راه‌اندازی CNC، کنترل و نظارت بر عملکرد CNC، برنامه‌نویسی و تنظیم ابزاربرداری",
+        
+        "resume.mina.job3": "مهندس طراح - اپراتور CNC",
+        "resume.mina.job3Desc": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان (مهر ۱۴۰۱ - اکنون)",
+        "resume.mina.job3Duties": "طراحی و نگارش نقشه‌های فنی قطعات صنعتی، برنامه‌ریزی و کنترل تولید با نرم‌افزارهای مرتبط، تنظیم و راه‌اندازی دستگاه‌های CNC، تولید و قطعه‌سازی با CNC",
+        
+        "resume.mina.skill1": "آموزش کامپیوتر",
+        "resume.mina.practical": "اپراتوری CNC، تراشکاری، کار با چوب",
+        "resume.mina.other": "جوشکاری، کارهای هنری، کار با انواع دستگاه‌های ساخت",
+        
+        "resume.mina.interest1": "کار با انواع دستگاه‌ها جهت ساخت",
+        "resume.mina.interest2": "کار با چوب و اکسسوری",
+        "resume.mina.interest3": "جوشکاری",
+        "resume.mina.interest4": "کارهای هنری",
+        
+        "resume.mina.summary": "طراح و مهندس مکانیک با تخصص در طراحی صنعتی با نرم‌افزار CATIA و اپراتوری دستگاه‌های CNC. دارای تجربه کاری در شرکت‌های مهندسی و مراکز طراحی صنعتی. مسلط به مراحل طراحی تا تولید قطعات صنعتی.",
+        
+        // ناوبری (مشترک با صفحه اصلی)
+        "nav.home": "خانه",
+        "nav.services": "خدمات",
+        "nav.products": "نمونه خدمات و محصولات",
+        "nav.resume": "رزومه پرسنل",
+        "nav.projects": "پروژه‌های توسعه",
+        "nav.contact": "تماس"
+      },
+      
+      en: {
+        // General
+        "resume.title": "Personnel Resumes",
+        "resume.personalInfo": "Personal Information",
+        "resume.contactInfo": "Contact Information",
+        "resume.education": "Education",
+        "resume.workExperience": "Work Experience",
+        "resume.skills": "Technical Skills",
+        "resume.english": "English Language",
+        "resume.projects": "Important Projects",
+        "resume.certificates": "Certificates & Courses",
+        "resume.honors": "Honors & Awards",
+        "resume.interests": "Interests",
+        "resume.summary": "Resume Summary",
+        
+        "resume.birthdate": "Date of Birth",
+        "resume.maritalStatus": "Marital Status",
+        "resume.militaryStatus": "Military Status",
+        "resume.single": "Single",
+        "resume.educationExemption": "Education Exemption",
+        
+        "resume.address": "Zahedan, University Boulevard, Science and Technology Park",
+        
+        "resume.phd": "PhD",
+        "resume.masters": "Master's Degree",
+        "resume.bachelors": "Bachelor's Degree",
+        "resume.degree": "Degree Level",
+        "resume.field": "Field",
+        "resume.university": "University",
+        "resume.graduationYear": "Graduation Year",
+        "resume.location": "Location",
+        
+        "resume.position": "Position",
+        "resume.company": "Company",
+        "resume.specialty": "Specialty Area",
+        "resume.responsibilities": "Responsibilities",
+        
+        "resume.software": "Specialized Software",
+        "resume.practicalSkills": "Practical Skills",
+        "resume.otherSkills": "Other Skills",
+        
+        "resume.overall": "Overall Skill",
+        "resume.description": "Description",
+        "resume.reading": "Reading",
+        "resume.writing": "Writing",
+        "resume.speaking": "Speaking",
+        "resume.listening": "Listening",
+        
+        // Dr. Javad
+        "resume.javad.name": "Dr. Javad Isazadeh Langarodi",
+        "resume.javad.fullname": "Dr. Javad Isazadeh Langarodi",
+        "resume.javad.position": "Founder & CEO - Tose Pardazan Knowledge-Based Engineering Company",
+        "resume.javad.positionShort": "Founder & CEO",
+        "resume.javad.company": "Tose Pardazan Knowledge-Based Engineering Company",
+        "resume.javad.specialty": "Medical Equipment & TEC",
+        
+        "resume.javad.phd": "Mechanical Engineering - University of Sistan and Baluchestan",
+        "resume.javad.masters": "Mechatronics Engineering - University of Sistan and Baluchestan (GPA: 16.7)",
+        "resume.javad.bachelors": "Mechanical Engineering (Solid Mechanics) - University of Sistan and Baluchestan (GPA: 14.6)",
+        
+        "resume.javad.skill1": "Industrial Design with CATIA",
+        "resume.javad.skill2": "Industrial Analysis with ABAQUS",
+        "resume.javad.skill3": "CNC Programming",
+        
+        "resume.javad.englishDesc": "Ability to study specialized articles, technical conversation and writing scientific reports",
+        
+        "resume.javad.project1": "Design and construction of Caloric Reflex Test device (2021)",
+        "resume.javad.project2": "Design and construction of Veinscope device (2020)",
+        "resume.javad.project3": "Design and construction of ECG test device (2018)",
+        "resume.javad.project4": "Radiology device add-on for dentistry (2018)",
+        "resume.javad.project5": "Design and construction of Defibrillation device (2017)",
+        "resume.javad.project6": "Design and construction of Basket Washer device (2017)",
+        "resume.javad.project7": "Design and construction of Antibacterial Hand Dryer (2017)",
+        "resume.javad.project8": "Design and construction of Wearable Pulse Oximeter (2020)",
+        "resume.javad.project9": "Design and construction of UV Lamp Sanitizer device (2020)",
+        "resume.javad.project10": "Design of Air Purifier with UV Lamp",
+        
+        "resume.javad.cert1": "Medical and Dental Equipment Repair",
+        "resume.javad.cert2": "Medical Equipment Judge - 5th National Health Technology Market",
+        "resume.javad.cert3": "CNC Operation - Technical and Vocational Training Organization",
+        "resume.javad.cert4": "Car Engine Assembly and Disassembly - University of Sistan and Baluchestan",
+        "resume.javad.cert5": "Personal and Social Skills Development - Iranian Business Excellence Scientific Association",
+        
+        "resume.javad.honor1": "Research Elite",
+        "resume.javad.honor2": "Top Rank - Tehran International Technology and Innovation Exhibition",
+        
+        // Engineer Mina
+        "resume.mina.name": "Engineer Mina Vasefyan",
+        "resume.mina.fullname": "Engineer Mina Vasefyan",
+        "resume.mina.position": "Designer & Mechanical Engineer - Tose Pardazan Company",
+        
+        "resume.mina.degree": "Bachelor of Mechanical Engineering",
+        "resume.mina.field": "Applied Design",
+        "resume.mina.university": "University of Sistan and Baluchestan (Public)",
+        "resume.mina.location": "Sistan and Baluchestan, Zahedan",
+        
+        "resume.mina.job1": "Industrial Designer with CATIA",
+        "resume.mina.job1Desc": "Industrial Design Center, Science and Technology Park (Nov 2023 - Present)",
+        "resume.mina.job1Duties": "Design and development of new products, design of parts and assemblies with CATIA, cooperation with production and R&D teams",
+        
+        "resume.mina.job2": "Design Engineer - CNC Operator",
+        "resume.mina.job2Desc": "Jadidoleslam Engineering Office (Aug 2023 - Present)",
+        "resume.mina.job2Duties": "Preparation and design of technical drawings, design of industrial parts drawings, planning and commissioning of CNC, control and supervision of CNC performance, programming and tooling setup",
+        
+        "resume.mina.job3": "Design Engineer - CNC Operator",
+        "resume.mina.job3Desc": "Tose Pardazan Knowledge-Based Engineering Company (Oct 2022 - Present)",
+        "resume.mina.job3Duties": "Design and drafting of technical drawings for industrial parts, production planning and control with related software, setup and commissioning of CNC machines, production and part manufacturing with CNC",
+        
+        "resume.mina.skill1": "Computer Training",
+        "resume.mina.practical": "CNC Operation, Machining, Woodworking",
+        "resume.mina.other": "Welding, Artistic Work, Working with Various Manufacturing Machines",
+        
+        "resume.mina.interest1": "Working with Various Machines for Manufacturing",
+        "resume.mina.interest2": "Woodworking and Accessories",
+        "resume.mina.interest3": "Welding",
+        "resume.mina.interest4": "Artistic Works",
+        
+        "resume.mina.summary": "Designer and Mechanical Engineer specializing in industrial design with CATIA software and CNC machine operation. Experienced in engineering companies and industrial design centers. Proficient in design to production stages of industrial parts.",
+        
+        // Navigation (shared with main page)
+        "nav.home": "Home",
+        "nav.services": "Services",
+        "nav.products": "Products & Services",
+        "nav.resume": "Personnel Resume",
+        "nav.projects": "Development Projects",
+        "nav.contact": "Contact"
+      },
+      
+      ar: {
+        // عام
+        "resume.title": "السير الذاتية للعاملين",
+        "resume.personalInfo": "المعلومات الشخصية",
+        "resume.contactInfo": "معلومات الاتصال",
+        "resume.education": "التعليم",
+        "resume.workExperience": "الخبرة العملية",
+        "resume.skills": "المهارات التقنية",
+        "resume.english": "اللغة الإنجليزية",
+        "resume.projects": "المشاريع المهمة",
+        "resume.certificates": "الشهادات والدورات",
+        "resume.honors": "التكريمات والجوائز",
+        "resume.interests": "الاهتمامات",
+        "resume.summary": "ملخص السيرة الذاتية",
+        
+        "resume.birthdate": "تاريخ الميلاد",
+        "resume.maritalStatus": "الحالة الاجتماعية",
+        "resume.militaryStatus": "حالة الخدمة العسكرية",
+        "resume.single": "أعزب",
+        "resume.educationExemption": "إعفاء تعليمي",
+        
+        "resume.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+        
+        "resume.phd": "الدكتوراه",
+        "resume.masters": "الماجستير",
+        "resume.bachelors": "البكالوريوس",
+        "resume.degree": "المستوى التعليمي",
+        "resume.field": "التخصص",
+        "resume.university": "الجامعة",
+        "resume.graduationYear": "سنة التخرج",
+        "resume.location": "الموقع",
+        
+        "resume.position": "المنصب",
+        "resume.company": "الشركة",
+        "resume.specialty": "المجال التخصصي",
+        "resume.responsibilities": "المسؤوليات",
+        
+        "resume.software": "البرامج المتخصصة",
+        "resume.practicalSkills": "المهارات العملية",
+        "resume.otherSkills": "مهارات أخرى",
+        
+        "resume.overall": "المهارة العامة",
+        "resume.description": "الوصف",
+        "resume.reading": "القراءة",
+        "resume.writing": "الكتابة",
+        "resume.speaking": "التحدث",
+        "resume.listening": "الاستماع",
+        
+        // الدكتور جواد
+        "resume.javad.name": "الدكتور جواد عيسى زاده لنگرودي",
+        "resume.javad.fullname": "الدكتور جواد عيسى زاده لنگرودي",
+        "resume.javad.position": "المؤسس والمدير التنفيذي - شركة توسع پردازان الهندسية القائمة على المعرفة",
+        "resume.javad.positionShort": "المؤسس والمدير التنفيذي",
+        "resume.javad.company": "شركة توسع پردازان الهندسية القائمة على المعرفة",
+        "resume.javad.specialty": "المعدات الطبية و TEC",
+        
+        "resume.javad.phd": "الهندسة الميكانيكية - جامعة سيستان وبلوشستان",
+        "resume.javad.masters": "الهندسة الميكاترونيكية - جامعة سيستان وبلوشستان (المعدل: ١٦.٧)",
+        "resume.javad.bachelors": "الهندسة الميكانيكية (الميكانيكا الصلبة) - جامعة سيستان وبلوشستان (المعدل: ١٤.٦)",
+        
+        "resume.javad.skill1": "التصميم الصناعي بـ CATIA",
+        "resume.javad.skill2": "التحليل الصناعي بـ ABAQUS",
+        "resume.javad.skill3": "برمجة CNC",
+        
+        "resume.javad.englishDesc": "القدرة على قراءة المقالات المتخصصة، المحادثة التقنية وكتابة التقارير العلمية",
+        
+        "resume.javad.project1": "تصميم وبناء جهاز اختبار المنعكس الحراري (٢٠٢١)",
+        "resume.javad.project2": "تصميم وبناء جهاز مشاهدة الأوردة (٢٠٢٠)",
+        "resume.javad.project3": "تصميم وبناء جهاز اختبار تخطيط القلب (٢٠١٨)",
+        "resume.javad.project4": "إضافة جهاز الأشعة لطب الأسنان (٢٠١٨)",
+        "resume.javad.project5": "تصميم وبناء جهاز إزالة الرجفان (٢٠١٧)",
+        "resume.javad.project6": "تصميم وبناء جهاز غسل السلال (٢٠١٧)",
+        "resume.javad.project7": "تصميم وبناء مجفف يد مضاد للبكتيريا (٢٠١٧)",
+        "resume.javad.project8": "تصميم وبناء مقياس التأكسج النبضي القابل للارتداء (٢٠٢٠)",
+        "resume.javad.project9": "تصميم وبناء جهاز معقم بمصباح الأشعة فوق البنفسجية (٢٠٢٠)",
+        "resume.javad.project10": "تصميم جهاز تنقية الهواء بمصباح الأشعة فوق البنفسجية",
+        
+        "resume.javad.cert1": "إصلاح المعدات الطبية وطب الأسنان",
+        "resume.javad.cert2": "حكم معدات طبية - المعرض الوطني الخامس لتكنولوجيا الصحة",
+        "resume.javad.cert3": "تشغيل CNC - منظمة التعليم الفني والمهني",
+        "resume.javad.cert4": "فك وتركيب محرك السيارة - جامعة سيستان وبلوشستان",
+        "resume.javad.cert5": "تطوير المهارات الشخصية والاجتماعية - الجمعية العلمية لتميز الأعمال الإيرانية",
+        
+        "resume.javad.honor1": "النخبة البحثية",
+        "resume.javad.honor2": "المرتبة الأولى - المعرض الدولي للتكنولوجيا والابتكار في طهران",
+        
+        // المهندسة مينا
+        "resume.mina.name": "المهندسة مينا واسفيان",
+        "resume.mina.fullname": "المهندسة مينا واسفيان",
+        "resume.mina.position": "مصممة ومهندسة ميكانيكية - شركة توسع پردازان",
+        
+        "resume.mina.degree": "بكالوريوس هندسة ميكانيكية",
+        "resume.mina.field": "التصميم التطبيقي",
+        "resume.mina.university": "جامعة سيستان وبلوشستان (حكومية)",
+        "resume.mina.location": "سيستان وبلوشستان، زاهدان",
+        
+        "resume.mina.job1": "مصممة صناعية بـ CATIA",
+        "resume.mina.job1Desc": "مركز التصميم الصناعي، حديقة العلوم والتكنولوجيا (نوفمبر ٢٠٢٣ - حتى الآن)",
+        "resume.mina.job1Duties": "تصميم وتطوير منتجات جديدة، تصميم القطع والمجموعات بـ CATIA، التعاون مع فرق الإنتاج والبحث والتطوير",
+        
+        "resume.mina.job2": "مهندسة تصميم - مشغلة CNC",
+        "resume.mina.job2Desc": "مكتب جديدالإسلام الهندسي (أغسطس ٢٠٢٣ - حتى الآن)",
+        "resume.mina.job2Duties": "إعداد وتصميم الرسومات الفنية، تصميم رسومات القطع الصناعية، تخطيط وتشغيل CNC، مراقبة ومراقبة أداء CNC، البرمجة وإعداد الأدوات",
+        
+        "resume.mina.job3": "مهندسة تصميم - مشغلة CNC",
+        "resume.mina.job3Desc": "شركة توسع پردازان الهندسية القائمة على المعرفة (أكتوبر ٢٠٢٢ - حتى الآن)",
+        "resume.mina.job3Duties": "تصميم وكتابة الرسومات الفنية للقطع الصناعية، تخطيط ومراقبة الإنتاج بالبرامج ذات الصلة، إعداد وتشغيل آلات CNC، الإنتاج وتصنيع القطع بـ CNC",
+        
+        "resume.mina.skill1": "تدريب الكمبيوتر",
+        "resume.mina.practical": "تشغيل CNC، التشغيل الآلي، النجارة",
+        "resume.mina.other": "اللحام، الأعمال الفنية، العمل مع آلات التصنيع المختلفة",
+        
+        "resume.mina.interest1": "العمل مع آلات مختلفة للتصنيع",
+        "resume.mina.interest2": "النجارة والإكسسوارات",
+        "resume.mina.interest3": "اللحام",
+        "resume.mina.interest4": "الأعمال الفنية",
+        
+        "resume.mina.summary": "مصممة ومهندسة ميكانيكية متخصصة في التصميم الصناعي ببرنامج CATIA وتشغيل آلات CNC. لديها خبرة في شركات الهندسة ومراكز التصميم الصناعي. تجيد مراحل التصميم إلى الإنتاج للقطع الصناعية.",
+        
+        // التنقل (مشترك مع الصفحة الرئيسية)
+        "nav.home": "الرئيسية",
+        "nav.services": "الخدمات",
+        "nav.products": "الخدمات والمنتجات",
+        "nav.resume": "سيرة الموظفين",
+        "nav.projects": "مشاريع التطوير",
+        "nav.contact": "اتصل بنا"
+      }
+    };
+
     // سیستم انتخاب فرد
     document.addEventListener('DOMContentLoaded', function() {
       const memberButtons = document.querySelectorAll('.team-member-btn');
@@ -920,45 +1317,27 @@
       langButtons.forEach(btn => {
         btn.addEventListener('click', function() {
           const lang = this.dataset.lang;
-          
-          langButtons.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          
-          // تغییر جهت صفحه
-          if (lang === 'ar') {
-            document.documentElement.dir = 'rtl';
-            document.documentElement.lang = 'ar';
-          } else if (lang === 'fa') {
-            document.documentElement.dir = 'rtl';
-            document.documentElement.lang = 'fa';
-          } else if (lang === 'en') {
-            document.documentElement.dir = 'ltr';
-            document.documentElement.lang = 'en';
-          }
-          
-          // ذخیره زبان انتخابی
-          localStorage.setItem('preferredLanguage', lang);
+          changeLanguage(lang);
         });
       });
       
       // تنظیم حالت اولیه
       const savedLang = localStorage.getItem('preferredLanguage');
       if (savedLang) {
-        const activeBtn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
-        if (activeBtn) {
-          langButtons.forEach(b => b.classList.remove('active'));
-          activeBtn.classList.add('active');
-          
-          if (savedLang === 'ar') {
-            document.documentElement.dir = 'rtl';
-            document.documentElement.lang = 'ar';
-          } else if (savedLang === 'fa') {
-            document.documentElement.dir = 'rtl';
-            document.documentElement.lang = 'fa';
-          } else if (savedLang === 'en') {
-            document.documentElement.dir = 'ltr';
-            document.documentElement.lang = 'en';
-          }
+        currentLang = savedLang;
+        changeLanguage(savedLang);
+      } else {
+        // تشخیص زبان مرورگر
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('ar')) {
+          currentLang = 'ar';
+          changeLanguage('ar');
+        } else if (browserLang.startsWith('fa')) {
+          currentLang = 'fa';
+          changeLanguage('fa');
+        } else {
+          currentLang = 'en';
+          changeLanguage('en');
         }
       }
       
@@ -969,7 +1348,55 @@
           this.src = 'https://via.placeholder.com/50x50/1e40af/ffffff?text=TPE';
         };
       }
+      
+      // ناوبری ثابت با تغییر پس زمینه
+      window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
     });
+    
+    // تغییر زبان
+    let currentLang = 'fa';
+    
+    function changeLanguage(lang) {
+      currentLang = lang;
+      
+      // تغییر فعال بودن دکمه‌ها
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // تغییر متن‌ها
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (resumeTranslations[lang] && resumeTranslations[lang][key]) {
+          element.textContent = resumeTranslations[lang][key];
+        }
+      });
+      
+      // تغییر جهت صفحه
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      } else if (lang === 'fa') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'fa';
+      } else if (lang === 'en') {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      }
+      
+      // ذخیره زبان انتخابی
+      localStorage.setItem('preferredLanguage', lang);
+    }
   </script>
 </body>
 </html>
