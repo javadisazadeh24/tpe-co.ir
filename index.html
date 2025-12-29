@@ -92,13 +92,15 @@
       width: 100%;
       z-index: 1000;
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.5);
     }
     
     .nav.scrolled {
-      background: var(--glass-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
     
     .nav-wrap {
@@ -111,7 +113,7 @@
     }
     
     .brand img {
-      height: 40px;
+      height: 48px;
       transition: transform 0.3s;
     }
     
@@ -121,7 +123,7 @@
     
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 20px;
       list-style: none;
       align-items: center;
     }
@@ -140,11 +142,15 @@
       color: var(--primary);
     }
     
-    /* انتخابگر زبان با پرچم PNG */
+    /* انتخابگر زبان */
     .language-selector {
       display: flex;
-      gap: 8px;
-      margin-right: 15px;
+      gap: 5px;
+      margin-right: 0;
+      background: rgba(248, 250, 252, 0.8);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
     }
     
     .lang-btn {
@@ -152,31 +158,31 @@
       border: none;
       background: transparent;
       cursor: pointer;
-      width: 40px;
-      height: 25px;
-      border-radius: 3px;
+      width: 28px;
+      height: 18px;
+      border-radius: 2px;
       overflow: hidden;
       transition: all 0.3s;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .lang-btn img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 1px;
     }
     
     .lang-btn.active {
-      box-shadow: 0 0 0 2px var(--primary);
-      transform: scale(1.1);
+      box-shadow: 0 0 0 1.5px var(--primary);
+      transform: scale(1.05);
     }
     
     .lang-btn:hover {
       transform: scale(1.05);
-    }
-    
-    .lang-btn.active:hover {
-      transform: scale(1.1);
     }
     
     /* هرو با فیلم */
@@ -406,29 +412,59 @@
       animation-play-state: paused;
     }
     
-    /* گالری نمونه کارها - حلقه بی‌نهایت روان */
+    /* گالری نمونه کارها */
     .gallery-section {
       background: #f8fafc;
       position: relative;
-      overflow: hidden;
+      padding: 60px 0;
     }
     
     .gallery-container {
       position: relative;
       margin-top: 40px;
-      padding: 20px 0;
       overflow: hidden;
+      padding: 10px 0;
+    }
+    
+    .gallery-scrollable {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) #e2e8f0;
+      padding: 20px 0;
+      margin: 0 -20px;
+      padding: 20px;
+      cursor: grab;
+    }
+    
+    .gallery-scrollable:active {
+      cursor: grabbing;
+    }
+    
+    .gallery-scrollable::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .gallery-scrollable::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 10px;
+    }
+    
+    .gallery-scrollable::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
     }
     
     .gallery-track {
       display: flex;
       gap: 25px;
-      will-change: transform;
+      width: max-content;
+      padding: 10px 20px;
     }
     
     .gallery-item {
       flex: 0 0 auto;
-      width: 350px;
+      width: 320px;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -438,12 +474,14 @@
     
     .gallery-item:hover {
       transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
     
     .gallery-img {
       height: 220px;
       width: 100%;
       object-fit: cover;
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
     }
     
     .gallery-content {
@@ -453,6 +491,7 @@
     .gallery-content h3 {
       color: var(--primary);
       margin-bottom: 5px;
+      font-size: 18px;
     }
     
     .gallery-content .client-name {
@@ -463,7 +502,7 @@
     
     .gallery-content .project-type {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 4px 10px;
       border-radius: 12px;
       font-size: 12px;
       font-weight: 500;
@@ -471,13 +510,13 @@
     }
     
     .type-original {
-      background: #fef3c7;
-      color: #92400e;
+      background: #dbeafe;
+      color: #1e40af;
     }
     
     .type-reverse {
-      background: #fce7f3;
-      color: #9d174d;
+      background: #fee2e2;
+      color: #dc2626;
     }
     
     /* پروژه‌های توسعه */
@@ -506,6 +545,7 @@
       height: 200px;
       width: 100%;
       object-fit: cover;
+      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
     }
     
     .project-content {
@@ -702,12 +742,21 @@
     /* موبایل */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        gap: 15px;
+      }
+      
+      .nav-links a {
+        font-size: 14px;
+        padding: 6px 10px;
       }
       
       .language-selector {
-        margin-right: 0;
-        margin-bottom: 10px;
+        gap: 4px;
+      }
+      
+      .lang-btn {
+        width: 26px;
+        height: 16px;
       }
       
       .hero h1 {
@@ -745,6 +794,11 @@
         width: 280px;
       }
       
+      .gallery-scrollable {
+        margin: 0 -10px;
+        padding: 10px;
+      }
+      
       .service-card {
         padding: 20px;
       }
@@ -759,7 +813,40 @@
       }
       
       .brand img {
-        height: 32px;
+        height: 40px;
+      }
+    }
+    
+    /* موبایل کوچک */
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 10px;
+      }
+      
+      .nav-links a {
+        font-size: 13px;
+        padding: 5px 8px;
+      }
+      
+      .language-selector {
+        gap: 3px;
+      }
+      
+      .lang-btn {
+        width: 24px;
+        height: 14px;
+      }
+      
+      .hero h1 {
+        font-size: 26px;
+      }
+      
+      .hero p {
+        font-size: 15px;
+      }
+      
+      .brand img {
+        height: 36px;
       }
     }
     
@@ -783,7 +870,7 @@
 <body>
 
   <!-- ناوبری -->
-  <header class="nav glass-effect" id="navbar">
+  <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <img src="images/logo.png" alt="لوگوی توسعه پردازان">
@@ -792,21 +879,21 @@
         <ul class="nav-links">
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">نمونه کارها</a></li>
+          <!-- حذف نمونه کارها از نوار اصلی -->
           <li><a href="#products" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
-          <li><a href="#resume" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="#clients" data-i18n="nav.clients">مشتریان</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
           <li><a href="#contact" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
-              <img src="images/flags/iran.png" alt="پرچم ایران">
+              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
             </button>
             <button class="lang-btn" data-lang="en" title="English">
-              <img src="images/flags/usa.png" alt="پرچم آمریکا">
+              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
             </button>
             <button class="lang-btn" data-lang="ar" title="العربية">
-              <img src="images/flags/saudi.png" alt="پرچم عربستان">
+              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
             </button>
           </li>
         </ul>
@@ -968,12 +1055,14 @@
     </div>
   </section>
 
-  <!-- گالری نمونه کارها -->
+  <!-- گالری برخی از نمونه کارها -->
   <section id="portfolio" class="gallery-section">
     <div class="container">
-      <h2 data-i18n="portfolio.title">نمونه کارهای ما</h2>
+      <h2 data-i18n="portfolio.title">برخی از نمونه کارهای ما</h2>
       <div class="gallery-container">
-        <div class="gallery-track" id="galleryTrack"></div>
+        <div class="gallery-scrollable" id="galleryScrollable">
+          <div class="gallery-track" id="galleryTrack"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1059,7 +1148,12 @@
       <h2 data-i18n="projects.title">پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <img src="images/project-yonolit.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
+          <div class="project-img">
+            <!-- استفاده از placeholder با پس‌زمینه رنگی -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:20px;">
+              کارخانه تولید یونولیت سراوان
+            </div>
+          </div>
           <div class="project-content">
             <h3 data-i18n="projects.project1.title">کارخانه تولید یونولیت سراوان</h3>
             <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
@@ -1067,7 +1161,12 @@
           </div>
         </div>
         <div class="project-card fade-in">
-          <img src="images/project-fablab.jpg" alt="کافه فب‌لب روند" class="project-img">
+          <div class="project-img">
+            <!-- استفاده از placeholder با پس‌زمینه رنگی -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#14b8a6 0%,#0f766e 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:20px;">
+              کافه فب‌لب روند
+            </div>
+          </div>
           <div class="project-content">
             <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
             <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
@@ -1118,7 +1217,7 @@
           <h3 data-i18n="footer.links">لینک‌های مفید</h3>
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <a href="#services" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ما</a>
-            <a href="#products" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">محصولات</a>
+            <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">نمونه خدمات و محصولات</a>
             <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.resume">رزومه پرسنل</a>
             <a href="#clients" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.clients">مشتریان</a>
           </div>
@@ -1153,7 +1252,6 @@
         // ناوبری
         "nav.home": "خانه",
         "nav.services": "خدمات",
-        "nav.portfolio": "نمونه کارها",
         "nav.products": "نمونه خدمات و محصولات",
         "nav.resume": "رزومه پرسنل",
         "nav.clients": "مشتریان",
@@ -1218,7 +1316,7 @@
         "services.consulting.item4": "کافه فب‌لب روند (بزودی) مرکز نوآوری و تعامل",
         
         // نمونه کارها
-        "portfolio.title": "نمونه کارهای ما",
+        "portfolio.title": "برخی از نمونه کارهای ما",
         
         // لینک‌ها
         "links.products.title": "نمونه خدمات و محصولات",
@@ -1255,7 +1353,6 @@
         // Navigation
         "nav.home": "Home",
         "nav.services": "Services",
-        "nav.portfolio": "Portfolio",
         "nav.products": "Products & Services",
         "nav.resume": "Personnel Resume",
         "nav.clients": "Clients",
@@ -1320,7 +1417,7 @@
         "services.consulting.item4": "Round Fab Lab Cafe (Coming Soon) - Innovation and Interaction Center",
         
         // Portfolio
-        "portfolio.title": "Our Portfolio",
+        "portfolio.title": "Some of Our Work Samples",
         
         // Links
         "links.products.title": "Products & Services",
@@ -1357,7 +1454,6 @@
         // التنقل
         "nav.home": "الرئيسية",
         "nav.services": "الخدمات",
-        "nav.portfolio": "الأعمال السابقة",
         "nav.products": "الخدمات والمنتجات",
         "nav.resume": "سيرة الموظفين",
         "nav.clients": "العملاء",
@@ -1416,13 +1512,13 @@
         "services.consulting.sub1": "توحيد العمليات",
         "services.consulting.item1": "تطوير الوثائق الفنية وتوجيه المشاريع المبتكرة",
         "services.consulting.sub2": "التجميع ومراقبة الجودة",
-        "services.consulting.item2": "اختبار الأداء، الاختبارات الميكانيكية وضمان الجودة وفق المعايير الصناعية",
+        "services.consulting.item2": "اختبار الأداء، الاختبارات الميكانکیة وضمان الجودة وفق المعايير الصناعية",
         "services.consulting.sub3": "مشاريع تطوير الشركة",
         "services.consulting.item3": "مصنع إنتاج مادة البوليسترين في سراوان (قيد الإنشاء)",
         "services.consulting.item4": "مقهى المختبر الرقمي روند (قريباً) - مركز الابتكار والتفاعل",
         
         // الأعمال السابقة
-        "portfolio.title": "أعمالنا السابقة",
+        "portfolio.title": "بعض أعمالنا السابقة",
         
         // الروابط
         "links.products.title": "الخدمات والمنتجات",
@@ -1456,55 +1552,72 @@
       }
     };
 
-    // داده‌های نمونه کارها از جدول
+    // داده‌های نمونه کارها
     const portfolioData = [
-      { img: 'images/gallery-1.jpg', title: 'Air Purifier', client: 'شرکت بهبود رایان', type: 'original', descKey: 'portfolio.item1' },
-      { img: 'images/gallery-2.jpg', title: 'Biometric Lock', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original', descKey: 'portfolio.item2' },
-      { img: 'images/gallery-3.jpg', title: 'ECG Simulator', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original', descKey: 'portfolio.item3' },
-      { img: 'images/injector-cleaner.jpg', title: 'دستگاه انژکتور شور', client: 'پویا خودرو ایرانیان آدلی', type: 'original', descKey: 'portfolio.item4' },
-      { img: 'images/gallery-5.jpg', title: 'Veinscope', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original', descKey: 'portfolio.item5' },
-      { img: 'images/arm-porter.jpg', title: 'Arm Porter Robot', client: 'شخصی حقیقی در ترکیه - استانبول', type: 'reverse', descKey: 'portfolio.item6' },
-      { img: 'images/taftan-trophy.jpg', title: 'Taftan Trophy', client: 'فبلب صنایع خلاق پارک علم و فناوری', type: 'original', descKey: 'portfolio.item7' },
-      { img: 'images/pulp-tester.jpg', title: 'Pulp Tester', client: 'شرکت طب تجهیز آبادیس پارس', type: 'reverse', descKey: 'portfolio.item8' },
-      { img: 'images/lamp-cover.jpg', title: 'Lamp Cover', client: 'مهرنور الکترونیک پیشگام', type: 'original', descKey: 'portfolio.item9' }
-    ];
-
-    // ترجمه‌های نمونه کارها
-    const portfolioTranslations = {
-      fa: {
-        'portfolio.item1': 'دستگاه تصفیه هوا با تکنولوژی UV',
-        'portfolio.item2': 'سیستم قفل بیومتریک امنیتی',
-        'portfolio.item3': 'شبیه‌ساز سیگنال قلب برای آموزش پزشکی',
-        'portfolio.item4': 'دستگاه انژکتور شور برای شرکت پویا خودرو',
-        'portfolio.item5': 'دستگاه مشاهده رگ برای پزشکی',
-        'portfolio.item6': 'ربات حمل بازو برای مشتری ترکیه‌ای',
-        'portfolio.item7': 'تندیس تفتان برای پارک علم و فناوری',
-        'portfolio.item8': 'دستگاه تست پالپ دندانپزشکی',
-        'portfolio.item9': 'کاور لامپ خیابانی برای شرکت مهرنور'
+      { 
+        img: 'images/gallery-1.jpg', 
+        title: 'Air Purifier', 
+        client: 'شرکت بهبود رایان', 
+        type: 'original', 
+        descKey: 'دستگاه تصفیه هوا با تکنولوژی UV'
       },
-      en: {
-        'portfolio.item1': 'Air purifier with UV technology',
-        'portfolio.item2': 'Biometric security lock system',
-        'portfolio.item3': 'ECG signal simulator for medical training',
-        'portfolio.item4': 'Injector cleaner device for Pouya Khodro',
-        'portfolio.item5': 'Vein visualization device for medical use',
-        'portfolio.item6': 'Arm porter robot for Turkish customer',
-        'portfolio.item7': 'Taftan trophy for Science and Technology Park',
-        'portfolio.item8': 'Dental pulp testing device',
-        'portfolio.item9': 'Street lamp cover for Mehrnoor Electronic'
+      { 
+        img: 'images/gallery-2.jpg', 
+        title: 'Biometric Lock', 
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original', 
+        descKey: 'سیستم قفل بیومتریک امنیتی'
       },
-      ar: {
-        'portfolio.item1': 'جهاز تنقية الهواء بتقنية الأشعة فوق البنفسجية',
-        'portfolio.item2': 'نظام قفل القياسات الحيوية الأمني',
-        'portfolio.item3': 'محاكي إشارات القلب للتدريب الطبي',
-        'portfolio.item4': 'جهاز تنظيف الحقن لشركة بویا خودرو',
-        'portfolio.item5': 'جهاز عرض الأوردة للاستخدام الطبي',
-        'portfolio.item6': 'روبوت حمل الذراع للعميل التركي',
-        'portfolio.item7': 'كأس تفتان لحديقة العلوم والتكنولوجيا',
-        'portfolio.item8': 'جهاز اختبار لب الأسنان',
-        'portfolio.item9': 'غطاء مصباح الشارع لشركة مهرنور الإلكترونية'
+      { 
+        img: 'images/gallery-3.jpg', 
+        title: 'ECG Simulator', 
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original', 
+        descKey: 'شبیه‌ساز سیگنال قلب برای آموزش پزشکی'
+      },
+      { 
+        img: 'images/injector-cleaner.jpg', 
+        title: 'دستگاه انژکتور شور', 
+        client: 'پویا خودرو ایرانیان آدلی', 
+        type: 'original', 
+        descKey: 'دستگاه انژکتور شور برای شرکت پویا خودرو'
+      },
+      { 
+        img: 'images/gallery-5.jpg', 
+        title: 'Veinscope', 
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original', 
+        descKey: 'دستگاه مشاهده رگ برای پزشکی'
+      },
+      { 
+        img: 'images/arm-porter.jpg', 
+        title: 'Arm Porter Robot', 
+        client: 'شخصی حقیقی در ترکیه - استانبول', 
+        type: 'reverse', 
+        descKey: 'ربات حمل بازو برای مشتری ترکیه‌ای'
+      },
+      { 
+        img: 'images/taftan-trophy.jpg', 
+        title: 'Taftan Trophy', 
+        client: 'فبلب صنایع خلاق پارک علم و فناوری', 
+        type: 'original', 
+        descKey: 'تندیس تفتان برای پارک علم و فناوری'
+      },
+      { 
+        img: 'images/pulp-tester.jpg', 
+        title: 'Pulp Tester', 
+        client: 'شرکت طب تجهیز آبادیس پارس', 
+        type: 'reverse', 
+        descKey: 'دستگاه تست پالپ دندانپزشکی'
+      },
+      { 
+        img: 'images/lamp-cover.jpg', 
+        title: 'Lamp Cover', 
+        client: 'مهرنور الکترونیک پیشگام', 
+        type: 'original', 
+        descKey: 'کاور لامپ خیابانی برای شرکت مهرنور'
       }
-    };
+    ];
 
     // سیستم تغییر زبان
     let currentLang = 'fa';
@@ -1542,86 +1655,87 @@
       
       // ذخیره زبان انتخابی
       localStorage.setItem('preferredLanguage', lang);
-      
-      // به‌روزرسانی گالری نمونه کارها
-      updateGalleryContent();
     }
 
-    // ==================== گالری نمونه کارها - حلقه بی‌نهایت روان ====================
-    function setupGalleryInfiniteLoop() {
+    // ==================== گالری نمونه کارها - اسکرول دستی ====================
+    function setupGalleryManualScroll() {
       const galleryTrack = document.getElementById('galleryTrack');
+      const galleryScrollable = document.getElementById('galleryScrollable');
       
       // پاک کردن محتوای قبلی
       galleryTrack.innerHTML = '';
       
-      // ایجاد 3 مجموعه از آیتم‌ها برای حلقه بی‌نهایت روان
-      for (let i = 0; i < 3; i++) {
-        portfolioData.forEach(item => {
-          const galleryItem = document.createElement('div');
-          galleryItem.className = 'gallery-item';
-          
-          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
-          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
-          
-          galleryItem.innerHTML = `
-            <img src="${item.img}" alt="${item.title}" class="gallery-img">
-            <div class="gallery-content">
-              <h3>${item.title}</h3>
-              <div class="client-name">${item.client}</div>
-              <span class="project-type ${typeClass}">${typeText}</span>
+      // ایجاد آیتم‌های گالری
+      portfolioData.forEach(item => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        
+        const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
+        const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
+        
+        galleryItem.innerHTML = `
+          <div class="gallery-img">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);display:flex;align-items:center;justify-content:center;color:white;font-size:16px;padding:10px;text-align:center;">
+              ${item.title}
             </div>
-          `;
-          
-          galleryTrack.appendChild(galleryItem);
-        });
-      }
-      
-      // تنظیم عرض گالری
-      const itemCount = portfolioData.length * 3;
-      const itemWidth = 350;
-      const gap = 25;
-      const totalWidth = itemCount * (itemWidth + gap);
-      
-      galleryTrack.style.width = totalWidth + 'px';
-      
-      // انیمیشن اسکرول
-      let animationId;
-      let position = 0;
-      const speed = 1; // افزایش سرعت
-      
-      function animateGallery() {
-        position -= speed;
+          </div>
+          <div class="gallery-content">
+            <h3>${item.title}</h3>
+            <div class="client-name">${item.client}</div>
+            <p style="font-size:13px;color:#64748b;margin-top:8px;">${item.descKey}</p>
+            <span class="project-type ${typeClass}">${typeText}</span>
+          </div>
+        `;
         
-        // اگر از انتهای اولین مجموعه گذشتیم، به ابتدا برگردیم
-        const setWidth = portfolioData.length * (itemWidth + gap);
-        if (position <= -setWidth) {
-          position += setWidth;
-        }
-        
-        galleryTrack.style.transform = `translateX(${position}px)`;
-        animationId = requestAnimationFrame(animateGallery);
-      }
-      
-      // توقف انیمیشن هنگام هاور
-      galleryTrack.addEventListener('mouseenter', () => {
-        cancelAnimationFrame(animationId);
+        galleryTrack.appendChild(galleryItem);
       });
       
-      // شروع مجدد انیمیشن هنگام خروج
-      galleryTrack.addEventListener('mouseleave', () => {
-        animationId = requestAnimationFrame(animateGallery);
+      // اسکرول دستی با ماوس
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+      
+      galleryScrollable.addEventListener('mousedown', (e) => {
+        isDown = true;
+        galleryScrollable.classList.add('active');
+        startX = e.pageX - galleryScrollable.offsetLeft;
+        scrollLeft = galleryScrollable.scrollLeft;
       });
       
-      // شروع انیمیشن
-      animationId = requestAnimationFrame(animateGallery);
-    }
-
-    // به‌روزرسانی محتوای گالری بر اساس زبان
-    function updateGalleryContent() {
-      const galleryItems = document.querySelectorAll('.gallery-item .client-name');
-      galleryItems.forEach((item, index) => {
-        const dataIndex = index % portfolioData.length;
-        item.textContent = portfolioData[dataIndex].client;
+      galleryScrollable.addEventListener('mouseleave', () => {
+        isDown = false;
+        galleryScrollable.classList.remove('active');
+      });
+      
+      galleryScrollable.addEventListener('mouseup', () => {
+        isDown = false;
+        galleryScrollable.classList.remove('active');
+      });
+      
+      galleryScrollable.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - galleryScrollable.offsetLeft;
+        const walk = (x - startX) * 2; // سرعت اسکرول
+        galleryScrollable.scrollLeft = scrollLeft - walk;
+      });
+      
+      // اسکرول با تاچ برای موبایل
+      galleryScrollable.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - galleryScrollable.offsetLeft;
+        scrollLeft = galleryScrollable.scrollLeft;
+      });
+      
+      galleryScrollable.addEventListener('touchend', () => {
+        isDown = false;
+      });
+      
+      galleryScrollable.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - galleryScrollable.offsetLeft;
+        const walk = (x - startX) * 2;
+        galleryScrollable.scrollLeft = scrollLeft - walk;
       });
     }
 
@@ -1656,39 +1770,35 @@
       }
       
       // تنظیم گالری
-      setupGalleryInfiniteLoop();
+      setupGalleryManualScroll();
       
-      // کنترل خطا برای تصاویر گالری
-      document.querySelectorAll('.gallery-img').forEach(img => {
+      // ترمیم لینک نمونه خدمات و محصولات
+      const productsLink = document.querySelector('a[href="#products"]');
+      if (productsLink) {
+        productsLink.href = 'products.html';
+      }
+      
+      // کنترل خطا برای تصاویر مشتریان
+      document.querySelectorAll('.client-logo img').forEach(img => {
         img.onerror = function() {
-          this.src = 'https://via.placeholder.com/350x220/1e40af/ffffff?text=' + encodeURIComponent(this.alt);
+          const altText = this.alt || 'مشتری';
+          const placeholderColor = '#1e40af';
+          const textColor = 'white';
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="70" viewBox="0 0 120 70">
+            <rect width="120" height="70" fill="${placeholderColor}" rx="8"/>
+            <text x="60" y="35" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText}</text>
+          </svg>`;
+          this.src = 'data:image/svg+xml;base64,' + btoa(svg);
         };
       });
       
-      // کنترل خطا برای تصاویر پروژه‌ها
-      document.querySelectorAll('.project-img').forEach(img => {
-        img.onerror = function() {
-          if (this.alt.includes('یونولیت')) {
-            this.src = 'https://via.placeholder.com/400x200/0f766e/ffffff?text=کارخانه+یونولیت+سراوان';
-          } else if (this.alt.includes('فب‌لب')) {
-            this.src = 'https://via.placeholder.com/400x200/14b8a6/ffffff?text=کافه+فب‌لب+روند';
-          }
+      // کنترل خطا برای لوگو
+      const logoImg = document.querySelector('.brand img');
+      if (logoImg) {
+        logoImg.onerror = function() {
+          this.src = 'https://via.placeholder.com/192x192/1e40af/ffffff?text=TPE';
         };
-      });
-      
-      // کنترل خطا برای پرچم‌ها
-      document.querySelectorAll('.lang-btn img').forEach(img => {
-        img.onerror = function() {
-          const lang = this.parentElement.dataset.lang;
-          if (lang === 'fa') {
-            this.src = 'https://flagcdn.com/w40/ir.png';
-          } else if (lang === 'en') {
-            this.src = 'https://flagcdn.com/w40/us.png';
-          } else if (lang === 'ar') {
-            this.src = 'https://flagcdn.com/w40/sa.png';
-          }
-        };
-      });
+      }
     });
     
     // ==================== سایر اسکریپت‌ها ====================
@@ -1696,7 +1806,7 @@
     // ناوبری ثابت با تغییر پس زمینه
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
@@ -1706,16 +1816,16 @@
     // انیمیشن اسکرول نرم برای بخش‌ها
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
+        if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     });
@@ -1741,23 +1851,29 @@
     // کنترل ویدیو برای موبایل
     const video = document.querySelector('.video-background');
     
-    let observerVideo = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.5 });
-    
     if (video) {
+      let observerVideo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(e => console.log("اتوپلی ویدیو مسدود شده"));
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.5 });
+      
       observerVideo.observe(video);
+      
+      // تنظیم فالبک برای ویدیو
+      video.onerror = function() {
+        const hero = document.querySelector('.hero');
+        hero.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)';
+      };
     }
     
     // تنظیم مجدد گالری هنگام تغییر سایز پنجره
     window.addEventListener('resize', function() {
-      setupGalleryInfiniteLoop();
+      setupGalleryManualScroll();
     });
   </script>
 </body>
