@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</title>
-  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- فونت‌ها -->
@@ -92,26 +92,36 @@
       width: 100%;
       z-index: 1000;
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .nav.scrolled {
-      background: var(--glass-bg);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     
     .nav-wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 15px 20px;
+      padding: 12px 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
     .brand img {
-      height: 32px;
+      height: 50px;
       transition: transform 0.3s;
     }
     
@@ -119,24 +129,75 @@
       transform: scale(1.05);
     }
     
+    .company-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+    
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 5px;
       list-style: none;
+      align-items: center;
     }
     
     .nav-links a {
-      color: #1e293b;
-      font-weight: 500;
-      font-size: 15px;
-      padding: 8px 12px;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 14.5px;
+      padding: 6px 10px;
       border-radius: 8px;
       transition: all 0.3s;
     }
     
     .nav-links a:hover {
-      background: rgba(30, 64, 175, 0.1);
+      background: rgba(30, 64, 175, 0.15);
       color: var(--primary);
+    }
+    
+    /* انتخابگر زبان */
+    .language-selector {
+      display: flex;
+      gap: 5px;
+      margin-right: 0;
+      background: transparent;
+      padding: 0;
+      border-radius: 8px;
+      border: none;
+    }
+    
+    .lang-btn {
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      width: 28px;
+      height: 18px;
+      border-radius: 2px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lang-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1px;
+    }
+    
+    .lang-btn.active {
+      box-shadow: 0 0 0 2px var(--primary);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn:hover {
+      transform: scale(1.05);
     }
     
     /* هرو با فیلم */
@@ -279,6 +340,30 @@
       font-size: 14px;
     }
     
+    .service-subsection {
+      margin-top: 15px;
+      padding-right: 15px;
+      border-right: 3px solid #e2e8f0;
+    }
+    
+    .service-subsection h4 {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .service-subsection ul {
+      padding-right: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .service-subsection li {
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #4a5568;
+    }
+    
     /* مشتریان - اسکرول پیوسته واقعی */
     .clients-section {
       background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -301,7 +386,7 @@
       right: 0;
       height: 100%;
       align-items: center;
-      animation: scrollClients 40s linear infinite;
+      animation: scrollClients 30s linear infinite;
       will-change: transform;
     }
     
@@ -342,23 +427,45 @@
       animation-play-state: paused;
     }
     
-    /* گالری نمونه کارها */
-    .gallery-container {
+    /* گالری نمونه کارها - اسکرول اتوماتیک مثل مشتریان */
+    .gallery-section {
+      background: #f8fafc;
       position: relative;
-      margin-top: 40px;
-      padding: 20px 0;
+      padding: 60px 0;
       overflow: hidden;
     }
     
-    .gallery-scroll {
+    .gallery-container {
+      position: relative;
+      margin-top: 40px;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+    
+    .gallery-wrapper {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    
+    .gallery-track {
       display: flex;
-      gap: 25px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      align-items: center;
       animation: scrollGallery 40s linear infinite;
+      will-change: transform;
     }
     
     .gallery-item {
-      flex: 0 0 auto;
+      height: 280px;
       width: 350px;
+      flex: 0 0 auto;
+      margin: 0 20px;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -368,26 +475,67 @@
     
     .gallery-item:hover {
       transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
     
     .gallery-img {
-      height: 220px;
+      height: 180px;
       width: 100%;
       object-fit: cover;
     }
     
     .gallery-content {
-      padding: 20px;
+      padding: 15px;
     }
     
     .gallery-content h3 {
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    
+    .gallery-content .client-name {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+    
+    .gallery-content .project-desc {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    
+    .gallery-content .project-type {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    
+    .type-original {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    
+    .type-reverse {
+      background: #fee2e2;
+      color: #dc2626;
     }
     
     @keyframes scrollGallery {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(50%); }
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(50%);
+      }
+    }
+    
+    .gallery-track:hover {
+      animation-play-state: paused;
     }
     
     /* پروژه‌های توسعه */
@@ -404,6 +552,7 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
+      border: 1px solid #e2e8f0;
     }
     
     .project-card:hover {
@@ -560,7 +709,33 @@
     /* موبایل */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        gap: 5px;
+      }
+      
+      .nav-links a {
+        font-size: 13px;
+        padding: 5px 8px;
+      }
+      
+      .company-name {
+        font-size: 16px;
+      }
+      
+      .brand {
+        gap: 8px;
+      }
+      
+      .brand img {
+        height: 42px;
+      }
+      
+      .language-selector {
+        gap: 4px;
+      }
+      
+      .lang-btn {
+        width: 26px;
+        height: 16px;
       }
       
       .hero h1 {
@@ -594,13 +769,84 @@
         padding: 0 25px;
       }
       
+      .gallery-wrapper {
+        height: 280px;
+      }
+      
       .gallery-item {
+        height: 240px;
         width: 280px;
+        margin: 0 15px;
+      }
+      
+      .gallery-img {
+        height: 150px;
+      }
+      
+      .service-card {
+        padding: 20px;
       }
       
       .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
+      }
+    }
+    
+    /* موبایل کوچک */
+    @media (max-width: 480px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+      }
+      
+      .nav-links a {
+        font-size: 12px;
+        padding: 4px 6px;
+      }
+      
+      .language-selector {
+        gap: 3px;
+      }
+      
+      .lang-btn {
+        width: 24px;
+        height: 14px;
+      }
+      
+      .hero h1 {
+        font-size: 26px;
+      }
+      
+      .hero p {
+        font-size: 15px;
+      }
+      
+      .brand {
+        gap: 6px;
+      }
+      
+      .brand img {
+        height: 38px;
+      }
+      
+      .company-name {
+        font-size: 14px;
+      }
+      
+      .gallery-wrapper {
+        height: 250px;
+      }
+      
+      .gallery-item {
+        height: 220px;
+        width: 250px;
+        margin: 0 10px;
+      }
+      
+      .gallery-img {
+        height: 130px;
       }
     }
     
@@ -628,17 +874,27 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+        <span class="company-name">توسعه پردازان</span>
       </a>
       <nav>
         <ul class="nav-links">
-          <li><a href="#hero">خانه</a></li>
-          <li><a href="#services">خدمات</a></li>
-          <li><a href="#portfolio">نمونه کارها</a></li>
-          <li><a href="products.html">نمونه خدمات و محصولات</a></li>
-          <li><a href="resume.html">رزومه پرسنل</a></li>
-          <li><a href="#clients">مشتریان</a></li>
-          <li><a href="#projects">پروژه‌های توسعه</a></li>
-          <li><a href="#contact">تماس</a></li>
+          <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
+          <li><a href="#services" data-i18n="nav.services">خدمات</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">تماس</a></li>
+          <li class="language-selector">
+            <button class="lang-btn active" data-lang="fa" title="فارسی">
+              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+            </button>
+            <button class="lang-btn" data-lang="en" title="English">
+              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
+            </button>
+            <button class="lang-btn" data-lang="ar" title="العربية">
+              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -654,11 +910,11 @@
     <div class="video-overlay"></div>
     
     <div class="hero-content fade-in">
-      <h1>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
-      <p>تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی</p>
+      <h1 data-i18n="hero.title">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
+      <p data-i18n="hero.description">تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی</p>
       <div class="cta">
-        <a href="#services" class="btn btn-primary">مشاهده خدمات</a>
-        <a href="#contact" class="btn btn-secondary">درخواست مشاوره</a>
+        <a href="#services" class="btn btn-primary" data-i18n="hero.viewServices">مشاهده خدمات</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero.requestConsultation">درخواست مشاوره</a>
       </div>
     </div>
   </section>
@@ -666,119 +922,144 @@
   <!-- خدمات -->
   <section id="services">
     <div class="container">
-      <h2>خدمات ما</h2>
+      <h2 data-i18n="services.title">خدمات ما</h2>
       <div class="services-grid">
+        <!-- طراحی و توسعه محصول -->
         <div class="service-card fade-in">
-          <h3>طراحی صنعتی و مدلینگ</h3>
-          <p>از کانسپت اولیه تا مدل‌سازی سه‌بعدی با نرم‌افزارهای پیشرفته</p>
+          <h3 data-i18n="services.design.title">طراحی و توسعه محصول</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.design.sub1">طراحی صنعتی و مدل‌سازی سه‌بعدی پیشرفته</h4>
+            <ul>
+              <li data-i18n="services.design.item1">از فاز کانسپت تا طراحی جزئیات اجرایی با نرم‌افزارهای CAD/CAM و شبیه‌سازی عددی</li>
+            </ul>
+            
+            <h4 data-i18n="services.design.sub2">مهندسی معکوس تجهیزات پزشکی و صنعتی</h4>
+            <ul>
+              <li data-i18n="services.design.item2">اسکن سه‌بعدی، بازطراحی پارامتریک و بازتولید قطعات با رعایت استانداردهای عملکردی</li>
+            </ul>
+            
+            <h4 data-i18n="services.design.sub3">تحلیل ارگونومی و ساخت‌پذیری</h4>
+            <ul>
+              <li data-i18n="services.design.item3">بهینه‌سازی فرم و عملکرد محصولات برای تولید انبوه و کاربری ایمن</li>
+            </ul>
+          </div>
         </div>
+        
+        <!-- ساخت و تولید -->
         <div class="service-card fade-in">
-          <h3>ماشینکاری CNC</h3>
-          <p>تولید دقیق قطعات فلزی و پلاستیکی با دستگاه‌های CNC پیشرفته</p>
+          <h3 data-i18n="services.production.title">ساخت و تولید</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.production.sub1">ماشینکاری CNC چندمحوره</h4>
+            <ul>
+              <li data-i18n="services.production.item1">تراش، فرز و وایرکات با دقت میکرونی برای تولید قطعات فلزی و پلیمری</li>
+            </ul>
+            
+            <h4 data-i18n="services.production.sub2">ساخت افزایشی (Additive Manufacturing)</h4>
+            <ul>
+              <li data-i18n="services.production.item2">چاپ سه‌بعدی رزین (SLA/DLP) و فیلامنت (FDM) برای نمونه‌سازی سریع و تولید قطعات پیچیده</li>
+            </ul>
+            
+            <h4 data-i18n="services.production.sub3">ساخت کاهشی (Subtractive Manufacturing)</h4>
+            <ul>
+              <li data-i18n="services.production.item3">عملیات برش، تراش و قالب‌سازی با تجهیزات پیشرفته</li>
+            </ul>
+          </div>
         </div>
+        
+        <!-- توسعه زیرساخت -->
         <div class="service-card fade-in">
-          <h3>چاپ سه‌بعدی</h3>
-          <p>نمونه‌سازی سریع با تکنولوژی‌های FDM و SLA/DLP</p>
+          <h3 data-i18n="services.infrastructure.title">توسعه زیرساخت و پروژه‌های صنعتی</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.infrastructure.sub1">طراحی و راه‌اندازی خطوط تولید</h4>
+            <ul>
+              <li data-i18n="services.infrastructure.item1">از طراحی فرآیند تا نصب و راه‌اندازی تجهیزات</li>
+            </ul>
+            
+            <h4 data-i18n="services.infrastructure.sub2">تولید تجهیزات دکوراسیون خلاق و ماژولار</h4>
+            <ul>
+              <li data-i18n="services.infrastructure.item2">طراحی و ساخت سیستم‌های مدولار برای فضاهای عمومی و صنعتی</li>
+            </ul>
+            
+            <h4 data-i18n="services.infrastructure.sub3">تولید گجت‌های کاربردی و خلاقانه</h4>
+            <ul>
+              <li data-i18n="services.infrastructure.item3">توسعه ابزارهای هوشمند و نوآورانه با رویکرد حل مسئله</li>
+            </ul>
+          </div>
         </div>
+        
+        <!-- خدمات نوآوری -->
         <div class="service-card fade-in">
-          <h3>مهندسی معکوس</h3>
-          <p>اسکن سه‌بعدی، مدل‌سازی و بازتولید قطعات</p>
+          <h3 data-i18n="services.innovation.title">خدمات نوآوری و منتورینگ</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.innovation.sub1">منتورینگ تیم‌ها و هسته‌های فناور</h4>
+            <ul>
+              <li data-i18n="services.innovation.item1">راهبری فرآیند توسعه محصول، تجاری‌سازی و ورود به بازار</li>
+            </ul>
+            
+            <h4 data-i18n="services.innovation.sub2">ایجاد و مدیریت مراکز نوآوری</h4>
+            <ul>
+              <li data-i18n="services.innovation.item2">طراحی و پیاده‌سازی فب‌لب‌ها و آزمایشگاه‌های ساخت دیجیتال</li>
+            </ul>
+            
+            <h4 data-i18n="services.innovation.sub3">مشاوره برندینگ صنعتی و طراحی تجربه کاربری</h4>
+            <ul>
+              <li data-i18n="services.innovation.item3">ارتقای جایگاه محصول در بازار و افزایش تعامل کاربر</li>
+            </ul>
+          </div>
         </div>
+        
+        <!-- آموزش تخصصی -->
         <div class="service-card fade-in">
-          <h3>ساخت و تولید</h3>
-          <p>تولید انبوه، مونتاژ و کنترل کیفیت</p>
+          <h3 data-i18n="services.education.title">آموزش تخصصی و انتقال دانش</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.education.sub1">آموزش نرم‌افزارهای مهندسی</h4>
+            <ul>
+              <li data-i18n="services.education.item1">CATIA، SolidWorks، Rhino، Fusion360 و سایر ابزارهای طراحی و تحلیل</li>
+            </ul>
+            
+            <h4 data-i18n="services.education.sub2">کارگاه‌های ساخت دیجیتال</h4>
+            <ul>
+              <li data-i18n="services.education.item2">آموزش عملی پرینت سه‌بعدی، CNC و مهندسی معکوس</li>
+            </ul>
+            
+            <h4 data-i18n="services.education.sub3">برگزاری دوره‌های تخصصی</h4>
+            <ul>
+              <li data-i18n="services.education.item3">انتقال دانش فنی و ارتقای توانمندی‌های مهندسی</li>
+            </ul>
+          </div>
         </div>
+        
+        <!-- مشاوره تخصصی -->
         <div class="service-card fade-in">
-          <h3>مشاوره فنی</h3>
-          <p>مشاوره در زمینه توسعه محصول و بهینه‌سازی فرآیندها</p>
+          <h3 data-i18n="services.consulting.title">مشاوره تخصصی توسعه محصول</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.consulting.sub1">استانداردسازی فرآیندها</h4>
+            <ul>
+              <li data-i18n="services.consulting.item1">تدوین مستندات فنی و راهبری پروژه‌های نوآورانه</li>
+            </ul>
+            
+            <h4 data-i18n="services.consulting.sub2">مونتاژ و کنترل کیفیت</h4>
+            <ul>
+              <li data-i18n="services.consulting.item2">تست عملکرد، آزمون‌های مکانیکی و تضمین کیفیت مطابق استانداردهای صنعتی</li>
+            </ul>
+            
+            <h4 data-i18n="services.consulting.sub3">پروژه‌های توسعه‌ای شرکت</h4>
+            <ul>
+              <li data-i18n="services.consulting.item3">کارخانه تولید یونولیت سراوان (در حال تأسیس)</li>
+              <li data-i18n="services.consulting.item4">کافه فب‌لب روند (بزودی) مرکز نوآوری و تعامل</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- گالری نمونه کارها -->
-  <section id="portfolio" style="background: #f8fafc;">
+  <!-- گالری برخی از نمونه کارها -->
+  <section id="portfolio" class="gallery-section">
     <div class="container">
-      <h2>نمونه کارهای ما</h2>
-      <div class="gallery-container">
-        <div class="gallery-scroll">
-          <!-- نمونه کار 1 -->
-          <div class="gallery-item">
-            <img src="images/gallery-1.jpg" alt="Air Purifier" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Air Purifier</h3>
-              <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
-            </div>
-          </div>
-          <!-- نمونه کار 2 -->
-          <div class="gallery-item">
-            <img src="images/gallery-2.jpg" alt="Biometric Lock" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Biometric Lock</h3>
-              <p>سیستم قفل بیومتریک امنیتی</p>
-            </div>
-          </div>
-          <!-- نمونه کار 3 -->
-          <div class="gallery-item">
-            <img src="images/gallery-3.jpg" alt="ECG Simulator" class="gallery-img">
-            <div class="gallery-content">
-              <h3>ECG Simulator</h3>
-              <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
-            </div>
-          </div>
-          <!-- نمونه کار 4 -->
-          <div class="gallery-item">
-            <img src="images/gallery-4.jpg" alt="Hand Dryer" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Hand Dryer</h3>
-              <p>دستگاه دست خشک کن اتوماتیک</p>
-            </div>
-          </div>
-          <!-- نمونه کار 5 -->
-          <div class="gallery-item">
-            <img src="images/gallery-5.jpg" alt="Veinscope" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Veinscope</h3>
-              <p>دستگاه مشاهده رگ برای پزشکی</p>
-            </div>
-          </div>
-          <!-- تکرار مجموعه برای اسکرول پیوسته -->
-          <div class="gallery-item">
-            <img src="images/gallery-1.jpg" alt="Air Purifier" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Air Purifier</h3>
-              <p>دستگاه تصفیه هوا با تکنولوژی UV</p>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/gallery-2.jpg" alt="Biometric Lock" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Biometric Lock</h3>
-              <p>سیستم قفل بیومتریک امنیتی</p>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/gallery-3.jpg" alt="ECG Simulator" class="gallery-img">
-            <div class="gallery-content">
-              <h3>ECG Simulator</h3>
-              <p>شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/gallery-4.jpg" alt="Hand Dryer" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Hand Dryer</h3>
-              <p>دستگاه دست خشک کن اتوماتیک</p>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/gallery-5.jpg" alt="Veinscope" class="gallery-img">
-            <div class="gallery-content">
-              <h3>Veinscope</h3>
-              <p>دستگاه مشاهده رگ برای پزشکی</p>
-            </div>
-          </div>
-        </div>
+      <h2 data-i18n="portfolio.title">برخی از نمونه کارهای ما</h2>
+      <div class="gallery-wrapper">
+        <div class="gallery-track" id="galleryTrack"></div>
       </div>
     </div>
   </section>
@@ -787,12 +1068,12 @@
   <section class="container">
     <div class="page-links">
       <a href="products.html" class="page-link">
-        <h3>نمونه خدمات و محصولات</h3>
-        <p>مشاهده کامل محصولات و خدمات شرکت</p>
+        <h3 data-i18n="links.products.title">نمونه خدمات و محصولات</h3>
+        <p data-i18n="links.products.desc">مشاهده کامل محصولات و خدمات شرکت</p>
       </a>
       <a href="resume.html" class="page-link">
-        <h3>رزومه پرسنل</h3>
-        <p>اطلاعات کامل پرسنل و تیم متخصص</p>
+        <h3 data-i18n="links.resume.title">رزومه پرسنل</h3>
+        <p data-i18n="links.resume.desc">اطلاعات کامل پرسنل و تیم متخصص</p>
       </a>
     </div>
   </section>
@@ -800,7 +1081,7 @@
   <!-- مشتریان با اسکرول پیوسته -->
   <section id="clients" class="clients-section">
     <div class="container">
-      <h2>مشتریان ما</h2>
+      <h2 data-i18n="clients.title">برخی از مشتریان ما</h2>
       <div class="clients-wrapper">
         <div class="clients-track">
           <!-- ردیف اول -->
@@ -809,9 +1090,6 @@
           </div>
           <div class="client-logo">
             <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
-          </div>
-          <div class="client-logo">
-            <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
           </div>
           <div class="client-logo">
             <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
@@ -824,9 +1102,6 @@
           </div>
           <div class="client-logo">
             <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
-          </div>
-          <div class="client-logo">
-            <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
           </div>
           <div class="client-logo">
             <img src="clients/innovation.png" alt="مجتمع نوآوری">
@@ -842,9 +1117,6 @@
             <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
           </div>
           <div class="client-logo">
-            <img src="clients/park-health.png" alt="پارک علم و فناوری سلامت زاهدان">
-          </div>
-          <div class="client-logo">
             <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
           </div>
           <div class="client-logo">
@@ -855,9 +1127,6 @@
           </div>
           <div class="client-logo">
             <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
-          </div>
-          <div class="client-logo">
-            <img src="clients/protein.png" alt="شرکت پروتئین سپید تنکابن">
           </div>
           <div class="client-logo">
             <img src="clients/innovation.png" alt="مجتمع نوآوری">
@@ -873,22 +1142,22 @@
   <!-- پروژه‌های توسعه -->
   <section id="projects">
     <div class="container">
-      <h2>پروژه‌های توسعه شرکت</h2>
+      <h2 data-i18n="projects.title">پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <img src="images/project-1.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
+          <img src="images/projects/yunolit-factory.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
           <div class="project-content">
-            <h3>کارخانه تولید یونولیت سراوان</h3>
-            <p>احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
-            <span class="coming-soon">بزودی</span>
+            <h3 data-i18n="projects.project1.title">کارخانه تولید یونولیت سراوان</h3>
+            <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
+            <span class="coming-soon" data-i18n="projects.soon">بزودی</span>
           </div>
         </div>
         <div class="project-card fade-in">
-          <img src="images/project-2.jpg" alt="کافه فب‌لب روند" class="project-img">
+          <img src="images/projects/fablab-cafe.jpg" alt="کافه فب‌لب روند" class="project-img">
           <div class="project-content">
-            <h3>کافه فب‌لب روند</h3>
-            <p>ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
-            <span class="coming-soon">بزودی</span>
+            <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
+            <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
+            <span class="coming-soon" data-i18n="projects.soon">بزودی</span>
           </div>
         </div>
       </div>
@@ -898,13 +1167,13 @@
   <!-- دانلود -->
   <section style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: white;">
     <div class="container" style="text-align: center;">
-      <h2 style="color: white;">مستندات شرکت</h2>
-      <p style="max-width: 600px; margin: 0 auto 30px; color: #e2e8f0; font-size: 18px;">
+      <h2 style="color: white;" data-i18n="downloads.title">مستندات شرکت</h2>
+      <p style="max-width: 600px; margin: 0 auto 30px; color: #e2e8f0; font-size: 18px;" data-i18n="downloads.description">
         برای دریافت اطلاعات کامل شرکت، مستندات زیر را دانلود کنید
       </p>
       <div class="cta">
-        <a href="files/catalog.pdf" class="btn btn-secondary">کاتالوگ شرکت</a>
-        <a href="files/resume.pdf" class="btn btn-primary">رزومه شرکت</a>
+        <a href="files/catalog.pdf" class="btn btn-secondary" data-i18n="downloads.catalog">کاتالوگ شرکت</a>
+        <a href="files/resume.pdf" class="btn btn-primary" data-i18n="downloads.resume">رزومه شرکت</a>
       </div>
     </div>
   </section>
@@ -914,7 +1183,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>تماس با ما</h3>
+          <h3 data-i18n="footer.contact">تماس با ما</h3>
           <div class="contact-details">
             <div class="contact-item">
               <span class="contact-icon"><i class="fas fa-envelope"></i></span>
@@ -926,23 +1195,23 @@
             </div>
             <div class="contact-item">
               <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-              <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+              <span data-i18n="footer.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
             </div>
           </div>
         </div>
         
         <div class="footer-section">
-          <h3>لینک‌های مفید</h3>
+          <h3 data-i18n="footer.links">لینک‌های مفید</h3>
           <div style="display: flex; flex-direction: column; gap: 12px;">
-            <a href="index.html#services" style="color: #cbd5e1; transition: color 0.3s;">خدمات ما</a>
-            <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;">محصولات</a>
-            <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;">رزومه پرسنل</a>
-            <a href="index.html#clients" style="color: #cbd5e1; transition: color 0.3s;">مشتریان</a>
+            <a href="#services" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ما</a>
+            <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">نمونه خدمات و محصولات</a>
+            <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.resume">رزومه پرسنل</a>
+            <a href="#projects" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.projects">پروژه‌های توسعه</a>
           </div>
         </div>
         
         <div class="footer-section">
-          <h3>شبکه‌های اجتماعی</h3>
+          <h3 data-i18n="footer.social">شبکه‌های اجتماعی</h3>
           <div class="social-grid">
             <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn" target="_blank">
               <i class="fab fa-linkedin-in"></i>
@@ -957,88 +1226,693 @@
         </div>
       </div>
       
-      <div class="copyright">
+      <div class="copyright" data-i18n="footer.copyright">
         © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
       </div>
     </div>
   </footer>
 
   <script>
-    // ناوبری ثابت با تغییر پس زمینه
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-    
-    // انیمیشن اسکرول نرم
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+    // ==================== سیستم چندزبانه ====================
+    const translations = {
+      fa: {
+        // ناوبری
+        "nav.home": "خانه",
+        "nav.services": "خدمات",
+        "nav.products": "نمونه خدمات و محصولات",
+        "nav.resume": "رزومه پرسنل",
+        "nav.projects": "پروژه‌های توسعه",
+        "nav.contact": "تماس",
         
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // انیمیشن برای عناصر هنگام اسکرول
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+        // هیرو
+        "hero.title": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+        "hero.description": "تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی",
+        "hero.viewServices": "مشاهده خدمات",
+        "hero.requestConsultation": "درخواست مشاوره",
+        
+        // خدمات
+        "services.title": "خدمات ما",
+        "services.design.title": "طراحی و توسعه محصول",
+        "services.design.sub1": "طراحی صنعتی و مدل‌سازی سه‌بعدی پیشرفته",
+        "services.design.item1": "از فاز کانسپت تا طراحی جزئیات اجرایی با نرم‌افزارهای CAD/CAM و شبیه‌سازی عددی",
+        "services.design.sub2": "مهندسی معکوس تجهیزات پزشکی و صنعتی",
+        "services.design.item2": "اسکن سه‌بعدی، بازطراحی پارامتریک و بازتولید قطعات با رعایت استانداردهای عملکردی",
+        "services.design.sub3": "تحلیل ارگونومی و ساخت‌پذیری",
+        "services.design.item3": "بهینه‌سازی فرم و عملکرد محصولات برای تولید انبوه و کاربری ایمن",
+        
+        "services.production.title": "ساخت و تولید",
+        "services.production.sub1": "ماشینکاری CNC چندمحوره",
+        "services.production.item1": "تراش، فرز و وایرکات با دقت میکرونی برای تولید قطعات فلزی و پلیمری",
+        "services.production.sub2": "ساخت افزایشی (Additive Manufacturing)",
+        "services.production.item2": "چاپ سه‌بعدی رزین (SLA/DLP) و فیلامنت (FDM) برای نمونه‌سازی سریع و تولید قطعات پیچیده",
+        "services.production.sub3": "ساخت کاهشی (Subtractive Manufacturing)",
+        "services.production.item3": "عملیات برش، تراش و قالب‌سازی با تجهیزات پیشرفته",
+        
+        "services.infrastructure.title": "توسعه زیرساخت و پروژه‌های صنعتی",
+        "services.infrastructure.sub1": "طراحی و راه‌اندازی خطوط تولید",
+        "services.infrastructure.item1": "از طراحی فرآیند تا نصب و راه‌اندازی تجهیزات",
+        "services.infrastructure.sub2": "تولید تجهیزات دکوراسیون خلاق و ماژولار",
+        "services.infrastructure.item2": "طراحی و ساخت سیستم‌های مدولار برای فضاهای عمومی و صنعتی",
+        "services.infrastructure.sub3": "تولید گجت‌های کاربردی و خلاقانه",
+        "services.infrastructure.item3": "توسعه ابزارهای هوشمند و نوآورانه با رویکرد حل مسئله",
+        
+        "services.innovation.title": "خدمات نوآوری و منتورینگ",
+        "services.innovation.sub1": "منتورینگ تیم‌ها و هسته‌های فناور",
+        "services.innovation.item1": "راهبری فرآیند توسعه محصول، تجاری‌سازی و ورود به بازار",
+        "services.innovation.sub2": "ایجاد و مدیریت مراکز نوآوری",
+        "services.innovation.item2": "طراحی و پیاده‌سازی فب‌لب‌ها و آزمایشگاه‌های ساخت دیجیتال",
+        "services.innovation.sub3": "مشاوره برندینگ صنعتی و طراحی تجربه کاربری",
+        "services.innovation.item3": "ارتقای جایگاه محصول در بازار و افزایش تعامل کاربر",
+        
+        "services.education.title": "آموزش تخصصی و انتقال دانش",
+        "services.education.sub1": "آموزش نرم‌افزارهای مهندسی",
+        "services.education.item1": "CATIA، SolidWorks، Rhino، Fusion360 و سایر ابزارهای طراحی و تحلیل",
+        "services.education.sub2": "کارگاه‌های ساخت دیجیتال",
+        "services.education.item2": "آموزش عملی پرینت سه‌بعدی، CNC و مهندسی معکوس",
+        "services.education.sub3": "برگزاری دوره‌های تخصصی",
+        "services.education.item3": "انتقال دانش فنی و ارتقای توانمندی‌های مهندسی",
+        
+        "services.consulting.title": "مشاوره تخصصی توسعه محصول",
+        "services.consulting.sub1": "استانداردسازی فرآیندها",
+        "services.consulting.item1": "تدوین مستندات فنی و راهبری پروژه‌های نوآورانه",
+        "services.consulting.sub2": "مونتاژ و کنترل کیفیت",
+        "services.consulting.item2": "تست عملکرد، آزمون‌های مکانیکی و تضمین کیفیت مطابق استانداردهای صنعتی",
+        "services.consulting.sub3": "پروژه‌های توسعه‌ای شرکت",
+        "services.consulting.item3": "کارخانه تولید یونولیت سراوان (در حال تأسیس)",
+        "services.consulting.item4": "کافه فب‌لب روند (بزودی) مرکز نوآوری و تعامل",
+        
+        // نمونه کارها
+        "portfolio.title": "برخی از نمونه کارهای ما",
+        
+        // ترجمه نمونه کارها
+        "portfolio.item1.title": "دستگاه تصفیه هوا",
+        "portfolio.item1.desc": "دستگاه تصفیه هوا با تکنولوژی UV",
+        "portfolio.item2.title": "قفل بیومتریک",
+        "portfolio.item2.desc": "سیستم قفل بیومتریک امنیتی",
+        "portfolio.item3.title": "شبیه‌ساز ECG",
+        "portfolio.item3.desc": "شبیه‌ساز سیگنال قلب برای آموزش پزشکی",
+        "portfolio.item4.title": "دستگاه انژکتور شور",
+        "portfolio.item4.desc": "دستگاه انژکتور شور برای شرکت پویا خودرو",
+        "portfolio.item5.title": "دستگاه مشاهده رگ",
+        "portfolio.item5.desc": "دستگاه مشاهده رگ برای پزشکی",
+        "portfolio.item6.title": "ربات حمل بازو",
+        "portfolio.item6.desc": "ربات حمل بازو برای مشتری ترکیه‌ای",
+        "portfolio.item7.title": "تندیس تفتان",
+        "portfolio.item7.desc": "تندیس تفتان برای پارک علم و فناوری",
+        "portfolio.item8.title": "دستگاه تست پالپ",
+        "portfolio.item8.desc": "دستگاه تست پالپ دندانپزشکی",
+        "portfolio.item9.title": "کاور لامپ",
+        "portfolio.item9.desc": "کاور لامپ خیابانی برای شرکت مهرنور",
+        
+        // لینک‌ها
+        "links.products.title": "نمونه خدمات و محصولات",
+        "links.products.desc": "مشاهده کامل محصولات و خدمات شرکت",
+        "links.resume.title": "رزومه پرسنل",
+        "links.resume.desc": "اطلاعات کامل پرسنل و تیم متخصص",
+        
+        // مشتریان
+        "clients.title": "برخی از مشتریان ما",
+        
+        // پروژه‌ها
+        "projects.title": "پروژه‌های توسعه شرکت",
+        "projects.project1.title": "کارخانه تولید یونولیت سراوان",
+        "projects.project1.desc": "احداث واحد تولید یونولیت در شهرک صنعتی سراوان",
+        "projects.project2.title": "کافه فب‌لب روند",
+        "projects.project2.desc": "ایجاد فضای همکاری و نوآوری برای جامعه فناور",
+        "projects.soon": "بزودی",
+        
+        // دانلود
+        "downloads.title": "مستندات شرکت",
+        "downloads.description": "برای دریافت اطلاعات کامل شرکت، مستندات زیر را دانلود کنید",
+        "downloads.catalog": "کاتالوگ شرکت",
+        "downloads.resume": "رزومه شرکت",
+        
+        // فوتر
+        "footer.contact": "تماس با ما",
+        "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
+        "footer.links": "لینک‌های مفید",
+        "footer.social": "شبکه‌های اجتماعی",
+        "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
+      },
+      
+      en: {
+        // Navigation
+        "nav.home": "Home",
+        "nav.services": "Services",
+        "nav.products": "Products & Services",
+        "nav.resume": "Personnel Resume",
+        "nav.projects": "Development Projects",
+        "nav.contact": "Contact",
+        
+        // Hero
+        "hero.title": "Tose Pardazan Knowledge-Based Engineering Company",
+        "hero.description": "Realizing your industrial dreams from zero to one hundred • Design, construction and production with global standards • Accompanying in the path of turning ideas into final products",
+        "hero.viewServices": "View Services",
+        "hero.requestConsultation": "Request Consultation",
+        
+        // Services
+        "services.title": "Our Services",
+        "services.design.title": "Product Design & Development",
+        "services.design.sub1": "Advanced Industrial Design & 3D Modeling",
+        "services.design.item1": "From concept phase to detailed design with CAD/CAM software and numerical simulation",
+        "services.design.sub2": "Reverse Engineering of Medical & Industrial Equipment",
+        "services.design.item2": "3D scanning, parametric redesign and reproduction of parts with performance standards",
+        "services.design.sub3": "Ergonomics & Manufacturing Analysis",
+        "services.design.item3": "Optimization of form and function for mass production and safe use",
+        
+        "services.production.title": "Manufacturing & Production",
+        "services.production.sub1": "Multi-axis CNC Machining",
+        "services.production.item1": "Turning, milling and wire EDM with micron precision for metal and polymer parts",
+        "services.production.sub2": "Additive Manufacturing",
+        "services.production.item2": "Resin (SLA/DLP) and filament (FDM) 3D printing for rapid prototyping and complex parts",
+        "services.production.sub3": "Subtractive Manufacturing",
+        "services.production.item3": "Cutting, turning and molding operations with advanced equipment",
+        
+        "services.infrastructure.title": "Infrastructure Development & Industrial Projects",
+        "services.infrastructure.sub1": "Production Line Design & Installation",
+        "services.infrastructure.item1": "From process design to equipment installation and commissioning",
+        "services.infrastructure.sub2": "Creative Modular Decoration Equipment",
+        "services.infrastructure.item2": "Design and construction of modular systems for public and industrial spaces",
+        "services.infrastructure.sub3": "Functional & Creative Gadgets",
+        "services.infrastructure.item3": "Development of smart and innovative tools with problem-solving approach",
+        
+        "services.innovation.title": "Innovation & Mentoring Services",
+        "services.innovation.sub1": "Mentoring Tech Teams & Cores",
+        "services.innovation.item1": "Guidance of product development process, commercialization and market entry",
+        "services.innovation.sub2": "Creation & Management of Innovation Centers",
+        "services.innovation.item2": "Design and implementation of fab labs and digital fabrication laboratories",
+        "services.innovation.sub3": "Industrial Branding & UX/UI Design Consulting",
+        "services.innovation.item3": "Enhancing product positioning in market and increasing user interaction",
+        
+        "services.education.title": "Specialized Training & Knowledge Transfer",
+        "services.education.sub1": "Engineering Software Training",
+        "services.education.item1": "CATIA, SolidWorks, Rhino, Fusion360 and other design and analysis tools",
+        "services.education.sub2": "Digital Fabrication Workshops",
+        "services.education.item2": "Practical training in 3D printing, CNC and reverse engineering",
+        "services.education.sub3": "Specialized Courses",
+        "services.education.item3": "Technical knowledge transfer and engineering skills enhancement",
+        
+        "services.consulting.title": "Product Development Consulting",
+        "services.consulting.sub1": "Process Standardization",
+        "services.consulting.item1": "Technical documentation development and innovative project guidance",
+        "services.consulting.sub2": "Assembly & Quality Control",
+        "services.consulting.item2": "Performance testing, mechanical tests and quality assurance according to industrial standards",
+        "services.consulting.sub3": "Company Development Projects",
+        "services.consulting.item3": "Saravan EPS Foam Production Factory (under establishment)",
+        "services.consulting.item4": "Round Fab Lab Cafe (Coming Soon) - Innovation and Interaction Center",
+        
+        // Portfolio
+        "portfolio.title": "Some of Our Work Samples",
+        
+        // Portfolio translations
+        "portfolio.item1.title": "Air Purifier",
+        "portfolio.item1.desc": "Air purifier with UV technology",
+        "portfolio.item2.title": "Biometric Lock",
+        "portfolio.item2.desc": "Biometric security lock system",
+        "portfolio.item3.title": "ECG Simulator",
+        "portfolio.item3.desc": "ECG signal simulator for medical training",
+        "portfolio.item4.title": "Injector Cleaner",
+        "portfolio.item4.desc": "Injector cleaner device for Pouya Khodro",
+        "portfolio.item5.title": "Veinscope",
+        "portfolio.item5.desc": "Vein visualization device for medical use",
+        "portfolio.item6.title": "Arm Porter Robot",
+        "portfolio.item6.desc": "Arm porter robot for Turkish customer",
+        "portfolio.item7.title": "Taftan Trophy",
+        "portfolio.item7.desc": "Taftan trophy for Science and Technology Park",
+        "portfolio.item8.title": "Pulp Tester",
+        "portfolio.item8.desc": "Dental pulp testing device",
+        "portfolio.item9.title": "Lamp Cover",
+        "portfolio.item9.desc": "Street lamp cover for Mehrnoor Electronic",
+        
+        // Links
+        "links.products.title": "Products & Services",
+        "links.products.desc": "View all company products and services",
+        "links.resume.title": "Personnel Resume",
+        "links.resume.desc": "Complete information of personnel and expert team",
+        
+        // Clients
+        "clients.title": "Some of Our Clients",
+        
+        // Projects
+        "projects.title": "Company Development Projects",
+        "projects.project1.title": "Saravan EPS Foam Production Factory",
+        "projects.project1.desc": "Establishment of EPS production unit in Saravan Industrial Town",
+        "projects.project2.title": "Round Fab Lab Cafe",
+        "projects.project2.desc": "Creating collaboration and innovation space for tech community",
+        "projects.soon": "Coming Soon",
+        
+        // Downloads
+        "downloads.title": "Company Documents",
+        "downloads.description": "Download the following documents for complete company information",
+        "downloads.catalog": "Company Catalog",
+        "downloads.resume": "Company Resume",
+        
+        // Footer
+        "footer.contact": "Contact Us",
+        "footer.address": "Zahedan, University Boulevard, Science and Technology Park",
+        "footer.links": "Useful Links",
+        "footer.social": "Social Networks",
+        "footer.copyright": "© 2025 Tose Pardazan Knowledge-Based Engineering Company. All rights reserved."
+      },
+      
+      ar: {
+        // التنقل
+        "nav.home": "الرئيسية",
+        "nav.services": "الخدمات",
+        "nav.products": "الخدمات والمنتجات",
+        "nav.resume": "سيرة الموظفين",
+        "nav.projects": "مشاريع التطوير",
+        "nav.contact": "اتصل بنا",
+        
+        // الهيرو
+        "hero.title": "شركة توسع پردازان الهندسية القائمة على المعرفة",
+        "hero.description": "تحقيق أحلامك الصناعية من الصفر إلى المائة • التصميم والبناء والإنتاج وفق المعايير العالمية • المرافقة في طريق تحويل الأفكار إلى منتجات نهائية",
+        "hero.viewServices": "عرض الخدمات",
+        "hero.requestConsultation": "طلب استشارة",
+        
+        // الخدمات
+        "services.title": "خدماتنا",
+        "services.design.title": "تصميم وتطوير المنتجات",
+        "services.design.sub1": "التصميم الصناعي المتقدم والنمذجة ثلاثية الأبعاد",
+        "services.design.item1": "من مرحلة المفهوم إلى التصميم التفصيلي مع برامج CAD/CAM والمحاكاة العددية",
+        "services.design.sub2": "الهندسة العكسية للمعدات الطبية والصناعية",
+        "services.design.item2": "المسح ثلاثي الأبعاد، إعادة التصميم البارامتري وإعادة إنتاج القطع مع معايير الأداء",
+        "services.design.sub3": "تحليل بيئة العمل والقابلية للتصنيع",
+        "services.design.item3": "تحسين الشكل والوظيفة للإنتاج الضخم والاستخدام الآمن",
+        
+        "services.production.title": "التصنيع والإنتاج",
+        "services.production.sub1": "التشغيل الآلي متعدد المحاور",
+        "services.production.item1": "الخراطة، الطحن والقطع بالسلك بدقة ميكرونية للأجزاء المعدنية والبلاستيكية",
+        "services.production.sub2": "التصنيع الإضافي",
+        "services.production.item2": "الطباعة ثلاثية الأبعاد بالراتنج (SLA/DLP) والخيوط (FDM) للنماذج الأولية السريعة والأجزاء المعقدة",
+        "services.production.sub3": "التصنيع التناقصي",
+        "services.production.item3": "عمليات القطع، الخراطة والتشكيل بالمعدات المتقدمة",
+        
+        "services.infrastructure.title": "تطوير البنية التحتية والمشاريع الصناعية",
+        "services.infrastructure.sub1": "تصميم وتركيب خطوط الإنتاج",
+        "services.infrastructure.item1": "من تصميم العملية إلى تركيب المعدات والتشغيل",
+        "services.infrastructure.sub2": "معدات الديكور الإبداعية والمعيارية",
+        "services.infrastructure.item2": "تصميم وبناء الأنظمة المعيارية للمساحات العامة والصناعية",
+        "services.infrastructure.sub3": "الأدوات الوظيفية والإبداعية",
+        "services.infrastructure.item3": "تطوير أدوات ذكية ومبتكرة مع نهج حل المشكلات",
+        
+        "services.innovation.title": "خدمات الابتكار والإرشاد",
+        "services.innovation.sub1": "إرشاد الفرق والنواة التكنولوجية",
+        "services.innovation.item1": "توجيه عملية تطوير المنتج، التسويق والدخول إلى السوق",
+        "services.innovation.sub2": "إنشاء وإدارة مراكز الابتكار",
+        "services.innovation.item2": "تصميم وتنفيذ المختبرات الرقمية ومختبرات التصنيع الرقمي",
+        "services.innovation.sub3": "استشارات العلامة التجارية الصناعية وتصميم تجربة المستخدم",
+        "services.innovation.item3": "تعزيز مكانة المنتج في السوق وزيادة تفاعل المستخدم",
+        
+        "services.education.title": "التدريب المتخصص ونقل المعرفة",
+        "services.education.sub1": "تدريب برامج الهندسة",
+        "services.education.item1": "CATIA، SolidWorks، Rhino، Fusion360 وأدوات التصميم والتحليل الأخرى",
+        "services.education.sub2": "ورش العمل للتصنيع الرقمي",
+        "services.education.item2": "تدريب عملي في الطباعة ثلاثية الأبعاد، التشغيل الآلي والهندسة العكسية",
+        "services.education.sub3": "الدورات المتخصصة",
+        "services.education.item3": "نقل المعرفة التقنية وتعزيز المهارات الهندسية",
+        
+        "services.consulting.title": "استشارات تطوير المنتجات",
+        "services.consulting.sub1": "توحيد العمليات",
+        "services.consulting.item1": "تطوير الوثائق الفنية وتوجيه المشاريع المبتكرة",
+        "services.consulting.sub2": "التجميع ومراقبة الجودة",
+        "services.consulting.item2": "اختبار الأداء، الاختبارات الميكانکیة وضمان الجودة وفق المعايير الصناعية",
+        "services.consulting.sub3": "مشاريع تطوير الشركة",
+        "services.consulting.item3": "مصنع إنتاج مادة البوليسترين في سراوان (قيد الإنشاء)",
+        "services.consulting.item4": "مقهى المختبر الرقمي روند (قريباً) - مركز الابتكار والتفاعل",
+        
+        // الأعمال السابقة
+        "portfolio.title": "بعض أعمالنا السابقة",
+        
+        // ترجمة الأعمال السابقة
+        "portfolio.item1.title": "جهاز تنقية الهواء",
+        "portfolio.item1.desc": "جهاز تنقية الهواء بتقنية الأشعة فوق البنفسجية",
+        "portfolio.item2.title": "قفل القياسات الحيوية",
+        "portfolio.item2.desc": "نظام قفل القياسات الحيوية الأمني",
+        "portfolio.item3.title": "محاكي إشارات القلب",
+        "portfolio.item3.desc": "محاكي إشارات القلب للتدريب الطبي",
+        "portfolio.item4.title": "جهاز تنظيف الحقن",
+        "portfolio.item4.desc": "جهاز تنظيف الحقن لشركة بویا خودرو",
+        "portfolio.item5.title": "جهاز عرض الأوردة",
+        "portfolio.item5.desc": "جهاز عرض الأوردة للاستخدام الطبي",
+        "portfolio.item6.title": "روبوت حمل الذراع",
+        "portfolio.item6.desc": "روبوت حمل الذراع للعميل التركي",
+        "portfolio.item7.title": "كأس تفتان",
+        "portfolio.item7.desc": "كأس تفتان لحديقة العلوم والتكنولوجيا",
+        "portfolio.item8.title": "جهاز اختبار لب الأسنان",
+        "portfolio.item8.desc": "جهاز اختبار لب الأسنان",
+        "portfolio.item9.title": "غطاء مصباح الشارع",
+        "portfolio.item9.desc": "غطاء مصباح الشارع لشركة مهرنور الإلكترونية",
+        
+        // الروابط
+        "links.products.title": "الخدمات والمنتجات",
+        "links.products.desc": "عرض جميع منتجات وخدمات الشركة",
+        "links.resume.title": "سيرة الموظفين",
+        "links.resume.desc": "معلومات كاملة عن الموظفين والفريق المتخصص",
+        
+        // العملاء
+        "clients.title": "بعض عملائنا",
+        
+        // المشاريع
+        "projects.title": "مشاريع تطوير الشركة",
+        "projects.project1.title": "مصنع إنتاج مادة البوليسترين في سراوان",
+        "projects.project1.desc": "إنشاء وحدة إنتاج مادة البوليسترين في المدينة الصناعية سراوان",
+        "projects.project2.title": "مقهى المختبر الرقمي روند",
+        "projects.project2.desc": "خلق مساحة للتعاون والابتكار لمجتمع التكنولوجيا",
+        "projects.soon": "قريباً",
+        
+        // التنزيلات
+        "downloads.title": "وثائق الشركة",
+        "downloads.description": "قم بتنزيل المستندات التالية للحصول على معلومات كاملة عن الشركة",
+        "downloads.catalog": "كتالوج الشركة",
+        "downloads.resume": "سيرة الشركة",
+        
+        // الفوتر
+        "footer.contact": "اتصل بنا",
+        "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+        "footer.links": "روابط مفيدة",
+        "footer.social": "الشبكات الاجتماعية",
+        "footer.copyright": "© ٢٠٢٥ شركة توسع پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
+      }
     };
+
+    // داده‌های نمونه کارها
+    const portfolioData = [
+      { 
+        img: 'images/portfolio/air-purifier.jpg', 
+        key: 'item1',
+        client: 'شرکت بهبود رایان', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/biometric-lock.jpg', 
+        key: 'item2',
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/ecg-simulator.jpg', 
+        key: 'item3',
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/injector-cleaner.jpg', 
+        key: 'item4',
+        client: 'پویا خودرو ایرانیان آدلی', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/veinscope.jpg', 
+        key: 'item5',
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/arm-porter.jpg', 
+        key: 'item6',
+        client: 'شخصی حقیقی در ترکیه - استانبول', 
+        type: 'reverse'
+      },
+      { 
+        img: 'images/portfolio/taftan-trophy.jpg', 
+        key: 'item7',
+        client: 'فبلب صنایع خلاق پارک علم و فناوری', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/pulp-tester.jpg', 
+        key: 'item8',
+        client: 'شرکت طب تجهیز آبادیس پارس', 
+        type: 'reverse'
+      },
+      { 
+        img: 'images/portfolio/lamp-cover.jpg', 
+        key: 'item9',
+        client: 'مهرنور الکترونیک پیشگام', 
+        type: 'original'
+      }
+    ];
+
+    // سیستم تغییر زبان
+    let currentLang = 'fa';
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
+    function changeLanguage(lang) {
+      currentLang = lang;
+      
+      // تغییر فعال بودن دکمه‌ها
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
         }
       });
-    }, observerOptions);
-    
-    document.querySelectorAll('.service-card, .project-card').forEach(card => {
-      observer.observe(card);
+      
+      // تغییر متن‌ها
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // تغییر جهت صفحه
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      } else if (lang === 'fa') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'fa';
+      } else if (lang === 'en') {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      }
+      
+      // ذخیره زبان انتخابی
+      localStorage.setItem('preferredLanguage', lang);
+      
+      // به‌روزرسانی نمونه کارها
+      updatePortfolioContent();
+    }
+
+    // ==================== گالری نمونه کارها - اسکرول اتوماتیک مثل مشتریان ====================
+    function setupPortfolioAutoScroll() {
+      const galleryTrack = document.getElementById('galleryTrack');
+      
+      // پاک کردن محتوای قبلی
+      galleryTrack.innerHTML = '';
+      
+      // ایجاد 2 سری از آیتم‌ها برای اسکرول بی‌نهایت
+      for (let i = 0; i < 2; i++) {
+        portfolioData.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          
+          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
+          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
+          const titleKey = `portfolio.${item.key}.title`;
+          const descKey = `portfolio.${item.key}.desc`;
+          
+          galleryItem.innerHTML = `
+            <img src="${item.img}" alt="${translations[currentLang][titleKey] || item.key}" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/350x180/1e40af/ffffff?text=${encodeURIComponent(translations[currentLang][titleKey] || item.key)}'">
+            <div class="gallery-content">
+              <h3 data-i18n-key="${titleKey}">${translations[currentLang][titleKey] || item.key}</h3>
+              <div class="client-name">${item.client}</div>
+              <p class="project-desc" data-i18n-key="${descKey}">${translations[currentLang][descKey] || ''}</p>
+              <span class="project-type ${typeClass}">${typeText}</span>
+            </div>
+          `;
+          
+          galleryTrack.appendChild(galleryItem);
+        });
+      }
+    }
+
+    // به‌روزرسانی محتوای نمونه کارها هنگام تغییر زبان
+    function updatePortfolioContent() {
+      document.querySelectorAll('.gallery-content h3[data-i18n-key]').forEach(element => {
+        const key = element.getAttribute('data-i18n-key');
+        if (translations[currentLang][key]) {
+          element.textContent = translations[currentLang][key];
+        }
+      });
+      
+      document.querySelectorAll('.project-desc[data-i18n-key]').forEach(element => {
+        const key = element.getAttribute('data-i18n-key');
+        if (translations[currentLang][key]) {
+          element.textContent = translations[currentLang][key];
+        }
+      });
+      
+      // به‌روزرسانی alt تصاویر
+      document.querySelectorAll('.gallery-img').forEach((img, index) => {
+        const dataIndex = index % portfolioData.length;
+        const itemKey = portfolioData[dataIndex].key;
+        const titleKey = `portfolio.${itemKey}.title`;
+        if (translations[currentLang][titleKey]) {
+          img.alt = translations[currentLang][titleKey];
+        }
+      });
+    }
+
+    // ==================== رویدادهای صفحه ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      // تنظیم رویداد برای دکمه‌های زبان
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          changeLanguage(lang);
+        });
+      });
+      
+      // بارگذاری زبان ذخیره شده یا تشخیص خودکار
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang) {
+        currentLang = savedLang;
+        changeLanguage(savedLang);
+      } else {
+        // تشخیص زبان مرورگر
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('ar')) {
+          currentLang = 'ar';
+          changeLanguage('ar');
+        } else if (browserLang.startsWith('fa')) {
+          currentLang = 'fa';
+          changeLanguage('fa');
+        } else {
+          currentLang = 'en';
+          changeLanguage('en');
+        }
+      }
+      
+      // تنظیم گالری نمونه کارها
+      setupPortfolioAutoScroll();
+      
+      // کنترل خطا برای تصاویر
+      setupErrorHandlers();
+      
+      // تنظیم اسکرول نرم
+      setupSmoothScroll();
+      
+      // تنظیم انیمیشن عناصر
+      setupAnimations();
     });
     
-    // اسکرول پیوسته مشتریان - بهبود یافته
-    const clientsTrack = document.querySelector('.clients-track');
+    // ==================== توابع کمکی ====================
+    function setupErrorHandlers() {
+      // کنترل خطا برای تصاویر مشتریان
+      document.querySelectorAll('.client-logo img').forEach(img => {
+        img.onerror = function() {
+          const altText = this.alt || 'مشتری';
+          const placeholderColor = '#1e40af';
+          const textColor = 'white';
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="70" viewBox="0 0 120 70">
+            <rect width="120" height="70" fill="${placeholderColor}" rx="8"/>
+            <text x="60" y="35" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText}</text>
+          </svg>`;
+          this.src = 'data:image/svg+xml;base64,' + btoa(svg);
+        };
+      });
+      
+      // کنترل خطا برای تصاویر پروژه‌ها
+      document.querySelectorAll('.project-img').forEach(img => {
+        img.onerror = function() {
+          const altText = this.alt;
+          let text = '';
+          if (altText.includes('یونولیت')) {
+            text = 'کارخانه یونولیت سراوان';
+          } else if (altText.includes('فب‌لب')) {
+            text = 'کافه فب‌لب روند';
+          }
+          this.src = `https://via.placeholder.com/400x200/0f766e/ffffff?text=${encodeURIComponent(text)}`;
+        };
+      });
+      
+      // کنترل خطا برای لوگو
+      const logoImg = document.querySelector('.brand img');
+      if (logoImg) {
+        logoImg.onerror = function() {
+          this.src = 'https://via.placeholder.com/50x50/1e40af/ffffff?text=TPE';
+        };
+      }
+    }
     
-    // دوباره کلون کردن آیتم‌ها برای اسکرول بی‌نهایت روان
-    function duplicateLogos() {
-      const logos = clientsTrack.querySelectorAll('.client-logo');
-      logos.forEach(logo => {
-        const clone = logo.cloneNode(true);
-        clientsTrack.appendChild(clone);
+    function setupSmoothScroll() {
+      // انیمیشن اسکرول نرم برای بخش‌ها
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
       });
     }
     
-    // اجرای تابع در صورت نیاز
-    window.addEventListener('load', duplicateLogos);
-    
-    // کنترل ویدیو برای موبایل
-    const video = document.querySelector('.video-background');
-    
-    // برای صرفه‌جویی در باتری موبایل، ویدیو فقط در حالت visible پلی می‌شود
-    let observerVideo = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
+    function setupAnimations() {
+      // ناوبری ثابت با تغییر پس زمینه
+      window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
         } else {
-          video.pause();
+          navbar.classList.remove('scrolled');
         }
       });
-    }, { threshold: 0.5 });
+      
+      // انیمیشن برای عناصر هنگام اسکرول
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.service-card, .project-card').forEach(card => {
+        observer.observe(card);
+      });
+      
+      // کنترل ویدیو برای موبایل
+      const video = document.querySelector('.video-background');
+      
+      if (video) {
+        let observerVideo = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(e => console.log("اتوپلی ویدیو مسدود شده"));
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        observerVideo.observe(video);
+        
+        // تنظیم فالبک برای ویدیو
+        video.onerror = function() {
+          const hero = document.querySelector('.hero');
+          hero.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)';
+        };
+      }
+    }
     
-    observerVideo.observe(video);
+    // تنظیم مجدد گالری هنگام تغییر سایز پنجره
+    window.addEventListener('resize', function() {
+      setupPortfolioAutoScroll();
+    });
   </script>
 </body>
 </html>
