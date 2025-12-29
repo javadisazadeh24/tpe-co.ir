@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نمونه خدمات و محصولات | توسعه پردازان</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Estedad:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .products-header {
+      padding: 120px 0 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .products-grid {
+      padding: 60px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .product-image {
+      height: 200px;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 48px;
+    }
+    
+    .product-content {
+      padding: 25px;
+    }
+    
+    .product-content h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: white;
+    }
+    
+    .product-content p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- ناوبری -->
+  <header class="nav glass-nav">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="index.html#services">خدمات</a></li>
+          <li><a href="products.html" class="active">نمونه خدمات</a></li>
+          <li><a href="index.html#portfolio">نمونه کارها</a></li>
+          <li><a href="index.html#clients">مشتریان</a></li>
+          <li><a href="index.html#projects">پروژه‌ها</a></li>
+          <li><a href="resume.html">رزومه پرسنل</a></li>
+          <li><a href="index.html#contact">تماس</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- هدر صفحه محصولات -->
+  <section class="products-header">
+    <div class="container">
+      <h1>نمونه خدمات و محصولات</h1>
+      <p class="hero-subtitle">نمایشگاه دیجیتالی از پروژه‌های طراحی و تولید شده توسط تیم ما</p>
+    </div>
+  </section>
+
+  <!-- لیست محصولات -->
+  <section class="products-section">
+    <div class="products-grid">
+      <!-- محصول 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>💨</span>
+        </div>
+        <div class="product-content">
+          <h3>Air Purifier</h3>
+          <p>دستگاه تصفیه هوا با فیلتر هپا و لامپ UV ضدعفونی کننده برای محیط‌های پزشکی و خانگی</p>
+          <div class="product-meta">
+            <span>مشتری: شرکت بهبود رایان</span>
+            <span>نوع: تجهیزات پزشکی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>🔐</span>
+        </div>
+        <div class="product-content">
+          <h3>Air Purifier UV Plus</h3>
+          <p>نسخه پیشرفته تصفیه هوا با سیستم UV Plus برای استریلیزاسیون کامل محیط</p>
+          <div class="product-meta">
+            <span>مشتری: توسعه پردازان</span>
+            <span>نوع: تجهیزات پزشکی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>🤖</span>
+        </div>
+        <div class="product-content">
+          <h3>Arm Porter Robot</h3>
+          <p>ربوت حمل کننده بازو با مهندسی معکوس برای مشتری ترکیه‌ای</p>
+          <div class="product-meta">
+            <span>مشتری: مشتری ترکیه‌ای</span>
+            <span>نوع: تجهیزات صنعتی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>🔒</span>
+        </div>
+        <div class="product-content">
+          <h3>Biometric Lock</h3>
+          <p>سیستم قفل بیومتریک امنیتی با سنسور اثر انگشت و کنترل دسترسی</p>
+          <div class="product-meta">
+            <span>مشتری: توسعه پردازان</span>
+            <span>نوع: IoT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 5 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>🩺</span>
+        </div>
+        <div class="product-content">
+          <h3>Caloric Irrigator</h3>
+          <p>دستگاه تست رفلکس کالریک برای تشخیص مشکلات دهلیزی</p>
+          <div class="product-meta">
+            <span>مشتری: توسعه پردازان</span>
+            <span>نوع: تجهیزات پزشکی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 6 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>🦷</span>
+        </div>
+        <div class="product-content">
+          <h3>Dental Equipment</h3>
+          <p>تجهیزات دندانپزشکی شامل چراغ پری‌اپتیکال و ابزارهای تخصصی</p>
+          <div class="product-meta">
+            <span>مشتری: مراکز دندانپزشکی</span>
+            <span>نوع: تجهیزات پزشکی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 7 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>⚡</span>
+        </div>
+        <div class="product-content">
+          <h3>Defibration Machine</h3>
+          <p>دستگاه تفکیک کننده الیاف برای صنایع نساجی و بازیافت</p>
+          <div class="product-meta">
+            <span>مشتری: توسعه پردازان</span>
+            <span>نوع: تجهیزات صنعتی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 8 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>❤️</span>
+        </div>
+        <div class="product-content">
+          <h3>ECG Simulator</h3>
+          <p>دستگاه شبیه‌ساز سیگنال الکتروکاردیوگرام برای آموزش پزشکی</p>
+          <div class="product-meta">
+            <span>مشتری: توسعه پردازان</span>
+            <span>نوع: تجهیزات پزشکی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 9 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>👐</span>
+        </div>
+        <div class="product-content">
+          <h3>Hand Dryer</h3>
+          <p>دست خشک کن آنتی باکتریال اتوماتیک برای محیط‌های عمومی و بیمارستانی</p>
+          <div class="product-meta">
+            <span>مشتری: توسعه پردازان</span>
+            <span>نوع: تجهیزات پزشکی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول 10 -->
+      <div class="product-card">
+        <div class="product-image">
+          <span>💉</span>
+        </div>
+        <div class="product-content">
+          <h3>Veinscope</h3>
+          <p>دستگاه مشاهده و تشخیص رگ برای تسهیل تزریقات پزشکی</p>
+          <div class="product-m
