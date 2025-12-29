@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
+  <!-- آیکون شبکه‌های اجتماعی -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     /* استایل های اصلی */
     :root {
@@ -136,9 +139,9 @@
       color: var(--primary);
     }
     
-    /* هرو */
+    /* هرو با فیلم */
     .hero {
-      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('images/hero.jpg') center/cover no-repeat;
+      position: relative;
       color: white;
       text-align: center;
       padding: 140px 20px 100px;
@@ -146,11 +149,34 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+    
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      z-index: -1;
     }
     
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
     
     .hero h1 {
@@ -507,6 +533,7 @@
       justify-content: center;
       transition: all 0.3s;
       color: white;
+      font-size: 18px;
     }
     
     .social-link:hover {
@@ -529,6 +556,10 @@
       
       .hero h1 {
         font-size: 32px;
+      }
+      
+      .hero p {
+        font-size: 16px;
       }
       
       .cta {
@@ -600,8 +631,15 @@
     </div>
   </header>
 
-  <!-- هرو -->
+  <!-- هرو با فیلم -->
   <section id="hero" class="hero">
+    <video autoplay muted loop playsinline class="video-background">
+      <source src="videos/hero-video.mp4" type="video/mp4">
+      <source src="videos/hero-video.webm" type="video/webm">
+      مرورگر شما از تگ ویدیو پشتیبانی نمی‌کند.
+    </video>
+    <div class="video-overlay"></div>
+    
     <div class="hero-content fade-in">
       <h1>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
       <p>تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی</p>
@@ -822,15 +860,15 @@
           <h3>تماس با ما</h3>
           <div class="contact-details">
             <div class="contact-item">
-              <span class="contact-icon">📧</span>
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
               <span>javadisazadeh24@gmail.com</span>
             </div>
             <div class="contact-item">
-              <span class="contact-icon">📞</span>
+              <span class="contact-icon"><i class="fas fa-phone"></i></span>
               <span>09226704205</span>
             </div>
             <div class="contact-item">
-              <span class="contact-icon">📍</span>
+              <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
               <span>زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
             </div>
           </div>
@@ -849,14 +887,14 @@
         <div class="footer-section">
           <h3>شبکه‌های اجتماعی</h3>
           <div class="social-grid">
-            <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn">
-              <span style="font-size: 20px;">Li</span>
+            <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://instagram.com/TPE_CO" class="social-link" title="Instagram">
-              <span style="font-size: 20px;">Ig</span>
+            <a href="https://instagram.com/TPE_CO" class="social-link" title="Instagram" target="_blank">
+              <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/989226704205" class="social-link" title="WhatsApp">
-              <span style="font-size: 20px;">Wa</span>
+            <a href="https://wa.me/989226704205" class="social-link" title="WhatsApp" target="_blank">
+              <i class="fab fa-whatsapp"></i>
             </a>
           </div>
         </div>
@@ -928,6 +966,22 @@
     
     // اجرای تابع در صورت نیاز
     window.addEventListener('load', duplicateLogos);
+    
+    // کنترل ویدیو برای موبایل
+    const video = document.querySelector('.video-background');
+    
+    // برای صرفه‌جویی در باتری موبایل، ویدیو فقط در حالت visible پلی می‌شود
+    let observerVideo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observerVideo.observe(video);
   </script>
 </body>
 </html>
