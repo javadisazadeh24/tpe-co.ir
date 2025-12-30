@@ -77,6 +77,7 @@
       display: flex;
       gap: 25px;
       list-style: none;
+      align-items: center;
     }
     
     .nav-links a {
@@ -91,6 +92,49 @@
     .nav-links a:hover {
       background: rgba(30, 64, 175, 0.1);
       color: var(--primary);
+    }
+    
+    /* انتخابگر زبان */
+    .language-selector {
+      display: flex;
+      gap: 5px;
+      margin-right: 0;
+      background: transparent;
+      padding: 0;
+      border-radius: 8px;
+      border: none;
+    }
+    
+    .lang-btn {
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      width: 28px;
+      height: 18px;
+      border-radius: 2px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lang-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1px;
+    }
+    
+    .lang-btn.active {
+      box-shadow: 0 0 0 2px var(--primary);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn:hover {
+      transform: scale(1.05);
     }
     
     /* محتوای محصولات */
@@ -239,7 +283,9 @@
     
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       
       .products-header h1 {
@@ -256,6 +302,11 @@
         align-items: flex-start;
         gap: 12px;
       }
+      
+      .language-selector {
+        margin-right: auto;
+        margin-left: 10px;
+      }
     }
   </style>
 </head>
@@ -269,11 +320,22 @@
       </a>
       <nav>
         <ul class="nav-links">
-          <li><a href="index.html">خانه</a></li>
-          <li><a href="index.html#services">خدمات</a></li>
-          <li><a href="products.html">محصولات</a></li>
-          <li><a href="resume.html">رزومه پرسنل</a></li>
-          <li><a href="index.html#contact">تماس</a></li>
+          <li><a href="index.html" data-i18n="nav.home">خانه</a></li>
+          <li><a href="index.html#services" data-i18n="nav.services">خدمات</a></li>
+          <li><a href="products.html" data-i18n="nav.products">محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">تماس</a></li>
+          <li class="language-selector">
+            <button class="lang-btn active" data-lang="fa" title="فارسی">
+              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+            </button>
+            <button class="lang-btn" data-lang="en" title="English">
+              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
+            </button>
+            <button class="lang-btn" data-lang="ar" title="العربية">
+              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -281,32 +343,32 @@
 
   <!-- هدر محصولات -->
   <div class="products-header">
-    <h1>لیست پروژه‌های طراحی شرکت</h1>
-    <p style="max-width: 600px; margin: 0 auto; font-size: 18px; opacity: 0.9;">
+    <h1 data-i18n="products.title">لیست پروژه‌های طراحی شرکت</h1>
+    <p style="max-width: 600px; margin: 0 auto; font-size: 18px; opacity: 0.9;" data-i18n="products.subtitle">
       شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس
     </p>
   </div>
 
   <div class="container">
-    <a href="index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
+    <a href="index.html" class="back-btn" data-i18n="products.back">← بازگشت به صفحه اصلی</a>
     
     <!-- توضیح انواع طراحی -->
     <div class="legend">
       <div class="legend-item">
         <div class="legend-color" style="background: #dbeafe;"></div>
-        <span>دانش بنیان</span>
+        <span data-i18n="legend.student">دانش بنیان</span>
       </div>
       <div class="legend-item">
         <div class="legend-color" style="background: #dcfce7;"></div>
-        <span>خلاق</span>
+        <span data-i18n="legend.creative">خلاق</span>
       </div>
       <div class="legend-item">
         <div class="legend-color" style="background: #fef3c7;"></div>
-        <span>اورجینال</span>
+        <span data-i18n="legend.original">اورجینال</span>
       </div>
       <div class="legend-item">
         <div class="legend-color" style="background: #fce7f3;"></div>
-        <span>مهندسی معکوس</span>
+        <span data-i18n="legend.reverse">مهندسی معکوس</span>
       </div>
     </div>
     
@@ -314,333 +376,333 @@
       <table class="projects-table">
         <thead>
           <tr>
-            <th>ردیف</th>
-            <th>عنوان پروژه</th>
-            <th>مشتری</th>
-            <th>نوع طراحی</th>
-            <th>حوزه/کاربرد</th>
-            <th>سرطراح</th>
+            <th data-i18n="table.row">ردیف</th>
+            <th data-i18n="table.title">عنوان پروژه</th>
+            <th data-i18n="table.client">مشتری</th>
+            <th data-i18n="table.type">نوع طراحی</th>
+            <th data-i18n="table.field">حوزه/کاربرد</th>
+            <th data-i18n="table.designer">سرطراح</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="project-number">1</td>
-            <td>Air Purifier</td>
-            <td>شرکت بهبود رایان</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.1.title">Air Purifier</td>
+            <td data-i18n="projects.1.client">شرکت بهبود رایان</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.1.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">2</td>
-            <td>Air Purifier UV Plus</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.2.title">Air Purifier UV Plus</td>
+            <td data-i18n="projects.2.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.2.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">3</td>
-            <td>Arm Porter Robot</td>
-            <td>شخصی حقیقی در ترکیه - استانبول</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.3.title">Arm Porter Robot</td>
+            <td data-i18n="projects.3.client">شخصی حقیقی در ترکیه - استانبول</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.3.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">4</td>
-            <td>Biometric Lock</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات IoT</td>
+            <td data-i18n="projects.4.title">Biometric Lock</td>
+            <td data-i18n="projects.4.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.4.field">تجهیزات IoT</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">5</td>
-            <td>Caloric Irrigator</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.5.title">Caloric Irrigator</td>
+            <td data-i18n="projects.5.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.5.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">6</td>
-            <td>Camera Sliding Part</td>
-            <td>استودیو ایما</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات تصویربرداری</td>
+            <td data-i18n="projects.6.title">Camera Sliding Part</td>
+            <td data-i18n="projects.6.client">استودیو ایما</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.6.field">تجهیزات تصویربرداری</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">7</td>
-            <td>Chain rests and Bites</td>
-            <td>مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.7.title">Chain rests and Bites</td>
+            <td data-i18n="projects.7.client">مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.7.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">8</td>
-            <td>Clock with Poet</td>
-            <td>فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">-</td>
+            <td data-i18n="projects.8.title">Clock with Poet</td>
+            <td data-i18n="projects.8.client">فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.8.field">-</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">9</td>
-            <td>Defibration Machine</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.9.title">Defibration Machine</td>
+            <td data-i18n="projects.9.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.9.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">10</td>
-            <td>Dental Suction Frame Cover</td>
-            <td>پیشگامان ایرانیان طب کیانسه</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.10.title">Dental Suction Frame Cover</td>
+            <td data-i18n="projects.10.client">پیشگامان ایرانیان طب کیانسه</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.10.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس علی کیخا</td>
           </tr>
           <tr>
             <td class="project-number">11</td>
-            <td>ECG Simulator</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.11.title">ECG Simulator</td>
+            <td data-i18n="projects.11.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.11.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">12</td>
-            <td>Economic Pin Lock</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.12.title">Economic Pin Lock</td>
+            <td data-i18n="projects.12.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.12.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">13</td>
-            <td>Face Guide</td>
-            <td>-</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.13.title">Face Guide</td>
+            <td data-i18n="projects.13.client">-</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.13.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">14</td>
-            <td>Floater</td>
-            <td>-</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.14.title">Floater</td>
+            <td data-i18n="projects.14.client">-</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.14.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس مصطفی خیاطی</td>
           </tr>
           <tr>
             <td class="project-number">15</td>
-            <td>Gear (Worm)</td>
-            <td>پیشگامان ایرانیان طب کیانسه</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.15.title">Gear (Worm)</td>
+            <td data-i18n="projects.15.client">پیشگامان ایرانیان طب کیانسه</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.15.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">16</td>
-            <td>Hand Dryer</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.16.title">Hand Dryer</td>
+            <td data-i18n="projects.16.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.16.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس علی کیخا</td>
           </tr>
           <tr>
             <td class="project-number">17</td>
-            <td>Handy Tools (Screw drivers)</td>
-            <td>دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.17.title">Handy Tools (Screw drivers)</td>
+            <td data-i18n="projects.17.client">دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.17.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">18</td>
-            <td>Holographic</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">-</td>
+            <td data-i18n="projects.18.title">Holographic</td>
+            <td data-i18n="projects.18.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.18.field">-</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">19</td>
-            <td>Labor Bed</td>
-            <td>کشاورزی</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.19.title">Labor Bed</td>
+            <td data-i18n="projects.19.client">کشاورزی</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.19.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">20</td>
-            <td>Labor Bed</td>
-            <td>-</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.20.title">Labor Bed</td>
+            <td data-i18n="projects.20.client">-</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.20.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس علی کیخا</td>
           </tr>
           <tr>
             <td class="project-number">21</td>
-            <td>Lamp Cover</td>
-            <td>مهرنور الکترونیک پیشگام</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.21.title">Lamp Cover</td>
+            <td data-i18n="projects.21.client">مهرنور الکترونیک پیشگام</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.21.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">22</td>
-            <td>Light Box</td>
-            <td>آوام گستر اینترنت اشیاء</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.22.title">Light Box</td>
+            <td data-i18n="projects.22.client">آوام گستر اینترنت اشیاء</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.22.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">23</td>
-            <td>Mask Production Line</td>
-            <td>دانشگاه سیستان و بلوچستان</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.23.title">Mask Production Line</td>
+            <td data-i18n="projects.23.client">دانشگاه سیستان و بلوچستان</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.23.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">24</td>
-            <td>Mirror</td>
-            <td>آوام گستر اینترنت اشیاء</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">-</td>
+            <td data-i18n="projects.24.title">Mirror</td>
+            <td data-i18n="projects.24.client">آوام گستر اینترنت اشیاء</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.24.field">-</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">25</td>
-            <td>PCB Cutter</td>
-            <td>مهرنور الکترونیک پیشگام</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.25.title">PCB Cutter</td>
+            <td data-i18n="projects.25.client">مهرنور الکترونیک پیشگام</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.25.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">26</td>
-            <td>PET&PVC Shredder</td>
-            <td>شهرک صنعتی سراوان – آقای محمود درویشی</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.26.title">PET&PVC Shredder</td>
+            <td data-i18n="projects.26.client">شهرک صنعتی سراوان – آقای محمود درویشی</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.26.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">27</td>
-            <td>Pizza Machine</td>
-            <td>مهندس سعید میرکی اناری</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.27.title">Pizza Machine</td>
+            <td data-i18n="projects.27.client">مهندس سعید میرکی اناری</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.27.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">28</td>
-            <td>Pulp Tester</td>
-            <td>شرکت طب تجهیز آبادیس پارس</td>
-            <td><span class="project-type type-reverse">مهندسی معکوس</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.28.title">Pulp Tester</td>
+            <td data-i18n="projects.28.client">شرکت طب تجهیز آبادیس پارس</td>
+            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
+            <td class="project-field" data-i18n="projects.28.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">29</td>
-            <td>Pulse Oximeter</td>
-            <td>دانشگاه سیستان و بلوچستان</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.29.title">Pulse Oximeter</td>
+            <td data-i18n="projects.29.client">دانشگاه سیستان و بلوچستان</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.29.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس علی کیخا</td>
           </tr>
           <tr>
             <td class="project-number">30</td>
-            <td>Puzzle Home Instruments</td>
-            <td>دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">-</td>
+            <td data-i18n="projects.30.title">Puzzle Home Instruments</td>
+            <td data-i18n="projects.30.client">دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.30.field">-</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">31</td>
-            <td>روشویی</td>
-            <td>مصطفی صاحبالزمانی</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.31.title">روشویی</td>
+            <td data-i18n="projects.31.client">مصطفی صاحبالزمانی</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.31.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">32</td>
-            <td>Step Generator</td>
-            <td>مصطفی صاحبالزمانی</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.32.title">Step Generator</td>
+            <td data-i18n="projects.32.client">مصطفی صاحبالزمانی</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.32.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس علی کیخا</td>
           </tr>
           <tr>
             <td class="project-number">33</td>
-            <td>Taftan Trophy</td>
-            <td>فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">-</td>
+            <td data-i18n="projects.33.title">Taftan Trophy</td>
+            <td data-i18n="projects.33.client">فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.33.field">-</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">34</td>
-            <td>Trophy</td>
-            <td>فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">-</td>
+            <td data-i18n="projects.34.title">Trophy</td>
+            <td data-i18n="projects.34.client">فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.34.field">-</td>
             <td class="designer">مهندس مینا واصفیان</td>
           </tr>
           <tr>
             <td class="project-number">35</td>
-            <td>UV Plus Sanitizer</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.35.title">UV Plus Sanitizer</td>
+            <td data-i18n="projects.35.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.35.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">36</td>
-            <td>UV Sterilization</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.36.title">UV Sterilization</td>
+            <td data-i18n="projects.36.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.36.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">37</td>
-            <td>Veinscope</td>
-            <td>توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات پزشکی</td>
+            <td data-i18n="projects.37.title">Veinscope</td>
+            <td data-i18n="projects.37.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.37.field">تجهیزات پزشکی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
           <tr>
             <td class="project-number">38</td>
-            <td>Water Consumption</td>
-            <td>پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.38.title">Water Consumption</td>
+            <td data-i18n="projects.38.client">پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.38.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس مصطفی خیاطی</td>
           </tr>
           <tr>
             <td class="project-number">39</td>
-            <td>Water Purifier</td>
-            <td>پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original">اورجینال</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.39.title">Water Purifier</td>
+            <td data-i18n="projects.39.client">پارک علم و فناوری سیستان و بلوچستان</td>
+            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
+            <td class="project-field" data-i18n="projects.39.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس مصطفی خیاطی</td>
           </tr>
           <tr>
             <td class="project-number">40</td>
-            <td>انژکتور شور پویا خودرو ایرانیان آدلی</td>
-            <td>بزودی</td>
-            <td><span class="project-type type-student">دانش بنیان</span></td>
-            <td class="project-field">تجهیزات صنعتی</td>
+            <td data-i18n="projects.40.title">انژکتور شور پویا خودرو ایرانیان آدلی</td>
+            <td data-i18n="projects.40.client">بزودی</td>
+            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
+            <td class="project-field" data-i18n="projects.40.field">تجهیزات صنعتی</td>
             <td class="designer">مهندس جواد عیسی زاده</td>
           </tr>
         </tbody>
@@ -651,17 +713,690 @@
   <!-- فوتر -->
   <footer>
     <div class="container">
-      <h3>تماس با ما</h3>
+      <h3 data-i18n="footer.contact">تماس با ما</h3>
       <div style="margin: 20px 0; line-height: 1.8;">
         <p>📧 javadisazadeh24@gmail.com</p>
         <p>📞 09226704205</p>
-        <p>📍 زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
+        <p data-i18n="footer.address">📍 زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
       </div>
-      <div style="margin-top: 30px; font-size: 14px; color: #94a3b8;">
+      <div style="margin-top: 30px; font-size: 14px; color: #94a3b8;" data-i18n="footer.copyright">
         © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
       </div>
     </div>
   </footer>
 
+  <script>
+    // ==================== سیستم چندزبانه ====================
+    const translations = {
+      fa: {
+        // ناوبری
+        "nav.home": "خانه",
+        "nav.services": "خدمات",
+        "nav.products": "محصولات",
+        "nav.resume": "رزومه پرسنل",
+        "nav.contact": "تماس",
+        
+        // محصولات
+        "products.title": "لیست پروژه‌های طراحی شرکت",
+        "products.subtitle": "شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس",
+        "products.back": "← بازگشت به صفحه اصلی",
+        
+        // جدول
+        "table.row": "ردیف",
+        "table.title": "عنوان پروژه",
+        "table.client": "مشتری",
+        "table.type": "نوع طراحی",
+        "table.field": "حوزه/کاربرد",
+        "table.designer": "سرطراح",
+        
+        // راهنما
+        "legend.student": "دانش بنیان",
+        "legend.creative": "خلاق",
+        "legend.original": "اورجینال",
+        "legend.reverse": "مهندسی معکوس",
+        
+        // پروژه‌ها
+        "projects.1.title": "Air Purifier",
+        "projects.1.client": "شرکت بهبود رایان",
+        "projects.1.field": "تجهیزات پزشکی",
+        
+        "projects.2.title": "Air Purifier UV Plus",
+        "projects.2.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.2.field": "تجهیزات پزشکی",
+        
+        "projects.3.title": "Arm Porter Robot",
+        "projects.3.client": "شخصی حقیقی در ترکیه - استانبول",
+        "projects.3.field": "تجهیزات صنعتی",
+        
+        "projects.4.title": "Biometric Lock",
+        "projects.4.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.4.field": "تجهیزات IoT",
+        
+        "projects.5.title": "Caloric Irrigator",
+        "projects.5.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.5.field": "تجهیزات پزشکی",
+        
+        "projects.6.title": "Camera Sliding Part",
+        "projects.6.client": "استودیو ایما",
+        "projects.6.field": "تجهیزات تصویربرداری",
+        
+        "projects.7.title": "Chain rests and Bites",
+        "projects.7.client": "مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...",
+        "projects.7.field": "تجهیزات پزشکی",
+        
+        "projects.8.title": "Clock with Poet",
+        "projects.8.client": "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان",
+        "projects.8.field": "-",
+        
+        "projects.9.title": "Defibration Machine",
+        "projects.9.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.9.field": "تجهیزات صنعتی",
+        
+        "projects.10.title": "Dental Suction Frame Cover",
+        "projects.10.client": "پیشگامان ایرانیان طب کیانسه",
+        "projects.10.field": "تجهیزات پزشکی",
+        
+        "projects.11.title": "ECG Simulator",
+        "projects.11.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.11.field": "تجهیزات پزشکی",
+        
+        "projects.12.title": "Economic Pin Lock",
+        "projects.12.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.12.field": "تجهیزات صنعتی",
+        
+        "projects.13.title": "Face Guide",
+        "projects.13.client": "-",
+        "projects.13.field": "تجهیزات پزشکی",
+        
+        "projects.14.title": "Floater",
+        "projects.14.client": "-",
+        "projects.14.field": "تجهیزات صنعتی",
+        
+        "projects.15.title": "Gear (Worm)",
+        "projects.15.client": "پیشگامان ایرانیان طب کیانسه",
+        "projects.15.field": "تجهیزات پزشکی",
+        
+        "projects.16.title": "Hand Dryer",
+        "projects.16.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.16.field": "تجهیزات پزشکی",
+        
+        "projects.17.title": "Handy Tools (Screw drivers)",
+        "projects.17.client": "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی",
+        "projects.17.field": "تجهیزات صنعتی",
+        
+        "projects.18.title": "Holographic",
+        "projects.18.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.18.field": "-",
+        
+        "projects.19.title": "Labor Bed",
+        "projects.19.client": "کشاورزی",
+        "projects.19.field": "تجهیزات صنعتی",
+        
+        "projects.20.title": "Labor Bed",
+        "projects.20.client": "-",
+        "projects.20.field": "تجهیزات پزشکی",
+        
+        "projects.21.title": "Lamp Cover",
+        "projects.21.client": "مهرنور الکترونیک پیشگام",
+        "projects.21.field": "تجهیزات صنعتی",
+        
+        "projects.22.title": "Light Box",
+        "projects.22.client": "آوام گستر اینترنت اشیاء",
+        "projects.22.field": "تجهیزات صنعتی",
+        
+        "projects.23.title": "Mask Production Line",
+        "projects.23.client": "دانشگاه سیستان و بلوچستان",
+        "projects.23.field": "تجهیزات صنعتی",
+        
+        "projects.24.title": "Mirror",
+        "projects.24.client": "آوام گستر اینترنت اشیاء",
+        "projects.24.field": "-",
+        
+        "projects.25.title": "PCB Cutter",
+        "projects.25.client": "مهرنور الکترونیک پیشگام",
+        "projects.25.field": "تجهیزات صنعتی",
+        
+        "projects.26.title": "PET&PVC Shredder",
+        "projects.26.client": "شهرک صنعتی سراوان – آقای محمود درویشی",
+        "projects.26.field": "تجهیزات صنعتی",
+        
+        "projects.27.title": "Pizza Machine",
+        "projects.27.client": "مهندس سعید میرکی اناری",
+        "projects.27.field": "تجهیزات صنعتی",
+        
+        "projects.28.title": "Pulp Tester",
+        "projects.28.client": "شرکت طب تجهیز آبادیس پارس",
+        "projects.28.field": "تجهیزات پزشکی",
+        
+        "projects.29.title": "Pulse Oximeter",
+        "projects.29.client": "دانشگاه سیستان و بلوچستان",
+        "projects.29.field": "تجهیزات پزشکی",
+        
+        "projects.30.title": "Puzzle Home Instruments",
+        "projects.30.client": "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی",
+        "projects.30.field": "-",
+        
+        "projects.31.title": "روشویی",
+        "projects.31.client": "مصطفی صاحبالزمانی",
+        "projects.31.field": "تجهیزات صنعتی",
+        
+        "projects.32.title": "Step Generator",
+        "projects.32.client": "مصطفی صاحبالزمانی",
+        "projects.32.field": "تجهیزات صنعتی",
+        
+        "projects.33.title": "Taftan Trophy",
+        "projects.33.client": "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان",
+        "projects.33.field": "-",
+        
+        "projects.34.title": "Trophy",
+        "projects.34.client": "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان",
+        "projects.34.field": "-",
+        
+        "projects.35.title": "UV Plus Sanitizer",
+        "projects.35.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.35.field": "تجهیزات پزشکی",
+        
+        "projects.36.title": "UV Sterilization",
+        "projects.36.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.36.field": "تجهیزات پزشکی",
+        
+        "projects.37.title": "Veinscope",
+        "projects.37.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
+        "projects.37.field": "تجهیزات پزشکی",
+        
+        "projects.38.title": "Water Consumption",
+        "projects.38.client": "پارک علم و فناوری سیستان و بلوچستان",
+        "projects.38.field": "تجهیزات صنعتی",
+        
+        "projects.39.title": "Water Purifier",
+        "projects.39.client": "پارک علم و فناوری سیستان و بلوچستان",
+        "projects.39.field": "تجهیزات صنعتی",
+        
+        "projects.40.title": "انژکتور شور پویا خودرو ایرانیان آدلی",
+        "projects.40.client": "بزودی",
+        "projects.40.field": "تجهیزات صنعتی",
+        
+        // فوتر
+        "footer.contact": "تماس با ما",
+        "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
+        "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
+      },
+      
+      en: {
+        // Navigation
+        "nav.home": "Home",
+        "nav.services": "Services",
+        "nav.products": "Products",
+        "nav.resume": "Personnel Resume",
+        "nav.contact": "Contact",
+        
+        // Products
+        "products.title": "Company Design Projects List",
+        "products.subtitle": "Tose Pardazan Knowledge-Based Electronic Fidar Pars Raves Company",
+        "products.back": "← Back to Home",
+        
+        // Table
+        "table.row": "Row",
+        "table.title": "Project Title",
+        "table.client": "Client",
+        "table.type": "Design Type",
+        "table.field": "Field/Application",
+        "table.designer": "Lead Designer",
+        
+        // Legend
+        "legend.student": "Knowledge-Based",
+        "legend.creative": "Creative",
+        "legend.original": "Original",
+        "legend.reverse": "Reverse Engineering",
+        
+        // Projects
+        "projects.1.title": "Air Purifier",
+        "projects.1.client": "Behdad Rayan Company",
+        "projects.1.field": "Medical Equipment",
+        
+        "projects.2.title": "Air Purifier UV Plus",
+        "projects.2.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.2.field": "Medical Equipment",
+        
+        "projects.3.title": "Arm Porter Robot",
+        "projects.3.client": "Private Individual in Turkey - Istanbul",
+        "projects.3.field": "Industrial Equipment",
+        
+        "projects.4.title": "Biometric Lock",
+        "projects.4.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.4.field": "IoT Equipment",
+        
+        "projects.5.title": "Caloric Irrigator",
+        "projects.5.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.5.field": "Medical Equipment",
+        
+        "projects.6.title": "Camera Sliding Part",
+        "projects.6.client": "Studio Ima",
+        "projects.6.field": "Imaging Equipment",
+        
+        "projects.7.title": "Chain rests and Bites",
+        "projects.7.client": "Radiology Centers + Zahedan Dentistry Faculty – Nabi Akram (PBUH) Hospital Zahedan and ...",
+        "projects.7.field": "Medical Equipment",
+        
+        "projects.8.title": "Clock with Poet",
+        "projects.8.client": "Creative Industries FabLab of Sistan and Baluchestan Science and Technology Park",
+        "projects.8.field": "-",
+        
+        "projects.9.title": "Defibration Machine",
+        "projects.9.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.9.field": "Industrial Equipment",
+        
+        "projects.10.title": "Dental Suction Frame Cover",
+        "projects.10.client": "Pishgaman Iranian Teb Kianseh",
+        "projects.10.field": "Medical Equipment",
+        
+        "projects.11.title": "ECG Simulator",
+        "projects.11.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.11.field": "Medical Equipment",
+        
+        "projects.12.title": "Economic Pin Lock",
+        "projects.12.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.12.field": "Industrial Equipment",
+        
+        "projects.13.title": "Face Guide",
+        "projects.13.client": "-",
+        "projects.13.field": "Medical Equipment",
+        
+        "projects.14.title": "Floater",
+        "projects.14.client": "-",
+        "projects.14.field": "Industrial Equipment",
+        
+        "projects.15.title": "Gear (Worm)",
+        "projects.15.client": "Pishgaman Iranian Teb Kianseh",
+        "projects.15.field": "Medical Equipment",
+        
+        "projects.16.title": "Hand Dryer",
+        "projects.16.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.16.field": "Medical Equipment",
+        
+        "projects.17.title": "Handy Tools (Screw drivers)",
+        "projects.17.client": "Zahedan University of Medical Sciences – Engineer Saeed Gholfi",
+        "projects.17.field": "Industrial Equipment",
+        
+        "projects.18.title": "Holographic",
+        "projects.18.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.18.field": "-",
+        
+        "projects.19.title": "Labor Bed",
+        "projects.19.client": "Agriculture",
+        "projects.19.field": "Industrial Equipment",
+        
+        "projects.20.title": "Labor Bed",
+        "projects.20.client": "-",
+        "projects.20.field": "Medical Equipment",
+        
+        "projects.21.title": "Lamp Cover",
+        "projects.21.client": "Mehrnoor Electronic Pishgam",
+        "projects.21.field": "Industrial Equipment",
+        
+        "projects.22.title": "Light Box",
+        "projects.22.client": "Avam Gostar Internet of Things",
+        "projects.22.field": "Industrial Equipment",
+        
+        "projects.23.title": "Mask Production Line",
+        "projects.23.client": "University of Sistan and Baluchestan",
+        "projects.23.field": "Industrial Equipment",
+        
+        "projects.24.title": "Mirror",
+        "projects.24.client": "Avam Gostar Internet of Things",
+        "projects.24.field": "-",
+        
+        "projects.25.title": "PCB Cutter",
+        "projects.25.client": "Mehrnoor Electronic Pishgam",
+        "projects.25.field": "Industrial Equipment",
+        
+        "projects.26.title": "PET&PVC Shredder",
+        "projects.26.client": "Saravan Industrial Town – Mr. Mahmoud Darvishi",
+        "projects.26.field": "Industrial Equipment",
+        
+        "projects.27.title": "Pizza Machine",
+        "projects.27.client": "Engineer Saeed Mirki Enari",
+        "projects.27.field": "Industrial Equipment",
+        
+        "projects.28.title": "Pulp Tester",
+        "projects.28.client": "Teb Tajhiz Abadis Pars Company",
+        "projects.28.field": "Medical Equipment",
+        
+        "projects.29.title": "Pulse Oximeter",
+        "projects.29.client": "University of Sistan and Baluchestan",
+        "projects.29.field": "Medical Equipment",
+        
+        "projects.30.title": "Puzzle Home Instruments",
+        "projects.30.client": "Zahedan University of Medical Sciences – Engineer Saeed Gholfi",
+        "projects.30.field": "-",
+        
+        "projects.31.title": "Sink",
+        "projects.31.client": "Mostafa Sahab Al-Zamani",
+        "projects.31.field": "Industrial Equipment",
+        
+        "projects.32.title": "Step Generator",
+        "projects.32.client": "Mostafa Sahab Al-Zamani",
+        "projects.32.field": "Industrial Equipment",
+        
+        "projects.33.title": "Taftan Trophy",
+        "projects.33.client": "Creative Industries FabLab of Sistan and Baluchestan Science and Technology Park",
+        "projects.33.field": "-",
+        
+        "projects.34.title": "Trophy",
+        "projects.34.client": "Creative Industries FabLab of Sistan and Baluchestan Science and Technology Park",
+        "projects.34.field": "-",
+        
+        "projects.35.title": "UV Plus Sanitizer",
+        "projects.35.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.35.field": "Medical Equipment",
+        
+        "projects.36.title": "UV Sterilization",
+        "projects.36.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.36.field": "Medical Equipment",
+        
+        "projects.37.title": "Veinscope",
+        "projects.37.client": "Tose Pardazan Electronic Fidar Pars Raves",
+        "projects.37.field": "Medical Equipment",
+        
+        "projects.38.title": "Water Consumption",
+        "projects.38.client": "Sistan and Baluchestan Science and Technology Park",
+        "projects.38.field": "Industrial Equipment",
+        
+        "projects.39.title": "Water Purifier",
+        "projects.39.client": "Sistan and Baluchestan Science and Technology Park",
+        "projects.39.field": "Industrial Equipment",
+        
+        "projects.40.title": "Pouya Khodro Adli Injector Cleaner",
+        "projects.40.client": "Coming Soon",
+        "projects.40.field": "Industrial Equipment",
+        
+        // Footer
+        "footer.contact": "Contact Us",
+        "footer.address": "Zahedan, University Boulevard, Science and Technology Park",
+        "footer.copyright": "© 2025 Tose Pardazan Knowledge-Based Engineering Company. All rights reserved."
+      },
+      
+      ar: {
+        // التنقل
+        "nav.home": "الرئيسية",
+        "nav.services": "الخدمات",
+        "nav.products": "المنتجات",
+        "nav.resume": "سيرة الموظفين",
+        "nav.contact": "اتصل بنا",
+        
+        // المنتجات
+        "products.title": "قائمة مشاريع التصميم في الشركة",
+        "products.subtitle": "شركة توسع پردازان الإلكترونية القائمة على المعرفة فيدار بارس راویس",
+        "products.back": "← العودة إلى الرئيسية",
+        
+        // الجدول
+        "table.row": "رقم",
+        "table.title": "عنوان المشروع",
+        "table.client": "العميل",
+        "table.type": "نوع التصميم",
+        "table.field": "المجال/التطبيق",
+        "table.designer": "المصمم الرئيسي",
+        
+        // وسائل الإيضاح
+        "legend.student": "قائمة على المعرفة",
+        "legend.creative": "خلاق",
+        "legend.original": "أصلي",
+        "legend.reverse": "هندسة عكسية",
+        
+        // المشاريع
+        "projects.1.title": "منقي الهواء",
+        "projects.1.client": "شركة بهبود رایان",
+        "projects.1.field": "المعدات الطبية",
+        
+        "projects.2.title": "منقي الهواء بالأشعة فوق البنفسجية",
+        "projects.2.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.2.field": "المعدات الطبية",
+        
+        "projects.3.title": "روبوت حمل الذراع",
+        "projects.3.client": "شخص حقيقي في تركيا - إسطنبول",
+        "projects.3.field": "المعدات الصناعية",
+        
+        "projects.4.title": "قفل القياسات الحيوية",
+        "projects.4.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.4.field": "معدات إنترنت الأشياء",
+        
+        "projects.5.title": "الري الحراري",
+        "projects.5.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.5.field": "المعدات الطبية",
+        
+        "projects.6.title": "جزء انزلاق الكاميرا",
+        "projects.6.client": "استوديو إيما",
+        "projects.6.field": "معدات التصوير",
+        
+        "projects.7.title": "مساند وسدادات السلسلة",
+        "projects.7.client": "مراكز الأشعة + كلية طب الأسنان في زاهدان – مستشفى النبي الأكرم (ص) زاهدان و ...",
+        "projects.7.field": "المعدات الطبية",
+        
+        "projects.8.title": "ساعة مع الشاعر",
+        "projects.8.client": "مختبر الصناعات الإبداعية في حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
+        "projects.8.field": "-",
+        
+        "projects.9.title": "آلة التلييف",
+        "projects.9.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.9.field": "المعدات الصناعية",
+        
+        "projects.10.title": "غطاء إطار شفط الأسنان",
+        "projects.10.client": "رواد الإيرانيين طيب کیانسه",
+        "projects.10.field": "المعدات الطبية",
+        
+        "projects.11.title": "محاكي تخطيط القلب",
+        "projects.11.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.11.field": "المعدات الطبية",
+        
+        "projects.12.title": "قفل الدبوس الاقتصادي",
+        "projects.12.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.12.field": "المعدات الصناعية",
+        
+        "projects.13.title": "دليل الوجه",
+        "projects.13.client": "-",
+        "projects.13.field": "المعدات الطبية",
+        
+        "projects.14.title": "العائم",
+        "projects.14.client": "-",
+        "projects.14.field": "المعدات الصناعية",
+        
+        "projects.15.title": "الترس (الدودة)",
+        "projects.15.client": "رواد الإيرانيين طيب کیانسه",
+        "projects.15.field": "المعدات الطبية",
+        
+        "projects.16.title": "مجفف الأيدي",
+        "projects.16.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.16.field": "المعدات الطبية",
+        
+        "projects.17.title": "الأدوات اليدوية (المفكات)",
+        "projects.17.client": "جامعة زاهدان للعلوم الطبية – المهندس سعيد غلفي",
+        "projects.17.field": "المعدات الصناعية",
+        
+        "projects.18.title": "الهولوغرافي",
+        "projects.18.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.18.field": "-",
+        
+        "projects.19.title": "سرير المخاض",
+        "projects.19.client": "الزراعة",
+        "projects.19.field": "المعدات الصناعية",
+        
+        "projects.20.title": "سرير المخاض",
+        "projects.20.client": "-",
+        "projects.20.field": "المعدات الطبية",
+        
+        "projects.21.title": "غطاء المصباح",
+        "projects.21.client": "مهرنور الإلكترونية الرائدة",
+        "projects.21.field": "المعدات الصناعية",
+        
+        "projects.22.title": "صندوق الضوء",
+        "projects.22.client": "عوام گستر إنترنت الأشياء",
+        "projects.22.field": "المعدات الصناعية",
+        
+        "projects.23.title": "خط إنتاج الأقنعة",
+        "projects.23.client": "جامعة سيستان وبلوشستان",
+        "projects.23.field": "المعدات الصناعية",
+        
+        "projects.24.title": "المرآة",
+        "projects.24.client": "عوام گستر إنترنت الأشياء",
+        "projects.24.field": "-",
+        
+        "projects.25.title": "قاطع لوحات الدوائر المطبوعة",
+        "projects.25.client": "مهرنور الإلكترونية الرائدة",
+        "projects.25.field": "المعدات الصناعية",
+        
+        "projects.26.title": "آلة تمزيق PET&PVC",
+        "projects.26.client": "المدينة الصناعية سراوان – السيد محمود درويشي",
+        "projects.26.field": "المعدات الصناعية",
+        
+        "projects.27.title": "آلة البيتزا",
+        "projects.27.client": "المهندس سعيد ميركي إناري",
+        "projects.27.field": "المعدات الصناعية",
+        
+        "projects.28.title": "جهاز اختبار لب الأسنان",
+        "projects.28.client": "شركة طب تجهیز آبادیس بارس",
+        "projects.28.field": "المعدات الطبية",
+        
+        "projects.29.title": "مقياس التأكسج النبضي",
+        "projects.29.client": "جامعة سيستان وبلوشستان",
+        "projects.29.field": "المعدات الطبية",
+        
+        "projects.30.title": "أدوات المنزل المتقاطعة",
+        "projects.30.client": "جامعة زاهدان للعلوم الطبية – المهندس سعيد غلفي",
+        "projects.30.field": "-",
+        
+        "projects.31.title": "المغسلة",
+        "projects.31.client": "مصطفى صاحب الزماني",
+        "projects.31.field": "المعدات الصناعية",
+        
+        "projects.32.title": "مولد الخطوات",
+        "projects.32.client": "مصطفى صاحب الزماني",
+        "projects.32.field": "المعدات الصناعية",
+        
+        "projects.33.title": "كأس تفتان",
+        "projects.33.client": "مختبر الصناعات الإبداعية في حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
+        "projects.33.field": "-",
+        
+        "projects.34.title": "الكأس",
+        "projects.34.client": "مختبر الصناعات الإبداعية في حدیقة العلوم والتكنولوجيا بسيستان وبلوشستان",
+        "projects.34.field": "-",
+        
+        "projects.35.title": "معقم بالأشعة فوق البنفسجية",
+        "projects.35.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.35.field": "المعدات الطبية",
+        
+        "projects.36.title": "تعقيم بالأشعة فوق البنفسجية",
+        "projects.36.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.36.field": "المعدات الطبية",
+        
+        "projects.37.title": "منظار الأوردة",
+        "projects.37.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
+        "projects.37.field": "المعدات الطبية",
+        
+        "projects.38.title": "استهلاك الماء",
+        "projects.38.client": "حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
+        "projects.38.field": "المعدات الصناعية",
+        
+        "projects.39.title": "منقي الماء",
+        "projects.39.client": "حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
+        "projects.39.field": "المعدات الصناعية",
+        
+        "projects.40.title": "منظف الحقن بویا خودرو أدلي",
+        "projects.40.client": "قريباً",
+        "projects.40.field": "المعدات الصناعية",
+        
+        // الفوتر
+        "footer.contact": "اتصل بنا",
+        "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+        "footer.copyright": "© ٢٠٢٥ شركة توسع پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
+      }
+    };
+
+    // سیستم تغییر زبان
+    let currentLang = 'fa';
+    
+    function changeLanguage(lang) {
+      currentLang = lang;
+      
+      // تغییر فعال بودن دکمه‌ها
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // تغییر متن‌ها
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // تغییر جهت صفحه
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      } else if (lang === 'fa') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'fa';
+      } else if (lang === 'en') {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+        
+        // برای زبان انگلیسی به چپ بروید
+        document.querySelectorAll('th').forEach(th => {
+          th.style.textAlign = 'left';
+        });
+        document.querySelectorAll('td').forEach(td => {
+          td.style.textAlign = 'left';
+        });
+        document.querySelector('.container').style.textAlign = 'left';
+      } else {
+        // برای زبان‌های دیگر به راست
+        document.querySelectorAll('th').forEach(th => {
+          th.style.textAlign = 'right';
+        });
+        document.querySelectorAll('td').forEach(td => {
+          td.style.textAlign = 'right';
+        });
+        document.querySelector('.container').style.textAlign = 'right';
+      }
+      
+      // ذخیره زبان انتخابی
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // ==================== رویدادهای صفحه ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      // تنظیم رویداد برای دکمه‌های زبان
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          changeLanguage(lang);
+        });
+      });
+      
+      // بارگذاری زبان ذخیره شده یا تشخیص خودکار
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang) {
+        currentLang = savedLang;
+        changeLanguage(savedLang);
+      } else {
+        // تشخیص زبان مرورگر
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('ar')) {
+          currentLang = 'ar';
+          changeLanguage('ar');
+        } else if (browserLang.startsWith('fa')) {
+          currentLang = 'fa';
+          changeLanguage('fa');
+        } else {
+          currentLang = 'en';
+          changeLanguage('en');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
