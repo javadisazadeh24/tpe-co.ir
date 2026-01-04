@@ -470,10 +470,14 @@
     #submitBtn {
       position: relative;
       min-width: 200px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     
     #submitBtn .spinner {
-      margin-right: 8px;
+      display: none;
     }
     
     #submitBtn:disabled {
@@ -933,8 +937,8 @@
         
         <div style="text-align: center; margin-top: 30px;">
           <button type="submit" class="btn btn-primary" id="submitBtn" data-i18n="work.form.submit">
-            <span class="btn-text">ارسال درخواست</span>
-            <span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+            <span id="btnText">ارسال درخواست</span>
+            <span class="spinner"><i class="fas fa-spinner fa-spin"></i></span>
           </button>
         </div>
       </form>
@@ -1100,7 +1104,7 @@
         // فوتر
         "footer.contact": "تماس با ما",
         "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
-        "footer.links": "لینک‌های مفید",
+        "footer.links": "لینک‌های مفيد",
         "footer.social": "شبکه‌های اجتماعی",
         "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
       },
@@ -1308,7 +1312,7 @@
     function setupForm() {
       const form = document.getElementById('collaborationForm');
       const submitBtn = document.getElementById('submitBtn');
-      const btnText = submitBtn.querySelector('.btn-text');
+      const btnText = document.getElementById('btnText');
       const spinner = submitBtn.querySelector('.spinner');
       
       if (!form) return;
@@ -1377,14 +1381,14 @@
       // تابع تغییر وضعیت دکمه
       function setButtonState(loading) {
         if (loading) {
-          btnText.textContent = currentLang === 'fa' ? 'در حال ارسال...' : 
-                               currentLang === 'ar' ? 'جاري الارسال...' : 
-                               'Sending...';
-          spinner.style.display = 'inline-block';
+          const sendingText = translations[currentLang] && translations[currentLang]['work.form.sending'] || 'در حال ارسال...';
+          if (btnText) btnText.textContent = sendingText;
+          if (spinner) spinner.style.display = 'inline-block';
           submitBtn.disabled = true;
         } else {
-          btnText.textContent = translations[currentLang] && translations[currentLang]['work.form.submit'] || 'ارسال درخواست';
-          spinner.style.display = 'none';
+          const submitText = translations[currentLang] && translations[currentLang]['work.form.submit'] || 'ارسال درخواست';
+          if (btnText) btnText.textContent = submitText;
+          if (spinner) spinner.style.display = 'none';
           submitBtn.disabled = false;
         }
       }
