@@ -411,6 +411,7 @@
       transform: translateY(-3px);
     }
     
+    /* استایل‌های فرم */
     .contact-form {
       background: white;
       border-radius: 16px;
@@ -459,6 +460,33 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+    }
+    
+    /* استایل‌های پیام‌ها */
+    .form-message {
+      animation: fadeIn 0.3s ease-in;
+    }
+    
+    #submitBtn {
+      position: relative;
+      min-width: 200px;
+    }
+    
+    #submitBtn .spinner {
+      margin-right: 8px;
+    }
+    
+    #submitBtn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    
+    input:invalid, textarea:invalid, select:invalid {
+      border-color: #f87171 !important;
+    }
+    
+    input:valid, textarea:valid, select:valid {
+      border-color: #34d399 !important;
     }
     
     /* فوتر بهبود یافته */
@@ -605,6 +633,10 @@
         grid-template-columns: 1fr;
       }
       
+      .contact-form {
+        padding: 25px;
+      }
+      
       .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -660,9 +692,24 @@
       .work-section h3 {
         font-size: 24px;
       }
+      
+      .contact-form {
+        padding: 20px;
+      }
     }
     
     /* انیمیشن‌ها */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -696,7 +743,7 @@
           <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="index.html#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری با ما</a></li>
-          <li><a href="index.html#contact" data-i18n="nav.contact">تماس</a></li>
+          <li><a href="https://wa.me/989226704205" target="_blank" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
               <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
@@ -802,45 +849,116 @@
     <!-- فرم تماس -->
     <div class="contact-form fade-in">
       <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;" data-i18n="work.form.title">ارسال درخواست همکاری</h3>
-      <form id="collaborationForm">
+      
+      <!-- پیام‌ها -->
+      <div id="formMessages"></div>
+      
+      <!-- فرم اصلی -->
+      <form id="collaborationForm" action="https://formspree.io/f/mykzbaee" method="POST">
+        <!-- فیلدهای مخفی برای Formspree -->
+        <input type="hidden" name="_subject" value="📋 درخواست همکاری جدید - سایت TPE">
+        <input type="hidden" name="_language" value="fa">
+        <input type="hidden" name="_format" value="plain">
+        <!-- اختیاری: صفحه تشکر -->
+        <!-- <input type="hidden" name="_next" value="https://www.tpe-co.ir/thank-you.html"> -->
+        
         <div class="form-row">
           <div class="form-group">
-            <label for="name" data-i18n="work.form.name">نام کامل</label>
-            <input type="text" id="name" required>
+            <label for="name" data-i18n="work.form.name">نام کامل *</label>
+            <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label for="email" data-i18n="work.form.email">ایمیل</label>
-            <input type="email" id="email" required>
+            <label for="email" data-i18n="work.form.email">ایمیل *</label>
+            <input type="email" id="email" name="email" required>
           </div>
         </div>
+        
         <div class="form-row">
           <div class="form-group">
             <label for="company" data-i18n="work.form.company">شرکت / سازمان</label>
-            <input type="text" id="company">
+            <input type="text" id="company" name="company">
           </div>
           <div class="form-group">
-            <label for="phone" data-i18n="work.form.phone">شماره تماس</label>
-            <input type="tel" id="phone" required>
+            <label for="phone" data-i18n="work.form.phone">شماره تماس *</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10,}" placeholder="09123456789">
           </div>
         </div>
+        
         <div class="form-group">
-          <label for="projectType" data-i18n="work.form.projectType">نوع پروژه</label>
-          <select id="projectType">
+          <label for="projectType" data-i18n="work.form.projectType">نوع پروژه *</label>
+          <select id="projectType" name="projectType" required>
             <option value="" data-i18n="work.form.select">انتخاب کنید</option>
-            <option value="design" data-i18n="work.form.option1">طراحی و توسعه محصول</option>
-            <option value="prototype" data-i18n="work.form.option2">نمونه‌سازی</option>
-            <option value="consulting" data-i18n="work.form.option3">مشاوره فنی</option>
-            <option value="other" data-i18n="work.form.option4">سایر</option>
+            <option value="طراحی و توسعه محصول" data-i18n="work.form.option1">طراحی و توسعه محصول</option>
+            <option value="نمونه‌سازی" data-i18n="work.form.option2">نمونه‌سازی</option>
+            <option value="مشاوره فنی" data-i18n="work.form.option3">مشاوره فنی</option>
+            <option value="مهندسی معکوس" data-i18n="work.form.option5">مهندسی معکوس</option>
+            <option value="سایر" data-i18n="work.form.option4">سایر</option>
           </select>
         </div>
+        
         <div class="form-group">
-          <label for="description" data-i18n="work.form.description">توضیحات پروژه</label>
-          <textarea id="description" placeholder="لطفاً توضیح مختصری از پروژه خود ارائه دهید..." required></textarea>
+          <label for="budget" data-i18n="work.form.budget">بودجه پیش‌بینی شده</label>
+          <select id="budget" name="budget">
+            <option value="" data-i18n="work.form.budgetSelect">انتخاب کنید</option>
+            <option value="زیر ۵ میلیون تومان">زیر ۵ میلیون تومان</option>
+            <option value="۵-۲۰ میلیون تومان">۵-۲۰ میلیون تومان</option>
+            <option value="۲۰-۵۰ میلیون تومان">۲۰-۵۰ میلیون تومان</option>
+            <option value="بالای ۵۰ میلیون تومان">بالای ۵۰ میلیون تومان</option>
+            <option value="تعیین نشده">تعیین نشده</option>
+          </select>
         </div>
+        
+        <div class="form-group">
+          <label for="timeline" data-i18n="work.form.timeline">زمان‌بندی مورد نظر</label>
+          <select id="timeline" name="timeline">
+            <option value="" data-i18n="work.form.timelineSelect">انتخاب کنید</option>
+            <option value="فوری (کمتر از ۱ ماه)">فوری (کمتر از ۱ ماه)</option>
+            <option value="کوتاه مدت (۱-۳ ماه)">کوتاه مدت (۱-۳ ماه)</option>
+            <option value="متوسط (۳-۶ ماه)">متوسط (۳-۶ ماه)</option>
+            <option value="بلند مدت (بالای ۶ ماه)">بلند مدت (بالای ۶ ماه)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="description" data-i18n="work.form.description">توضیحات پروژه *</label>
+          <textarea id="description" name="description" rows="5" placeholder="لطفاً توضیح مختصری از پروژه خود، اهداف، نیازمندی‌ها و هر اطلاعات مرتبط دیگر ارائه دهید..." required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+            <input type="checkbox" name="agreement" required style="margin-top: 5px;">
+            <span data-i18n="work.form.agreement">با شرایط و قوانین همکاری موافقم</span>
+          </label>
+        </div>
+        
         <div style="text-align: center; margin-top: 30px;">
-          <button type="submit" class="btn btn-primary" data-i18n="work.form.submit">ارسال درخواست</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn" data-i18n="work.form.submit">
+            <span class="btn-text">ارسال درخواست</span>
+            <span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+          </button>
         </div>
       </form>
+      
+      <!-- روش‌های جایگزین تماس -->
+      <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0;">
+        <p style="color: var(--muted); margin-bottom: 20px; font-size: 15px;" data-i18n="work.form.alternative">
+          یا از طریق روش‌های زیر با ما تماس بگیرید
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/989226704205" class="btn btn-secondary" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; min-width: 180px;">
+            <i class="fab fa-whatsapp" style="font-size: 18px;"></i>
+            <span data-i18n="work.form.whatsapp">واتساپ</span>
+          </a>
+          <a href="mailto:javadisazadeh24@gmail.com" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; min-width: 180px;">
+            <i class="fas fa-envelope" style="font-size: 16px;"></i>
+            <span data-i18n="work.form.emailLink">ایمیل</span>
+          </a>
+          <a href="tel:09226704205" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; min-width: 180px;">
+            <i class="fas fa-phone" style="font-size: 16px;"></i>
+            <span data-i18n="work.form.call">تماس تلفنی</span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -857,7 +975,11 @@
             </div>
             <div class="contact-item">
               <span class="contact-icon"><i class="fas fa-phone"></i></span>
-              <span>09226704205</span>
+              <span>
+                <a href="https://wa.me/989226704205" style="color: white; text-decoration: none;" target="_blank">
+                  09226704205 (واتساپ)
+                </a>
+              </span>
             </div>
             <div class="contact-item">
               <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
@@ -948,18 +1070,32 @@
         
         // فرم تماس
         "work.form.title": "ارسال درخواست همکاری",
-        "work.form.name": "نام کامل",
-        "work.form.email": "ایمیل",
+        "work.form.name": "نام کامل *",
+        "work.form.email": "ایمیل *",
         "work.form.company": "شرکت / سازمان",
-        "work.form.phone": "شماره تماس",
-        "work.form.projectType": "نوع پروژه",
+        "work.form.phone": "شماره تماس *",
+        "work.form.projectType": "نوع پروژه *",
         "work.form.select": "انتخاب کنید",
         "work.form.option1": "طراحی و توسعه محصول",
         "work.form.option2": "نمونه‌سازی",
         "work.form.option3": "مشاوره فنی",
         "work.form.option4": "سایر",
-        "work.form.description": "توضیحات پروژه",
+        "work.form.option5": "مهندسی معکوس",
+        "work.form.budget": "بودجه پیش‌بینی شده",
+        "work.form.budgetSelect": "انتخاب کنید",
+        "work.form.timeline": "زمان‌بندی مورد نظر",
+        "work.form.timelineSelect": "انتخاب کنید",
+        "work.form.description": "توضیحات پروژه *",
+        "work.form.agreement": "با شرایط و قوانین همکاری موافقم",
         "work.form.submit": "ارسال درخواست",
+        "work.form.success": "درخواست شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.",
+        "work.form.error": "مشکلی در ارسال درخواست پیش آمده. لطفاً دوباره تلاش کنید یا مستقیماً با ما تماس بگیرید.",
+        "work.form.alternative": "یا از طریق روش‌های زیر با ما تماس بگیرید",
+        "work.form.whatsapp": "واتساپ",
+        "work.form.emailLink": "ایمیل",
+        "work.form.call": "تماس تلفنی",
+        "work.form.networkError": "خطای شبکه",
+        "work.form.sending": "در حال ارسال...",
         
         // فوتر
         "footer.contact": "تماس با ما",
@@ -1014,18 +1150,32 @@
         
         // Contact Form
         "work.form.title": "Submit Collaboration Request",
-        "work.form.name": "Full Name",
-        "work.form.email": "Email",
+        "work.form.name": "Full Name *",
+        "work.form.email": "Email *",
         "work.form.company": "Company / Organization",
-        "work.form.phone": "Phone Number",
-        "work.form.projectType": "Project Type",
+        "work.form.phone": "Phone Number *",
+        "work.form.projectType": "Project Type *",
         "work.form.select": "Select",
         "work.form.option1": "Product Design & Development",
         "work.form.option2": "Prototyping",
         "work.form.option3": "Technical Consulting",
         "work.form.option4": "Other",
-        "work.form.description": "Project Description",
+        "work.form.option5": "Reverse Engineering",
+        "work.form.budget": "Estimated Budget",
+        "work.form.budgetSelect": "Select",
+        "work.form.timeline": "Project Timeline",
+        "work.form.timelineSelect": "Select",
+        "work.form.description": "Project Description *",
+        "work.form.agreement": "I agree to the terms and conditions",
         "work.form.submit": "Submit Request",
+        "work.form.success": "Your request has been submitted successfully. We will contact you soon.",
+        "work.form.error": "There was a problem submitting your request. Please try again or contact us directly.",
+        "work.form.alternative": "Or contact us through the following methods",
+        "work.form.whatsapp": "WhatsApp",
+        "work.form.emailLink": "Email",
+        "work.form.call": "Phone Call",
+        "work.form.networkError": "Network Error",
+        "work.form.sending": "Sending...",
         
         // Footer
         "footer.contact": "Contact Us",
@@ -1080,18 +1230,32 @@
         
         // نموذج الاتصال
         "work.form.title": "إرسال طلب التعاون",
-        "work.form.name": "الاسم الكامل",
-        "work.form.email": "البريد الإلكتروني",
+        "work.form.name": "الاسم الكامل *",
+        "work.form.email": "البريد الإلكتروني *",
         "work.form.company": "الشركة / المنظمة",
-        "work.form.phone": "رقم الهاتف",
-        "work.form.projectType": "نوع المشروع",
+        "work.form.phone": "رقم الهاتف *",
+        "work.form.projectType": "نوع المشروع *",
         "work.form.select": "اختر",
         "work.form.option1": "تصميم وتطوير المنتجات",
         "work.form.option2": "النمذجة الأولية",
         "work.form.option3": "الاستشارات الفنية",
         "work.form.option4": "أخرى",
-        "work.form.description": "وصف المشروع",
+        "work.form.option5": "الهندسة العكسية",
+        "work.form.budget": "الميزانية المقدرة",
+        "work.form.budgetSelect": "اختر",
+        "work.form.timeline": "الجدول الزمني للمشروع",
+        "work.form.timelineSelect": "اختر",
+        "work.form.description": "وصف المشروع *",
+        "work.form.agreement": "أوافق على الشروط والأحكام",
         "work.form.submit": "إرسال الطلب",
+        "work.form.success": "تم إرسال طلبك بنجاح. سنتواصل معك قريباً.",
+        "work.form.error": "حدثت مشكلة في إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.",
+        "work.form.alternative": "أو اتصل بنا من خلال الطرق التالية",
+        "work.form.whatsapp": "واتساب",
+        "work.form.emailLink": "البريد الإلكتروني",
+        "work.form.call": "مكالمة هاتفية",
+        "work.form.networkError": "خطأ في الشبكة",
+        "work.form.sending": "جاري الارسال...",
         
         // الفوتر
         "footer.contact": "اتصل بنا",
@@ -1140,6 +1304,153 @@
       localStorage.setItem('preferredLanguage', lang);
     }
 
+    // ==================== مدیریت فرم ====================
+    function setupForm() {
+      const form = document.getElementById('collaborationForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const spinner = submitBtn.querySelector('.spinner');
+      
+      if (!form) return;
+      
+      // ENDPOINT شما
+      const FORM_ENDPOINT = "https://formspree.io/f/mykzbaee";
+      form.action = FORM_ENDPOINT;
+      
+      // ایجاد عنصر برای نمایش پیام‌ها
+      const messagesDiv = document.getElementById('formMessages');
+      
+      // تابع نمایش پیام
+      function showMessage(type, textKey, customText = null) {
+        const messageTypes = {
+          success: {
+            icon: 'fa-check-circle',
+            color: '#10b981',
+            bgColor: '#d1fae5',
+            textColor: '#065f46'
+          },
+          error: {
+            icon: 'fa-exclamation-circle',
+            color: '#ef4444',
+            bgColor: '#fee2e2',
+            textColor: '#991b1b'
+          },
+          warning: {
+            icon: 'fa-exclamation-triangle',
+            color: '#f59e0b',
+            bgColor: '#fef3c7',
+            textColor: '#92400e'
+          }
+        };
+        
+        const typeConfig = messageTypes[type];
+        const text = customText || (translations[currentLang] && translations[currentLang][textKey]) || textKey;
+        
+        const messageHTML = `
+          <div class="form-message" style="
+            background: ${typeConfig.bgColor};
+            color: ${typeConfig.textColor};
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-right: 4px solid ${typeConfig.color};
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          ">
+            <i class="fas ${typeConfig.icon}" style="font-size: 20px;"></i>
+            <span>${text}</span>
+          </div>
+        `;
+        
+        messagesDiv.innerHTML = messageHTML;
+        messagesDiv.style.display = 'block';
+        
+        // پنهان کردن خودکار پیام موفقیت بعد از 8 ثانیه
+        if (type === 'success') {
+          setTimeout(() => {
+            messagesDiv.style.display = 'none';
+          }, 8000);
+        }
+      }
+      
+      // تابع تغییر وضعیت دکمه
+      function setButtonState(loading) {
+        if (loading) {
+          btnText.textContent = currentLang === 'fa' ? 'در حال ارسال...' : 
+                               currentLang === 'ar' ? 'جاري الارسال...' : 
+                               'Sending...';
+          spinner.style.display = 'inline-block';
+          submitBtn.disabled = true;
+        } else {
+          btnText.textContent = translations[currentLang] && translations[currentLang]['work.form.submit'] || 'ارسال درخواست';
+          spinner.style.display = 'none';
+          submitBtn.disabled = false;
+        }
+      }
+      
+      // رویداد ارسال فرم
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // اعتبارسنجی فرم
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        
+        setButtonState(true);
+        
+        try {
+          const formData = new FormData(form);
+          
+          // ارسال به Formspree
+          const response = await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            // موفقیت آمیز
+            showMessage('success', 'work.form.success');
+            form.reset();
+            
+            // لاگ برای دیباگ
+            console.log('Form submitted successfully');
+          } else {
+            // خطا از سمت سرور
+            const errorData = await response.json().catch(() => ({}));
+            console.error('Form submission error:', errorData);
+            showMessage('error', 'work.form.error');
+          }
+          
+        } catch (error) {
+          // خطای شبکه
+          console.error('Network error:', error);
+          showMessage('error', 'work.form.networkError', 
+            currentLang === 'fa' ? 'خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.' :
+            currentLang === 'ar' ? 'خطأ في الشبكة! يرجى التحقق من اتصال الإنترنت.' :
+            'Network error! Please check your internet connection.'
+          );
+        } finally {
+          setButtonState(false);
+        }
+      });
+      
+      // اعتبارسنجی بلادرنگ
+      form.addEventListener('input', function(e) {
+        const input = e.target;
+        if (input.validity.valid) {
+          input.style.borderColor = '#10b981';
+        } else {
+          input.style.borderColor = '#ef4444';
+        }
+      });
+    }
+
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
       // تنظیم رویداد برای دکمه‌های زبان
@@ -1179,7 +1490,7 @@
       // تنظیم انیمیشن عناصر
       setupAnimations();
       
-      // مدیریت فرم
+      // تنظیم فرم
       setupForm();
     });
     
@@ -1241,33 +1552,6 @@
       document.querySelectorAll('.work-section, .contact-form').forEach(section => {
         observer.observe(section);
       });
-    }
-    
-    function setupForm() {
-      const form = document.getElementById('collaborationForm');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // جمع‌آوری داده‌های فرم
-          const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            company: document.getElementById('company').value,
-            phone: document.getElementById('phone').value,
-            projectType: document.getElementById('projectType').value,
-            description: document.getElementById('description').value
-          };
-          
-          // نمایش پیام موفقیت
-          alert(currentLang === 'fa' ? 'درخواست شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.' :
-                currentLang === 'ar' ? 'تم إرسال طلبك بنجاح. سنتواصل معك قريباً.' :
-                'Your request has been submitted successfully. We will contact you soon.');
-          
-          // ریست فرم
-          form.reset();
-        });
-      }
     }
   </script>
 </body>
