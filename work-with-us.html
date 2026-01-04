@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>همکاری با ما | شرکت دانش بنیان فنی و مهندسی توسعه پردازان</title>
+  <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- فونت‌ها -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- آیکون شبکه‌های اجتماعی -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* استایل های اصلی */
+    :root {
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #1e40af;
+      --surface: rgba(255, 255, 255, 0.9);
+      --accent: #dc2626;
+      --maxw: 1200px;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Vazirmatn', 'Inter', Tahoma, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    
+    section { padding: 60px 20px; }
+    
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* افکت شیشه‌ای */
+    .glass-effect {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+    
+    /* ناوبری */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 12px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .brand img {
+      height: 50px;
+      transition: transform 0.3s;
+    }
+    
+    .brand img:hover {
+      transform: scale(1.05);
+    }
+    
+    .company-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 5px;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 14.5px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    
+    .nav-links a:hover {
+      background: rgba(30, 64, 175, 0.15);
+      color: var(--primary);
+    }
+    
+    /* انتخابگر زبان */
+    .language-selector {
+      display: flex;
+      gap: 5px;
+      margin-right: 0;
+      background: transparent;
+      padding: 0;
+      border-radius: 8px;
+      border: none;
+    }
+    
+    .lang-btn {
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      width: 28px;
+      height: 18px;
+      border-radius: 2px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lang-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1px;
+    }
+    
+    .lang-btn.active {
+      box-shadow: 0 0 0 2px var(--primary);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn:hover {
+      transform: scale(1.05);
+    }
+    
+    /* هیرو همکاری با ما */
+    .work-hero {
+      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 60px;
+    }
+    
+    .work-hero h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .work-hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #e2e8f0;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+    
+    /* بخش‌های همکاری */
+    .work-sections {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .work-section {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .work-section h3 {
+      color: var(--primary);
+      font-size: 28px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .work-section p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+    
+    /* مدل همکاری */
+    .collab-model {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .collab-item {
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .collab-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+    
+    .collab-item h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    
+    .collab-item p {
+      color: #4a5568;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    
+    /* مراحل پرداخت */
+    .payment-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .payment-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border-right: 4px solid #0f766e;
+    }
+    
+    .step-number {
+      background: #0f766e;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-content h4 {
+      color: #0f766e;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .payment-method {
+      background: #ecfdf5;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid #10b981;
+    }
+    
+    .payment-method h4 {
+      color: #047857;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .payment-method p {
+      color: #047857;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    
+    .note-box {
+      background: #fef3c7;
+      border: 2px solid #fbbf24;
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 30px;
+      color: #92400e;
+    }
+    
+    .note-box h4 {
+      color: #92400e;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
+    .note-box p {
+      color: #92400e;
+      margin-bottom: 0;
+    }
+    
+    /* دکمه‌ها */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #0f766e;
+      border: 2px solid #0f766e;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(15, 118, 110, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .contact-form {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    /* فوتر بهبود یافته */
+    footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 50px 20px 30px;
+    }
+    
+    .footer-content {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-section h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-section h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+    
+    .contact-details {
+      line-height: 1.8;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .contact-icon {
+      color: var(--accent);
+      font-size: 18px;
+      margin-top: 3px;
+      min-width: 24px;
+    }
+    
+    .social-grid {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      color: white;
+      font-size: 18px;
+    }
+    
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    
+    /* موبایل */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 5px;
+      }
+      
+      .nav-links a {
+        font-size: 13px;
+        padding: 5px 8px;
+      }
+      
+      .company-name {
+        font-size: 16px;
+      }
+      
+      .brand {
+        gap: 8px;
+      }
+      
+      .brand img {
+        height: 42px;
+      }
+      
+      .language-selector {
+        gap: 4px;
+      }
+      
+      .lang-btn {
+        width: 26px;
+        height: 16px;
+      }
+      
+      .work-hero h1 {
+        font-size: 32px;
+      }
+      
+      .work-hero p {
+        font-size: 16px;
+      }
+      
+      .work-section {
+        padding: 25px;
+      }
+      
+      .collab-model {
+        grid-template-columns: 1fr;
+      }
+      
+      .payment-steps .payment-step {
+        flex-direction: column;
+      }
+      
+      .payment-methods {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+    
+    /* موبایل کوچک */
+    @media (max-width: 480px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+      }
+      
+      .nav-links a {
+        font-size: 12px;
+        padding: 4px 6px;
+      }
+      
+      .language-selector {
+        gap: 3px;
+      }
+      
+      .lang-btn {
+        width: 24px;
+        height: 14px;
+      }
+      
+      .work-hero h1 {
+        font-size: 26px;
+      }
+      
+      .work-hero p {
+        font-size: 15px;
+      }
+      
+      .brand {
+        gap: 6px;
+      }
+      
+      .brand img {
+        height: 38px;
+      }
+      
+      .company-name {
+        font-size: 14px;
+      }
+      
+      .work-section {
+        padding: 20px;
+      }
+      
+      .work-section h3 {
+        font-size: 24px;
+      }
+    }
+    
+    /* انیمیشن‌ها */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ناوبری -->
+  <header class="nav glass-effect" id="navbar">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+        <span class="company-name">توسعه پردازان</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav.home">خانه</a></li>
+          <li><a href="services.html" data-i18n="nav.services">خدمات</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="index.html#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
+          <li><a href="work-with-us.html" data-i18n="nav.work">همکاری با ما</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">تماس</a></li>
+          <li class="language-selector">
+            <button class="lang-btn active" data-lang="fa" title="فارسی">
+              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+            </button>
+            <button class="lang-btn" data-lang="en" title="English">
+              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
+            </button>
+            <button class="lang-btn" data-lang="ar" title="العربية">
+              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- هیرو همکاری با ما -->
+  <section class="work-hero">
+    <div class="container">
+      <h1 data-i18n="work.hero.title">همکاری با ما</h1>
+      <p data-i18n="work.hero.description">ما پروژه‌ها را به‌صورت مرحله‌ای و بر اساس برآورد دقیق مهندسی اجرا می‌کنیم. مدل همکاری ما شفاف، انعطاف‌پذیر و متناسب با نیاز هر پروژه است.</p>
+    </div>
+  </section>
+
+  <!-- مدل همکاری -->
+  <section class="work-sections">
+    <div class="work-section fade-in">
+      <h3 data-i18n="work.model.title">مدل همکاری</h3>
+      <p data-i18n="work.model.description">هر پروژه به دقت ارزیابی می‌شود تا امکان‌سنجی فنی و کارایی آن تضمین شود.</p>
+      
+      <div class="collab-model">
+        <div class="collab-item">
+          <h4 data-i18n="work.model.item1.title">مدل همکاری</h4>
+          <p data-i18n="work.model.item1.desc">پروژه‌ای</p>
+        </div>
+        <div class="collab-item">
+          <h4 data-i18n="work.model.item2.title">برآورد هزینه</h4>
+          <p data-i18n="work.model.item2.desc">ساعتی (مبنای دلاری)</p>
+        </div>
+        <div class="collab-item">
+          <h4 data-i18n="work.model.item3.title">پرداخت</h4>
+          <p data-i18n="work.model.item3.desc">مرحله‌ای (Milestone-based)</p>
+        </div>
+        <div class="collab-item">
+          <h4 data-i18n="work.model.item4.title">مقیاس پروژه</h4>
+          <p data-i18n="work.model.item4.desc">مناسب پروژه‌های کوچک تا متوسط</p>
+        </div>
+      </div>
+      
+      <div class="note-box">
+        <h4 data-i18n="work.note.title">شروع همکاری</h4>
+        <p data-i18n="work.note.description">برای شروع همکاری، کافی است توضیح مختصری از پروژه خود ارسال کنید تا فرآیند بررسی فنی آغاز شود.</p>
+      </div>
+    </div>
+
+    <!-- پرداخت و فرآیند -->
+    <div class="work-section fade-in">
+      <h3 data-i18n="work.payment.title">پرداخت و فرآیند اجرا</h3>
+      <p data-i18n="work.payment.description">پس از بررسی اولیه پروژه، مراحل زیر طی می‌شود:</p>
+      
+      <div class="payment-steps">
+        <div class="payment-step">
+          <div class="step-number">۱</div>
+          <div class="step-content">
+            <h4 data-i18n="work.payment.step1.title">تعیین محدوده کار</h4>
+            <p data-i18n="work.payment.step1.desc">محدوده کار و زمان‌بندی مشخص می‌شود</p>
+          </div>
+        </div>
+        <div class="payment-step">
+          <div class="step-number">۲</div>
+          <div class="step-content">
+            <h4 data-i18n="work.payment.step2.title">برآورد هزینه</h4>
+            <p data-i18n="work.payment.step2.desc">برآورد هزینه ساعتی ارائه می‌گردد</p>
+          </div>
+        </div>
+        <div class="payment-step">
+          <div class="step-number">۳</div>
+          <div class="step-content">
+            <h4 data-i18n="work.payment.step3.title">پرداخت مرحله‌ای</h4>
+            <p data-i18n="work.payment.step3.desc">پرداخت به‌صورت مرحله‌ای انجام می‌شود</p>
+          </div>
+        </div>
+      </div>
+      
+      <h4 style="margin-top: 30px; color: var(--primary);" data-i18n="work.payment.methods.title">روش‌های پرداخت</h4>
+      <div class="payment-methods">
+        <div class="payment-method">
+          <h4>USDT (TRC20)</h4>
+          <p data-i18n="work.payment.method1">پرداخت ارز دیجیتال</p>
+        </div>
+        <div class="payment-method">
+          <h4>USDT (ERC20)</h4>
+          <p data-i18n="work.payment.method2">پرداخت ارز دیجیتال</p>
+        </div>
+      </div>
+      
+      <div class="note-box" style="margin-top: 30px;">
+        <h4 data-i18n="work.payment.note.title">نکته مهم:</h4>
+        <p data-i18n="work.payment.note.description">برای مشتریان داخلی، محاسبات پروژه بر اساس نرخ ساعتی دلاری انجام و معادل ریالی آن توافق می‌شود.</p>
+      </div>
+    </div>
+
+    <!-- فرم تماس -->
+    <div class="contact-form fade-in">
+      <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;" data-i18n="work.form.title">ارسال درخواست همکاری</h3>
+      <form id="collaborationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" data-i18n="work.form.name">نام کامل</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="work.form.email">ایمیل</label>
+            <input type="email" id="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company" data-i18n="work.form.company">شرکت / سازمان</label>
+            <input type="text" id="company">
+          </div>
+          <div class="form-group">
+            <label for="phone" data-i18n="work.form.phone">شماره تماس</label>
+            <input type="tel" id="phone" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="projectType" data-i18n="work.form.projectType">نوع پروژه</label>
+          <select id="projectType">
+            <option value="" data-i18n="work.form.select">انتخاب کنید</option>
+            <option value="design" data-i18n="work.form.option1">طراحی و توسعه محصول</option>
+            <option value="prototype" data-i18n="work.form.option2">نمونه‌سازی</option>
+            <option value="consulting" data-i18n="work.form.option3">مشاوره فنی</option>
+            <option value="other" data-i18n="work.form.option4">سایر</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description" data-i18n="work.form.description">توضیحات پروژه</label>
+          <textarea id="description" placeholder="لطفاً توضیح مختصری از پروژه خود ارائه دهید..." required></textarea>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+          <button type="submit" class="btn btn-primary" data-i18n="work.form.submit">ارسال درخواست</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- فوتر -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-i18n="footer.contact">تماس با ما</h3>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+              <span>javadisazadeh24@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon"><i class="fas fa-phone"></i></span>
+              <span>09226704205</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+              <span data-i18n="footer.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3 data-i18n="footer.links">لینک‌های مفید</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="index.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.home">خانه</a>
+            <a href="services.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ما</a>
+            <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">نمونه خدمات و محصولات</a>
+            <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.resume">رزومه پرسنل</a>
+            <a href="index.html#projects" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.projects">پروژه‌های توسعه</a>
+            <a href="work-with-us.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.work">همکاری با ما</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3 data-i18n="footer.social">شبکه‌های اجتماعی</h3>
+          <div class="social-grid">
+            <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://instagram.com/TPE_CO" class="social-link" title="Instagram" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/989226704205" class="social-link" title="WhatsApp" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright" data-i18n="footer.copyright">
+        © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==================== سیستم چندزبانه ====================
+    const translations = {
+      fa: {
+        // ناوبری
+        "nav.home": "خانه",
+        "nav.services": "خدمات",
+        "nav.products": "نمونه خدمات و محصولات",
+        "nav.resume": "رزومه پرسنل",
+        "nav.projects": "پروژه‌های توسعه",
+        "nav.work": "همکاری با ما",
+        "nav.contact": "تماس",
+        
+        // هیرو همکاری با ما
+        "work.hero.title": "همکاری با ما",
+        "work.hero.description": "ما پروژه‌ها را به‌صورت مرحله‌ای و بر اساس برآورد دقیق مهندسی اجرا می‌کنیم. مدل همکاری ما شفاف، انعطاف‌پذیر و متناسب با نیاز هر پروژه است.",
+        
+        // مدل همکاری
+        "work.model.title": "مدل همکاری",
+        "work.model.description": "هر پروژه به دقت ارزیابی می‌شود تا امکان‌سنجی فنی و کارایی آن تضمین شود.",
+        "work.model.item1.title": "مدل همکاری",
+        "work.model.item1.desc": "پروژه‌ای",
+        "work.model.item2.title": "برآورد هزینه",
+        "work.model.item2.desc": "ساعتی (مبنای دلاری)",
+        "work.model.item3.title": "پرداخت",
+        "work.model.item3.desc": "مرحله‌ای (Milestone-based)",
+        "work.model.item4.title": "مقیاس پروژه",
+        "work.model.item4.desc": "مناسب پروژه‌های کوچک تا متوسط",
+        "work.note.title": "شروع همکاری",
+        "work.note.description": "برای شروع همکاری، کافی است توضیح مختصری از پروژه خود ارسال کنید تا فرآیند بررسی فنی آغاز شود.",
+        
+        // پرداخت و فرآیند
+        "work.payment.title": "پرداخت و فرآیند اجرا",
+        "work.payment.description": "پس از بررسی اولیه پروژه، مراحل زیر طی می‌شود:",
+        "work.payment.step1.title": "تعیین محدوده کار",
+        "work.payment.step1.desc": "محدوده کار و زمان‌بندی مشخص می‌شود",
+        "work.payment.step2.title": "برآورد هزینه",
+        "work.payment.step2.desc": "برآورد هزینه ساعتی ارائه می‌گردد",
+        "work.payment.step3.title": "پرداخت مرحله‌ای",
+        "work.payment.step3.desc": "پرداخت به‌صورت مرحله‌ای انجام می‌شود",
+        "work.payment.methods.title": "روش‌های پرداخت",
+        "work.payment.method1": "پرداخت ارز دیجیتال",
+        "work.payment.method2": "پرداخت ارز دیجیتال",
+        "work.payment.note.title": "نکته مهم:",
+        "work.payment.note.description": "برای مشتریان داخلی، محاسبات پروژه بر اساس نرخ ساعتی دلاری انجام و معادل ریالی آن توافق می‌شود.",
+        
+        // فرم تماس
+        "work.form.title": "ارسال درخواست همکاری",
+        "work.form.name": "نام کامل",
+        "work.form.email": "ایمیل",
+        "work.form.company": "شرکت / سازمان",
+        "work.form.phone": "شماره تماس",
+        "work.form.projectType": "نوع پروژه",
+        "work.form.select": "انتخاب کنید",
+        "work.form.option1": "طراحی و توسعه محصول",
+        "work.form.option2": "نمونه‌سازی",
+        "work.form.option3": "مشاوره فنی",
+        "work.form.option4": "سایر",
+        "work.form.description": "توضیحات پروژه",
+        "work.form.submit": "ارسال درخواست",
+        
+        // فوتر
+        "footer.contact": "تماس با ما",
+        "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
+        "footer.links": "لینک‌های مفید",
+        "footer.social": "شبکه‌های اجتماعی",
+        "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
+      },
+      
+      en: {
+        // Navigation
+        "nav.home": "Home",
+        "nav.services": "Services",
+        "nav.products": "Products & Services",
+        "nav.resume": "Personnel Resume",
+        "nav.projects": "Development Projects",
+        "nav.work": "Work With Us",
+        "nav.contact": "Contact",
+        
+        // Work With Us Hero
+        "work.hero.title": "Work With Us",
+        "work.hero.description": "We collaborate on a project-based model with transparent engineering-driven cost estimation. Each project is carefully evaluated to ensure technical feasibility and efficiency.",
+        
+        // Collaboration Model
+        "work.model.title": "Collaboration Model",
+        "work.model.description": "Each project is carefully evaluated to ensure technical feasibility and efficiency.",
+        "work.model.item1.title": "Collaboration model",
+        "work.model.item1.desc": "Project-based",
+        "work.model.item2.title": "Cost estimation",
+        "work.model.item2.desc": "Hourly-based (USD)",
+        "work.model.item3.title": "Payment structure",
+        "work.model.item3.desc": "Milestone-based",
+        "work.model.item4.title": "Project scale",
+        "work.model.item4.desc": "Suitable for small to medium projects",
+        "work.note.title": "How to start",
+        "work.note.description": "To start, simply share a brief description of your project and our team will review it.",
+        
+        // Payment & Process
+        "work.payment.title": "Payment & Process",
+        "work.payment.description": "After initial project evaluation:",
+        "work.payment.step1.title": "Scope definition",
+        "work.payment.step1.desc": "Scope and timeline are defined",
+        "work.payment.step2.title": "Cost estimation",
+        "work.payment.step2.desc": "Hourly-based cost estimation is provided",
+        "work.payment.step3.title": "Staged payment",
+        "work.payment.step3.desc": "Payments are made per project milestones",
+        "work.payment.methods.title": "Accepted Payment Methods",
+        "work.payment.method1": "Digital currency payment",
+        "work.payment.method2": "Digital currency payment",
+        "work.payment.note.title": "Important note:",
+        "work.payment.note.description": "For domestic customers, project calculations are based on hourly USD rate and converted to local currency.",
+        
+        // Contact Form
+        "work.form.title": "Submit Collaboration Request",
+        "work.form.name": "Full Name",
+        "work.form.email": "Email",
+        "work.form.company": "Company / Organization",
+        "work.form.phone": "Phone Number",
+        "work.form.projectType": "Project Type",
+        "work.form.select": "Select",
+        "work.form.option1": "Product Design & Development",
+        "work.form.option2": "Prototyping",
+        "work.form.option3": "Technical Consulting",
+        "work.form.option4": "Other",
+        "work.form.description": "Project Description",
+        "work.form.submit": "Submit Request",
+        
+        // Footer
+        "footer.contact": "Contact Us",
+        "footer.address": "Zahedan, University Boulevard, Science and Technology Park",
+        "footer.links": "Useful Links",
+        "footer.social": "Social Networks",
+        "footer.copyright": "© 2025 Tose Pardazan Knowledge-Based Engineering Company. All rights reserved."
+      },
+      
+      ar: {
+        // التنقل
+        "nav.home": "الرئيسية",
+        "nav.services": "الخدمات",
+        "nav.products": "الخدمات والمنتجات",
+        "nav.resume": "سيرة الموظفين",
+        "nav.projects": "مشاريع التطوير",
+        "nav.work": "تعاون معنا",
+        "nav.contact": "اتصل بنا",
+        
+        // هيرو التعاون معنا
+        "work.hero.title": "تعاون معنا",
+        "work.hero.description": "نحن نتعاون على نموذج قائم على المشاريع مع تقدير تكلفة هندسي شفاف. يتم تقييم كل مشروع بعناية لضمان الجدوى الفنية والكفاءة.",
+        
+        // نموذج التعاون
+        "work.model.title": "نموذج التعاون",
+        "work.model.description": "يتم تقييم كل مشروع بعناية لضمان الجدوى الفنية والكفاءة.",
+        "work.model.item1.title": "نموذج التعاون",
+        "work.model.item1.desc": "قائم على المشاريع",
+        "work.model.item2.title": "تقدير التكلفة",
+        "work.model.item2.desc": "قائم على الساعة (دولار أمريكي)",
+        "work.model.item3.title": "هيكل الدفع",
+        "work.model.item3.desc": "قائم على المعالم (Milestone-based)",
+        "work.model.item4.title": "مقياس المشروع",
+        "work.model.item4.desc": "مناسب للمشاريع الصغيرة والمتوسطة",
+        "work.note.title": "كيفية البدء",
+        "work.note.description": "للبدء، ما عليك سوى مشاركة وصف موجز لمشروعك وسيقوم فريقنا بمراجعته.",
+        
+        // الدفع والعملية
+        "work.payment.title": "الدفع والعملية",
+        "work.payment.description": "بعد التقييم الأولي للمشروع:",
+        "work.payment.step1.title": "تحديد النطاق",
+        "work.payment.step1.desc": "يتم تحديد النطاق والجدول الزمني",
+        "work.payment.step2.title": "تقدير التكلفة",
+        "work.payment.step2.desc": "يتم تقديم تقدير تكلفة قائم على الساعة",
+        "work.payment.step3.title": "الدفع المرحلي",
+        "work.payment.step3.desc": "يتم الدفع حسب معالم المشروع",
+        "work.payment.methods.title": "طرق الدفع المقبولة",
+        "work.payment.method1": "الدفع بالعملة الرقمية",
+        "work.payment.method2": "الدفع بالعملة الرقمية",
+        "work.payment.note.title": "ملاحظة مهمة:",
+        "work.payment.note.description": "للعملاء المحليين، تتم حسابات المشروع على أساس سعر الساعة بالدولار الأمريكي وتحويلها إلى العملة المحلية.",
+        
+        // نموذج الاتصال
+        "work.form.title": "إرسال طلب التعاون",
+        "work.form.name": "الاسم الكامل",
+        "work.form.email": "البريد الإلكتروني",
+        "work.form.company": "الشركة / المنظمة",
+        "work.form.phone": "رقم الهاتف",
+        "work.form.projectType": "نوع المشروع",
+        "work.form.select": "اختر",
+        "work.form.option1": "تصميم وتطوير المنتجات",
+        "work.form.option2": "النمذجة الأولية",
+        "work.form.option3": "الاستشارات الفنية",
+        "work.form.option4": "أخرى",
+        "work.form.description": "وصف المشروع",
+        "work.form.submit": "إرسال الطلب",
+        
+        // الفوتر
+        "footer.contact": "اتصل بنا",
+        "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+        "footer.links": "روابط مفيدة",
+        "footer.social": "الشبكات الاجتماعية",
+        "footer.copyright": "© ٢٠٢٥ شركة توسع پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
+      }
+    };
+
+    // سیستم تغییر زبان
+    let currentLang = 'fa';
+    
+    function changeLanguage(lang) {
+      currentLang = lang;
+      
+      // تغییر فعال بودن دکمه‌ها
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // تغییر متن‌ها
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // تغییر جهت صفحه
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      } else if (lang === 'fa') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'fa';
+      } else if (lang === 'en') {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      }
+      
+      // ذخیره زبان انتخابی
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // ==================== رویدادهای صفحه ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      // تنظیم رویداد برای دکمه‌های زبان
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          changeLanguage(lang);
+        });
+      });
+      
+      // بارگذاری زبان ذخیره شده یا تشخیص خودکار
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang) {
+        currentLang = savedLang;
+        changeLanguage(savedLang);
+      } else {
+        // تشخیص زبان مرورگر
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('ar')) {
+          currentLang = 'ar';
+          changeLanguage('ar');
+        } else if (browserLang.startsWith('fa')) {
+          currentLang = 'fa';
+          changeLanguage('fa');
+        } else {
+          currentLang = 'en';
+          changeLanguage('en');
+        }
+      }
+      
+      // کنترل خطا برای تصاویر
+      setupErrorHandlers();
+      
+      // تنظیم اسکرول نرم
+      setupSmoothScroll();
+      
+      // تنظیم انیمیشن عناصر
+      setupAnimations();
+      
+      // مدیریت فرم
+      setupForm();
+    });
+    
+    // ==================== توابع کمکی ====================
+    function setupErrorHandlers() {
+      // کنترل خطا برای لوگو
+      const logoImg = document.querySelector('.brand img');
+      if (logoImg) {
+        logoImg.onerror = function() {
+          this.src = 'https://via.placeholder.com/50x50/0f766e/ffffff?text=TPE';
+        };
+      }
+    }
+    
+    function setupSmoothScroll() {
+      // انیمیشن اسکرول نرم برای بخش‌ها
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    }
+    
+    function setupAnimations() {
+      // ناوبری ثابت با تغییر پس زمینه
+      window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // انیمیشن برای عناصر هنگام اسکرول
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.work-section, .contact-form').forEach(section => {
+        observer.observe(section);
+      });
+    }
+    
+    function setupForm() {
+      const form = document.getElementById('collaborationForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // جمع‌آوری داده‌های فرم
+          const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            company: document.getElementById('company').value,
+            phone: document.getElementById('phone').value,
+            projectType: document.getElementById('projectType').value,
+            description: document.getElementById('description').value
+          };
+          
+          // نمایش پیام موفقیت
+          alert(currentLang === 'fa' ? 'درخواست شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.' :
+                currentLang === 'ar' ? 'تم إرسال طلبك بنجاح. سنتواصل معك قريباً.' :
+                'Your request has been submitted successfully. We will contact you soon.');
+          
+          // ریست فرم
+          form.reset();
+        });
+      }
+    }
+  </script>
+</body>
+</html>
