@@ -1,0 +1,57 @@
+# _config.yml برای شرکت توسعه پردازان (tpe-co.ir)
+
+title: "شرکت دانش بنیان توسعه پردازان | طراحی و تولید صنعتی"
+description: "شرکت دانش بنیان توسعه پردازان: طراحی محصول، مهندسی معکوس، نمونه‌سازی سریع، ساخت با دستگاه‌های CNC و پرینتر سه‌بعدی. تبدیل ایده به محصول نهایی."
+baseurl: "" # برای دامنه اصلی خالی بگذارید
+url: "https://www.tpe-co.ir" # آدرس کامل سایت شما
+lang: "fa-IR" # زبان فارسی
+dir: "rtl" # جهت راست به چپ
+timezone: "Asia/Tehran" # منطقه زمانی
+
+# تنظیمات نویسنده (مشخصات شرکت)
+author:
+  name: "شرکت دانش بنیان فنی و مهندسی توسعه پردازان"
+  email: "javadisazadeh24@gmail.com" # ایمیل تماس
+  description: "شرکت دانش بنیان فعال در زمینه طراحی، مهندسی معکوس و تولید صنعتی"
+
+# تنظیمات SEO
+permalink: /:title/  # ساختار لینک صفحات
+plugins:
+  - jekyll-sitemap  # ساخت خودکار نقشه سایت (مهم برای SEO)
+
+# اگر می‌خواهید از Jekyll برای بلاگ استفاده کنید:
+collections:
+  articles:
+    output: true
+    permalink: /articles/:path/
+
+# فعال کردن قابلیت‌های GitHub Pages
+github:
+  is_project_page: false  # چون سایت اصلی است، false بگذارید
+
+# تنظیمات اضافی برای SEO
+defaults:
+  - scope:
+      path: ""  # برای همه فایل‌ها
+    values:
+      layout: "default"
+      sitemap: true  # همه صفحات در sitemap باشند
+
+# اطلاعات شبکه‌های اجتماعی (برای Schema Markup)
+social:
+  linkedin: "https://www.linkedin.com/company/tpe-co"
+  instagram: "https://instagram.com/TPE_CO"
+  whatsapp: "https://wa.me/989226704205"
+
+# تنظیمات نمایش (اختیاری)
+theme: null  # اگر از تم خاصی استفاده نمی‌کنید، null بگذارید
+markdown: kramdown  # نوع markdown (پیش‌فرض خوب است)
+
+# غیرفعال کردن برخی پردازش‌های ناخواسته
+safe: true
+include: [".htaccess"]  # اگر فایل htaccess دارید
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "node_modules"
+  - "vendor"
