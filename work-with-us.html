@@ -567,6 +567,79 @@
       text-align: center;
     }
     
+    /* انیمیشن آپلود */
+    .upload-progress-container {
+      display: none;
+      margin: 20px 0;
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .upload-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .upload-progress-title {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .upload-progress-percentage {
+      color: #0f766e;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    
+    .upload-progress-bar {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    
+    .upload-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0f766e, #14b8a6);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    .upload-status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    .upload-file-count {
+      font-weight: 500;
+      color: var(--primary);
+    }
+    
+    .upload-cancel-btn {
+      background: #fee2e2;
+      color: #dc2626;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .upload-cancel-btn:hover {
+      background: #fecaca;
+    }
+    
     /* استایل‌های modal */
     .modal-overlay {
       position: fixed;
@@ -941,8 +1014,23 @@
       }
     }
     
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes progress {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
     .fade-in {
       animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
     }
   </style>
 </head>
@@ -1113,14 +1201,30 @@
       <!-- پیام‌ها -->
       <div id="formMessages"></div>
       
+      <!-- انیمیشن پیشرفت آپلود -->
+      <div id="uploadProgress" class="upload-progress-container">
+        <div class="upload-progress-header">
+          <div class="upload-progress-title" data-i18n="work.form.upload.title">در حال آپلود فایل‌ها</div>
+          <div class="upload-progress-percentage" id="uploadPercentage">0%</div>
+        </div>
+        <div class="upload-progress-bar">
+          <div class="upload-progress-fill" id="uploadProgressFill"></div>
+        </div>
+        <div class="upload-status">
+          <div class="upload-file-count" id="uploadFileCount">0/0 فایل</div>
+          <div id="uploadSpeed">--</div>
+          <button type="button" class="upload-cancel-btn" id="uploadCancelBtn" data-i18n="work.form.upload.cancel">لغو آپلود</button>
+        </div>
+      </div>
+      
       <!-- فرم اصلی -->
-      <form id="collaborationForm" action="https://formspree.io/f/mykzbaee" method="POST" enctype="multipart/form-data">
-        <!-- فیلدهای مخفی برای Formspree -->
+      <form id="collaborationForm" method="POST" enctype="multipart/form-data">
+        <!-- فیلدهای مخفی -->
         <input type="hidden" name="_subject" value="📋 درخواست همکاری جدید - سایت TPE">
         <input type="hidden" name="_language" value="fa">
         <input type="hidden" name="_format" value="plain">
-        <!-- اختیاری: صفحه تشکر -->
-        <!-- <input type="hidden" name="_next" value="https://www.tpe-co.ir/thank-you.html"> -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         
         <div class="form-row">
           <div class="form-group">
@@ -1403,6 +1507,12 @@
         "work.form.files.max": "حداکثر ۳ فایل مجاز است",
         "work.form.files.size": "حجم فایل نباید از ۱۰ مگابایت بیشتر باشد",
         "work.form.files.format": "فرمت فایل مجاز نیست",
+        "work.form.upload.title": "در حال آپلود فایل‌ها",
+        "work.form.upload.cancel": "لغو آپلود",
+        "work.form.upload.speed": "سرعت: ",
+        "work.form.upload.time": "زمان باقیمانده: ",
+        "work.form.upload.complete": "آپلود کامل شد",
+        "work.form.upload.cancelled": "آپلود لغو شد",
         "work.form.submit": "ارسال درخواست",
         "work.form.success": "درخواست شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.",
         "work.form.error": "مشکلی در ارسال درخواست پیش آمده. لطفاً دوباره تلاش کنید یا مستقیماً با ما تماس بگیرید.",
@@ -1410,7 +1520,7 @@
         "work.form.whatsapp": "واتساپ",
         "work.form.emailLink": "ایمیل",
         "work.form.call": "تماس تلفنی",
-        "work.form.networkError": "خطای شبکه",
+        "work.form.networkError": "خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.",
         "work.form.sending": "در حال ارسال...",
         
         // فوتر
@@ -1514,6 +1624,12 @@
         "work.form.files.max": "Maximum 3 files allowed",
         "work.form.files.size": "File size should not exceed 10MB",
         "work.form.files.format": "File format is not allowed",
+        "work.form.upload.title": "Uploading files",
+        "work.form.upload.cancel": "Cancel upload",
+        "work.form.upload.speed": "Speed: ",
+        "work.form.upload.time": "Time left: ",
+        "work.form.upload.complete": "Upload complete",
+        "work.form.upload.cancelled": "Upload cancelled",
         "work.form.submit": "Submit Request",
         "work.form.success": "Your request has been submitted successfully. We will contact you soon.",
         "work.form.error": "There was a problem submitting your request. Please try again or contact us directly.",
@@ -1521,7 +1637,7 @@
         "work.form.whatsapp": "WhatsApp",
         "work.form.emailLink": "Email",
         "work.form.call": "Phone Call",
-        "work.form.networkError": "Network Error",
+        "work.form.networkError": "Network error! Please check your internet connection.",
         "work.form.sending": "Sending...",
         
         // Footer
@@ -1625,6 +1741,12 @@
         "work.form.files.max": "الحد الأقصى 3 ملفات مسموح بها",
         "work.form.files.size": "يجب ألا يتجاوز حجم الملف 10 ميغابايت",
         "work.form.files.format": "تنسيق الملف غير مسموح به",
+        "work.form.upload.title": "جاري رفع الملفات",
+        "work.form.upload.cancel": "إلغاء الرفع",
+        "work.form.upload.speed": "السرعة: ",
+        "work.form.upload.time": "الوقت المتبقي: ",
+        "work.form.upload.complete": "اكتمل الرفع",
+        "work.form.upload.cancelled": "تم إلغاء الرفع",
         "work.form.submit": "إرسال الطلب",
         "work.form.success": "تم إرسال طلبك بنجاح. سنتواصل معك قريباً.",
         "work.form.error": "حدثت مشكلة في إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.",
@@ -1632,7 +1754,7 @@
         "work.form.whatsapp": "واتساب",
         "work.form.emailLink": "البريد الإلكتروني",
         "work.form.call": "مكالمة هاتفية",
-        "work.form.networkError": "خطأ في الشبكة",
+        "work.form.networkError": "خطأ في الشبكة! يرجى التحقق من اتصال الإنترنت.",
         "work.form.sending": "جاري الارسال...",
         
         // الفوتر
@@ -1648,28 +1770,29 @@
     function openModal() {
       const modal = document.getElementById('termsModal');
       modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول پشت modal
+      document.body.style.overflow = 'hidden';
     }
     
     function closeModal() {
       const modal = document.getElementById('termsModal');
       modal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // بازگرداندن اسکرول
+      document.body.style.overflow = 'auto';
     }
     
-    // بستن modal با کلیک روی overlay
     document.getElementById('termsModal').addEventListener('click', function(e) {
       if (e.target === this) {
         closeModal();
       }
     });
-    
+
     // ==================== مدیریت آپلود فایل ====================
     let selectedFiles = [];
     const MAX_FILES = 3;
     const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 مگابایت
     const ALLOWED_TYPES = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
-    
+    let isUploading = false;
+    let uploadController = null;
+
     function setupFileUpload() {
       const fileInput = document.getElementById('fileInput');
       const fileList = document.getElementById('fileList');
@@ -1677,7 +1800,6 @@
       
       if (!fileInput) return;
       
-      // نمایش فایل‌های انتخاب شده
       function updateFileList() {
         fileList.innerHTML = '';
         
@@ -1711,28 +1833,24 @@
         });
       }
       
-      // تغییر آیکون بر اساس نوع فایل
       function getFileIcon(fileType) {
         if (fileType === 'application/pdf') return 'fa-file-pdf';
         if (fileType.startsWith('image/')) return 'fa-file-image';
         return 'fa-file';
       }
       
-      // فرمت کردن حجم فایل
       function formatFileSize(bytes) {
         if (bytes < 1024) return bytes + ' B';
         if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
         return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
       }
       
-      // حذف فایل
       window.removeFile = function(index) {
         selectedFiles.splice(index, 1);
         updateFileInput();
         updateFileList();
       };
       
-      // به‌روزرسانی input فایل
       function updateFileInput() {
         const dataTransfer = new DataTransfer();
         selectedFiles.forEach(file => {
@@ -1741,21 +1859,17 @@
         fileInput.files = dataTransfer.files;
       }
       
-      // اعتبارسنجی فایل
       function validateFile(file) {
-        // بررسی تعداد فایل‌ها
         if (selectedFiles.length >= MAX_FILES) {
           showFileMessage('error', 'work.form.files.max');
           return false;
         }
         
-        // بررسی حجم فایل
         if (file.size > MAX_FILE_SIZE) {
           showFileMessage('error', 'work.form.files.size');
           return false;
         }
         
-        // بررسی فرمت فایل
         if (!ALLOWED_TYPES.includes(file.type)) {
           showFileMessage('error', 'work.form.files.format');
           return false;
@@ -1764,7 +1878,6 @@
         return true;
       }
       
-      // نمایش پیام برای فایل
       function showFileMessage(type, textKey) {
         const messageTypes = {
           error: {
@@ -1796,18 +1909,15 @@
           </div>
         `;
         
-        // حذف پیام قبلی
         const existingMessage = fileList.querySelector('.form-message');
         if (existingMessage) {
           existingMessage.remove();
         }
         
-        // اضافه کردن پیام جدید
         const messageElement = document.createElement('div');
         messageElement.innerHTML = messageHTML;
         fileList.appendChild(messageElement.firstElementChild);
         
-        // حذف خودکار پیام بعد از 5 ثانیه
         setTimeout(() => {
           const message = fileList.querySelector('.form-message');
           if (message) {
@@ -1816,7 +1926,6 @@
         }, 5000);
       }
       
-      // رویداد تغییر فایل
       fileInput.addEventListener('change', function(e) {
         const files = Array.from(e.target.files);
         
@@ -1830,7 +1939,6 @@
         updateFileList();
       });
       
-      // کشیدن و رها کردن فایل
       const uploadContainer = document.querySelector('.file-upload-container');
       
       uploadContainer.addEventListener('dragover', function(e) {
@@ -1863,17 +1971,155 @@
         updateFileList();
       });
       
-      // مقداردهی اولیه
       updateFileList();
     }
     
+    // ==================== مدیریت آپلود پیشرفته ====================
+    function setupAdvancedUpload() {
+      const uploadProgress = document.getElementById('uploadProgress');
+      const uploadProgressFill = document.getElementById('uploadProgressFill');
+      const uploadPercentage = document.getElementById('uploadPercentage');
+      const uploadFileCount = document.getElementById('uploadFileCount');
+      const uploadSpeed = document.getElementById('uploadSpeed');
+      const uploadCancelBtn = document.getElementById('uploadCancelBtn');
+      
+      let uploadStartTime = null;
+      let uploadedBytes = 0;
+      let totalBytes = 0;
+      
+      function showUploadProgress(show) {
+        uploadProgress.style.display = show ? 'block' : 'none';
+      }
+      
+      function updateProgress(percentage, uploaded, total) {
+        const percentageText = Math.round(percentage) + '%';
+        uploadPercentage.textContent = percentageText;
+        uploadProgressFill.style.width = percentageText;
+        
+        const uploadedMB = (uploaded / (1024 * 1024)).toFixed(2);
+        const totalMB = (total / (1024 * 1024)).toFixed(2);
+        uploadFileCount.textContent = `${uploadedMB}MB / ${totalMB}MB`;
+        
+        // محاسبه سرعت آپلود
+        if (uploadStartTime) {
+          const elapsedTime = (Date.now() - uploadStartTime) / 1000; // ثانیه
+          if (elapsedTime > 0) {
+            const speed = uploaded / elapsedTime; // بایت بر ثانیه
+            const speedMB = (speed / (1024 * 1024)).toFixed(2);
+            const speedText = translations[currentLang] && translations[currentLang]['work.form.upload.speed'] || 'سرعت: ';
+            uploadSpeed.textContent = speedText + speedMB + 'MB/s';
+          }
+        }
+      }
+      
+      function resetUploadProgress() {
+        uploadProgressFill.style.width = '0%';
+        uploadPercentage.textContent = '0%';
+        uploadFileCount.textContent = '0/0 فایل';
+        uploadSpeed.textContent = '--';
+        uploadedBytes = 0;
+        totalBytes = 0;
+        uploadStartTime = null;
+      }
+      
+      // محاسبه کل حجم فایل‌ها
+      function calculateTotalSize() {
+        return selectedFiles.reduce((total, file) => total + file.size, 0);
+      }
+      
+      // ارسال فرم با آپلود فایل
+      async function uploadFormWithProgress(formData) {
+        uploadController = new AbortController();
+        const signal = uploadController.signal;
+        
+        totalBytes = calculateTotalSize();
+        uploadedBytes = 0;
+        uploadStartTime = Date.now();
+        
+        showUploadProgress(true);
+        updateProgress(0, 0, totalBytes);
+        
+        try {
+          // استفاده از XMLHttpRequest برای نمایش پیشرفت
+          return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            
+            // رخداد پیشرفت آپلود
+            xhr.upload.addEventListener('progress', (event) => {
+              if (event.lengthComputable) {
+                uploadedBytes = event.loaded;
+                const percentage = (event.loaded / event.total) * 100;
+                updateProgress(percentage, uploadedBytes, totalBytes);
+              }
+            });
+            
+            // رخداد تکمیل آپلود
+            xhr.addEventListener('load', () => {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                resolve({
+                  ok: true,
+                  status: xhr.status,
+                  statusText: xhr.statusText
+                });
+              } else {
+                reject(new Error(`Upload failed with status ${xhr.status}`));
+              }
+            });
+            
+            // رخداد خطا
+            xhr.addEventListener('error', () => {
+              reject(new Error('Network error'));
+            });
+            
+            // رخداد لغو
+            xhr.addEventListener('abort', () => {
+              reject(new Error('Upload cancelled'));
+            });
+            
+            // ارسال درخواست
+            xhr.open('POST', 'https://formspree.io/f/xndqevrq');
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.send(formData);
+            
+            // ذخیره xhr برای امکان لغو
+            window.currentXHR = xhr;
+          });
+          
+        } catch (error) {
+          throw error;
+        }
+      }
+      
+      // رویداد لغو آپلود
+      uploadCancelBtn.addEventListener('click', function() {
+        if (isUploading) {
+          if (uploadController) {
+            uploadController.abort();
+          }
+          if (window.currentXHR) {
+            window.currentXHR.abort();
+          }
+          showMessage('warning', 'work.form.upload.cancelled');
+          resetUploadProgress();
+          showUploadProgress(false);
+          setButtonState(false);
+          isUploading = false;
+        }
+      });
+      
+      return {
+        showUploadProgress,
+        resetUploadProgress,
+        uploadFormWithProgress
+      };
+    }
+
     // ==================== سیستم تغییر زبان ====================
     let currentLang = 'fa';
     
     function changeLanguage(lang) {
       currentLang = lang;
       
-      // تغییر فعال بودن دکمه‌ها
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.lang === lang) {
@@ -1881,7 +2127,6 @@
         }
       });
       
-      // تغییر متن‌ها
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
@@ -1889,7 +2134,6 @@
         }
       });
       
-      // تغییر جهت صفحه
       if (lang === 'ar') {
         document.documentElement.dir = 'rtl';
         document.documentElement.lang = 'ar';
@@ -1901,13 +2145,11 @@
         document.documentElement.lang = 'en';
       }
       
-      // به‌روزرسانی لیست فایل‌ها
       const filePreview = document.getElementById('filePreview');
       if (filePreview && selectedFiles.length > 0) {
         filePreview.textContent = `${translations[lang] && translations[lang]['work.form.files.preview'] || 'فایل‌های انتخاب شده:'} ${selectedFiles.length}/${MAX_FILES}`;
       }
       
-      // ذخیره زبان انتخابی
       localStorage.setItem('preferredLanguage', lang);
     }
 
@@ -1917,13 +2159,15 @@
       const submitBtn = document.getElementById('submitBtn');
       const btnText = document.getElementById('btnText');
       const spinner = submitBtn.querySelector('.spinner');
+      const messagesDiv = document.getElementById('formMessages');
       
       if (!form) return;
       
-      const FORM_ENDPOINT = "https://formspree.io/f/mykzbaee";
-      form.action = FORM_ENDPOINT;
+      // تنظیمات آپلود پیشرفته
+      const uploadManager = setupAdvancedUpload();
       
-      const messagesDiv = document.getElementById('formMessages');
+      // آدرس Formspree جدید برای فایل‌ها
+      const FORM_ENDPOINT = "https://formspree.io/f/xndqevrq";
       
       // تابع نمایش پیام
       function showMessage(type, textKey, customText = null) {
@@ -1985,11 +2229,13 @@
           if (btnText) btnText.textContent = sendingText;
           if (spinner) spinner.style.display = 'inline-block';
           submitBtn.disabled = true;
+          isUploading = true;
         } else {
           const submitText = translations[currentLang] && translations[currentLang]['work.form.submit'] || 'ارسال درخواست';
           if (btnText) btnText.textContent = submitText;
           if (spinner) spinner.style.display = 'none';
           submitBtn.disabled = false;
+          isUploading = false;
         }
       }
       
@@ -2003,6 +2249,7 @@
         }
         
         setButtonState(true);
+        uploadManager.resetUploadProgress();
         
         try {
           const formData = new FormData(form);
@@ -2012,34 +2259,42 @@
             formData.append('attachments', file);
           });
           
-          const response = await fetch(FORM_ENDPOINT, {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
+          // افزودن اطلاعات اضافی
+          formData.append('_subject', '📋 درخواست همکاری جدید - سایت TPE');
+          formData.append('_language', 'fa');
+          formData.append('_format', 'plain');
+          formData.append('_captcha', 'false');
+          formData.append('_template', 'table');
+          
+          // ارسال فرم با نمایش پیشرفت
+          const response = await uploadManager.uploadFormWithProgress(formData);
           
           if (response.ok) {
             showMessage('success', 'work.form.success');
             form.reset();
             selectedFiles = [];
             updateFileList();
+            uploadManager.showUploadProgress(false);
           } else {
-            const errorData = await response.json().catch(() => ({}));
-            console.error('Form submission error:', errorData);
+            console.error('Form submission error:', response);
             showMessage('error', 'work.form.error');
           }
           
         } catch (error) {
-          console.error('Network error:', error);
-          showMessage('error', 'work.form.networkError', 
-            currentLang === 'fa' ? 'خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.' :
-            currentLang === 'ar' ? 'خطأ في الشبكة! يرجى التحقق من اتصال الإنترنت.' :
-            'Network error! Please check your internet connection.'
-          );
+          console.error('Submission error:', error);
+          
+          if (error.message === 'Upload cancelled') {
+            showMessage('warning', 'work.form.upload.cancelled');
+          } else if (error.message === 'Network error') {
+            showMessage('error', 'work.form.networkError');
+          } else {
+            showMessage('error', 'work.form.error');
+          }
+          
+          uploadManager.showUploadProgress(false);
         } finally {
           setButtonState(false);
+          uploadManager.showUploadProgress(false);
         }
       });
       
