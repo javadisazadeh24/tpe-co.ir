@@ -492,6 +492,7 @@
     
     .form-group {
       margin-bottom: 20px;
+      position: relative;
     }
     
     .form-group label {
@@ -523,6 +524,33 @@
     .form-group textarea {
       min-height: 150px;
       resize: vertical;
+    }
+    
+    .char-counter {
+      position: absolute;
+      left: 15px;
+      bottom: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      background: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+    
+    .char-counter.warning {
+      color: #f59e0b;
+      font-weight: 600;
+    }
+    
+    .char-counter.error {
+      color: #dc2626;
+      font-weight: 700;
+    }
+    
+    .char-counter.success {
+      color: #10b981;
+      font-weight: 600;
     }
     
     .form-row {
@@ -951,6 +979,14 @@
       .global-status-title {
         font-size: 18px;
       }
+      
+      .char-counter {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        margin-top: 5px;
+        text-align: left;
+      }
     }
     
     /* موبایل کوچک */
@@ -1082,15 +1118,6 @@
       to {
         transform: translateY(0);
         opacity: 1;
-      }
-    }
-    
-    @keyframes checkmark {
-      0% {
-        stroke-dashoffset: 100;
-      }
-      100% {
-        stroke-dashoffset: 0;
       }
     }
     
@@ -1375,7 +1402,11 @@
         
         <div class="form-group">
           <label for="description" data-i18n="work.form.description">توضیحات پروژه *</label>
-          <textarea id="description" name="description" rows="5" placeholder="لطفاً توضیح مختصری از پروژه خود، اهداف، نیازمندی‌ها و هر اطلاعات مرتبط دیگر ارائه دهید... (اگر فایل ضمیمه دارید، لطفاً در ایمیل به آدرس usb.tpe.co@gmail.com ارسال کنید)" required></textarea>
+          <textarea id="description" name="description" rows="5" 
+                    placeholder="لطفاً توضیح مختصری از پروژه خود، اهداف، نیازمندی‌ها و هر اطلاعات مرتبط دیگر ارائه دهید... (اگر فایل ضمیمه دارید، لطفاً در ایمیل به آدرس usb.tpe.co@gmail.com ارسال کنید)" 
+                    required 
+                    maxlength="2000"></textarea>
+          <div id="charCounter" class="char-counter">0/2000 کاراکتر</div>
         </div>
         
         <div class="form-group">
@@ -1484,7 +1515,6 @@
     // ==================== سیستم چندزبانه ====================
     const translations = {
       fa: {
-        // ناوبری
         "nav.home": "خانه",
         "nav.services": "خدمات",
         "nav.products": "نمونه خدمات و محصولات",
@@ -1493,11 +1523,9 @@
         "nav.work": "همکاری با ما",
         "nav.contact": "تماس",
         
-        // هیرو همکاری با ما
         "work.hero.title": "همکاری با ما",
         "work.hero.description": "ما پروژه‌ها را به‌صورت مرحله‌ای و بر اساس برآورد دقیق مهندسی اجرا می‌کنیم. مدل همکاری ما شفاف، انعطاف‌پذیر و متناسب با نیاز هر پروژه است.",
         
-        // مدل همکاری
         "work.model.title": "مدل همکاری",
         "work.model.description": "هر پروژه به دقت ارزیابی می‌شود تا امکان‌سنجی فنی و کارایی آن تضمین شود.",
         "work.model.item1.title": "مدل همکاری",
@@ -1511,7 +1539,6 @@
         "work.note.title": "شروع همکاری",
         "work.note.description": "برای شروع همکاری، کافی است توضیح مختصری از پروژه خود ارسال کنید تا فرآیند بررسی فنی آغاز شود.",
         
-        // پرداخت و فرآیند
         "work.payment.title": "پرداخت و فرآیند اجرا",
         "work.payment.description": "پس از بررسی اولیه پروژه، مراحل زیر طی می‌شود:",
         "work.payment.step1.title": "تعیین محدوده کار",
@@ -1526,7 +1553,6 @@
         "work.payment.note.title": "نکته مهم:",
         "work.payment.note.description": "برای مشتریان داخلی، محاسبات پروژه بر اساس نرخ ساعتی دلاری انجام و معادل ریالی آن توافق می‌شود.",
         
-        // شرایط و قوانین
         "work.terms.title": "شرایط و قوانین همکاری",
         "work.terms.section1.title": "ارسال طرح و ایده برای ساخت",
         "work.terms.section1.content": "با کلیک بر روی گزینه \"با شرایط و قوانین همکاری موافقم\"، شما تأیید می‌کنید که:",
@@ -1548,7 +1574,6 @@
         "work.terms.note.content": "پس از ارسال طرح، تیم فنی ما حداکثر طی ۳ روز کاری با شما تماس خواهد گرفت تا جزئیات همکاری را بررسی کند.",
         "work.terms.close": "بستن",
         
-        // فرم تماس
         "work.form.title": "ارسال درخواست همکاری",
         "work.form.name": "نام کامل *",
         "work.form.email": "ایمیل *",
@@ -1584,233 +1609,15 @@
         "work.form.status.sent": "درخواست با موفقیت ارسال شد!",
         "work.form.status.error": "خطا در ارسال درخواست",
         "work.form.status.connectionError": "خطا در اتصال به سرور",
+        "work.form.chars.remaining": "کاراکتر باقیمانده",
+        "work.form.chars.exceeded": "کاراکتر بیش از حد مجاز",
+        "work.form.chars.limit": "حداکثر ۲۰۰۰ کاراکتر مجاز است",
         
-        // فوتر
         "footer.contact": "تماس با ما",
         "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
         "footer.links": "لینک‌های مفيد",
         "footer.social": "شبکه‌های اجتماعی",
         "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
-      },
-      
-      en: {
-        // Navigation
-        "nav.home": "Home",
-        "nav.services": "Services",
-        "nav.products": "Products & Services",
-        "nav.resume": "Personnel Resume",
-        "nav.projects": "Development Projects",
-        "nav.work": "Work With Us",
-        "nav.contact": "Contact",
-        
-        // Work With Us Hero
-        "work.hero.title": "Work With Us",
-        "work.hero.description": "We collaborate on a project-based model with transparent engineering-driven cost estimation. Each project is carefully evaluated to ensure technical feasibility and efficiency.",
-        
-        // Collaboration Model
-        "work.model.title": "Collaboration Model",
-        "work.model.description": "Each project is carefully evaluated to ensure technical feasibility and efficiency.",
-        "work.model.item1.title": "Collaboration model",
-        "work.model.item1.desc": "Project-based",
-        "work.model.item2.title": "Cost estimation",
-        "work.model.item2.desc": "Hourly-based (USD)",
-        "work.model.item3.title": "Payment structure",
-        "work.model.item3.desc": "Milestone-based",
-        "work.model.item4.title": "Project scale",
-        "work.model.item4.desc": "Suitable for small to medium projects",
-        "work.note.title": "How to start",
-        "work.note.description": "To start, simply share a brief description of your project and our team will review it.",
-        
-        // Payment & Process
-        "work.payment.title": "Payment & Process",
-        "work.payment.description": "After initial project evaluation:",
-        "work.payment.step1.title": "Scope definition",
-        "work.payment.step1.desc": "Scope and timeline are defined",
-        "work.payment.step2.title": "Cost estimation",
-        "work.payment.step2.desc": "Hourly-based cost estimation is provided",
-        "work.payment.step3.title": "Staged payment",
-        "work.payment.step3.desc": "Payments are made per project milestones",
-        "work.payment.methods.title": "Accepted Payment Methods",
-        "work.payment.method1": "Digital currency payment",
-        "work.payment.method2": "Digital currency payment",
-        "work.payment.note.title": "Important note:",
-        "work.payment.note.description": "For domestic customers, project calculations are based on hourly USD rate and converted to local currency.",
-        
-        // Terms and Conditions
-        "work.terms.title": "Terms and Conditions",
-        "work.terms.section1.title": "Submitting Ideas and Proposals",
-        "work.terms.section1.content": "By clicking \"I agree to the terms and conditions\", you confirm that:",
-        "work.terms.section1.item1": "The submitted idea or proposal belongs to you",
-        "work.terms.section1.item2": "You have intellectual property rights for the proposal",
-        "work.terms.section1.item3": "You accept confidentiality terms between parties",
-        "work.terms.section1.item4": "The project will be executed in phases with Milestone-based payments",
-        "work.terms.section1.item5": "Costs are calculated based on hourly (USD) estimation",
-        "work.terms.section2.title": "Technical Considerations",
-        "work.terms.section2.content": "After submitting the proposal, the following steps will be taken:",
-        "work.terms.section2.item1": "Initial technical review and feasibility study",
-        "work.terms.section2.item2": "Scope definition",
-        "work.terms.section2.item3": "Time and cost estimation",
-        "work.terms.section2.item4": "Signing collaboration agreement",
-        "work.terms.section2.item5": "Project execution start",
-        "work.terms.section3.title": "Ownership Rights",
-        "work.terms.section3.content": "All intellectual property rights of the idea and proposal belong to you. We only act as technical executors and upon project completion, all outputs will be delivered to you.",
-        "work.terms.note.title": "Important Notice:",
-        "work.terms.note.content": "After submitting your proposal, our technical team will contact you within maximum 3 working days to discuss collaboration details.",
-        "work.terms.close": "Close",
-        
-        // Contact Form
-        "work.form.title": "Submit Collaboration Request",
-        "work.form.name": "Full Name *",
-        "work.form.email": "Email *",
-        "work.form.company": "Company / Organization",
-        "work.form.phone": "Phone Number *",
-        "work.form.projectType": "Project Type *",
-        "work.form.select": "Select",
-        "work.form.option1": "Product Design & Development",
-        "work.form.option2": "Prototyping",
-        "work.form.option3": "Technical Consulting",
-        "work.form.option4": "Other",
-        "work.form.option5": "Reverse Engineering",
-        "work.form.budget": "Estimated Budget",
-        "work.form.budgetSelect": "Select",
-        "work.form.timeline": "Project Timeline",
-        "work.form.timelineSelect": "Select",
-        "work.form.description": "Project Description *",
-        "work.form.files.title": "Send Attached Files",
-        "work.form.files.description": "To send files related to your project (such as PDF files, maps, images, etc.) please use the company email.",
-        "work.form.agreement.prefix": "I agree to the ",
-        "work.form.agreement.link": "terms and conditions",
-        "work.form.agreement.suffix": "",
-        "work.form.submit": "Submit Request",
-        "work.form.success": "Your request has been submitted successfully. We will contact you soon.",
-        "work.form.error": "There was a problem submitting your request. Please try again or contact us directly.",
-        "work.form.alternative": "Or contact us through the following methods",
-        "work.form.whatsapp": "WhatsApp",
-        "work.form.emailLink": "Email",
-        "work.form.call": "Phone Call",
-        "work.form.networkError": "Network error! Please check your internet connection.",
-        "work.form.sending": "Sending...",
-        "work.form.status.sending": "Sending request...",
-        "work.form.status.sent": "Request sent successfully!",
-        "work.form.status.error": "Error sending request",
-        "work.form.status.connectionError": "Server connection error",
-        
-        // Footer
-        "footer.contact": "Contact Us",
-        "footer.address": "Zahedan, University Boulevard, Science and Technology Park",
-        "footer.links": "Useful Links",
-        "footer.social": "Social Networks",
-        "footer.copyright": "© 2025 Tose Pardazan Knowledge-Based Engineering Company. All rights reserved."
-      },
-      
-      ar: {
-        // التنقل
-        "nav.home": "الرئيسية",
-        "nav.services": "الخدمات",
-        "nav.products": "الخدمات والمنتجات",
-        "nav.resume": "سيرة الموظفين",
-        "nav.projects": "مشاريع التطوير",
-        "nav.work": "تعاون معنا",
-        "nav.contact": "اتصل بنا",
-        
-        // هيرو التعاون معنا
-        "work.hero.title": "تعاون معنا",
-        "work.hero.description": "نحن نتعاون على نموذج قائم على المشاريع مع تقدير تكلفة هندسي شفاف. يتم تقييم كل مشروع بعناية لضمان الجدوى الفنية والكفاءة.",
-        
-        // نموذج التعاون
-        "work.model.title": "نموذج التعاون",
-        "work.model.description": "يتم تقييم كل مشروع بعناية لضمان الجدوى الفنية والكفاءة.",
-        "work.model.item1.title": "نموذج التعاون",
-        "work.model.item1.desc": "قائم على المشاريع",
-        "work.model.item2.title": "تقدير التكلفة",
-        "work.model.item2.desc": "قائم على الساعة (دولار أمريكي)",
-        "work.model.item3.title": "هيكل الدفع",
-        "work.model.item3.desc": "قائم على المعالم (Milestone-based)",
-        "work.model.item4.title": "مقياس المشروع",
-        "work.model.item4.desc": "مناسب للمشاريع الصغيرة والمتوسطة",
-        "work.note.title": "كيفية البدء",
-        "work.note.description": "للبدء، ما عليك سوى مشاركة وصف موجز لمشروعك وسيقوم فريقنا بمراجعته.",
-        
-        // الدفع والعملية
-        "work.payment.title": "الدفع والعملية",
-        "work.payment.description": "بعد التقييم الأولي للمشروع:",
-        "work.payment.step1.title": "تحديد النطاق",
-        "work.payment.step1.desc": "يتم تحديد النطاق والجدول الزمني",
-        "work.payment.step2.title": "تقدير التكلفة",
-        "work.payment.step2.desc": "يتم تقدير التكلفة على أساس الساعة",
-        "work.payment.step3.title": "الدفع المرحلي",
-        "work.payment.step3.desc": "يتم الدفع حسب معالم المشروع",
-        "work.payment.methods.title": "طرق الدفع المقبولة",
-        "work.payment.method1": "الدفع بالعملة الرقمية",
-        "work.payment.method2": "الدفع بالعملة الرقمية",
-        "work.payment.note.title": "ملاحظة مهمة:",
-        "work.payment.note.description": "للعملاء المحليين، تتم حسابات المشروع على أساس سعر الساعة بالدولار الأمريكي وتحويلها إلى العملة المحلية.",
-        
-        // الشروط والأحكام
-        "work.terms.title": "الشروط والأحكام",
-        "work.terms.section1.title": "إرسال الأفكار والمقترحات",
-        "work.terms.section1.content": "بالنقر على \"أوافق على الشروط والأحكام\"، فإنك تؤكد أن:",
-        "work.terms.section1.item1": "الفكرة أو المقترح المقدم ملك لك",
-        "work.terms.section1.item2": "لديك حقوق الملكية الفكرية للمقترح",
-        "work.terms.section1.item3": "تقبل شروط السرية بين الأطراف",
-        "work.terms.section1.item4": "سيتم تنفيذ المشروع على مراحل مع دفعات قائمة على المعالم",
-        "work.terms.section1.item5": "يتم حساب التكاليف على أساس تقدير الساعة (بالدولار)",
-        "work.terms.section2.title": "الاعتبارات الفنية",
-        "work.terms.section2.content": "بعد إرسال المقترح، سيتم اتخاذ الخطوات التالية:",
-        "work.terms.section2.item1": "المراجعة الفنية الأولية ودراسة الجدوى",
-        "work.terms.section2.item2": "تحديد النطاق",
-        "work.terms.section2.item3": "تقدير الوقت والتكلفة",
-        "work.terms.section2.item4": "توقيع اتفاقية التعاون",
-        "work.terms.section2.item5": "بدء تنفيذ المشروع",
-        "work.terms.section3.title": "حقوق الملكية",
-        "work.terms.section3.content": "جميع حقوق الملكية الفكرية للفكرة والمقترح ملك لك. نحن نعمل فقط كمُنفذين فنيين وبعد اكتمال المشروع، سيتم تسليم جميع المخرجات إليك.",
-        "work.terms.note.title": "ملاحظة مهمة:",
-        "work.terms.note.content": "بعد إرسال مقترحك، سيتصل بك فريقنا الفني خلال 3 أيام عمل على الأكثر لمناقشة تفاصيل التعاون.",
-        "work.terms.close": "إغلاق",
-        
-        // نموذج الاتصال
-        "work.form.title": "إرسال طلب التعاون",
-        "work.form.name": "الاسم الكامل *",
-        "work.form.email": "البريد الإلكتروني *",
-        "work.form.company": "الشركة / المنظمة",
-        "work.form.phone": "رقم الهاتف *",
-        "work.form.projectType": "نوع المشروع *",
-        "work.form.select": "اختر",
-        "work.form.option1": "تصميم وتطوير المنتجات",
-        "work.form.option2": "النمذجة الأولية",
-        "work.form.option3": "الاستشارات الفنية",
-        "work.form.option4": "أخرى",
-        "work.form.option5": "الهندسة العكسية",
-        "work.form.budget": "الميزانية المقدرة",
-        "work.form.budgetSelect": "اختر",
-        "work.form.timeline": "الجدول الزمني للمشروع",
-        "work.form.timelineSelect": "اختر",
-        "work.form.description": "وصف المشروع *",
-        "work.form.files.title": "إرسال الملفات المرفقة",
-        "work.form.files.description": "لإرسال الملفات المتعلقة بمشروعك (مثل ملفات PDF، الخرائط، الصور، إلخ) يرجى استخدام البريد الإلكتروني للشركة.",
-        "work.form.agreement.prefix": "أوافق على ",
-        "work.form.agreement.link": "الشروط والأحكام",
-        "work.form.agreement.suffix": "",
-        "work.form.submit": "إرسال الطلب",
-        "work.form.success": "تم إرسال طلبك بنجاح. سنتواصل معك قريباً.",
-        "work.form.error": "حدثت مشكلة في إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.",
-        "work.form.alternative": "أو اتصل بنا من خلال الطرق التالية",
-        "work.form.whatsapp": "واتساب",
-        "work.form.emailLink": "البريد الإلكتروني",
-        "work.form.call": "مكالمة هاتفية",
-        "work.form.networkError": "خطأ في الشبكة! يرجى التحقق من اتصال الإنترنت.",
-        "work.form.sending": "جاري الارسال...",
-        "work.form.status.sending": "جاري إرسال الطلب...",
-        "work.form.status.sent": "تم إرسال الطلب بنجاح!",
-        "work.form.status.error": "خطأ في إرسال الطلب",
-        "work.form.status.connectionError": "خطأ في الاتصال بالخادم",
-        
-        // الفوتر
-        "footer.contact": "اتصل بنا",
-        "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
-        "footer.links": "روابط مفيدة",
-        "footer.social": "الشبكات الاجتماعية",
-        "footer.copyright": "© ٢٠٢٥ شركة توسع پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
       }
     };
 
@@ -1932,12 +1739,8 @@
         statusContainer.classList.add('show');
       }, 10);
       
-      // بستن خودکار برای پیام موفقیت
-      if (type === 'success') {
-        setTimeout(() => {
-          hideGlobalStatus();
-        }, 8000);
-      }
+      // **پیام‌ها دیگر به صورت خودکار بسته نمی‌شوند**
+      // کاربر باید خودش روی × کلیک کند
     }
     
     function hideGlobalStatus() {
@@ -1947,16 +1750,54 @@
         statusContainer.style.display = 'none';
       }, 500);
     }
-    
-    // تابع برای اسکرول به وضعیت
-    function scrollToStatus() {
-      const statusContainer = document.getElementById('globalStatus');
-      if (statusContainer.style.display === 'block') {
-        window.scrollTo({
-          top: statusContainer.offsetTop - 20,
-          behavior: 'smooth'
-        });
+
+    // ==================== مدیریت شمارنده کاراکتر ====================
+    function setupCharCounter() {
+      const descriptionTextarea = document.getElementById('description');
+      const charCounter = document.getElementById('charCounter');
+      
+      if (!descriptionTextarea || !charCounter) return;
+      
+      const MAX_CHARS = 2000;
+      
+      function updateCharCounter() {
+        const currentLength = descriptionTextarea.value.length;
+        const remaining = MAX_CHARS - currentLength;
+        
+        // به‌روزرسانی متن شمارنده
+        const remainingText = translations[currentLang] && translations[currentLang]['work.form.chars.remaining'] || 'کاراکتر باقیمانده';
+        const exceededText = translations[currentLang] && translations[currentLang]['work.form.chars.exceeded'] || 'کاراکتر بیش از حد مجاز';
+        
+        if (remaining >= 0) {
+          charCounter.textContent = `${currentLength}/${MAX_CHARS} (${remaining} ${remainingText})`;
+        } else {
+          charCounter.textContent = `${currentLength}/${MAX_CHARS} (${Math.abs(remaining)} ${exceededText})`;
+        }
+        
+        // تغییر رنگ بر اساس تعداد کاراکتر باقیمانده
+        charCounter.classList.remove('warning', 'error', 'success');
+        
+        if (remaining < 0) {
+          charCounter.classList.add('error');
+          descriptionTextarea.style.borderColor = '#dc2626';
+        } else if (remaining <= 100) {
+          charCounter.classList.add('warning');
+          descriptionTextarea.style.borderColor = '#f59e0b';
+        } else if (remaining <= 500) {
+          charCounter.classList.add('success');
+          descriptionTextarea.style.borderColor = '#10b981';
+        } else {
+          descriptionTextarea.style.borderColor = '#e2e8f0';
+        }
       }
+      
+      // رویدادهای تایپ
+      descriptionTextarea.addEventListener('input', updateCharCounter);
+      descriptionTextarea.addEventListener('keyup', updateCharCounter);
+      descriptionTextarea.addEventListener('change', updateCharCounter);
+      
+      // مقداردهی اولیه
+      updateCharCounter();
     }
 
     // ==================== مدیریت فرم با XMLHttpRequest ====================
@@ -2032,6 +1873,15 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // بررسی محدودیت کاراکتر
+        const descriptionTextarea = document.getElementById('description');
+        if (descriptionTextarea.value.length > 2000) {
+          const limitText = translations[currentLang] && translations[currentLang]['work.form.chars.limit'] || 'حداکثر ۲۰۰۰ کاراکتر مجاز است';
+          alert(limitText);
+          descriptionTextarea.focus();
+          return;
+        }
+        
         if (!form.checkValidity()) {
           form.reportValidity();
           return;
@@ -2054,13 +1904,51 @@
         
         // رخداد بارگذاری موفق
         xhr.addEventListener('load', function() {
+          console.log('XHR Status:', xhr.status, 'Response:', xhr.responseText);
+          
           if (xhr.status >= 200 && xhr.status < 300) {
-            // موفقیت
-            showGlobalStatus('success');
-            showMessage('success', 'work.form.success');
-            form.reset();
+            try {
+              const response = JSON.parse(xhr.responseText);
+              if (response.ok || response.success) {
+                // **فقط در صورت موفقیت واقعی نمایش داده می‌شود**
+                showGlobalStatus('success');
+                showMessage('success', 'work.form.success');
+                form.reset();
+                // ریست شمارنده کاراکتر
+                const charCounter = document.getElementById('charCounter');
+                if (charCounter) {
+                  charCounter.textContent = `0/2000 کاراکتر`;
+                  charCounter.classList.remove('warning', 'error', 'success');
+                }
+              } else {
+                // خطا از سمت سرور Formspree
+                const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در ارسال درخواست';
+                const errorMessage = translations[currentLang] && translations[currentLang]['work.form.error'] || 'مشکلی در ارسال درخواست پیش آمده.';
+                showGlobalStatus('error', errorMessage, errorTitle);
+                showMessage('error', 'work.form.error');
+              }
+            } catch (e) {
+              // اگر پاسخ JSON نبود، بررسی کد وضعیت
+              if (xhr.status === 200 || xhr.status === 302) {
+                // احتمالاً موفقیت‌آمیز
+                showGlobalStatus('success');
+                showMessage('success', 'work.form.success');
+                form.reset();
+                // ریست شمارنده کاراکتر
+                const charCounter = document.getElementById('charCounter');
+                if (charCounter) {
+                  charCounter.textContent = `0/2000 کاراکتر`;
+                  charCounter.classList.remove('warning', 'error', 'success');
+                }
+              } else {
+                const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در ارسال درخواست';
+                const errorMessage = translations[currentLang] && translations[currentLang]['work.form.error'] || 'مشکلی در ارسال درخواست پیش آمده.';
+                showGlobalStatus('error', errorMessage, errorTitle);
+                showMessage('error', 'work.form.error');
+              }
+            }
           } else {
-            // خطا از سمت سرور
+            // خطای HTTP
             const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در ارسال درخواست';
             const errorMessage = translations[currentLang] && translations[currentLang]['work.form.error'] || 'مشکلی در ارسال درخواست پیش آمده.';
             showGlobalStatus('error', errorMessage, errorTitle);
@@ -2071,6 +1959,7 @@
         
         // رخداد خطا در شبکه
         xhr.addEventListener('error', function() {
+          console.error('Network error in XHR');
           const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در اتصال';
           const errorMessage = translations[currentLang] && translations[currentLang]['work.form.networkError'] || 'خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.';
           showGlobalStatus('error', errorMessage, errorTitle);
@@ -2083,18 +1972,37 @@
           setButtonState(false);
         });
         
+        // تنظیم timeout برای جلوگیری از انتظار طولانی
+        xhr.timeout = 30000; // 30 ثانیه
+        xhr.ontimeout = function() {
+          const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'اتصال timeout شد';
+          const errorMessage = 'ارتباط با سرور زمان‌بر شد. لطفاً دوباره تلاش کنید.';
+          showGlobalStatus('error', errorMessage, errorTitle);
+          showMessage('error', 'work.form.error');
+          setButtonState(false);
+        };
+        
         // تنظیمات و ارسال درخواست
-        xhr.open('POST', FORM_ENDPOINT, true);
-        xhr.setRequestHeader('Accept', 'application/json');
-        xhr.send(formData);
+        try {
+          xhr.open('POST', FORM_ENDPOINT, true);
+          xhr.setRequestHeader('Accept', 'application/json');
+          xhr.send(formData);
+        } catch (err) {
+          console.error('Error sending XHR:', err);
+          const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در ارسال';
+          const errorMessage = 'خطایی در ارسال درخواست رخ داد. لطفاً صفحه را رفرش کرده و دوباره تلاش کنید.';
+          showGlobalStatus('error', errorMessage, errorTitle);
+          showMessage('error', 'work.form.error');
+          setButtonState(false);
+        }
       });
       
       // اعتبارسنجی بلادرنگ
       form.addEventListener('input', function(e) {
         const input = e.target;
-        if (input.validity.valid) {
+        if (input.validity.valid && input.id !== 'description') {
           input.style.borderColor = '#10b981';
-        } else {
+        } else if (input.id !== 'description') {
           input.style.borderColor = '#ef4444';
         }
       });
@@ -2140,6 +2048,9 @@
       
       // تنظیم فرم
       setupForm();
+      
+      // تنظیم شمارنده کاراکتر
+      setupCharCounter();
     });
     
     // ==================== توابع کمکی ====================
@@ -2200,7 +2111,6 @@
     
     // تابع برای بستن وضعیت جهانی
     window.hideGlobalStatus = hideGlobalStatus;
-    window.scrollToStatus = scrollToStatus;
   </script>
 </body>
 </html>
