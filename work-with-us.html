@@ -531,54 +531,111 @@
       gap: 20px;
     }
     
-    /* انیمیشن وضعیت ارسال */
-    .status-container {
+    /* پیام وضعیت ثابت در بالای صفحه */
+    .global-status-container {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      left: 20px;
+      z-index: 9999;
+      max-width: 600px;
+      margin: 0 auto;
       display: none;
-      margin: 25px 0;
-      background: #f8fafc;
+      transform: translateY(-100px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    
+    .global-status-container.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .global-status-card {
+      background: white;
       border-radius: 16px;
-      padding: 30px;
-      border: 2px solid #e2e8f0;
-      text-align: center;
+      padding: 25px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border-left: 6px solid #0f766e;
+      position: relative;
+      animation: slideDown 0.5s ease;
     }
     
-    .status-icon {
-      font-size: 60px;
-      margin-bottom: 20px;
+    .global-status-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
     }
     
-    .status-title {
-      font-size: 24px;
+    .global-status-icon {
+      font-size: 32px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .global-status-content {
+      flex: 1;
+    }
+    
+    .global-status-title {
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       color: var(--primary);
     }
     
-    .status-message {
+    .global-status-message {
       color: var(--muted);
-      margin-bottom: 20px;
       line-height: 1.6;
     }
     
-    .status-progress {
-      height: 8px;
+    .global-status-close {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .global-status-close:hover {
+      background: #f1f5f9;
+      color: var(--accent);
+    }
+    
+    .global-status-progress {
+      height: 6px;
       background: #e2e8f0;
-      border-radius: 4px;
+      border-radius: 3px;
       overflow: hidden;
-      margin: 20px 0;
+      margin-top: 20px;
       position: relative;
     }
     
-    .status-progress-bar {
+    .global-status-progress-bar {
       height: 100%;
       background: linear-gradient(90deg, #0f766e, #14b8a6);
-      border-radius: 4px;
+      border-radius: 3px;
       width: 0%;
       transition: width 0.5s ease;
-      position: relative;
     }
     
-    .status-progress-bar::after {
+    .global-status-progress-bar::after {
       content: '';
       position: absolute;
       top: 0;
@@ -592,29 +649,6 @@
         transparent
       );
       animation: shimmer 2s infinite;
-    }
-    
-    .status-dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      animation: dotPulse 1.5s infinite;
-    }
-    
-    .status-dot:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .status-dot:nth-child(3) {
-      animation-delay: 0.4s;
     }
     
     /* استایل‌های modal */
@@ -706,7 +740,7 @@
       margin-bottom: 20px;
     }
     
-    /* استایل‌های پیام‌ها */
+    /* استایل‌های پیام‌های قدیمی */
     .form-message {
       animation: fadeIn 0.3s ease-in;
     }
@@ -898,8 +932,24 @@
         padding: 20px;
       }
       
-      .status-container {
+      .global-status-container {
+        top: 80px;
+        right: 10px;
+        left: 10px;
+      }
+      
+      .global-status-card {
         padding: 20px;
+      }
+      
+      .global-status-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+      
+      .global-status-title {
+        font-size: 18px;
       }
     }
     
@@ -961,6 +1011,20 @@
         padding: 10px 20px;
         font-size: 14px;
       }
+      
+      .global-status-container {
+        top: 70px;
+      }
+      
+      .global-status-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      
+      .global-status-icon {
+        align-self: center;
+      }
     }
     
     /* انیمیشن‌ها */
@@ -1010,32 +1074,14 @@
       }
     }
     
-    @keyframes dotPulse {
-      0%, 100% {
-        background: #cbd5e1;
-        transform: scale(1);
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
       }
-      50% {
-        background: #0f766e;
-        transform: scale(1.2);
-      }
-    }
-    
-    @keyframes bounce {
-      0%, 100% {
+      to {
         transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
+        opacity: 1;
       }
     }
     
@@ -1051,17 +1097,28 @@
     .fade-in {
       animation: fadeInUp 0.8s ease-out;
     }
-    
-    .bounce {
-      animation: bounce 1s infinite;
-    }
-    
-    .spin {
-      animation: spin 1s linear infinite;
-    }
   </style>
 </head>
 <body>
+
+  <!-- پیام وضعیت ثابت در بالای صفحه -->
+  <div id="globalStatus" class="global-status-container">
+    <div class="global-status-card">
+      <button class="global-status-close" onclick="hideGlobalStatus()">&times;</button>
+      <div class="global-status-header">
+        <div class="global-status-icon" id="globalStatusIcon">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <div class="global-status-content">
+          <h3 class="global-status-title" id="globalStatusTitle">در حال ارسال درخواست...</h3>
+          <p class="global-status-message" id="globalStatusMessage">لطفاً منتظر بمانید، درخواست شما در حال ارسال است.</p>
+        </div>
+      </div>
+      <div class="global-status-progress">
+        <div class="global-status-progress-bar" id="globalStatusProgress"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- ناوبری -->
   <header class="nav glass-effect" id="navbar">
@@ -1225,27 +1282,8 @@
     <div class="contact-form fade-in">
       <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;" data-i18n="work.form.title">ارسال درخواست همکاری</h3>
       
-      <!-- پیام‌ها -->
+      <!-- پیام‌های قدیمی -->
       <div id="formMessages"></div>
-      
-      <!-- وضعیت ارسال -->
-      <div id="statusContainer" class="status-container">
-        <div class="status-icon" id="statusIcon">
-          <i class="fas fa-paper-plane"></i>
-        </div>
-        <h3 class="status-title" id="statusTitle">در حال ارسال درخواست...</h3>
-        <p class="status-message" id="statusMessage">لطفاً منتظر بمانید، درخواست شما در حال ارسال است.</p>
-        
-        <div class="status-progress">
-          <div class="status-progress-bar" id="statusProgress"></div>
-        </div>
-        
-        <div class="status-dots">
-          <div class="status-dot"></div>
-          <div class="status-dot"></div>
-          <div class="status-dot"></div>
-        </div>
-      </div>
       
       <!-- جعبه ارسال فایل از طریق ایمیل -->
       <div class="file-email-box">
@@ -1545,6 +1583,7 @@
         "work.form.status.sending": "در حال ارسال درخواست...",
         "work.form.status.sent": "درخواست با موفقیت ارسال شد!",
         "work.form.status.error": "خطا در ارسال درخواست",
+        "work.form.status.connectionError": "خطا در اتصال به سرور",
         
         // فوتر
         "footer.contact": "تماس با ما",
@@ -1654,6 +1693,7 @@
         "work.form.status.sending": "Sending request...",
         "work.form.status.sent": "Request sent successfully!",
         "work.form.status.error": "Error sending request",
+        "work.form.status.connectionError": "Server connection error",
         
         // Footer
         "footer.contact": "Contact Us",
@@ -1763,6 +1803,7 @@
         "work.form.status.sending": "جاري إرسال الطلب...",
         "work.form.status.sent": "تم إرسال الطلب بنجاح!",
         "work.form.status.error": "خطأ في إرسال الطلب",
+        "work.form.status.connectionError": "خطأ في الاتصال بالخادم",
         
         // الفوتر
         "footer.contact": "اتصل بنا",
@@ -1826,13 +1867,13 @@
       localStorage.setItem('preferredLanguage', lang);
     }
 
-    // ==================== مدیریت انیمیشن وضعیت ارسال ====================
-    function showStatus(type, message = null) {
-      const statusContainer = document.getElementById('statusContainer');
-      const statusIcon = document.getElementById('statusIcon');
-      const statusTitle = document.getElementById('statusTitle');
-      const statusMessage = document.getElementById('statusMessage');
-      const statusProgress = document.getElementById('statusProgress');
+    // ==================== مدیریت نمایش وضعیت ارسال ====================
+    function showGlobalStatus(type, message = null, title = null) {
+      const statusContainer = document.getElementById('globalStatus');
+      const statusIcon = document.getElementById('globalStatusIcon');
+      const statusTitle = document.getElementById('globalStatusTitle');
+      const statusMessage = document.getElementById('globalStatusMessage');
+      const statusProgress = document.getElementById('globalStatusProgress');
       
       const statusTypes = {
         sending: {
@@ -1859,16 +1900,18 @@
       
       // تنظیم آیکون
       statusIcon.innerHTML = `<i class="fas ${statusConfig.icon}"></i>`;
+      statusIcon.style.background = `${statusConfig.color}15`;
       statusIcon.style.color = statusConfig.color;
       
       // تنظیم متن‌ها
-      statusTitle.textContent = statusConfig.title;
+      statusTitle.textContent = title || statusConfig.title;
       statusTitle.style.color = statusConfig.color;
       statusMessage.textContent = message || statusConfig.message;
       
       // تنظیم پیشرفت
       if (type === 'sending') {
         statusProgress.style.width = '30%';
+        statusProgress.style.background = statusConfig.color;
         setTimeout(() => {
           statusProgress.style.width = '70%';
         }, 500);
@@ -1883,24 +1926,40 @@
         statusProgress.style.background = statusConfig.color;
       }
       
-      // نمایش کانتینر
+      // نمایش کانتینر با انیمیشن
       statusContainer.style.display = 'block';
-      statusContainer.style.animation = 'fadeIn 0.5s ease-in';
+      setTimeout(() => {
+        statusContainer.classList.add('show');
+      }, 10);
       
-      // پنهان کردن خودکار پیام موفقیت
+      // بستن خودکار برای پیام موفقیت
       if (type === 'success') {
         setTimeout(() => {
-          statusContainer.style.display = 'none';
+          hideGlobalStatus();
         }, 8000);
       }
     }
     
-    function hideStatus() {
-      const statusContainer = document.getElementById('statusContainer');
-      statusContainer.style.display = 'none';
+    function hideGlobalStatus() {
+      const statusContainer = document.getElementById('globalStatus');
+      statusContainer.classList.remove('show');
+      setTimeout(() => {
+        statusContainer.style.display = 'none';
+      }, 500);
+    }
+    
+    // تابع برای اسکرول به وضعیت
+    function scrollToStatus() {
+      const statusContainer = document.getElementById('globalStatus');
+      if (statusContainer.style.display === 'block') {
+        window.scrollTo({
+          top: statusContainer.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      }
     }
 
-    // ==================== مدیریت فرم ====================
+    // ==================== مدیریت فرم با XMLHttpRequest ====================
     function setupForm() {
       const form = document.getElementById('collaborationForm');
       const submitBtn = document.getElementById('submitBtn');
@@ -1913,7 +1972,7 @@
       // آدرس Formspree
       const FORM_ENDPOINT = "https://formspree.io/f/mykzbaee";
       
-      // تابع نمایش پیام
+      // تابع نمایش پیام قدیمی
       function showMessage(type, textKey, customText = null) {
         const messageTypes = {
           success: {
@@ -1927,12 +1986,6 @@
             color: '#ef4444',
             bgColor: '#fee2e2',
             textColor: '#991b1b'
-          },
-          warning: {
-            icon: 'fa-exclamation-triangle',
-            color: '#f59e0b',
-            bgColor: '#fef3c7',
-            textColor: '#92400e'
           }
         };
         
@@ -1958,12 +2011,6 @@
         
         messagesDiv.innerHTML = messageHTML;
         messagesDiv.style.display = 'block';
-        
-        if (type === 'success') {
-          setTimeout(() => {
-            messagesDiv.style.display = 'none';
-          }, 8000);
-        }
       }
       
       // تابع تغییر وضعیت دکمه
@@ -1981,8 +2028,8 @@
         }
       }
       
-      // رویداد ارسال فرم
-      form.addEventListener('submit', async function(e) {
+      // رویداد ارسال فرم با XMLHttpRequest
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         if (!form.checkValidity()) {
@@ -1991,39 +2038,55 @@
         }
         
         setButtonState(true);
-        hideStatus();
-        showStatus('sending');
+        hideGlobalStatus();
+        showGlobalStatus('sending');
         
-        try {
-          const formData = new FormData(form);
-          
-          // ارسال به Formspree
-          const response = await fetch(FORM_ENDPOINT, {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
-          
-          if (response.ok) {
-            showStatus('success');
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        
+        // رخداد پیشرفت
+        xhr.upload.addEventListener('progress', function(event) {
+          if (event.lengthComputable) {
+            const percentComplete = Math.round((event.loaded / event.total) * 100);
+            document.getElementById('globalStatusProgress').style.width = percentComplete + '%';
+          }
+        });
+        
+        // رخداد بارگذاری موفق
+        xhr.addEventListener('load', function() {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // موفقیت
+            showGlobalStatus('success');
             showMessage('success', 'work.form.success');
             form.reset();
           } else {
-            const errorText = translations[currentLang] && translations[currentLang]['work.form.error'] || 'مشکلی در ارسال درخواست پیش آمده.';
-            showStatus('error', errorText);
+            // خطا از سمت سرور
+            const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در ارسال درخواست';
+            const errorMessage = translations[currentLang] && translations[currentLang]['work.form.error'] || 'مشکلی در ارسال درخواست پیش آمده.';
+            showGlobalStatus('error', errorMessage, errorTitle);
             showMessage('error', 'work.form.error');
           }
-          
-        } catch (error) {
-          console.error('Network error:', error);
-          const errorText = translations[currentLang] && translations[currentLang]['work.form.networkError'] || 'خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.';
-          showStatus('error', errorText);
-          showMessage('error', 'work.form.networkError');
-        } finally {
           setButtonState(false);
-        }
+        });
+        
+        // رخداد خطا در شبکه
+        xhr.addEventListener('error', function() {
+          const errorTitle = translations[currentLang] && translations[currentLang]['work.form.status.error'] || 'خطا در اتصال';
+          const errorMessage = translations[currentLang] && translations[currentLang]['work.form.networkError'] || 'خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.';
+          showGlobalStatus('error', errorMessage, errorTitle);
+          showMessage('error', 'work.form.networkError');
+          setButtonState(false);
+        });
+        
+        // رخداد لغو
+        xhr.addEventListener('abort', function() {
+          setButtonState(false);
+        });
+        
+        // تنظیمات و ارسال درخواست
+        xhr.open('POST', FORM_ENDPOINT, true);
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.send(formData);
       });
       
       // اعتبارسنجی بلادرنگ
@@ -2134,6 +2197,10 @@
         observer.observe(section);
       });
     }
+    
+    // تابع برای بستن وضعیت جهانی
+    window.hideGlobalStatus = hideGlobalStatus;
+    window.scrollToStatus = scrollToStatus;
   </script>
 </body>
 </html>
