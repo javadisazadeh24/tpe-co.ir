@@ -2,8 +2,19 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</title>
+  <meta name="description" content="شرکت دانش بنیان فنی و مهندسی توسعه پردازان - طراحی، ساخت و تولید با استانداردهای جهانی | تحقق رویاهای صنعتی شما از صفر تا صد">
+  <meta name="keywords" content="توسعه پردازان, طراحی صنعتی, ساخت و تولید, مهندسی معکوس, CNC, پرینت سه بعدی, توسعه محصول, شرکت دانش بنیان">
+  <meta name="author" content="شرکت توسعه پردازان">
+  <meta property="og:title" content="شرکت دانش بنیان فنی و مهندسی توسعه پردازان">
+  <meta property="og:description" content="تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی">
+  <meta property="og:image" content="https://tpe-co.ir/images/logo.png">
+  <meta property="og:url" content="https://tpe-co.ir">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://tpe-co.ir">
+  <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان | طراحی و ساخت تجهیزات صنعتی</title>
   <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="images/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- فونت‌ها -->
@@ -14,6 +25,7 @@
   <!-- آیکون شبکه‌های اجتماعی -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- استایل‌های وکتور و انیمیشن -->
   <style>
     /* استایل های اصلی */
     :root {
@@ -21,8 +33,10 @@
       --text: #0f172a;
       --muted: #64748b;
       --primary: #1e40af;
+      --primary-dark: #1e3a8a;
       --surface: rgba(255, 255, 255, 0.9);
       --accent: #dc2626;
+      --accent-light: #f87171;
       --maxw: 1200px;
       --glass-bg: rgba(255, 255, 255, 0.15);
       --glass-border: rgba(255, 255, 255, 0.2);
@@ -30,6 +44,10 @@
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+    }
     
     body {
       font-family: 'Vazirmatn', 'Inter', Tahoma, sans-serif;
@@ -39,13 +57,13 @@
       overflow-x: hidden;
     }
     
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5, h6 {
       font-weight: 700;
       line-height: 1.2;
     }
     
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; display: block; height: auto; }
     
     section { padding: 60px 20px; }
     
@@ -76,6 +94,44 @@
       border-radius: 2px;
     }
     
+    /* اسپلش اسکرین */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .splash-logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+    
+    .splash-text {
+      color: white;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      max-width: 80%;
+      line-height: 1.5;
+      animation: fadeInUp 1s ease;
+    }
+    
     /* افکت شیشه‌ای */
     .glass-effect {
       background: var(--glass-bg);
@@ -99,7 +155,7 @@
     }
     
     .nav.scrolled {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -200,7 +256,7 @@
       transform: scale(1.05);
     }
     
-    /* هرو با فیلم */
+    /* هیرو با فیلم */
     .hero {
       position: relative;
       color: white;
@@ -253,6 +309,60 @@
       margin-bottom: 30px;
     }
     
+    /* وکتورهای شناور */
+    .floating-vectors {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .vector-item {
+      position: absolute;
+      opacity: 0.1;
+      transition: transform 0.5s ease;
+    }
+    
+    .vector-item:hover {
+      opacity: 0.2;
+    }
+    
+    .vector-gear {
+      width: 80px;
+      height: 80px;
+      top: 15%;
+      right: 10%;
+      animation: rotate 20s linear infinite;
+    }
+    
+    .vector-cnc {
+      width: 60px;
+      height: 60px;
+      bottom: 20%;
+      left: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .vector-robot {
+      width: 70px;
+      height: 70px;
+      top: 40%;
+      left: 15%;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    .vector-design {
+      width: 90px;
+      height: 90px;
+      bottom: 30%;
+      right: 15%;
+      animation: rotate 25s linear infinite reverse;
+    }
+    
     /* دکمه‌ها */
     .btn {
       display: inline-block;
@@ -263,6 +373,7 @@
       transition: all 0.3s ease;
       cursor: pointer;
       border: none;
+      text-align: center;
     }
     
     .btn-primary {
@@ -311,11 +422,29 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       border: 1px solid #e2e8f0;
+      position: relative;
+      overflow: hidden;
     }
     
     .service-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: translateX(100%);
+      transition: transform 0.5s ease;
+    }
+    
+    .service-card:hover:before {
+      transform: translateX(0);
     }
     
     .service-card h3 {
@@ -325,6 +454,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      position: relative;
     }
     
     .service-card h3:before {
@@ -427,7 +557,7 @@
       animation-play-state: paused;
     }
     
-    /* گالری نمونه کارها - اسکرول اتوماتیک مثل مشتریان */
+    /* گالری نمونه کارها - بهبود یافته */
     .gallery-section {
       background: #f8fafc;
       position: relative;
@@ -445,7 +575,7 @@
     .gallery-wrapper {
       position: relative;
       width: 100%;
-      height: 320px;
+      height: 350px; /* افزایش ارتفاع */
       overflow: hidden;
       margin-top: 30px;
     }
@@ -462,10 +592,10 @@
     }
     
     .gallery-item {
-      height: 280px;
-      width: 350px;
+      height: 300px; /* افزایش ارتفاع */
+      width: 400px; /* افزایش عرض */
       flex: 0 0 auto;
-      margin: 0 20px;
+      margin: 0 25px; /* افزایش فاصله */
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -474,44 +604,51 @@
     }
     
     .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
     
     .gallery-img {
-      height: 180px;
+      height: 200px; /* افزایش ارتفاع تصویر */
       width: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
     }
     
     .gallery-content {
-      padding: 15px;
+      padding: 20px; /* افزایش padding */
     }
     
     .gallery-content h3 {
       color: var(--primary);
-      margin-bottom: 5px;
-      font-size: 16px;
+      margin-bottom: 8px;
+      font-size: 18px; /* افزایش سایز فونت */
     }
     
     .gallery-content .client-name {
       color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 5px;
+      font-size: 14px; /* افزایش سایز فونت */
+      margin-bottom: 8px;
     }
     
     .gallery-content .project-desc {
-      font-size: 12px;
+      font-size: 13px; /* افزایش سایز فونت */
       color: #64748b;
-      margin-bottom: 8px;
-      line-height: 1.4;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      height: 40px; /* ارتفاع ثابت برای یکسان سازی */
+      overflow: hidden;
     }
     
     .gallery-content .project-type {
       display: inline-block;
-      padding: 3px 8px;
-      border-radius: 10px;
-      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
       font-weight: 500;
     }
     
@@ -553,6 +690,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
       border: 1px solid #e2e8f0;
+      position: relative;
     }
     
     .project-card:hover {
@@ -603,7 +741,9 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
       border: 2px solid transparent;
-      min-width: 200px;
+      min-width: 220px;
+      position: relative;
+      overflow: hidden;
     }
     
     .page-link:hover {
@@ -612,21 +752,92 @@
       border-color: var(--primary);
     }
     
+    .page-link:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+    
+    .page-link:hover:before {
+      transform: translateX(0);
+    }
+    
     .page-link h3 {
       color: var(--primary);
       margin-bottom: 10px;
+      position: relative;
     }
     
     .page-link p {
       color: var(--muted);
       font-size: 14px;
+      position: relative;
     }
     
-    /* فوتر بهبود یافته */
+    /* فوتر بهبود یافته با لوگو وکتوری */
     footer {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: white;
-      padding: 50px 20px 30px;
+      padding: 50px 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer-vector {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.05;
+    }
+    
+    .footer-logo-container {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 15px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .footer-logo svg {
+      width: 70px;
+      height: 70px;
+      fill: white;
+    }
+    
+    .footer-company-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 5px;
+    }
+    
+    .footer-tagline {
+      color: #94a3b8;
+      font-size: 16px;
+      max-width: 400px;
+      margin: 0 auto;
     }
     
     .footer-content {
@@ -637,6 +848,8 @@
       gap: 40px;
       padding-bottom: 30px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 1;
     }
     
     .footer-section h3 {
@@ -704,6 +917,8 @@
       padding-top: 30px;
       color: #94a3b8;
       font-size: 14px;
+      position: relative;
+      z-index: 1;
     }
     
     /* موبایل */
@@ -770,17 +985,17 @@
       }
       
       .gallery-wrapper {
-        height: 280px;
+        height: 320px;
       }
       
       .gallery-item {
-        height: 240px;
-        width: 280px;
+        height: 280px;
+        width: 320px;
         margin: 0 15px;
       }
       
       .gallery-img {
-        height: 150px;
+        height: 180px;
       }
       
       .service-card {
@@ -790,6 +1005,14 @@
       .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
+      }
+      
+      .vector-item {
+        display: none;
+      }
+      
+      .splash-text {
+        font-size: 20px;
       }
     }
     
@@ -836,17 +1059,21 @@
       }
       
       .gallery-wrapper {
-        height: 250px;
+        height: 300px;
       }
       
       .gallery-item {
-        height: 220px;
-        width: 250px;
+        height: 260px;
+        width: 280px;
         margin: 0 10px;
       }
       
       .gallery-img {
-        height: 130px;
+        height: 160px;
+      }
+      
+      .page-link {
+        min-width: 100%;
       }
     }
     
@@ -862,6 +1089,39 @@
       }
     }
     
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+    
     .fade-in {
       animation: fadeInUp 0.8s ease-out;
     }
@@ -869,11 +1129,23 @@
 </head>
 <body>
 
+  <!-- اسپلش اسکرین -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M50,15 L75,40 L65,50 L50,35 L35,50 L25,40 Z" fill="white"/>
+        <circle cx="50" cy="65" r="15" fill="none" stroke="white" stroke-width="3"/>
+        <path d="M40,60 L45,70 L55,70 L60,60" fill="none" stroke="white" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="splash-text">شرکت دانش بنیان فنی و مهندسی توسعه پردازان<br>تحقق رویاهای صنعتی شما</div>
+  </div>
+
   <!-- ناوبری -->
   <header class="nav glass-effect" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
-        <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+        <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان - شرکت دانش بنیان فنی و مهندسی">
         <span class="company-name">توسعه پردازان</span>
       </a>
       <nav>
@@ -884,16 +1156,16 @@
           <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌های توسعه</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری با ما</a></li>
-          <li><a href="https://wa.me/989226704205" target="_blank" data-i18n="nav.contact">تماس</a></li>
+          <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
-              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+              <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران - زبان فارسی">
             </button>
             <button class="lang-btn" data-lang="en" title="English">
-              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
+              <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا - زبان انگلیسی">
             </button>
             <button class="lang-btn" data-lang="ar" title="العربية">
-              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
+              <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان - زبان عربی">
             </button>
           </li>
         </ul>
@@ -901,7 +1173,7 @@
     </div>
   </header>
 
-  <!-- هرو با فیلم -->
+  <!-- هیرو با فیلم -->
   <section id="hero" class="hero">
     <video autoplay muted loop playsinline class="video-background" poster="images/hero.jpg">
       <source src="videos/hero-video.mp4" type="video/mp4">
@@ -909,6 +1181,44 @@
       مرورگر شما از تگ ویدیو پشتیبانی نمی‌کند.
     </video>
     <div class="video-overlay"></div>
+    
+    <!-- وکتورهای شناور -->
+    <div class="floating-vectors">
+      <div class="vector-item vector-gear">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
+          <path d="M50,15 A35,35 0 0,1 85,50 A35,35 0 0,1 50,85 A35,35 0 0,1 15,50 A35,35 0 0,1 50,15 Z M50,25 A25,25 0 0,0 25,50 A25,25 0 0,0 50,75 A25,25 0 0,0 75,50 A25,25 0 0,0 50,25 Z M50,30 L60,40 L70,35 L65,50 L75,55 L60,55 L55,70 L50,60 L45,70 L40,55 L25,55 L35,50 L30,35 L40,40 Z"/>
+        </svg>
+      </div>
+      <div class="vector-item vector-cnc">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
+          <rect x="20" y="30" width="60" height="40" rx="5" stroke="white" stroke-width="2" fill="none"/>
+          <rect x="25" y="35" width="50" height="10" fill="white" opacity="0.7"/>
+          <circle cx="40" cy="65" r="8" fill="white" opacity="0.7"/>
+          <circle cx="60" cy="65" r="8" fill="white" opacity="0.7"/>
+          <line x1="35" y1="20" x2="35" y2="30" stroke="white" stroke-width="3"/>
+          <line x1="65" y1="20" x2="65" y2="30" stroke="white" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="vector-item vector-robot">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
+          <rect x="30" y="25" width="40" height="50" rx="10" fill="white" opacity="0.8"/>
+          <circle cx="40" cy="40" r="5" fill="#1e40af"/>
+          <circle cx="60" cy="40" r="5" fill="#1e40af"/>
+          <rect x="40" y="55" width="20" height="5" rx="2" fill="#1e40af"/>
+          <rect x="20" y="40" width="10" height="20" rx="5" fill="white" opacity="0.8"/>
+          <rect x="70" y="40" width="10" height="20" rx="5" fill="white" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="vector-item vector-design">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
+          <path d="M50,20 L80,35 L80,65 L50,80 L20,65 L20,35 Z" fill="none" stroke="white" stroke-width="3"/>
+          <circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-width="2"/>
+          <line x1="50" y1="20" x2="50" y2="80" stroke="white" stroke-width="1" opacity="0.5"/>
+          <line x1="20" y1="50" x2="80" y2="50" stroke="white" stroke-width="1" opacity="0.5"/>
+          <polygon points="50,35 60,45 55,55 45,55 40,45" fill="white" opacity="0.7"/>
+        </svg>
+      </div>
+    </div>
     
     <div class="hero-content fade-in">
       <h1 data-i18n="hero.title">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
@@ -1079,7 +1389,7 @@
     </div>
   </section>
 
-<!-- مشتریان با اسکرول پیوسته -->
+  <!-- مشتریان با اسکرول پیوسته -->
   <section id="clients" class="clients-section">
     <div class="container">
       <h2 data-i18n="clients.title">برخی از مشتریان ما</h2>
@@ -1087,59 +1397,59 @@
         <div class="clients-track">
           <!-- ردیف اول -->
           <div class="client-logo">
-            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
+            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
+            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
+            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان">
+            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/design-lab.png" alt="دیزاین لب">
+            <img src="clients/design-lab.png" alt="دیزاین لب - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/innovation.png" alt="مجتمع نوآوری">
+            <img src="clients/innovation.png" alt="مجتمع نوآوری - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ">
+            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/my-baby.png" alt="شرکت my baby">
+            <img src="clients/my-baby.png" alt="شرکت my baby - مشتری توسعه پردازان">
           </div>
           <!-- تکرار برای اسکرول پیوسته -->
           <div class="client-logo">
-            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
+            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
+            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
+            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان">
+            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/design-lab.png" alt="دیزاین لب">
+            <img src="clients/design-lab.png" alt="دیزاین لب - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
+            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/innovation.png" alt="مجتمع نوآوری">
+            <img src="clients/innovation.png" alt="مجتمع نوآوری - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ">
+            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ - مشتری توسعه پردازان">
           </div>
           <div class="client-logo">
-            <img src="clients/my-baby.png" alt="شرکت my baby">
+            <img src="clients/my-baby.png" alt="شرکت my baby - مشتری توسعه پردازان">
           </div>
         </div>
       </div>
@@ -1152,7 +1462,7 @@
       <h2 data-i18n="projects.title">پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <img src="images/projects/yunolit-factory.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
+          <img src="images/projects/yunolit-factory.jpg" alt="کارخانه تولید یونولیت سراوان - پروژه توسعه شرکت توسعه پردازان" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project1.title">کارخانه تولید یونولیت سراوان</h3>
             <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
@@ -1160,7 +1470,7 @@
           </div>
         </div>
         <div class="project-card fade-in">
-          <img src="images/projects/fablab-cafe.jpg" alt="کافه فب‌لب روند" class="project-img">
+          <img src="images/projects/fablab-cafe.jpg" alt="کافه فب‌لب روند - پروژه توسعه شرکت توسعه پردازان" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
             <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
@@ -1187,7 +1497,21 @@
 
   <!-- فوتر بهبود یافته -->
   <footer id="contact">
+    <div class="footer-vector"></div>
     <div class="container">
+      <div class="footer-logo-container">
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path d="M50,15 L75,40 L65,50 L50,35 L35,50 L25,40 Z" fill="white"/>
+            <circle cx="50" cy="65" r="15" fill="none" stroke="white" stroke-width="3"/>
+            <path d="M40,60 L45,70 L55,70 L60,60" fill="none" stroke="white" stroke-width="3"/>
+            <circle cx="50" cy="50" r="2" fill="white"/>
+          </svg>
+        </div>
+        <div class="footer-company-name">شرکت توسعه پردازان</div>
+        <div class="footer-tagline">تحقق رویاهای صنعتی شما از صفر تا صد</div>
+      </div>
+      
       <div class="footer-content">
         <div class="footer-section">
           <h3 data-i18n="footer.contact">تماس با ما</h3>
@@ -1199,7 +1523,7 @@
             <div class="contact-item">
               <span class="contact-icon"><i class="fas fa-phone"></i></span>
               <span>
-                <a href="https://wa.me/989226704205" style="color: white; text-decoration: none;" target="_blank">
+                <a href="https://wa.me/989226704205" style="color: white; text-decoration: none;" target="_blank" rel="noopener noreferrer">
                   09226704205 (واتساپ)
                 </a>
               </span>
@@ -1225,13 +1549,13 @@
         <div class="footer-section">
           <h3 data-i18n="footer.social">شبکه‌های اجتماعی</h3>
           <div class="social-grid">
-            <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn" target="_blank">
+            <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://instagram.com/TPE_CO" class="social-link" title="Instagram" target="_blank">
+            <a href="https://instagram.com/TPE_CO" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/989226704205" class="social-link" title="WhatsApp" target="_blank">
+            <a href="https://wa.me/989226704205" class="social-link" title="WhatsApp" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-whatsapp"></i>
             </a>
           </div>
@@ -1710,7 +2034,7 @@
       updatePortfolioContent();
     }
 
-    // ==================== گالری نمونه کارها - اسکرول اتوماتیک مثل مشتریان ====================
+    // ==================== گالری نمونه کارها - اسکرول اتوماتیک ====================
     function setupPortfolioAutoScroll() {
       const galleryTrack = document.getElementById('galleryTrack');
       
@@ -1729,7 +2053,7 @@
           const descKey = `portfolio.${item.key}.desc`;
           
           galleryItem.innerHTML = `
-            <img src="${item.img}" alt="${translations[currentLang][titleKey] || item.key}" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/350x180/1e40af/ffffff?text=${encodeURIComponent(translations[currentLang][titleKey] || item.key)}'">
+            <img src="${item.img}" alt="${translations[currentLang][titleKey] || item.key}" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200/1e40af/ffffff?text=${encodeURIComponent(translations[currentLang][titleKey] || item.key)}'">
             <div class="gallery-content">
               <h3 data-i18n-key="${titleKey}">${translations[currentLang][titleKey] || item.key}</h3>
               <div class="client-name">${item.client}</div>
@@ -1772,6 +2096,18 @@
 
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
+      // مخفی کردن اسپلش اسکرین بعد از 3 ثانیه
+      setTimeout(() => {
+        const splashScreen = document.getElementById('splashScreen');
+        if (splashScreen) {
+          splashScreen.classList.add('hidden');
+          // حذف از DOM بعد از انیمیشن
+          setTimeout(() => {
+            splashScreen.remove();
+          }, 500);
+        }
+      }, 3000);
+      
       // تنظیم رویداد برای دکمه‌های زبان
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -1823,7 +2159,7 @@
           const textColor = 'white';
           const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="70" viewBox="0 0 120 70">
             <rect width="120" height="70" fill="${placeholderColor}" rx="8"/>
-            <text x="60" y="35" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText}</text>
+            <text x="60" y="35" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText.substring(0, 20)}</text>
           </svg>`;
           this.src = 'data:image/svg+xml;base64,' + btoa(svg);
         };
