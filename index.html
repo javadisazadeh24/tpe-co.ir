@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="شرکت دانش بنیان فنی و مهندسی توسعه پردازان | پیشرو در طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب | ساخت دستگاه‌های صنعتی، ماشین‌سازی CNC، پرینت سه بعدی و مهندسی معکوس">
-  <meta name="keywords" content="توسعه پردازان, طراحی مهندسی, نمونه سازی, شبیه سازی عددی, فب لب, ساخت دیجیتال, پرینت سه بعدی, CNC, مهندسی معکوس, ماشین سازی, شرکت دانش بنیان, خدمات مهندسی, مهندسی صنعتی, اسکن سه بعدی">
+  <meta name="keywords" content="توسعه پردازان, طراحی مهندسی, نمونه سازی, شبیه سازی عددی, فب لب, ساخت دیجیتال, پرینت سه بعدی, CNC, مهندسی معکوس, ماشین سازی, شرکت دانش بنیان, خدمات مهندسی, مهندسی صنعتی, اسکن سه بعدی, فبلب خصوصی, مهندسی معکوس قطعات, پروژه مهندسی, همکاری فنی">
   <meta name="author" content="شرکت توسعه پردازان">
   <meta property="og:title" content="شرکت توسعه پردازان | طراحی مهندسی، نمونه‌سازی و خدمات فب‌لب">
   <meta property="og:description" content="پیشرو در خدمات طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و ساخت دیجیتال | تحقق ایده‌های صنعتی شما از کانسپت تا تولید">
@@ -39,6 +39,46 @@
       "telephone": "+98-922-670-4205",
       "contactType": "پشتیبانی فنی",
       "availableLanguage": ["fa", "en"]
+    },
+    "sameAs": [
+      "https://instagram.com/TPE_CO",
+      "https://www.linkedin.com/company/tpe-co"
+    ]
+  }
+  </script>
+  
+  <!-- Schema.org markup for LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+    "image": "https://tpe-co.ir/images/logo.png",
+    "@id": "https://tpe-co.ir",
+    "url": "https://tpe-co.ir",
+    "telephone": "+989226704205",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "بلوار دانشگاه، پارک علم و فناوری",
+      "addressLocality": "زاهدان",
+      "addressRegion": "سیستان و بلوچستان",
+      "addressCountry": "IR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 29.4925,
+      "longitude": 60.8629
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
     },
     "sameAs": [
       "https://instagram.com/TPE_CO",
@@ -430,6 +470,21 @@
       flex-shrink: 0;
     }
     
+    /* دکمه همکاری اصلی */
+    .main-cta-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light)) !important;
+      color: white !important;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.5px;
+    }
+    
+    .main-cta-btn:hover {
+      background: linear-gradient(135deg, var(--accent-light), var(--accent)) !important;
+      transform: translateY(-3px) scale(1.05) !important;
+      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4) !important;
+    }
+    
     /* دکمه‌ها */
     .btn {
       display: inline-block;
@@ -496,101 +551,80 @@
       animation: fadeInUp 1.4s ease;
     }
     
-    /* بخش اخبار */
-    .news-section {
+    /* بخش معرفی شرکت */
+    .about-section {
       background: var(--bg);
       position: relative;
+      padding: 100px 20px;
     }
     
-    .news-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .news-card {
+    .about-content {
       background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      transition: all 0.4s ease;
-    }
-    
-    .news-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-    }
-    
-    .news-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
       overflow: hidden;
-      border: 3px solid var(--primary);
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
-      transition: transform 0.4s ease;
-      background: white;
-      margin: 0 auto 30px;
     }
     
-    .news-card:hover .news-avatar {
-      transform: scale(1.05);
-    }
-    
-    .news-avatar img {
+    .about-content:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
     }
     
-    .news-content {
-      text-align: center;
+    .about-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      color: white;
+      font-size: 28px;
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25);
     }
     
-    .news-content h3 {
+    .about-title {
       color: var(--primary);
       margin-bottom: 20px;
       font-size: 28px;
+      line-height: 1.3;
     }
     
-    .news-date {
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 30px;
-      display: block;
-      font-weight: 500;
-    }
-    
-    .news-text {
+    .about-text {
       color: var(--text);
       line-height: 1.8;
-      margin-bottom: 20px;
-      font-size: 16px;
+      font-size: 17px;
       text-align: justify;
+      margin-bottom: 25px;
     }
     
-    .news-text p {
-      margin-bottom: 20px;
+    .about-highlight {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(14, 165, 233, 0.1));
+      border-right: 4px solid var(--engineering-accent);
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 30px;
     }
     
-    .signature {
-      text-align: left;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 2px solid var(--primary-light);
-    }
-    
-    .signature strong {
-      display: block;
-      color: var(--primary);
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-    
-    .signature span {
-      color: var(--muted);
-      font-size: 14px;
+    .about-highlight p {
+      margin-bottom: 15px;
+      color: var(--primary-dark);
+      font-weight: 600;
     }
     
     /* خدمات با استایل iOS */
@@ -948,6 +982,103 @@
       box-shadow: 0 2px 8px rgba(146, 64, 14, 0.1);
     }
     
+    /* بخش اخبار (انتقال به آخر) */
+    .news-section {
+      background: var(--bg);
+      position: relative;
+    }
+    
+    .news-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .news-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.4s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .news-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
+      transition: transform 0.4s ease;
+      background: white;
+      margin: 0 auto 30px;
+    }
+    
+    .news-card:hover .news-avatar {
+      transform: scale(1.05);
+    }
+    
+    .news-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .news-content {
+      text-align: center;
+    }
+    
+    .news-content h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    
+    .news-date {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 30px;
+      display: block;
+      font-weight: 500;
+    }
+    
+    .news-text {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-size: 16px;
+      text-align: justify;
+    }
+    
+    .news-text p {
+      margin-bottom: 20px;
+    }
+    
+    .signature {
+      text-align: left;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid var(--primary-light);
+    }
+    
+    .signature strong {
+      display: block;
+      color: var(--primary);
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .signature span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
     /* دانلود با استایل iOS */
     .download-section {
       background: var(--bg);
@@ -1228,6 +1359,24 @@
         height: 60px;
         padding: 0 35px;
       }
+      
+      .about-content {
+        padding: 40px 30px;
+      }
+      
+      .about-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+      
+      .about-title {
+        font-size: 24px;
+      }
+      
+      .about-text {
+        font-size: 16px;
+      }
     }
     
     @media (max-width: 768px) {
@@ -1339,6 +1488,25 @@
       .projects-grid {
         grid-template-columns: 1fr;
       }
+      
+      .about-section {
+        padding: 70px 20px;
+      }
+      
+      .about-content {
+        padding: 30px 20px;
+      }
+      
+      .about-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+      
+      .about-title {
+        font-size: 22px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -1398,6 +1566,18 @@
       .client-logo {
         height: 40px;
         padding: 0 20px;
+      }
+      
+      .about-content {
+        padding: 25px 15px;
+      }
+      
+      .about-title {
+        font-size: 20px;
+      }
+      
+      .about-text {
+        font-size: 15px;
       }
     }
     
@@ -1482,6 +1662,42 @@
         transition-duration: 0.01ms !important;
       }
     }
+    
+    /* Breadcrumb برای SEO */
+    .breadcrumb {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .breadcrumb ol {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+    
+    .breadcrumb li {
+      margin: 0 5px;
+    }
+    
+    .breadcrumb li:not(:last-child):after {
+      content: '›';
+      margin-right: 10px;
+      color: var(--muted);
+    }
+    
+    .breadcrumb a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -1510,12 +1726,13 @@
       <nav>
         <ul class="nav-links">
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
+          <li><a href="#about" data-i18n="nav.about">درباره ما</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
-          <li><a href="#news" data-i18n="nav.news">اخبار</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">نمونه کارهای ما</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="#clients">مشتریان</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
-          <li><a href="work-with-us.html" data-i18n="nav.work">همکاری</a></li>
+          <li><a href="work-with-us.html" class="main-cta-btn" data-i18n="nav.work" style="padding: 8px 16px; border-radius: 8px; font-size: 13px;">همکاری با ما</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
@@ -1560,46 +1777,44 @@
       </div>
       <div class="cta">
         <a href="#services" class="btn btn-primary" data-i18n="hero.viewServices">خدمات تخصصی ما</a>
+        <a href="work-with-us.html" class="btn main-cta-btn" data-i18n="hero.workWithUs">درخواست همکاری و پروژه</a>
         <a href="#contact" class="btn btn-secondary" data-i18n="hero.viewPortfolio">تماس با ما</a>
       </div>
     </div>
   </section>
 
-  <!-- بخش اخبار -->
-  <section id="news" class="news-section">
+  <!-- بخش معرفی شرکت (درباره ما) -->
+  <section id="about" class="about-section">
     <div class="container">
-      <h2 data-i18n="news.title">اخبار و رویدادها</h2>
-      <div class="news-container">
-        <div class="news-card fade-in">
-          <div class="news-avatar">
-            <img src="images/ceo.jpg" alt="مدیرعامل توسعه پردازان" loading="lazy" onerror="this.onerror=null; this.src='images/logo.png';">
-          </div>
-          <div class="news-content">
-            <h3 data-i18n="news.messageTitle">پیام مدیرعامل</h3>
-            <span class="news-date" data-i18n="news.date">پیشواز نوروز ۱۴۰۵</span>
-            <div class="news-text" data-i18n="news.content">
-              <p><strong>نوروز، فقط تغییر تقویم نیست؛<br>
-              نوروز یادآور بازطراحی مسیرهاست.</strong></p>
-              
-              <p>در آستانه سال ۱۴۰۵، زمانی که طبیعت با دقتی مهندسی‌شده خود را نوسازی می‌کند، ما نیز در شرکت، به بازنگری، بهبود و ارتقای آنچه ساخته‌ایم می‌اندیشیم. سالی که پشت سر گذاشتیم، سال آزمون ایده‌ها، تحلیل داده‌ها، اصلاح فرآیندها و تبدیل مفاهیم مهندسی به راهکارهای واقعی بود.</p>
-              
-              <p><strong>ما باور داریم مهندسی، صرفاً محاسبه و طراحی نیست؛<br>
-              مهندسی یعنی فهم مسئله، جسارت در حل آن و خلاقیت در ساخت آینده.</strong></p>
-              
-              <p>در سال پیش‌رو، تمرکز ما بر توسعه زیرساخت‌های ساخت دیجیتال، فب‌لب و نمونه‌سازی پیشرفته خواهد بود؛ جایی که ایده‌ها سریع‌تر متولد می‌شوند، خطاها زودتر دیده می‌شوند و نوآوری، به جای شعار، به محصول تبدیل می‌شود. هدف ما ایجاد پلی مؤثر میان دانش، صنعت و فناوری است؛ پلی که از آن، راه‌حل‌های بومی و قابل اتکا عبور می‌کنند.</p>
-              
-              <p>به آینده خوش‌بین هستم، نه از سر امیدواری صرف، بلکه به پشتوانه تیمی متخصص، شرکایی همراه و مشتریانی که به تفکر مهندسی اعتماد کرده‌اند.<br>
-              سال ۱۴۰۵ را با این نگاه آغاز می‌کنیم که بهتر بسازیم، هوشمندانه‌تر تصمیم بگیریم و مسئولانه‌تر اثر بگذاریم.</p>
-              
-              <p><strong>نوروزتان نو،<br>
-              مسیرتان مهندسی‌شده،<br>
-              و آینده‌تان قابل ساخت.</strong></p>
-            </div>
-            <div class="signature">
-              <strong>دکتر جواد عیسی زاده لنگرودی</strong>
-              <span>مدیرعامل</span>
-            </div>
-          </div>
+      <div class="about-content fade-in">
+        <div class="about-icon">
+          <i class="fas fa-microscope"></i>
+        </div>
+        <h2 class="about-title">فب‌لب خصوصی توسعه پردازان: پلی میان ایده و محصول</h2>
+        
+        <div class="about-text">
+          <p><strong>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</strong> نه تنها یک ارائه‌دهنده خدمات مهندسی، بلکه یک <strong>فب‌لب خصوصی پیشرفته</strong> است که با تکیه بر دانش عمیق تخصصی و زیرساخت‌های مدرن، مسیر تبدیل ایده به محصول را برای صنعتگران، مخترعین و کسب‌وکارها کوتاه و قابل اطمینان می‌سازد.</p>
+          
+          <p>ما بر این باوریم که <strong>تفکر مهندسی واقعی</strong> فراتر از طراحی و محاسبه است؛ این تفکر شامل <strong>درک عمیق مسائل صنعتی</strong>، <strong>خلاقیت در راه‌حل‌یابی</strong> و <strong>تعهد به ساخت آینده‌ای ملموس</strong> است. در فضای رقابتی امروز، دسترسی سریع به امکانات نمونه‌سازی و ساخت دیجیتال، تفاوت میان موفقیت و شکست یک ایده را تعیین می‌کند.</p>
+        </div>
+        
+        <div class="about-highlight">
+          <p>🚀 <strong>چرا توسعه پردازان را انتخاب کنید؟</strong></p>
+          <p>✓ <strong>فب‌لب خصوصی و اختصاصی:</strong> دسترسی کامل به تجهیزات پیشرفته بدون محدودیت زمانی</p>
+          <p>✓ <strong>تیم متخصص چندرشته‌ای:</strong> ترکیبی از مهندسان مکانیک، برق، نرم‌افزار و مواد</p>
+          <p>✓ <strong>مسیر کامل از ایده تا محصول:</strong> از طراحی مفهومی تا نمونه‌سازی، تست و تولید نهایی</p>
+          <p>✓ <strong>شبکه وسیع صنعتی:</strong> ارتباط مستقیم با تأمین‌کنندگان و کارخانه‌های معتبر</p>
+          <p>✓ <strong>حفظ محرمانگی:</strong> امنیت کامل اطلاعات و مالکیت فکری پروژه‌ها</p>
+        </div>
+        
+        <div class="about-text">
+          <p><strong>رسالت ما</strong> ایجاد اکوسیستمی پویا است که در آن <strong>ایده‌های نوآورانه</strong> در کوتاه‌ترین زمان و با بالاترین کیفیت به <strong>محصولات قابل عرضه به بازار</strong> تبدیل می‌شوند. ما خود را همراهی مطمئن برای کسانی می‌دانیم که به‌دنبال ساخت آینده‌ای مبتنی بر فناوری و مهندسی هستند.</p>
+          
+          <p>در توسعه پردازان، هر پروژه تنها یک سفارش نیست؛ بلکه <strong>شریکی در مسیر نوآوری</strong> است. ما به‌جای تکیه بر فرمول‌های کلیشه‌ای، برای هر چالش، راه‌حلی منحصربه‌فرد طراحی می‌کنیم که هم از نظر فنی بهینه و هم از نظر اقتصادی مقرون‌به‌صرفه باشد.</p>
+        </div>
+        
+        <div class="cta" style="margin-top: 30px;">
+          <a href="work-with-us.html" class="btn main-cta-btn">شروع پروژه با توسعه پردازان</a>
         </div>
       </div>
     </div>
@@ -1608,7 +1823,7 @@
   <!-- خدمات با استایل iOS -->
   <section id="services" class="services-section">
     <div class="container">
-      <h2 data-i18n="services.title">خدمات تخصصی ما</h2>
+      <h2 data-i18n="services.title">خدمات تخصصی فب‌لب خصوصی ما</h2>
       <div class="services-grid">
         <!-- طراحی مهندسی و شبیه‌سازی -->
         <div class="service-card fade-in">
@@ -1740,6 +1955,9 @@
       <div class="gallery-wrapper">
         <div class="gallery-track" id="galleryTrack"></div>
       </div>
+      <div class="cta" style="margin-top: 40px;">
+        <a href="products.html" class="btn btn-primary">مشاهده تمام نمونه خدمات و محصولات</a>
+      </div>
     </div>
   </section>
 
@@ -1826,6 +2044,9 @@
           </div>
         </div>
       </div>
+      <div class="cta" style="margin-top: 40px;">
+        <a href="work-with-us.html" class="btn main-cta-btn">درخواست مشارکت در پروژه‌های نوآورانه</a>
+      </div>
     </div>
   </section>
 
@@ -1838,6 +2059,47 @@
         <div class="cta">
           <a href="files/catalog.pdf" class="btn btn-primary" data-i18n="downloads.catalog">کاتالوگ خدمات مهندسی</a>
           <a href="files/resume.pdf" class="btn btn-primary btn-resume" data-i18n="downloads.resume">رزومه فنی شرکت</a>
+          <a href="resume.html" class="btn btn-primary">رزومه پرسنل متخصص</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- بخش اخبار (انتقال به آخر) -->
+  <section id="news" class="news-section">
+    <div class="container">
+      <h2 data-i18n="news.title">اخبار و رویدادها</h2>
+      <div class="news-container">
+        <div class="news-card fade-in">
+          <div class="news-avatar">
+            <img src="images/ceo.jpg" alt="مدیرعامل توسعه پردازان" loading="lazy" onerror="this.onerror=null; this.src='images/logo.png';">
+          </div>
+          <div class="news-content">
+            <h3 data-i18n="news.messageTitle">پیام مدیرعامل</h3>
+            <span class="news-date" data-i18n="news.date">پیشواز نوروز ۱۴۰۵</span>
+            <div class="news-text" data-i18n="news.content">
+              <p><strong>نوروز، فقط تغییر تقویم نیست؛<br>
+              نوروز یادآور بازطراحی مسیرهاست.</strong></p>
+              
+              <p>در آستانه سال ۱۴۰۵، زمانی که طبیعت با دقتی مهندسی‌شده خود را نوسازی می‌کند، ما نیز در شرکت، به بازنگری، بهبود و ارتقای آنچه ساخته‌ایم می‌اندیشیم. سالی که پشت سر گذاشتیم، سال آزمون ایده‌ها، تحلیل داده‌ها، اصلاح فرآیندها و تبدیل مفاهیم مهندسی به راهکارهای واقعی بود.</p>
+              
+              <p><strong>ما باور داریم مهندسی، صرفاً محاسبه و طراحی نیست؛<br>
+              مهندسی یعنی فهم مسئله، جسارت در حل آن و خلاقیت در ساخت آینده.</strong></p>
+              
+              <p>در سال پیش‌رو، تمرکز ما بر توسعه زیرساخت‌های ساخت دیجیتال، فب‌لب و نمونه‌سازی پیشرفته خواهد بود؛ جایی که ایده‌ها سریع‌تر متولد می‌شوند، خطاها زودتر دیده می‌شوند و نوآوری، به جای شعار، به محصول تبدیل می‌شود. هدف ما ایجاد پلی مؤثر میان دانش، صنعت و فناوری است؛ پلی که از آن، راه‌حل‌های بومی و قابل اتکا عبور می‌کنند.</p>
+              
+              <p>به آینده خوش‌بین هستم، نه از سر امیدواری صرف، بلکه به پشتوانه تیمی متخصص، شرکایی همراه و مشتریانی که به تفکر مهندسی اعتماد کرده‌اند.<br>
+              سال ۱۴۰۵ را با این نگاه آغاز می‌کنیم که بهتر بسازیم، هوشمندانه‌تر تصمیم بگیریم و مسئولانه‌تر اثر بگذاریم.</p>
+              
+              <p><strong>نوروزتان نو،<br>
+              مسیرتان مهندسی‌شده،<br>
+              و آینده‌تان قابل ساخت.</strong></p>
+            </div>
+            <div class="signature">
+              <strong>دکتر جواد عیسی زاده لنگرودی</strong>
+              <span>مدیرعامل</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1878,6 +2140,8 @@
             <a href="#services">توسعه محصول و خط تولید</a>
             <a href="#services">آموزش تخصصی مهندسی</a>
             <a href="#services">مشاوره فنی و مهندسی</a>
+            <a href="products.html">نمونه خدمات و محصولات</a>
+            <a href="resume.html">رزومه پرسنل</a>
           </div>
         </div>
         
@@ -1901,6 +2165,10 @@
           <div class="hours-info">
             <div>شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰</div>
             <div>پنجشنبه: ۸:۰۰ - ۱۴:۰۰</div>
+          </div>
+          
+          <div class="cta" style="margin-top: 30px;">
+            <a href="work-with-us.html" class="btn main-cta-btn" style="padding: 12px 24px; font-size: 14px;">درخواست پروژه و همکاری</a>
           </div>
         </div>
       </div>
@@ -1975,11 +2243,14 @@
       fa: {
         // ناوبری
         "nav.home": "خانه",
+        "nav.about": "درباره ما",
         "nav.services": "خدمات ما",
+        "nav.products": "نمونه خدمات و محصولات",
+        "nav.resume": "رزومه پرسنل",
         "nav.portfolio": "نمونه کارهای ما",
         "nav.news": "اخبار",
         "nav.projects": "پروژه‌ها",
-        "nav.work": "همکاری",
+        "nav.work": "همکاری با ما",
         "nav.contact": "تماس",
         
         // هیرو
@@ -1988,6 +2259,7 @@
         "hero.line2": "تحقق ایده‌های صنعتی از کانسپت تا تولید نهایی",
         "hero.line3": "همراهی تخصصی در مسیر تبدیل ایده به محصول",
         "hero.viewServices": "خدمات تخصصی ما",
+        "hero.workWithUs": "درخواست همکاری و پروژه",
         "hero.viewPortfolio": "تماس با ما",
         
         // اخبار
@@ -2014,7 +2286,7 @@
         `,
         
         // خدمات
-        "services.title": "خدمات تخصصی ما",
+        "services.title": "خدمات تخصصی فب‌لب خصوصی ما",
         "services.design.title": "طراحی مهندسی و شبیه‌سازی عددی",
         "services.design.sub1": "مدل‌سازی سه‌بعدی پیشرفته",
         "services.design.item1": "طراحی مفهومی و جزئیات اجرایی با نرم‌افزارهای CAD/CAM تخصصی",
@@ -2107,7 +2379,10 @@
       },
       en: {
         "nav.home": "Home",
+        "nav.about": "About Us",
         "nav.services": "Services",
+        "nav.products": "Products & Services",
+        "nav.resume": "Team Resume",
         "nav.portfolio": "Portfolio",
         "nav.news": "News",
         "nav.projects": "Projects",
@@ -2119,6 +2394,7 @@
         "hero.line2": "Realization of industrial ideas from concept to final production",
         "hero.line3": "Specialized support in the path of turning ideas into products",
         "hero.viewServices": "Our Specialized Services",
+        "hero.workWithUs": "Request Cooperation & Project",
         "hero.viewPortfolio": "Contact Us",
         
         "news.title": "News & Events",
@@ -2143,7 +2419,7 @@
           Your future buildable.</strong></p>
         `,
         
-        "services.title": "Our Specialized Services",
+        "services.title": "Our Specialized Private Fablab Services",
         "services.design.title": "Engineering Design & Numerical Simulation",
         "services.design.sub1": "Advanced 3D Modeling",
         "services.design.item1": "Conceptual design and executive details with specialized CAD/CAM software",
@@ -2231,7 +2507,10 @@
       },
       ar: {
         "nav.home": "الرئيسية",
+        "nav.about": "معلومات عنا",
         "nav.services": "خدماتنا",
+        "nav.products": "المنتجات والخدمات",
+        "nav.resume": "سيرة الفريق",
         "nav.portfolio": "أعمالنا",
         "nav.news": "أخبار",
         "nav.projects": "مشاريع",
@@ -2243,6 +2522,7 @@
         "hero.line2": "تحقيق الأفكار الصناعية من المفهوم إلى الإنتاج النهائي",
         "hero.line3": "الدعم المتخصص في طريق تحويل الأفكار إلى منتجات",
         "hero.viewServices": "خدماتنا المتخصصة",
+        "hero.workWithUs": "طلب التعاون والمشروع",
         "hero.viewPortfolio": "اتصل بنا",
         
         "news.title": "الأخبار والفعاليات",
@@ -2267,7 +2547,7 @@
           مستقبلك قابل للبناء.</strong></p>
         `,
         
-        "services.title": "خدماتنا المتخصصة",
+        "services.title": "خدمات مختبرنا الرقمي الخاص المتخصصة",
         "services.design.title": "التصميم الهندسي والمحاكاة العددية",
         "services.design.sub1": "النمذجة ثلاثية الأبعاد المتقدمة",
         "services.design.item1": "التصميم المفاهيمي والتفاصيل التنفيذية مع برامج CAD/CAM المتخصصة",
@@ -2490,7 +2770,7 @@
         });
       }, observerOptions);
       
-      document.querySelectorAll('.service-card, .project-card, .news-card').forEach(card => {
+      document.querySelectorAll('.service-card, .project-card, .news-card, .about-content').forEach(card => {
         observer.observe(card);
       });
       
