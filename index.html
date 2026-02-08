@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="شرکت دانش بنیان فنی و مهندسی توسعه پردازان | پیشرو در طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب | ساخت دستگاه‌های صنعتی، ماشین‌سازی CNC، پرینت سه بعدی و مهندسی معکوس">
-  <meta name="keywords" content="توسعه پردازان, طراحی مهندسی, نمونه سازی, شبیه سازی عددی, فب لب, ساخت دیجیتال, پرینت سه بعدی, CNC, مهندسی معکوس, ماشین سازی, شرکت دانش بنیان, خدمات مهندسی">
+  <meta name="keywords" content="توسعه پردازان, طراحی مهندسی, نمونه سازی, شبیه سازی عددی, فب لب, ساخت دیجیتال, پرینت سه بعدی, CNC, مهندسی معکوس, ماشین سازی, شرکت دانش بنیان, خدمات مهندسی, مهندسی صنعتی, اسکن سه بعدی">
   <meta name="author" content="شرکت توسعه پردازان">
   <meta property="og:title" content="شرکت توسعه پردازان | طراحی مهندسی، نمونه‌سازی و خدمات فب‌لب">
   <meta property="og:description" content="پیشرو در خدمات طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و ساخت دیجیتال | تحقق ایده‌های صنعتی شما از کانسپت تا تولید">
@@ -14,7 +14,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="google-site-verification" content="your-verification-code">
   <link rel="canonical" href="https://tpe-co.ir">
-  <title>شرکت توسعه پردازان | طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب</title>
+  <title>شرکت دانش بنیان فنی و مهندسی توسعه پردازان | طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب</title>
   <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="images/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,11 +67,11 @@
       --surface: rgba(255, 255, 255, 0.95);
       --accent: #dc2626;
       --accent-light: #f87171;
-      --glass-bg: rgba(255, 255, 255, 0.25);
-      --glass-border: rgba(255, 255, 255, 0.3);
-      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
       --glass-dark: rgba(15, 23, 42, 0.7);
-      --maxw: 1200px;
+      --maxw: 1100px;
       --engineering-blue: #1e3a8a;
       --engineering-gray: #334155;
       --engineering-light: #e2e8f0;
@@ -130,20 +130,21 @@
       border-radius: 2px;
     }
     
-    /* اسپلش اسکرین */
+    /* اسپلش اسکرین بهبود یافته */
     .splash-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
       transition: opacity 0.5s ease, visibility 0.5s ease;
+      overflow: hidden;
     }
     
     .splash-screen.hidden {
@@ -151,32 +152,51 @@
       visibility: hidden;
     }
     
+    .splash-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.3) 0%, transparent 50%);
+      animation: float 20s infinite ease-in-out;
+    }
+    
     .splash-logo {
-      width: 180px;
-      height: 180px;
+      width: 220px;
+      height: 220px;
       margin-bottom: 30px;
-      border-radius: 25px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       animation: pulse 2s infinite;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 60px rgba(30, 64, 175, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      padding: 30px;
+      border: 1px solid var(--glass-border);
+      position: relative;
+      z-index: 2;
     }
     
     .splash-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
     
     .splash-text {
       color: white;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       text-align: center;
       max-width: 80%;
@@ -184,42 +204,47 @@
       animation: fadeInUp 1s ease;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
     
     .splash-subtext {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 20px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 18px;
       text-align: center;
       max-width: 70%;
       animation: fadeInUp 1.2s ease;
-      font-weight: 500;
+      font-weight: 400;
+      position: relative;
+      z-index: 2;
     }
     
-    /* ناوبری شیشه‌ای */
+    /* ناوبری مینیمال */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
+      padding: 0 15px;
     }
     
     .nav.scrolled {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
     }
     
     .nav-wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 15px 20px;
+      padding: 12px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -228,44 +253,36 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
     
     .brand img {
-      height: 65px; /* بزرگتر شده */
+      height: 45px;
       transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
     }
     
     .brand img:hover {
       transform: rotate(5deg) scale(1.1);
     }
     
-    .company-name {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--primary);
-      white-space: nowrap;
-      text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-    }
-    
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       list-style: none;
       align-items: center;
     }
     
     .nav-links a {
       color: var(--text);
-      font-weight: 600;
-      font-size: 15px;
-      padding: 8px 16px;
-      border-radius: 12px;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 8px;
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
-      background: transparent !important; /* کادر شیشه‌ای حذف شد */
+      background: transparent;
     }
     
     .nav-links a:before {
@@ -279,28 +296,25 @@
       opacity: 0;
       transition: opacity 0.3s ease;
       z-index: -1;
-      border-radius: 12px;
+      border-radius: 8px;
     }
     
     .nav-links a:hover {
       color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+      transform: translateY(-2px);
     }
     
     .nav-links a:hover:before {
       opacity: 1;
     }
     
-    /* انتخابگر زبان */
+    /* انتخابگر زبان ساده */
     .language-selector {
       display: flex;
-      gap: 5px;
-      margin-right: 10px;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 4px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      gap: 4px;
+      margin-right: 8px;
+      background: transparent;
+      padding: 2px;
     }
     
     .lang-btn {
@@ -308,8 +322,8 @@
       border: none;
       background: transparent;
       cursor: pointer;
-      width: 28px;
-      height: 18px;
+      width: 24px;
+      height: 16px;
       border-radius: 2px;
       overflow: hidden;
       transition: all 0.3s;
@@ -317,6 +331,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0.7;
     }
     
     .lang-btn img {
@@ -327,13 +342,14 @@
     }
     
     .lang-btn.active {
-      box-shadow: 0 0 0 2px var(--primary);
-      transform: scale(1.05);
+      opacity: 1;
+      transform: scale(1.1);
+      box-shadow: 0 0 0 1px var(--primary);
     }
     
     .lang-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 0 1px var(--accent);
+      opacity: 1;
+      transform: scale(1.1);
     }
     
     /* هیرو با فیلم */
@@ -341,7 +357,7 @@
       position: relative;
       color: white;
       text-align: center;
-      padding: 160px 20px 100px;
+      padding: 140px 20px 80px;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -367,27 +383,27 @@
       height: 100%;
       background: linear-gradient(135deg, 
         rgba(15, 23, 42, 0.9) 0%, 
-        rgba(30, 41, 59, 0.8) 50%, 
-        rgba(30, 58, 138, 0.6) 100%);
+        rgba(30, 41, 59, 0.85) 50%, 
+        rgba(30, 58, 138, 0.7) 100%);
       z-index: -1;
     }
     
     .hero-content {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
     
     .hero h1 {
-      font-size: 42px;
+      font-size: 36px;
       margin-bottom: 30px;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       animation: fadeInUp 0.8s ease;
     }
     
     .hero-description {
-      text-align: right;
+      text-align: center;
       margin-bottom: 40px;
       max-width: 700px;
       margin-right: auto;
@@ -395,15 +411,16 @@
     }
     
     .hero-tagline {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
       margin-bottom: 15px;
       font-size: 18px;
       color: #e2e8f0;
-      animation: fadeInRight 0.8s ease forwards;
+      animation: fadeInUp 0.8s ease forwards;
       opacity: 0;
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     
     .hero-tagline:nth-child(1) { animation-delay: 0.3s; }
@@ -412,17 +429,17 @@
     
     .hero-tagline i {
       color: #60a5fa;
-      font-size: 20px;
+      font-size: 18px;
       flex-shrink: 0;
     }
     
     /* دکمه‌ها */
     .btn {
       display: inline-block;
-      padding: 16px 36px;
+      padding: 14px 32px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 17px;
+      font-size: 16px;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       cursor: pointer;
       border: none;
@@ -451,34 +468,34 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
     }
     
     .btn-primary:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.6);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
     }
     
     .btn-secondary {
       background: transparent;
       color: white;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
     
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: white;
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
     }
     
     .cta {
       display: flex;
-      gap: 25px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 50px;
+      margin-top: 40px;
       animation: fadeInUp 1.4s ease;
     }
     
@@ -494,21 +511,21 @@
     }
     
     .news-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
       border-radius: 20px;
-      padding: 35px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       display: flex;
-      gap: 30px;
+      gap: 25px;
       align-items: flex-start;
       transition: all 0.4s ease;
     }
     
     .news-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     }
     
     @media (max-width: 768px) {
@@ -526,22 +543,20 @@
       height: 120px;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid var(--primary);
-      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.25);
+      border: 3px solid var(--primary);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
       transition: transform 0.4s ease;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: white;
     }
     
     .news-card:hover .news-avatar {
-      transform: rotate(10deg) scale(1.05);
+      transform: scale(1.05);
     }
     
-    .news-avatar i {
-      color: white;
-      font-size: 50px;
+    .news-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .news-content {
@@ -551,12 +566,12 @@
     .news-content h3 {
       color: var(--primary);
       margin-bottom: 10px;
-      font-size: 22px;
+      font-size: 20px;
     }
     
     .news-date {
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
       margin-bottom: 20px;
       display: block;
       font-weight: 500;
@@ -565,8 +580,8 @@
     .news-text {
       color: var(--text);
       line-height: 1.8;
-      margin-bottom: 25px;
-      font-size: 16px;
+      margin-bottom: 20px;
+      font-size: 15px;
     }
     
     .news-more {
@@ -575,10 +590,10 @@
       gap: 8px;
       color: var(--primary);
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14px;
       transition: all 0.3s ease;
       padding: 8px 16px;
-      border-radius: 10px;
+      border-radius: 8px;
       background: rgba(30, 64, 175, 0.1);
     }
     
@@ -608,26 +623,26 @@
     
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 25px;
       margin-top: 40px;
     }
     
     .service-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 35px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
     }
     
     .service-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
     
     .service-card:before {
@@ -636,10 +651,10 @@
       top: 0;
       right: 0;
       width: 100%;
-      height: 5px;
+      height: 4px;
       background: linear-gradient(90deg, var(--accent), var(--primary));
       transform: translateX(-100%);
-      transition: transform 0.6s ease;
+      transition: transform 0.5s ease;
     }
     
     .service-card:hover:before {
@@ -647,64 +662,72 @@
     }
     
     .service-icon {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 20px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       color: white;
-      font-size: 32px;
-      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+      font-size: 26px;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
       transition: all 0.4s ease;
     }
     
     .service-card:hover .service-icon {
-      transform: rotate(15deg) scale(1.1);
+      transform: rotate(10deg) scale(1.1);
       background: linear-gradient(135deg, var(--accent), var(--accent-light));
     }
     
     .service-card h3 {
       color: var(--primary);
-      margin-bottom: 20px;
-      font-size: 22px;
+      margin-bottom: 15px;
+      font-size: 20px;
       line-height: 1.3;
     }
     
     .service-subsection {
-      margin-top: 20px;
-      padding-right: 15px;
-      border-right: 3px solid rgba(30, 64, 175, 0.2);
+      margin-top: 15px;
+      padding-right: 0;
+      border-right: none;
     }
     
     .service-subsection h4 {
       color: var(--muted);
-      font-size: 17px;
-      margin-bottom: 12px;
+      font-size: 16px;
+      margin-bottom: 10px;
       font-weight: 600;
-    }
-    
-    .service-subsection ul {
-      padding-right: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .service-subsection li {
-      margin-bottom: 8px;
-      font-size: 15px;
-      color: #4a5568;
       position: relative;
-      padding-right: 20px;
+      padding-right: 15px;
     }
     
-    .service-subsection li:before {
+    .service-subsection h4:before {
       content: '▸';
       position: absolute;
       right: 0;
       color: var(--primary);
       font-weight: bold;
+    }
+    
+    .service-subsection ul {
+      padding-right: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .service-subsection li {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #4a5568;
+      position: relative;
+      padding-right: 0;
+      line-height: 1.6;
+    }
+    
+    /* حذف مثلث از لیست‌ها */
+    .service-subsection li:before {
+      display: none;
     }
     
     /* گالری نمونه کارها */
@@ -746,28 +769,28 @@
       width: 380px;
       flex: 0 0 auto;
       margin: 0 25px;
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       background: white;
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
     }
     
     .gallery-item:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     }
     
     .gallery-img {
       height: 190px;
       width: 100%;
       object-fit: cover;
-      transition: transform 0.8s ease;
+      transition: transform 0.6s ease;
     }
     
     .gallery-item:hover .gallery-img {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
     
     .gallery-content {
@@ -777,12 +800,12 @@
     .gallery-content h3 {
       color: var(--primary);
       margin-bottom: 8px;
-      font-size: 18px;
+      font-size: 17px;
     }
     
     .gallery-content .client-name {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       margin-bottom: 10px;
       font-weight: 500;
     }
@@ -893,64 +916,64 @@
     /* پروژه‌های توسعه */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 25px;
       margin-top: 50px;
     }
     
     .project-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      transition: all 0.5s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.4s ease;
       position: relative;
     }
     
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
     
     .project-img {
       height: 220px;
       width: 100%;
       object-fit: cover;
-      transition: transform 0.8s ease;
+      transition: transform 0.6s ease;
     }
     
     .project-card:hover .project-img {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
     
     .project-content {
-      padding: 30px;
+      padding: 25px;
     }
     
     .project-content h3 {
       color: var(--primary);
       margin-bottom: 15px;
-      font-size: 22px;
+      font-size: 20px;
     }
     
     .coming-soon {
       display: inline-block;
       background: linear-gradient(135deg, #fef3c7, #fde68a);
       color: #92400e;
-      padding: 6px 18px;
+      padding: 5px 15px;
       border-radius: 20px;
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 10px;
       font-weight: 600;
-      box-shadow: 0 3px 10px rgba(146, 64, 14, 0.1);
+      box-shadow: 0 2px 8px rgba(146, 64, 14, 0.1);
     }
     
-    /* دانلود با طراحی مهندسی */
+    /* دانلود با طراحی مهندسی بهبود یافته */
     .download-section {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: var(--text);
       position: relative;
       overflow: hidden;
       padding: 100px 20px;
@@ -963,8 +986,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M150 0C67.2 0 0 67.2 0 150s67.2 150 150 150 150-67.2 150-150S232.8 0 150 0zm0 30c66.3 0 120 53.7 120 120s-53.7 120-120 120S30 216.3 30 150 83.7 30 150 30zm-15 60l-60 60h45v90h30v-90h45l-60-60z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M180 120h30v30h-30zM90 120h30v30H90zM150 180h30v30h-30zM120 210h30v30h-30zM180 210h30v30h-30z' fill='%231e40af' fill-opacity='0.1'/%3E%3C/svg%3E");
-      opacity: 0.2;
+      background-image: 
+        url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M150 0C67.2 0 0 67.2 0 150s67.2 150 150 150 150-67.2 150-150S232.8 0 150 0zm0 30c66.3 0 120 53.7 120 120s-53.7 120-120 120S30 216.3 30 150 83.7 30 150 30zm-15 60l-60 60h45v90h30v-90h45l-60-60z' fill='%231e40af' fill-opacity='0.05'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(30, 64, 175, 0.03) 0%, transparent 50%);
+      opacity: 0.4;
       z-index: 0;
     }
     
@@ -974,10 +999,16 @@
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 50px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
     }
     
     .download-content h2 {
-      color: white;
+      color: var(--primary);
     }
     
     .download-content h2:after {
@@ -985,21 +1016,25 @@
     }
     
     .download-content p {
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.8;
-      color: #cbd5e1;
-      margin-bottom: 50px;
-      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-weight: 400;
     }
     
-    /* فوتر با طراحی مهندسی */
+    /* فوتر شیشه‌ای شیک */
     footer {
-      background: linear-gradient(135deg, #0f172a 0%, #1a1f2e 100%);
-      color: white;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.02) 100%);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      color: var(--text);
       padding: 80px 20px 30px;
       position: relative;
       overflow: hidden;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .footer-pattern {
@@ -1007,12 +1042,13 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 150px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(14, 165, 233, 0.1) 50%, 
-        transparent 100%);
+      height: 200px;
+      background: 
+        linear-gradient(90deg, transparent 0%, rgba(30, 64, 175, 0.08) 50%, transparent 100%),
+        radial-gradient(circle at 30% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
       z-index: 0;
+      opacity: 0.4;
     }
     
     .engineering-grid {
@@ -1024,9 +1060,29 @@
       background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
+      background-size: 60px 60px;
       z-index: 0;
-      opacity: 0.3;
+      opacity: 0.2;
+    }
+    
+    .iran-flag {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .iran-flag img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .footer-content {
@@ -1034,19 +1090,19 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 50px;
-      padding-bottom: 50px;
+      gap: 40px;
+      padding-bottom: 40px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       z-index: 1;
     }
     
     .footer-section h3 {
-      color: white;
+      color: var(--primary);
       margin-bottom: 25px;
-      font-size: 20px;
+      font-size: 18px;
       position: relative;
-      padding-bottom: 15px;
+      padding-bottom: 12px;
       font-weight: 600;
     }
     
@@ -1055,8 +1111,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 60px;
-      height: 3px;
+      width: 50px;
+      height: 2px;
       background: linear-gradient(90deg, var(--engineering-accent), #3b82f6);
     }
     
@@ -1067,8 +1123,8 @@
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 18px;
       transition: transform 0.3s ease;
     }
     
@@ -1078,19 +1134,19 @@
     
     .contact-icon {
       color: var(--engineering-accent);
-      font-size: 18px;
+      font-size: 16px;
       margin-top: 3px;
-      min-width: 24px;
+      min-width: 20px;
       text-align: center;
     }
     
     .contact-text {
-      color: #cbd5e1;
-      font-size: 15px;
+      color: var(--muted);
+      font-size: 14px;
     }
     
     .contact-text a {
-      color: #cbd5e1;
+      color: var(--muted);
       transition: color 0.3s ease;
     }
     
@@ -1101,69 +1157,63 @@
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
     }
     
     .footer-links a {
-      color: #cbd5e1;
-      font-size: 15px;
+      color: var(--muted);
+      font-size: 14px;
       transition: all 0.3s ease;
-      padding: 8px 0;
+      padding: 6px 0;
       position: relative;
-      padding-right: 15px;
-    }
-    
-    .footer-links a:before {
-      content: '›';
-      position: absolute;
-      right: 0;
-      opacity: 0;
-      transition: all 0.3s ease;
+      padding-right: 0;
     }
     
     .footer-links a:hover {
-      color: white;
-      padding-right: 20px;
+      color: var(--primary);
+      padding-right: 8px;
     }
     
     .footer-links a:hover:before {
-      opacity: 1;
+      content: '←';
+      position: absolute;
       right: 0;
+      opacity: 1;
     }
     
     .social-grid {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       margin-top: 20px;
     }
     
     .social-link {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      color: #94a3b8;
-      font-size: 18px;
+      color: var(--muted);
+      font-size: 16px;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .social-link:hover {
       background: linear-gradient(135deg, var(--engineering-accent), #3b82f6);
       color: white;
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
       border-color: transparent;
     }
     
     .copyright {
       text-align: center;
       padding-top: 30px;
-      color: #94a3b8;
-      font-size: 14px;
+      color: var(--muted);
+      font-size: 13px;
       position: relative;
       z-index: 1;
       margin-top: 30px;
@@ -1174,21 +1224,29 @@
       align-items: center;
       gap: 8px;
       margin-top: 15px;
-      padding: 8px 16px;
+      padding: 6px 12px;
       background: rgba(14, 165, 233, 0.1);
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12px;
       border: 1px solid rgba(14, 165, 233, 0.2);
+      color: var(--muted);
     }
     
     .engineering-badge i {
       color: var(--engineering-accent);
     }
     
+    .hours-info {
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    
     /* موبایل */
     @media (max-width: 992px) {
       .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
       }
       
       .hero-tagline {
@@ -1213,15 +1271,24 @@
       }
       
       .splash-text {
-        font-size: 28px;
+        font-size: 24px;
       }
       
       .splash-subtext {
-        font-size: 18px;
+        font-size: 16px;
+      }
+      
+      .splash-logo {
+        width: 180px;
+        height: 180px;
       }
       
       .footer-content {
-        gap: 40px;
+        gap: 30px;
+      }
+      
+      .download-content {
+        padding: 40px 30px;
       }
     }
     
@@ -1230,16 +1297,12 @@
         display: none;
       }
       
-      .company-name {
-        font-size: 18px;
-      }
-      
       .brand img {
-        height: 55px;
+        height: 40px;
       }
       
       .hero {
-        padding: 140px 20px 80px;
+        padding: 120px 20px 60px;
       }
       
       .hero h1 {
@@ -1248,22 +1311,23 @@
       
       .hero-tagline {
         font-size: 15px;
-        gap: 10px;
+        gap: 8px;
       }
       
       .hero-tagline i {
-        font-size: 18px;
+        font-size: 16px;
       }
       
       .cta {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
       }
       
       .btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
+        padding: 12px 24px;
       }
       
       h2 {
@@ -1312,11 +1376,7 @@
       }
       
       .splash-text {
-        font-size: 24px;
-      }
-      
-      .splash-subtext {
-        font-size: 16px;
+        font-size: 22px;
       }
       
       .download-section {
@@ -1325,11 +1385,17 @@
       
       .footer-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 35px;
       }
       
       .footer-section h3 {
-        font-size: 18px;
+        font-size: 17px;
+      }
+      
+      .iran-flag {
+        width: 80px;
+        height: 48px;
+        top: -40px;
       }
     }
     
@@ -1342,12 +1408,8 @@
         font-size: 14px;
       }
       
-      .company-name {
-        font-size: 16px;
-      }
-      
       .brand img {
-        height: 50px;
+        height: 36px;
       }
       
       .service-card {
@@ -1379,11 +1441,17 @@
       }
       
       .splash-text {
-        font-size: 22px;
+        font-size: 20px;
       }
       
-      .footer-pattern {
-        height: 100px;
+      .download-content {
+        padding: 30px 20px;
+      }
+      
+      .iran-flag {
+        width: 70px;
+        height: 42px;
+        top: -35px;
       }
     }
     
@@ -1413,15 +1481,30 @@
     @keyframes pulse {
       0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        box-shadow: 
+          0 0 0 0 rgba(255, 255, 255, 0.1),
+          0 0 60px rgba(30, 64, 175, 0.4);
       }
       70% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+        box-shadow: 
+          0 0 0 10px rgba(255, 255, 255, 0),
+          0 0 80px rgba(30, 64, 175, 0.6);
       }
       100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        box-shadow: 
+          0 0 0 0 rgba(255, 255, 255, 0),
+          0 0 60px rgba(30, 64, 175, 0.4);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
       }
     }
     
@@ -1432,23 +1515,24 @@
     /* اسکرول به بالا */
     .scroll-top {
       position: fixed;
-      bottom: 30px;
-      left: 30px;
-      width: 50px;
-      height: 50px;
+      bottom: 25px;
+      left: 25px;
+      width: 45px;
+      height: 45px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
       z-index: 999;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 20px rgba(30, 64, 175, 0.4);
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .scroll-top.visible {
@@ -1458,7 +1542,7 @@
     
     .scroll-top:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.6);
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.5);
     }
     
     /* بهبود عملکرد */
@@ -1475,6 +1559,7 @@
 
   <!-- اسپلش اسکرین -->
   <div class="splash-screen" id="splashScreen">
+    <div class="splash-background"></div>
     <div class="splash-logo">
       <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان">
     </div>
@@ -1487,18 +1572,16 @@
     <i class="fas fa-chevron-up"></i>
   </div>
 
-  <!-- ناوبری شیشه‌ای -->
+  <!-- ناوبری مینیمال -->
   <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان - طراحی مهندسی و خدمات فب‌لب">
-        <!-- عبارت "توسعه پردازان" حذف شده -->
       </a>
       <nav>
         <ul class="nav-links">
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">پورتفولیو</a></li>
           <li><a href="#news" data-i18n="nav.news">اخبار</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری</a></li>
@@ -1529,7 +1612,7 @@
     <div class="video-overlay"></div>
     
     <div class="hero-content">
-      <h1 class="fade-in" data-i18n="hero.title">طراحی مهندسی پیشرفته و خدمات فب‌لب</h1>
+      <h1 class="fade-in" data-i18n="hero.title">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
       <div class="hero-description">
         <div class="hero-tagline">
           <i class="fas fa-check-circle"></i>
@@ -1546,7 +1629,7 @@
       </div>
       <div class="cta">
         <a href="#services" class="btn btn-primary" data-i18n="hero.viewServices">خدمات تخصصی ما</a>
-        <a href="#portfolio" class="btn btn-secondary" data-i18n="hero.viewPortfolio">نمونه کارها</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero.viewPortfolio">تماس با ما</a>
       </div>
     </div>
   </section>
@@ -1558,7 +1641,7 @@
       <div class="news-container">
         <div class="news-card fade-in">
           <div class="news-avatar">
-            <i class="fas fa-user-tie"></i> <!-- آیکون جایگزین عکس -->
+            <img src="images/ceo.jpg" alt="مدیرعامل توسعه پردازان" loading="lazy" onerror="this.src='https://via.placeholder.com/120/1e40af/ffffff?text=مدیرعامل'">
           </div>
           <div class="news-content">
             <h3 data-i18n="news.messageTitle">پیام پیشاپیش نوروزی ۱۴۰۵</h3>
@@ -1712,16 +1795,6 @@
     </div>
   </section>
 
-  <!-- گالری نمونه کارها -->
-  <section id="portfolio" class="gallery-section">
-    <div class="container">
-      <h2 data-i18n="portfolio.title">گالری پروژه‌های اجرایی</h2>
-      <div class="gallery-wrapper">
-        <div class="gallery-track" id="galleryTrack"></div>
-      </div>
-    </div>
-  </section>
-
   <!-- پروژه‌های توسعه -->
   <section id="projects">
     <div class="container">
@@ -1754,17 +1827,20 @@
         <h2 data-i18n="downloads.title">مستندات فنی و مهندسی</h2>
         <p data-i18n="downloads.description">برای آشنایی کامل با قابلیت‌های فنی، پروژه‌های اجرایی و خدمات تخصصی شرکت، مستندات جامع زیر را دریافت نمایید</p>
         <div class="cta">
-          <a href="files/catalog.pdf" class="btn btn-secondary" data-i18n="downloads.catalog">کاتالوگ خدمات مهندسی</a>
-          <a href="files/resume.pdf" class="btn btn-primary" data-i18n="downloads.resume">رزومه فنی شرکت</a>
+          <a href="files/catalog.pdf" class="btn btn-primary" data-i18n="downloads.catalog">کاتالوگ خدمات مهندسی</a>
+          <a href="files/resume.pdf" class="btn btn-secondary" data-i18n="downloads.resume">رزومه فنی شرکت</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- فوتر با طراحی مهندسی -->
+  <!-- فوتر شیشه‌ای -->
   <footer id="contact">
     <div class="engineering-grid"></div>
     <div class="footer-pattern"></div>
+    <div class="iran-flag">
+      <img src="https://flagcdn.com/w320/ir.png" alt="پرچم ایران" loading="lazy">
+    </div>
     
     <div class="container">
       <div class="footer-content">
@@ -1823,13 +1899,10 @@
             </a>
           </div>
           
-          <div style="margin-top: 30px;">
-            <h4 style="color: #94a3b8; font-size: 16px; margin-bottom: 15px;">ساعت کاری</h4>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.8;">
-              <div>شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰</div>
-              <div>پنجشنبه: ۸:۰۰ - ۱۴:۰۰</div>
-              <div>جمعه: تعطیل</div>
-            </div>
+          <div class="hours-info">
+            <div>شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰</div>
+            <div>پنجشنبه: ۸:۰۰ - ۱۴:۰۰</div>
+            <!-- جمعه: تعطیل حذف شد -->
           </div>
         </div>
       </div>
@@ -1841,83 +1914,24 @@
   </footer>
 
   <script>
-    // داده‌های نمونه کارها
-    const portfolioData = [
-      { 
-        img: 'images/portfolio/air-purifier.jpg', 
-        key: 'item1',
-        client: 'شرکت بهبود رایان', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/biometric-lock.jpg', 
-        key: 'item2',
-        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/ecg-simulator.jpg', 
-        key: 'item3',
-        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/injector-cleaner.jpg', 
-        key: 'item4',
-        client: 'پویا خودرو ایرانیان آدلی', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/veinscope.jpg', 
-        key: 'item5',
-        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/arm-porter.jpg', 
-        key: 'item6',
-        client: 'شخصی حقیقی در ترکیه - استانبول', 
-        type: 'reverse'
-      },
-      { 
-        img: 'images/portfolio/taftan-trophy.jpg', 
-        key: 'item7',
-        client: 'فبلب صنایع خلاق پارک علم و فناوری', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/pulp-tester.jpg', 
-        key: 'item8',
-        client: 'شرکت طب تجهیز آبادیس پارس', 
-        type: 'reverse'
-      },
-      { 
-        img: 'images/portfolio/lamp-cover.jpg', 
-        key: 'item9',
-        client: 'مهرنور الکترونیک پیشگام', 
-        type: 'original'
-      }
-    ];
-
     // ترجمه‌های به‌روز شده
     const translations = {
       fa: {
         // ناوبری
         "nav.home": "خانه",
         "nav.services": "خدمات ما",
-        "nav.portfolio": "پورتفولیو",
         "nav.news": "اخبار",
         "nav.projects": "پروژه‌ها",
         "nav.work": "همکاری",
         "nav.contact": "تماس",
         
         // هیرو
-        "hero.title": "طراحی مهندسی پیشرفته و خدمات فب‌لب",
+        "hero.title": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
         "hero.line1": "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی",
         "hero.line2": "تحقق ایده‌های صنعتی از کانسپت تا تولید نهایی",
         "hero.line3": "همراهی تخصصی در مسیر تبدیل ایده به محصول",
         "hero.viewServices": "خدمات تخصصی ما",
-        "hero.viewPortfolio": "نمونه کارها",
+        "hero.viewPortfolio": "تماس با ما",
         
         // اخبار
         "news.title": "اخبار و رویدادها",
@@ -1976,27 +1990,6 @@
         "services.consulting.item3": "کارخانه تولید یونولیت سراوان (در حال تأسیس)",
         "services.consulting.item4": "کافه فب‌لب روند (مرکز نوآوری و تعامل)",
         
-        // نمونه کارها
-        "portfolio.title": "گالری پروژه‌های اجرایی",
-        "portfolio.item1.title": "دستگاه تصفیه هوا صنعتی",
-        "portfolio.item1.desc": "طراحی و ساخت دستگاه تصفیه هوا پیشرفته",
-        "portfolio.item2.title": "سیستم قفل بیومتریک امنیتی",
-        "portfolio.item2.desc": "توسعه سیستم قفل بیومتریک با فناوری پیشرفته",
-        "portfolio.item3.title": "شبیه‌ساز ECG پزشکی",
-        "portfolio.item3.desc": "طراحی و تولید شبیه‌ساز سیگنال قلب آموزشی",
-        "portfolio.item4.title": "دستگاه انژکتور شور خودرو",
-        "portfolio.item4.desc": "ساخت دستگاه تخصصی شستشوی انژکتور خودرو",
-        "portfolio.item5.title": "دستگاه مشاهده رگ پزشکی",
-        "portfolio.item5.desc": "توسعه دستگاه پیشرفته مشاهده رگ برای مصارف پزشکی",
-        "portfolio.item6.title": "ربات بازویی پورتر صنعتی",
-        "portfolio.item6.desc": "طراحی و ساخت ربات بازویی برای کاربردهای صنعتی",
-        "portfolio.item7.title": "تندیس تفتان نمایشگاهی",
-        "portfolio.item7.desc": "ساخت تندیس هنری با تکنیک‌های ساخت دیجیتال",
-        "portfolio.item8.title": "دستگاه تست پالپ دندانپزشکی",
-        "portfolio.item8.desc": "تولید دستگاه تخصصی تست پالپ دندان",
-        "portfolio.item9.title": "کاور لامپ خیابانی",
-        "portfolio.item9.desc": "طراحی و ساخت کاور لامپ با دوام و زیبایی",
-        
         // پروژه‌ها
         "projects.title": "پروژه‌های توسعه و نوآوری",
         "projects.project1.title": "کارخانه تولید یونولیت سراوان",
@@ -2022,7 +2015,7 @@
 
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
-      // مخفی کردن اسپلش اسکرین بعد از 1.5 ثانیه (بهبود یافته)
+      // مخفی کردن اسپلش اسکرین
       setTimeout(() => {
         const splashScreen = document.getElementById('splashScreen');
         if (splashScreen) {
@@ -2032,9 +2025,6 @@
           }, 300);
         }
       }, 1500);
-      
-      // تنظیم گالری نمونه کارها
-      setupPortfolioAutoScroll();
       
       // کنترل خطا برای تصاویر
       setupErrorHandlers();
@@ -2056,55 +2046,14 @@
     });
     
     // ==================== توابع کمکی ====================
-    function setupPortfolioAutoScroll() {
-      const galleryTrack = document.getElementById('galleryTrack');
-      
-      galleryTrack.innerHTML = '';
-      
-      for (let i = 0; i < 2; i++) {
-        portfolioData.forEach(item => {
-          const galleryItem = document.createElement('div');
-          galleryItem.className = 'gallery-item';
-          
-          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
-          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
-          const titleKey = `portfolio.${item.key}.title`;
-          const descKey = `portfolio.${item.key}.desc`;
-          
-          galleryItem.innerHTML = `
-            <img src="${item.img}" alt="${translations.fa[titleKey] || item.key}" class="gallery-img" loading="lazy" onerror="handlePortfolioImageError(this, '${titleKey}')">
-            <div class="gallery-content">
-              <h3>${translations.fa[titleKey] || item.key}</h3>
-              <div class="client-name">${item.client}</div>
-              <p class="project-desc">${translations.fa[descKey] || ''}</p>
-              <span class="project-type ${typeClass}">${typeText}</span>
-            </div>
-          `;
-          
-          galleryTrack.appendChild(galleryItem);
-        });
-      }
-    }
-    
-    function handlePortfolioImageError(img, titleKey) {
-      const title = translations.fa[titleKey] || titleKey;
-      img.src = `https://via.placeholder.com/380x190/1e40af/ffffff?text=${encodeURIComponent(title.substring(0, 30))}`;
-    }
-    
     function setupErrorHandlers() {
-      // مدیریت خطای تصاویر مشتریان
-      document.querySelectorAll('.client-logo img').forEach(img => {
-        img.onerror = function() {
-          const altText = this.alt || 'مشتری';
-          const placeholderColor = '#1e40af';
-          const textColor = 'white';
-          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="140" height="80" viewBox="0 0 140 80">
-            <rect width="140" height="80" fill="${placeholderColor}" rx="8"/>
-            <text x="70" y="40" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText.substring(0, 25)}</text>
-          </svg>`;
-          this.src = 'data:image/svg+xml;base64,' + btoa(svg);
+      // مدیریت خطای عکس مدیرعامل
+      const ceoImage = document.querySelector('.news-avatar img');
+      if (ceoImage) {
+        ceoImage.onerror = function() {
+          this.src = 'https://via.placeholder.com/120/1e40af/ffffff?text=مدیرعامل';
         };
-      });
+      }
       
       // مدیریت خطای تصاویر پروژه‌ها
       document.querySelectorAll('.project-img').forEach(img => {
@@ -2125,9 +2074,24 @@
       if (logoImg) {
         logoImg.onerror = function() {
           this.src = 'data:image/svg+xml;base64,' + btoa(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
-              <rect width="65" height="65" fill="#1e40af" rx="15"/>
-              <text x="32.5" y="35" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">TPE</text>
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+              <rect width="45" height="45" fill="#1e40af" rx="10"/>
+              <text x="22.5" y="25" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">TPE</text>
+            </svg>
+          `);
+        };
+      }
+      
+      // مدیریت خطای پرچم
+      const flagImg = document.querySelector('.iran-flag img');
+      if (flagImg) {
+        flagImg.onerror = function() {
+          this.src = 'data:image/svg+xml;base64,' + btoa(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" viewBox="0 0 100 60">
+              <rect width="100" height="20" y="0" fill="#239F40"/>
+              <rect width="100" height="20" y="20" fill="#FFFFFF"/>
+              <rect width="100" height="20" y="40" fill="#DA0000"/>
+              <text x="50" y="32" text-anchor="middle" fill="#DA0000" font-family="Arial" font-size="8" font-weight="bold">ایران</text>
             </svg>
           `);
         };
@@ -2143,7 +2107,7 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
               window.scrollTo({
-                top: targetElement.offsetTop - 100,
+                top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
               });
             }
@@ -2238,19 +2202,15 @@
       // پیش‌لود تصاویر مهم
       const criticalImages = [
         'images/logo.png',
-        'images/hero.jpg'
+        'images/hero.jpg',
+        'images/ceo.jpg',
+        'https://flagcdn.com/w320/ir.png'
       ];
       
       criticalImages.forEach(src => {
         const img = new Image();
         img.src = src;
       });
-      
-      // بهینه‌سازی انیمیشن‌ها برای دستگاه‌های ضعیف
-      if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        // دستگاه‌های لمسی
-        document.documentElement.style.scrollBehavior = 'auto';
-      }
     }
     
     // سیستم تغییر زبان
@@ -2277,6 +2237,58 @@
     if (savedLang) {
       changeLanguage(savedLang);
     }
+    
+    // SEO: Structured Data برای گوگل
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+      "image": "https://tpe-co.ir/images/logo.png",
+      "description": "پیشرو در خدمات طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و ساخت دیجیتال",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "زاهدان",
+        "addressRegion": "سیستان و بلوچستان",
+        "streetAddress": "بلوار دانشگاه، پارک علم و فناوری"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "29.4939",
+        "longitude": "60.8729"
+      },
+      "url": "https://tpe-co.ir",
+      "telephone": "+989226704205",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "sameAs": [
+        "https://instagram.com/TPE_CO",
+        "https://www.linkedin.com/company/tpe-co"
+      ]
+    };
+    
+    // افزودن structured data به صفحه
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
   </script>
 </body>
 </html>
