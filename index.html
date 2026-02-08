@@ -163,26 +163,26 @@
         radial-gradient(circle at 20% 50%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.3) 0%, transparent 50%);
-      animation: float 20s infinite ease-in-out;
+      animation: float 15s infinite ease-in-out;
     }
     
     .splash-logo {
-      width: 220px;
-      height: 220px;
+      width: 300px;
+      height: 300px;
       margin-bottom: 30px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: pulse 2s infinite;
+      animation: pulseLogo 3s infinite ease-in-out;
       box-shadow: 
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        0 0 60px rgba(30, 64, 175, 0.4),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+        0 0 0 2px rgba(255, 255, 255, 0.15),
+        0 0 100px rgba(30, 64, 175, 0.6),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.1);
       background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      padding: 30px;
-      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(25px);
+      padding: 40px;
+      border: 2px solid var(--glass-border);
       position: relative;
       z-index: 2;
     }
@@ -191,29 +191,30 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+      animation: rotateLogo 20s infinite linear;
     }
     
     .splash-text {
       color: white;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
       text-align: center;
       max-width: 80%;
       line-height: 1.5;
-      animation: fadeInUp 1s ease;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 10px;
+      animation: fadeInUp 1.5s ease;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 15px;
       position: relative;
       z-index: 2;
     }
     
     .splash-subtext {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 20px;
       text-align: center;
       max-width: 70%;
-      animation: fadeInUp 1.2s ease;
+      animation: fadeInUp 2s ease;
       font-weight: 400;
       position: relative;
       z-index: 2;
@@ -623,17 +624,17 @@
     
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 30px;
       margin-top: 40px;
     }
     
     .service-card {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 35px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.9);
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
@@ -641,8 +642,8 @@
     }
     
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
     }
     
     .service-card:before {
@@ -662,45 +663,45 @@
     }
     
     .service-icon {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: white;
-      font-size: 26px;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+      font-size: 30px;
+      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
       transition: all 0.4s ease;
     }
     
     .service-card:hover .service-icon {
-      transform: rotate(10deg) scale(1.1);
+      transform: rotate(15deg) scale(1.1);
       background: linear-gradient(135deg, var(--accent), var(--accent-light));
     }
     
     .service-card h3 {
       color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 20px;
+      margin-bottom: 20px;
+      font-size: 22px;
       line-height: 1.3;
     }
     
     .service-subsection {
-      margin-top: 15px;
+      margin-top: 20px;
       padding-right: 0;
       border-right: none;
     }
     
     .service-subsection h4 {
       color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 10px;
+      font-size: 17px;
+      margin-bottom: 12px;
       font-weight: 600;
       position: relative;
-      padding-right: 15px;
+      padding-right: 20px;
     }
     
     .service-subsection h4:before {
@@ -709,25 +710,21 @@
       right: 0;
       color: var(--primary);
       font-weight: bold;
+      font-size: 18px;
     }
     
     .service-subsection ul {
-      padding-right: 15px;
-      margin-bottom: 15px;
+      padding-right: 20px;
+      margin-bottom: 20px;
     }
     
     .service-subsection li {
-      margin-bottom: 8px;
-      font-size: 14px;
+      margin-bottom: 10px;
+      font-size: 15px;
       color: #4a5568;
       position: relative;
       padding-right: 0;
       line-height: 1.6;
-    }
-    
-    /* حذف مثلث از لیست‌ها */
-    .service-subsection li:before {
-      display: none;
     }
     
     /* گالری نمونه کارها */
@@ -916,25 +913,25 @@
     /* پروژه‌های توسعه */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 30px;
       margin-top: 50px;
     }
     
     .project-card {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.9);
       transition: all 0.4s ease;
       position: relative;
     }
     
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
     }
     
     .project-img {
@@ -955,7 +952,7 @@
     .project-content h3 {
       color: var(--primary);
       margin-bottom: 15px;
-      font-size: 20px;
+      font-size: 22px;
     }
     
     .coming-soon {
@@ -1021,6 +1018,86 @@
       color: var(--muted);
       margin-bottom: 40px;
       font-weight: 400;
+    }
+    
+    .btn-resume {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+      color: white !important;
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3) !important;
+    }
+    
+    .btn-resume:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary)) !important;
+      transform: translateY(-3px) scale(1.05) !important;
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4) !important;
+    }
+    
+    /* بخش محصولات */
+    .products-section {
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      position: relative;
+      padding: 80px 0;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .product-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .product-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .product-card:hover .product-img {
+      transform: scale(1.08);
+    }
+    
+    .product-content {
+      padding: 25px;
+    }
+    
+    .product-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
+    .product-content p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .product-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1e40af;
     }
     
     /* فوتر شیشه‌ای شیک */
@@ -1258,7 +1335,7 @@
       }
       
       .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       }
       
       .gallery-wrapper {
@@ -1271,16 +1348,16 @@
       }
       
       .splash-text {
-        font-size: 24px;
+        font-size: 28px;
       }
       
       .splash-subtext {
-        font-size: 16px;
+        font-size: 18px;
       }
       
       .splash-logo {
-        width: 180px;
-        height: 180px;
+        width: 250px;
+        height: 250px;
       }
       
       .footer-content {
@@ -1289,6 +1366,14 @@
       
       .download-content {
         padding: 40px 30px;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       }
     }
     
@@ -1371,12 +1456,12 @@
       }
       
       .splash-logo {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
       }
       
       .splash-text {
-        font-size: 22px;
+        font-size: 24px;
       }
       
       .download-section {
@@ -1396,6 +1481,14 @@
         width: 80px;
         height: 48px;
         top: -40px;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
       }
     }
     
@@ -1436,12 +1529,12 @@
       }
       
       .splash-logo {
-        width: 130px;
-        height: 130px;
+        width: 180px;
+        height: 180px;
       }
       
       .splash-text {
-        font-size: 20px;
+        font-size: 22px;
       }
       
       .download-content {
@@ -1455,7 +1548,7 @@
       }
     }
     
-    /* انیمیشن‌ها */
+    /* انیمیشن‌های جدید */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -1467,35 +1560,27 @@
       }
     }
     
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
+    @keyframes pulseLogo {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+          0 0 0 2px rgba(255, 255, 255, 0.15),
+          0 0 100px rgba(30, 64, 175, 0.6);
       }
-      to {
-        opacity: 1;
-        transform: translateX(0);
+      50% {
+        transform: scale(1.05);
+        box-shadow: 
+          0 0 0 3px rgba(255, 255, 255, 0.2),
+          0 0 150px rgba(30, 64, 175, 0.8);
       }
     }
     
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 
-          0 0 0 0 rgba(255, 255, 255, 0.1),
-          0 0 60px rgba(30, 64, 175, 0.4);
+    @keyframes rotateLogo {
+      from {
+        transform: rotate(0deg);
       }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 
-          0 0 0 10px rgba(255, 255, 255, 0),
-          0 0 80px rgba(30, 64, 175, 0.6);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 
-          0 0 0 0 rgba(255, 255, 255, 0),
-          0 0 60px rgba(30, 64, 175, 0.4);
+      to {
+        transform: rotate(360deg);
       }
     }
     
@@ -1583,6 +1668,7 @@
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
           <li><a href="#news" data-i18n="nav.news">اخبار</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">پورتفولیو</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
@@ -1641,7 +1727,7 @@
       <div class="news-container">
         <div class="news-card fade-in">
           <div class="news-avatar">
-            <img src="images/ceo.jpg" alt="مدیرعامل توسعه پردازان" loading="lazy" onerror="this.src='https://via.placeholder.com/120/1e40af/ffffff?text=مدیرعامل'">
+            <img src="images/ceo.jpg" alt="مدیرعامل توسعه پردازان" loading="lazy" onerror="this.src='https://via.placeholder.com/120/1e40af/ffffff?text=مدیرعامل'; this.onerror=null;">
           </div>
           <div class="news-content">
             <h3 data-i18n="news.messageTitle">پیام پیشاپیش نوروزی ۱۴۰۵</h3>
@@ -1795,6 +1881,98 @@
     </div>
   </section>
 
+  <!-- گالری نمونه کارها -->
+  <section id="portfolio" class="gallery-section">
+    <div class="container">
+      <h2 data-i18n="portfolio.title">گالری پروژه‌های اجرایی</h2>
+      <div class="gallery-wrapper">
+        <div class="gallery-track" id="galleryTrack"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- بخش محصولات -->
+  <section id="products" class="products-section">
+    <div class="container">
+      <h2 data-i18n="products.title">محصولات و راه‌حل‌ها</h2>
+      <div class="products-grid">
+        <div class="product-card fade-in">
+          <img src="images/products/air-purifier.jpg" alt="دستگاه تصفیه هوا صنعتی" class="product-img" loading="lazy">
+          <div class="product-content">
+            <h3>دستگاه تصفیه هوا صنعتی</h3>
+            <p>طراحی و ساخت دستگاه تصفیه هوا پیشرفته با فیلتراسیون چند مرحله‌ای</p>
+            <span class="product-tag">محصول صنعتی</span>
+          </div>
+        </div>
+        <div class="product-card fade-in">
+          <img src="images/products/biometric-lock.jpg" alt="سیستم قفل بیومتریک امنیتی" class="product-img" loading="lazy">
+          <div class="product-content">
+            <h3>سیستم قفل بیومتریک امنیتی</h3>
+            <p>توسعه سیستم قفل بیومتریک با فناوری پیشرفته شناسایی اثر انگشت</p>
+            <span class="product-tag">امنیتی</span>
+          </div>
+        </div>
+        <div class="product-card fade-in">
+          <img src="images/products/ecg-simulator.jpg" alt="شبیه‌ساز ECG پزشکی" class="product-img" loading="lazy">
+          <div class="product-content">
+            <h3>شبیه‌ساز ECG پزشکی</h3>
+            <p>طراحی و تولید شبیه‌ساز سیگنال قلب برای آموزش پزشکی</p>
+            <span class="product-tag">پزشکی</span>
+          </div>
+        </div>
+        <div class="product-card fade-in">
+          <img src="images/products/injector-cleaner.jpg" alt="دستگاه انژکتور شور خودرو" class="product-img" loading="lazy">
+          <div class="product-content">
+            <h3>دستگاه انژکتور شور خودرو</h3>
+            <p>ساخت دستگاه تخصصی شستشوی انژکتور خودرو با دقت بالا</p>
+            <span class="product-tag">خودرویی</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- مشتریان -->
+  <section id="clients" class="clients-section">
+    <div class="container">
+      <h2 data-i18n="clients.title">مشتریان و همکاران ما</h2>
+      <div class="clients-wrapper">
+        <div class="clients-track">
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/1e40af/ffffff?text=بهبود+رایان" alt="شرکت بهبود رایان">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/dc2626/ffffff?text=توسعه+پردازان+الکترونیک" alt="توسعه پردازان الکترونیک">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/0f766e/ffffff?text=پویا+خودرو" alt="پویا خودرو ایرانیان">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/92400e/ffffff?text=مهرنور+الکترونیک" alt="مهرنور الکترونیک">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/312e81/ffffff?text=طب+تجهیز" alt="شرکت طب تجهیز">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/701a75/ffffff?text=فبلب+صنایع+خلاق" alt="فبلب صنایع خلاق">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/1e40af/ffffff?text=بهبود+رایان" alt="شرکت بهبود رایان">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/dc2626/ffffff?text=توسعه+پردازان+الکترونیک" alt="توسعه پردازان الکترونیک">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/0f766e/ffffff?text=پویا+خودرو" alt="پویا خودرو ایرانیان">
+          </div>
+          <div class="client-logo">
+            <img src="https://via.placeholder.com/140x80/92400e/ffffff?text=مهرنور+الکترونیک" alt="مهرنور الکترونیک">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- پروژه‌های توسعه -->
   <section id="projects">
     <div class="container">
@@ -1828,7 +2006,7 @@
         <p data-i18n="downloads.description">برای آشنایی کامل با قابلیت‌های فنی، پروژه‌های اجرایی و خدمات تخصصی شرکت، مستندات جامع زیر را دریافت نمایید</p>
         <div class="cta">
           <a href="files/catalog.pdf" class="btn btn-primary" data-i18n="downloads.catalog">کاتالوگ خدمات مهندسی</a>
-          <a href="files/resume.pdf" class="btn btn-secondary" data-i18n="downloads.resume">رزومه فنی شرکت</a>
+          <a href="files/resume.pdf" class="btn btn-primary btn-resume" data-i18n="downloads.resume">رزومه فنی شرکت</a>
         </div>
       </div>
     </div>
@@ -1902,7 +2080,6 @@
           <div class="hours-info">
             <div>شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰</div>
             <div>پنجشنبه: ۸:۰۰ - ۱۴:۰۰</div>
-            <!-- جمعه: تعطیل حذف شد -->
           </div>
         </div>
       </div>
@@ -1914,12 +2091,71 @@
   </footer>
 
   <script>
+    // داده‌های نمونه کارها
+    const portfolioData = [
+      { 
+        img: 'images/portfolio/air-purifier.jpg', 
+        key: 'item1',
+        client: 'شرکت بهبود رایان', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/biometric-lock.jpg', 
+        key: 'item2',
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/ecg-simulator.jpg', 
+        key: 'item3',
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/injector-cleaner.jpg', 
+        key: 'item4',
+        client: 'پویا خودرو ایرانیان آدلی', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/veinscope.jpg', 
+        key: 'item5',
+        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/arm-porter.jpg', 
+        key: 'item6',
+        client: 'شخصی حقیقی در ترکیه - استانبول', 
+        type: 'reverse'
+      },
+      { 
+        img: 'images/portfolio/taftan-trophy.jpg', 
+        key: 'item7',
+        client: 'فبلب صنایع خلاق پارک علم و فناوری', 
+        type: 'original'
+      },
+      { 
+        img: 'images/portfolio/pulp-tester.jpg', 
+        key: 'item8',
+        client: 'شرکت طب تجهیز آبادیس پارس', 
+        type: 'reverse'
+      },
+      { 
+        img: 'images/portfolio/lamp-cover.jpg', 
+        key: 'item9',
+        client: 'مهرنور الکترونیک پیشگام', 
+        type: 'original'
+      }
+    ];
+
     // ترجمه‌های به‌روز شده
     const translations = {
       fa: {
         // ناوبری
         "nav.home": "خانه",
         "nav.services": "خدمات ما",
+        "nav.portfolio": "پورتفولیو",
         "nav.news": "اخبار",
         "nav.projects": "پروژه‌ها",
         "nav.work": "همکاری",
@@ -1990,6 +2226,33 @@
         "services.consulting.item3": "کارخانه تولید یونولیت سراوان (در حال تأسیس)",
         "services.consulting.item4": "کافه فب‌لب روند (مرکز نوآوری و تعامل)",
         
+        // نمونه کارها
+        "portfolio.title": "گالری پروژه‌های اجرایی",
+        "portfolio.item1.title": "دستگاه تصفیه هوا صنعتی",
+        "portfolio.item1.desc": "طراحی و ساخت دستگاه تصفیه هوا پیشرفته",
+        "portfolio.item2.title": "سیستم قفل بیومتریک امنیتی",
+        "portfolio.item2.desc": "توسعه سیستم قفل بیومتریک با فناوری پیشرفته",
+        "portfolio.item3.title": "شبیه‌ساز ECG پزشکی",
+        "portfolio.item3.desc": "طراحی و تولید شبیه‌ساز سیگنال قلب آموزشی",
+        "portfolio.item4.title": "دستگاه انژکتور شور خودرو",
+        "portfolio.item4.desc": "ساخت دستگاه تخصصی شستشوی انژکتور خودرو",
+        "portfolio.item5.title": "دستگاه مشاهده رگ پزشکی",
+        "portfolio.item5.desc": "توسعه دستگاه پیشرفته مشاهده رگ برای مصارف پزشکی",
+        "portfolio.item6.title": "ربات بازویی پورتر صنعتی",
+        "portfolio.item6.desc": "طراحی و ساخت ربات بازویی برای کاربردهای صنعتی",
+        "portfolio.item7.title": "تندیس تفتان نمایشگاهی",
+        "portfolio.item7.desc": "ساخت تندیس هنری با تکنیک‌های ساخت دیجیتال",
+        "portfolio.item8.title": "دستگاه تست پالپ دندانپزشکی",
+        "portfolio.item8.desc": "تولید دستگاه تخصصی تست پالپ دندان",
+        "portfolio.item9.title": "کاور لامپ خیابانی",
+        "portfolio.item9.desc": "طراحی و ساخت کاور لامپ با دوام و زیبایی",
+        
+        // محصولات
+        "products.title": "محصولات و راه‌حل‌ها",
+        
+        // مشتریان
+        "clients.title": "مشتریان و همکاران ما",
+        
         // پروژه‌ها
         "projects.title": "پروژه‌های توسعه و نوآوری",
         "projects.project1.title": "کارخانه تولید یونولیت سراوان",
@@ -2024,7 +2287,10 @@
             splashScreen.style.display = 'none';
           }, 300);
         }
-      }, 1500);
+      }, 2000);
+      
+      // تنظیم گالری نمونه کارها
+      setupPortfolioAutoScroll();
       
       // کنترل خطا برای تصاویر
       setupErrorHandlers();
@@ -2046,14 +2312,60 @@
     });
     
     // ==================== توابع کمکی ====================
+    function setupPortfolioAutoScroll() {
+      const galleryTrack = document.getElementById('galleryTrack');
+      
+      if (!galleryTrack) return;
+      
+      galleryTrack.innerHTML = '';
+      
+      for (let i = 0; i < 2; i++) {
+        portfolioData.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          
+          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
+          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
+          const titleKey = `portfolio.${item.key}.title`;
+          const descKey = `portfolio.${item.key}.desc`;
+          
+          galleryItem.innerHTML = `
+            <img src="${item.img}" alt="${translations.fa[titleKey] || item.key}" class="gallery-img" loading="lazy" onerror="handlePortfolioImageError(this, '${titleKey}')">
+            <div class="gallery-content">
+              <h3>${translations.fa[titleKey] || item.key}</h3>
+              <div class="client-name">${item.client}</div>
+              <p class="project-desc">${translations.fa[descKey] || ''}</p>
+              <span class="project-type ${typeClass}">${typeText}</span>
+            </div>
+          `;
+          
+          galleryTrack.appendChild(galleryItem);
+        });
+      }
+    }
+    
+    function handlePortfolioImageError(img, titleKey) {
+      const title = translations.fa[titleKey] || titleKey;
+      img.src = `https://via.placeholder.com/380x190/1e40af/ffffff?text=${encodeURIComponent(title.substring(0, 30))}`;
+    }
+    
     function setupErrorHandlers() {
       // مدیریت خطای عکس مدیرعامل
       const ceoImage = document.querySelector('.news-avatar img');
       if (ceoImage) {
         ceoImage.onerror = function() {
           this.src = 'https://via.placeholder.com/120/1e40af/ffffff?text=مدیرعامل';
+          this.onerror = null; // جلوگیری از حلقه بی‌نهایت
         };
       }
+      
+      // مدیریت خطای تصاویر محصولات
+      document.querySelectorAll('.product-img').forEach(img => {
+        img.onerror = function() {
+          const altText = this.alt || 'محصول';
+          this.src = `https://via.placeholder.com/400x200/1e40af/ffffff?text=${encodeURIComponent(altText.substring(0, 30))}`;
+        };
+      });
       
       // مدیریت خطای تصاویر پروژه‌ها
       document.querySelectorAll('.project-img').forEach(img => {
@@ -2096,6 +2408,15 @@
           `);
         };
       }
+      
+      // مدیریت خطای لوگوهای مشتریان
+      document.querySelectorAll('.client-logo img').forEach(img => {
+        img.onerror = function() {
+          const altText = this.alt || 'مشتری';
+          const text = altText.split(' ')[0] || 'مشتری';
+          this.src = `https://via.placeholder.com/140x80/64748b/ffffff?text=${encodeURIComponent(text)}`;
+        };
+      });
     }
     
     function setupSmoothScroll() {
@@ -2147,7 +2468,7 @@
         });
       }, observerOptions);
       
-      document.querySelectorAll('.service-card, .project-card, .news-card').forEach(card => {
+      document.querySelectorAll('.service-card, .project-card, .news-card, .product-card').forEach(card => {
         observer.observe(card);
       });
       
