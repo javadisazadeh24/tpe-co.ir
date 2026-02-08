@@ -170,7 +170,7 @@
       width: 180px;
       height: 180px;
       margin-bottom: 30px;
-      border-radius: 50%; /* تغییر به دایره */
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -185,8 +185,8 @@
     }
     
     .splash-logo img {
-      width: 100%; /* تغییر اندازه */
-      height: 100%; /* تغییر اندازه */
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
@@ -843,9 +843,9 @@
       animation-play-state: paused;
     }
     
-    /* مشتریان */
+    /* مشتریان - اسکرول پیوسته واقعی */
     .clients-section {
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       position: relative;
       overflow: hidden;
     }
@@ -853,7 +853,7 @@
     .clients-wrapper {
       position: relative;
       width: 100%;
-      height: 150px;
+      height: 140px;
       overflow: hidden;
       margin-top: 30px;
     }
@@ -865,17 +865,17 @@
       right: 0;
       height: 100%;
       align-items: center;
-      animation: scrollClients 35s linear infinite;
+      animation: scrollClients 30s linear infinite;
       will-change: transform;
     }
     
     .client-logo {
-      height: 80px;
+      height: 70px;
       width: auto;
       filter: grayscale(100%);
       opacity: 0.7;
-      transition: all 0.4s ease;
-      padding: 0 45px;
+      transition: all 0.3s;
+      padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -883,14 +883,14 @@
     
     .client-logo img {
       max-height: 100%;
-      max-width: 140px;
+      max-width: 120px;
       object-fit: contain;
     }
     
     .client-logo:hover {
       filter: grayscale(0);
       opacity: 1;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     
     @keyframes scrollClients {
@@ -1295,11 +1295,11 @@
       }
       
       .clients-wrapper {
-        height: 130px;
+        height: 120px;
       }
       
       .client-logo {
-        height: 70px;
+        height: 60px;
         padding: 0 35px;
       }
     }
@@ -1351,11 +1351,11 @@
       }
       
       .clients-wrapper {
-        height: 120px;
+        height: 100px;
       }
       
       .client-logo {
-        height: 60px;
+        height: 50px;
         padding: 0 30px;
       }
       
@@ -1476,11 +1476,11 @@
       }
       
       .clients-wrapper {
-        height: 100px;
+        height: 80px;
       }
       
       .client-logo {
-        height: 50px;
+        height: 40px;
         padding: 0 20px;
       }
     }
@@ -1596,8 +1596,8 @@
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
           <li><a href="#news" data-i18n="nav.news">اخبار</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">نمونه کارهای ما</a></li> <!-- تغییر داده شد -->
-          <li><a href="#clients">مشتریان</a></li> <!-- اضافه شد -->
+          <li><a href="#portfolio" data-i18n="nav.portfolio">نمونه کارهای ما</a></li>
+          <li><a href="#clients">مشتریان</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
@@ -1807,48 +1807,68 @@
   <!-- نمونه کارها -->
   <section id="portfolio" class="gallery-section">
     <div class="container">
-      <h2 data-i18n="portfolio.title">نمونه کارهای ما</h2> <!-- تغییر داده شد -->
+      <h2 data-i18n="portfolio.title">نمونه کارهای ما</h2>
       <div class="gallery-wrapper">
         <div class="gallery-track" id="galleryTrack"></div>
       </div>
     </div>
   </section>
 
-  <!-- مشتریان -->
+  <!-- مشتریان با اسکرول پیوسته واقعی -->
   <section id="clients" class="clients-section">
     <div class="container">
-      <h2>مشتریان ما</h2>
+      <h2 data-i18n="clients.title">برخی از مشتریان ما</h2>
       <div class="clients-wrapper">
         <div class="clients-track">
+          <!-- ردیف اول -->
           <div class="client-logo">
-            <img src="images/clients/client1.png" alt="مشتری 1" loading="lazy">
+            <img src="images/clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/1e40af/ffffff?text=دانشگاه+سیستان'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client2.png" alt="مشتری 2" loading="lazy">
+            <img src="images/clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/3b82f6/ffffff?text=پارک+علم+و+فناوری'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client3.png" alt="مشتری 3" loading="lazy">
+            <img src="images/clients/health-center.png" alt="مرکز بهداشت زاهدان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/10b981/ffffff?text=مرکز+بهداشت'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client4.png" alt="مشتری 4" loading="lazy">
+            <img src="images/clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/ef4444/ffffff?text=علوم+پزشکی'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client5.png" alt="مشتری 5" loading="lazy">
+            <img src="images/clients/design-lab.png" alt="دیزاین لب" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/8b5cf6/ffffff?text=دیزاین+لب'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client6.png" alt="مشتری 6" loading="lazy">
+            <img src="images/clients/harir.png" alt="کارخانه حریر انار کرمان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/f97316/ffffff?text=حریر+انار'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client1.png" alt="مشتری 1" loading="lazy">
+            <img src="images/clients/innovation.png" alt="مجتمع نوآوری" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/06b6d4/ffffff?text=مجتمع+نوآوری'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client2.png" alt="مشتری 2" loading="lazy">
+            <img src="images/clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/ec4899/ffffff?text=پرواز+یاران'">
+          </div>
+          <!-- تکرار برای اسکرول پیوسته -->
+          <div class="client-logo">
+            <img src="images/clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/1e40af/ffffff?text=دانشگاه+سیستان'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client3.png" alt="مشتری 3" loading="lazy">
+            <img src="images/clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/3b82f6/ffffff?text=پارک+علم+و+فناوری'">
           </div>
           <div class="client-logo">
-            <img src="images/clients/client4.png" alt="مشتری 4" loading="lazy">
+            <img src="images/clients/health-center.png" alt="مرکز بهداشت زاهدان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/10b981/ffffff?text=مرکز+بهداشت'">
+          </div>
+          <div class="client-logo">
+            <img src="images/clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/ef4444/ffffff?text=علوم+پزشکی'">
+          </div>
+          <div class="client-logo">
+            <img src="images/clients/design-lab.png" alt="دیزاین لب" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/8b5cf6/ffffff?text=دیزاین+لب'">
+          </div>
+          <div class="client-logo">
+            <img src="images/clients/harir.png" alt="کارخانه حریر انار کرمان" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/f97316/ffffff?text=حریر+انار'">
+          </div>
+          <div class="client-logo">
+            <img src="images/clients/innovation.png" alt="مجتمع نوآوری" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/06b6d4/ffffff?text=مجتمع+نوآوری'">
+          </div>
+          <div class="client-logo">
+            <img src="images/clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ" onerror="this.onerror=null; this.src='https://via.placeholder.com/120x70/ec4899/ffffff?text=پرواز+یاران'">
           </div>
         </div>
       </div>
@@ -2027,10 +2047,10 @@
       }
     ];
 
-    // ترجمه‌های به‌روز شده
+    // ترجمه‌ها - مانند کد مرجع
     const translations = {
       fa: {
-        // ناوبری - تغییر "پورتفولیو" به "نمونه کارهای ما"
+        // ناوبری
         "nav.home": "خانه",
         "nav.services": "خدمات ما",
         "nav.portfolio": "نمونه کارهای ما",
@@ -2101,7 +2121,7 @@
         "services.consulting.item1": "راهبری فرآیند توسعه محصول از ایده تا تولید",
         "services.consulting.item2": "بهینه‌سازی طراحی برای ساخت‌پذیری و هزینه",
         
-        // نمونه کارها - تغییر "پورتفولیو" به "نمونه کارهای ما"
+        // نمونه کارها
         "portfolio.title": "نمونه کارهای ما",
         "portfolio.item1.title": "دستگاه تصفیه هوا صنعتی",
         "portfolio.item1.desc": "طراحی و ساخت دستگاه تصفیه هوا پیشرفته",
@@ -2121,6 +2141,9 @@
         "portfolio.item8.desc": "تولید دستگاه تخصصی تست پالپ دندان",
         "portfolio.item9.title": "کاور لامپ خیابانی",
         "portfolio.item9.desc": "طراحی و ساخت کاور لامپ با دوام و زیبایی",
+        
+        // مشتریان
+        "clients.title": "برخی از مشتریان ما",
         
         // پروژه‌ها
         "projects.title": "پروژه‌های توسعه و نوآوری",
@@ -2142,6 +2165,222 @@
         "footer.links": "خدمات تخصصی",
         "footer.social": "ارتباط با ما",
         "footer.copyright": "© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
+      },
+      en: {
+        "nav.home": "Home",
+        "nav.services": "Services",
+        "nav.portfolio": "Portfolio",
+        "nav.news": "News",
+        "nav.projects": "Projects",
+        "nav.work": "Collaboration",
+        "nav.contact": "Contact",
+        
+        "hero.title": "Technical and Engineering Development Company",
+        "hero.line1": "Leading in engineering design, prototyping and numerical simulation",
+        "hero.line2": "Realization of industrial ideas from concept to final production",
+        "hero.line3": "Specialized support in the path of turning ideas into products",
+        "hero.viewServices": "Our Specialized Services",
+        "hero.viewPortfolio": "Contact Us",
+        
+        "news.title": "News & Events",
+        "news.messageTitle": "Pre-Norouz Message 2026",
+        "news.date": "February 2025",
+        "news.content": "<p>Greetings to all colleagues, business partners and dear customers,</p><p>We congratulate you in advance on the arrival of the new year 2026. We begin the year ahead with hope for more success in the field of engineering design, prototyping and numerical simulation.</p><p>In the new year, our focus will be on developing fablab services and digital fabrication to be more effective with the country's technology community.</p>",
+        "news.viewAll": "View All News",
+        
+        "services.title": "Our Specialized Services",
+        "services.design.title": "Engineering Design & Numerical Simulation",
+        "services.design.sub1": "Advanced 3D Modeling",
+        "services.design.item1": "Conceptual design and executive details with specialized CAD/CAM software",
+        "services.design.item2": "Numerical simulation and finite element analysis (FEA) for optimization",
+        "services.design.sub2": "Reverse Engineering & Digitalization",
+        "services.design.item3": "Accurate 3D scanning and parametric redesign of equipment",
+        "services.design.item4": "Reproduction of parts with respect to performance and safety standards",
+        
+        "services.prototype.title": "Prototyping & Digital Fabrication",
+        "services.prototype.sub1": "Advanced 3D Printing",
+        "services.prototype.item1": "Resin (SLA/DLP) 3D printing with micron precision",
+        "services.prototype.item2": "Filament (FDM) 3D printing for functional prototypes",
+        "services.prototype.sub2": "CNC Machining",
+        "services.prototype.item3": "Multi-axis CNC turning and milling with high precision",
+        "services.prototype.item4": "Machining services and industrial parts manufacturing",
+        
+        "services.fablab.title": "Fablab & Innovation Center Services",
+        "services.fablab.sub1": "Fablab Setup",
+        "services.fablab.item1": "Design and equipping of digital fabrication laboratories",
+        "services.fablab.item2": "Consultation for establishing innovation and technology centers",
+        "services.fablab.sub2": "Mentoring & Training",
+        "services.fablab.item3": "Guidance of tech teams and knowledge-based cores",
+        "services.fablab.item4": "Holding specialized digital fabrication workshops",
+        
+        "services.production.title": "Product Development & Production Line",
+        "services.production.sub1": "Production Line Design",
+        "services.production.item1": "Design and optimization of industrial production processes",
+        "services.production.item2": "Technical consultation for development of production units",
+        "services.production.sub2": "Quality Control & Standardization",
+        "services.production.item3": "Preparation of technical documentation and quality control protocols",
+        "services.production.item4": "Performance testing and mechanical tests according to standards",
+        
+        "services.education.title": "Specialized Engineering Education",
+        "services.education.sub1": "Engineering Software",
+        "services.education.item1": "CATIA, SolidWorks, Fusion 360 and Rhino training",
+        "services.education.item2": "Specialized courses in finite element analysis and simulation",
+        "services.education.sub2": "Digital Fabrication",
+        "services.education.item3": "Practical workshops in 3D printing and CNC",
+        "services.education.item4": "Reverse engineering and 3D scanning training",
+        
+        "services.consulting.title": "Technical & Engineering Consulting",
+        "services.consulting.sub1": "Product Development Consulting",
+        "services.consulting.item1": "Guidance of product development process from idea to production",
+        "services.consulting.item2": "Design optimization for manufacturability and cost",
+        
+        "portfolio.title": "Our Portfolio",
+        "portfolio.item1.title": "Industrial Air Purifier",
+        "portfolio.item1.desc": "Design and construction of advanced air purification device",
+        "portfolio.item2.title": "Biometric Security Lock System",
+        "portfolio.item2.desc": "Development of biometric lock system with advanced technology",
+        "portfolio.item3.title": "Medical ECG Simulator",
+        "portfolio.item3.desc": "Design and production of heart signal simulator for education",
+        "portfolio.item4.title": "Car Injector Cleaning Device",
+        "portfolio.item4.desc": "Manufacturing of specialized injector cleaning device",
+        "portfolio.item5.title": "Medical Veinscope Device",
+        "portfolio.item5.desc": "Development of advanced vein visualization device for medical use",
+        "portfolio.item6.title": "Industrial Arm Porter Robot",
+        "portfolio.item6.desc": "Design and construction of arm robot for industrial applications",
+        "portfolio.item7.title": "Taftan Exhibition Trophy",
+        "portfolio.item7.desc": "Construction of artistic trophy with digital fabrication techniques",
+        "portfolio.item8.title": "Dental Pulp Testing Device",
+        "portfolio.item8.desc": "Production of specialized dental pulp testing device",
+        "portfolio.item9.title": "Street Lamp Cover",
+        "portfolio.item9.desc": "Design and construction of durable and beautiful lamp cover",
+        
+        "clients.title": "Some of Our Clients",
+        
+        "projects.title": "Development & Innovation Projects",
+        "projects.project1.title": "Saravan EPS Factory",
+        "projects.project1.desc": "Establishment of advanced EPS production unit in Saravan Industrial Town",
+        "projects.project2.title": "Round Fab Lab Cafe",
+        "projects.project2.desc": "Creating collaboration and innovation space for tech and creative community",
+        "projects.soon": "In Progress",
+        
+        "downloads.title": "Technical & Engineering Documents",
+        "downloads.description": "To fully understand the technical capabilities, executive projects and specialized services of the company, download the comprehensive documents below",
+        "downloads.catalog": "Engineering Services Catalog",
+        "downloads.resume": "Company Technical Resume",
+        
+        "footer.contact": "Contact Us",
+        "footer.address": "Zahedan, University Blvd, Science & Technology Park",
+        "footer.links": "Specialized Services",
+        "footer.social": "Contact Us",
+        "footer.copyright": "© 2025 Technical & Engineering Development Company. All rights reserved."
+      },
+      ar: {
+        "nav.home": "الرئيسية",
+        "nav.services": "خدماتنا",
+        "nav.portfolio": "أعمالنا",
+        "nav.news": "أخبار",
+        "nav.projects": "مشاريع",
+        "nav.work": "تعاون",
+        "nav.contact": "اتصال",
+        
+        "hero.title": "شركة التطوير الفنية والهندسية",
+        "hero.line1": "الريادة في التصميم الهندسي، النماذج الأولية والمحاكاة العددية",
+        "hero.line2": "تحقيق الأفكار الصناعية من المفهوم إلى الإنتاج النهائي",
+        "hero.line3": "الدعم المتخصص في طريق تحويل الأفكار إلى منتجات",
+        "hero.viewServices": "خدماتنا المتخصصة",
+        "hero.viewPortfolio": "اتصل بنا",
+        
+        "news.title": "الأخبار والفعاليات",
+        "news.messageTitle": "رسالة مسبقة لعيد النوروز 2026",
+        "news.date": "فبراير 2025",
+        "news.content": "<p>تحية إلى جميع الزملاء، الشركاء التجاريين والعملاء الأعزاء،</p><p>نهنئكم مسبقًا بقدوم السنة الجديدة 2026. نبدأ العام القادم على أمل المزيد من النجاح في مجال التصميم الهندسي، النماذج الأولية والمحاكاة العددية.</p><p>في السنة الجديدة، سيكون تركيزنا على تطوير خدمات المختبرات الرقمية والتصنيع الرقمي لنكون أكثر فاعلية مع مجتمع التكنولوجيا في البلاد.</p>",
+        "news.viewAll": "عرض جميع الأخبار",
+        
+        "services.title": "خدماتنا المتخصصة",
+        "services.design.title": "التصميم الهندسي والمحاكاة العددية",
+        "services.design.sub1": "النمذجة ثلاثية الأبعاد المتقدمة",
+        "services.design.item1": "التصميم المفاهيمي والتفاصيل التنفيذية مع برامج CAD/CAM المتخصصة",
+        "services.design.item2": "المحاكاة العددية وتحليل العناصر المحدودة (FEA) للتحسين",
+        "services.design.sub2": "الهندسة العكسية والرقمنة",
+        "services.design.item3": "المسح ثلاثي الأبعاد الدقيق وإعادة التصميم البارامتري للمعدات",
+        "services.design.item4": "إعادة إنتاج القطع مع مراعاة معايير الأداء والسلامة",
+        
+        "services.prototype.title": "النماذج الأولية والتصنيع الرقمي",
+        "services.prototype.sub1": "الطباعة ثلاثية الأبعاد المتقدمة",
+        "services.prototype.item1": "الطباعة ثلاثية الأبعاد بالراتنج (SLA/DLP) بدقة ميكرونية",
+        "services.prototype.item2": "الطباعة ثلاثية الأبعاد بالخيوط (FDM) للنماذج الأولية الوظيفية",
+        "services.prototype.sub2": "التشغيل الآلي CNC",
+        "services.prototype.item3": "الخراطة والطحن متعدد المحاور بدقة عالية",
+        "services.prototype.item4": "خدمات التشغيل الآلي وتصنيع القطع الصناعية",
+        
+        "services.fablab.title": "خدمات المختبرات الرقمية ومراكز الابتكار",
+        "services.fablab.sub1": "إعداد المختبرات الرقمية",
+        "services.fablab.item1": "تصميم وتجهيز مختبرات التصنيع الرقمي",
+        "services.fablab.item2": "استشارة لإنشاء مراكز الابتكار والتكنولوجيا",
+        "services.fablab.sub2": "الإرشاد والتدريب",
+        "services.fablab.item3": "توجيه الفرق التكنولوجية والنواة القائمة على المعرفة",
+        "services.fablab.item4": "عقد ورش العمل المتخصصة في التصنيع الرقمي",
+        
+        "services.production.title": "تطوير المنتج وخط الإنتاج",
+        "services.production.sub1": "تصميم خط الإنتاج",
+        "services.production.item1": "تصميم وتحسين عمليات الإنتاج الصناعية",
+        "services.production.item2": "استشارة فنية لتطوير وحدات الإنتاج",
+        "services.production.sub2": "مراقبة الجودة والتوحيد القياسي",
+        "services.production.item3": "إعداد الوثائق الفنية وبروتوكولات مراقبة الجودة",
+        "services.production.item4": "اختبار الأداء والاختبارات الميكانيكية وفق المعايير",
+        
+        "services.education.title": "التعليم الهندسي المتخصص",
+        "services.education.sub1": "برامج الهندسة",
+        "services.education.item1": "تدريب CATIA، SolidWorks، Fusion 360 و Rhino",
+        "services.education.item2": "دورات متخصصة في تحليل العناصر المحدودة والمحاكاة",
+        "services.education.sub2": "التصنيع الرقمي",
+        "services.education.item3": "ورش عمل عملية في الطباعة ثلاثية الأبعاد والتشغيل الآلي",
+        "services.education.item4": "تدريب الهندسة العكسية والمسح ثلاثي الأبعاد",
+        
+        "services.consulting.title": "الاستشارات الفنية والهندسية",
+        "services.consulting.sub1": "استشارات تطوير المنتج",
+        "services.consulting.item1": "توجيه عملية تطوير المنتج من الفكرة إلى الإنتاج",
+        "services.consulting.item2": "تحسين التصميم للتشغيلية والتكلفة",
+        
+        "portfolio.title": "أعمالنا",
+        "portfolio.item1.title": "منقي الهواء الصناعي",
+        "portfolio.item1.desc": "تصميم وبناء جهاز تنقية الهواء المتقدم",
+        "portfolio.item2.title": "نظام قفل القياسات الحيوية الأمني",
+        "portfolio.item2.desc": "تطوير نظام قفل القياسات الحيوية بتكنولوجيا متقدمة",
+        "portfolio.item3.title": "محاكي تخطيط القلب الطبي",
+        "portfolio.item3.desc": "تصميم وإنتاج محاكي إشارات القلب للتعليم",
+        "portfolio.item4.title": "جهاز تنظيف حاقن السيارة",
+        "portfolio.item4.desc": "تصنيع جهاز تنظيف الحاقن المتخصص",
+        "portfolio.item5.title": "جهاز عرض الأوردة الطبي",
+        "portfolio.item5.desc": "تطوير جهاز عرض الأوردة المتقدم للاستخدام الطبي",
+        "portfolio.item6.title": "روبوت حمل الذراع الصناعي",
+        "portfolio.item6.desc": "تصميم وبناء روبوت الذراع للتطبيقات الصناعية",
+        "portfolio.item7.title": "كأس تفتان المعرض",
+        "portfolio.item7.desc": "بناء الكأس الفني بتقنيات التصنيع الرقمي",
+        "portfolio.item8.title": "جهاز اختبار لب الأسنان",
+        "portfolio.item8.desc": "إنتاج جهاز اختبار لب الأسنان المتخصص",
+        "portfolio.item9.title": "غطاء مصباح الشارع",
+        "portfolio.item9.desc": "تصميم وبناء غطاء المصباح المتين والجميل",
+        
+        "clients.title": "بعض عملائنا",
+        
+        "projects.title": "مشاريع التطوير والابتكار",
+        "projects.project1.title": "مصنع البوليسترين في سراوان",
+        "projects.project1.desc": "إنشاء وحدة إنتاج البوليسترين المتقدمة في المدينة الصناعية سراوان",
+        "projects.project2.title": "مقهى المختبر الرقمي روند",
+        "projects.project2.desc": "خلق مساحة للتعاون والابتكار لمجتمع التكنولوجيا والإبداع",
+        "projects.soon": "قيد التنفيذ",
+        
+        "downloads.title": "الوثائق الفنية والهندسية",
+        "downloads.description": "لفهم القدرات الفنية والمشاريع التنفيذية والخدمات المتخصصة للشركة بشكل كامل، قم بتنزيل الوثائق الشاملة أدناه",
+        "downloads.catalog": "كتالوج الخدمات الهندسية",
+        "downloads.resume": "السيرة الذاتية الفنية للشركة",
+        
+        "footer.contact": "اتصل بنا",
+        "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+        "footer.links": "خدمات متخصصة",
+        "footer.social": "اتصل بنا",
+        "footer.copyright": "© ٢٠٢٥ شركة التطوير الفنية والهندسية. جميع الحقوق محفوظة."
       }
     };
 
@@ -2156,7 +2395,7 @@
             splashScreen.style.display = 'none';
           }, 300);
         }
-      }, 2000); // تغییر به 2 ثانیه (2000 میلی‌ثانیه)
+      }, 2000);
       
       // تنظیم گالری نمونه کارها
       setupPortfolioAutoScroll();
@@ -2173,8 +2412,8 @@
       // تنظیم دکمه اسکرول به بالا
       setupScrollTop();
       
-      // بارگذاری ترجمه
-      loadTranslations();
+      // بارگذاری ترجمه - سیستم چندزبانه
+      setupMultiLanguage();
       
       // بهبود عملکرد
       setupPerformance();
@@ -2235,39 +2474,6 @@
           this.onerror = null;
         };
       }
-      
-      // مدیریت خطای تصاویر مشتریان
-      document.querySelectorAll('.client-logo img').forEach(img => {
-        img.onerror = function() {
-          const altText = this.alt || 'مشتری';
-          const text = altText.replace('مشتری ', '');
-          this.src = `data:image/svg+xml;base64,${btoa(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="80" viewBox="0 0 140 80">
-              <rect width="140" height="80" fill="#f1f5f9" rx="8"/>
-              <text x="70" y="40" text-anchor="middle" fill="#64748b" font-family="Arial" font-size="14" dy=".3em">${text}</text>
-            </svg>
-          `)}`;
-        };
-      });
-      
-      // مدیریت خطای تصاویر پروژه‌ها
-      document.querySelectorAll('.project-img').forEach(img => {
-        img.onerror = function() {
-          const altText = this.alt;
-          let text = '';
-          if (altText.includes('یونولیت')) {
-            text = 'کارخانه یونولیت';
-          } else if (altText.includes('فب‌لب')) {
-            text = 'کافه فب‌لب';
-          }
-          this.src = `data:image/svg+xml;base64,${btoa(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
-              <rect width="400" height="220" fill="#0f172a"/>
-              <text x="200" y="110" text-anchor="middle" fill="white" font-family="Arial" font-size="18">${text}</text>
-            </svg>
-          `)}`;
-        };
-      });
       
       // مدیریت خطای پرچم
       const flagImg = document.querySelector('.iran-flag img');
@@ -2372,17 +2578,70 @@
       });
     }
     
-    function loadTranslations() {
+    // ==================== سیستم چندزبانه (مانند کد مرجع) ====================
+    function setupMultiLanguage() {
+      // تنظیم رویداد برای دکمه‌های زبان
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.dataset.lang;
+          changeLanguage(lang);
+        });
+      });
+      
+      // بارگذاری زبان ذخیره شده یا تشخیص خودکار
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang && translations[savedLang]) {
+        changeLanguage(savedLang);
+      } else {
+        // تشخیص زبان مرورگر
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('ar')) {
+          changeLanguage('ar');
+        } else if (browserLang.startsWith('fa')) {
+          changeLanguage('fa');
+        } else {
+          changeLanguage('en');
+        }
+      }
+    }
+    
+    function changeLanguage(lang) {
+      if (!translations[lang]) return;
+      
+      // تغییر فعال بودن دکمه‌ها
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // تغییر متن‌ها
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations.fa[key]) {
+        if (translations[lang][key]) {
           if (key === 'news.content') {
-            element.innerHTML = translations.fa[key];
+            element.innerHTML = translations[lang][key];
           } else {
-            element.textContent = translations.fa[key];
+            element.textContent = translations[lang][key];
           }
         }
       });
+      
+      // تغییر جهت صفحه
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      } else if (lang === 'fa') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'fa';
+      } else if (lang === 'en') {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      }
+      
+      // ذخیره زبان انتخابی
+      localStorage.setItem('preferredLanguage', lang);
     }
     
     function setupPerformance() {
@@ -2396,31 +2655,6 @@
         const img = new Image();
         img.src = src;
       });
-    }
-    
-    // سیستم تغییر زبان
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const lang = this.dataset.lang;
-        changeLanguage(lang);
-      });
-    });
-    
-    function changeLanguage(lang) {
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.lang === lang) {
-          btn.classList.add('active');
-        }
-      });
-      
-      localStorage.setItem('preferredLanguage', lang);
-    }
-    
-    // بارگذاری زبان ذخیره شده
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang) {
-      changeLanguage(savedLang);
     }
   </script>
 </body>
