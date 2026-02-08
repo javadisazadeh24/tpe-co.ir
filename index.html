@@ -130,6 +130,221 @@
       border-radius: 2px;
     }
     
+    /* انیمیشن ذرات پس‌زمینه - فقط برای المان‌های شیشه‌ای */
+    .glass-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .particle-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      animation: particleFloat 8s infinite ease-in-out;
+      opacity: 0.2;
+      filter: blur(1px);
+    }
+    
+    .particle:nth-child(odd) {
+      background: linear-gradient(135deg, var(--engineering-accent), var(--primary-light));
+    }
+    
+    .particle:nth-child(3n) {
+      background: linear-gradient(135deg, var(--accent), #fbbf24);
+    }
+    
+    .particle:nth-child(5n) {
+      background: linear-gradient(135deg, #10b981, var(--engineering-accent));
+    }
+    
+    @keyframes particleFloat {
+      0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.1;
+      }
+      25% {
+        transform: translateY(-20px) translateX(10px) scale(1.2);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(-40px) translateX(-10px) scale(0.9);
+        opacity: 0.2;
+      }
+      75% {
+        transform: translateY(-20px) translateX(20px) scale(1.1);
+        opacity: 0.3;
+      }
+    }
+    
+    @keyframes particleWave {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+      33% {
+        transform: translateX(30px) translateY(20px);
+      }
+      66% {
+        transform: translateX(-20px) translateY(40px);
+      }
+      100% {
+        transform: translateX(0) translateY(0);
+      }
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 0 5px rgba(30, 64, 175, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(30, 64, 175, 0.4), 
+                    0 0 40px rgba(14, 165, 233, 0.2);
+      }
+    }
+    
+    /* افزودن افکت به المان‌های شیشه‌ای خاص */
+    .service-card,
+    .news-card,
+    .project-card,
+    .download-content,
+    .footer-content,
+    .news-section .news-container,
+    .clients-section,
+    .gallery-section,
+    .services-section,
+    .download-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before,
+    .news-card::before,
+    .project-card::before,
+    .download-content::before,
+    .footer-content::before,
+    .news-section .news-container::before,
+    .clients-section::before,
+    .gallery-section::before,
+    .services-section::before,
+    .download-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        rgba(30, 64, 175, 0.03) 0%,
+        rgba(14, 165, 233, 0.02) 25%,
+        rgba(220, 38, 38, 0.02) 50%,
+        rgba(139, 92, 246, 0.02) 75%,
+        rgba(16, 185, 129, 0.03) 100%
+      );
+      z-index: -1;
+      pointer-events: none;
+      animation: backgroundShift 15s infinite alternate ease-in-out;
+    }
+    
+    @keyframes backgroundShift {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+    
+    /* انیمیشن موج رنگی متحرک */
+    .color-wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: conic-gradient(
+        from 0deg at 50% 50%,
+        var(--primary) 0%,
+        var(--engineering-accent) 25%,
+        var(--accent) 50%,
+        #8b5cf6 75%,
+        var(--primary) 100%
+      );
+      opacity: 0.03;
+      animation: rotateWave 30s infinite linear;
+      z-index: -2;
+      pointer-events: none;
+    }
+    
+    @keyframes rotateWave {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* خطوط متحرک رنگی */
+    .moving-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent,
+        var(--primary),
+        var(--engineering-accent),
+        var(--accent),
+        transparent
+      );
+      opacity: 0.1;
+      animation: lineMove 10s infinite linear;
+      z-index: -1;
+    }
+    
+    .moving-line.vertical {
+      width: 1px;
+      height: 100px;
+      background: linear-gradient(180deg, 
+        transparent,
+        var(--primary),
+        var(--engineering-accent),
+        var(--accent),
+        transparent
+      );
+      animation: lineMoveVertical 8s infinite linear;
+    }
+    
+    @keyframes lineMove {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    
+    @keyframes lineMoveVertical {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(100%);
+      }
+    }
+    
     /* اسپلش اسکرین بهبود یافته */
     .splash-screen {
       position: fixed;
@@ -1028,69 +1243,223 @@
       box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4) !important;
     }
     
-    /* فوتر شیشه‌ای شیک */
-    footer {
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.05) 0%, 
-        rgba(255, 255, 255, 0.02) 100%);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      color: var(--text);
-      padding: 80px 20px 30px;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .footer-pattern {
+    /* ============ استایل نقشه جهان برای فوتر ============ */
+    .world-map-background {
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
       width: 100%;
-      height: 200px;
-      background: 
-        linear-gradient(90deg, transparent 0%, rgba(30, 64, 175, 0.08) 50%, transparent 100%),
-        radial-gradient(circle at 30% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='1200' height='600' viewBox='0 0 1200 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='noise' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%230a0a0a'/%3E%3Cg filter='url(%23noise)' opacity='0.1'%3E%3Cpath d='M200,150 Q250,100 300,150 T400,150' stroke='%23333' fill='none' stroke-width='0.5'/%3E%3Cpath d='M250,200 Q300,150 350,200 T450,200' stroke='%23333' fill='none' stroke-width='0.5'/%3E%3Cpath d='M300,250 Q350,200 400,250 T500,250' stroke='%23333' fill='none' stroke-width='0.5'/%3E%3Cpath d='M350,300 Q400,250 450,300 T550,300' stroke='%23333' fill='none' stroke-width='0.5'/%3E%3Cpath d='M400,350 Q450,300 500,350 T600,350' stroke='%23333' fill='none' stroke-width='0.5'/%3E%3Cpath d='M450,400 Q500,350 550,400 T650,400' stroke='%23333' fill='none' stroke-width='0.5'/%3E%3C/g%3E%3Ccircle cx='600' cy='300' r='180' fill='none' stroke='%23222' stroke-width='0.8'/%3E%3Ccircle cx='600' cy='300' r='150' fill='none' stroke='%23222' stroke-width='0.8'/%3E%3Ccircle cx='600' cy='300' r='120' fill='none' stroke='%23222' stroke-width='0.8'/%3E%3Ccircle cx='600' cy='300' r='90' fill='none' stroke='%23222' stroke-width='0.8'/%3E%3Ccircle cx='600' cy='300' r='60' fill='none' stroke='%23222' stroke-width='0.8'/%3E%3Ccircle cx='600' cy='300' r='30' fill='none' stroke='%23222' stroke-width='0.8'/%3E%3Cpath d='M450,80 L450,520' stroke='%23222' stroke-width='0.8'/%3E%3Cpath d='M750,80 L750,520' stroke='%23222' stroke-width='0.8'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
       z-index: 0;
-      opacity: 0.4;
+      filter: contrast(1.2) brightness(0.8);
     }
     
-    .engineering-grid {
+    /* کره زمین چرخان */
+    .earth-globe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      z-index: 0;
+      opacity: 0.08;
+    }
+    
+    .globe-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      animation: rotateGlobe 120s linear infinite;
+    }
+    
+    .globe {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at 30% 40%, rgba(50, 50, 50, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(70, 70, 70, 0.2) 0%, transparent 50%),
+        conic-gradient(
+          from 0deg,
+          #2a2a2a 0%,
+          #333 15%,
+          #3a3a3a 30%,
+          #333 45%,
+          #2a2a2a 60%,
+          #222 75%,
+          #2a2a2a 90%,
+          #333 100%
+        );
+      box-shadow: 
+        inset 20px -20px 40px rgba(0, 0, 0, 0.5),
+        inset -20px 20px 40px rgba(100, 100, 100, 0.2),
+        0 0 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    
+    .globe:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: 
+        linear-gradient(90deg, transparent 50%, rgba(60, 60, 60, 0.3) 50%),
+        linear-gradient(180deg, transparent 50%, rgba(60, 60, 60, 0.3) 50%);
+    }
+    
+    .globe-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100, 100, 100, 0.1) 0%, transparent 70%);
+      animation: pulseGlow 8s infinite alternate ease-in-out;
+    }
+    
+    @keyframes rotateGlobe {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes pulseGlow {
+      0% {
+        opacity: 0.1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+    }
+    
+    /* نقشه خطوط جغرافیایی */
+    .geo-lines {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      z-index: 0;
-      opacity: 0.2;
-    }
-    
-    .iran-flag {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 60px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        radial-gradient(circle at 50% 50%, transparent 10%, rgba(40, 40, 40, 0.05) 10%, transparent 11%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(50, 50, 50, 0.1) 2px, rgba(50, 50, 50, 0.1) 3px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(50, 50, 50, 0.1) 2px, rgba(50, 50, 50, 0.1) 3px);
       z-index: 1;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      opacity: 0.3;
     }
     
-    .iran-flag img {
+    /* نقاط شهرها روی نقشه */
+    .city-dots {
+      position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      z-index: 2;
+    }
+    
+    .city-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(200, 200, 200, 0.5);
+      border-radius: 50%;
+      animation: cityGlow 4s infinite alternate ease-in-out;
+    }
+    
+    @keyframes cityGlow {
+      0% {
+        opacity: 0.3;
+        box-shadow: 0 0 2px rgba(200, 200, 200, 0.2);
+      }
+      100% {
+        opacity: 0.6;
+        box-shadow: 0 0 6px rgba(200, 200, 200, 0.4);
+      }
+    }
+    
+    /* افکت شیشه‌ای روی فوتر */
+    .footer-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.85) 0%,
+        rgba(15, 23, 42, 0.9) 50%,
+        rgba(15, 23, 42, 0.85) 100%
+      );
+      backdrop-filter: blur(5px);
+      z-index: 1;
+    }
+    
+    /* خطوط ارتباطی بین نقاط */
+    .connection-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
+    .connection-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent,
+        rgba(100, 100, 100, 0.3),
+        transparent
+      );
+      transform-origin: left center;
+      animation: lineTravel 10s infinite linear;
+    }
+    
+    @keyframes lineTravel {
+      0% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: scaleX(1);
+        opacity: 0;
+      }
+    }
+    
+    /* فوتر شیشه‌ای شیک */
+    footer {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        135deg,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(20, 20, 30, 0.92) 100%
+      );
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      color: var(--text);
+      padding: 80px 20px 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .footer-content {
+      position: relative;
+      z-index: 2;
       max-width: var(--maxw);
       margin: 0 auto;
       display: grid;
@@ -1098,8 +1467,6 @@
       gap: 40px;
       padding-bottom: 40px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 1;
     }
     
     .footer-section h3 {
@@ -1226,7 +1593,7 @@
       color: var(--muted);
       font-size: 13px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       margin-top: 30px;
     }
     
@@ -1301,6 +1668,16 @@
       .client-logo {
         height: 60px;
         padding: 0 35px;
+      }
+      
+      .earth-globe {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .globe-glow {
+        width: 270px;
+        height: 270px;
       }
     }
     
@@ -1409,14 +1786,18 @@
         font-size: 17px;
       }
       
-      .iran-flag {
-        width: 80px;
-        height: 48px;
-        top: -40px;
-      }
-      
       .projects-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .earth-globe {
+        width: 200px;
+        height: 200px;
+      }
+      
+      .globe-glow {
+        width: 220px;
+        height: 220px;
       }
     }
     
@@ -1469,12 +1850,6 @@
         padding: 30px 20px;
       }
       
-      .iran-flag {
-        width: 70px;
-        height: 42px;
-        top: -35px;
-      }
-      
       .clients-wrapper {
         height: 80px;
       }
@@ -1482,6 +1857,16 @@
       .client-logo {
         height: 40px;
         padding: 0 20px;
+      }
+      
+      .earth-globe {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .globe-glow {
+        width: 170px;
+        height: 170px;
       }
     }
     
@@ -1914,12 +2299,17 @@
     </div>
   </section>
 
-  <!-- فوتر شیشه‌ای -->
+  <!-- فوتر شیشه‌ای با نقشه جهان -->
   <footer id="contact">
-    <div class="engineering-grid"></div>
-    <div class="footer-pattern"></div>
-    <div class="iran-flag">
-      <img src="videos/iran-flag.mp4" alt="پرچم ایران" loading="lazy">
+    <div class="world-map-background"></div>
+    <div class="footer-overlay"></div>
+    
+    <!-- نقشه کره زمین شفاف -->
+    <div class="earth-globe">
+      <div class="globe-container">
+        <div class="globe"></div>
+        <div class="globe-glow"></div>
+      </div>
     </div>
     
     <div class="container">
@@ -2047,7 +2437,7 @@
       }
     ];
 
-    // ترجمه‌ها - مانند کد مرجع
+    // ترجمه‌ها
     const translations = {
       fa: {
         // ناوبری
@@ -2417,6 +2807,12 @@
       
       // بهبود عملکرد
       setupPerformance();
+      
+      // ایجاد انیمیشن پس‌زمینه
+      setTimeout(() => {
+        createParticleBackground();
+        createWorldMap();
+      }, 500);
     });
     
     // ==================== توابع کمکی ====================
@@ -2472,21 +2868,6 @@
             </svg>
           `);
           this.onerror = null;
-        };
-      }
-      
-      // مدیریت خطای پرچم
-      const flagImg = document.querySelector('.iran-flag img');
-      if (flagImg) {
-        flagImg.onerror = function() {
-          this.src = 'data:image/svg+xml;base64,' + btoa(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" viewBox="0 0 100 60">
-              <rect width="100" height="20" y="0" fill="#239F40"/>
-              <rect width="100" height="20" y="20" fill="#FFFFFF"/>
-              <rect width="100" height="20" y="40" fill="#DA0000"/>
-              <text x="50" y="32" text-anchor="middle" fill="#DA0000" font-family="Arial" font-size="8" font-weight="bold">ایران</text>
-            </svg>
-          `);
         };
       }
     }
@@ -2578,7 +2959,7 @@
       });
     }
     
-    // ==================== سیستم چندزبانه (مانند کد مرجع) ====================
+    // ==================== سیستم چندزبانه ====================
     function setupMultiLanguage() {
       // تنظیم رویداد برای دکمه‌های زبان
       document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -2655,6 +3036,107 @@
         const img = new Image();
         img.src = src;
       });
+    }
+    
+    // ==================== انیمیشن‌های جدید ====================
+    function createParticleBackground() {
+      // ایجاد ذرات برای المان‌های شیشه‌ای
+      const glassElements = document.querySelectorAll(
+        '.service-card, .news-card, .project-card, .download-content, .footer-content, .news-section .news-container, .clients-section, .gallery-section, .services-section, .download-section'
+      );
+      
+      glassElements.forEach(element => {
+        // اضافه کردن کانتینر ذرات
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'glass-background';
+        
+        // اضافه کردن موج رنگی
+        const colorWave = document.createElement('div');
+        colorWave.className = 'color-wave';
+        particleContainer.appendChild(colorWave);
+        
+        // اضافه کردن خطوط متحرک
+        for (let i = 0; i < 5; i++) {
+          const line = document.createElement('div');
+          line.className = 'moving-line';
+          line.style.top = `${Math.random() * 100}%`;
+          line.style.animationDelay = `${Math.random() * 5}s`;
+          particleContainer.appendChild(line);
+          
+          const verticalLine = document.createElement('div');
+          verticalLine.className = 'moving-line vertical';
+          verticalLine.style.left = `${Math.random() * 100}%`;
+          verticalLine.style.animationDelay = `${Math.random() * 8}s`;
+          particleContainer.appendChild(verticalLine);
+        }
+        
+        // اضافه کردن ذرات
+        const particlesDiv = document.createElement('div');
+        particlesDiv.className = 'particle-container';
+        
+        for (let i = 0; i < 15; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+          particle.style.animationDelay = `${Math.random() * 8}s`;
+          particle.style.animationDuration = `${8 + Math.random() * 10}s`;
+          particlesDiv.appendChild(particle);
+        }
+        
+        particleContainer.appendChild(particlesDiv);
+        element.style.position = 'relative';
+        element.appendChild(particleContainer);
+        
+        // اضافه کردن افکت درخشش متناوب
+        element.style.animation = 'glowPulse 8s infinite ease-in-out';
+      });
+    }
+    
+    function createWorldMap() {
+      const footer = document.querySelector('footer');
+      
+      // اضافه کردن نقاط شهرها
+      const cityDots = document.createElement('div');
+      cityDots.className = 'city-dots';
+      
+      // موقعیت‌های تصادفی برای نقاط شهرها
+      const cities = 25;
+      for (let i = 0; i < cities; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'city-dot';
+        dot.style.left = `${10 + Math.random() * 80}%`;
+        dot.style.top = `${10 + Math.random() * 80}%`;
+        dot.style.animationDelay = `${Math.random() * 5}s`;
+        cityDots.appendChild(dot);
+      }
+      
+      footer.appendChild(cityDots);
+      
+      // اضافه کردن خطوط ارتباطی
+      const connectionLines = document.createElement('div');
+      connectionLines.className = 'connection-lines';
+      
+      // خطوط تصادفی
+      const lines = 15;
+      for (let i = 0; i < lines; i++) {
+        const line = document.createElement('div');
+        line.className = 'connection-line';
+        line.style.left = `${Math.random() * 100}%`;
+        line.style.top = `${Math.random() * 100}%`;
+        line.style.width = `${50 + Math.random() * 200}px`;
+        line.style.transform = `rotate(${Math.random() * 360}deg)`;
+        line.style.animationDelay = `${Math.random() * 5}s`;
+        line.style.animationDuration = `${5 + Math.random() * 15}s`;
+        connectionLines.appendChild(line);
+      }
+      
+      footer.appendChild(connectionLines);
+      
+      // اضافه کردن خطوط جغرافیایی
+      const geoLines = document.createElement('div');
+      geoLines.className = 'geo-lines';
+      footer.appendChild(geoLines);
     }
   </script>
 </body>
