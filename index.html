@@ -50,7 +50,6 @@
   <!-- آیکون شبکه‌های اجتماعی -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- استایل‌های وکتور و انیمیشن -->
   <style>
     /* استایل های اصلی */
     :root {
@@ -92,7 +91,7 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; height: auto; }
     
-    section { padding: 80px 20px; }
+    section { padding: 60px 20px; }
     
     .container {
       max-width: var(--maxw);
@@ -102,11 +101,11 @@
     
     h2 {
       text-align: center;
-      margin-bottom: 50px;
-      font-size: 36px;
+      margin-bottom: 40px;
+      font-size: 32px;
       color: var(--primary);
       position: relative;
-      padding-bottom: 20px;
+      padding-bottom: 15px;
     }
     
     h2:after {
@@ -115,9 +114,9 @@
       bottom: 0;
       right: 50%;
       transform: translateX(50%);
-      width: 100px;
+      width: 80px;
       height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
+      background: var(--accent);
       border-radius: 2px;
     }
     
@@ -143,88 +142,68 @@
     }
     
     .splash-logo {
-      width: 150px;
-      height: 150px;
-      margin-bottom: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 30px;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       animation: pulse 2s infinite;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      background: white;
+      padding: 20px;
     }
     
-    .splash-logo i {
-      font-size: 70px;
-      color: white;
+    .splash-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
     
     .splash-text {
       color: white;
-      font-size: 28px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 600;
       text-align: center;
       max-width: 80%;
       line-height: 1.5;
       animation: fadeInUp 1s ease;
     }
     
-    .splash-subtext {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 18px;
-      margin-top: 15px;
-      animation: fadeInUp 1.2s ease;
-    }
-    
-    /* افکت شیشه‌ای پیشرفته */
+    /* افکت شیشه‌ای */
     .glass-effect {
       background: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
-      border-radius: 16px;
+      border-radius: 12px;
     }
     
-    .glass-effect-dark {
-      background: rgba(15, 23, 42, 0.25);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      border-radius: 16px;
-    }
-    
-    /* ناوبری شیشه‌ای ثابت */
+    /* ناوبری */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    
-    .nav.hidden {
-      transform: translateY(-100%);
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     
     .nav.scrolled {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(25px) saturate(200%);
-      -webkit-backdrop-filter: blur(25px) saturate(200%);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     
     .nav-wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 15px 20px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -233,30 +212,28 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
     
     .brand img {
-      height: 55px;
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+      height: 50px;
+      transition: transform 0.3s;
     }
     
     .brand img:hover {
-      transform: rotate(10deg) scale(1.1);
+      transform: scale(1.05);
     }
     
     .company-name {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
       color: var(--primary);
       white-space: nowrap;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 5px;
       list-style: none;
       align-items: center;
     }
@@ -264,48 +241,26 @@
     .nav-links a {
       color: var(--text);
       font-weight: 600;
-      font-size: 15px;
-      padding: 8px 16px;
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .nav-links a:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
-      border-radius: 12px;
+      font-size: 14.5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.3s;
     }
     
     .nav-links a:hover {
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+      background: rgba(30, 64, 175, 0.1);
+      color: var(--primary);
     }
     
-    .nav-links a:hover:before {
-      opacity: 1;
-    }
-    
-    /* انتخابگر زبان */
+    /* انتخابگر زبان - مینیمال و مستطیلی */
     .language-selector {
       display: flex;
       gap: 5px;
-      margin-right: 0;
-      background: transparent;
-      padding: 0;
-      border-radius: 12px;
-      border: none;
-      overflow: hidden;
+      margin-right: 10px;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
     
     .lang-btn {
@@ -313,11 +268,11 @@
       border: none;
       background: transparent;
       cursor: pointer;
-      width: 32px;
-      height: 20px;
-      border-radius: 4px;
+      width: 28px;
+      height: 18px;
+      border-radius: 2px;
       overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s;
       position: relative;
       display: flex;
       align-items: center;
@@ -328,25 +283,24 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 2px;
+      border-radius: 1px;
     }
     
     .lang-btn.active {
-      box-shadow: 0 0 0 3px var(--primary);
-      transform: scale(1.15);
+      box-shadow: 0 0 0 2px var(--primary);
+      transform: scale(1.05);
     }
     
     .lang-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 0 2px var(--accent);
+      transform: scale(1.05);
     }
     
-    /* هیرو با فیلم و افکت‌های مهندسی */
+    /* هیرو با فیلم */
     .hero {
       position: relative;
       color: white;
       text-align: center;
-      padding: 160px 20px 100px;
+      padding: 140px 20px 100px;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -370,390 +324,292 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 58, 138, 0.7) 100%);
+      background: rgba(15, 23, 42, 0.7);
       z-index: -1;
     }
     
     .hero-content {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
     
     .hero h1 {
-      font-size: 48px;
-      margin-bottom: 25px;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 1s ease;
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     .hero p {
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.8;
       color: #e2e8f0;
-      margin-bottom: 40px;
-      animation: fadeInUp 1.2s ease;
+      margin-bottom: 30px;
     }
     
-    /* وکتورهای شناور مهندسی */
-    .floating-vectors {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    
-    .vector-item {
-      position: absolute;
-      opacity: 0.15;
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-    }
-    
-    .vector-item:hover {
-      opacity: 0.3;
-      transform: scale(1.1);
-    }
-    
-    .vector-gear {
-      width: 100px;
-      height: 100px;
-      top: 15%;
-      right: 10%;
-      animation: rotate 25s linear infinite;
-    }
-    
-    .vector-cnc {
-      width: 80px;
-      height: 80px;
-      bottom: 20%;
-      left: 10%;
-      animation: float 8s ease-in-out infinite;
-    }
-    
-    .vector-robot {
-      width: 90px;
-      height: 90px;
-      top: 40%;
-      left: 15%;
-      animation: float 10s ease-in-out infinite reverse;
-    }
-    
-    .vector-design {
-      width: 110px;
-      height: 110px;
-      bottom: 30%;
-      right: 15%;
-      animation: rotate 30s linear infinite reverse;
-    }
-    
-    .vector-factory {
-      width: 120px;
-      height: 120px;
-      top: 60%;
-      left: 5%;
-      animation: float 12s ease-in-out infinite;
-    }
-    
-    /* دکمه‌های با افکت مهندسی */
+    /* دکمه‌ها */
     .btn {
       display: inline-block;
-      padding: 16px 36px;
+      padding: 14px 32px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 17px;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-size: 16px;
+      transition: all 0.3s ease;
       cursor: pointer;
       border: none;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    
-    .btn:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 0;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: width 0.4s ease;
-      z-index: -1;
-    }
-    
-    .btn:hover:before {
-      width: 100%;
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, var(--primary), #3b82f6);
       color: white;
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
     }
     
     .btn-primary:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
     }
     
     .btn-secondary {
       background: transparent;
       color: white;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
     
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: white;
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
     }
     
     .cta {
       display: flex;
-      gap: 25px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 50px;
-      animation: fadeInUp 1.4s ease;
-    }
-    
-    /* بخش پیام مدیرعامل (اخبار) */
-    .news-section {
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .news-card {
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .news-card:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      transform: translateX(-100%);
-      transition: transform 0.8s ease;
-    }
-    
-    .news-card:hover:before {
-      transform: translateX(0);
-    }
-    
-    .news-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    }
-    
-    .news-header {
-      display: flex;
-      align-items: center;
       gap: 20px;
-      margin-bottom: 25px;
-    }
-    
-    .news-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: flex;
-      align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 36px;
-      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
-    }
-    
-    .news-title h3 {
-      color: var(--primary);
-      font-size: 24px;
-      margin-bottom: 5px;
-    }
-    
-    .news-title .news-date {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    
-    .news-content {
-      font-size: 18px;
-      line-height: 1.8;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    
-    .news-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #e2e8f0;
-    }
-    
-    .news-tags {
-      display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-    }
-    
-    .news-tag {
-      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--primary);
-      transition: all 0.3s ease;
-    }
-    
-    .news-tag:hover {
-      background: linear-gradient(135deg, var(--primary-light), var(--primary));
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    /* خدمات بهبود یافته با تأکید بر ماشین‌سازی */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
       margin-top: 40px;
     }
     
-    .service-card {
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 35px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      position: relative;
+    /* بخش اخبار و رویدادها */
+    .news-section {
+      background: #f8fafc;
+    }
+    
+    .news-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .news-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+    }
+    
+    @media (max-width: 768px) {
+      .news-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+    
+    .news-avatar {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       overflow: hidden;
+      border: 3px solid var(--primary);
+      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.2);
+    }
+    
+    .news-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .news-content {
+      flex: 1;
+    }
+    
+    .news-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    
+    .news-date {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .news-text {
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    
+    .news-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+      transition: gap 0.3s;
+    }
+    
+    .news-more:hover {
+      gap: 10px;
+    }
+    
+    /* خدمات */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
     }
     
     .service-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-    }
-    
-    .service-card:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      transform: translateX(-100%);
-      transition: transform 0.6s ease;
-    }
-    
-    .service-card:hover:before {
-      transform: translateX(0);
-    }
-    
-    .service-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 25px;
-      color: white;
-      font-size: 32px;
-      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
-      transition: all 0.4s ease;
-    }
-    
-    .service-card:hover .service-icon {
-      transform: rotate(15deg) scale(1.1);
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
     
     .service-card h3 {
       color: var(--primary);
-      margin-bottom: 20px;
-      font-size: 22px;
-      line-height: 1.3;
+      margin-bottom: 15px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .service-card h3:before {
+      content: "✓";
+      background: var(--primary);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
     }
     
     .service-subsection {
-      margin-top: 20px;
+      margin-top: 15px;
       padding-right: 15px;
       border-right: 3px solid #e2e8f0;
     }
     
     .service-subsection h4 {
       color: var(--muted);
-      font-size: 17px;
-      margin-bottom: 12px;
+      font-size: 16px;
+      margin-bottom: 8px;
       font-weight: 600;
     }
     
     .service-subsection ul {
       padding-right: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .service-subsection li {
-      margin-bottom: 8px;
-      font-size: 15px;
-      color: #4a5568;
-      position: relative;
-      padding-right: 20px;
-    }
-    
-    .service-subsection li:before {
-      content: '▸';
-      position: absolute;
-      right: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-    
-    .machining-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      color: #92400e;
-      padding: 5px 15px;
-      border-radius: 20px;
+      margin-bottom: 6px;
       font-size: 14px;
-      font-weight: 600;
-      margin-top: 10px;
-      box-shadow: 0 3px 10px rgba(146, 64, 14, 0.1);
+      color: #4a5568;
     }
     
-    /* گالری نمونه کارها - بهبود یافته */
+    /* مشتریان - اسکرول پیوسته واقعی */
+    .clients-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .clients-wrapper {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    
+    .clients-track {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      align-items: center;
+      animation: scrollClients 30s linear infinite;
+      will-change: transform;
+    }
+    
+    .client-logo {
+      height: 70px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .client-logo img {
+      max-height: 100%;
+      max-width: 120px;
+      object-fit: contain;
+    }
+    
+    .client-logo:hover {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    @keyframes scrollClients {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(50%);
+      }
+    }
+    
+    .clients-track:hover {
+      animation-play-state: paused;
+    }
+    
+    /* گالری نمونه کارها - اسکرول اتوماتیک مثل مشتریان */
     .gallery-section {
       background: #f8fafc;
       position: relative;
-      padding: 80px 0;
+      padding: 60px 0;
       overflow: hidden;
     }
     
@@ -767,7 +623,7 @@
     .gallery-wrapper {
       position: relative;
       width: 100%;
-      height: 380px;
+      height: 320px;
       overflow: hidden;
       margin-top: 30px;
     }
@@ -779,79 +635,71 @@
       right: 0;
       height: 100%;
       align-items: center;
-      animation: scrollGallery 45s linear infinite;
+      animation: scrollGallery 40s linear infinite;
       will-change: transform;
     }
     
     .gallery-item {
-      height: 330px;
-      width: 420px;
+      height: 280px;
+      width: 350px;
       flex: 0 0 auto;
-      margin: 0 25px;
-      border-radius: 20px;
+      margin: 0 20px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       background: white;
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
+      transition: all 0.3s;
     }
     
     .gallery-item:hover {
-      transform: translateY(-15px) scale(1.03);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
     
     .gallery-img {
-      height: 210px;
+      height: 180px;
       width: 100%;
       object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-    
-    .gallery-item:hover .gallery-img {
-      transform: scale(1.1);
     }
     
     .gallery-content {
-      padding: 25px;
+      padding: 15px;
     }
     
     .gallery-content h3 {
       color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 19px;
+      margin-bottom: 5px;
+      font-size: 16px;
     }
     
     .gallery-content .client-name {
       color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 10px;
+      font-size: 13px;
+      margin-bottom: 5px;
     }
     
     .gallery-content .project-desc {
-      font-size: 14px;
+      font-size: 12px;
       color: #64748b;
-      margin-bottom: 15px;
-      line-height: 1.6;
-      height: 45px;
-      overflow: hidden;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
     
     .gallery-content .project-type {
       display: inline-block;
-      padding: 5px 15px;
-      border-radius: 15px;
-      font-size: 13px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 11px;
       font-weight: 500;
     }
     
     .type-original {
-      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      background: #dbeafe;
       color: #1e40af;
     }
     
     .type-reverse {
-      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      background: #fee2e2;
       color: #dc2626;
     }
     
@@ -868,184 +716,93 @@
       animation-play-state: paused;
     }
     
-    /* مشتریان - اسکرول پیوسته */
-    .clients-section {
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .clients-wrapper {
-      position: relative;
-      width: 100%;
-      height: 150px;
-      overflow: hidden;
-      margin-top: 30px;
-    }
-    
-    .clients-track {
-      display: flex;
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      align-items: center;
-      animation: scrollClients 35s linear infinite;
-      will-change: transform;
-    }
-    
-    .client-logo {
-      height: 80px;
-      width: auto;
-      filter: grayscale(100%);
-      opacity: 0.7;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      padding: 0 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .client-logo img {
-      max-height: 100%;
-      max-width: 140px;
-      object-fit: contain;
-    }
-    
-    .client-logo:hover {
-      filter: grayscale(0);
-      opacity: 1;
-      transform: scale(1.1);
-    }
-    
-    @keyframes scrollClients {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(50%);
-      }
-    }
-    
-    .clients-track:hover {
-      animation-play-state: paused;
-    }
-    
     /* پروژه‌های توسعه */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
     
     .project-card {
-      background: var(--surface);
-      border-radius: 20px;
+      background: white;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      border: 1px solid #e2e8f0;
     }
     
     .project-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
     
     .project-img {
-      height: 220px;
+      height: 200px;
       width: 100%;
       object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-    
-    .project-card:hover .project-img {
-      transform: scale(1.05);
     }
     
     .project-content {
-      padding: 30px;
+      padding: 25px;
     }
     
     .project-content h3 {
       color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 22px;
+      margin-bottom: 10px;
     }
     
     .coming-soon {
       display: inline-block;
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      background: #fef3c7;
       color: #92400e;
-      padding: 6px 18px;
+      padding: 4px 12px;
       border-radius: 20px;
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 10px;
-      font-weight: 600;
-      box-shadow: 0 3px 10px rgba(146, 64, 14, 0.1);
+      font-weight: 500;
     }
     
     /* لینک‌های صفحات */
     .page-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-top: 60px;
+      gap: 20px;
+      margin-top: 50px;
       flex-wrap: wrap;
     }
     
     .page-link {
-      background: var(--surface);
-      padding: 35px 40px;
-      border-radius: 20px;
+      background: white;
+      padding: 25px 30px;
+      border-radius: 16px;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      min-width: 250px;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      min-width: 200px;
     }
     
     .page-link:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-    }
-    
-    .page-link:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      transform: translateX(-100%);
-      transition: transform 0.6s ease;
-    }
-    
-    .page-link:hover:before {
-      transform: translateX(0);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: var(--primary);
     }
     
     .page-link h3 {
       color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 22px;
-      position: relative;
+      margin-bottom: 10px;
     }
     
     .page-link p {
       color: var(--muted);
-      font-size: 15px;
-      position: relative;
+      font-size: 14px;
     }
     
-    /* دانلود */
+    /* دانلود با وکتورهای مناسب */
     .download-section {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
       color: white;
       position: relative;
       overflow: hidden;
@@ -1058,22 +815,22 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'/%3E%3C/svg%3E");
-      background-size: cover;
-      background-repeat: no-repeat;
-      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      z-index: 0;
     }
     
     .download-content {
       position: relative;
       z-index: 1;
+      text-align: center;
     }
     
-    /* فوتر بهبود یافته با پرچم ایران */
+    /* فوتر با پرچم ایران متحرک */
     footer {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: white;
-      padding: 60px 20px 20px;
+      padding: 50px 20px 20px;
       position: relative;
       overflow: hidden;
     }
@@ -1083,33 +840,32 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 150px;
-      background: linear-gradient(180deg, transparent 0%, #da0000 20%, #ffffff 40%, #ffffff 60%, #239f40 80%, transparent 100%);
+      height: 100px;
+      background: linear-gradient(180deg, 
+        transparent 0%, 
+        #239f40 10%, 
+        #239f40 20%, 
+        #ffffff 20%, 
+        #ffffff 40%,
+        #da0000 40%,
+        #da0000 60%,
+        #ffffff 60%,
+        #ffffff 80%,
+        #239f40 80%,
+        #239f40 90%,
+        transparent 100%);
       opacity: 0.1;
       z-index: 0;
+      animation: flagWave 20s linear infinite;
     }
     
-    .footer-logo-container {
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .footer-company-name {
-      font-size: 28px;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .footer-tagline {
-      color: #94a3b8;
-      font-size: 18px;
-      max-width: 500px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
+    @keyframes flagWave {
+      0%, 100% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: 100px 0;
+      }
     }
     
     .footer-content {
@@ -1118,7 +874,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 40px;
-      padding-bottom: 40px;
+      padding-bottom: 30px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       z-index: 1;
@@ -1126,10 +882,10 @@
     
     .footer-section h3 {
       color: white;
-      margin-bottom: 25px;
-      font-size: 20px;
+      margin-bottom: 20px;
+      font-size: 18px;
       position: relative;
-      padding-bottom: 15px;
+      padding-bottom: 10px;
     }
     
     .footer-section h3:after {
@@ -1137,9 +893,9 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
     }
     
     .contact-details {
@@ -1149,41 +905,39 @@
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 15px;
     }
     
     .contact-icon {
       color: var(--accent);
-      font-size: 20px;
+      font-size: 18px;
       margin-top: 3px;
-      min-width: 30px;
-      text-align: center;
+      min-width: 24px;
     }
     
     .social-grid {
       display: flex;
       gap: 15px;
-      margin-top: 20px;
+      margin-top: 15px;
     }
     
     .social-link {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s;
       color: white;
-      font-size: 20px;
+      font-size: 18px;
     }
     
     .social-link:hover {
-      background: linear-gradient(135deg, var(--accent), var(--primary));
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+      background: var(--accent);
+      transform: translateY(-3px);
     }
     
     .copyright {
@@ -1196,57 +950,36 @@
     }
     
     /* موبایل */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 40px;
-      }
-      
-      .hero p {
-        font-size: 18px;
-      }
-      
-      h2 {
-        font-size: 32px;
-      }
-      
-      .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
-      
-      .gallery-wrapper {
-        height: 350px;
-      }
-      
-      .gallery-item {
-        height: 300px;
-        width: 380px;
-      }
-    }
-    
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        gap: 5px;
       }
       
-      .mobile-menu-btn {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--primary);
-        font-size: 24px;
-        cursor: pointer;
+      .nav-links a {
+        font-size: 13px;
+        padding: 5px 8px;
       }
       
       .company-name {
-        font-size: 18px;
+        font-size: 16px;
+      }
+      
+      .brand {
+        gap: 8px;
       }
       
       .brand img {
-        height: 45px;
+        height: 42px;
       }
       
-      .hero {
-        padding: 140px 20px 80px;
+      .language-selector {
+        gap: 4px;
+        padding: 3px;
+      }
+      
+      .lang-btn {
+        width: 26px;
+        height: 16px;
       }
       
       .hero h1 {
@@ -1260,7 +993,6 @@
       .cta {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
       }
       
       .btn {
@@ -1272,58 +1004,74 @@
         font-size: 28px;
       }
       
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
       .clients-wrapper {
-        height: 120px;
+        height: 100px;
       }
       
       .client-logo {
-        height: 60px;
-        padding: 0 30px;
+        height: 50px;
+        padding: 0 25px;
       }
       
       .gallery-wrapper {
-        height: 320px;
+        height: 280px;
       }
       
       .gallery-item {
-        height: 280px;
-        width: 320px;
+        height: 240px;
+        width: 280px;
         margin: 0 15px;
       }
       
       .gallery-img {
-        height: 180px;
+        height: 150px;
       }
       
-      .news-card {
-        padding: 25px;
+      .service-card {
+        padding: 20px;
       }
       
-      .vector-item {
-        display: none;
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
       }
       
       .splash-text {
-        font-size: 24px;
+        font-size: 20px;
       }
       
-      .page-links {
-        flex-direction: column;
-        align-items: center;
+      .news-card {
+        padding: 20px;
       }
       
-      .page-link {
-        width: 100%;
-        max-width: 400px;
+      .news-avatar {
+        width: 80px;
+        height: 80px;
       }
     }
     
     /* موبایل کوچک */
     @media (max-width: 480px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+      }
+      
+      .nav-links a {
+        font-size: 12px;
+        padding: 4px 6px;
+      }
+      
+      .language-selector {
+        gap: 3px;
+      }
+      
+      .lang-btn {
+        width: 24px;
+        height: 14px;
+      }
+      
       .hero h1 {
         font-size: 26px;
       }
@@ -1332,65 +1080,42 @@
         font-size: 15px;
       }
       
-      .company-name {
-        font-size: 16px;
+      .brand {
+        gap: 6px;
       }
       
       .brand img {
-        height: 40px;
+        height: 38px;
       }
       
-      .service-card {
-        padding: 25px;
+      .company-name {
+        font-size: 14px;
       }
       
       .gallery-wrapper {
-        height: 300px;
+        height: 250px;
       }
       
       .gallery-item {
-        height: 260px;
-        width: 280px;
+        height: 220px;
+        width: 250px;
         margin: 0 10px;
       }
       
       .gallery-img {
-        height: 160px;
+        height: 130px;
       }
       
-      .news-avatar {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-      }
-      
-      .news-title h3 {
-        font-size: 20px;
-      }
-      
-      .news-content {
-        font-size: 16px;
-      }
-      
-      .splash-text {
-        font-size: 22px;
-      }
-      
-      .splash-logo {
-        width: 120px;
-        height: 120px;
-      }
-      
-      .splash-logo i {
-        font-size: 50px;
+      .page-link {
+        min-width: 100%;
       }
     }
     
-    /* انیمیشن‌های پیشرفته */
+    /* انیمیشن‌ها */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -1401,50 +1126,17 @@
     @keyframes pulse {
       0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
       }
-      70% {
+      50% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
       }
       100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-      }
-    }
-    
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-    
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-25px) rotate(5deg);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-    }
-    
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(0);
       }
     }
     
     .fade-in {
-      animation: fadeInUp 0.8s ease-out forwards;
+      animation: fadeInUp 0.8s ease-out;
     }
     
     /* اسکرول به بالا */
@@ -1465,7 +1157,7 @@
       z-index: 999;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s ease;
       box-shadow: 0 5px 20px rgba(30, 64, 175, 0.4);
     }
     
@@ -1475,20 +1167,8 @@
     }
     
     .scroll-top:hover {
-      transform: translateY(-5px) scale(1.1);
+      transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(30, 64, 175, 0.6);
-    }
-    
-    /* بارگذاری تدریجی */
-    .lazy-load {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    
-    .lazy-load.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
@@ -1497,10 +1177,11 @@
   <!-- اسپلش اسکرین -->
   <div class="splash-screen" id="splashScreen">
     <div class="splash-logo">
-      <i class="fas fa-industry"></i>
+      <!-- لوگوی شما اینجا قرار می‌گیرد -->
+      <!-- برای آپلود لوگوی خودتان، تصویر را در پوشه images با نام logo.png قرار دهید -->
+      <img src="images/logo.png" alt="لوگوی توسعه پردازان">
     </div>
-    <div class="splash-text">شرکت توسعه پردازان</div>
-    <div class="splash-subtext">تحقق رویاهای صنعتی شما از صفر تا صد</div>
+    <div class="splash-text">شرکت دانش بنیان توسعه پردازان<br>به شما خوش آمد می‌گوید</div>
   </div>
 
   <!-- دکمه اسکرول به بالا -->
@@ -1508,20 +1189,20 @@
     <i class="fas fa-chevron-up"></i>
   </div>
 
-  <!-- ناوبری شیشه‌ای -->
+  <!-- ناوبری -->
   <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
-        <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان - طراحی و ساخت دستگاه‌های صنعتی">
+        <!-- لوگوی شما اینجا نمایش داده می‌شود -->
+        <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان">
         <span class="company-name">توسعه پردازان</span>
       </a>
       <nav>
         <ul class="nav-links">
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
-          <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
-          <li><a href="#news" data-i18n="nav.news">پیام مدیر</a></li>
-          <li><a href="products.html" data-i18n="nav.products">نمونه کارها</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">گالری</a></li>
+          <li><a href="#services" data-i18n="nav.services">خدمات</a></li>
+          <li><a href="#news" data-i18n="nav.news">اخبار</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">نمونه کارها</a></li>
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
@@ -1550,234 +1231,178 @@
     </video>
     <div class="video-overlay"></div>
     
-    <!-- وکتورهای شناور مهندسی -->
-    <div class="floating-vectors">
-      <div class="vector-item vector-gear">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
-          <path d="M50,15 A35,35 0 0,1 85,50 A35,35 0 0,1 50,85 A35,35 0 0,1 15,50 A35,35 0 0,1 50,15 Z M50,25 A25,25 0 0,0 25,50 A25,25 0 0,0 50,75 A25,25 0 0,0 75,50 A25,25 0 0,0 50,25 Z M50,30 L60,40 L70,35 L65,50 L75,55 L60,55 L55,70 L50,60 L45,70 L40,55 L25,55 L35,50 L30,35 L40,40 Z"/>
-        </svg>
-      </div>
-      <div class="vector-item vector-cnc">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
-          <rect x="20" y="30" width="60" height="40" rx="5" stroke="white" stroke-width="2" fill="none"/>
-          <rect x="25" y="35" width="50" height="10" fill="white" opacity="0.7"/>
-          <circle cx="40" cy="65" r="8" fill="white" opacity="0.7"/>
-          <circle cx="60" cy="65" r="8" fill="white" opacity="0.7"/>
-          <line x1="35" y1="20" x2="35" y2="30" stroke="white" stroke-width="3"/>
-          <line x1="65" y1="20" x2="65" y2="30" stroke="white" stroke-width="3"/>
-        </svg>
-      </div>
-      <div class="vector-item vector-robot">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
-          <rect x="30" y="25" width="40" height="50" rx="10" fill="white" opacity="0.8"/>
-          <circle cx="40" cy="40" r="5" fill="#1e40af"/>
-          <circle cx="60" cy="40" r="5" fill="#1e40af"/>
-          <rect x="40" y="55" width="20" height="5" rx="2" fill="#1e40af"/>
-          <rect x="20" y="40" width="10" height="20" rx="5" fill="white" opacity="0.8"/>
-          <rect x="70" y="40" width="10" height="20" rx="5" fill="white" opacity="0.8"/>
-        </svg>
-      </div>
-      <div class="vector-item vector-design">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
-          <path d="M50,20 L80,35 L80,65 L50,80 L20,65 L20,35 Z" fill="none" stroke="white" stroke-width="3"/>
-          <circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-width="2"/>
-          <line x1="50" y1="20" x2="50" y2="80" stroke="white" stroke-width="1" opacity="0.5"/>
-          <line x1="20" y1="50" x2="80" y2="50" stroke="white" stroke-width="1" opacity="0.5"/>
-          <polygon points="50,35 60,45 55,55 45,55 40,45" fill="white" opacity="0.7"/>
-        </svg>
-      </div>
-      <div class="vector-item vector-factory">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white">
-          <rect x="20" y="40" width="60" height="40" fill="white" opacity="0.8"/>
-          <rect x="30" y="50" width="15" height="20" fill="#1e40af"/>
-          <rect x="55" y="50" width="15" height="20" fill="#1e40af"/>
-          <rect x="35" y="30" width="30" height="10" fill="white" opacity="0.9"/>
-          <rect x="45" y="20" width="10" height="10" fill="white" opacity="0.9"/>
-          <rect x="60" y="35" width="10" height="5" fill="#dc2626"/>
-        </svg>
-      </div>
-    </div>
-    
-    <div class="hero-content">
-      <h1 class="fade-in" data-i18n="hero.title">شرکت توسعه پردازان | طراحی و ساخت دستگاه‌های صنعتی</h1>
-      <p class="fade-in" data-i18n="hero.description">تحقق رویاهای صنعتی شما از صفر تا صد • تخصص در ماشین‌سازی و ساخت دستگاه‌های صنعتی • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی</p>
+    <div class="hero-content fade-in">
+      <h1 data-i18n="hero.title">شرکت دانش بنیان فنی و مهندسی توسعه پردازان</h1>
+      <p data-i18n="hero.description">تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی • خدمات ماشین‌سازی و ساخت دستگاه‌های صنعتی</p>
       <div class="cta">
-        <a href="#services" class="btn btn-primary" data-i18n="hero.viewServices">مشاهده خدمات ماشین‌سازی</a>
-        <a href="work-with-us.html" class="btn btn-secondary" data-i18n="hero.requestConsultation">درخواست مشاوره رایگان</a>
+        <a href="#services" class="btn btn-primary" data-i18n="hero.viewServices">مشاهده خدمات</a>
+        <a href="work-with-us.html" class="btn btn-secondary" data-i18n="hero.requestConsultation">درخواست مشاوره</a>
       </div>
     </div>
   </section>
 
-  <!-- بخش پیام مدیرعامل (اخبار) -->
+  <!-- بخش اخبار و رویدادها -->
   <section id="news" class="news-section">
     <div class="container">
-      <h2 data-i18n="news.title">پیام مدیرعامل</h2>
-      <div class="news-card glass-effect">
-        <div class="news-header">
+      <h2 data-i18n="news.title">اخبار و رویدادها</h2>
+      <div class="news-container">
+        <div class="news-card fade-in">
           <div class="news-avatar">
-            <i class="fas fa-user-tie"></i>
+            <!-- عکس شما اینجا قرار می‌گیرد -->
+            <!-- برای آپلود عکس خودتان، تصویر را در پوشه images با نام ceo.jpg قرار دهید -->
+            <img src="images/ceo.jpg" alt="مدیرعامل توسعه پردازان" onerror="this.src='https://via.placeholder.com/100/1e40af/ffffff?text=مدیرعامل'">
           </div>
-          <div class="news-title">
-            <h3 data-i18n="news.messageTitle">پیام نوروزی مدیرعامل توسعه پردازان</h3>
-            <div class="news-date" data-i18n="news.date">فروردین ۱۴۰۴</div>
+          <div class="news-content">
+            <h3 data-i18n="news.messageTitle">پیام پیشاپیش نوروزی ۱۴۰۵</h3>
+            <span class="news-date" data-i18n="news.date">اسفند ۱۴۰۴</span>
+            <div class="news-text" data-i18n="news.content">
+              <p>با درود به تمامی همکاران، شرکای تجاری و مشتریان گرامی،</p>
+              <p>پیشاپیش فرا رسیدن سال نو ۱۴۰۵ را به شما تبریک می‌گوییم. سالی که در پیش داریم را به امید موفقیت‌های بیشتر در حوزه طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی آغاز می‌کنیم.</p>
+              <p>در سال جدید، تمرکز ما بر توسعه خدمات فب‌لب و ساخت دیجیتال خواهد بود تا بتوانیم همراهی مؤثرتری با جامعه فناور کشور داشته باشیم.</p>
+            </div>
+            <a href="news.html" class="news-more" data-i18n="news.viewAll">
+              مشاهده تمام اخبار
+              <i class="fas fa-arrow-left"></i>
+            </a>
           </div>
-        </div>
-        <div class="news-content" data-i18n="news.content">
-          <p>همکاران گرامی، شرکای تجاری و مشتریان عزیز،</p>
-          <p>سال نو بر همگی شما مبارک باد. سال ۱۴۰۳ سالی پر از چالش و موفقیت برای خانواده توسعه پردازان بود. در این سال توانستیم پروژه‌های مهمی در حوزه ماشین‌سازی و ساخت دستگاه‌های صنعتی به انجام برسانیم و همکاری‌های ارزشمندی با صنایع مختلف کشور آغاز کنیم.</p>
-          <p>برای سال جدید، تمرکز ما بر توسعه فناوری‌های پیشرفته در حوزه ساخت و تولید، گسترش خدمات ماشین‌سازی و ارائه راه‌حل‌های نوآورانه برای صنعتگران کشور خواهد بود. امیدواریم در سال ۱۴۰۴ بتوانیم گام‌های بلندتری در راستای توسعه صنعتی کشور برداریم.</p>
-          <p>برای همه شما آرزوی سالی پر از سلامتی، موفقیت و پیشرفت دارم.</p>
-        </div>
-        <div class="news-footer">
-          <div class="news-tags">
-            <span class="news-tag">نوروز ۱۴۰۴</span>
-            <span class="news-tag">پیام مدیرعامل</span>
-            <span class="news-tag">توسعه پردازان</span>
-          </div>
-          <a href="news.html" class="btn btn-primary" style="padding: 10px 25px; font-size: 15px;" data-i18n="news.viewAll">مشاهده تمام اخبار</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- خدمات با تأکید بر ماشین‌سازی -->
+  <!-- خدمات -->
   <section id="services">
     <div class="container">
-      <h2 data-i18n="services.title">خدمات تخصصی ماشین‌سازی و ساخت دستگاه</h2>
+      <h2 data-i18n="services.title">خدمات ما</h2>
       <div class="services-grid">
-        <!-- طراحی و ساخت دستگاه صنعتی -->
-        <div class="service-card fade-in lazy-load">
-          <div class="service-icon">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3 data-i18n="services.machining.title">ماشین‌سازی و ساخت دستگاه صنعتی</h3>
-          <span class="machining-badge" data-i18n="services.machining.badge">خدمات ویژه ماشین‌سازی</span>
-          <div class="service-subsection">
-            <h4 data-i18n="services.machining.sub1">طراحی و ساخت ماشین‌آلات صنعتی</h4>
-            <ul>
-              <li data-i18n="services.machining.item1">طراحی و ساخت دستگاه‌های خط تولید صنعتی سفارشی</li>
-              <li data-i18n="services.machining.item2">تولید ماشین‌آلات تخصصی برای صنایع مختلف</li>
-              <li data-i18n="services.machining.item3">بهینه‌سازی و ارتقاء دستگاه‌های موجود</li>
-            </ul>
-            
-            <h4 data-i18n="services.machining.sub2">خدمات ماشینکاری پیشرفته</h4>
-            <ul>
-              <li data-i18n="services.machining.item4">ماشینکاری CNC چندمحوره با دقت میکرونی</li>
-              <li data-i18n="services.machining.item5">تراشکاری و فرزکاری قطعات صنعتی</li>
-              <li data-i18n="services.machining.item6">ساخت قالب‌های صنعتی و پرس</li>
-            </ul>
-          </div>
-        </div>
-        
         <!-- طراحی و توسعه محصول -->
-        <div class="service-card fade-in lazy-load">
-          <div class="service-icon">
-            <i class="fas fa-pencil-ruler"></i>
-          </div>
-          <h3 data-i18n="services.design.title">طراحی و توسعه محصول صنعتی</h3>
+        <div class="service-card fade-in">
+          <h3 data-i18n="services.design.title">طراحی و توسعه محصول</h3>
           <div class="service-subsection">
-            <h4 data-i18n="services.design.sub1">طراحی صنعتی و مدل‌سازی سه‌بعدی</h4>
+            <h4 data-i18n="services.design.sub1">طراحی صنعتی و مدل‌سازی سه‌بعدی پیشرفته</h4>
             <ul>
-              <li data-i18n="services.design.item1">طراحی مفهومی و جزئیات اجرایی با نرم‌افزارهای CAD/CAM</li>
-              <li data-i18n="services.design.item2">شبیه‌سازی عددی و تحلیل المان محدود (FEA)</li>
-              <li data-i18n="services.design.item3">بهینه‌سازی فرم و عملکرد محصولات صنعتی</li>
+              <li data-i18n="services.design.item1">از فاز کانسپت تا طراحی جزئیات اجرایی با نرم‌افزارهای CAD/CAM و شبیه‌سازی عددی</li>
+              <li data-i18n="services.design.item2">خدمات ماشین‌سازی و ساخت دستگاه‌های صنعتی سفارشی</li>
             </ul>
             
-            <h4 data-i18n="services.design.sub2">مهندسی معکوس تجهیزات</h4>
+            <h4 data-i18n="services.design.sub2">مهندسی معکوس تجهیزات پزشکی و صنعتی</h4>
             <ul>
-              <li data-i18n="services.design.item4">اسکن سه‌بعدی و بازطراحی پارامتریک</li>
-              <li data-i18n="services.design.item5">بازتولید قطعات با رعایت استانداردهای عملکردی</li>
+              <li data-i18n="services.design.item3">اسکن سه‌بعدی، بازطراحی پارامتریک و بازتولید قطعات با رعایت استانداردهای عملکردی</li>
+            </ul>
+            
+            <h4 data-i18n="services.design.sub3">تحلیل ارگونومی و ساخت‌پذیری</h4>
+            <ul>
+              <li data-i18n="services.design.item4">بهینه‌سازی فرم و عملکرد محصولات برای تولید انبوه و کاربری ایمن</li>
             </ul>
           </div>
         </div>
         
         <!-- ساخت و تولید -->
-        <div class="service-card fade-in lazy-load">
-          <div class="service-icon">
-            <i class="fas fa-industry"></i>
-          </div>
-          <h3 data-i18n="services.production.title">ساخت و تولید پیشرفته</h3>
+        <div class="service-card fade-in">
+          <h3 data-i18n="services.production.title">ساخت و تولید</h3>
           <div class="service-subsection">
-            <h4 data-i18n="services.production.sub1">تولید افزایشی (پرینت سه بعدی)</h4>
+            <h4 data-i18n="services.production.sub1">ماشینکاری CNC چندمحوره</h4>
             <ul>
-              <li data-i18n="services.production.item1">چاپ سه‌بعدی رزین (SLA/DLP) با دقت بالا</li>
-              <li data-i18n="services.production.item2">پرینت سه‌بعدی فیلامنت (FDM) برای نمونه‌سازی</li>
-              <li data-i18n="services.production.item3">تولید قطعات پیچیده با پرینترهای صنعتی</li>
+              <li data-i18n="services.production.item1">تراش، فرز و وایرکات با دقت میکرونی برای تولید قطعات فلزی و پلیمری</li>
+              <li data-i18n="services.production.item2">خدمات ماشین‌سازی و ساخت قطعات صنعتی</li>
             </ul>
             
-            <h4 data-i18n="services.production.sub2">فرآیندهای تولیدی</h4>
+            <h4 data-i18n="services.production.sub2">ساخت افزایشی (Additive Manufacturing)</h4>
             <ul>
-              <li data-i18n="services.production.item4">برش لیزری و واترجت پیشرفته</li>
-              <li data-i18n="services.production.item5">خمکاری و فرم‌دهی فلزات</li>
-              <li data-i18n="services.production.item6">جوشکاری تخصصی و عیوب‌یابی</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- اتوماسیون صنعتی -->
-        <div class="service-card fade-in lazy-load">
-          <div class="service-icon">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h3 data-i18n="services.automation.title">اتوماسیون و رباتیک صنعتی</h3>
-          <div class="service-subsection">
-            <h4 data-i18n="services.automation.sub1">سیستم‌های اتوماسیون</h4>
-            <ul>
-              <li data-i18n="services.automation.item1">طراحی و پیاده‌سازی خطوط تولید خودکار</li>
-              <li data-i18n="services.automation.item2">یکپارچه‌سازی سیستم‌های کنترل صنعتی</li>
-              <li data-i18n="services.automation.item3">مانیتورینگ و کنترل فرآیندهای تولید</li>
+              <li data-i18n="services.production.item3">چاپ سه‌بعدی رزین (SLA/DLP) و فیلامنت (FDM) برای نمونه‌سازی سریع و تولید قطعات پیچیده</li>
             </ul>
             
-            <h4 data-i18n="services.automation.sub2">رباتیک صنعتی</h4>
+            <h4 data-i18n="services.production.sub3">ساخت کاهشی (Subtractive Manufacturing)</h4>
             <ul>
-              <li data-i18n="services.automation.item4">طراحی و ساخت ربات‌های صنعتی</li>
-              <li data-i18n="services.automation.item5">یکپارچه‌سازی بازوهای رباتیک در خط تولید</li>
-              <li data-i18n="services.automation.item6">برنامه‌نویسی و راه‌اندازی ربات‌ها</li>
+              <li data-i18n="services.production.item4">عملیات برش، تراش و قالب‌سازی با تجهیزات پیشرفته</li>
             </ul>
           </div>
         </div>
         
         <!-- توسعه زیرساخت -->
-        <div class="service-card fade-in lazy-load">
-          <div class="service-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <h3 data-i18n="services.infrastructure.title">توسعه زیرساخت صنعتی</h3>
+        <div class="service-card fade-in">
+          <h3 data-i18n="services.infrastructure.title">توسعه زیرساخت و پروژه‌های صنعتی</h3>
           <div class="service-subsection">
-            <h4 data-i18n="services.infrastructure.sub1">راه‌اندازی خطوط تولید</h4>
+            <h4 data-i18n="services.infrastructure.sub1">طراحی و راه‌اندازی خطوط تولید</h4>
             <ul>
-              <li data-i18n="services.infrastructure.item1">طراحی و نصب خطوط تولید صنعتی</li>
-              <li data-i18n="services.infrastructure.item2">بهینه‌سازی فرآیندهای تولید موجود</li>
-              <li data-i18n="services.infrastructure.item3">مشاوره فنی برای توسعه واحدهای تولیدی</li>
+              <li data-i18n="services.infrastructure.item1">از طراحی فرآیند تا نصب و راه‌اندازی تجهیزات</li>
+              <li data-i18n="services.infrastructure.item2">خدمات ماشین‌سازی و ساخت دستگاه‌های خط تولید</li>
             </ul>
             
-            <h4 data-i18n="services.infrastructure.sub2">تجهیزات تخصصی</h4>
+            <h4 data-i18n="services.infrastructure.sub2">تولید تجهیزات دکوراسیون خلاق و ماژولار</h4>
             <ul>
-              <li data-i18n="services.infrastructure.item4">ساخت تجهیزات دکوراسیون خلاق و ماژولار</li>
-              <li data-i18n="services.infrastructure.item5">تولید گجت‌های کاربردی و ابزارهای صنعتی</li>
+              <li data-i18n="services.infrastructure.item3">طراحی و ساخت سیستم‌های مدولار برای فضاهای عمومی و صنعتی</li>
+            </ul>
+            
+            <h4 data-i18n="services.infrastructure.sub3">تولید گجت‌های کاربردی و خلاقانه</h4>
+            <ul>
+              <li data-i18n="services.infrastructure.item4">توسعه ابزارهای هوشمند و نوآورانه با رویکرد حل مسئله</li>
             </ul>
           </div>
         </div>
         
-        <!-- مشاوره و آموزش -->
-        <div class="service-card fade-in lazy-load">
-          <div class="service-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <h3 data-i18n="services.consulting.title">مشاوره و آموزش تخصصی</h3>
+        <!-- خدمات نوآوری -->
+        <div class="service-card fade-in">
+          <h3 data-i18n="services.innovation.title">خدمات نوآوری و منتورینگ</h3>
           <div class="service-subsection">
-            <h4 data-i18n="services.consulting.sub1">مشاوره فنی و مهندسی</h4>
+            <h4 data-i18n="services.innovation.sub1">منتورینگ تیم‌ها و هسته‌های فناور</h4>
             <ul>
-              <li data-i18n="services.consulting.item1">مشاوره طراحی و ساخت دستگاه‌های صنعتی</li>
-              <li data-i18n="services.consulting.item2">بهینه‌سازی فرآیندهای تولید و ماشین‌سازی</li>
-              <li data-i18n="services.consulting.item3">استانداردسازی و کنترل کیفیت</li>
+              <li data-i18n="services.innovation.item1">راهبری فرآیند توسعه محصول، تجاری‌سازی و ورود به بازار</li>
             </ul>
             
-            <h4 data-i18n="services.consulting.sub2">آموزش تخصصی</h4>
+            <h4 data-i18n="services.innovation.sub2">ایجاد و مدیریت مراکز نوآوری</h4>
             <ul>
-              <li data-i18n="services.consulting.item4">دوره‌های آموزش نرم‌افزارهای مهندسی</li>
-              <li data-i18n="services.consulting.item5">کارگاه‌های عملی ماشین‌کاری و CNC</li>
-              <li data-i18n="services.consulting.item6">آموزش مهندسی معکوس و پرینت سه بعدی</li>
+              <li data-i18n="services.innovation.item2">طراحی و پیاده‌سازی فب‌لب‌ها و آزمایشگاه‌های ساخت دیجیتال</li>
+            </ul>
+            
+            <h4 data-i18n="services.innovation.sub3">مشاوره برندینگ صنعتی و طراحی تجربه کاربری</h4>
+            <ul>
+              <li data-i18n="services.innovation.item3">ارتقای جایگاه محصول در بازار و افزایش تعامل کاربر</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- آموزش تخصصی -->
+        <div class="service-card fade-in">
+          <h3 data-i18n="services.education.title">آموزش تخصصی و انتقال دانش</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.education.sub1">آموزش نرم‌افزارهای مهندسی</h4>
+            <ul>
+              <li data-i18n="services.education.item1">CATIA، SolidWorks، Rhino، Fusion360 و سایر ابزارهای طراحی و تحلیل</li>
+            </ul>
+            
+            <h4 data-i18n="services.education.sub2">کارگاه‌های ساخت دیجیتال</h4>
+            <ul>
+              <li data-i18n="services.education.item2">آموزش عملی پرینت سه‌بعدی، CNC و مهندسی معکوس</li>
+              <li data-i18n="services.education.item3">آموزش خدمات ماشین‌سازی و ساخت دستگاه</li>
+            </ul>
+            
+            <h4 data-i18n="services.education.sub3">برگزاری دوره‌های تخصصی</h4>
+            <ul>
+              <li data-i18n="services.education.item4">انتقال دانش فنی و ارتقای توانمندی‌های مهندسی</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- مشاوره تخصصی -->
+        <div class="service-card fade-in">
+          <h3 data-i18n="services.consulting.title">مشاوره تخصصی توسعه محصول</h3>
+          <div class="service-subsection">
+            <h4 data-i18n="services.consulting.sub1">استانداردسازی فرآیندها</h4>
+            <ul>
+              <li data-i18n="services.consulting.item1">تدوین مستندات فنی و راهبری پروژه‌های نوآورانه</li>
+              <li data-i18n="services.consulting.item2">مشاوره در حوزه ماشین‌سازی و ساخت دستگاه‌های صنعتی</li>
+            </ul>
+            
+            <h4 data-i18n="services.consulting.sub2">مونتاژ و کنترل کیفیت</h4>
+            <ul>
+              <li data-i18n="services.consulting.item3">تست عملکرد، آزمون‌های مکانیکی و تضمین کیفیت مطابق استانداردهای صنعتی</li>
+            </ul>
+            
+            <h4 data-i18n="services.consulting.sub3">پروژه‌های توسعه‌ای شرکت</h4>
+            <ul>
+              <li data-i18n="services.consulting.item4">کارخانه تولید یونولیت سراوان (در حال تأسیس)</li>
+              <li data-i18n="services.consulting.item5">کافه فب‌لب روند (بزودی) مرکز نوآوری و تعامل</li>
             </ul>
           </div>
         </div>
@@ -1785,10 +1410,10 @@
     </div>
   </section>
 
-  <!-- گالری نمونه کارها -->
+  <!-- گالری برخی از نمونه کارها -->
   <section id="portfolio" class="gallery-section">
     <div class="container">
-      <h2 data-i18n="portfolio.title">گالری پروژه‌های ماشین‌سازی</h2>
+      <h2 data-i18n="portfolio.title">برخی از نمونه کارهای ما</h2>
       <div class="gallery-wrapper">
         <div class="gallery-track" id="galleryTrack"></div>
       </div>
@@ -1798,78 +1423,78 @@
   <!-- لینک به صفحات مجزا -->
   <section class="container">
     <div class="page-links">
-      <a href="products.html" class="page-link glass-effect">
-        <h3 data-i18n="links.products.title">نمونه پروژه‌های ماشین‌سازی</h3>
-        <p data-i18n="links.products.desc">مشاهده کامل پروژه‌های طراحی و ساخت دستگاه‌های صنعتی</p>
+      <a href="products.html" class="page-link">
+        <h3 data-i18n="links.products.title">نمونه خدمات و محصولات</h3>
+        <p data-i18n="links.products.desc">مشاهده کامل محصولات و خدمات شرکت</p>
       </a>
-      <a href="resume.html" class="page-link glass-effect">
-        <h3 data-i18n="links.resume.title">تیم متخصص ما</h3>
-        <p data-i18n="links.resume.desc">آشنایی با مهندسین و متخصصین ماشین‌سازی شرکت</p>
+      <a href="resume.html" class="page-link">
+        <h3 data-i18n="links.resume.title">رزومه پرسنل</h3>
+        <p data-i18n="links.resume.desc">اطلاعات کامل پرسنل و تیم متخصص</p>
       </a>
     </div>
   </section>
 
-  <!-- مشتریان -->
+  <!-- مشتریان با اسکرول پیوسته -->
   <section id="clients" class="clients-section">
     <div class="container">
-      <h2 data-i18n="clients.title">شرکای تجاری و مشتریان ما</h2>
+      <h2 data-i18n="clients.title">برخی از مشتریان ما</h2>
       <div class="clients-wrapper">
         <div class="clients-track">
           <!-- ردیف اول -->
           <div class="client-logo">
-            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
           </div>
           <div class="client-logo">
-            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
           </div>
           <div class="client-logo">
-            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
           </div>
           <div class="client-logo">
-            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان">
           </div>
           <div class="client-logo">
-            <img src="clients/design-lab.png" alt="دیزاین لب - مشتری خدمات ماشین‌سازی">
+            <img src="clients/design-lab.png" alt="دیزاین لب">
           </div>
           <div class="client-logo">
-            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
           </div>
           <div class="client-logo">
-            <img src="clients/innovation.png" alt="مجتمع نوآوری - مشتری خدمات ماشین‌سازی">
+            <img src="clients/innovation.png" alt="مجتمع نوآوری">
           </div>
           <div class="client-logo">
-            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ - مشتری خدمات ماشین‌سازی">
+            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ">
           </div>
           <div class="client-logo">
-            <img src="clients/my-baby.png" alt="شرکت my baby - مشتری خدمات ماشین‌سازی">
+            <img src="clients/my-baby.png" alt="شرکت my baby">
           </div>
           <!-- تکرار برای اسکرول پیوسته -->
           <div class="client-logo">
-            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/university-sb.png" alt="دانشگاه سیستان و بلوچستان">
           </div>
           <div class="client-logo">
-            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/park-sb.png" alt="پارک علم و فناوری سیستان و بلوچستان">
           </div>
           <div class="client-logo">
-            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/health-center.png" alt="مرکز بهداشت زاهدان">
           </div>
           <div class="client-logo">
-            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/university-medical.png" alt="دانشگاه علوم پزشکی زاهدان">
           </div>
           <div class="client-logo">
-            <img src="clients/design-lab.png" alt="دیزاین لب - مشتری خدمات ماشین‌سازی">
+            <img src="clients/design-lab.png" alt="دیزاین لب">
           </div>
           <div class="client-logo">
-            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان - مشتری خدمات ماشین‌سازی">
+            <img src="clients/harir.png" alt="کارخانه حریر انار کرمان">
           </div>
           <div class="client-logo">
-            <img src="clients/innovation.png" alt="مجتمع نوآوری - مشتری خدمات ماشین‌سازی">
+            <img src="clients/innovation.png" alt="مجتمع نوآوری">
           </div>
           <div class="client-logo">
-            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ - مشتری خدمات ماشین‌سازی">
+            <img src="clients/fly-bar.png" alt="شرکت پرواز یاران سیرنگ">
           </div>
           <div class="client-logo">
-            <img src="clients/my-baby.png" alt="شرکت my baby - مشتری خدمات ماشین‌سازی">
+            <img src="clients/my-baby.png" alt="شرکت my baby">
           </div>
         </div>
       </div>
@@ -1879,30 +1504,22 @@
   <!-- پروژه‌های توسعه -->
   <section id="projects">
     <div class="container">
-      <h2 data-i18n="projects.title">پروژه‌های توسعه و ماشین‌سازی</h2>
+      <h2 data-i18n="projects.title">پروژه‌های توسعه شرکت</h2>
       <div class="projects-grid">
-        <div class="project-card fade-in lazy-load glass-effect">
-          <img src="images/projects/yunolit-factory.jpg" alt="کارخانه تولید یونولیت سراوان - پروژه ماشین‌سازی شرکت توسعه پردازان" class="project-img">
+        <div class="project-card fade-in">
+          <img src="images/projects/yunolit-factory.jpg" alt="کارخانه تولید یونولیت سراوان" class="project-img">
           <div class="project-content">
             <h3 data-i18n="projects.project1.title">کارخانه تولید یونولیت سراوان</h3>
-            <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت با دستگاه‌های پیشرفته ماشین‌سازی در شهرک صنعتی سراوان</p>
-            <span class="coming-soon" data-i18n="projects.soon">در حال اجرا</span>
-          </div>
-        </div>
-        <div class="project-card fade-in lazy-load glass-effect">
-          <img src="images/projects/fablab-cafe.jpg" alt="کافه فب‌لب روند - مرکز نوآوری ماشین‌سازی" class="project-img">
-          <div class="project-content">
-            <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
-            <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری در حوزه ماشین‌سازی و ساخت دیجیتال برای جامعه فناور</p>
+            <p data-i18n="projects.project1.desc">احداث واحد تولید یونولیت در شهرک صنعتی سراوان</p>
             <span class="coming-soon" data-i18n="projects.soon">بزودی</span>
           </div>
         </div>
-        <div class="project-card fade-in lazy-load glass-effect">
-          <img src="images/projects/cnc-workshop.jpg" alt="کارگاه ماشین‌سازی CNC پیشرفته" class="project-img">
+        <div class="project-card fade-in">
+          <img src="images/projects/fablab-cafe.jpg" alt="کافه فب‌لب روند" class="project-img">
           <div class="project-content">
-            <h3 data-i18n="projects.project3.title">کارگاه ماشین‌سازی پیشرفته</h3>
-            <p data-i18n="projects.project3.desc">تجهیز کارگاه ماشین‌سازی با دستگاه‌های CNC نسل جدید برای خدمات تخصصی</p>
-            <span class="coming-soon" data-i18n="projects.soon">در حال تجهیز</span>
+            <h3 data-i18n="projects.project2.title">کافه فب‌لب روند</h3>
+            <p data-i18n="projects.project2.desc">ایجاد فضای همکاری و نوآوری برای جامعه فناور</p>
+            <span class="coming-soon" data-i18n="projects.soon">بزودی</span>
           </div>
         </div>
       </div>
@@ -1912,29 +1529,23 @@
   <!-- دانلود -->
   <section class="download-section">
     <div class="container">
-      <div class="download-content" style="text-align: center;">
-        <h2 style="color: white;" data-i18n="downloads.title">مستندات فنی و کاتالوگ‌ها</h2>
-        <p style="max-width: 700px; margin: 0 auto 40px; color: #e2e8f0; font-size: 18px; line-height: 1.8;" data-i18n="downloads.description">
-          برای دریافت اطلاعات کامل در مورد خدمات ماشین‌سازی، طراحی دستگاه‌های صنعتی و قابلیت‌های فنی شرکت، مستندات زیر را دانلود کنید
+      <div class="download-content">
+        <h2 style="color: white;" data-i18n="downloads.title">مستندات شرکت</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px; color: #e2e8f0; font-size: 18px;" data-i18n="downloads.description">
+          برای دریافت اطلاعات کامل شرکت، مستندات زیر را دانلود کنید
         </p>
         <div class="cta">
-          <a href="files/catalog.pdf" class="btn btn-secondary" data-i18n="downloads.catalog">کاتالوگ خدمات ماشین‌سازی</a>
-          <a href="files/resume.pdf" class="btn btn-primary" data-i18n="downloads.resume">رزومه فنی شرکت</a>
-          <a href="files/machining-portfolio.pdf" class="btn btn-secondary" data-i18n="downloads.portfolio">پورتفولیو پروژه‌ها</a>
+          <a href="files/catalog.pdf" class="btn btn-secondary" data-i18n="downloads.catalog">کاتالوگ شرکت</a>
+          <a href="files/resume.pdf" class="btn btn-primary" data-i18n="downloads.resume">رزومه شرکت</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- فوتر با پرچم ایران -->
+  <!-- فوتر -->
   <footer id="contact">
     <div class="iran-flag"></div>
     <div class="container">
-      <div class="footer-logo-container">
-        <div class="footer-company-name">شرکت توسعه پردازان</div>
-        <div class="footer-tagline" data-i18n="footer.tagline">پیشرو در طراحی و ساخت دستگاه‌های صنعتی • تخصص در خدمات ماشین‌سازی • تحقق رویاهای صنعتی شما</div>
-      </div>
-      
       <div class="footer-content">
         <div class="footer-section">
           <h3 data-i18n="footer.contact">تماس با ما</h3>
@@ -1955,30 +1566,22 @@
               <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
               <span data-i18n="footer.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
             </div>
-            <div class="contact-item">
-              <span class="contact-icon"><i class="fas fa-clock"></i></span>
-              <span data-i18n="footer.hours">شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰</span>
-            </div>
           </div>
         </div>
         
         <div class="footer-section">
-          <h3 data-i18n="footer.links">دسترسی سریع</h3>
-          <div style="display: flex; flex-direction: column; gap: 15px;">
-            <a href="#services" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ماشین‌سازی</a>
-            <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">نمونه پروژه‌ها</a>
-            <a href="#portfolio" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.portfolio">گالری تصاویر</a>
+          <h3 data-i18n="footer.links">لینک‌های مفید</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="#services" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.services">خدمات ما</a>
+            <a href="products.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.products">نمونه خدمات و محصولات</a>
+            <a href="resume.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.resume">رزومه پرسنل</a>
             <a href="#projects" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.projects">پروژه‌های توسعه</a>
-            <a href="#news" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.news">اخبار و رویدادها</a>
             <a href="work-with-us.html" style="color: #cbd5e1; transition: color 0.3s;" data-i18n="nav.work">همکاری با ما</a>
           </div>
         </div>
         
         <div class="footer-section">
           <h3 data-i18n="footer.social">شبکه‌های اجتماعی</h3>
-          <p style="color: #94a3b8; margin-bottom: 20px; line-height: 1.6;" data-i18n="footer.socialDesc">
-            آخرین اخبار، پروژه‌های ماشین‌سازی و نوآوری‌های صنعتی ما را در شبکه‌های اجتماعی دنبال کنید
-          </p>
           <div class="social-grid">
             <a href="https://www.linkedin.com/company/tpe-co" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-linkedin-in"></i>
@@ -1989,208 +1592,150 @@
             <a href="https://wa.me/989226704205" class="social-link" title="WhatsApp" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://t.me/tpe_co" class="social-link" title="Telegram" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-telegram"></i>
-            </a>
           </div>
         </div>
       </div>
       
       <div class="copyright" data-i18n="footer.copyright">
-        © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است. | طراحی و ساخت با افتخار در ایران
+        © ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است. | طراحی و ساخت با افتخار در ایران
       </div>
     </div>
   </footer>
 
   <script>
-    // ==================== سیستم چندزبانه با اضافه شدن ترجمه‌های جدید ====================
+    // ==================== سیستم چندزبانه ====================
     const translations = {
       fa: {
         // ناوبری
         "nav.home": "خانه",
-        "nav.services": "خدمات ماشین‌سازی",
-        "nav.news": "پیام مدیر",
-        "nav.products": "نمونه کارها",
-        "nav.portfolio": "گالری",
+        "nav.services": "خدمات",
+        "nav.news": "اخبار",
+        "nav.portfolio": "نمونه کارها",
         "nav.projects": "پروژه‌ها",
         "nav.work": "همکاری",
         "nav.contact": "تماس",
         
         // هیرو
-        "hero.title": "شرکت توسعه پردازان | طراحی و ساخت دستگاه‌های صنعتی",
-        "hero.description": "تحقق رویاهای صنعتی شما از صفر تا صد • تخصص در ماشین‌سازی و ساخت دستگاه‌های صنعتی • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی",
-        "hero.viewServices": "مشاهده خدمات ماشین‌سازی",
-        "hero.requestConsultation": "درخواست مشاوره رایگان",
+        "hero.title": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+        "hero.description": "تحقق رویاهای صنعتی شما از صفر تا صد • طراحی، ساخت و تولید با استانداردهای جهانی • همراهی در مسیر تبدیل ایده به محصول نهایی • خدمات ماشین‌سازی و ساخت دستگاه‌های صنعتی",
+        "hero.viewServices": "مشاهده خدمات",
+        "hero.requestConsultation": "درخواست مشاوره",
         
         // اخبار
-        "news.title": "پیام مدیرعامل",
-        "news.messageTitle": "پیام نوروزی مدیرعامل توسعه پردازان",
-        "news.date": "فروردین ۱۴۰۴",
-        "news.content": "<p>همکاران گرامی، شرکای تجاری و مشتریان عزیز،</p><p>سال نو بر همگی شما مبارک باد. سال ۱۴۰۳ سالی پر از چالش و موفقیت برای خانواده توسعه پردازان بود. در این سال توانستیم پروژه‌های مهمی در حوزه ماشین‌سازی و ساخت دستگاه‌های صنعتی به انجام برسانیم و همکاری‌های ارزشمندی با صنایع مختلف کشور آغاز کنیم.</p><p>برای سال جدید، تمرکز ما بر توسعه فناوری‌های پیشرفته در حوزه ساخت و تولید، گسترش خدمات ماشین‌سازی و ارائه راه‌حل‌های نوآورانه برای صنعتگران کشور خواهد بود. امیدواریم در سال ۱۴۰۴ بتوانیم گام‌های بلندتری در راستای توسعه صنعتی کشور برداریم.</p><p>برای همه شما آرزوی سالی پر از سلامتی، موفقیت و پیشرفت دارم.</p>",
+        "news.title": "اخبار و رویدادها",
+        "news.messageTitle": "پیام پیشاپیش نوروزی ۱۴۰۵",
+        "news.date": "اسفند ۱۴۰۴",
+        "news.content": "<p>با درود به تمامی همکاران، شرکای تجاری و مشتریان گرامی،</p><p>پیشاپیش فرا رسیدن سال نو ۱۴۰۵ را به شما تبریک می‌گوییم. سالی که در پیش داریم را به امید موفقیت‌های بیشتر در حوزه طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی آغاز می‌کنیم.</p><p>در سال جدید، تمرکز ما بر توسعه خدمات فب‌لب و ساخت دیجیتال خواهد بود تا بتوانیم همراهی مؤثرتری با جامعه فناور کشور داشته باشیم.</p>",
         "news.viewAll": "مشاهده تمام اخبار",
         
         // خدمات
-        "services.title": "خدمات تخصصی ماشین‌سازی و ساخت دستگاه",
-        "services.machining.title": "ماشین‌سازی و ساخت دستگاه صنعتی",
-        "services.machining.badge": "خدمات ویژه ماشین‌سازی",
-        "services.machining.sub1": "طراحی و ساخت ماشین‌آلات صنعتی",
-        "services.machining.item1": "طراحی و ساخت دستگاه‌های خط تولید صنعتی سفارشی",
-        "services.machining.item2": "تولید ماشین‌آلات تخصصی برای صنایع مختلف",
-        "services.machining.item3": "بهینه‌سازی و ارتقاء دستگاه‌های موجود",
-        "services.machining.sub2": "خدمات ماشینکاری پیشرفته",
-        "services.machining.item4": "ماشینکاری CNC چندمحوره با دقت میکرونی",
-        "services.machining.item5": "تراشکاری و فرزکاری قطعات صنعتی",
-        "services.machining.item6": "ساخت قالب‌های صنعتی و پرس",
+        "services.title": "خدمات ما",
+        "services.design.title": "طراحی و توسعه محصول",
+        "services.design.sub1": "طراحی صنعتی و مدل‌سازی سه‌بعدی پیشرفته",
+        "services.design.item1": "از فاز کانسپت تا طراحی جزئیات اجرایی با نرم‌افزارهای CAD/CAM و شبیه‌سازی عددی",
+        "services.design.item2": "خدمات ماشین‌سازی و ساخت دستگاه‌های صنعتی سفارشی",
+        "services.design.sub2": "مهندسی معکوس تجهیزات پزشکی و صنعتی",
+        "services.design.item3": "اسکن سه‌بعدی، بازطراحی پارامتریک و بازتولید قطعات با رعایت استانداردهای عملکردی",
+        "services.design.sub3": "تحلیل ارگونومی و ساخت‌پذیری",
+        "services.design.item4": "بهینه‌سازی فرم و عملکرد محصولات برای تولید انبوه و کاربری ایمن",
         
-        "services.design.title": "طراحی و توسعه محصول صنعتی",
-        "services.design.sub1": "طراحی صنعتی و مدل‌سازی سه‌بعدی",
-        "services.design.item1": "طراحی مفهومی و جزئیات اجرایی با نرم‌افزارهای CAD/CAM",
-        "services.design.item2": "شبیه‌سازی عددی و تحلیل المان محدود (FEA)",
-        "services.design.item3": "بهینه‌سازی فرم و عملکرد محصولات صنعتی",
-        "services.design.sub2": "مهندسی معکوس تجهیزات",
-        "services.design.item4": "اسکن سه‌بعدی و بازطراحی پارامتریک",
-        "services.design.item5": "بازتولید قطعات با رعایت استانداردهای عملکردی",
+        "services.production.title": "ساخت و تولید",
+        "services.production.sub1": "ماشینکاری CNC چندمحوره",
+        "services.production.item1": "تراش، فرز و وایرکات با دقت میکرونی برای تولید قطعات فلزی و پلیمری",
+        "services.production.item2": "خدمات ماشین‌سازی و ساخت قطعات صنعتی",
+        "services.production.sub2": "ساخت افزایشی (Additive Manufacturing)",
+        "services.production.item3": "چاپ سه‌بعدی رزین (SLA/DLP) و فیلامنت (FDM) برای نمونه‌سازی سریع و تولید قطعات پیچیده",
+        "services.production.sub3": "ساخت کاهشی (Subtractive Manufacturing)",
+        "services.production.item4": "عملیات برش، تراش و قالب‌سازی با تجهیزات پیشرفته",
         
-        "services.production.title": "ساخت و تولید پیشرفته",
-        "services.production.sub1": "تولید افزایشی (پرینت سه بعدی)",
-        "services.production.item1": "چاپ سه‌بعدی رزین (SLA/DLP) با دقت بالا",
-        "services.production.item2": "پرینت سه‌بعدی فیلامنت (FDM) برای نمونه‌سازی",
-        "services.production.item3": "تولید قطعات پیچیده با پرینترهای صنعتی",
-        "services.production.sub2": "فرآیندهای تولیدی",
-        "services.production.item4": "برش لیزری و واترجت پیشرفته",
-        "services.production.item5": "خمکاری و فرم‌دهی فلزات",
-        "services.production.item6": "جوشکاری تخصصی و عیوب‌یابی",
+        "services.infrastructure.title": "توسعه زیرساخت و پروژه‌های صنعتی",
+        "services.infrastructure.sub1": "طراحی و راه‌اندازی خطوط تولید",
+        "services.infrastructure.item1": "از طراحی فرآیند تا نصب و راه‌اندازی تجهیزات",
+        "services.infrastructure.item2": "خدمات ماشین‌سازی و ساخت دستگاه‌های خط تولید",
+        "services.infrastructure.sub2": "تولید تجهیزات دکوراسیون خلاق و ماژولار",
+        "services.infrastructure.item3": "طراحی و ساخت سیستم‌های مدولار برای فضاهای عمومی و صنعتی",
+        "services.infrastructure.sub3": "تولید گجت‌های کاربردی و خلاقانه",
+        "services.infrastructure.item4": "توسعه ابزارهای هوشمند و نوآورانه با رویکرد حل مسئله",
         
-        "services.automation.title": "اتوماسیون و رباتیک صنعتی",
-        "services.automation.sub1": "سیستم‌های اتوماسیون",
-        "services.automation.item1": "طراحی و پیاده‌سازی خطوط تولید خودکار",
-        "services.automation.item2": "یکپارچه‌سازی سیستم‌های کنترل صنعتی",
-        "services.automation.item3": "مانیتورینگ و کنترل فرآیندهای تولید",
-        "services.automation.sub2": "رباتیک صنعتی",
-        "services.automation.item4": "طراحی و ساخت ربات‌های صنعتی",
-        "services.automation.item5": "یکپارچه‌سازی بازوهای رباتیک در خط تولید",
-        "services.automation.item6": "برنامه‌نویسی و راه‌اندازی ربات‌ها",
+        "services.innovation.title": "خدمات نوآوری و منتورینگ",
+        "services.innovation.sub1": "منتورینگ تیم‌ها و هسته‌های فناور",
+        "services.innovation.item1": "راهبری فرآیند توسعه محصول، تجاری‌سازی و ورود به بازار",
+        "services.innovation.sub2": "ایجاد و مدیریت مراکز نوآوری",
+        "services.innovation.item2": "طراحی و پیاده‌سازی فب‌لب‌ها و آزمایشگاه‌های ساخت دیجیتال",
+        "services.innovation.sub3": "مشاوره برندینگ صنعتی و طراحی تجربه کاربری",
+        "services.innovation.item3": "ارتقای جایگاه محصول در بازار و افزایش تعامل کاربر",
         
-        "services.infrastructure.title": "توسعه زیرساخت صنعتی",
-        "services.infrastructure.sub1": "راه‌اندازی خطوط تولید",
-        "services.infrastructure.item1": "طراحی و نصب خطوط تولید صنعتی",
-        "services.infrastructure.item2": "بهینه‌سازی فرآیندهای تولید موجود",
-        "services.infrastructure.item3": "مشاوره فنی برای توسعه واحدهای تولیدی",
-        "services.infrastructure.sub2": "تجهیزات تخصصی",
-        "services.infrastructure.item4": "ساخت تجهیزات دکوراسیون خلاق و ماژولار",
-        "services.infrastructure.item5": "تولید گجت‌های کاربردی و ابزارهای صنعتی",
+        "services.education.title": "آموزش تخصصی و انتقال دانش",
+        "services.education.sub1": "آموزش نرم‌افزارهای مهندسی",
+        "services.education.item1": "CATIA، SolidWorks، Rhino، Fusion360 و سایر ابزارهای طراحی و تحلیل",
+        "services.education.sub2": "کارگاه‌های ساخت دیجیتال",
+        "services.education.item2": "آموزش عملی پرینت سه‌بعدی، CNC و مهندسی معکوس",
+        "services.education.item3": "آموزش خدمات ماشین‌سازی و ساخت دستگاه",
+        "services.education.sub3": "برگزاری دوره‌های تخصصی",
+        "services.education.item4": "انتقال دانش فنی و ارتقای توانمندی‌های مهندسی",
         
-        "services.consulting.title": "مشاوره و آموزش تخصصی",
-        "services.consulting.sub1": "مشاوره فنی و مهندسی",
-        "services.consulting.item1": "مشاوره طراحی و ساخت دستگاه‌های صنعتی",
-        "services.consulting.item2": "بهینه‌سازی فرآیندهای تولید و ماشین‌سازی",
-        "services.consulting.item3": "استانداردسازی و کنترل کیفیت",
-        "services.consulting.sub2": "آموزش تخصصی",
-        "services.consulting.item4": "دوره‌های آموزش نرم‌افزارهای مهندسی",
-        "services.consulting.item5": "کارگاه‌های عملی ماشین‌کاری و CNC",
-        "services.consulting.item6": "آموزش مهندسی معکوس و پرینت سه بعدی",
+        "services.consulting.title": "مشاوره تخصصی توسعه محصول",
+        "services.consulting.sub1": "استانداردسازی فرآیندها",
+        "services.consulting.item1": "تدوین مستندات فنی و راهبری پروژه‌های نوآورانه",
+        "services.consulting.item2": "مشاوره در حوزه ماشین‌سازی و ساخت دستگاه‌های صنعتی",
+        "services.consulting.sub2": "مونتاژ و کنترل کیفیت",
+        "services.consulting.item3": "تست عملکرد، آزمون‌های مکانیکی و تضمین کیفیت مطابق استانداردهای صنعتی",
+        "services.consulting.sub3": "پروژه‌های توسعه‌ای شرکت",
+        "services.consulting.item4": "کارخانه تولید یونولیت سراوان (در حال تأسیس)",
+        "services.consulting.item5": "کافه فب‌لب روند (بزودی) مرکز نوآوری و تعامل",
         
         // نمونه کارها
-        "portfolio.title": "گالری پروژه‌های ماشین‌سازی",
+        "portfolio.title": "برخی از نمونه کارهای ما",
         
         // ترجمه نمونه کارها
-        "portfolio.item1.title": "دستگاه تصفیه هوا صنعتی",
-        "portfolio.item1.desc": "طراحی و ساخت دستگاه تصفیه هوا با تکنولوژی UV برای صنایع",
-        "portfolio.item2.title": "سیستم قفل بیومتریک امنیتی",
-        "portfolio.item2.desc": "ساخت سیستم قفل بیومتریک امنیتی با فناوری پیشرفته",
-        "portfolio.item3.title": "شبیه‌ساز ECG پزشکی",
-        "portfolio.item3.desc": "طراحی و ساخت شبیه‌ساز سیگنال قلب برای آموزش پزشکی",
-        "portfolio.item4.title": "دستگاه انژکتور شور خودرو",
-        "portfolio.item4.desc": "ساخت دستگاه انژکتور شور برای شرکت پویا خودرو",
-        "portfolio.item5.title": "دستگاه مشاهده رگ پزشکی",
-        "portfolio.item5.desc": "تولید دستگاه مشاهده رگ برای مصارف پزشکی و درمانی",
-        "portfolio.item6.title": "ربات بازویی پورتر صنعتی",
-        "portfolio.item6.desc": "طراحی و ساخت ربات بازویی پورتر برای مشتری ترکیه‌ای",
-        "portfolio.item7.title": "تندیس تفتان نمایشگاهی",
-        "portfolio.item7.desc": "ساخت تندیس تفتان برای پارک علم و فناوری",
-        "portfolio.item8.title": "دستگاه تست پالپ دندانپزشکی",
-        "portfolio.item8.desc": "تولید دستگاه تست پالپ برای کاربردهای دندانپزشکی",
-        "portfolio.item9.title": "کاور لامپ خیابانی",
-        "portfolio.item9.desc": "ساخت کاور لامپ خیابانی برای شرکت مهرنور الکترونیک",
+        "portfolio.item1.title": "دستگاه تصفیه هوا",
+        "portfolio.item1.desc": "دستگاه تصفیه هوا با تکنولوژی UV",
+        "portfolio.item2.title": "قفل بیومتریک",
+        "portfolio.item2.desc": "سیستم قفل بیومتریک امنیتی",
+        "portfolio.item3.title": "شبیه‌ساز ECG",
+        "portfolio.item3.desc": "شبیه‌ساز سیگنال قلب برای آموزش پزشکی",
+        "portfolio.item4.title": "دستگاه انژکتور شور",
+        "portfolio.item4.desc": "دستگاه انژکتور شور برای شرکت پویا خودرو",
+        "portfolio.item5.title": "دستگاه مشاهده رگ",
+        "portfolio.item5.desc": "دستگاه مشاهده رگ برای پزشکی",
+        "portfolio.item6.title": "ربات بازویی پورتر",
+        "portfolio.item6.desc": "ربات بازویی پورتر برای مشتری ترکیه‌ای",
+        "portfolio.item7.title": "تندیس تفتان",
+        "portfolio.item7.desc": "تندیس تفتان برای پارک علم و فناوری",
+        "portfolio.item8.title": "دستگاه تست پالپ",
+        "portfolio.item8.desc": "دستگاه تست پالپ دندانپزشکی",
+        "portfolio.item9.title": "کاور لامپ",
+        "portfolio.item9.desc": "کاور لامپ خیابانی برای شرکت مهرنور",
         
         // لینک‌ها
-        "links.products.title": "نمونه پروژه‌های ماشین‌سازی",
-        "links.products.desc": "مشاهده کامل پروژه‌های طراحی و ساخت دستگاه‌های صنعتی",
-        "links.resume.title": "تیم متخصص ما",
-        "links.resume.desc": "آشنایی با مهندسین و متخصصین ماشین‌سازی شرکت",
+        "links.products.title": "نمونه خدمات و محصولات",
+        "links.products.desc": "مشاهده کامل محصولات و خدمات شرکت",
+        "links.resume.title": "رزومه پرسنل",
+        "links.resume.desc": "اطلاعات کامل پرسنل و تیم متخصص",
         
         // مشتریان
-        "clients.title": "شرکای تجاری و مشتریان ما",
+        "clients.title": "برخی از مشتریان ما",
         
         // پروژه‌ها
-        "projects.title": "پروژه‌های توسعه و ماشین‌سازی",
+        "projects.title": "پروژه‌های توسعه شرکت",
         "projects.project1.title": "کارخانه تولید یونولیت سراوان",
-        "projects.project1.desc": "احداث واحد تولید یونولیت با دستگاه‌های پیشرفته ماشین‌سازی در شهرک صنعتی سراوان",
+        "projects.project1.desc": "احداث واحد تولید یونولیت در شهرک صنعتی سراوان",
         "projects.project2.title": "کافه فب‌لب روند",
-        "projects.project2.desc": "ایجاد فضای همکاری و نوآوری در حوزه ماشین‌سازی و ساخت دیجیتال برای جامعه فناور",
-        "projects.project3.title": "کارگاه ماشین‌سازی پیشرفته",
-        "projects.project3.desc": "تجهیز کارگاه ماشین‌سازی با دستگاه‌های CNC نسل جدید برای خدمات تخصصی",
-        "projects.soon": "در حال اجرا",
+        "projects.project2.desc": "ایجاد فضای همکاری و نوآوری برای جامعه فناور",
+        "projects.soon": "بزودی",
         
         // دانلود
-        "downloads.title": "مستندات فنی و کاتالوگ‌ها",
-        "downloads.description": "برای دریافت اطلاعات کامل در مورد خدمات ماشین‌سازی، طراحی دستگاه‌های صنعتی و قابلیت‌های فنی شرکت، مستندات زیر را دانلود کنید",
-        "downloads.catalog": "کاتالوگ خدمات ماشین‌سازی",
-        "downloads.resume": "رزومه فنی شرکت",
-        "downloads.portfolio": "پورتفولیو پروژه‌ها",
+        "downloads.title": "مستندات شرکت",
+        "downloads.description": "برای دریافت اطلاعات کامل شرکت، مستندات زیر را دانلود کنید",
+        "downloads.catalog": "کاتالوگ شرکت",
+        "downloads.resume": "رزومه شرکت",
         
         // فوتر
-        "footer.tagline": "پیشرو در طراحی و ساخت دستگاه‌های صنعتی • تخصص در خدمات ماشین‌سازی • تحقق رویاهای صنعتی شما",
         "footer.contact": "تماس با ما",
         "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
-        "footer.hours": "شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰",
-        "footer.links": "دسترسی سریع",
+        "footer.links": "لینک‌های مفید",
         "footer.social": "شبکه‌های اجتماعی",
-        "footer.socialDesc": "آخرین اخبار، پروژه‌های ماشین‌سازی و نوآوری‌های صنعتی ما را در شبکه‌های اجتماعی دنبال کنید",
-        "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است. | طراحی و ساخت با افتخار در ایران"
-      },
-      
-      en: {
-        // Navigation
-        "nav.home": "Home",
-        "nav.services": "Machining Services",
-        "nav.news": "CEO Message",
-        "nav.products": "Portfolio",
-        "nav.portfolio": "Gallery",
-        "nav.projects": "Projects",
-        "nav.work": "Collaboration",
-        "nav.contact": "Contact",
-        
-        // Hero
-        "hero.title": "Tose Pardazan Company | Industrial Machine Design & Manufacturing",
-        "hero.description": "Realizing your industrial dreams from zero to one hundred • Expertise in machining and industrial machine manufacturing • Design, construction and production with global standards • Accompanying in the path of turning ideas into final products",
-        "hero.viewServices": "View Machining Services",
-        "hero.requestConsultation": "Request Free Consultation",
-        
-        // News
-        "news.title": "CEO Message",
-        "news.messageTitle": "Nowruz Message from CEO of Tose Pardazan",
-        "news.date": "March 2025",
-        "news.viewAll": "View All News",
-        
-        // Services
-        "services.title": "Specialized Machining & Machine Manufacturing Services",
-        "services.machining.title": "Machining & Industrial Machine Manufacturing",
-        "services.machining.badge": "Special Machining Services",
-        "services.machining.sub1": "Design & Manufacturing of Industrial Machinery",
-        "services.machining.item1": "Design and manufacturing of custom industrial production line machines",
-        "services.machining.item2": "Production of specialized machinery for various industries",
-        "services.machining.item3": "Optimization and upgrading of existing machines",
-        "services.machining.sub2": "Advanced Machining Services",
-        "services.machining.item4": "Multi-axis CNC machining with micron precision",
-        "services.machining.item5": "Turning and milling of industrial parts",
-        "services.machining.item6": "Manufacturing of industrial molds and presses",
-        
-        // ... ادامه ترجمه‌های انگلیسی
-      },
-      
-      ar: {
-        // ... ترجمه‌های عربی
+        "footer.copyright": "© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است. | طراحی و ساخت با افتخار در ایران"
       }
     };
 
@@ -2252,111 +1797,6 @@
       }
     ];
 
-    // سیستم تغییر زبان
-    let currentLang = 'fa';
-    
-    function changeLanguage(lang) {
-      currentLang = lang;
-      
-      // تغییر فعال بودن دکمه‌ها
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.lang === lang) {
-          btn.classList.add('active');
-        }
-      });
-      
-      // تغییر متن‌ها
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          if (key === 'news.content') {
-            element.innerHTML = translations[lang][key];
-          } else {
-            element.textContent = translations[lang][key];
-          }
-        }
-      });
-      
-      // تغییر جهت صفحه
-      if (lang === 'ar') {
-        document.documentElement.dir = 'rtl';
-        document.documentElement.lang = 'ar';
-      } else if (lang === 'fa') {
-        document.documentElement.dir = 'rtl';
-        document.documentElement.lang = 'fa';
-      } else if (lang === 'en') {
-        document.documentElement.dir = 'ltr';
-        document.documentElement.lang = 'en';
-      }
-      
-      // ذخیره زبان انتخابی
-      localStorage.setItem('preferredLanguage', lang);
-      
-      // به‌روزرسانی نمونه کارها
-      updatePortfolioContent();
-    }
-
-    // ==================== گالری نمونه کارها ====================
-    function setupPortfolioAutoScroll() {
-      const galleryTrack = document.getElementById('galleryTrack');
-      
-      // پاک کردن محتوای قبلی
-      galleryTrack.innerHTML = '';
-      
-      // ایجاد 2 سری از آیتم‌ها برای اسکرول بی‌نهایت
-      for (let i = 0; i < 2; i++) {
-        portfolioData.forEach(item => {
-          const galleryItem = document.createElement('div');
-          galleryItem.className = 'gallery-item';
-          
-          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
-          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
-          const titleKey = `portfolio.${item.key}.title`;
-          const descKey = `portfolio.${item.key}.desc`;
-          
-          galleryItem.innerHTML = `
-            <img src="${item.img}" alt="${translations[currentLang][titleKey] || item.key}" class="gallery-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/420x210/1e40af/ffffff?text=${encodeURIComponent(translations[currentLang][titleKey] || item.key)}'">
-            <div class="gallery-content">
-              <h3 data-i18n-key="${titleKey}">${translations[currentLang][titleKey] || item.key}</h3>
-              <div class="client-name">${item.client}</div>
-              <p class="project-desc" data-i18n-key="${descKey}">${translations[currentLang][descKey] || ''}</p>
-              <span class="project-type ${typeClass}">${typeText}</span>
-            </div>
-          `;
-          
-          galleryTrack.appendChild(galleryItem);
-        });
-      }
-    }
-
-    // به‌روزرسانی محتوای نمونه کارها هنگام تغییر زبان
-    function updatePortfolioContent() {
-      document.querySelectorAll('.gallery-content h3[data-i18n-key]').forEach(element => {
-        const key = element.getAttribute('data-i18n-key');
-        if (translations[currentLang][key]) {
-          element.textContent = translations[currentLang][key];
-        }
-      });
-      
-      document.querySelectorAll('.project-desc[data-i18n-key]').forEach(element => {
-        const key = element.getAttribute('data-i18n-key');
-        if (translations[currentLang][key]) {
-          element.textContent = translations[currentLang][key];
-        }
-      });
-      
-      // به‌روزرسانی alt تصاویر
-      document.querySelectorAll('.gallery-img').forEach((img, index) => {
-        const dataIndex = index % portfolioData.length;
-        const itemKey = portfolioData[dataIndex].key;
-        const titleKey = `portfolio.${itemKey}.title`;
-        if (translations[currentLang][titleKey]) {
-          img.alt = translations[currentLang][titleKey];
-        }
-      });
-    }
-
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
       // مخفی کردن اسپلش اسکرین بعد از 3 ثانیه
@@ -2364,7 +1804,6 @@
         const splashScreen = document.getElementById('splashScreen');
         if (splashScreen) {
           splashScreen.classList.add('hidden');
-          // حذف از DOM بعد از انیمیشن
           setTimeout(() => {
             splashScreen.remove();
           }, 500);
@@ -2379,26 +1818,6 @@
         });
       });
       
-      // بارگذاری زبان ذخیره شده یا تشخیص خودکار
-      const savedLang = localStorage.getItem('preferredLanguage');
-      if (savedLang) {
-        currentLang = savedLang;
-        changeLanguage(savedLang);
-      } else {
-        // تشخیص زبان مرورگر
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang.startsWith('ar')) {
-          currentLang = 'ar';
-          changeLanguage('ar');
-        } else if (browserLang.startsWith('fa')) {
-          currentLang = 'fa';
-          changeLanguage('fa');
-        } else {
-          currentLang = 'en';
-          changeLanguage('en');
-        }
-      }
-      
       // تنظیم گالری نمونه کارها
       setupPortfolioAutoScroll();
       
@@ -2411,17 +1830,41 @@
       // تنظیم انیمیشن عناصر
       setupAnimations();
       
-      // تنظیم بارگذاری تدریجی
-      setupLazyLoading();
-      
       // تنظیم دکمه اسکرول به بالا
       setupScrollTop();
-      
-      // تنظیم ناوبری شیشه‌ای ثابت
-      setupFixedNavbar();
     });
     
     // ==================== توابع کمکی ====================
+    function setupPortfolioAutoScroll() {
+      const galleryTrack = document.getElementById('galleryTrack');
+      
+      galleryTrack.innerHTML = '';
+      
+      for (let i = 0; i < 2; i++) {
+        portfolioData.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          
+          const typeText = item.type === 'original' ? 'اورجینال' : 'مهندسی معکوس';
+          const typeClass = item.type === 'original' ? 'type-original' : 'type-reverse';
+          const titleKey = `portfolio.${item.key}.title`;
+          const descKey = `portfolio.${item.key}.desc`;
+          
+          galleryItem.innerHTML = `
+            <img src="${item.img}" alt="${translations.fa[titleKey] || item.key}" class="gallery-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/350x180/1e40af/ffffff?text=${encodeURIComponent(translations.fa[titleKey] || item.key)}'">
+            <div class="gallery-content">
+              <h3>${translations.fa[titleKey] || item.key}</h3>
+              <div class="client-name">${item.client}</div>
+              <p class="project-desc">${translations.fa[descKey] || ''}</p>
+              <span class="project-type ${typeClass}">${typeText}</span>
+            </div>
+          `;
+          
+          galleryTrack.appendChild(galleryItem);
+        });
+      }
+    }
+    
     function setupErrorHandlers() {
       // کنترل خطا برای تصاویر مشتریان
       document.querySelectorAll('.client-logo img').forEach(img => {
@@ -2429,9 +1872,9 @@
           const altText = this.alt || 'مشتری';
           const placeholderColor = '#1e40af';
           const textColor = 'white';
-          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="140" height="80" viewBox="0 0 140 80">
-            <rect width="140" height="80" fill="${placeholderColor}" rx="8"/>
-            <text x="70" y="40" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText.substring(0, 25)}</text>
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="70" viewBox="0 0 120 70">
+            <rect width="120" height="70" fill="${placeholderColor}" rx="8"/>
+            <text x="60" y="35" text-anchor="middle" fill="${textColor}" font-family="Arial" font-size="12" dy=".3em">${altText.substring(0, 20)}</text>
           </svg>`;
           this.src = 'data:image/svg+xml;base64,' + btoa(svg);
         };
@@ -2446,10 +1889,8 @@
             text = 'کارخانه یونولیت سراوان';
           } else if (altText.includes('فب‌لب')) {
             text = 'کافه فب‌لب روند';
-          } else if (altText.includes('CNC')) {
-            text = 'کارگاه ماشین‌سازی';
           }
-          this.src = `https://via.placeholder.com/420x220/0f766e/ffffff?text=${encodeURIComponent(text)}`;
+          this.src = `https://via.placeholder.com/400x200/0f766e/ffffff?text=${encodeURIComponent(text)}`;
         };
       });
       
@@ -2457,13 +1898,12 @@
       const logoImg = document.querySelector('.brand img');
       if (logoImg) {
         logoImg.onerror = function() {
-          this.src = 'https://via.placeholder.com/55x55/1e40af/ffffff?text=TPE';
+          this.src = 'https://via.placeholder.com/50x50/1e40af/ffffff?text=TPE';
         };
       }
     }
     
     function setupSmoothScroll() {
-      // انیمیشن اسکرول نرم برای بخش‌ها
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
@@ -2472,17 +1912,9 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
               window.scrollTo({
-                top: targetElement.offsetTop - 100,
+                top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
               });
-              
-              // بستن منوی موبایل اگر باز است
-              if (window.innerWidth <= 768) {
-                const mobileMenu = document.getElementById('mobileMenu');
-                if (mobileMenu) {
-                  mobileMenu.classList.remove('active');
-                }
-              }
             }
           }
         });
@@ -2490,7 +1922,15 @@
     }
     
     function setupAnimations() {
-      // انیمیشن برای عناصر هنگام اسکرول
+      window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -2508,7 +1948,6 @@
         observer.observe(card);
       });
       
-      // کنترل ویدیو برای موبایل
       const video = document.querySelector('.video-background');
       
       if (video) {
@@ -2524,32 +1963,11 @@
         
         observerVideo.observe(video);
         
-        // تنظیم فالبک برای ویدیو
         video.onerror = function() {
           const hero = document.querySelector('.hero');
           hero.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)';
         };
       }
-    }
-    
-    function setupLazyLoading() {
-      const lazyElements = document.querySelectorAll('.lazy-load');
-      
-      const lazyObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            lazyObserver.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '50px'
-      });
-      
-      lazyElements.forEach(element => {
-        lazyObserver.observe(element);
-      });
     }
     
     function setupScrollTop() {
@@ -2571,42 +1989,45 @@
       });
     }
     
-    function setupFixedNavbar() {
-      const navbar = document.getElementById('navbar');
-      let lastScrollY = window.scrollY;
-      
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-          
-          // پنهان کردن ناوبری هنگام اسکرول به پایین
-          if (window.scrollY > lastScrollY) {
-            navbar.classList.add('hidden');
-          } else {
-            navbar.classList.remove('hidden');
-          }
-        } else {
-          navbar.classList.remove('scrolled');
-          navbar.classList.remove('hidden');
+    // سیستم تغییر زبان
+    function changeLanguage(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active');
         }
-        
-        lastScrollY = window.scrollY;
       });
+      
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          if (key === 'news.content') {
+            element.innerHTML = translations[lang][key];
+          } else {
+            element.textContent = translations[lang][key];
+          }
+        }
+      });
+      
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      } else if (lang === 'fa') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'fa';
+      } else if (lang === 'en') {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      }
+      
+      localStorage.setItem('preferredLanguage', lang);
     }
     
-    // تنظیم مجدد گالری هنگام تغییر سایز پنجره
-    window.addEventListener('resize', function() {
-      setupPortfolioAutoScroll();
-    });
-    
-    // بهینه‌سازی عملکرد
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function() {
-        setupPortfolioAutoScroll();
-      }, 250);
-    });
+    // بارگذاری زبان ذخیره شده
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang) {
+      changeLanguage(savedLang);
+    }
   </script>
 </body>
 </html>
