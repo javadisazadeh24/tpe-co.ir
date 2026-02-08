@@ -170,7 +170,7 @@
       width: 180px;
       height: 180px;
       margin-bottom: 30px;
-      border-radius: 25px;
+      border-radius: 50%; /* تغییر به دایره */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -185,8 +185,8 @@
     }
     
     .splash-logo img {
-      width: 120%;
-      height: 120%;
+      width: 100%; /* تغییر اندازه */
+      height: 100%; /* تغییر اندازه */
       object-fit: contain;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
@@ -1278,8 +1278,8 @@
       }
       
       .splash-logo img {
-        width: 110%;
-        height: 110%;
+        width: 100%;
+        height: 100%;
       }
       
       .footer-content {
@@ -1292,6 +1292,15 @@
       
       .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+      
+      .clients-wrapper {
+        height: 130px;
+      }
+      
+      .client-logo {
+        height: 70px;
+        padding: 0 35px;
       }
     }
     
@@ -1465,6 +1474,15 @@
         height: 42px;
         top: -35px;
       }
+      
+      .clients-wrapper {
+        height: 100px;
+      }
+      
+      .client-logo {
+        height: 50px;
+        padding: 0 20px;
+      }
     }
     
     /* انیمیشن‌ها */
@@ -1578,7 +1596,8 @@
           <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
           <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
           <li><a href="#news" data-i18n="nav.news">اخبار</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">پورتفولیو</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">نمونه کارهای ما</a></li> <!-- تغییر داده شد -->
+          <li><a href="#clients">مشتریان</a></li> <!-- اضافه شد -->
           <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
           <li><a href="work-with-us.html" data-i18n="nav.work">همکاری</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
@@ -1779,12 +1798,6 @@
               <li data-i18n="services.consulting.item1">راهبری فرآیند توسعه محصول از ایده تا تولید</li>
               <li data-i18n="services.consulting.item2">بهینه‌سازی طراحی برای ساخت‌پذیری و هزینه</li>
             </ul>
-            
-            <h4 data-i18n="services.consulting.sub2">پروژه‌های ویژه</h4>
-            <ul>
-              <li data-i18n="services.consulting.item3">کارخانه تولید یونولیت سراوان (در حال تأسیس)</li>
-              <li data-i18n="services.consulting.item4">کافه فب‌لب روند (مرکز نوآوری و تعامل)</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -1794,7 +1807,7 @@
   <!-- نمونه کارها -->
   <section id="portfolio" class="gallery-section">
     <div class="container">
-      <h2 data-i18n="portfolio.title">نمونه کارها</h2>
+      <h2 data-i18n="portfolio.title">نمونه کارهای ما</h2> <!-- تغییر داده شد -->
       <div class="gallery-wrapper">
         <div class="gallery-track" id="galleryTrack"></div>
       </div>
@@ -2017,10 +2030,10 @@
     // ترجمه‌های به‌روز شده
     const translations = {
       fa: {
-        // ناوبری
+        // ناوبری - تغییر "پورتفولیو" به "نمونه کارهای ما"
         "nav.home": "خانه",
         "nav.services": "خدمات ما",
-        "nav.portfolio": "پورتفولیو",
+        "nav.portfolio": "نمونه کارهای ما",
         "nav.news": "اخبار",
         "nav.projects": "پروژه‌ها",
         "nav.work": "همکاری",
@@ -2087,12 +2100,9 @@
         "services.consulting.sub1": "مشاوره توسعه محصول",
         "services.consulting.item1": "راهبری فرآیند توسعه محصول از ایده تا تولید",
         "services.consulting.item2": "بهینه‌سازی طراحی برای ساخت‌پذیری و هزینه",
-        "services.consulting.sub2": "پروژه‌های ویژه",
-        "services.consulting.item3": "کارخانه تولید یونولیت سراوان (در حال تأسیس)",
-        "services.consulting.item4": "کافه فب‌لب روند (مرکز نوآوری و تعامل)",
         
-        // نمونه کارها
-        "portfolio.title": "نمونه کارها",
+        // نمونه کارها - تغییر "پورتفولیو" به "نمونه کارهای ما"
+        "portfolio.title": "نمونه کارهای ما",
         "portfolio.item1.title": "دستگاه تصفیه هوا صنعتی",
         "portfolio.item1.desc": "طراحی و ساخت دستگاه تصفیه هوا پیشرفته",
         "portfolio.item2.title": "سیستم قفل بیومتریک امنیتی",
@@ -2137,7 +2147,7 @@
 
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
-      // کاهش زمان اسپلش اسکرین
+      // کاهش زمان اسپلش اسکرین به 2 ثانیه
       setTimeout(() => {
         const splashScreen = document.getElementById('splashScreen');
         if (splashScreen) {
@@ -2146,7 +2156,7 @@
             splashScreen.style.display = 'none';
           }, 300);
         }
-      }, 1000); // کاهش از 1500 به 1000 میلی‌ثانیه
+      }, 2000); // تغییر به 2 ثانیه (2000 میلی‌ثانیه)
       
       // تنظیم گالری نمونه کارها
       setupPortfolioAutoScroll();
