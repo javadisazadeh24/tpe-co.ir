@@ -142,46 +142,6 @@
   }
   </script>
   
-  <!-- Schema.org Service (خدمات اصلی) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "طراحی مهندسی و نمونه‌سازی",
-    "provider": {
-      "@type": "Organization",
-      "name": "شرکت توسعه پردازان"
-    },
-    "description": "ارائه خدمات طراحی مهندسی، شبیه‌سازی عددی، نمونه‌سازی سریع، پرینت سه بعدی، CNC و مهندسی معکوس",
-    "areaServed": "IR",
-    "inLanguage": "fa"
-  }
-  </script>
-  
-  <!-- Schema.org Article برای پیام مدیرعامل -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "پیام مدیرعامل به مناسبت نوروز ۱۴۰۵",
-    "author": {
-      "@type": "Person",
-      "name": "دکتر جواد عیسی زاده لنگرودی"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "شرکت توسعه پردازان",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://tpe-co.ir/images/logo.png"
-      }
-    },
-    "datePublished": "2026-03-20",
-    "description": "پیام نوروزی مدیرعامل شرکت توسعه پردازان درباره نگاه به آینده، نوآوری و توسعه زیرساخت‌های ساخت دیجیتال",
-    "inLanguage": "fa"
-  }
-  </script>
-  
   <!-- فونت‌ها -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -482,6 +442,127 @@
     .lang-btn:hover {
       opacity: 1;
       transform: scale(1.1);
+    }
+    
+    /* ===== منوی همبرگر برای موبایل ===== */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1002;
+      position: relative;
+    }
+    
+    .mobile-menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1001;
+      padding: 100px 30px 30px;
+      transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      overflow-y: auto;
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-menu .nav-links-mobile {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .mobile-menu .nav-links-mobile a {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: block;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+    }
+    
+    .mobile-menu .nav-links-mobile a:hover {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      transform: translateX(-5px);
+    }
+    
+    .mobile-menu .main-cta-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light)) !important;
+      color: white !important;
+    }
+    
+    .mobile-language-selector {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-language-selector .lang-btn {
+      width: 40px;
+      height: 28px;
     }
     
     /* هیرو با فیلم */
@@ -1228,27 +1309,41 @@
       box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4) !important;
     }
     
-    /* ========== فوتر با تصویر پس‌زمینه و افکت شیشه‌ای ========== */
+    /* ========== فوتر با تصویر پس‌زمینه و افکت شیشه‌ای - اصلاح شده ========== */
     footer {
       position: relative;
-      padding: 0; /* حذف padding, به container داده می‌شود */
+      padding: 0;
       overflow: hidden;
       color: var(--text);
-      /* تصویر پس‌زمینه - کاربر می‌تواند عکس خود را در این مسیر قرار دهد */
+      /* تصویر پس‌زمینه - کاربر عکس خود را در این مسیر قرار می‌دهد */
       background-image: url('images/footer-bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      background-attachment: fixed; /* افکت پارالاکس ملایم */
     }
     
-    /* لایهٔ شیشه‌ای روی تصویر پس‌زمینه */
+    /* لایه شیشه‌ای روی تصویر پس‌زمینه - اصلاح شده برای نمایش کامل */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    
     footer .container {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      z-index: 2;
+      max-width: var(--maxw);
+      margin: 0 auto;
       padding: 80px 20px 30px;
-      max-width: 100%;
     }
     
     .footer-content {
@@ -1258,9 +1353,9 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 40px;
       padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     
     .footer-section h3 {
@@ -1307,13 +1402,15 @@
     }
     
     .contact-text {
-      color: var(--muted);
+      color: var(--text);
       font-size: 14px;
+      font-weight: 500;
     }
     
     .contact-text a {
-      color: var(--muted);
+      color: var(--text);
       transition: color 0.3s ease;
+      font-weight: 500;
     }
     
     .contact-text a:hover {
@@ -1327,12 +1424,13 @@
     }
     
     .footer-links a {
-      color: var(--muted);
+      color: var(--text);
       font-size: 14px;
       transition: all 0.3s ease;
       padding: 5px 0;
       position: relative;
       padding-right: 0;
+      font-weight: 500;
     }
     
     .footer-links a:before {
@@ -1363,16 +1461,16 @@
       width: 40px;
       height: 40px;
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      color: var(--muted);
+      color: var(--primary);
       font-size: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
     
     .social-link:hover {
@@ -1383,21 +1481,23 @@
       border-color: transparent;
     }
     
+    .hours-info {
+      margin-top: 25px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+    
     .copyright {
       text-align: center;
       padding-top: 30px;
-      color: var(--muted);
+      color: var(--text);
       font-size: 13px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       margin-top: 30px;
-    }
-    
-    .hours-info {
-      margin-top: 25px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
+      font-weight: 500;
     }
     
     /* موبایل */
@@ -1486,8 +1586,16 @@
     }
     
     @media (max-width: 768px) {
-      .nav-links {
+      .nav .nav-links {
         display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .nav-wrap {
+        justify-content: space-between;
       }
       
       .brand img {
@@ -1817,6 +1925,42 @@
           </li>
         </ul>
       </nav>
+      
+      <!-- دکمه همبرگر برای موبایل -->
+      <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <!-- منوی موبایل -->
+      <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-links-mobile">
+          <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
+          <li><a href="#about" data-i18n="nav.about">درباره ما</a></li>
+          <li><a href="#services" data-i18n="nav.services">خدمات ما</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="#clients" data-i18n="nav.clients">مشتریان</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">پروژه‌ها</a></li>
+          <li><a href="work-with-us.html" class="main-cta-btn" data-i18n="nav.work">همکاری با ما</a></li>
+          <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
+        </ul>
+        
+        <!-- انتخابگر زبان در منوی موبایل -->
+        <div class="mobile-language-selector">
+          <button class="lang-btn active" data-lang="fa" title="فارسی">
+            <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران - زبان فارسی">
+          </button>
+          <button class="lang-btn" data-lang="en" title="English">
+            <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا - زبان انگلیسی">
+          </button>
+          <button class="lang-btn" data-lang="ar" title="العربية">
+            <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان - زبان عربی">
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -2099,7 +2243,7 @@
   <!-- پروژه‌های توسعه -->
   <section id="projects">
     <div class="container">
-      <h2 data-i18n="projects.title">پروژه‌های توسعه و نوآوری</h2>
+      <h2 data-i18n="projects.title">پروژه‌های توسعه</h2>
       <div class="projects-grid">
         <div class="project-card fade-in">
           <img src="images/projects/yunolit-factory.jpg" data-i18n-alt="project.yunolit" alt="کارخانه تولید یونولیت سراوان - پروژه صنعتی توسعه پردازان" class="project-img" loading="lazy" onerror="this.onerror=null; this.src='images/logo.png';">
@@ -2164,9 +2308,8 @@
     </div>
   </section>
 
-  <!-- فوتر شیشه‌ای iOS با پس‌زمینه تصویری -->
+  <!-- فوتر شیشه‌ای iOS با پس‌زمینه تصویری - اصلاح شده -->
   <footer id="contact">
-    <!-- محتوای فوتر درون container با افکت شیشه‌ای قرار دارد -->
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
@@ -2406,7 +2549,7 @@
         "client.innovation": "مجتمع نوآوری",
         "client.fly_bar": "شرکت پرواز یاران سیرنگ",
         // پروژه‌ها
-        "projects.title": "پروژه‌های توسعه و نوآوری",
+        "projects.title": "پروژه‌های توسعه",
         "projects.project1.title": "کارخانه تولید یونولیت سراوان",
         "projects.project1.desc": "احداث واحد تولید یونولیت پیشرفته در شهرک صنعتی سراوان",
         "projects.project2.title": "کافه فب‌لب روند",
@@ -2458,10 +2601,10 @@
         "meta.og_description": "پیشرو در خدمات طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و ساخت دیجیتال | تحقق ایده‌های صنعتی شما از کانسپت تا تولید"
       },
       en: {
-        // Splash
+        // اسپلش
         "splash.welcome": "Welcome to TPE Co., Knowledge-Based Technical & Engineering Company",
         "splash.subtext": "Leading in engineering design, prototyping and numerical simulation",
-        // Navigation
+        // ناوبری
         "nav.home": "Home",
         "nav.about": "About Us",
         "nav.services": "Services",
@@ -2471,7 +2614,7 @@
         "nav.projects": "Projects",
         "nav.work": "Collaboration",
         "nav.contact": "Contact",
-        // Hero
+        // هیرو
         "hero.title": "Technical and Engineering Development Company",
         "hero.line1": "Leading in engineering design, prototyping and numerical simulation",
         "hero.line2": "Realization of industrial ideas from concept to final production",
@@ -2479,7 +2622,7 @@
         "hero.viewServices": "Our Specialized Services",
         "hero.workWithUs": "Request Cooperation & Project",
         "hero.viewPortfolio": "Contact Us",
-        // About
+        // درباره ما
         "about.title": "TPE Private Fablab: A Bridge Between Idea and Product",
         "about.text1": "<p><strong>Technical and Engineering Development Company (TPE)</strong> is not just an engineering service provider, but an <strong>advanced private fablab</strong> that, relying on deep specialized knowledge and modern infrastructure, shortens and makes reliable the path from idea to product for industrialists, inventors and businesses.</p>",
         "about.text2": "<p>We believe that <strong>true engineering thinking</strong> goes beyond design and calculation; this thinking includes <strong>deep understanding of industrial problems</strong>, <strong>creativity in finding solutions</strong> and <strong>commitment to building a tangible future</strong>. In today's competitive environment, quick access to prototyping and digital fabrication facilities determines the difference between success and failure of an idea.</p>",
@@ -2487,7 +2630,7 @@
         "about.text3": "<p><strong>Our mission</strong> is to create a dynamic ecosystem in which <strong>innovative ideas</strong> are turned into <strong>marketable products</strong> in the shortest time and with the highest quality. We consider ourselves a reliable companion for those seeking to build a future based on technology and engineering.</p>",
         "about.text4": "<p>At TPE, each project is not just an order; it is a <strong>partner in the path of innovation</strong>. Instead of relying on cliché formulas, we design a unique solution for each challenge that is both technically optimal and economically affordable.</p>",
         "about.cta": "Start Project with TPE",
-        // Services
+        // خدمات
         "services.title": "Our Specialized Private Fablab Services",
         "services.design.title": "Engineering Design & Numerical Simulation",
         "services.design.sub1": "Advanced 3D Modeling",
@@ -2528,7 +2671,7 @@
         "services.consulting.sub1": "Product Development Consulting",
         "services.consulting.item1": "Guidance of product development process from idea to production",
         "services.consulting.item2": "Design optimization for manufacturability and cost",
-        // Portfolio
+        // نمونه کارها
         "portfolio.title": "Our Portfolio",
         "portfolio.viewAll": "View All Services & Products Samples",
         "portfolio.item1.title": "Industrial Air Purifier",
@@ -2551,7 +2694,7 @@
         "portfolio.item9.desc": "Design and construction of durable and beautiful lamp cover",
         "portfolio.type.original": "Original",
         "portfolio.type.reverse": "Reverse Engineering",
-        // Clients
+        // مشتریان
         "clients.title": "Some of Our Clients",
         "client.university_sb": "University of Sistan and Baluchestan",
         "client.park_sb": "Sistan and Baluchestan Science and Technology Park",
@@ -2561,21 +2704,21 @@
         "client.harir": "Harir Anar Kerman Factory",
         "client.innovation": "Innovation Complex",
         "client.fly_bar": "Fly Yaran Sirang Company",
-        // Projects
-        "projects.title": "Development & Innovation Projects",
+        // پروژه‌ها
+        "projects.title": "Development Projects",
         "projects.project1.title": "Saravan EPS Factory",
         "projects.project1.desc": "Establishment of advanced EPS production unit in Saravan Industrial Town",
         "projects.project2.title": "Round Fab Lab Cafe",
         "projects.project2.desc": "Creating collaboration and innovation space for tech and creative community",
         "projects.soon": "In Progress",
         "projects.cta": "Request Participation in Innovative Projects",
-        // Downloads
+        // دانلود
         "downloads.title": "Technical & Engineering Documents",
         "downloads.description": "To fully understand the technical capabilities, executive projects and specialized services of the company, download the comprehensive documents below",
         "downloads.catalog": "Engineering Services Catalog",
         "downloads.resume": "Company Technical Resume",
         "downloads.teamResume": "Expert Personnel Resume",
-        // News
+        // اخبار
         "news.title": "News & Events",
         "news.messageTitle": "CEO Message",
         "news.date": "Pre-Nowruz 2026",
@@ -2590,7 +2733,7 @@
         "news.ceo_name": "Dr. Javad Eissazadeh Langroudi",
         "news.ceo_title": "CEO",
         "news.ceo_alt": "CEO of TPE",
-        // Footer
+        // فوتر
         "footer.contact": "Contact Us",
         "footer.address": "Zahedan, University Blvd, Science & Technology Park",
         "footer.links": "Specialized Services",
@@ -2607,17 +2750,17 @@
         "footer.hours.thu": "Thu: 8:00 - 14:00",
         "footer.cta": "Request Project & Collaboration",
         "footer.copyright": "© 2025 Technical & Engineering Development Company. All rights reserved.",
-        // Meta
+        // متا
         "meta.title": "Technical and Engineering Development Company | Engineering Design, Prototyping, Numerical Simulation and Fablab Services",
         "meta.description": "Knowledge-based Technical and Engineering Development Company | Leading in engineering design, prototyping, numerical simulation and fablab services | Industrial equipment manufacturing, CNC machining, 3D printing and reverse engineering",
         "meta.og_title": "TPE Co. | Engineering Design, Prototyping and Fablab Services",
         "meta.og_description": "Leading in engineering design, prototyping, numerical simulation and digital fabrication | Realizing your industrial ideas from concept to production"
       },
       ar: {
-        // Splash
+        // اسپلش
         "splash.welcome": "مرحبًا بكم في شركة التطوير الفنية والهندسية",
         "splash.subtext": "الريادة في التصميم الهندسي، النماذج الأولية والمحاكاة العددية",
-        // Navigation
+        // ناوبری
         "nav.home": "الرئيسية",
         "nav.about": "معلومات عنا",
         "nav.services": "خدماتنا",
@@ -2627,7 +2770,7 @@
         "nav.projects": "مشاريع",
         "nav.work": "تعاون",
         "nav.contact": "اتصال",
-        // Hero
+        // هیرو
         "hero.title": "شركة التطوير الفنية والهندسية",
         "hero.line1": "الريادة في التصميم الهندسي، النماذج الأولية والمحاكاة العددية",
         "hero.line2": "تحقيق الأفكار الصناعية من المفهوم إلى الإنتاج النهائي",
@@ -2635,7 +2778,7 @@
         "hero.viewServices": "خدماتنا المتخصصة",
         "hero.workWithUs": "طلب التعاون والمشروع",
         "hero.viewPortfolio": "اتصل بنا",
-        // About
+        // درباره ما
         "about.title": "المختبر الرقمي الخاص لتوسعه پردازان: جسر بين الفكرة والمنتج",
         "about.text1": "<p><strong>شركة التطوير الفنية والهندسية (TPE)</strong> ليست مجرد مزود لخدمات الهندسة، بل هي <strong>مختبر رقمي خاص متقدم</strong> يعتمد على المعرفة العميقة المتخصصة والبنية التحتية الحديثة، مما يجعل مسار تحويل الفكرة إلى منتج قصيرًا وموثوقًا للصناعيين والمخترعين والشركات.</p>",
         "about.text2": "<p>نحن نؤمن أن <strong>التفكير الهندسي الحقيقي</strong> يتجاوز التصميم والحساب؛ هذا التفكير يشمل <strong>الفهم العميق للمشاكل الصناعية</strong>، <strong>الإبداع في إيجاد الحلول</strong> و <strong>الالتزام ببناء مستقبل ملموس</strong>. في البيئة التنافسية اليوم، الوصول السريع إلى مرافق النماذج الأولية والتصنيع الرقمي يحدد الفرق بين نجاح الفكرة وفشلها.</p>",
@@ -2643,7 +2786,7 @@
         "about.text3": "<p><strong>رسالتنا</strong> هي إنشاء نظام بيئي ديناميكي حيث تتحول <strong>الأفكار المبتكرة</strong> في أقصر وقت وبأعلى جودة إلى <strong>منتجات قابلة للتسويق</strong>. نحن نعتبر أنفسنا رفيقًا موثوقًا لمن يسعون لبناء مستقبل قائم على التكنولوجيا والهندسة.</p>",
         "about.text4": "<p>في توسعه پردازان، كل مشروع ليس مجرد طلب؛ بل هو <strong>شريك في طريق الابتكار</strong>. بدلاً من الاعتماد على الصيغ التقليدية، نصمم لكل تحدٍ حلاً فريدًا يكون من الناحية الفنية مثاليًا ومن الناحية الاقتصادية معقولاً.</p>",
         "about.cta": "ابدأ مشروعك مع توسعه پردازان",
-        // Services
+        // خدمات
         "services.title": "خدمات مختبرنا الرقمي الخاص المتخصصة",
         "services.design.title": "التصميم الهندسي والمحاكاة العددية",
         "services.design.sub1": "النمذجة ثلاثية الأبعاد المتقدمة",
@@ -2684,7 +2827,7 @@
         "services.consulting.sub1": "استشارات تطوير المنتج",
         "services.consulting.item1": "توجيه عملية تطوير المنتج من الفكرة إلى الإنتاج",
         "services.consulting.item2": "تحسين التصميم للتشغيلية والتكلفة",
-        // Portfolio
+        // نمونه کارها
         "portfolio.title": "أعمالنا",
         "portfolio.viewAll": "عرض جميع عينات الخدمات والمنتجات",
         "portfolio.item1.title": "منقي الهواء الصناعي",
@@ -2707,7 +2850,7 @@
         "portfolio.item9.desc": "تصميم وبناء غطاء المصباح المتين والجميل",
         "portfolio.type.original": "أصلي",
         "portfolio.type.reverse": "هندسة عكسية",
-        // Clients
+        // مشتریان
         "clients.title": "بعض عملائنا",
         "client.university_sb": "جامعة سيستان وبلوشستان",
         "client.park_sb": "حديقة العلوم والتكنولوجيا سيستان وبلوشستان",
@@ -2717,21 +2860,21 @@
         "client.harir": "مصنع حرير أنار كرمان",
         "client.innovation": "مجمع الابتكار",
         "client.fly_bar": "شركة برواز ياران سيرانغ",
-        // Projects
-        "projects.title": "مشاريع التطوير والابتكار",
+        // پروژه‌ها
+        "projects.title": "مشاريع التطوير",
         "projects.project1.title": "مصنع البوليسترين في سراوان",
         "projects.project1.desc": "إنشاء وحدة إنتاج البوليسترين المتقدمة في المدينة الصناعية سراوان",
         "projects.project2.title": "مقهى المختبر الرقمي روند",
         "projects.project2.desc": "خلق مساحة للتعاون والابتكار لمجتمع التكنولوجيا والإبداع",
         "projects.soon": "قيد التنفيذ",
         "projects.cta": "طلب المشاركة في المشاريع الابتكارية",
-        // Downloads
+        // دانلود
         "downloads.title": "الوثائق الفنية والهندسية",
         "downloads.description": "لفهم القدرات الفنية والمشاريع التنفيذية والخدمات المتخصصة للشركة بشكل كامل، قم بتنزيل الوثائق الشاملة أدناه",
         "downloads.catalog": "كتالوج الخدمات الهندسية",
         "downloads.resume": "السيرة الذاتية الفنية للشركة",
         "downloads.teamResume": "سيرة الموظفين المتخصصين",
-        // News
+        // اخبار
         "news.title": "الأخبار والفعاليات",
         "news.messageTitle": "رسالة المدير التنفيذي",
         "news.date": "مقدمة لنوروز 2026",
@@ -2746,7 +2889,7 @@
         "news.ceo_name": "د. جواد عيسي زاده لنگرودي",
         "news.ceo_title": "المدير التنفيذي",
         "news.ceo_alt": "المدير التنفيذي لتوسعه پردازان",
-        // Footer
+        // فوتر
         "footer.contact": "اتصل بنا",
         "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
         "footer.links": "خدمات متخصصة",
@@ -2763,7 +2906,7 @@
         "footer.hours.thu": "الخميس: ٨:٠٠ - ١٤:٠٠",
         "footer.cta": "طلب مشروع وتعاون",
         "footer.copyright": "© ٢٠٢٥ شركة التطوير الفنية والهندسية. جميع الحقوق محفوظة.",
-        // Meta
+        // متا
         "meta.title": "شركة التطوير الفنية والهندسية | التصميم الهندسي، النماذج الأولية، المحاكاة العددية وخدمات المختبر الرقمي",
         "meta.description": "شركة التطوير الفنية والهندسية القائمة على المعرفة | الريادة في التصميم الهندسي، النماذج الأولية، المحاكاة العددية وخدمات المختبر الرقمي | تصنيع المعدات الصناعية، التشغيل الآلي CNC، الطباعة ثلاثية الأبعاد والهندسة العكسية",
         "meta.og_title": "شركة التطوير | التصميم الهندسي، النماذج الأولية وخدمات المختبر الرقمي",
@@ -2771,9 +2914,10 @@
       }
     };
 
-    // ==================== سیستم چندزبانه ====================
+    // ==================== متغییرهای سراسری ====================
     let currentLanguage = 'fa';
 
+    // ==================== سیستم چندزبانه ====================
     function changeLanguage(lang) {
       if (!translations[lang]) return;
       currentLanguage = lang;
@@ -2874,6 +3018,62 @@
       }
     }
 
+    // ==================== منوی همبرگر برای موبایل ====================
+    function setupMobileMenu() {
+      const menuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      
+      if (!menuToggle || !mobileMenu || !overlay) return;
+      
+      // باز و بسته کردن منو
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      // بستن منو با کلیک روی overlay
+      overlay.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        this.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // بستن منو با کلیک روی لینک‌ها
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          menuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      // بستن منو با کلید Escape
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+          menuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // تنظیم مجدد در هنگام تغییر اندازه صفحه
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+          menuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
       // کاهش زمان اسپلش اسکرین به 2 ثانیه
@@ -2909,6 +3109,9 @@
           changeLanguage('en');
         }
       }
+      
+      // راه‌اندازی منوی همبرگر
+      setupMobileMenu();
       
       // کنترل خطا برای تصاویر
       setupErrorHandlers();
