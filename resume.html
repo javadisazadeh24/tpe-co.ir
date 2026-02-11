@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://tpe-co.ir/resume.html">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="تیم تخصصی توسعه پردازان | رزومه پرسنل">
+  <meta property="og:title" content="تیم تخصصی توسعه پردازان | رزومه پرسنل و متخصصان">
   <meta property="og:description" content="آشنایی با تیم متخصص توسعه پردازان شامل بنیانگذاران، مشاوران ارشد و کارشناسان تخصصی">
   <meta property="og:image" content="https://tpe-co.ir/images/logo.png">
   <meta property="og:url" content="https://tpe-co.ir/resume.html">
@@ -44,15 +44,15 @@
       --primary: #1e40af;
       --primary-dark: #1e3a8a;
       --primary-light: #60a5fa;
-      --accent: #dc2626;
-      --accent-light: #f87171;
+      --accent: #0f172a;
+      --accent-light: #334155;
       --surface: rgba(255, 255, 255, 0.95);
       --glass-bg: rgba(255, 255, 255, 0.08);
       --glass-border: rgba(255, 255, 255, 0.12);
       --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
       --maxw: 1200px;
       --border-radius: 24px;
-      --transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -74,6 +74,33 @@
       padding: 0 20px;
     }
     
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(1deg); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30,64,175,0.5); }
+      70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(30,64,175,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30,64,175,0); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
     /* ===== SPLASH SCREEN ===== */
     .splash-screen {
       position: fixed;
@@ -81,13 +108,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(145deg, #0a1428, #172034);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
       overflow: hidden;
     }
     
@@ -102,27 +129,27 @@
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.1;
+      opacity: 0.08;
       background-image: 
-        radial-gradient(circle at 20% 50%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.3) 0%, transparent 50%);
-      animation: float 15s infinite ease-in-out;
+        radial-gradient(circle at 15% 30%, rgba(30, 64, 175, 0.6) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(220, 38, 38, 0.4) 0%, transparent 45%),
+        radial-gradient(circle at 45% 20%, rgba(14, 165, 233, 0.5) 0%, transparent 50%);
+      animation: float 20s infinite alternate;
     }
     
     .splash-logo {
-      width: 180px;
-      height: 180px;
-      margin-bottom: 30px;
+      width: 160px;
+      height: 160px;
+      margin-bottom: 25px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: pulse 2s infinite;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 30px;
+      animation: pulse 2.5s infinite;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 28px;
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
@@ -130,19 +157,31 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
     }
     
     .splash-text {
       color: white;
-      font-size: 48px;
-      font-weight: 900;
+      font-size: 36px;
+      font-weight: 800;
       text-align: center;
-      max-width: 80%;
-      line-height: 1.3;
+      max-width: 70%;
+      line-height: 1.5;
       animation: fadeInUp 1s ease;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      letter-spacing: -1px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #ffffff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .splash-sub {
+      color: #94a3b8;
+      font-size: 16px;
+      margin-top: 15px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeIn 1.2s ease;
     }
     
     /* ===== NAVIGATION ===== */
@@ -151,16 +190,16 @@
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       transition: var(--transition);
     }
     
     .nav.scrolled {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(25px);
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
     }
     
     .nav-wrap {
@@ -175,27 +214,21 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     
     .brand img {
-      height: 45px;
-      transition: transform 0.5s;
+      height: 42px;
+      transition: transform 0.6s;
     }
     
     .brand img:hover {
-      transform: rotate(5deg) scale(1.1);
-    }
-    
-    .brand span {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-dark);
+      transform: rotate(3deg) scale(1.08);
     }
     
     .nav-links {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       list-style: none;
       align-items: center;
     }
@@ -204,32 +237,58 @@
       color: var(--text);
       font-weight: 500;
       font-size: 14px;
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 8px 18px;
+      border-radius: 10px;
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-links a:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s;
+    }
+    
+    .nav-links a:hover:before {
+      left: 100%;
     }
     
     .nav-links a:hover {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), #2563eb);
       color: white;
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
     }
     
     .nav-links .active {
       color: var(--primary);
       font-weight: 700;
-      background: rgba(30, 64, 175, 0.1);
+      background: rgba(30, 64, 175, 0.08);
+      border-bottom: 2px solid var(--primary);
+      border-radius: 10px 10px 0 0;
     }
     
     .main-cta-btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       color: white !important;
-      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .main-cta-btn:hover {
+      background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.4) !important;
     }
     
     .language-selector {
       display: flex;
-      gap: 4px;
+      gap: 6px;
       margin-right: 8px;
     }
     
@@ -240,10 +299,11 @@
       cursor: pointer;
       width: 24px;
       height: 16px;
-      border-radius: 2px;
+      border-radius: 3px;
       overflow: hidden;
       transition: all 0.3s;
       opacity: 0.7;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     
     .lang-btn img {
@@ -254,8 +314,8 @@
     
     .lang-btn.active {
       opacity: 1;
-      transform: scale(1.1);
-      box-shadow: 0 0 0 1px var(--primary);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 2px var(--primary);
     }
     
     /* ===== PAGE HEADER ===== */
@@ -263,6 +323,7 @@
       margin-top: 100px;
       text-align: center;
       padding: 40px 0 20px;
+      animation: fadeInUp 0.8s ease;
     }
     
     .back-btn-container {
@@ -275,20 +336,23 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 28px;
+      padding: 10px 24px;
       background: white;
-      border-radius: 50px;
+      border-radius: 40px;
       color: var(--primary);
       font-weight: 600;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      font-size: 14px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
       transition: var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(4px);
     }
     
     .back-btn:hover {
       background: var(--primary);
       color: white;
-      transform: translateX(5px);
+      transform: translateX(6px);
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.2);
     }
     
     .page-header h1 {
@@ -308,7 +372,7 @@
       transform: translateX(-50%);
       width: 100px;
       height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
+      background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
       border-radius: 2px;
     }
     
@@ -323,17 +387,17 @@
     .team-categories {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 18px;
       margin: 40px 0 30px;
       flex-wrap: wrap;
     }
     
     .category-btn {
-      padding: 12px 28px;
+      padding: 12px 30px;
       border: none;
       background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: 50px;
       font-weight: 600;
       font-size: 15px;
@@ -343,16 +407,19 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
     
     .category-btn i {
       color: var(--primary);
+      transition: var(--transition);
     }
     
     .category-btn.active {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, var(--primary), #2563eb);
       color: white;
-      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+      box-shadow: 0 12px 28px rgba(30, 64, 175, 0.3);
+      border-color: transparent;
     }
     
     .category-btn.active i {
@@ -360,50 +427,76 @@
     }
     
     .category-btn:hover:not(.active) {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       background: white;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.06);
+      border-color: rgba(30,64,175,0.2);
     }
     
     /* ===== TEAM GRID ===== */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 30px;
+      gap: 32px;
       margin: 50px 0 80px;
     }
     
     .team-card {
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: var(--border-radius);
       padding: 30px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
+      animation: fadeInUp 0.6s ease;
+      animation-fill-mode: both;
+    }
+    
+    .team-card:nth-child(1) { animation-delay: 0.1s; }
+    .team-card:nth-child(2) { animation-delay: 0.2s; }
+    .team-card:nth-child(3) { animation-delay: 0.3s; }
+    .team-card:nth-child(4) { animation-delay: 0.4s; }
+    .team-card:nth-child(5) { animation-delay: 0.5s; }
+    
+    .team-card:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(30,64,175,0.03) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.6s;
+    }
+    
+    .team-card:hover:before {
+      opacity: 1;
     }
     
     .team-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-12px);
       background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(30, 64, 175, 0.2);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(30, 64, 175, 0.25);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.12);
     }
     
     .card-badge {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      background: linear-gradient(135deg, #1e293b, #0f172a);
       color: white;
-      padding: 6px 18px;
+      padding: 6px 20px;
       border-radius: 50px;
       font-size: 12px;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
       z-index: 2;
+      border: 1px solid rgba(255,255,255,0.1);
     }
     
     .card-header {
@@ -419,27 +512,29 @@
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid white;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
       transition: var(--transition);
     }
     
     .team-card:hover .avatar {
-      transform: scale(1.05);
+      transform: scale(1.08);
       border-color: var(--primary-light);
+      box-shadow: 0 18px 35px rgba(30, 64, 175, 0.2);
     }
     
     .avatar-placeholder {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(145deg, var(--primary), var(--primary-dark));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 40px;
+      font-size: 44px;
       font-weight: 700;
       border: 4px solid white;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
     }
     
     .member-info {
@@ -448,7 +543,7 @@
     
     .member-info h3 {
       font-size: 22px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary-dark);
       margin-bottom: 8px;
     }
@@ -459,16 +554,16 @@
       color: var(--muted);
       background: rgba(100, 116, 139, 0.1);
       display: inline-block;
-      padding: 4px 14px;
+      padding: 5px 16px;
       border-radius: 50px;
       margin-bottom: 8px;
     }
     
     .member-degree {
       font-size: 13px;
-      color: var(--text-light);
-      background: rgba(30, 64, 175, 0.05);
-      padding: 6px 14px;
+      color: var(--text);
+      background: rgba(30, 64, 175, 0.06);
+      padding: 6px 16px;
       border-radius: 50px;
       display: inline-block;
     }
@@ -481,22 +576,29 @@
     }
     
     .expertise-tag {
-      background: rgba(30, 64, 175, 0.08);
-      padding: 6px 16px;
+      background: rgba(30, 64, 175, 0.06);
+      padding: 6px 18px;
       border-radius: 50px;
       font-size: 12px;
       font-weight: 500;
       color: var(--primary);
       border: 1px solid rgba(30, 64, 175, 0.1);
+      transition: var(--transition);
+    }
+    
+    .expertise-tag:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
     }
     
     .contact-mini {
       display: flex;
-      gap: 15px;
-      margin: 15px 0;
-      padding: 15px 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      gap: 20px;
+      margin: 18px 0;
+      padding: 16px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
       flex-wrap: wrap;
     }
     
@@ -504,7 +606,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--text-light);
+      color: var(--text);
       font-size: 13px;
     }
     
@@ -523,9 +625,9 @@
       width: 100%;
       padding: 14px;
       border: none;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, var(--primary), #2563eb);
       color: white;
-      border-radius: 12px;
+      border-radius: 14px;
       font-weight: 600;
       font-size: 14px;
       cursor: pointer;
@@ -534,12 +636,13 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
     }
     
     .btn-resume:hover {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+      background: linear-gradient(135deg, #2563eb, var(--primary));
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(30, 64, 175, 0.3);
     }
     
     /* ===== RESUME MODAL ===== */
@@ -551,7 +654,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -564,27 +667,28 @@
     }
     
     .modal-content {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(30px);
-      border-radius: 32px;
+      border-radius: 36px;
       max-width: 1000px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
-      padding: 40px;
+      padding: 45px;
       position: relative;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      animation: fadeInUp 0.4s;
     }
     
     .modal-close {
       position: absolute;
       top: 20px;
       left: 20px;
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(0, 0, 0, 0.04);
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -593,15 +697,16 @@
       cursor: pointer;
       transition: var(--transition);
       color: var(--text);
+      border: 1px solid rgba(255,255,255,0.4);
     }
     
     .modal-close:hover {
       background: var(--accent);
       color: white;
-      transform: rotate(90deg);
+      transform: rotate(90deg) scale(1.1);
     }
     
-    /* ===== FOOTER - دقیقاً مثل صفحه اصلی ===== */
+    /* ===== FOOTER ===== */
     footer {
       position: relative;
       padding: 0;
@@ -621,8 +726,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
       z-index: 0;
       pointer-events: none;
     }
@@ -638,8 +743,8 @@
     .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      padding-bottom: 40px;
+      gap: 45px;
+      padding-bottom: 45px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     }
     
@@ -649,7 +754,7 @@
       font-size: 18px;
       position: relative;
       padding-bottom: 12px;
-      font-weight: 600;
+      font-weight: 700;
     }
     
     .footer-section h3:after {
@@ -657,9 +762,10 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 50px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--engineering-accent, #0ea5e9), var(--primary));
+      width: 55px;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #1e40af);
+      border-radius: 3px;
     }
     
     .contact-details {
@@ -669,13 +775,13 @@
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 14px;
+      margin-bottom: 20px;
       transition: transform 0.3s ease;
     }
     
     .contact-item:hover {
-      transform: translateX(-5px);
+      transform: translateX(-6px);
     }
     
     .contact-icon {
@@ -694,7 +800,7 @@
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     
     .footer-links a {
@@ -708,118 +814,103 @@
     }
     
     .footer-links a:before {
-      content: '•';
+      content: '▹';
       position: absolute;
-      right: 0;
-      opacity: 0.5;
+      right: -20px;
+      opacity: 0;
+      color: var(--primary);
       transition: all 0.3s ease;
     }
     
     .footer-links a:hover {
       color: var(--primary);
-      padding-right: 10px;
+      padding-right: 25px;
     }
     
     .footer-links a:hover:before {
       opacity: 1;
-      color: var(--primary);
+      right: 0;
     }
     
     .social-grid {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       margin-top: 20px;
     }
     
     .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: var(--transition);
       color: var(--primary);
-      font-size: 16px;
+      font-size: 17px;
       border: 1px solid rgba(255, 255, 255, 0.4);
     }
     
     .social-link:hover {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(145deg, var(--primary), #2563eb);
       color: white;
-      transform: translateY(-3px) scale(1.1);
-      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 12px 25px rgba(30, 64, 175, 0.3);
     }
     
     .hours-info {
       margin-top: 25px;
       color: var(--text);
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.9;
       font-weight: 500;
+    }
+    
+    .footer-cta {
+      margin-top: 30px;
+    }
+    
+    .footer-cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .footer-cta-btn:hover {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
     }
     
     .copyright {
       text-align: center;
-      padding-top: 30px;
+      padding-top: 35px;
       color: var(--text);
       font-size: 13px;
       position: relative;
       z-index: 2;
       margin-top: 30px;
       font-weight: 500;
+      opacity: 0.9;
     }
     
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .brand span { display: none; }
-      .page-header h1 { font-size: 32px; }
-      .splash-text { font-size: 36px; }
-      .splash-logo { width: 150px; height: 150px; }
-      .team-grid { grid-template-columns: 1fr; }
-      .card-header { flex-direction: column; text-align: center; }
-      .card-badge { position: relative; top: 0; right: 0; margin-bottom: 15px; display: inline-block; }
-      .back-btn-container { justify-content: center; }
-    }
-    
-    @media (max-width: 480px) {
-      .splash-text { font-size: 28px; }
-      .splash-logo { width: 120px; height: 120px; }
-      .page-header h1 { font-size: 28px; }
-      .category-btn { width: 100%; justify-content: center; }
-    }
-    
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
-      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,255,255,0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
-    }
-    
-    @keyframes float {
-      0%,100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
+    /* ===== SCROLL TOP ===== */
     .scroll-top {
       position: fixed;
-      bottom: 25px;
-      left: 25px;
-      width: 45px;
-      height: 45px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      bottom: 30px;
+      left: 30px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(145deg, var(--primary), #2563eb);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -831,6 +922,8 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+      border: 1px solid rgba(255,255,255,0.2);
     }
     
     .scroll-top.visible {
@@ -839,20 +932,41 @@
     }
     
     .scroll-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.5);
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(30, 64, 175, 0.4);
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header h1 { font-size: 32px; }
+      .splash-text { font-size: 28px; }
+      .splash-logo { width: 140px; height: 140px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .card-header { flex-direction: column; text-align: center; }
+      .card-badge { position: relative; top: 0; right: 0; margin-bottom: 15px; display: inline-block; }
+      .back-btn-container { justify-content: center; }
+      .splash-sub { font-size: 14px; }
+    }
+    
+    @media (max-width: 480px) {
+      .splash-text { font-size: 24px; }
+      .splash-logo { width: 120px; height: 120px; }
+      .page-header h1 { font-size: 28px; }
+      .category-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== SPLASH SCREEN - فقط نام شرکت ===== -->
+  <!-- ===== SPLASH SCREEN - مهندسی و مینیمال ===== -->
   <div class="splash-screen" id="splashScreen">
     <div class="splash-background"></div>
     <div class="splash-logo">
       <img src="images/logo.png" alt="توسعه پردازان">
     </div>
-    <div class="splash-text" data-i18n="splash.title">توسعه پردازان</div>
+    <div class="splash-text" data-i18n="splash.title">تیم مهندسی توسعه پردازان</div>
+    <div class="splash-sub" data-i18n="splash.sub">دانش‌بنیان | نوآوری | تعالی</div>
   </div>
 
   <!-- ===== SCROLL TOP BUTTON ===== -->
@@ -865,7 +979,7 @@
     <div class="nav-wrap">
       <a href="index.html" class="brand">
         <img src="images/logo.png" alt="توسعه پردازان">
-        <span>توسعه پردازان</span>
+        <!-- نوشته توسعه پردازان حذف شد -->
       </a>
       
       <ul class="nav-links">
@@ -914,7 +1028,7 @@
         <span data-i18n="team.all">همه اعضا</span>
       </button>
       <button class="category-btn" data-filter="founder">
-        <i class="fas fa-crown"></i>
+        <i class="fas fa-user-tie"></i>
         <span data-i18n="team.founders">بنیانگذاران</span>
       </button>
       <button class="category-btn" data-filter="consultant">
@@ -932,7 +1046,7 @@
   <div class="container">
     <div class="team-grid">
       
-      <!-- 1️⃣ دکتر جواد عیسی‌زاده - بنیانگذار و مدیرعامل -->
+      <!-- 1️⃣ دکتر جواد عیسی‌زاده - بنیانگذار و مدیرعامل (شماره تماس فقط برای ایشان) -->
       <div class="team-card" data-category="founder">
         <div class="card-badge" data-i18n="badge.ceo">مدیرعامل و موسس</div>
         <div class="card-header">
@@ -976,11 +1090,11 @@
         </div>
       </div>
       
-      <!-- 2️⃣ مینا واصفیان - بنیانگذار و مدیر فنی -->
+      <!-- 2️⃣ مینا واصفیان - بنیانگذار و مدیر فنی (بدون شماره تماس) -->
       <div class="team-card" data-category="founder">
         <div class="card-badge" data-i18n="badge.cto">مدیر فنی و موسس</div>
         <div class="card-header">
-          <img src="images/team/mina.jpg" alt="مینا واصفیان" class="avatar" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="images/team/mina.jpg" alt="مینا واصفیان" class="avatar" onerror="this.onerror=null; this.nextElementSibling.style.display='flex'; this.style.display='none';">
           <div class="avatar-placeholder" style="display: none;">
             <span>م</span>
           </div>
@@ -1009,10 +1123,7 @@
             <i class="fas fa-envelope"></i>
             m.vasefyan.ke@gmail.com
           </div>
-          <div class="contact-mini-item">
-            <i class="fas fa-phone"></i>
-            0916377269
-          </div>
+          <!-- شماره تماس حذف شد -->
         </div>
         
         <div class="resume-actions">
@@ -1023,11 +1134,11 @@
         </div>
       </div>
       
-      <!-- 3️⃣ دکتر سیدعلی تحویلی - مشاور ارشد کسب‌وکار -->
+      <!-- 3️⃣ دکتر سیدعلی تحویلی - مشاور ارشد کسب‌وکار (بدون شماره تماس) -->
       <div class="team-card" data-category="consultant">
         <div class="card-badge" data-i18n="badge.consultant">مشاور ارشد کسب‌وکار</div>
         <div class="card-header">
-          <img src="images/team/tahvili.jpg" alt="دکتر سیدعلی تحویلی" class="avatar" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="images/team/tahvili.jpg" alt="دکتر سیدعلی تحویلی" class="avatar" onerror="this.onerror=null; this.nextElementSibling.style.display='flex'; this.style.display='none';">
           <div class="avatar-placeholder" style="display: none;">
             <span>ع</span>
           </div>
@@ -1056,10 +1167,7 @@
             <i class="fas fa-envelope"></i>
             ali.tahvili@tpe-co.ir
           </div>
-          <div class="contact-mini-item">
-            <i class="fas fa-phone"></i>
-            09158497777
-          </div>
+          <!-- شماره تماس حذف شد -->
         </div>
         
         <div class="resume-actions">
@@ -1070,11 +1178,11 @@
         </div>
       </div>
       
-      <!-- 4️⃣ علی عابدزاده - کارشناس ارشد فناوری (دانشجوی ارشد) -->
+      <!-- 4️⃣ علی عابدزاده - کارشناس ارشد فناوری (بدون شماره تماس) -->
       <div class="team-card" data-category="expert">
         <div class="card-badge" data-i18n="badge.tech">کارشناس ارشد فناوری</div>
         <div class="card-header">
-          <img src="images/team/abedzadeh.jpg" alt="علی عابدزاده" class="avatar" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="images/team/abedzadeh.jpg" alt="علی عابدزاده" class="avatar" onerror="this.onerror=null; this.nextElementSibling.style.display='flex'; this.style.display='none';">
           <div class="avatar-placeholder" style="display: none;">
             <span>ع</span>
           </div>
@@ -1103,10 +1211,7 @@
             <i class="fas fa-envelope"></i>
             aliabedza@gmail.com
           </div>
-          <div class="contact-mini-item">
-            <i class="fas fa-phone"></i>
-            0939827507
-          </div>
+          <!-- شماره تماس حذف شد -->
         </div>
         
         <div class="resume-actions">
@@ -1117,32 +1222,33 @@
         </div>
       </div>
       
-      <!-- 5️⃣ ابوالفضل حمدالله‌نژاد - کارشناس تولید محتوا و رسانه -->
+      <!-- 5️⃣ ابوالفضل حمدالله‌نژاد - کارشناس تولید محتوا و رسانه (رزومه کامل) -->
       <div class="team-card" data-category="expert">
-        <div class="card-badge" data-i18n="badge.media">کارشناس تولید محتوا</div>
+        <div class="card-badge" data-i18n="badge.media">کارشناس ارشد رسانه</div>
         <div class="card-header">
-          <img src="images/team/hamdollah.jpg" alt="ابوالفضل حمدالله‌نژاد" class="avatar" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="avatar-placeholder" style="display: none;">
+          <img src="images/team/hamdollah.jpg" alt="ابوالفضل حمدالله‌نژاد" class="avatar" onerror="this.onerror=null; this.nextElementSibling.style.display='flex'; this.style.display='none';">
+          <div class="avatar-placeholder" style="display: flex;">
             <span>ا</span>
           </div>
           <div class="member-info">
             <h3 data-i18n="member.hamdollah.name">ابوالفضل حمدالله‌نژاد</h3>
-            <span class="member-title" data-i18n="member.hamdollah.title">کارشناس تولید محتوا و رسانه</span>
-            <div class="member-degree" data-i18n="member.hamdollah.degree">تخصص در بازاریابی محتوا و دیجیتال مدیا</div>
+            <span class="member-title" data-i18n="member.hamdollah.title">کارشناس ارشد رسانه و تولید محتوا</span>
+            <div class="member-degree" data-i18n="member.hamdollah.degree">عکاسی | فیلمبرداری | تدوین | طراحی سایت</div>
           </div>
         </div>
         
         <div class="expertise-tags">
-          <span class="expertise-tag">تولید محتوا</span>
-          <span class="expertise-tag">رسانه</span>
-          <span class="expertise-tag">تدوین</span>
           <span class="expertise-tag">عکاسی صنعتی</span>
-          <span class="expertise-tag">مدیریت شبکه‌های اجتماعی</span>
-          <span class="expertise-tag">بازاریابی محتوا</span>
+          <span class="expertise-tag">فیلمبرداری</span>
+          <span class="expertise-tag">تدوین</span>
+          <span class="expertise-tag">فیلمبرداری هوایی</span>
+          <span class="expertise-tag">طراحی سایت وردپرس</span>
+          <span class="expertise-tag">طراحی گرافیک</span>
+          <span class="expertise-tag">آموزش پریمیر</span>
+          <span class="expertise-tag">آموزش فتوشاپ</span>
+          <span class="expertise-tag">آموزش وردپرس</span>
           <span class="expertise-tag">Adobe Premiere</span>
           <span class="expertise-tag">Adobe Photoshop</span>
-          <span class="expertise-tag">فیلمبرداری</span>
-          <span class="expertise-tag">طراحی گرافیک</span>
         </div>
         
         <div class="contact-mini">
@@ -1150,10 +1256,7 @@
             <i class="fas fa-envelope"></i>
             abolfazl.h@tpe-co.ir
           </div>
-          <div class="contact-mini-item">
-            <i class="fas fa-phone"></i>
-            0915XXXXXXX
-          </div>
+          <!-- شماره تماس حذف شد -->
         </div>
         
         <div class="resume-actions">
@@ -1167,7 +1270,7 @@
     </div>
   </div>
 
-  <!-- ===== FOOTER - دقیقاً مثل صفحه اصلی ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer id="contact">
     <div class="container">
       <div class="footer-content">
@@ -1199,7 +1302,7 @@
             <a href="index.html#services" data-i18n="footer.link.fablab">خدمات فب‌لب و مراکز نوآوری</a>
             <a href="index.html#services" data-i18n="footer.link.production">توسعه محصول و خط تولید</a>
             <a href="index.html#services" data-i18n="footer.link.education">آموزش تخصصی مهندسی</a>
-            <a href="index.html#services"data-i18n="footer.link.consulting">مشاوره فنی و مهندسی</a>
+            <a href="index.html#services" data-i18n="footer.link.consulting">مشاوره فنی و مهندسی</a>
             <a href="products.html" data-i18n="footer.link.products">نمونه خدمات و محصولات</a>
             <a href="resume.html" data-i18n="footer.link.resume">رزومه پرسنل</a>
           </div>
@@ -1227,8 +1330,8 @@
             <div data-i18n="footer.hours.thu">پنجشنبه: ۸:۰۰ - ۱۴:۰۰</div>
           </div>
           
-          <div style="margin-top: 30px;">
-            <a href="work-with-us.html" class="btn-resume" style="display: inline-block; padding: 12px 24px; font-size: 14px;" data-i18n="footer.cta">درخواست پروژه و همکاری</a>
+          <div class="footer-cta">
+            <a href="work-with-us.html" class="footer-cta-btn" data-i18n="footer.cta">درخواست پروژه و همکاری</a>
           </div>
         </div>
       </div>
@@ -1255,12 +1358,20 @@
       javad: {
         name: 'دکتر جواد عیسی‌زاده لنگرودی',
         nameEn: 'Dr. Javad Eissazadeh Langroudi',
+        nameAr: 'د. جواد عيسى‌زاده لنگرودی',
         title: 'موسس و مدیرعامل | دکتری مهندسی مکانیک',
         titleEn: 'Founder & CEO | PhD in Mechanical Engineering',
+        titleAr: 'المؤسس والرئيس التنفيذي | دكتوراه في الهندسة الميكانيكية',
         personalInfo: {
           birthDate: '28 آذر 1375',
+          birthDateEn: 'Dec 19, 1996',
+          birthDateAr: '١٩ ديسمبر ١٩٩٦',
           maritalStatus: 'متاهل',
-          militaryStatus: 'اتمام خدمت'
+          maritalStatusEn: 'Married',
+          maritalStatusAr: 'متزوج',
+          militaryStatus: 'اتمام خدمت',
+          militaryStatusEn: 'Completed',
+          militaryStatusAr: 'مكتمل'
         },
         education: [
           'دکتری مهندسی مکانیک - دانشگاه سیستان و بلوچستان',
@@ -1272,6 +1383,11 @@
           'MSc in Mechatronics Engineering - University of Sistan and Baluchestan (GPA: 16.7)',
           'BSc in Mechanical Engineering (Solid Mechanics) - University of Sistan and Baluchestan (GPA: 14.6)'
         ],
+        educationAr: [
+          'دكتوراه في الهندسة الميكانيكية - جامعة سيستان وبلوشستان',
+          'ماجستير في هندسة الميكاترونكس - جامعة سيستان وبلوشستان (معدل ١٦.٧)',
+          'بكالوريوس في الهندسة الميكانيكية - جامعة سيستان وبلوشستان (معدل ١٤.٦)'
+        ],
         honors: [
           'نخبه پژوهشی دانشگاه سیستان و بلوچستان (۱۳۹۸)',
           'رتبه برتر نمایشگاه بین‌المللی فناوری و نوآوری تهران (۱۳۹۷)'
@@ -1279,6 +1395,10 @@
         honorsEn: [
           'Research Elite - University of Sistan and Baluchestan (2019)',
           'Top Rank - Tehran International Technology and Innovation Exhibition (2018)'
+        ],
+        honorsAr: [
+          'النخبة البحثية - جامعة سيستان وبلوشستان (٢٠١٩)',
+          'المرتبة الأولى - معرض طهران الدولي للتكنولوجيا والابتكار (٢٠١٨)'
         ],
         projects: [
           'دستگاه تست رفلکس کالریک (۱۴۰۰)',
@@ -1292,6 +1412,30 @@
           'دستگاه Sanitizer با لامپ UV (۱۳۹۹)',
           'دستگاه تصفیه هوا با لامپ UV'
         ],
+        projectsEn: [
+          'Caloric Reflex Test Device (2021)',
+          'Advanced Vein Finder (2020)',
+          'ECG Test Device (2018)',
+          'Radiology Device Add-on for Dentistry (2018)',
+          'Defibrillator (2017)',
+          'Industrial Basket Washer (2017)',
+          'Antibacterial Hand Dryer (2017)',
+          'Wearable Pulse Oximeter (2020)',
+          'Sanitizer Device with UV Lamp (2020)',
+          'Air Purifier with UV Lamp'
+        ],
+        projectsAr: [
+          'جهاز اختبار المنعكس السعفي (٢٠٢١)',
+          'جهاز متطور للعثور على الأوردة (٢٠٢٠)',
+          'جهاز اختبار ECG (٢٠١٨)',
+          'إضافة لجهاز الأشعة لطب الأسنان (٢٠١٨)',
+          'مقوم الصدمات (٢٠١٧)',
+          'غاسل سلال صناعي (٢٠١٧)',
+          'مجفف يد مضاد للبكتيريا (٢٠١٧)',
+          'مقياس تأكسج نبضي قابل للارتداء (٢٠٢٠)',
+          'جهاز تعقيم بمصباح UV (٢٠٢٠)',
+          'جهاز تنقية الهواء بمصباح UV'
+        ],
         certificates: [
           'تعمیرات تجهیزات پزشکی و دندانپزشکی - شرکت آرمد و چابک تجهیز (۱۳۹۷)',
           'داور تجهیزات پزشکی - پنجمین فن‌بازار ملی سلامت (۱۳۹۸)',
@@ -1299,7 +1443,23 @@
           'باز و بست موتور خودرو - دانشگاه سیستان و بلوچستان (۱۳۹۷)',
           'توسعه مهارت‌های فردی و اجتماعی - انجمن تعالی کسب و کار (۱۳۹۰)'
         ],
+        certificatesEn: [
+          'Medical and Dental Equipment Repair - Armed & Chabok Tajhiz Co. (2018)',
+          'Medical Equipment Judge - 5th National Health Tech Bazaar (2019)',
+          'CNC Operation - Technical and Vocational Training Organization (2017)',
+          'Car Engine Assembly/Disassembly - University of Sistan and Baluchestan (2018)',
+          'Personal and Social Skills Development - Business Excellence Association (2011)'
+        ],
+        certificatesAr: [
+          'صيانة المعدات الطبية وطب الأسنان - شركة آرمد وتشابك تجهيز (٢٠١٨)',
+          'محكم معدات طبية - سوق التكنولوجيا الصحي الخامس (٢٠١٩)',
+          'تشغيل CNC - منظمة التدريب الفني والمهني (٢٠١٧)',
+          'تفكيك وتجميع محرك سيارة - جامعة سيستان وبلوشستان (٢٠١٨)',
+          'تنمية المهارات الشخصية والاجتماعية - جمعية التميز للأعمال (٢٠١١)'
+        ],
         skills: ['CATIA', 'ABAQUS', 'CNC Programming', 'COMSOL', 'MATLAB', 'تجهیزات پزشکی', 'مهندسی معکوس', 'طراحی صنعتی', 'FEA Analysis', 'مدیریت پروژه'],
+        skillsEn: ['CATIA', 'ABAQUS', 'CNC Programming', 'COMSOL', 'MATLAB', 'Medical Equipment', 'Reverse Engineering', 'Industrial Design', 'FEA Analysis', 'Project Management'],
+        skillsAr: ['كاتيا', 'أباكوس', 'برمجة CNC', 'كومسول', 'ماتلاب', 'معدات طبية', 'هندسة عكسية', 'تصميم صناعي', 'تحليل FEA', 'إدارة مشاريع'],
         email: 'javadisazadeh24@gmail.com',
         phone: '09117668610'
       },
@@ -1307,13 +1467,18 @@
       mina: {
         name: 'مینا واصفیان',
         nameEn: 'Mina Vasefyan',
+        nameAr: 'مينا واسفيان',
         title: 'مدیر فنی | مهندس مکانیک - طراحی کاربردی',
         titleEn: 'Technical Manager | Mechanical Engineer - Applied Design',
+        titleAr: 'المدير الفني | مهندسة ميكانيكية - التصميم التطبيقي',
         education: [
           'کارشناسی مهندسی مکانیک (گرایش طراحی کاربردی) - دانشگاه سیستان و بلوچستان (۱۳۹۹)'
         ],
         educationEn: [
           'BSc in Mechanical Engineering (Applied Design) - University of Sistan and Baluchestan (2020)'
+        ],
+        educationAr: [
+          'بكالوريوس في الهندسة الميكانيكية (التصميم التطبيقي) - جامعة سيستان وبلوشستان (٢٠٢٠)'
         ],
         experience: [
           'طراح صنعتی با کتیا - مرکز طراحی صنعتی پارک علم و فناوری (آبان ۱۴۰۲ - اکنون)',
@@ -1325,19 +1490,27 @@
           'Design Engineer & CNC Operator - Jadidoleslam Engineering Office (Aug 2023 - Present)',
           'Design Engineer & CNC Operator - TPE Co. (Oct 2022 - Present)'
         ],
+        experienceAr: [
+          'مصممة صناعية باستخدام كاتيا - مركز التصميم الصناعي، حديقة العلوم والتكنولوجيا (نوفمبر ٢٠٢٣ - حتى الآن)',
+          'مهندسة تصميم ومشغلة CNC - مكتب جديد الإسلام الهندسي (أغسطس ٢٠٢٣ - حتى الآن)',
+          'مهندسة تصميم ومشغلة CNC - شركة توسعه پردازان (أكتوبر ٢٠٢٢ - حتى الآن)'
+        ],
         skills: ['CATIA', 'CNC', 'Artcam', 'Photoshop', 'طراحی صنعتی', 'نقشه‌کشی', 'جوشکاری', 'کار با چوب', 'اپراتوری CNC', 'مدل‌سازی سه‌بعدی'],
         skillsEn: ['CATIA', 'CNC', 'Artcam', 'Photoshop', 'Industrial Design', 'Drafting', 'Welding', 'Woodworking', 'CNC Operation', '3D Modeling'],
+        skillsAr: ['كاتيا', 'CNC', 'أرتكام', 'فوتوشوب', 'تصميم صناعي', 'رسم هندسي', 'لحام', 'أعمال الخشب', 'تشغيل CNC', 'نمذجة ثلاثية الأبعاد'],
         interests: ['کار با دستگاه‌های ساخت', 'کار با چوب و اکسسوری', 'جوشکاری', 'کارهای هنری'],
         interestsEn: ['Working with Manufacturing Machines', 'Woodworking & Accessories', 'Welding', 'Artistic Works'],
-        email: 'm.vasefyan.ke@gmail.com',
-        phone: '0916377269'
+        interestsAr: ['العمل مع آلات التصنيع', 'أعمال الخشب والإكسسوارات', 'اللحام', 'الأعمال الفنية'],
+        email: 'm.vasefyan.ke@gmail.com'
       },
       
       tahvili: {
         name: 'دکتر سیدعلی تحویلی',
         nameEn: 'Dr. Seyed Ali Tahvili',
+        nameAr: 'د. سيد علي تحويلي',
         title: 'مشاور ارشد کسب‌وکار | دکتری مدیریت بازرگانی (DBA)',
         titleEn: 'Senior Business Consultant | DBA in Strategic Management',
+        titleAr: 'مستشار أعمال أول | دكتوراه في إدارة الأعمال (DBA)',
         education: [
           'دکتری مدیریت بازرگانی (DBA) - گرایش مدیریت استراتژیک - موسسه آموزش عالی آزاد گام اندیشه (مهر ۱۳۹۷)',
           'کارشناسی ارشد مدیریت کسب‌وکار (MBA) - گرایش مدیریت اجرایی - آموزش عالی خوارزمی (مهر ۱۳۹۶)',
@@ -1348,24 +1521,45 @@
           'Master of Business Administration (MBA) - Executive Management - Kharazmi Higher Education (Oct 2017)',
           'BSc in Pure Chemistry - Islamic Azad University, Zahedan Branch (2011-2015) - GPA: 14'
         ],
+        educationAr: [
+          'دكتوراه في إدارة الأعمال (DBA) - الإدارة الاستراتيجية - معهد جام أنديشه للتعليم العالي (أكتوبر ٢٠١٨)',
+          'ماجستير إدارة الأعمال (MBA) - الإدارة التنفيذية - تعليم خوارزمي العالي (أكتوبر ٢٠١٧)',
+          'بكالوريوس في الكيمياء البحتة - جامعة آزاد الإسلامية فرع زاهدان (٢٠١١-٢٠١٥) - معدل ١٤'
+        ],
         currentPosition: {
           title: 'مدیر کارگزاری معاونت توسعه شرکت‌های دانش‌بنیان',
           titleEn: 'Manager, Brokerage of Deputy of Knowledge-Based Companies Development',
+          titleAr: 'مدير وساطة مساعدية تطوير الشركات المعرفية',
           location: 'سیستان و بلوچستان، زاهدان',
           period: 'فروردین ۱۴۰۴ - اکنون',
           periodEn: 'Apr 2025 - Present',
+          periodAr: 'أبريل ٢٠٢٥ - حتى الآن',
           achievements: [
             'کارگزار استانی معاونت توسعه شرکت‌های دانش‌بنیان در امور توانمندسازی و منتورینگ',
             'مدیریت تیمی متشکل از ۴ نفر و ارتقاء کارایی گروه از طریق آموزش و توسعه مهارت‌ها',
             'تحلیل داده‌های بازار و ارائه گزارش‌های تحلیلی به مدیران برای تصمیم‌گیری‌های کلیدی',
             'ایجاد و مدیریت روابط با مشتریان کلیدی و حفظ رضایت آن‌ها در سطح بالای ۹۰٪'
+          ],
+          achievementsEn: [
+            'Provincial broker of the Deputy of Knowledge-Based Companies Development in empowerment and mentoring',
+            'Team management of 4 members and improving group efficiency through training and skill development',
+            'Market data analysis and providing analytical reports to managers for key decisions',
+            'Building and managing relationships with key clients and maintaining over 90% satisfaction'
+          ],
+          achievementsAr: [
+            'وسيط محلي لمساعدية تطوير الشركات المعرفية في شؤون التمكين والإرشاد',
+            'إدارة فريق من ٤ أفراد ورفع كفاءة المجموعة عبر التدريب وتطوير المهارات',
+            'تحليل بيانات السوق وتقديم تقارير تحليلية للمديرين للقرارات الرئيسية',
+            'بناء وإدارة العلاقات مع العملاء الرئيسيين والحفاظ على رضاهم بنسبة تزيد عن ٩٠٪'
           ]
         },
         previousPosition: {
           title: 'مدیر کارگزاری پارک علم و فناوری استان سیستان و بلوچستان',
           titleEn: 'Manager, Brokerage of Sistan and Baluchestan Science and Technology Park',
+          titleAr: 'مدير وساطة حديقة العلوم والتكنولوجيا بمحافظة سيستان وبلوشستان',
           period: 'بهمن ۱۳۹۹ - بهمن ۱۴۰۲',
           periodEn: 'Feb 2021 - Feb 2024',
+          periodAr: 'فبراير ٢٠٢١ - فبراير ٢٠٢٤',
           achievements: [
             'کارگزار حوزه خدمات توانمندسازی و منتورینگ و برگزاری ۲۶ رویداد استانی',
             'برگزاری بیش از ۵۰ دوره در حوزه کشاورزی (گیاهان دارویی، میوه‌های گرمسیری، پرورش جلبک) و حوزه‌های انرژی',
@@ -1376,6 +1570,28 @@
             'مشاوره و منتورینگ هسته‌های دانشجویی و فریلنسرهای پارک علم و فناوری به مدت ۱۵۰۰ ساعت (۱۴۰۰-۱۴۰۲)',
             'برگزاری رویداد ملی "تا ثریا" با همکاری بسیج علمی، پژوهشی و فناوری سپاه سلمان (۱۴۰۲)',
             'برگزاری دوره کوچینگ کسب و کار (۱۴۰۳)'
+          ],
+          achievementsEn: [
+            'Broker in empowerment and mentoring services, organizing 26 provincial events',
+            'Organized over 50 courses in agriculture (medicinal plants, tropical fruits, algae cultivation) and energy fields',
+            'Organized entrepreneurship event "From Idea to Business" in Zabol (2020-2021)',
+            'Organized "Social Innovation" entrepreneurship event in Zahedan (2021)',
+            'Specialized courses for training middle managers of knowledge-based companies (400 hours, 2022-2023)',
+            'Collaboration with Imam Khomeini Relief Foundation in organizing knowledge-based job opportunities event in Zahedan, Zabol and Iranshahr',
+            'Consulting and mentoring for student teams and freelancers at Science and Technology Park (1500 hours, 2021-2022)',
+            'Organized national event "Ta Tharya" in collaboration with Basij Scientific, Research and Technology of Salman Corps (2023)',
+            'Business coaching course (2024)'
+          ],
+          achievementsAr: [
+            'وسيط في خدمات التمكين والإرشاد وتنظيم ٢٦ حدثاً محلياً',
+            'تنظيم أكثر من ٥٠ دورة في مجالات الزراعة (النباتات الطبية، الفواكه الاستوائية، زراعة الطحالب) ومجالات الطاقة',
+            'تنظيم حدث ريادة الأعمال "من الفكرة إلى العمل" في زابل (٢٠٢٠-٢٠٢١)',
+            'تنظيم حدث ريادة الأعمال "الابتكار الاجتماعي" في زاهدان (٢٠٢١)',
+            'دورات متخصصة لتدريب المديرين الوسطيين للشركات المعرفية (٤٠٠ ساعة، ٢٠٢٢-٢٠٢٣)',
+            'التعاون مع لجنة إمداد الإمام الخميني في تنظيم حدث فرص العمل المعرفية في زاهدان وزابل وإيرانشهر',
+            'استشارات وإرشاد للفرق الطلابية والمستقلين في حديقة العلوم والتكنولوجيا (١٥٠٠ ساعة، ٢٠٢١-٢٠٢٢)',
+            'تنظيم الحدث الوطني "تا ثريا" بالتعاون مع التعبئة العلمية والبحثية والتكنولوجية لفيلق سلمان (٢٠٢٣)',
+            'دورة تدريبية في الكوتشينغ للأعمال (٢٠٢٤)'
           ]
         },
         courses: [
@@ -1394,6 +1610,14 @@
           'Business Coaching Course - Sistan and Baluchestan Science and Technology Park (Oct 2024)',
           'Strategic Management Course - Oxford Cert (Dec 2017)'
         ],
+        coursesAr: [
+          'DBA في الإدارة الاستراتيجية - معهد جام أنديشه للتعليم العالي (أكتوبر ٢٠١٨)',
+          'MBA في الإدارة التنفيذية - تعليم خوارزمي العالي (أكتوبر ٢٠١٧)',
+          'دورة تدريب مرشدي الأعمال - حديقة العلوم والتكنولوجيا بمحافظة سيستان وبلوشستان (أكتوبر ٢٠٢٣)',
+          'دورة تدريب المديرين الداخليين للشركات المعرفية - حديقة العلوم والتكنولوجيا بمحافظة سيستان وبلوشستان (أكتوبر ٢٠٢٢)',
+          'دورة كوتشينغ الأعمال - حديقة العلوم والتكنولوجيا بمحافظة سيستان وبلوشستان (أكتوبر ٢٠٢٤)',
+          'دورة الإدارة الاستراتيجية - أكسفورد سيرت (ديسمبر ٢٠١٧)'
+        ],
         honors: [
           'خبرنگار سایت خبری اسنا (فروردین ۱۳۹۵)',
           'دبیر دانشجویی گروه شیمی (۱۳۹۲)',
@@ -1402,22 +1626,51 @@
           'سردبیر مجله معاونت سازندگی و کارآمدسازی ناحیه دانشجویی زاهدان (مهر ۱۳۹۲)',
           'منتورینگ کسب و کار داوطلبانه در راستای مسئولیت اجتماعی (اردیبهشت ۱۴۰۱)'
         ],
+        honorsEn: [
+          'Reporter - Esna News Agency (Apr 2016)',
+          'Student Secretary - Chemistry Department (2013)',
+          'Member - Elite House of Basij Scientific, Research and Technology of Salman Corps (2011)',
+          'Armed Forces Disciplinary Commendation (2017)',
+          'Editor-in-Chief - Construction and Efficiency Deputy Magazine, Zahedan Student District (Oct 2013)',
+          'Voluntary Business Mentoring for Social Responsibility (May 2022)'
+        ],
+        honorsAr: [
+          'مراسل - وكالة إسنا للأنباء (أبريل ٢٠١٦)',
+          'أمين طلابي - قسم الكيمياء (٢٠١٣)',
+          'عضو - بيت النخباء للتعبئة العلمية والبحثية والتكنولوجية لفيلق سلمان (٢٠١١)',
+          'شكر تأديبي من القوات المسلحة (٢٠١٧)',
+          'رئيس تحرير - مجلة مساعدية البناء والكفاءة لمنطقة زاهدان الطلابية (أكتوبر ٢٠١٣)',
+          'إرشاد أعمال تطوعي للمسؤولية الاجتماعية (مايو ٢٠٢٢)'
+        ],
         teaching: [
           'مربی کسب و کار - پارک علم و فناوری استان سیستان و بلوچستان (۱۴۰۱-۱۴۰۴)',
           'برگزاری دوره‌های تخصصی پرورش نیروهای مدیریت میانی شرکت‌های دانش‌بنیان - ۴۰۰ ساعت (۱۴۰۱-۱۴۰۲)'
         ],
+        teachingEn: [
+          'Business Instructor - Sistan and Baluchestan Science and Technology Park (2022-2025)',
+          'Specialized courses for training middle managers of knowledge-based companies - 400 hours (2022-2023)'
+        ],
+        teachingAr: [
+          'مدرب أعمال - حديقة العلوم والتكنولوجيا بمحافظة سيستان وبلوشستان (٢٠٢٢-٢٠٢٥)',
+          'دورات متخصصة لتدريب المديرين الوسطيين للشركات المعرفية - ٤٠٠ ساعة (٢٠٢٢-٢٠٢٣)'
+        ],
         skills: ['مدیریت استراتژیک', 'منتورینگ', 'توانمندسازی', 'کوچینگ کسب‌وکار', 'کارآفرینی', 'مذاکره', 'توسعه سرمایه انسانی', 'برگزاری رویداد', 'تحلیل داده‌های بازار', 'مشاوره کسب‌وکار'],
+        skillsEn: ['Strategic Management', 'Mentoring', 'Empowerment', 'Business Coaching', 'Entrepreneurship', 'Negotiation', 'Human Capital Development', 'Event Management', 'Market Data Analysis', 'Business Consulting'],
+        skillsAr: ['إدارة استراتيجية', 'إرشاد', 'تمكين', 'كوتشينغ أعمال', 'ريادة أعمال', 'تفاوض', 'تطوير رأس المال البشري', 'إدارة الفعاليات', 'تحليل بيانات السوق', 'استشارات أعمال'],
         email: 'ali.tahvili@tpe-co.ir',
-        phone: '09158497777',
         linkedin: 'ali-tahvili-28862118a',
-        interests: ['آموزش', 'توانمندسازی', 'منتورینگ', 'عارضه‌یابی']
+        interests: ['آموزش', 'توانمندسازی', 'منتورینگ', 'عارضه‌یابی'],
+        interestsEn: ['Education', 'Empowerment', 'Mentoring', 'Diagnostics'],
+        interestsAr: ['تعليم', 'تمكين', 'إرشاد', 'تشخيص']
       },
       
       abedzadeh: {
         name: 'علی عابدزاده',
         nameEn: 'Ali Abedzadeh',
+        nameAr: 'علي عابدزاده',
         title: 'کارشناس ارشد فناوری | دانشجوی کارشناسی ارشد مهندسی کامپیوتر',
         titleEn: 'Senior Technology Expert | MSc Student in Computer Engineering',
+        titleAr: 'خبير تكنولوجيا أول | طالب ماجستير في هندسة الحاسوب',
         education: [
           'دانشجوی کارشناسی ارشد مهندسی کامپیوتر (گرایش نرم‌افزار) - دانشگاه سیستان و بلوچستان',
           'کارشناسی مهندسی کامپیوتر - دانشگاه سیستان و بلوچستان (ورودی ۱۳۹۸)',
@@ -1428,8 +1681,14 @@
           'BSc in Computer Engineering - University of Sistan and Baluchestan (2019)',
           '2nd Rank among 2019 Computer Engineering Students'
         ],
+        educationAr: [
+          'طالب ماجستير في هندسة الحاسوب (برمجيات) - جامعة سيستان وبلوشستان',
+          'بكالوريوس في هندسة الحاسوب - جامعة سيستان وبلوشستان (٢٠١٩)',
+          'الثاني على طلاب دفعته ٢٠١٩ في هندسة الحاسوب'
+        ],
         about: 'دانشجوی کارشناسی ارشد مهندسی کامپیوتر دانشگاه سیستان و بلوچستان. فعال در حوزه اینترنت اشیا و علاقمند به برنامه‌نویسی اندروید. همکاری با شرکت‌های پارک علم و فناوری استان سیستان و بلوچستان در حوزه‌های تخصصی. دارای روحیه کار تیمی و مشتاق به یادگیری و کسب تجربه‌های جدید.',
         aboutEn: 'MSc student in Computer Engineering at University of Sistan and Baluchestan. Active in IoT field and interested in Android programming. Collaborated with companies in Sistan and Baluchestan Science and Technology Park. Strong team spirit and eager to learn and gain new experiences.',
+        aboutAr: 'طالب ماجستير في هندسة الحاسوب بجامعة سيستان وبلوشستان. نشط في مجال إنترنت الأشياء ومهتم ببرمجة أندرويد. تعاون مع شركات في حديقة العلوم والتكنولوجيا بمحافظة سيستان وبلوشستان. روح فريق قوية ورغبة في التعلم واكتساب خبرات جديدة.',
         courses: [
           'دوره اینترنت اشیا مقدماتی - اسفند ۱۳۹۹',
           'دوره اینترنت اشیا پیشرفته - آبان ۱۴۰۰',
@@ -1442,52 +1701,85 @@
           'Laser CNC Course - December 2021',
           'Android Programming Course - September 2022'
         ],
+        coursesAr: [
+          'دورة إنترنت الأشياء التمهيدية - مارس ٢٠٢١',
+          'دورة إنترنت الأشياء المتقدمة - نوفمبر ٢٠٢١',
+          'دورة CNC ليزر - ديسمبر ٢٠٢١',
+          'دورة برمجة أندرويد - سبتمبر ٢٠٢٢'
+        ],
         skills: ['اینترنت اشیا (IoT)', 'برنامه‌نویسی اندروید', 'CNC لیزر', 'Python', 'C++', 'Embedded Systems', 'کار تیمی', 'حل مسئله', 'مدیریت زمان', 'زبان انگلیسی'],
         skillsEn: ['IoT', 'Android Programming', 'Laser CNC', 'Python', 'C++', 'Embedded Systems', 'Teamwork', 'Problem Solving', 'Time Management', 'English Language'],
-        email: 'aliabedza@gmail.com',
-        phone: '0939827507'
+        skillsAr: ['إنترنت الأشياء', 'برمجة أندرويد', 'CNC ليزر', 'بايثون', 'سي++', 'الأنظمة المدمجة', 'عمل جماعي', 'حل مشكلات', 'إدارة الوقت', 'لغة إنجليزية'],
+        email: 'aliabedza@gmail.com'
       },
       
       hamdollah: {
         name: 'ابوالفضل حمدالله‌نژاد',
         nameEn: 'Abolfazl Hamdollahnejad',
-        title: 'کارشناس تولید محتوا و رسانه',
-        titleEn: 'Content & Media Specialist',
+        nameAr: 'أبو الفضل حمد الله نجاد',
+        title: 'کارشناس ارشد رسانه و تولید محتوا',
+        titleEn: 'Senior Media & Content Specialist',
+        titleAr: 'أخصائي وسائط ومحتوى أول',
         expertise: [
-          'تولید محتوا',
-          'رسانه',
-          'تدوین',
           'عکاسی صنعتی',
-          'مدیریت شبکه‌های اجتماعی',
-          'بازاریابی محتوا',
-          'Adobe Premiere',
-          'Adobe Photoshop',
           'فیلمبرداری',
-          'طراحی گرافیک'
+          'تدوین',
+          'فیلمبرداری هوایی',
+          'طراحی سایت وردپرس',
+          'طراحی گرافیک',
+          'آموزش پریمیر',
+          'آموزش فتوشاپ',
+          'آموزش وردپرس',
+          'Adobe Premiere',
+          'Adobe Photoshop'
         ],
         expertiseEn: [
-          'Content Production',
-          'Media',
-          'Editing',
           'Industrial Photography',
-          'Social Media Management',
-          'Content Marketing',
-          'Adobe Premiere',
-          'Adobe Photoshop',
           'Videography',
-          'Graphic Design'
+          'Editing',
+          'Aerial Videography',
+          'WordPress Website Design',
+          'Graphic Design',
+          'Premiere Training',
+          'Photoshop Training',
+          'WordPress Training',
+          'Adobe Premiere',
+          'Adobe Photoshop'
         ],
-        note: 'رزومه کامل این عضو محترم تیم به زودی بارگذاری می‌شود.',
-        noteEn: 'Full resume of this respected team member will be uploaded soon.',
-        email: 'abolfazl.h@tpe-co.ir',
-        phone: '0915XXXXXXX'
+        expertiseAr: [
+          'تصوير صناعي',
+          'تصوير فيديو',
+          'مونتاج',
+          'تصوير جوي',
+          'تصميم مواقع ووردبريس',
+          'تصميم جرافيك',
+          'تدريب بريمير',
+          'تدريب فوتوشوب',
+          'تدريب ووردبريس',
+          'أدوبي بريمير',
+          'أدوبي فوتوشوب'
+        ],
+        experience: [
+          '۵ سال سابقه فیلمبرداری هوایی',
+          '۸ سال سابقه عکاسی و فیلمبرداری'
+        ],
+        experienceEn: [
+          '5 years of aerial videography experience',
+          '8 years of photography and videography experience'
+        ],
+        experienceAr: [
+          '٥ سنوات خبرة في التصوير الجوي',
+          '٨ سنوات خبرة في التصوير الفوتوغرافي والفيديو'
+        ],
+        email: 'abolfazl.h@tpe-co.ir'
       }
     };
 
     // ==================== ترجمه‌های کامل ====================
     const translations = {
       fa: {
-        'splash.title': 'توسعه پردازان',
+        'splash.title': 'تیم مهندسی توسعه پردازان',
+        'splash.sub': 'دانش‌بنیان | نوآوری | تعالی',
         'nav.home': 'خانه',
         'nav.services': 'خدمات',
         'nav.products': 'نمونه کارها',
@@ -1504,7 +1796,7 @@
         'badge.cto': 'مدیر فنی و موسس',
         'badge.consultant': 'مشاور ارشد کسب‌وکار',
         'badge.tech': 'کارشناس ارشد فناوری',
-        'badge.media': 'کارشناس تولید محتوا',
+        'badge.media': 'کارشناس ارشد رسانه',
         'team.viewResume': 'مشاهده رزومه کامل',
         'member.javad.name': 'دکتر جواد عیسی‌زاده لنگرودی',
         'member.javad.title': 'دکتری مهندسی مکانیک',
@@ -1519,8 +1811,8 @@
         'member.abedzadeh.title': 'دانشجوی کارشناسی ارشد مهندسی کامپیوتر',
         'member.abedzadeh.degree': 'گرایش نرم‌افزار | دانشگاه سیستان و بلوچستان',
         'member.hamdollah.name': 'ابوالفضل حمدالله‌نژاد',
-        'member.hamdollah.title': 'کارشناس تولید محتوا و رسانه',
-        'member.hamdollah.degree': 'تخصص در بازاریابی محتوا و دیجیتال مدیا',
+        'member.hamdollah.title': 'کارشناس ارشد رسانه و تولید محتوا',
+        'member.hamdollah.degree': 'عکاسی | فیلمبرداری | تدوین | طراحی سایت',
         'footer.contact': 'تماس با ما',
         'footer.address': 'زاهدان، بلوار دانشگاه، پارک علم و فناوری',
         'footer.links': 'خدمات تخصصی',
@@ -1539,7 +1831,8 @@
         'footer.copyright': '© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.'
       },
       en: {
-        'splash.title': 'Tose Pardazan',
+        'splash.title': 'TPE Engineering Team',
+        'splash.sub': 'Knowledge-Based | Innovation | Excellence',
         'nav.home': 'Home',
         'nav.services': 'Services',
         'nav.products': 'Portfolio',
@@ -1556,7 +1849,7 @@
         'badge.cto': 'CTO & Founder',
         'badge.consultant': 'Senior Business Consultant',
         'badge.tech': 'Senior Technology Expert',
-        'badge.media': 'Content Specialist',
+        'badge.media': 'Senior Media Specialist',
         'team.viewResume': 'View Full Resume',
         'member.javad.name': 'Dr. Javad Eissazadeh Langroudi',
         'member.javad.title': 'PhD in Mechanical Engineering',
@@ -1571,8 +1864,8 @@
         'member.abedzadeh.title': 'MSc Student in Computer Engineering',
         'member.abedzadeh.degree': 'Software Engineering | University of Sistan and Baluchestan',
         'member.hamdollah.name': 'Abolfazl Hamdollahnejad',
-        'member.hamdollah.title': 'Content & Media Specialist',
-        'member.hamdollah.degree': 'Expert in Content Marketing & Digital Media',
+        'member.hamdollah.title': 'Senior Media & Content Specialist',
+        'member.hamdollah.degree': 'Photography | Videography | Editing | Web Design',
         'footer.contact': 'Contact Us',
         'footer.address': 'Zahedan, University Blvd, Science & Technology Park',
         'footer.links': 'Specialized Services',
@@ -1591,7 +1884,8 @@
         'footer.copyright': '© 2025 Tose Pardazan Engineering Company. All rights reserved.'
       },
       ar: {
-        'splash.title': 'توسعه پردازان',
+        'splash.title': 'فريق توسعه پردازان الهندسي',
+        'splash.sub': 'معرفي | ابتكار | تميز',
         'nav.home': 'الرئيسية',
         'nav.services': 'الخدمات',
         'nav.products': 'الأعمال',
@@ -1608,9 +1902,9 @@
         'badge.cto': 'المدير الفني والمؤسس',
         'badge.consultant': 'مستشار أعمال أول',
         'badge.tech': 'خبير تكنولوجيا أول',
-        'badge.media': 'أخصائي محتوى',
+        'badge.media': 'أخصائي وسائط أول',
         'team.viewResume': 'عرض السيرة الذاتية',
-        'member.javad.name': 'د. جواد عيسى زاده لنگرودي',
+        'member.javad.name': 'د. جواد عيسى‌زاده لنگرودی',
         'member.javad.title': 'دكتوراه في الهندسة الميكانيكية',
         'member.javad.degree': 'دكتوراه | جامعة سيستان وبلوشستان',
         'member.mina.name': 'مينا واسفيان',
@@ -1623,8 +1917,8 @@
         'member.abedzadeh.title': 'طالب ماجستير في هندسة الحاسوب',
         'member.abedzadeh.degree': 'هندسة البرمجيات | جامعة سيستان وبلوشستان',
         'member.hamdollah.name': 'أبو الفضل حمد الله نجاد',
-        'member.hamdollah.title': 'أخصائي محتوى ووسائط',
-        'member.hamdollah.degree': 'خبير في تسويق المحتوى والوسائط الرقمية',
+        'member.hamdollah.title': 'أخصائي وسائط ومحتوى أول',
+        'member.hamdollah.degree': 'تصوير | فيديو | مونتاج | تصميم مواقع',
         'footer.contact': 'اتصل بنا',
         'footer.address': 'زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا',
         'footer.links': 'الخدمات المتخصصة',
@@ -1662,6 +1956,8 @@
           if (el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'SPAN' || el.tagName === 'DIV' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P') {
             if (el.classList.contains('btn-resume') && el.querySelector('span')) {
               el.querySelector('span').textContent = translations[lang][key];
+            } else if (el.classList.contains('footer-cta-btn')) {
+              el.textContent = translations[lang][key];
             } else {
               el.textContent = translations[lang][key];
             }
@@ -1686,10 +1982,22 @@
       const modalBody = document.getElementById('modalBody');
       const data = resumeDatabase[memberId];
       const isEn = currentLanguage === 'en';
+      const isAr = currentLanguage === 'ar';
       
       let content = '';
       
       if (memberId === 'javad') {
+        const name = isEn ? data.nameEn : (isAr ? data.nameAr : data.name);
+        const title = isEn ? data.titleEn : (isAr ? data.titleAr : data.title);
+        const birthDate = isEn ? data.personalInfo.birthDateEn : (isAr ? data.personalInfo.birthDateAr : data.personalInfo.birthDate);
+        const maritalStatus = isEn ? data.personalInfo.maritalStatusEn : (isAr ? data.personalInfo.maritalStatusAr : data.personalInfo.maritalStatus);
+        const militaryStatus = isEn ? data.personalInfo.militaryStatusEn : (isAr ? data.personalInfo.militaryStatusAr : data.personalInfo.militaryStatus);
+        const education = isEn ? data.educationEn : (isAr ? data.educationAr : data.education);
+        const honors = isEn ? data.honorsEn : (isAr ? data.honorsAr : data.honors);
+        const projects = isEn ? data.projectsEn : (isAr ? data.projectsAr : data.projects);
+        const certificates = isEn ? data.certificatesEn : (isAr ? data.certificatesAr : data.certificates);
+        const skills = isEn ? data.skillsEn : (isAr ? data.skillsAr : data.skills);
+        
         content = `
           <div style="padding: 10px;">
             <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px; background: linear-gradient(135deg, #1e40af, #1e3a8a); padding: 30px; border-radius: 24px; color: white;">
@@ -1697,26 +2005,26 @@
                 ج
               </div>
               <div>
-                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${isEn ? data.nameEn : data.name}</h2>
-                <p style="font-size: 18px; opacity: 0.9;">${isEn ? data.titleEn : data.title}</p>
+                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${name}</h2>
+                <p style="font-size: 18px; opacity: 0.9;">${title}</p>
               </div>
             </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-user"></i> ${isEn ? 'Personal Info' : 'اطلاعات شخصی'}
+                  <i class="fas fa-user"></i> ${isEn ? 'Personal Info' : (isAr ? 'معلومات شخصية' : 'اطلاعات شخصی')}
                 </h3>
                 <div style="background: white; padding: 15px; border-radius: 16px;">
-                  <p style="margin-bottom: 10px;"><strong>${isEn ? 'Birth Date:' : 'تاریخ تولد:'}</strong> ${data.personalInfo.birthDate}</p>
-                  <p style="margin-bottom: 10px;"><strong>${isEn ? 'Marital Status:' : 'وضعیت تأهل:'}</strong> ${data.personalInfo.maritalStatus}</p>
-                  <p><strong>${isEn ? 'Military Status:' : 'وضعیت نظام وظیفه:'}</strong> ${data.personalInfo.militaryStatus}</p>
+                  <p style="margin-bottom: 10px;"><strong>${isEn ? 'Birth Date:' : (isAr ? 'تاريخ الميلاد:' : 'تاریخ تولد:')}</strong> ${birthDate}</p>
+                  <p style="margin-bottom: 10px;"><strong>${isEn ? 'Marital Status:' : (isAr ? 'الحالة الاجتماعية:' : 'وضعیت تأهل:')}</strong> ${maritalStatus}</p>
+                  <p><strong>${isEn ? 'Military Status:' : (isAr ? 'حالة الخدمة:' : 'وضعیت نظام وظیفه:')}</strong> ${militaryStatus}</p>
                 </div>
               </div>
               
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : 'اطلاعات تماس'}
+                  <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : (isAr ? 'اتصال' : 'اطلاعات تماس')}
                 </h3>
                 <div style="background: white; padding: 15px; border-radius: 16px;">
                   <p style="margin-bottom: 10px;"><i class="fas fa-envelope" style="color: #1e40af;"></i> ${data.email}</p>
@@ -1728,44 +2036,51 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : 'تحصیلات'}
+                  <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : (isAr ? 'التعليم' : 'تحصیلات')}
                 </h3>
                 <ul style="list-style: none; background: white; padding: 15px; border-radius: 16px;">
-                  ${(isEn ? data.educationEn : data.education).map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">• ${item}</li>`).join('')}
+                  ${education.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">• ${item}</li>`).join('')}
                 </ul>
               </div>
               
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #dc2626; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-trophy"></i> ${isEn ? 'Honors' : 'افتخارات'}
+                  <i class="fas fa-trophy"></i> ${isEn ? 'Honors' : (isAr ? 'التكريمات' : 'افتخارات')}
                 </h3>
                 <ul style="list-style: none; background: white; padding: 15px; border-radius: 16px;">
-                  ${(isEn ? data.honorsEn : data.honors).map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">🏆 ${item}</li>`).join('')}
+                  ${honors.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">🏆 ${item}</li>`).join('')}
                 </ul>
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px; margin-bottom: 25px;">
               <h3 style="color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-microchip"></i> ${isEn ? 'Key Projects' : 'پروژه‌های شاخص'}
+                <i class="fas fa-microchip"></i> ${isEn ? 'Key Projects' : (isAr ? 'المشاريع الرئيسية' : 'پروژه‌های شاخص')}
               </h3>
               <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: white; padding: 20px; border-radius: 16px;">
-                ${data.projects.map(project => `<div style="background: #f8fafc; padding: 12px 18px; border-radius: 12px;">🔹 ${project}</div>`).join('')}
+                ${projects.map(project => `<div style="background: #f8fafc; padding: 12px 18px; border-radius: 12px;">🔹 ${project}</div>`).join('')}
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
               <h3 style="color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-certificate"></i> ${isEn ? 'Certificates' : 'گواهینامه‌ها'}
+                <i class="fas fa-certificate"></i> ${isEn ? 'Certificates' : (isAr ? 'الشهادات' : 'گواهینامه‌ها')}
               </h3>
               <div style="display: grid; grid-template-columns: 1fr; gap: 12px; background: white; padding: 20px; border-radius: 16px;">
-                ${data.certificates.map(cert => `<div style="background: #f8fafc; padding: 12px 18px; border-radius: 12px;">📜 ${cert}</div>`).join('')}
+                ${certificates.map(cert => `<div style="background: #f8fafc; padding: 12px 18px; border-radius: 12px;">📜 ${cert}</div>`).join('')}
               </div>
             </div>
           </div>
         `;
       } 
       else if (memberId === 'mina') {
+        const name = isEn ? data.nameEn : (isAr ? data.nameAr : data.name);
+        const title = isEn ? data.titleEn : (isAr ? data.titleAr : data.title);
+        const education = isEn ? data.educationEn : (isAr ? data.educationAr : data.education);
+        const experience = isEn ? data.experienceEn : (isAr ? data.experienceAr : data.experience);
+        const skills = isEn ? data.skillsEn : (isAr ? data.skillsAr : data.skills);
+        const interests = isEn ? data.interestsEn : (isAr ? data.interestsAr : data.interests);
+        
         content = `
           <div style="padding: 10px;">
             <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px; background: linear-gradient(135deg, #0ea5e9, #0284c7); padding: 30px; border-radius: 24px; color: white;">
@@ -1773,27 +2088,27 @@
                 م
               </div>
               <div>
-                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${isEn ? data.nameEn : data.name}</h2>
-                <p style="font-size: 18px; opacity: 0.9;">${isEn ? data.titleEn : data.title}</p>
+                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${name}</h2>
+                <p style="font-size: 18px; opacity: 0.9;">${title}</p>
               </div>
             </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #0ea5e9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : 'تحصیلات'}
+                  <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : (isAr ? 'التعليم' : 'تحصیلات')}
                 </h3>
                 <ul style="list-style: none; background: white; padding: 15px; border-radius: 16px;">
-                  ${(isEn ? data.educationEn : data.education).map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">• ${item}</li>`).join('')}
+                  ${education.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">• ${item}</li>`).join('')}
                 </ul>
               </div>
               
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #0ea5e9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-briefcase"></i> ${isEn ? 'Work Experience' : 'سوابق شغلی'}
+                  <i class="fas fa-briefcase"></i> ${isEn ? 'Work Experience' : (isAr ? 'الخبرة العملية' : 'سوابق شغلی')}
                 </h3>
                 <ul style="list-style: none; background: white; padding: 15px; border-radius: 16px;">
-                  ${(isEn ? data.experienceEn : data.experience).map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">💼 ${item}</li>`).join('')}
+                  ${experience.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">💼 ${item}</li>`).join('')}
                 </ul>
               </div>
             </div>
@@ -1801,35 +2116,31 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #0ea5e9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-cogs"></i> ${isEn ? 'Skills' : 'مهارت‌ها'}
+                  <i class="fas fa-cogs"></i> ${isEn ? 'Skills' : (isAr ? 'المهارات' : 'مهارت‌ها')}
                 </h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; background: white; padding: 20px; border-radius: 16px;">
-                  ${(isEn ? data.skillsEn : data.skills).map(skill => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #0ea5e9; color: #0ea5e9; font-weight: 500;">${skill}</span>`).join('')}
+                  ${skills.map(skill => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #0ea5e9; color: #0ea5e9; font-weight: 500;">${skill}</span>`).join('')}
                 </div>
               </div>
               
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #0ea5e9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-heart"></i> ${isEn ? 'Interests' : 'علاقمندی‌ها'}
+                  <i class="fas fa-heart"></i> ${isEn ? 'Interests' : (isAr ? 'الاهتمامات' : 'علاقمندی‌ها')}
                 </h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; background: white; padding: 20px; border-radius: 16px;">
-                  ${(isEn ? data.interestsEn : data.interests).map(interest => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #0ea5e9; color: #0ea5e9;">${interest}</span>`).join('')}
+                  ${interests.map(interest => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #0ea5e9; color: #0ea5e9;">${interest}</span>`).join('')}
                 </div>
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
               <h3 style="color: #0ea5e9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : 'اطلاعات تماس'}
+                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : (isAr ? 'اتصال' : 'اطلاعات تماس')}
               </h3>
               <div style="display: flex; gap: 20px; flex-wrap: wrap; background: white; padding: 20px; border-radius: 16px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <i class="fas fa-envelope" style="color: #0ea5e9;"></i>
                   <span>${data.email}</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-phone" style="color: #0ea5e9;"></i>
-                  <span>${data.phone}</span>
                 </div>
               </div>
             </div>
@@ -1837,6 +2148,19 @@
         `;
       }
       else if (memberId === 'tahvili') {
+        const name = isEn ? data.nameEn : (isAr ? data.nameAr : data.name);
+        const title = isEn ? data.titleEn : (isAr ? data.titleAr : data.title);
+        const education = isEn ? data.educationEn : (isAr ? data.educationAr : data.education);
+        const currentTitle = isEn ? data.currentPosition.titleEn : (isAr ? data.currentPosition.titleAr : data.currentPosition.title);
+        const currentPeriod = isEn ? data.currentPosition.periodEn : (isAr ? data.currentPosition.periodAr : data.currentPosition.period);
+        const currentAchievements = isEn ? data.currentPosition.achievementsEn : (isAr ? data.currentPosition.achievementsAr : data.currentPosition.achievements);
+        const prevTitle = isEn ? data.previousPosition.titleEn : (isAr ? data.previousPosition.titleAr : data.previousPosition.title);
+        const prevPeriod = isEn ? data.previousPosition.periodEn : (isAr ? data.previousPosition.periodAr : data.previousPosition.period);
+        const prevAchievements = isEn ? data.previousPosition.achievementsEn : (isAr ? data.previousPosition.achievementsAr : data.previousPosition.achievements);
+        const courses = isEn ? data.coursesEn : (isAr ? data.coursesAr : data.courses);
+        const honors = isEn ? data.honorsEn : (isAr ? data.honorsAr : data.honors);
+        const skills = isEn ? data.skillsEn : (isAr ? data.skillsAr : data.skills);
+        
         content = `
           <div style="padding: 10px;">
             <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px; background: linear-gradient(135deg, #10b981, #059669); padding: 30px; border-radius: 24px; color: white;">
@@ -1844,44 +2168,44 @@
                 ع
               </div>
               <div>
-                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${isEn ? data.nameEn : data.name}</h2>
-                <p style="font-size: 18px; opacity: 0.9;">${isEn ? data.titleEn : data.title}</p>
+                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${name}</h2>
+                <p style="font-size: 18px; opacity: 0.9;">${title}</p>
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px; margin-bottom: 25px;">
               <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : 'تحصیلات'}
+                <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : (isAr ? 'التعليم' : 'تحصیلات')}
               </h3>
               <ul style="list-style: none; background: white; padding: 20px; border-radius: 16px;">
-                ${(isEn ? data.educationEn : data.education).map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">🎓 ${item}</li>`).join('')}
+                ${education.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">🎓 ${item}</li>`).join('')}
               </ul>
             </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-briefcase"></i> ${isEn ? 'Current Position' : 'سمت فعلی'}
+                  <i class="fas fa-briefcase"></i> ${isEn ? 'Current Position' : (isAr ? 'المنصب الحالي' : 'سمت فعلی')}
                 </h3>
                 <div style="background: white; padding: 20px; border-radius: 16px;">
-                  <p style="font-weight: 700; color: #0f172a; margin-bottom: 10px; font-size: 16px;">${isEn ? data.currentPosition.titleEn : data.currentPosition.title}</p>
-                  <p style="color: #64748b; font-size: 14px; margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="color: #10b981;"></i> ${isEn ? 'Zahedan, Sistan and Baluchestan' : data.currentPosition.location}</p>
-                  <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;"><i class="fas fa-calendar" style="color: #10b981;"></i> ${isEn ? data.currentPosition.periodEn : data.currentPosition.period}</p>
+                  <p style="font-weight: 700; color: #0f172a; margin-bottom: 10px; font-size: 16px;">${currentTitle}</p>
+                  <p style="color: #64748b; font-size: 14px; margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="color: #10b981;"></i> ${isEn ? 'Zahedan, Sistan and Baluchestan' : (isAr ? 'زاهدان، سيستان وبلوشستان' : data.currentPosition.location)}</p>
+                  <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;"><i class="fas fa-calendar" style="color: #10b981;"></i> ${currentPeriod}</p>
                   <ul style="list-style: none;">
-                    ${data.currentPosition.achievements.map(ach => `<li style="margin-bottom: 10px; padding-right: 20px; position: relative; font-size: 13px;">✓ ${ach}</li>`).join('')}
+                    ${currentAchievements.map(ach => `<li style="margin-bottom: 10px; padding-right: 20px; position: relative; font-size: 13px;">✓ ${ach}</li>`).join('')}
                   </ul>
                 </div>
               </div>
               
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-history"></i> ${isEn ? 'Previous Position' : 'سمت قبلی'}
+                  <i class="fas fa-history"></i> ${isEn ? 'Previous Position' : (isAr ? 'المنصب السابق' : 'سمت قبلی')}
                 </h3>
                 <div style="background: white; padding: 20px; border-radius: 16px; max-height: 400px; overflow-y: auto;">
-                  <p style="font-weight: 700; color: #0f172a; margin-bottom: 10px;">${isEn ? data.previousPosition.titleEn : data.previousPosition.title}</p>
-                  <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;"><i class="fas fa-calendar" style="color: #10b981;"></i> ${isEn ? data.previousPosition.periodEn : data.previousPosition.period}</p>
+                  <p style="font-weight: 700; color: #0f172a; margin-bottom: 10px;">${prevTitle}</p>
+                  <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;"><i class="fas fa-calendar" style="color: #10b981;"></i> ${prevPeriod}</p>
                   <ul style="list-style: none;">
-                    ${data.previousPosition.achievements.map(ach => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative; font-size: 13px;">• ${ach}</li>`).join('')}
+                    ${prevAchievements.map(ach => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative; font-size: 13px;">• ${ach}</li>`).join('')}
                   </ul>
                 </div>
               </div>
@@ -1889,34 +2213,30 @@
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px; margin-bottom: 25px;">
               <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-certificate"></i> ${isEn ? 'Courses & Certificates' : 'دوره‌ها و گواهینامه‌ها'}
+                <i class="fas fa-certificate"></i> ${isEn ? 'Courses & Certificates' : (isAr ? 'الدورات والشهادات' : 'دوره‌ها و گواهینامه‌ها')}
               </h3>
               <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: white; padding: 20px; border-radius: 16px;">
-                ${(isEn ? data.coursesEn : data.courses).map(course => `<div style="background: #f8fafc; padding: 12px 18px; border-radius: 12px;">📘 ${course}</div>`).join('')}
+                ${courses.map(course => `<div style="background: #f8fafc; padding: 12px 18px; border-radius: 12px;">📘 ${course}</div>`).join('')}
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px; margin-bottom: 25px;">
               <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-trophy"></i> ${isEn ? 'Honors & Awards' : 'افتخارات'}
+                <i class="fas fa-trophy"></i> ${isEn ? 'Honors & Awards' : (isAr ? 'التكريمات والجوائز' : 'افتخارات')}
               </h3>
               <div style="display: flex; flex-wrap: wrap; gap: 12px; background: white; padding: 20px; border-radius: 16px;">
-                ${data.honors.map(honor => `<span style="background: #f8fafc; padding: 8px 16px; border-radius: 50px; border: 1px solid #10b981; color: #10b981; font-size: 13px;">🏅 ${honor}</span>`).join('')}
+                ${honors.map(honor => `<span style="background: #f8fafc; padding: 8px 16px; border-radius: 50px; border: 1px solid #10b981; color: #10b981; font-size: 13px;">🏅 ${honor}</span>`).join('')}
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
               <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : 'اطلاعات تماس'}
+                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : (isAr ? 'اتصال' : 'اطلاعات تماس')}
               </h3>
               <div style="display: flex; gap: 20px; flex-wrap: wrap; background: white; padding: 20px; border-radius: 16px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <i class="fas fa-envelope" style="color: #10b981;"></i>
                   <span>${data.email}</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-phone" style="color: #10b981;"></i>
-                  <span>${data.phone}</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <i class="fab fa-linkedin" style="color: #10b981;"></i>
@@ -1928,6 +2248,13 @@
         `;
       }
       else if (memberId === 'abedzadeh') {
+        const name = isEn ? data.nameEn : (isAr ? data.nameAr : data.name);
+        const title = isEn ? data.titleEn : (isAr ? data.titleAr : data.title);
+        const about = isEn ? data.aboutEn : (isAr ? data.aboutAr : data.about);
+        const education = isEn ? data.educationEn : (isAr ? data.educationAr : data.education);
+        const courses = isEn ? data.coursesEn : (isAr ? data.coursesAr : data.courses);
+        const skills = isEn ? data.skillsEn : (isAr ? data.skillsAr : data.skills);
+        
         content = `
           <div style="padding: 10px;">
             <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px; background: linear-gradient(135deg, #8b5cf6, #6d28d9); padding: 30px; border-radius: 24px; color: white;">
@@ -1935,59 +2262,55 @@
                 ع
               </div>
               <div>
-                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${isEn ? data.nameEn : data.name}</h2>
-                <p style="font-size: 18px; opacity: 0.9;">${isEn ? data.titleEn : data.title}</p>
+                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${name}</h2>
+                <p style="font-size: 18px; opacity: 0.9;">${title}</p>
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px; margin-bottom: 25px;">
               <h3 style="color: #8b5cf6; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-user"></i> ${isEn ? 'About Me' : 'درباره من'}
+                <i class="fas fa-user"></i> ${isEn ? 'About Me' : (isAr ? 'عني' : 'درباره من')}
               </h3>
-              <p style="line-height: 1.8; color: #334155; background: white; padding: 20px; border-radius: 16px;">${isEn ? data.aboutEn : data.about}</p>
+              <p style="line-height: 1.8; color: #334155; background: white; padding: 20px; border-radius: 16px;">${about}</p>
             </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #8b5cf6; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : 'تحصیلات'}
+                  <i class="fas fa-graduation-cap"></i> ${isEn ? 'Education' : (isAr ? 'التعليم' : 'تحصیلات')}
                 </h3>
                 <ul style="list-style: none; background: white; padding: 20px; border-radius: 16px;">
-                  ${(isEn ? data.educationEn : data.education).map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">📚 ${item}</li>`).join('')}
+                  ${education.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">📚 ${item}</li>`).join('')}
                 </ul>
               </div>
               
               <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
                 <h3 style="color: #8b5cf6; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-certificate"></i> ${isEn ? 'Courses' : 'دوره‌ها'}
+                  <i class="fas fa-certificate"></i> ${isEn ? 'Courses' : (isAr ? 'الدورات' : 'دوره‌ها')}
                 </h3>
                 <ul style="list-style: none; background: white; padding: 20px; border-radius: 16px;">
-                  ${(isEn ? data.coursesEn : data.courses).map(course => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">📌 ${course}</li>`).join('')}
+                  ${courses.map(course => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">📌 ${course}</li>`).join('')}
                 </ul>
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px; margin-bottom: 25px;">
               <h3 style="color: #8b5cf6; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-cogs"></i> ${isEn ? 'Skills' : 'مهارت‌ها'}
+                <i class="fas fa-cogs"></i> ${isEn ? 'Skills' : (isAr ? 'المهارات' : 'مهارت‌ها')}
               </h3>
               <div style="display: flex; flex-wrap: wrap; gap: 10px; background: white; padding: 20px; border-radius: 16px;">
-                ${(isEn ? data.skillsEn : data.skills).map(skill => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #8b5cf6; color: #8b5cf6; font-weight: 500;">${skill}</span>`).join('')}
+                ${skills.map(skill => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #8b5cf6; color: #8b5cf6; font-weight: 500;">${skill}</span>`).join('')}
               </div>
             </div>
             
             <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
               <h3 style="color: #8b5cf6; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : 'اطلاعات تماس'}
+                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : (isAr ? 'اتصال' : 'اطلاعات تماس')}
               </h3>
               <div style="display: flex; gap: 20px; flex-wrap: wrap; background: white; padding: 20px; border-radius: 16px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <i class="fas fa-envelope" style="color: #8b5cf6;"></i>
                   <span style="direction: ltr;">${data.email}</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <i class="fas fa-phone" style="color: #8b5cf6;"></i>
-                  <span>${data.phone}</span>
                 </div>
               </div>
             </div>
@@ -1995,20 +2318,54 @@
         `;
       }
       else {
+        const name = isEn ? data.nameEn : (isAr ? data.nameAr : data.name);
+        const title = isEn ? data.titleEn : (isAr ? data.titleAr : data.title);
+        const expertise = isEn ? data.expertiseEn : (isAr ? data.expertiseAr : data.expertise);
+        const experience = isEn ? data.experienceEn : (isAr ? data.experienceAr : data.experience);
+        
         content = `
-          <div style="padding: 50px 30px; text-align: center;">
-            <div style="background: linear-gradient(135deg, #64748b, #475569); width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; color: white; font-size: 48px; font-weight: 800;">
-              ا
+          <div style="padding: 10px;">
+            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px; background: linear-gradient(135deg, #64748b, #475569); padding: 30px; border-radius: 24px; color: white;">
+              <div style="background: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800; color: #64748b;">
+                ا
+              </div>
+              <div>
+                <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">${name}</h2>
+                <p style="font-size: 18px; opacity: 0.9;">${title}</p>
+              </div>
             </div>
-            <h2 style="color: #1e40af; margin-bottom: 15px; font-size: 28px;">${isEn ? data.nameEn : data.name}</h2>
-            <p style="color: #dc2626; font-size: 18px; margin-bottom: 20px;">${isEn ? data.titleEn : data.title}</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px;">
-              ${(isEn ? data.expertiseEn : data.expertise).map(skill => `<span style="background: #f1f5f9; padding: 8px 18px; border-radius: 50px; color: #475569;">${skill}</span>`).join('')}
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+              <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
+                <h3 style="color: #475569; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                  <i class="fas fa-cogs"></i> ${isEn ? 'Expertise' : (isAr ? 'الخبرات' : 'تخصص‌ها')}
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; background: white; padding: 20px; border-radius: 16px;">
+                  ${expertise.map(skill => `<span style="background: #f8fafc; padding: 8px 18px; border-radius: 50px; border: 1px solid #64748b; color: #475569; font-weight: 500;">${skill}</span>`).join('')}
+                </div>
+              </div>
+              
+              <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
+                <h3 style="color: #475569; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                  <i class="fas fa-briefcase"></i> ${isEn ? 'Experience' : (isAr ? 'الخبرة' : 'سابقه')}
+                </h3>
+                <ul style="list-style: none; background: white; padding: 20px; border-radius: 16px;">
+                  ${experience.map(item => `<li style="margin-bottom: 12px; padding-right: 20px; position: relative;">⭐ ${item}</li>`).join('')}
+                </ul>
+              </div>
             </div>
-            <p style="color: #64748b; font-size: 16px; max-width: 500px; margin: 0 auto; background: #f1f5f9; padding: 20px; border-radius: 16px;">
-              <i class="fas fa-info-circle" style="color: #1e40af; margin-left: 8px;"></i>
-              ${isEn ? data.noteEn : data.note}
-            </p>
+            
+            <div style="background: #f8fafc; padding: 25px; border-radius: 20px;">
+              <h3 style="color: #475569; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-address-card"></i> ${isEn ? 'Contact' : (isAr ? 'اتصال' : 'اطلاعات تماس')}
+              </h3>
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; background: white; padding: 20px; border-radius: 16px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <i class="fas fa-envelope" style="color: #475569;"></i>
+                  <span>${data.email}</span>
+                </div>
+              </div>
+            </div>
           </div>
         `;
       }
@@ -2030,7 +2387,7 @@
           splashScreen.classList.add('hidden');
           setTimeout(() => {
             splashScreen.style.display = 'none';
-          }, 300);
+          }, 600);
         }
       }, 2000);
     });
