@@ -2,8 +2,21 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  
+  <!-- متا تگ‌های اصلی -->
+  <meta name="description" content="نمونه کارها و پروژه‌های اجرایی شرکت دانش بنیان توسعه پردازان | طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب">
+  <meta name="keywords" content="نمونه کار, پروژه‌های توسعه پردازان, طراحی صنعتی, پرینت سه بعدی, مهندسی معکوس, دستگاه تصفیه هوا, قفل بیومتریک">
+  <meta name="author" content="شرکت توسعه پردازان">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="نمونه خدمات و محصولات | شرکت توسعه پردازان">
+  <meta property="og:description" content="گالری پروژه‌های موفق در حوزه طراحی مهندسی، نمونه‌سازی و ساخت دیجیتال">
+  <meta property="og:image" content="https://tpe-co.ir/images/logo.png">
+  <meta property="og:url" content="https://tpe-co.ir/products.html">
+  <meta property="og:type" content="website">
+  
   <title>نمونه خدمات و محصولات | توسعه پردازان</title>
-  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="icon" href="images/logo.png" type="image/png" sizes="192x192">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- فونت‌ها -->
@@ -11,36 +24,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    /* استایل های مشابه صفحه اصلی */
+    /* ===== استایل‌های اصلی - کاملاً مشابه صفحه اصلی ===== */
     :root {
       --bg: #f8fafc;
       --text: #0f172a;
       --muted: #64748b;
       --primary: #1e40af;
-      --surface: rgba(255, 255, 255, 0.9);
+      --primary-dark: #1e3a8a;
+      --primary-light: #60a5fa;
+      --surface: rgba(255, 255, 255, 0.95);
       --accent: #dc2626;
+      --accent-light: #f87171;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --glass-dark: rgba(15, 23, 42, 0.7);
       --maxw: 1200px;
-      --glass-bg: rgba(255, 255, 255, 0.15);
-      --glass-border: rgba(255, 255, 255, 0.2);
-      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --engineering-blue: #1e3a8a;
+      --engineering-gray: #334155;
+      --engineering-light: #e2e8f0;
+      --engineering-accent: #0ea5e9;
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
     
     body {
       font-family: 'Vazirmatn', 'Inter', Tahoma, sans-serif;
       line-height: 1.6;
       color: var(--text);
       background: var(--bg);
+      overflow-x: hidden;
     }
     
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5, h6 {
       font-weight: 700;
       line-height: 1.2;
     }
     
     a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; height: auto; }
+    
+    section { padding: 60px 20px; }
     
     .container {
       max-width: var(--maxw);
@@ -48,61 +81,209 @@
       padding: 0 20px;
     }
     
-    /* ناوبری */
+    h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 36px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 20px;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: 2px;
+    }
+    
+    /* ===== اسپلش اسکرین اختصاصی ===== */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      overflow: hidden;
+    }
+    
+    .splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .splash-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.3) 0%, transparent 50%);
+      animation: float 15s infinite ease-in-out;
+    }
+    
+    .splash-logo {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .splash-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+    
+    .splash-text {
+      color: white;
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      max-width: 80%;
+      line-height: 1.5;
+      animation: fadeInUp 1s ease;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .splash-subtext {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 20px;
+      text-align: center;
+      max-width: 70%;
+      animation: fadeInUp 1.2s ease;
+      font-weight: 500;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* ===== ناوبری مینیمال (کاملاً مشابه صفحه اصلی) ===== */
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: var(--glass-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      padding: 0 15px;
+    }
+    
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
     }
     
     .nav-wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 15px 20px;
+      padding: 12px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
     .brand img {
-      height: 32px;
+      height: 45px;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+    }
+    
+    .brand img:hover {
+      transform: rotate(5deg) scale(1.1);
     }
     
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 6px;
       list-style: none;
       align-items: center;
     }
     
     .nav-links a {
-      color: #1e293b;
+      color: var(--text);
       font-weight: 500;
-      font-size: 15px;
-      padding: 8px 12px;
+      font-size: 14px;
+      padding: 6px 12px;
       border-radius: 8px;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+    }
+    
+    .nav-links a:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+      border-radius: 8px;
     }
     
     .nav-links a:hover {
-      background: rgba(30, 64, 175, 0.1);
-      color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .nav-links a:hover:before {
+      opacity: 1;
     }
     
     /* انتخابگر زبان */
     .language-selector {
       display: flex;
-      gap: 5px;
-      margin-right: 0;
+      gap: 4px;
+      margin-right: 8px;
       background: transparent;
-      padding: 0;
-      border-radius: 8px;
-      border: none;
+      padding: 2px;
     }
     
     .lang-btn {
@@ -110,8 +291,8 @@
       border: none;
       background: transparent;
       cursor: pointer;
-      width: 28px;
-      height: 18px;
+      width: 24px;
+      height: 16px;
       border-radius: 2px;
       overflow: hidden;
       transition: all 0.3s;
@@ -119,6 +300,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0.7;
     }
     
     .lang-btn img {
@@ -129,135 +311,542 @@
     }
     
     .lang-btn.active {
-      box-shadow: 0 0 0 2px var(--primary);
+      opacity: 1;
       transform: scale(1.1);
+      box-shadow: 0 0 0 1px var(--primary);
     }
     
     .lang-btn:hover {
-      transform: scale(1.05);
+      opacity: 1;
+      transform: scale(1.1);
     }
     
-    /* محتوای محصولات */
-    .products-header {
-      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
-      color: white;
-      padding: 60px 20px;
+    /* ===== منوی همبرگر برای موبایل ===== */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1002;
+      position: relative;
+    }
+    
+    .mobile-menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1001;
+      padding: 100px 30px 30px;
+      transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      overflow-y: auto;
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-menu .nav-links-mobile {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .mobile-menu .nav-links-mobile a {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: block;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       text-align: center;
-      margin-bottom: 40px;
+    }
+    
+    .mobile-menu .nav-links-mobile a:hover {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      transform: translateX(-5px);
+    }
+    
+    .mobile-menu .main-cta-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light)) !important;
+      color: white !important;
+    }
+    
+    .mobile-language-selector {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-language-selector .lang-btn {
+      width: 40px;
+      height: 28px;
+    }
+    
+    /* ===== هدر محصولات با طراحی شیشه‌ای ===== */
+    .products-header {
+      position: relative;
+      background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.95) 0%, 
+        rgba(30, 41, 59, 0.92) 50%, 
+        rgba(30, 58, 138, 0.85) 100%);
+      padding: 120px 20px 80px;
+      margin-top: 0;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    
+    .products-header:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path fill="white" d="M20 20 L30 20 L30 30 L20 30 Z M50 50 L70 50 L70 70 L50 70 Z M80 10 L90 10 L90 20 L80 20 Z"/></svg>');
+      background-size: 60px 60px;
+      opacity: 0.1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
     
     .products-header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 0.8s ease;
     }
     
-    /* جدول پروژه‌ها */
-    .projects-table-container {
-      background: white;
-      border-radius: 16px;
+    .products-header p {
+      font-size: 18px;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+      animation: fadeInUp 1.2s ease;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      display: block;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.9;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* ===== جستجو و فیلتر ===== */
+    .search-section {
+      margin: -30px auto 40px;
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+    }
+    
+    .search-container {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 60px;
+      padding: 5px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+    }
+    
+    .search-icon {
+      padding: 0 20px;
+      color: var(--primary);
+      font-size: 18px;
+    }
+    
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 16px 0;
+      font-size: 16px;
+      font-family: 'Vazirmatn', sans-serif;
+      outline: none;
+      color: var(--text);
+    }
+    
+    .search-input::placeholder {
+      color: var(--muted);
+      opacity: 0.7;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .filter-btn i {
+      color: var(--primary);
+    }
+    
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-color: transparent;
+    }
+    
+    .filter-btn.active i {
+      color: white;
+    }
+    
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ===== کارت‌های پروژه (طراحی جدید) ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+    
+    .project-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-      margin: 40px 0 60px;
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    
+    .card-header {
+      padding: 25px 25px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    
+    .project-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: white;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+    }
+    
+    .project-type-badge {
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .type-student { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+    .type-creative { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+    .type-original { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+    .type-reverse { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+    
+    .card-body {
+      padding: 0 25px 20px;
+    }
+    
+    .project-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    
+    .project-client {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--text);
+      font-size: 14px;
+    }
+    
+    .project-client i {
+      color: var(--accent);
+      margin-top: 3px;
+      font-size: 14px;
+    }
+    
+    .project-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .project-field i {
+      color: var(--engineering-accent);
+    }
+    
+    .project-designer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .project-designer i {
+      color: var(--primary);
+    }
+    
+    .card-footer {
+      padding: 15px 25px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .share-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .share-btn:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .coming-soon-badge {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* ===== جدول پروژه‌ها (برای نمایش کامل) ===== */
+    .table-section {
+      margin: 60px 0;
+    }
+    
+    .table-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+    
+    .table-title h3 {
+      color: var(--primary);
+      font-size: 24px;
+    }
+    
+    .table-container {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       overflow-x: auto;
     }
     
     .projects-table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 800px;
+      min-width: 900px;
     }
     
     .projects-table th {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 20px;
+      padding: 18px 20px;
       text-align: right;
       font-weight: 600;
-      white-space: nowrap;
-    }
-    
-    .projects-table td {
-      padding: 18px 20px;
-      border-bottom: 1px solid #e2e8f0;
-      vertical-align: top;
-    }
-    
-    .projects-table tr:nth-child(even) {
-      background: #f8fafc;
-    }
-    
-    .projects-table tr:hover {
-      background: #f1f5f9;
-    }
-    
-    .project-number {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 18px;
-    }
-    
-    .project-type {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-    
-    .type-student {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-    
-    .type-creative {
-      background: #dcfce7;
-      color: #166534;
-    }
-    
-    .type-original {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    
-    .type-reverse {
-      background: #fce7f3;
-      color: #9d174d;
-    }
-    
-    .project-field {
-      color: var(--muted);
       font-size: 14px;
     }
     
-    .designer {
-      font-weight: 600;
-      color: var(--primary);
+    .projects-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      vertical-align: middle;
+      font-size: 14px;
     }
     
-    /* دکمه بازگشت */
-    .back-btn {
-      display: inline-block;
-      margin: 20px 0 40px;
-      padding: 12px 30px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s;
+    .projects-table tr:last-child td {
+      border-bottom: none;
     }
     
-    .back-btn:hover {
-      background: var(--accent);
-      transform: translateY(-3px);
+    .projects-table tr:hover td {
+      background: rgba(30, 64, 175, 0.02);
     }
     
-    /* توضیح انواع طراحی */
-    .legend {
+    /* ===== راهنمای رنگ‌ها ===== */
+    .legend-section {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 60px;
+      padding: 25px 35px;
+      margin: 40px 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
-      margin-top: 30px;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .legend-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .legend-items {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
     }
     
     .legend-item {
@@ -272,59 +861,454 @@
       border-radius: 4px;
     }
     
-    /* فوتر */
-    footer {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    .stats-badge {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
-      padding: 40px 20px;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* ===== دکمه بازگشت ===== */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+      margin-bottom: 20px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+    
+    .back-btn i {
+      font-size: 14px;
+    }
+    
+    /* ===== فوتر شیشه‌ای با تصویر پس‌زمینه ===== */
+    footer {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      color: var(--text);
+      background-image: url('images/footer-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin-top: 80px;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    footer .container {
+      position: relative;
+      z-index: 2;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 60px 20px 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .footer-section h3 {
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 12px;
+      font-weight: 600;
+    }
+    
+    .footer-section h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--engineering-accent), #3b82f6);
+    }
+    
+    .contact-details {
+      line-height: 1.8;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      transform: translateX(-5px);
+    }
+    
+    .contact-icon {
+      color: var(--engineering-accent);
+      font-size: 16px;
+      margin-top: 3px;
+      min-width: 20px;
+    }
+    
+    .contact-text {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-links a {
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      position: relative;
+      padding-right: 20px;
+      font-weight: 500;
+    }
+    
+    .footer-links a:before {
+      content: '•';
+      position: absolute;
+      right: 0;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-right: 30px;
+    }
+    
+    .footer-links a:hover:before {
+      opacity: 1;
+      color: var(--engineering-accent);
+    }
+    
+    .social-grid {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      color: var(--primary);
+      font-size: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--engineering-accent), #3b82f6);
+      color: white;
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+    }
+    
+    .copyright {
       text-align: center;
-      margin-top: 60px;
+      padding-top: 30px;
+      color: var(--text);
+      font-size: 13px;
+      position: relative;
+      z-index: 2;
+      font-weight: 500;
+    }
+    
+    /* ===== دکمه اسکرول به بالا ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.5);
+    }
+    
+    /* ===== پیام خالی ===== */
+    .empty-message {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      margin: 40px 0;
+    }
+    
+    .empty-message i {
+      font-size: 60px;
+      color: var(--primary-light);
+      margin-bottom: 20px;
+    }
+    
+    .empty-message p {
+      font-size: 18px;
+      color: var(--muted);
+    }
+    
+    /* ===== انیمیشن‌ها ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* ===== ریسپانسیو ===== */
+    @media (max-width: 992px) {
+      .products-header h1 {
+        font-size: 36px;
+      }
+      
+      .stat-number {
+        font-size: 30px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
     }
     
     @media (max-width: 768px) {
-      .nav-links {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+      .nav .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .products-header {
+        padding: 100px 20px 60px;
       }
       
       .products-header h1 {
         font-size: 28px;
       }
       
-      .projects-table th,
-      .projects-table td {
-        padding: 12px 15px;
+      .header-stats {
+        flex-direction: column;
+        gap: 20px;
       }
       
-      .legend {
+      .search-container {
+        margin: 0 15px;
+      }
+      
+      .legend-section {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 20px;
+        border-radius: 24px;
       }
       
-      .language-selector {
-        margin-right: auto;
-        margin-left: 10px;
+      .legend-items {
+        gap: 15px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .back-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .splash-logo {
+        width: 130px;
+        height: 130px;
+      }
+      
+      .splash-text {
+        font-size: 24px;
+      }
+      
+      .splash-subtext {
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .products-header h1 {
+        font-size: 24px;
+      }
+      
+      .brand img {
+        height: 36px;
+      }
+      
+      .project-card {
+        margin: 0 10px;
+      }
+      
+      .legend-items {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .stats-badge {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .splash-logo {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .splash-text {
+        font-size: 22px;
+      }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ناوبری -->
-  <header class="nav">
+  <!-- اسپلش اسکرین اختصاصی برای صفحه محصولات -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-background"></div>
+    <div class="splash-logo">
+      <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان">
+    </div>
+    <div class="splash-text" data-i18n="splash.title">نمونه خدمات و محصولات</div>
+    <div class="splash-subtext" data-i18n="splash.subtitle">بیش از ۴۰ پروژه موفق در حوزه طراحی مهندسی</div>
+  </div>
+
+  <!-- دکمه اسکرول به بالا -->
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- ناوبری مینیمال (کاملاً مشابه صفحه اصلی) -->
+  <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
-        <img src="images/logo.png" alt="لوگوی توسعه پردازان">
+        <img src="images/logo.png" alt="لوگوی شرکت توسعه پردازان">
       </a>
       <nav>
         <ul class="nav-links">
           <li><a href="index.html" data-i18n="nav.home">خانه</a></li>
-          <li><a href="index.html#services" data-i18n="nav.services">خدمات</a></li>
-          <li><a href="products.html" data-i18n="nav.products">محصولات</a></li>
+          <li><a href="index.html#services" data-i18n="nav.services">خدمات ما</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
           <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="index.html#contact" data-i18n="nav.contact">تماس</a></li>
+          <li><a href="work-with-us.html" class="main-cta-btn" data-i18n="nav.work" style="padding: 8px 16px; border-radius: 8px; font-size: 13px;">همکاری با ما</a></li>
           <li class="language-selector">
             <button class="lang-btn active" data-lang="fa" title="فارسی">
               <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
@@ -338,986 +1322,407 @@
           </li>
         </ul>
       </nav>
+      
+      <!-- دکمه همبرگر برای موبایل -->
+      <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <!-- منوی موبایل -->
+      <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-links-mobile">
+          <li><a href="index.html" data-i18n="nav.home">خانه</a></li>
+          <li><a href="index.html#services" data-i18n="nav.services">خدمات ما</a></li>
+          <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
+          <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">تماس</a></li>
+          <li><a href="work-with-us.html" class="main-cta-btn" data-i18n="nav.work">همکاری با ما</a></li>
+        </ul>
+        
+        <div class="mobile-language-selector">
+          <button class="lang-btn active" data-lang="fa" title="فارسی">
+            <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+          </button>
+          <button class="lang-btn" data-lang="en" title="English">
+            <img src="https://flagcdn.com/w40/us.png" alt="پرچم آمریکا">
+          </button>
+          <button class="lang-btn" data-lang="ar" title="العربية">
+            <img src="https://flagcdn.com/w40/sa.png" alt="پرچم عربستان">
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- هدر محصولات -->
+  <!-- هدر محصولات با طراحی شیشه‌ای -->
   <div class="products-header">
-    <h1 data-i18n="products.title">لیست پروژه‌های طراحی شرکت</h1>
-    <p style="max-width: 600px; margin: 0 auto; font-size: 18px; opacity: 0.9;" data-i18n="products.subtitle">
-      شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس
-    </p>
+    <div class="header-content">
+      <h1 data-i18n="products.title">نمونه خدمات و محصولات</h1>
+      <p data-i18n="products.subtitle">شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس</p>
+      
+      <!-- آمار پروژه‌ها -->
+      <div class="header-stats">
+        <div class="stat-item">
+          <span class="stat-number" id="totalProjects">۴۰+</span>
+          <span class="stat-label" data-i18n="stats.projects">پروژه موفق</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="totalClients">۳۰+</span>
+          <span class="stat-label" data-i18n="stats.clients">مشتری</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="totalDesigners">۵</span>
+          <span class="stat-label" data-i18n="stats.designers">طراح متخصص</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container">
-    <a href="index.html" class="back-btn" data-i18n="products.back">← بازگشت به صفحه اصلی</a>
+    <!-- دکمه بازگشت -->
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-right"></i>
+      <span data-i18n="products.back">بازگشت به صفحه اصلی</span>
+    </a>
     
-    <!-- توضیح انواع طراحی -->
-    <div class="legend">
-      <div class="legend-item">
-        <div class="legend-color" style="background: #dbeafe;"></div>
-        <span data-i18n="legend.student">دانش بنیان</span>
+    <!-- بخش جستجو و فیلتر -->
+    <div class="search-section">
+      <div class="search-container">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+        <input type="text" class="search-input" id="searchInput" placeholder="جستجوی پروژه، مشتری یا طراح..." data-i18n-placeholder="search.placeholder">
       </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background: #dcfce7;"></div>
-        <span data-i18n="legend.creative">خلاق</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background: #fef3c7;"></div>
-        <span data-i18n="legend.original">اورجینال</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background: #fce7f3;"></div>
-        <span data-i18n="legend.reverse">مهندسی معکوس</span>
+      
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-th-large"></i>
+          <span data-i18n="filter.all">همه پروژه‌ها</span>
+        </button>
+        <button class="filter-btn" data-filter="student">
+          <i class="fas fa-graduation-cap"></i>
+          <span data-i18n="legend.student">دانش بنیان</span>
+        </button>
+        <button class="filter-btn" data-filter="original">
+          <i class="fas fa-lightbulb"></i>
+          <span data-i18n="legend.original">اورجینال</span>
+        </button>
+        <button class="filter-btn" data-filter="reverse">
+          <i class="fas fa-recycle"></i>
+          <span data-i18n="legend.reverse">مهندسی معکوس</span>
+        </button>
+        <button class="filter-btn" data-filter="creative">
+          <i class="fas fa-paint-brush"></i>
+          <span data-i18n="legend.creative">خلاق</span>
+        </button>
       </div>
     </div>
     
-    <div class="projects-table-container">
-      <table class="projects-table">
-        <thead>
-          <tr>
-            <th data-i18n="table.row">ردیف</th>
-            <th data-i18n="table.title">عنوان پروژه</th>
-            <th data-i18n="table.client">مشتری</th>
-            <th data-i18n="table.type">نوع طراحی</th>
-            <th data-i18n="table.field">حوزه/کاربرد</th>
-            <th data-i18n="table.designer">سرطراح</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="project-number">1</td>
-            <td data-i18n="projects.1.title">Air Purifier</td>
-            <td data-i18n="projects.1.client">شرکت بهبود رایان</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.1.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">2</td>
-            <td data-i18n="projects.2.title">Air Purifier UV Plus</td>
-            <td data-i18n="projects.2.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.2.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">3</td>
-            <td data-i18n="projects.3.title">Arm Porter Robot</td>
-            <td data-i18n="projects.3.client">شخصی حقیقی در ترکیه - استانبول</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.3.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">4</td>
-            <td data-i18n="projects.4.title">Biometric Lock</td>
-            <td data-i18n="projects.4.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.4.field">تجهیزات IoT</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">5</td>
-            <td data-i18n="projects.5.title">Caloric Irrigator</td>
-            <td data-i18n="projects.5.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.5.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">6</td>
-            <td data-i18n="projects.6.title">Camera Sliding Part</td>
-            <td data-i18n="projects.6.client">استودیو ایما</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.6.field">تجهیزات تصویربرداری</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">7</td>
-            <td data-i18n="projects.7.title">Chain rests and Bites</td>
-            <td data-i18n="projects.7.client">مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.7.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">8</td>
-            <td data-i18n="projects.8.title">Clock with Poet</td>
-            <td data-i18n="projects.8.client">فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.8.field">-</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">9</td>
-            <td data-i18n="projects.9.title">Defibration Machine</td>
-            <td data-i18n="projects.9.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.9.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">10</td>
-            <td data-i18n="projects.10.title">Dental Suction Frame Cover</td>
-            <td data-i18n="projects.10.client">پیشگامان ایرانیان طب کیانسه</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.10.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس علی کیخا</td>
-          </tr>
-          <tr>
-            <td class="project-number">11</td>
-            <td data-i18n="projects.11.title">ECG Simulator</td>
-            <td data-i18n="projects.11.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.11.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">12</td>
-            <td data-i18n="projects.12.title">Economic Pin Lock</td>
-            <td data-i18n="projects.12.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.12.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">13</td>
-            <td data-i18n="projects.13.title">Face Guide</td>
-            <td data-i18n="projects.13.client">-</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.13.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">14</td>
-            <td data-i18n="projects.14.title">Floater</td>
-            <td data-i18n="projects.14.client">-</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.14.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس مصطفی خیاطی</td>
-          </tr>
-          <tr>
-            <td class="project-number">15</td>
-            <td data-i18n="projects.15.title">Gear (Worm)</td>
-            <td data-i18n="projects.15.client">پیشگامان ایرانیان طب کیانسه</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.15.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">16</td>
-            <td data-i18n="projects.16.title">Hand Dryer</td>
-            <td data-i18n="projects.16.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.16.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس علی کیخا</td>
-          </tr>
-          <tr>
-            <td class="project-number">17</td>
-            <td data-i18n="projects.17.title">Handy Tools (Screw drivers)</td>
-            <td data-i18n="projects.17.client">دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.17.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">18</td>
-            <td data-i18n="projects.18.title">Holographic</td>
-            <td data-i18n="projects.18.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.18.field">-</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">19</td>
-            <td data-i18n="projects.19.title">Labor Bed</td>
-            <td data-i18n="projects.19.client">کشاورزی</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.19.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">20</td>
-            <td data-i18n="projects.20.title">Labor Bed</td>
-            <td data-i18n="projects.20.client">-</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.20.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس علی کیخا</td>
-          </tr>
-          <tr>
-            <td class="project-number">21</td>
-            <td data-i18n="projects.21.title">Lamp Cover</td>
-            <td data-i18n="projects.21.client">مهرنور الکترونیک پیشگام</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.21.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">22</td>
-            <td data-i18n="projects.22.title">Light Box</td>
-            <td data-i18n="projects.22.client">آوام گستر اینترنت اشیاء</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.22.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">23</td>
-            <td data-i18n="projects.23.title">Mask Production Line</td>
-            <td data-i18n="projects.23.client">دانشگاه سیستان و بلوچستان</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.23.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">24</td>
-            <td data-i18n="projects.24.title">Mirror</td>
-            <td data-i18n="projects.24.client">آوام گستر اینترنت اشیاء</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.24.field">-</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">25</td>
-            <td data-i18n="projects.25.title">PCB Cutter</td>
-            <td data-i18n="projects.25.client">مهرنور الکترونیک پیشگام</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.25.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">26</td>
-            <td data-i18n="projects.26.title">PET&PVC Shredder</td>
-            <td data-i18n="projects.26.client">شهرک صنعتی سراوان – آقای محمود درویشی</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.26.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">27</td>
-            <td data-i18n="projects.27.title">Pizza Machine</td>
-            <td data-i18n="projects.27.client">مهندس سعید میرکی اناری</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.27.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">28</td>
-            <td data-i18n="projects.28.title">Pulp Tester</td>
-            <td data-i18n="projects.28.client">شرکت طب تجهیز آبادیس پارس</td>
-            <td><span class="project-type type-reverse" data-i18n="legend.reverse">مهندسی معکوس</span></td>
-            <td class="project-field" data-i18n="projects.28.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">29</td>
-            <td data-i18n="projects.29.title">Pulse Oximeter</td>
-            <td data-i18n="projects.29.client">دانشگاه سیستان و بلوچستان</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.29.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس علی کیخا</td>
-          </tr>
-          <tr>
-            <td class="project-number">30</td>
-            <td data-i18n="projects.30.title">Puzzle Home Instruments</td>
-            <td data-i18n="projects.30.client">دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.30.field">-</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">31</td>
-            <td data-i18n="projects.31.title">روشویی</td>
-            <td data-i18n="projects.31.client">مصطفی صاحبالزمانی</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.31.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">32</td>
-            <td data-i18n="projects.32.title">Step Generator</td>
-            <td data-i18n="projects.32.client">مصطفی صاحبالزمانی</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.32.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس علی کیخا</td>
-          </tr>
-          <tr>
-            <td class="project-number">33</td>
-            <td data-i18n="projects.33.title">Taftan Trophy</td>
-            <td data-i18n="projects.33.client">فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.33.field">-</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">34</td>
-            <td data-i18n="projects.34.title">Trophy</td>
-            <td data-i18n="projects.34.client">فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.34.field">-</td>
-            <td class="designer">مهندس مینا واصفیان</td>
-          </tr>
-          <tr>
-            <td class="project-number">35</td>
-            <td data-i18n="projects.35.title">UV Plus Sanitizer</td>
-            <td data-i18n="projects.35.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.35.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">36</td>
-            <td data-i18n="projects.36.title">UV Sterilization</td>
-            <td data-i18n="projects.36.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.36.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">37</td>
-            <td data-i18n="projects.37.title">Veinscope</td>
-            <td data-i18n="projects.37.client">توسعه پردازان الکترونیک فیدار پارس راویس</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.37.field">تجهیزات پزشکی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-          <tr>
-            <td class="project-number">38</td>
-            <td data-i18n="projects.38.title">Water Consumption</td>
-            <td data-i18n="projects.38.client">پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.38.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس مصطفی خیاطی</td>
-          </tr>
-          <tr>
-            <td class="project-number">39</td>
-            <td data-i18n="projects.39.title">Water Purifier</td>
-            <td data-i18n="projects.39.client">پارک علم و فناوری سیستان و بلوچستان</td>
-            <td><span class="project-type type-original" data-i18n="legend.original">اورجینال</span></td>
-            <td class="project-field" data-i18n="projects.39.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس مصطفی خیاطی</td>
-          </tr>
-          <tr>
-            <td class="project-number">40</td>
-            <td data-i18n="projects.40.title">انژکتور شور پویا خودرو ایرانیان آدلی</td>
-            <td data-i18n="projects.40.client">بزودی</td>
-            <td><span class="project-type type-student" data-i18n="legend.student">دانش بنیان</span></td>
-            <td class="project-field" data-i18n="projects.40.field">تجهیزات صنعتی</td>
-            <td class="designer">مهندس جواد عیسی زاده</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- راهنمای رنگ‌ها و آمار -->
+    <div class="legend-section">
+      <div class="legend-title">
+        <i class="fas fa-info-circle"></i>
+        <span data-i18n="legend.title">راهنمای انواع طراحی:</span>
+      </div>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-color" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);"></div>
+          <span data-i18n="legend.student">دانش بنیان</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0);"></div>
+          <span data-i18n="legend.creative">خلاق</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: linear-gradient(135deg, #fef3c7, #fde68a);"></div>
+          <span data-i18n="legend.original">اورجینال</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);"></div>
+          <span data-i18n="legend.reverse">مهندسی معکوس</span>
+        </div>
+      </div>
+      <div class="stats-badge">
+        <i class="fas fa-chart-line"></i>
+        <span id="projectCounter">نمایش ۴۰ پروژه</span>
+      </div>
+    </div>
+    
+    <!-- کارت‌های پروژه - نمایش گرید -->
+    <div id="projectsGrid" class="projects-grid"></div>
+    
+    <!-- بخش جدول - برای نمایش کامل اطلاعات -->
+    <div class="table-section">
+      <div class="table-title">
+        <h3 data-i18n="table.fullList">لیست کامل پروژه‌ها</h3>
+        <span class="stats-badge" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+          <i class="fas fa-table"></i>
+          <span data-i18n="table.total">۴۰ پروژه</span>
+        </span>
+      </div>
+      
+      <div class="table-container">
+        <table class="projects-table" id="projectsTable">
+          <thead>
+            <tr>
+              <th data-i18n="table.row">ردیف</th>
+              <th data-i18n="table.title">عنوان پروژه</th>
+              <th data-i18n="table.client">مشتری</th>
+              <th data-i18n="table.type">نوع طراحی</th>
+              <th data-i18n="table.field">حوزه/کاربرد</th>
+              <th data-i18n="table.designer">سرطراح</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 
-  <!-- فوتر -->
-  <footer>
+  <!-- فوتر شیشه‌ای -->
+  <footer id="contact">
     <div class="container">
-      <h3 data-i18n="footer.contact">تماس با ما</h3>
-      <div style="margin: 20px 0; line-height: 1.8;">
-        <p>📧 javadisazadeh24@gmail.com</p>
-        <p>📞 09226704205</p>
-        <p data-i18n="footer.address">📍 زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-i18n="footer.contact">تماس با ما</h3>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+              <span class="contact-text">javadisazadeh24@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon"><i class="fas fa-phone"></i></span>
+              <span class="contact-text">
+                <a href="https://wa.me/989226704205" target="_blank">09226704205</a>
+              </span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+              <span class="contact-text" data-i18n="footer.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3 data-i18n="footer.links">لینک‌های سریع</h3>
+          <div class="footer-links">
+            <a href="index.html" data-i18n="nav.home">خانه</a>
+            <a href="index.html#services" data-i18n="nav.services">خدمات</a>
+            <a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a>
+            <a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a>
+            <a href="work-with-us.html" data-i18n="nav.work">همکاری با ما</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3 data-i18n="footer.social">شبکه‌های اجتماعی</h3>
+          <div class="social-grid">
+            <a href="https://www.linkedin.com/company/tpe-co" class="social-link" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://instagram.com/TPE_CO" class="social-link" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/989226704205" class="social-link" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/tpe_co" class="social-link" target="_blank">
+              <i class="fab fa-telegram"></i>
+            </a>
+          </div>
+          <div style="margin-top: 25px; color: var(--muted); font-size: 13px;">
+            <i class="fas fa-clock"></i>
+            <span data-i18n="footer.hours">شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰</span>
+          </div>
+        </div>
       </div>
-      <div style="margin-top: 30px; font-size: 14px; color: #94a3b8;" data-i18n="footer.copyright">
-        © ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
+      
+      <div class="copyright" data-i18n="footer.copyright">
+        © ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
       </div>
     </div>
   </footer>
 
   <script>
-    // ==================== سیستم چندزبانه ====================
+    // ==================== داده‌های پروژه‌ها ====================
+    const projectsData = [
+      { id: 1, title: "Air Purifier", client: "شرکت بهبود رایان", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 2, title: "Air Purifier UV Plus", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 3, title: "Arm Porter Robot", client: "شخصی حقیقی در ترکیه - استانبول", type: "reverse", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 4, title: "Biometric Lock", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات IoT", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 5, title: "Caloric Irrigator", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 6, title: "Camera Sliding Part", client: "استودیو ایما", type: "reverse", field: "تجهیزات تصویربرداری", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 7, title: "Chain rests and Bites", client: "مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 8, title: "Clock with Poet", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 9, title: "Defibration Machine", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 10, title: "Dental Suction Frame Cover", client: "پیشگامان ایرانیان طب کیانسه", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
+      { id: 11, title: "ECG Simulator", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 12, title: "Economic Pin Lock", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات صنعتی", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 13, title: "Face Guide", client: "-", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 14, title: "Floater", client: "-", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 15, title: "Gear (Worm)", client: "پیشگامان ایرانیان طب کیانسه", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 16, title: "Hand Dryer", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
+      { id: 17, title: "Handy Tools (Screw drivers)", client: "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 18, title: "Holographic", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 19, title: "Labor Bed", client: "کشاورزی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 20, title: "Labor Bed", client: "-", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
+      { id: 21, title: "Lamp Cover", client: "مهرنور الکترونیک پیشگام", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 22, title: "Light Box", client: "آوام گستر اینترنت اشیاء", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 23, title: "Mask Production Line", client: "دانشگاه سیستان و بلوچستان", type: "reverse", field: "تجهیزات صنعتی", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 24, title: "Mirror", client: "آوام گستر اینترنت اشیاء", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 25, title: "PCB Cutter", client: "مهرنور الکترونیک پیشگام", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 26, title: "PET&PVC Shredder", client: "شهرک صنعتی سراوان – آقای محمود درویشی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 27, title: "Pizza Machine", client: "مهندس سعید میرکی اناری", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 28, title: "Pulp Tester", client: "شرکت طب تجهیز آبادیس پارس", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 29, title: "Pulse Oximeter", client: "دانشگاه سیستان و بلوچستان", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
+      { id: 30, title: "Puzzle Home Instruments", client: "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 31, title: "روشویی", client: "مصطفی صاحبالزمانی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 32, title: "Step Generator", client: "مصطفی صاحبالزمانی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس علی کیخا", status: "completed" },
+      { id: 33, title: "Taftan Trophy", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 34, title: "Trophy", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 35, title: "UV Plus Sanitizer", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 36, title: "UV Sterilization", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 37, title: "Veinscope", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 38, title: "Water Consumption", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 39, title: "Water Purifier", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 40, title: "انژکتور شور پویا خودرو ایرانیان آدلی", client: "بزودی", type: "student", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "coming_soon" }
+    ];
+
+    // ==================== ترجمه‌ها ====================
     const translations = {
       fa: {
-        // ناوبری
+        "splash.title": "نمونه خدمات و محصولات",
+        "splash.subtitle": "بیش از ۴۰ پروژه موفق در حوزه طراحی مهندسی",
         "nav.home": "خانه",
-        "nav.services": "خدمات",
-        "nav.products": "محصولات",
+        "nav.services": "خدمات ما",
+        "nav.products": "نمونه خدمات و محصولات",
         "nav.resume": "رزومه پرسنل",
         "nav.contact": "تماس",
-        
-        // محصولات
-        "products.title": "لیست پروژه‌های طراحی شرکت",
+        "nav.work": "همکاری با ما",
+        "products.title": "نمونه خدمات و محصولات",
         "products.subtitle": "شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس",
-        "products.back": "← بازگشت به صفحه اصلی",
-        
-        // جدول
+        "products.back": "بازگشت به صفحه اصلی",
+        "stats.projects": "پروژه موفق",
+        "stats.clients": "مشتری",
+        "stats.designers": "طراح متخصص",
+        "search.placeholder": "جستجوی پروژه، مشتری یا طراح...",
+        "filter.all": "همه پروژه‌ها",
+        "legend.title": "راهنمای انواع طراحی:",
+        "legend.student": "دانش بنیان",
+        "legend.creative": "خلاق",
+        "legend.original": "اورجینال",
+        "legend.reverse": "مهندسی معکوس",
+        "table.fullList": "لیست کامل پروژه‌ها",
+        "table.total": "۴۰ پروژه",
         "table.row": "ردیف",
         "table.title": "عنوان پروژه",
         "table.client": "مشتری",
         "table.type": "نوع طراحی",
         "table.field": "حوزه/کاربرد",
         "table.designer": "سرطراح",
-        
-        // راهنما
-        "legend.student": "دانش بنیان",
-        "legend.creative": "خلاق",
-        "legend.original": "اورجینال",
-        "legend.reverse": "مهندسی معکوس",
-        
-        // پروژه‌ها
-        "projects.1.title": "Air Purifier",
-        "projects.1.client": "شرکت بهبود رایان",
-        "projects.1.field": "تجهیزات پزشکی",
-        
-        "projects.2.title": "Air Purifier UV Plus",
-        "projects.2.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.2.field": "تجهیزات پزشکی",
-        
-        "projects.3.title": "Arm Porter Robot",
-        "projects.3.client": "شخصی حقیقی در ترکیه - استانبول",
-        "projects.3.field": "تجهیزات صنعتی",
-        
-        "projects.4.title": "Biometric Lock",
-        "projects.4.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.4.field": "تجهیزات IoT",
-        
-        "projects.5.title": "Caloric Irrigator",
-        "projects.5.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.5.field": "تجهیزات پزشکی",
-        
-        "projects.6.title": "Camera Sliding Part",
-        "projects.6.client": "استودیو ایما",
-        "projects.6.field": "تجهیزات تصویربرداری",
-        
-        "projects.7.title": "Chain rests and Bites",
-        "projects.7.client": "مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...",
-        "projects.7.field": "تجهیزات پزشکی",
-        
-        "projects.8.title": "Clock with Poet",
-        "projects.8.client": "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان",
-        "projects.8.field": "-",
-        
-        "projects.9.title": "Defibration Machine",
-        "projects.9.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.9.field": "تجهیزات صنعتی",
-        
-        "projects.10.title": "Dental Suction Frame Cover",
-        "projects.10.client": "پیشگامان ایرانیان طب کیانسه",
-        "projects.10.field": "تجهیزات پزشکی",
-        
-        "projects.11.title": "ECG Simulator",
-        "projects.11.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.11.field": "تجهیزات پزشکی",
-        
-        "projects.12.title": "Economic Pin Lock",
-        "projects.12.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.12.field": "تجهیزات صنعتی",
-        
-        "projects.13.title": "Face Guide",
-        "projects.13.client": "-",
-        "projects.13.field": "تجهیزات پزشکی",
-        
-        "projects.14.title": "Floater",
-        "projects.14.client": "-",
-        "projects.14.field": "تجهیزات صنعتی",
-        
-        "projects.15.title": "Gear (Worm)",
-        "projects.15.client": "پیشگامان ایرانیان طب کیانسه",
-        "projects.15.field": "تجهیزات پزشکی",
-        
-        "projects.16.title": "Hand Dryer",
-        "projects.16.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.16.field": "تجهیزات پزشکی",
-        
-        "projects.17.title": "Handy Tools (Screw drivers)",
-        "projects.17.client": "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی",
-        "projects.17.field": "تجهیزات صنعتی",
-        
-        "projects.18.title": "Holographic",
-        "projects.18.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.18.field": "-",
-        
-        "projects.19.title": "Labor Bed",
-        "projects.19.client": "کشاورزی",
-        "projects.19.field": "تجهیزات صنعتی",
-        
-        "projects.20.title": "Labor Bed",
-        "projects.20.client": "-",
-        "projects.20.field": "تجهیزات پزشکی",
-        
-        "projects.21.title": "Lamp Cover",
-        "projects.21.client": "مهرنور الکترونیک پیشگام",
-        "projects.21.field": "تجهیزات صنعتی",
-        
-        "projects.22.title": "Light Box",
-        "projects.22.client": "آوام گستر اینترنت اشیاء",
-        "projects.22.field": "تجهیزات صنعتی",
-        
-        "projects.23.title": "Mask Production Line",
-        "projects.23.client": "دانشگاه سیستان و بلوچستان",
-        "projects.23.field": "تجهیزات صنعتی",
-        
-        "projects.24.title": "Mirror",
-        "projects.24.client": "آوام گستر اینترنت اشیاء",
-        "projects.24.field": "-",
-        
-        "projects.25.title": "PCB Cutter",
-        "projects.25.client": "مهرنور الکترونیک پیشگام",
-        "projects.25.field": "تجهیزات صنعتی",
-        
-        "projects.26.title": "PET&PVC Shredder",
-        "projects.26.client": "شهرک صنعتی سراوان – آقای محمود درویشی",
-        "projects.26.field": "تجهیزات صنعتی",
-        
-        "projects.27.title": "Pizza Machine",
-        "projects.27.client": "مهندس سعید میرکی اناری",
-        "projects.27.field": "تجهیزات صنعتی",
-        
-        "projects.28.title": "Pulp Tester",
-        "projects.28.client": "شرکت طب تجهیز آبادیس پارس",
-        "projects.28.field": "تجهیزات پزشکی",
-        
-        "projects.29.title": "Pulse Oximeter",
-        "projects.29.client": "دانشگاه سیستان و بلوچستان",
-        "projects.29.field": "تجهیزات پزشکی",
-        
-        "projects.30.title": "Puzzle Home Instruments",
-        "projects.30.client": "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی",
-        "projects.30.field": "-",
-        
-        "projects.31.title": "روشویی",
-        "projects.31.client": "مصطفی صاحبالزمانی",
-        "projects.31.field": "تجهیزات صنعتی",
-        
-        "projects.32.title": "Step Generator",
-        "projects.32.client": "مصطفی صاحبالزمانی",
-        "projects.32.field": "تجهیزات صنعتی",
-        
-        "projects.33.title": "Taftan Trophy",
-        "projects.33.client": "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان",
-        "projects.33.field": "-",
-        
-        "projects.34.title": "Trophy",
-        "projects.34.client": "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان",
-        "projects.34.field": "-",
-        
-        "projects.35.title": "UV Plus Sanitizer",
-        "projects.35.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.35.field": "تجهیزات پزشکی",
-        
-        "projects.36.title": "UV Sterilization",
-        "projects.36.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.36.field": "تجهیزات پزشکی",
-        
-        "projects.37.title": "Veinscope",
-        "projects.37.client": "توسعه پردازان الکترونیک فیدار پارس راویس",
-        "projects.37.field": "تجهیزات پزشکی",
-        
-        "projects.38.title": "Water Consumption",
-        "projects.38.client": "پارک علم و فناوری سیستان و بلوچستان",
-        "projects.38.field": "تجهیزات صنعتی",
-        
-        "projects.39.title": "Water Purifier",
-        "projects.39.client": "پارک علم و فناوری سیستان و بلوچستان",
-        "projects.39.field": "تجهیزات صنعتی",
-        
-        "projects.40.title": "انژکتور شور پویا خودرو ایرانیان آدلی",
-        "projects.40.client": "بزودی",
-        "projects.40.field": "تجهیزات صنعتی",
-        
-        // فوتر
+        "coming.soon": "بزودی",
+        "empty.message": "پروژه‌ای با این مشخصات یافت نشد",
+        "empty.action": "فیلتر دیگری انتخاب کنید",
         "footer.contact": "تماس با ما",
         "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
-        "footer.copyright": "© ۱۴۰۴ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
+        "footer.links": "لینک‌های سریع",
+        "footer.social": "شبکه‌های اجتماعی",
+        "footer.hours": "شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰",
+        "footer.copyright": "© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
       },
-      
       en: {
-        // Navigation
+        "splash.title": "Services & Products Portfolio",
+        "splash.subtitle": "Over 40 Successful Projects in Engineering Design",
         "nav.home": "Home",
         "nav.services": "Services",
-        "nav.products": "Products",
+        "nav.products": "Products & Services",
         "nav.resume": "Personnel Resume",
         "nav.contact": "Contact",
-        
-        // Products
-        "products.title": "Company Design Projects List",
+        "nav.work": "Collaboration",
+        "products.title": "Services & Products Portfolio",
         "products.subtitle": "Tose Pardazan Knowledge-Based Electronic Fidar Pars Raves Company",
-        "products.back": "← Back to Home",
-        
-        // Table
+        "products.back": "Back to Home",
+        "stats.projects": "Successful Projects",
+        "stats.clients": "Clients",
+        "stats.designers": "Expert Designers",
+        "search.placeholder": "Search projects, clients or designers...",
+        "filter.all": "All Projects",
+        "legend.title": "Design Types Guide:",
+        "legend.student": "Knowledge-Based",
+        "legend.creative": "Creative",
+        "legend.original": "Original",
+        "legend.reverse": "Reverse Engineering",
+        "table.fullList": "Complete Projects List",
+        "table.total": "40 Projects",
         "table.row": "Row",
         "table.title": "Project Title",
         "table.client": "Client",
         "table.type": "Design Type",
         "table.field": "Field/Application",
         "table.designer": "Lead Designer",
-        
-        // Legend
-        "legend.student": "Knowledge-Based",
-        "legend.creative": "Creative",
-        "legend.original": "Original",
-        "legend.reverse": "Reverse Engineering",
-        
-        // Projects
-        "projects.1.title": "Air Purifier",
-        "projects.1.client": "Behdad Rayan Company",
-        "projects.1.field": "Medical Equipment",
-        
-        "projects.2.title": "Air Purifier UV Plus",
-        "projects.2.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.2.field": "Medical Equipment",
-        
-        "projects.3.title": "Arm Porter Robot",
-        "projects.3.client": "Private Individual in Turkey - Istanbul",
-        "projects.3.field": "Industrial Equipment",
-        
-        "projects.4.title": "Biometric Lock",
-        "projects.4.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.4.field": "IoT Equipment",
-        
-        "projects.5.title": "Caloric Irrigator",
-        "projects.5.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.5.field": "Medical Equipment",
-        
-        "projects.6.title": "Camera Sliding Part",
-        "projects.6.client": "Studio Ima",
-        "projects.6.field": "Imaging Equipment",
-        
-        "projects.7.title": "Chain rests and Bites",
-        "projects.7.client": "Radiology Centers + Zahedan Dentistry Faculty – Nabi Akram (PBUH) Hospital Zahedan and ...",
-        "projects.7.field": "Medical Equipment",
-        
-        "projects.8.title": "Clock with Poet",
-        "projects.8.client": "Creative Industries FabLab of Sistan and Baluchestan Science and Technology Park",
-        "projects.8.field": "-",
-        
-        "projects.9.title": "Defibration Machine",
-        "projects.9.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.9.field": "Industrial Equipment",
-        
-        "projects.10.title": "Dental Suction Frame Cover",
-        "projects.10.client": "Pishgaman Iranian Teb Kianseh",
-        "projects.10.field": "Medical Equipment",
-        
-        "projects.11.title": "ECG Simulator",
-        "projects.11.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.11.field": "Medical Equipment",
-        
-        "projects.12.title": "Economic Pin Lock",
-        "projects.12.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.12.field": "Industrial Equipment",
-        
-        "projects.13.title": "Face Guide",
-        "projects.13.client": "-",
-        "projects.13.field": "Medical Equipment",
-        
-        "projects.14.title": "Floater",
-        "projects.14.client": "-",
-        "projects.14.field": "Industrial Equipment",
-        
-        "projects.15.title": "Gear (Worm)",
-        "projects.15.client": "Pishgaman Iranian Teb Kianseh",
-        "projects.15.field": "Medical Equipment",
-        
-        "projects.16.title": "Hand Dryer",
-        "projects.16.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.16.field": "Medical Equipment",
-        
-        "projects.17.title": "Handy Tools (Screw drivers)",
-        "projects.17.client": "Zahedan University of Medical Sciences – Engineer Saeed Gholfi",
-        "projects.17.field": "Industrial Equipment",
-        
-        "projects.18.title": "Holographic",
-        "projects.18.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.18.field": "-",
-        
-        "projects.19.title": "Labor Bed",
-        "projects.19.client": "Agriculture",
-        "projects.19.field": "Industrial Equipment",
-        
-        "projects.20.title": "Labor Bed",
-        "projects.20.client": "-",
-        "projects.20.field": "Medical Equipment",
-        
-        "projects.21.title": "Lamp Cover",
-        "projects.21.client": "Mehrnoor Electronic Pishgam",
-        "projects.21.field": "Industrial Equipment",
-        
-        "projects.22.title": "Light Box",
-        "projects.22.client": "Avam Gostar Internet of Things",
-        "projects.22.field": "Industrial Equipment",
-        
-        "projects.23.title": "Mask Production Line",
-        "projects.23.client": "University of Sistan and Baluchestan",
-        "projects.23.field": "Industrial Equipment",
-        
-        "projects.24.title": "Mirror",
-        "projects.24.client": "Avam Gostar Internet of Things",
-        "projects.24.field": "-",
-        
-        "projects.25.title": "PCB Cutter",
-        "projects.25.client": "Mehrnoor Electronic Pishgam",
-        "projects.25.field": "Industrial Equipment",
-        
-        "projects.26.title": "PET&PVC Shredder",
-        "projects.26.client": "Saravan Industrial Town – Mr. Mahmoud Darvishi",
-        "projects.26.field": "Industrial Equipment",
-        
-        "projects.27.title": "Pizza Machine",
-        "projects.27.client": "Engineer Saeed Mirki Enari",
-        "projects.27.field": "Industrial Equipment",
-        
-        "projects.28.title": "Pulp Tester",
-        "projects.28.client": "Teb Tajhiz Abadis Pars Company",
-        "projects.28.field": "Medical Equipment",
-        
-        "projects.29.title": "Pulse Oximeter",
-        "projects.29.client": "University of Sistan and Baluchestan",
-        "projects.29.field": "Medical Equipment",
-        
-        "projects.30.title": "Puzzle Home Instruments",
-        "projects.30.client": "Zahedan University of Medical Sciences – Engineer Saeed Gholfi",
-        "projects.30.field": "-",
-        
-        "projects.31.title": "Sink",
-        "projects.31.client": "Mostafa Sahab Al-Zamani",
-        "projects.31.field": "Industrial Equipment",
-        
-        "projects.32.title": "Step Generator",
-        "projects.32.client": "Mostafa Sahab Al-Zamani",
-        "projects.32.field": "Industrial Equipment",
-        
-        "projects.33.title": "Taftan Trophy",
-        "projects.33.client": "Creative Industries FabLab of Sistan and Baluchestan Science and Technology Park",
-        "projects.33.field": "-",
-        
-        "projects.34.title": "Trophy",
-        "projects.34.client": "Creative Industries FabLab of Sistan and Baluchestan Science and Technology Park",
-        "projects.34.field": "-",
-        
-        "projects.35.title": "UV Plus Sanitizer",
-        "projects.35.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.35.field": "Medical Equipment",
-        
-        "projects.36.title": "UV Sterilization",
-        "projects.36.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.36.field": "Medical Equipment",
-        
-        "projects.37.title": "Veinscope",
-        "projects.37.client": "Tose Pardazan Electronic Fidar Pars Raves",
-        "projects.37.field": "Medical Equipment",
-        
-        "projects.38.title": "Water Consumption",
-        "projects.38.client": "Sistan and Baluchestan Science and Technology Park",
-        "projects.38.field": "Industrial Equipment",
-        
-        "projects.39.title": "Water Purifier",
-        "projects.39.client": "Sistan and Baluchestan Science and Technology Park",
-        "projects.39.field": "Industrial Equipment",
-        
-        "projects.40.title": "Pouya Khodro Adli Injector Cleaner",
-        "projects.40.client": "Coming Soon",
-        "projects.40.field": "Industrial Equipment",
-        
-        // Footer
+        "coming.soon": "Coming Soon",
+        "empty.message": "No projects found",
+        "empty.action": "Try another filter",
         "footer.contact": "Contact Us",
-        "footer.address": "Zahedan, University Boulevard, Science and Technology Park",
+        "footer.address": "Zahedan, University Blvd, Science & Technology Park",
+        "footer.links": "Quick Links",
+        "footer.social": "Social Media",
+        "footer.hours": "Sat to Wed: 8:00 - 17:00",
         "footer.copyright": "© 2025 Tose Pardazan Knowledge-Based Engineering Company. All rights reserved."
       },
-      
       ar: {
-        // التنقل
+        "splash.title": "محفظة الخدمات والمنتجات",
+        "splash.subtitle": "أكثر من ٤٠ مشروع ناجح في التصميم الهندسي",
         "nav.home": "الرئيسية",
         "nav.services": "الخدمات",
-        "nav.products": "المنتجات",
+        "nav.products": "المنتجات والخدمات",
         "nav.resume": "سيرة الموظفين",
         "nav.contact": "اتصل بنا",
-        
-        // المنتجات
-        "products.title": "قائمة مشاريع التصميم في الشركة",
+        "nav.work": "تعاون",
+        "products.title": "محفظة الخدمات والمنتجات",
         "products.subtitle": "شركة توسع پردازان الإلكترونية القائمة على المعرفة فيدار بارس راویس",
-        "products.back": "← العودة إلى الرئيسية",
-        
-        // الجدول
+        "products.back": "العودة إلى الرئيسية",
+        "stats.projects": "مشروع ناجح",
+        "stats.clients": "عميل",
+        "stats.designers": "مصمم خبير",
+        "search.placeholder": "البحث عن مشاريع، عملاء أو مصممين...",
+        "filter.all": "جميع المشاريع",
+        "legend.title": "دليل أنواع التصميم:",
+        "legend.student": "قائمة على المعرفة",
+        "legend.creative": "خلاق",
+        "legend.original": "أصلي",
+        "legend.reverse": "هندسة عكسية",
+        "table.fullList": "قائمة المشاريع الكاملة",
+        "table.total": "٤٠ مشروع",
         "table.row": "رقم",
         "table.title": "عنوان المشروع",
         "table.client": "العميل",
         "table.type": "نوع التصميم",
         "table.field": "المجال/التطبيق",
         "table.designer": "المصمم الرئيسي",
-        
-        // وسائل الإيضاح
-        "legend.student": "قائمة على المعرفة",
-        "legend.creative": "خلاق",
-        "legend.original": "أصلي",
-        "legend.reverse": "هندسة عكسية",
-        
-        // المشاريع
-        "projects.1.title": "منقي الهواء",
-        "projects.1.client": "شركة بهبود رایان",
-        "projects.1.field": "المعدات الطبية",
-        
-        "projects.2.title": "منقي الهواء بالأشعة فوق البنفسجية",
-        "projects.2.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.2.field": "المعدات الطبية",
-        
-        "projects.3.title": "روبوت حمل الذراع",
-        "projects.3.client": "شخص حقيقي في تركيا - إسطنبول",
-        "projects.3.field": "المعدات الصناعية",
-        
-        "projects.4.title": "قفل القياسات الحيوية",
-        "projects.4.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.4.field": "معدات إنترنت الأشياء",
-        
-        "projects.5.title": "الري الحراري",
-        "projects.5.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.5.field": "المعدات الطبية",
-        
-        "projects.6.title": "جزء انزلاق الكاميرا",
-        "projects.6.client": "استوديو إيما",
-        "projects.6.field": "معدات التصوير",
-        
-        "projects.7.title": "مساند وسدادات السلسلة",
-        "projects.7.client": "مراكز الأشعة + كلية طب الأسنان في زاهدان – مستشفى النبي الأكرم (ص) زاهدان و ...",
-        "projects.7.field": "المعدات الطبية",
-        
-        "projects.8.title": "ساعة مع الشاعر",
-        "projects.8.client": "مختبر الصناعات الإبداعية في حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
-        "projects.8.field": "-",
-        
-        "projects.9.title": "آلة التلييف",
-        "projects.9.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.9.field": "المعدات الصناعية",
-        
-        "projects.10.title": "غطاء إطار شفط الأسنان",
-        "projects.10.client": "رواد الإيرانيين طيب کیانسه",
-        "projects.10.field": "المعدات الطبية",
-        
-        "projects.11.title": "محاكي تخطيط القلب",
-        "projects.11.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.11.field": "المعدات الطبية",
-        
-        "projects.12.title": "قفل الدبوس الاقتصادي",
-        "projects.12.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.12.field": "المعدات الصناعية",
-        
-        "projects.13.title": "دليل الوجه",
-        "projects.13.client": "-",
-        "projects.13.field": "المعدات الطبية",
-        
-        "projects.14.title": "العائم",
-        "projects.14.client": "-",
-        "projects.14.field": "المعدات الصناعية",
-        
-        "projects.15.title": "الترس (الدودة)",
-        "projects.15.client": "رواد الإيرانيين طيب کیانسه",
-        "projects.15.field": "المعدات الطبية",
-        
-        "projects.16.title": "مجفف الأيدي",
-        "projects.16.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.16.field": "المعدات الطبية",
-        
-        "projects.17.title": "الأدوات اليدوية (المفكات)",
-        "projects.17.client": "جامعة زاهدان للعلوم الطبية – المهندس سعيد غلفي",
-        "projects.17.field": "المعدات الصناعية",
-        
-        "projects.18.title": "الهولوغرافي",
-        "projects.18.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.18.field": "-",
-        
-        "projects.19.title": "سرير المخاض",
-        "projects.19.client": "الزراعة",
-        "projects.19.field": "المعدات الصناعية",
-        
-        "projects.20.title": "سرير المخاض",
-        "projects.20.client": "-",
-        "projects.20.field": "المعدات الطبية",
-        
-        "projects.21.title": "غطاء المصباح",
-        "projects.21.client": "مهرنور الإلكترونية الرائدة",
-        "projects.21.field": "المعدات الصناعية",
-        
-        "projects.22.title": "صندوق الضوء",
-        "projects.22.client": "عوام گستر إنترنت الأشياء",
-        "projects.22.field": "المعدات الصناعية",
-        
-        "projects.23.title": "خط إنتاج الأقنعة",
-        "projects.23.client": "جامعة سيستان وبلوشستان",
-        "projects.23.field": "المعدات الصناعية",
-        
-        "projects.24.title": "المرآة",
-        "projects.24.client": "عوام گستر إنترنت الأشياء",
-        "projects.24.field": "-",
-        
-        "projects.25.title": "قاطع لوحات الدوائر المطبوعة",
-        "projects.25.client": "مهرنور الإلكترونية الرائدة",
-        "projects.25.field": "المعدات الصناعية",
-        
-        "projects.26.title": "آلة تمزيق PET&PVC",
-        "projects.26.client": "المدينة الصناعية سراوان – السيد محمود درويشي",
-        "projects.26.field": "المعدات الصناعية",
-        
-        "projects.27.title": "آلة البيتزا",
-        "projects.27.client": "المهندس سعيد ميركي إناري",
-        "projects.27.field": "المعدات الصناعية",
-        
-        "projects.28.title": "جهاز اختبار لب الأسنان",
-        "projects.28.client": "شركة طب تجهیز آبادیس بارس",
-        "projects.28.field": "المعدات الطبية",
-        
-        "projects.29.title": "مقياس التأكسج النبضي",
-        "projects.29.client": "جامعة سيستان وبلوشستان",
-        "projects.29.field": "المعدات الطبية",
-        
-        "projects.30.title": "أدوات المنزل المتقاطعة",
-        "projects.30.client": "جامعة زاهدان للعلوم الطبية – المهندس سعيد غلفي",
-        "projects.30.field": "-",
-        
-        "projects.31.title": "المغسلة",
-        "projects.31.client": "مصطفى صاحب الزماني",
-        "projects.31.field": "المعدات الصناعية",
-        
-        "projects.32.title": "مولد الخطوات",
-        "projects.32.client": "مصطفى صاحب الزماني",
-        "projects.32.field": "المعدات الصناعية",
-        
-        "projects.33.title": "كأس تفتان",
-        "projects.33.client": "مختبر الصناعات الإبداعية في حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
-        "projects.33.field": "-",
-        
-        "projects.34.title": "الكأس",
-        "projects.34.client": "مختبر الصناعات الإبداعية في حدیقة العلوم والتكنولوجيا بسيستان وبلوشستان",
-        "projects.34.field": "-",
-        
-        "projects.35.title": "معقم بالأشعة فوق البنفسجية",
-        "projects.35.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.35.field": "المعدات الطبية",
-        
-        "projects.36.title": "تعقيم بالأشعة فوق البنفسجية",
-        "projects.36.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.36.field": "المعدات الطبية",
-        
-        "projects.37.title": "منظار الأوردة",
-        "projects.37.client": "توسع پردازان الإلكترونية فيدار بارس راویس",
-        "projects.37.field": "المعدات الطبية",
-        
-        "projects.38.title": "استهلاك الماء",
-        "projects.38.client": "حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
-        "projects.38.field": "المعدات الصناعية",
-        
-        "projects.39.title": "منقي الماء",
-        "projects.39.client": "حديقة العلوم والتكنولوجيا بسيستان وبلوشستان",
-        "projects.39.field": "المعدات الصناعية",
-        
-        "projects.40.title": "منظف الحقن بویا خودرو أدلي",
-        "projects.40.client": "قريباً",
-        "projects.40.field": "المعدات الصناعية",
-        
-        // الفوتر
+        "coming.soon": "قريباً",
+        "empty.message": "لم يتم العثور على مشاريع",
+        "empty.action": "جرب فلتر آخر",
         "footer.contact": "اتصل بنا",
         "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+        "footer.links": "روابط سريعة",
+        "footer.social": "وسائل التواصل الاجتماعي",
+        "footer.hours": "السبت إلى الأربعاء: ٨:٠٠ - ١٧:٠٠",
         "footer.copyright": "© ٢٠٢٥ شركة توسع پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
       }
     };
 
-    // سیستم تغییر زبان
-    let currentLang = 'fa';
-    
+    // ==================== متغییرهای سراسری ====================
+    let currentLanguage = 'fa';
+    let currentFilter = 'all';
+    let searchTerm = '';
+
+    // ==================== توابع اصلی ====================
     function changeLanguage(lang) {
-      currentLang = lang;
+      currentLanguage = lang;
       
-      // تغییر فعال بودن دکمه‌ها
+      // بروزرسانی دکمه‌های زبان
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.lang === lang) {
@@ -1325,7 +1730,7 @@
         }
       });
       
-      // تغییر متن‌ها
+      // بروزرسانی المان‌های دارای data-i18n
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
@@ -1333,70 +1738,312 @@
         }
       });
       
-      // تغییر جهت صفحه
-      if (lang === 'ar') {
-        document.documentElement.dir = 'rtl';
-        document.documentElement.lang = 'ar';
-      } else if (lang === 'fa') {
-        document.documentElement.dir = 'rtl';
-        document.documentElement.lang = 'fa';
-      } else if (lang === 'en') {
+      // بروزرسانی placeholder
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+          element.placeholder = translations[lang][key];
+        }
+      });
+      
+      // بروزرسانی جهت صفحه
+      if (lang === 'en') {
         document.documentElement.dir = 'ltr';
         document.documentElement.lang = 'en';
-        
-        // برای زبان انگلیسی به چپ بروید
-        document.querySelectorAll('th').forEach(th => {
-          th.style.textAlign = 'left';
-        });
-        document.querySelectorAll('td').forEach(td => {
-          td.style.textAlign = 'left';
-        });
-        document.querySelector('.container').style.textAlign = 'left';
       } else {
-        // برای زبان‌های دیگر به راست
-        document.querySelectorAll('th').forEach(th => {
-          th.style.textAlign = 'right';
-        });
-        document.querySelectorAll('td').forEach(td => {
-          td.style.textAlign = 'right';
-        });
-        document.querySelector('.container').style.textAlign = 'right';
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = lang;
       }
       
-      // ذخیره زبان انتخابی
+      // ذخیره زبان
       localStorage.setItem('preferredLanguage', lang);
+      
+      // بازسازی نمایش پروژه‌ها
+      renderProjects();
+    }
+
+    function renderProjects() {
+      const projectsGrid = document.getElementById('projectsGrid');
+      const tableBody = document.getElementById('tableBody');
+      const projectCounter = document.getElementById('projectCounter');
+      
+      // فیلتر بر اساس نوع و جستجو
+      let filteredProjects = projectsData;
+      
+      if (currentFilter !== 'all') {
+        filteredProjects = filteredProjects.filter(p => p.type === currentFilter);
+      }
+      
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filteredProjects = filteredProjects.filter(p => 
+          p.title.toLowerCase().includes(term) || 
+          p.client.toLowerCase().includes(term) || 
+          p.designer.toLowerCase().includes(term) ||
+          p.field.toLowerCase().includes(term)
+        );
+      }
+      
+      // بروزرسانی شمارنده
+      projectCounter.textContent = translations[currentLanguage]['table.total'].replace('۴۰', filteredProjects.length).replace('40', filteredProjects.length);
+      
+      // ===== رندر کارت‌ها =====
+      projectsGrid.innerHTML = '';
+      
+      if (filteredProjects.length === 0) {
+        projectsGrid.innerHTML = `
+          <div class="empty-message">
+            <i class="fas fa-folder-open"></i>
+            <p data-i18n="empty.message">${translations[currentLanguage]['empty.message']}</p>
+            <small style="color: var(--muted); margin-top: 10px; display: block;" data-i18n="empty.action">${translations[currentLanguage]['empty.action']}</small>
+          </div>
+        `;
+      } else {
+        filteredProjects.forEach((project, index) => {
+          const card = document.createElement('div');
+          card.className = 'project-card fade-in';
+          
+          const typeClass = `type-${project.type}`;
+          let typeName = translations[currentLanguage][`legend.${project.type}`] || project.type;
+          
+          card.innerHTML = `
+            <div class="card-header">
+              <span class="project-number">${index + 1}</span>
+              <span class="project-type-badge ${typeClass}">
+                <i class="fas ${getTypeIcon(project.type)}"></i>
+                ${typeName}
+              </span>
+            </div>
+            <div class="card-body">
+              <h3 class="project-title">${project.title}</h3>
+              <div class="project-client">
+                <i class="fas fa-user-tie"></i>
+                <span>${project.client}</span>
+              </div>
+              <div class="project-field">
+                <i class="fas fa-tag"></i>
+                <span>${project.field === '-' ? '—' : project.field}</span>
+              </div>
+              <div class="project-designer">
+                <i class="fas fa-pencil-ruler"></i>
+                <span>${project.designer}</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              ${project.status === 'coming_soon' ? 
+                `<span class="coming-soon-badge"><i class="fas fa-clock"></i> ${translations[currentLanguage]['coming.soon']}</span>` : 
+                `<span></span>`
+              }
+              <button class="share-btn" onclick="shareProject('${project.title}')">
+                <i class="fas fa-share-alt"></i>
+              </button>
+            </div>
+          `;
+          
+          projectsGrid.appendChild(card);
+        });
+      }
+      
+      // ===== رندر جدول =====
+      tableBody.innerHTML = '';
+      
+      filteredProjects.forEach((project, index) => {
+        const row = document.createElement('tr');
+        
+        const typeClass = `type-${project.type}`;
+        let typeName = translations[currentLanguage][`legend.${project.type}`] || project.type;
+        
+        row.innerHTML = `
+          <td style="font-weight: 600; color: var(--primary);">${index + 1}</td>
+          <td style="font-weight: 600;">${project.title}</td>
+          <td style="color: var(--text);">${project.client}</td>
+          <td><span class="project-type-badge ${typeClass}" style="display: inline-block; padding: 4px 12px;">${typeName}</span></td>
+          <td style="color: var(--muted);">${project.field === '-' ? '—' : project.field}</td>
+          <td style="font-weight: 600; color: var(--primary-dark);">${project.designer}</td>
+        `;
+        
+        tableBody.appendChild(row);
+      });
+    }
+
+    function getTypeIcon(type) {
+      switch(type) {
+        case 'student': return 'fa-graduation-cap';
+        case 'creative': return 'fa-paint-brush';
+        case 'original': return 'fa-lightbulb';
+        case 'reverse': return 'fa-recycle';
+        default: return 'fa-cube';
+      }
+    }
+
+    function shareProject(title) {
+      if (navigator.share) {
+        navigator.share({
+          title: title,
+          text: `پروژه ${title} - شرکت توسعه پردازان`,
+          url: window.location.href
+        }).catch(console.error);
+      } else {
+        alert(`لینک پروژه "${title}" کپی شد`);
+      }
+    }
+
+    function filterProjects(filter) {
+      currentFilter = filter;
+      
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === filter) {
+          btn.classList.add('active');
+        }
+      });
+      
+      renderProjects();
     }
 
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
-      // تنظیم رویداد برای دکمه‌های زبان
+      // اسپلش اسکرین
+      setTimeout(() => {
+        const splashScreen = document.getElementById('splashScreen');
+        if (splashScreen) {
+          splashScreen.classList.add('hidden');
+          setTimeout(() => {
+            splashScreen.style.display = 'none';
+          }, 300);
+        }
+      }, 1500);
+      
+      // تنظیم رویداد زبان
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-          const lang = this.dataset.lang;
-          changeLanguage(lang);
+          changeLanguage(this.dataset.lang);
         });
       });
       
-      // بارگذاری زبان ذخیره شده یا تشخیص خودکار
+      // بارگذاری زبان ذخیره شده
       const savedLang = localStorage.getItem('preferredLanguage');
       if (savedLang) {
-        currentLang = savedLang;
         changeLanguage(savedLang);
       } else {
-        // تشخیص زبان مرورگر
         const browserLang = navigator.language || navigator.userLanguage;
         if (browserLang.startsWith('ar')) {
-          currentLang = 'ar';
           changeLanguage('ar');
         } else if (browserLang.startsWith('fa')) {
-          currentLang = 'fa';
           changeLanguage('fa');
         } else {
-          currentLang = 'en';
           changeLanguage('en');
         }
       }
+      
+      // تنظیم رویداد فیلتر
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterProjects(this.dataset.filter);
+        });
+      });
+      
+      // تنظیم رویداد جستجو
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', function() {
+        searchTerm = this.value;
+        renderProjects();
+      });
+      
+      // تنظیم منوی همبرگر
+      setupMobileMenu();
+      
+      // تنظیم اسکرول نرم
+      setupSmoothScroll();
+      
+      // تنظیم دکمه اسکرول به بالا
+      setupScrollTop();
+      
+      // تنظیم نوار ناوبری
+      setupNavbar();
+      
+      // رندر اولیه پروژه‌ها
+      renderProjects();
     });
+
+    function setupMobileMenu() {
+      const menuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      
+      if (!menuToggle || !mobileMenu || !overlay) return;
+      
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      overlay.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        this.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          menuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    function setupSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    }
+
+    function setupScrollTop() {
+      const scrollTopBtn = document.getElementById('scrollTop');
+      scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    function setupNavbar() {
+      window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+        if (window.scrollY > 500) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      });
+    }
   </script>
 </body>
 </html>
