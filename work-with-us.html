@@ -37,99 +37,6 @@
   <link rel="apple-touch-icon" href="images/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <!-- Schema.org - Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
-    "url": "https://tpe-co.ir",
-    "logo": "https://tpe-co.ir/images/logo.png",
-    "description": "مجری پروژه‌های مهندسی، طراحی صنعتی، نمونه‌سازی و ساخت دیجیتال با مدل همکاری مرحله‌ای و شفاف",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "زاهدان",
-      "addressRegion": "سیستان و بلوچستان",
-      "streetAddress": "بلوار دانشگاه، پارک علم و فناوری"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+98-922-670-4205",
-      "contactType": "درخواست پروژه و همکاری",
-      "availableLanguage": ["fa", "en", "ar"]
-    },
-    "sameAs": [
-      "https://instagram.com/TPE_CO",
-      "https://www.linkedin.com/company/tpe-co"
-    ],
-    "inLanguage": "fa"
-  }
-  </script>
-  
-  <!-- Schema.org - BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "خانه",
-        "item": "https://tpe-co.ir"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "همکاری با ما",
-        "item": "https://tpe-co.ir/work-with-us"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Schema.org - Service -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "اجرای پروژه‌های مهندسی و صنعتی",
-    "provider": {
-      "@type": "Organization",
-      "name": "شرکت توسعه پردازان"
-    },
-    "areaServed": "IR",
-    "description": "اجرای پروژه‌های طراحی مهندسی، نمونه‌سازی، ساخت دیجیتال و مهندسی معکوس با مدل همکاری مرحله‌ای و پرداخت مبتنی بر پیشرفت کار",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "خدمات پروژه‌محور",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "طراحی مهندسی و شبیه‌سازی"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "نمونه‌سازی و ساخت دیجیتال"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "مهندسی معکوس"
-          }
-        }
-      ]
-    }
-  }
-  </script>
-  
   <!-- فونت‌ها -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1196,7 +1103,6 @@
       padding-top: 30px;
       color: #94a3b8;
       font-size: 14px;
-      direction: ltr;
     }
     
     /* ========== انیمیشن‌ها ========== */
@@ -1267,7 +1173,7 @@
   </style>
 </head>
 <body>
-  <!-- ========== اسپلش اسکرین - الهام گرفته از صفحه اصلی ========== -->
+  <!-- ========== اسپلش اسکرین ========== -->
   <div class="splash-screen" id="splashScreen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:9999; transition:opacity 0.5s ease, visibility 0.5s ease;">
     <div class="splash-background" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.1; background-image:radial-gradient(circle at 20% 50%, rgba(30,64,175,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(14,165,233,0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(220,38,38,0.3) 0%, transparent 50%);"></div>
     <div class="splash-logo" style="width:150px; height:150px; margin-bottom:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; animation:pulse 2s infinite; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); padding:30px; border:1px solid rgba(255,255,255,0.2);">
@@ -1296,7 +1202,7 @@
     </div>
   </div>
 
-  <!-- ========== ناوبری مینیمال - کاملاً مشابه صفحه اصلی ========== -->
+  <!-- ========== ناوبری مینیمال ========== -->
   <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
@@ -1423,21 +1329,21 @@
         
         <div class="steps-container">
           <div class="step-item">
-            <div class="step-number">۱</div>
+            <div class="step-number" data-numeric="true">۱</div>
             <div class="step-content">
               <h4 data-i18n="work.payment.step1.title">تعیین محدوده کار</h4>
               <p data-i18n="work.payment.step1.desc">محدوده دقیق کار، تحویلی‌ها و زمان‌بندی پروژه مشخص می‌شود.</p>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">۲</div>
+            <div class="step-number" data-numeric="true">۲</div>
             <div class="step-content">
               <h4 data-i18n="work.payment.step2.title">برآورد هزینه</h4>
               <p data-i18n="work.payment.step2.desc">برآورد دقیق هزینه بر اساس نفر-ساعت و نرخ دلاری ارائه می‌گردد.</p>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">۳</div>
+            <div class="step-number" data-numeric="true">۳</div>
             <div class="step-content">
               <h4 data-i18n="work.payment.step3.title">پرداخت مرحله‌ای</h4>
               <p data-i18n="work.payment.step3.desc">پرداخت به‌صورت مرحله‌ای و متناسب با پیشرفت فیزیکی پروژه انجام می‌شود.</p>
@@ -1470,7 +1376,7 @@
         </div>
       </div>
 
-      <!-- ========== درباره ما - اضافه شده برای انسجام با صفحه اصلی ========== -->
+      <!-- ========== درباره ما ========== -->
       <div class="work-section fade-in">
         <h3 data-i18n="about.title">چرا توسعه پردازان؟</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
@@ -1617,9 +1523,9 @@
           </div>
           
           <div style="text-align: center; margin-top: 30px;">
-            <button type="submit" class="btn btn-primary" id="submitBtn" style="padding: 16px 48px; font-size: 18px;" data-i18n="work.form.submit">
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="padding: 16px 48px; font-size: 18px;">
               <span id="btnText">ارسال درخواست</span>
-              <span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+              <span id="spinner" style="display: none;"><i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i></span>
             </button>
           </div>
         </form>
@@ -1648,7 +1554,7 @@
     </div>
   </section>
 
-  <!-- ========== فوتر با تصویر پس‌زمینه - کاملاً مشابه صفحه اصلی ========== -->
+  <!-- ========== فوتر با تصویر پس‌زمینه ========== -->
   <footer id="contact">
     <div class="container">
       <div class="footer-content">
@@ -1709,21 +1615,18 @@
         </div>
       </div>
       
-      <div class="copyright" data-i18n="footer.copyright">
+      <div class="copyright" data-i18n="footer.copyright" data-numeric="true">
         © ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.
       </div>
     </div>
   </footer>
 
   <script>
-    // ==================== ترجمه‌ها - با پشتیبانی کامل از اعداد عربی/انگلیسی ====================
+    // ==================== ترجمه‌ها ====================
     const translations = {
       fa: {
-        // اسپلش
         "splash.welcome": "به شرکت توسعه پردازان خوش آمدید",
         "splash.subtext": "پیشرو در طراحی مهندسی، نمونه‌سازی و اجرای پروژه‌های صنعتی",
-        
-        // ناوبری
         "nav.home": "خانه",
         "nav.about": "درباره ما",
         "nav.services": "خدمات ما",
@@ -1732,14 +1635,10 @@
         "nav.projects": "پروژه‌های توسعه",
         "nav.work": "همکاری با ما",
         "nav.contact": "تماس",
-        
-        // هیرو همکاری
         "work.hero.title": "همکاری با ما",
         "work.hero.description": "ما پروژه‌ها را به‌صورت مرحله‌ای و بر اساس برآورد دقیق مهندسی اجرا می‌کنیم. مدل همکاری ما شفاف، انعطاف‌پذیر و متناسب با نیاز هر پروژه است.",
         "work.hero.cta": "ارسال درخواست پروژه",
         "work.hero.model": "مشاهده مدل همکاری",
-        
-        // مدل همکاری
         "work.model.title": "مدل همکاری",
         "work.model.description": "هر پروژه به دقت ارزیابی می‌شود تا امکان‌سنجی فنی و کارایی آن تضمین شود. مدل همکاری ما بر اساس استانداردهای بین‌المللی و متناسب با نیاز پروژه‌های صنعتی طراحی شده است.",
         "work.model.item1.title": "نوع همکاری",
@@ -1752,8 +1651,6 @@
         "work.model.item4.desc": "کوچک تا متوسط",
         "work.note.title": "شروع همکاری",
         "work.note.description": "برای شروع همکاری، کافی است توضیح مختصری از پروژه خود ارسال کنید تا فرآیند بررسی فنی آغاز شود.",
-        
-        // پرداخت
         "work.payment.title": "پرداخت و فرآیند اجرا",
         "work.payment.description": "پس از بررسی اولیه پروژه و توافق اولیه، فرآیند اجرا با شفافیت کامل طی می‌شود:",
         "work.payment.step1.title": "تعیین محدوده کار",
@@ -1769,8 +1666,6 @@
         "work.payment.method3.desc": "معادل ریالی بر اساس نرخ روز",
         "work.payment.note.title": "نکته مهم:",
         "work.payment.note.description": "برای مشتریان داخلی، محاسبات پروژه بر اساس نرخ ساعتی دلاری انجام و معادل ریالی آن در زمان عقد قرارداد توافق می‌شود.",
-        
-        // درباره ما
         "about.title": "چرا توسعه پردازان؟",
         "about.item1.title": "فب‌لب خصوصی",
         "about.item1.desc": "دسترسی کامل به تجهیزات پیشرفته نمونه‌سازی و ساخت دیجیتال",
@@ -1778,8 +1673,6 @@
         "about.item2.desc": "مهندسان مکانیک، برق، نرم‌افزار و مواد در کنار شما",
         "about.item3.title": "محرمانگی کامل",
         "about.item3.desc": "امنیت اطلاعات و مالکیت فکری پروژه‌ها",
-        
-        // شرایط و قوانین
         "work.terms.title": "شرایط و قوانین همکاری",
         "work.terms.section1.title": "ارسال طرح و ایده برای ساخت",
         "work.terms.section1.content": "با کلیک بر روی گزینه \"با شرایط و قوانین همکاری موافقم\"، شما تأیید می‌کنید که:",
@@ -1800,8 +1693,6 @@
         "work.terms.note.title": "تذکر مهم:",
         "work.terms.note.content": "پس از ارسال طرح، تیم فنی ما حداکثر طی ۳ روز کاری با شما تماس خواهد گرفت تا جزئیات همکاری را بررسی کند.",
         "work.terms.close": "بستن",
-        
-        // فرم همکاری
         "work.form.title": "ارسال درخواست همکاری",
         "work.form.name": "نام کامل *",
         "work.form.email": "ایمیل *",
@@ -1827,6 +1718,7 @@
         "work.form.agreement.link": "شرایط و قوانین همکاری",
         "work.form.agreement.suffix": " موافقم",
         "work.form.submit": "ارسال درخواست",
+        "work.form.sending": "در حال ارسال...",
         "work.form.success": "درخواست شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.",
         "work.form.error": "مشکلی در ارسال درخواست پیش آمده. لطفاً دوباره تلاش کنید یا مستقیماً با ما تماس بگیرید.",
         "work.form.alternative": "یا از طریق روش‌های زیر با ما تماس بگیرید",
@@ -1834,13 +1726,9 @@
         "work.form.emailLink": "ارسال ایمیل",
         "work.form.call": "تماس تلفنی",
         "work.form.networkError": "خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید.",
-        "work.form.sending": "در حال ارسال...",
         "work.form.status.sending": "در حال ارسال درخواست...",
         "work.form.status.sent": "درخواست با موفقیت ارسال شد!",
         "work.form.status.error": "خطا در ارسال درخواست",
-        "work.form.status.connectionError": "خطا در اتصال به سرور",
-        
-        // فوتر
         "footer.contact": "تماس با ما",
         "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
         "footer.links": "خدمات تخصصی",
@@ -1856,11 +1744,8 @@
         "footer.copyright": "© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است."
       },
       en: {
-        // Splash
         "splash.welcome": "Welcome to TPE Development Company",
         "splash.subtext": "Leading in engineering design, prototyping and industrial project execution",
-        
-        // Navigation
         "nav.home": "Home",
         "nav.about": "About Us",
         "nav.services": "Services",
@@ -1869,14 +1754,10 @@
         "nav.projects": "Development Projects",
         "nav.work": "Work With Us",
         "nav.contact": "Contact",
-        
-        // Work Hero
         "work.hero.title": "Work With Us",
         "work.hero.description": "We execute projects in stages based on precise engineering estimates. Our collaboration model is transparent, flexible, and tailored to each project's needs.",
         "work.hero.cta": "Submit Project Request",
         "work.hero.model": "View Collaboration Model",
-        
-        // Collaboration Model
         "work.model.title": "Collaboration Model",
         "work.model.description": "Each project is carefully evaluated to ensure technical feasibility and efficiency. Our collaboration model is based on international standards and tailored to industrial projects.",
         "work.model.item1.title": "Collaboration Type",
@@ -1889,8 +1770,6 @@
         "work.model.item4.desc": "Small to Medium",
         "work.note.title": "Start Collaboration",
         "work.note.description": "To start collaborating, simply send a brief description of your project to begin the technical review process.",
-        
-        // Payment
         "work.payment.title": "Payment & Execution Process",
         "work.payment.description": "After initial project review and agreement, the execution process proceeds with full transparency:",
         "work.payment.step1.title": "Define Scope",
@@ -1906,8 +1785,6 @@
         "work.payment.method3.desc": "IRR equivalent based on daily rate",
         "work.payment.note.title": "Important Note:",
         "work.payment.note.description": "For domestic customers, project calculations are based on hourly USD rates and the IRR equivalent is agreed upon at contract signing.",
-        
-        // About Us
         "about.title": "Why TPE?",
         "about.item1.title": "Private Fablab",
         "about.item1.desc": "Full access to advanced prototyping and digital fabrication equipment",
@@ -1915,8 +1792,6 @@
         "about.item2.desc": "Mechanical, electrical, software and materials engineers at your service",
         "about.item3.title": "Complete Confidentiality",
         "about.item3.desc": "Information security and intellectual property protection",
-        
-        // Terms
         "work.terms.title": "Collaboration Terms & Conditions",
         "work.terms.section1.title": "Submitting Ideas & Plans",
         "work.terms.section1.content": "By clicking 'I agree to the terms and conditions', you confirm that:",
@@ -1937,8 +1812,6 @@
         "work.terms.note.title": "Important Notice:",
         "work.terms.note.content": "After submitting your plan, our technical team will contact you within maximum 3 working days to review collaboration details.",
         "work.terms.close": "Close",
-        
-        // Form
         "work.form.title": "Submit Collaboration Request",
         "work.form.name": "Full Name *",
         "work.form.email": "Email *",
@@ -1964,6 +1837,7 @@
         "work.form.agreement.link": "terms and conditions",
         "work.form.agreement.suffix": "",
         "work.form.submit": "Submit Request",
+        "work.form.sending": "Sending...",
         "work.form.success": "Your request has been successfully sent. We will contact you soon.",
         "work.form.error": "There was a problem sending your request. Please try again or contact us directly.",
         "work.form.alternative": "Or contact us through the following methods",
@@ -1971,13 +1845,9 @@
         "work.form.emailLink": "Send Email",
         "work.form.call": "Phone Call",
         "work.form.networkError": "Network error! Please check your internet connection.",
-        "work.form.sending": "Sending...",
         "work.form.status.sending": "Sending request...",
         "work.form.status.sent": "Request sent successfully!",
         "work.form.status.error": "Error sending request",
-        "work.form.status.connectionError": "Connection error to server",
-        
-        // Footer
         "footer.contact": "Contact Us",
         "footer.address": "Zahedan, University Blvd, Science & Technology Park",
         "footer.links": "Specialized Services",
@@ -1993,11 +1863,8 @@
         "footer.copyright": "© 2026 Technical & Engineering Development Company. All rights reserved."
       },
       ar: {
-        // Splash
         "splash.welcome": "مرحبًا بكم في شركة تطوير پردازان",
         "splash.subtext": "الريادة في التصميم الهندسي، النماذج الأولية وتنفيذ المشاريع الصناعية",
-        
-        // Navigation
         "nav.home": "الرئيسية",
         "nav.about": "معلومات عنا",
         "nav.services": "خدماتنا",
@@ -2006,14 +1873,10 @@
         "nav.projects": "مشاريع التطوير",
         "nav.work": "التعاون معنا",
         "nav.contact": "اتصل بنا",
-        
-        // Work Hero
         "work.hero.title": "التعاون معنا",
         "work.hero.description": "ننفذ المشاريع على مراحل بناءً على تقديرات هندسية دقيقة. نموذج تعاوننا شفاف ومرن ومصمم حسب احتياجات كل مشروع.",
         "work.hero.cta": "إرسال طلب المشروع",
         "work.hero.model": "عرض نموذج التعاون",
-        
-        // Collaboration Model
         "work.model.title": "نموذج التعاون",
         "work.model.description": "يتم تقييم كل مشروع بعناية لضمان الجدوى الفنية والكفاءة. نموذج تعاوننا يستند إلى المعايير الدولية ومصمم حسب احتياجات المشاريع الصناعية.",
         "work.model.item1.title": "نوع التعاون",
@@ -2026,8 +1889,6 @@
         "work.model.item4.desc": "صغير إلى متوسط",
         "work.note.title": "بدء التعاون",
         "work.note.description": "لبدء التعاون، ما عليك سوى إرسال وصف مختصر لمشروعك لبدء عملية المراجعة الفنية.",
-        
-        // Payment
         "work.payment.title": "الدفع وعملية التنفيذ",
         "work.payment.description": "بعد المراجعة الأولية للمشروع والاتفاق، تتم عملية التنفيذ بشفافية كاملة:",
         "work.payment.step1.title": "تحديد النطاق",
@@ -2043,8 +1904,6 @@
         "work.payment.method3.desc": "المعادل بالريال على أساس السعر اليومي",
         "work.payment.note.title": "ملاحظة هامة:",
         "work.payment.note.description": "بالنسبة للعملاء المحليين، يتم حساب المشروع على أساس أسعار الساعة بالدولار ويتم الاتفاق على المكافئ بالريال عند توقيع العقد.",
-        
-        // About Us
         "about.title": "لماذا تطوير پردازان؟",
         "about.item1.title": "مختبر رقمي خاص",
         "about.item1.desc": "وصول كامل إلى معدات النماذج الأولية والتصنيع الرقمي المتقدمة",
@@ -2052,8 +1911,6 @@
         "about.item2.desc": "مهندسو الميكانيكا والكهرباء والبرمجيات والمواد في خدمتكم",
         "about.item3.title": "سرية تامة",
         "about.item3.desc": "أمن المعلومات وحماية الملكية الفكرية",
-        
-        // Terms
         "work.terms.title": "شروط وقواعد التعاون",
         "work.terms.section1.title": "تقديم الأفكار والخطط",
         "work.terms.section1.content": "بالنقر على 'أوافق على الشروط والأحكام'، فإنك تؤكد أن:",
@@ -2074,8 +1931,6 @@
         "work.terms.note.title": "ملاحظة هامة:",
         "work.terms.note.content": "بعد تقديم خطتك، سيتصل بك فريقنا الفني في غضون ٣ أيام عمل كحد أقصى لمراجعة تفاصيل التعاون.",
         "work.terms.close": "إغلاق",
-        
-        // Form
         "work.form.title": "تقديم طلب التعاون",
         "work.form.name": "الاسم الكامل *",
         "work.form.email": "البريد الإلكتروني *",
@@ -2101,6 +1956,7 @@
         "work.form.agreement.link": "شروط وقواعد التعاون",
         "work.form.agreement.suffix": "",
         "work.form.submit": "إرسال الطلب",
+        "work.form.sending": "جاري الإرسال...",
         "work.form.success": "تم إرسال طلبك بنجاح. سنتواصل معك قريبًا.",
         "work.form.error": "حدثت مشكلة في إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.",
         "work.form.alternative": "أو اتصل بنا من خلال الطرق التالية",
@@ -2108,13 +1964,9 @@
         "work.form.emailLink": "إرسال بريد إلكتروني",
         "work.form.call": "مكالمة هاتفية",
         "work.form.networkError": "خطأ في الشبكة! يرجى التحقق من اتصالك بالإنترنت.",
-        "work.form.sending": "جاري الإرسال...",
         "work.form.status.sending": "جاري إرسال الطلب...",
         "work.form.status.sent": "تم إرسال الطلب بنجاح!",
         "work.form.status.error": "خطأ في إرسال الطلب",
-        "work.form.status.connectionError": "خطأ في الاتصال بالخادم",
-        
-        // Footer
         "footer.contact": "اتصل بنا",
         "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
         "footer.links": "خدمات متخصصة",
@@ -2143,33 +1995,24 @@
       const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
       
       if (lang === 'fa') {
-        // تبدیل اعداد انگلیسی و عربی به فارسی
         let result = text;
         for (let i = 0; i < 10; i++) {
-          const regexEnglish = new RegExp(englishNumbers[i], 'g');
-          const regexArabic = new RegExp(arabicNumbers[i], 'g');
-          result = result.replace(regexEnglish, persianNumbers[i]);
-          result = result.replace(regexArabic, persianNumbers[i]);
+          result = result.replace(new RegExp(englishNumbers[i], 'g'), persianNumbers[i]);
+          result = result.replace(new RegExp(arabicNumbers[i], 'g'), persianNumbers[i]);
         }
         return result;
       } else if (lang === 'ar') {
-        // تبدیل اعداد انگلیسی و فارسی به عربی
         let result = text;
         for (let i = 0; i < 10; i++) {
-          const regexEnglish = new RegExp(englishNumbers[i], 'g');
-          const regexPersian = new RegExp(persianNumbers[i], 'g');
-          result = result.replace(regexEnglish, arabicNumbers[i]);
-          result = result.replace(regexPersian, arabicNumbers[i]);
+          result = result.replace(new RegExp(englishNumbers[i], 'g'), arabicNumbers[i]);
+          result = result.replace(new RegExp(persianNumbers[i], 'g'), arabicNumbers[i]);
         }
         return result;
       } else {
-        // انگلیسی - تبدیل اعداد فارسی و عربی به انگلیسی
         let result = text;
         for (let i = 0; i < 10; i++) {
-          const regexPersian = new RegExp(persianNumbers[i], 'g');
-          const regexArabic = new RegExp(arabicNumbers[i], 'g');
-          result = result.replace(regexPersian, englishNumbers[i]);
-          result = result.replace(regexArabic, englishNumbers[i]);
+          result = result.replace(new RegExp(persianNumbers[i], 'g'), englishNumbers[i]);
+          result = result.replace(new RegExp(arabicNumbers[i], 'g'), englishNumbers[i]);
         }
         return result;
       }
@@ -2180,15 +2023,11 @@
       if (!translations[lang]) return;
       currentLang = lang;
 
-      // بروزرسانی دکمه‌های زبان
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.dataset.lang === lang) {
-          btn.classList.add('active');
-        }
+        if (btn.dataset.lang === lang) btn.classList.add('active');
       });
 
-      // بروزرسانی تمام المان‌های دارای data-i18n
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang][key]) {
@@ -2200,15 +2039,6 @@
         }
       });
 
-      // بروزرسانی placeholders
-      document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(element => {
-        const key = element.getAttribute('data-i18n-placeholder');
-        if (key && translations[lang][key]) {
-          element.placeholder = translations[lang][key];
-        }
-      });
-
-      // بروزرسانی direction و lang
       if (lang === 'en') {
         document.documentElement.dir = 'ltr';
         document.documentElement.lang = 'en';
@@ -2217,102 +2047,79 @@
         document.documentElement.lang = lang;
       }
 
-      // تبدیل اعداد در المان‌های دارای کلاس numeric
-      document.querySelectorAll('.copyright, .step-number, .char-counter, [data-numeric]').forEach(element => {
+      // تبدیل اعداد
+      document.querySelectorAll('[data-numeric="true"], .step-number, .copyright, .char-counter').forEach(element => {
         if (element.textContent) {
           element.textContent = convertNumbers(element.textContent, lang);
         }
       });
 
-      // تبدیل اعداد در المان‌های خاص
-      const copyrightElement = document.querySelector('.copyright');
-      if (copyrightElement) {
-        const key = copyrightElement.getAttribute('data-i18n');
-        if (key && translations[lang][key]) {
-          copyrightElement.textContent = convertNumbers(translations[lang][key], lang);
-        }
+      // بروزرسانی دکمه submit
+      const submitBtn = document.getElementById('submitBtn');
+      if (submitBtn) {
+        const btnText = document.getElementById('btnText');
+        if (btnText) btnText.textContent = translations[lang]['work.form.submit'];
       }
 
-      // بروزرسانی شمارنده کاراکتر
-      updateCharCounter();
-
-      // ذخیره زبان انتخابی
       localStorage.setItem('preferredLanguage', lang);
     }
 
-    // ==================== مدیریت Modal ====================
-    function openModal() {
-      const modal = document.getElementById('termsModal');
-      modal.style.display = 'flex';
+    // ==================== Modal ====================
+    window.openModal = function() {
+      document.getElementById('termsModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
-    }
+    };
     
-    function closeModal() {
-      const modal = document.getElementById('termsModal');
-      modal.style.display = 'none';
+    window.closeModal = function() {
+      document.getElementById('termsModal').style.display = 'none';
       document.body.style.overflow = 'auto';
-    }
+    };
 
-    // ==================== مدیریت وضعیت جهانی ====================
-    function showGlobalStatus(type, message = null, title = null) {
-      const statusContainer = document.getElementById('globalStatus');
-      const statusIcon = document.getElementById('globalStatusIcon');
-      const statusTitle = document.getElementById('globalStatusTitle');
-      const statusMessage = document.getElementById('globalStatusMessage');
-      const statusProgress = document.getElementById('globalStatusProgress');
+    // ==================== وضعیت جهانی ====================
+    window.showGlobalStatus = function(type, message = null, title = null) {
+      const container = document.getElementById('globalStatus');
+      const icon = document.getElementById('globalStatusIcon');
+      const titleEl = document.getElementById('globalStatusTitle');
+      const messageEl = document.getElementById('globalStatusMessage');
+      const progress = document.getElementById('globalStatusProgress');
       
-      const statusTypes = {
-        sending: {
-          icon: 'fa-paper-plane',
-          color: '#0f766e',
+      const config = {
+        sending: { icon: 'fa-paper-plane', color: '#0f766e', 
           title: translations[currentLang]?.['work.form.status.sending'] || 'در حال ارسال درخواست...',
-          message: translations[currentLang]?.['work.form.sending'] || 'لطفاً منتظر بمانید، درخواست شما در حال ارسال است.'
-        },
-        success: {
-          icon: 'fa-check-circle',
-          color: '#10b981',
-          title: translations[currentLang]?.['work.form.status.sent'] || 'درخواست با موفقیت ارسال شد!',
-          message: translations[currentLang]?.['work.form.success'] || 'درخواست شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.'
-        },
-        error: {
-          icon: 'fa-exclamation-circle',
-          color: '#dc2626',
-          title: title || translations[currentLang]?.['work.form.status.error'] || 'خطا در ارسال درخواست',
-          message: message || translations[currentLang]?.['work.form.error'] || 'مشکلی در ارسال درخواست پیش آمده.'
-        }
-      };
+          message: translations[currentLang]?.['work.form.sending'] || 'لطفاً منتظر بمانید...' },
+        success: { icon: 'fa-check-circle', color: '#10b981',
+          title: translations[currentLang]?.['work.form.status.sent'] || 'ارسال موفق!',
+          message: translations[currentLang]?.['work.form.success'] || 'درخواست با موفقیت ارسال شد.' },
+        error: { icon: 'fa-exclamation-circle', color: '#dc2626',
+          title: title || translations[currentLang]?.['work.form.status.error'] || 'خطا',
+          message: message || translations[currentLang]?.['work.form.error'] || 'خطا در ارسال' }
+      }[type];
       
-      const config = statusTypes[type];
-      
-      statusIcon.innerHTML = `<i class="fas ${config.icon}"></i>`;
-      statusIcon.style.background = `${config.color}15`;
-      statusIcon.style.color = config.color;
-      statusTitle.textContent = config.title;
-      statusTitle.style.color = config.color;
-      statusMessage.textContent = config.message;
+      icon.innerHTML = `<i class="fas ${config.icon}"></i>`;
+      icon.style.background = `${config.color}15`;
+      icon.style.color = config.color;
+      titleEl.textContent = config.title;
+      titleEl.style.color = config.color;
+      messageEl.textContent = config.message;
       
       if (type === 'sending') {
-        statusProgress.style.width = '70%';
-        statusProgress.style.background = `linear-gradient(90deg, ${config.color}, #14b8a6)`;
+        progress.style.width = '70%';
+        progress.style.background = `linear-gradient(90deg, ${config.color}, #14b8a6)`;
       } else {
-        statusProgress.style.width = '100%';
-        statusProgress.style.background = config.color;
-        
-        setTimeout(() => {
-          hideGlobalStatus();
-        }, type === 'success' ? 8000 : 6000);
+        progress.style.width = '100%';
+        progress.style.background = config.color;
+        setTimeout(hideGlobalStatus, type === 'success' ? 8000 : 6000);
       }
       
-      statusContainer.style.display = 'block';
-      setTimeout(() => statusContainer.classList.add('show'), 10);
-    }
+      container.style.display = 'block';
+      setTimeout(() => container.classList.add('show'), 10);
+    };
     
-    function hideGlobalStatus() {
-      const statusContainer = document.getElementById('globalStatus');
-      statusContainer.classList.remove('show');
-      setTimeout(() => statusContainer.style.display = 'none', 500);
-    }
-    window.hideGlobalStatus = hideGlobalStatus;
+    window.hideGlobalStatus = function() {
+      const container = document.getElementById('globalStatus');
+      container.classList.remove('show');
+      setTimeout(() => container.style.display = 'none', 500);
+    };
 
     // ==================== شمارنده کاراکتر ====================
     function updateCharCounter() {
@@ -2340,15 +2147,10 @@
       }
       
       counter.textContent = text;
-      
       counter.classList.remove('warning', 'error', 'success');
-      if (remaining < 0) {
-        counter.classList.add('error');
-      } else if (remaining <= 100) {
-        counter.classList.add('warning');
-      } else if (remaining <= 500) {
-        counter.classList.add('success');
-      }
+      if (remaining < 0) counter.classList.add('error');
+      else if (remaining <= 100) counter.classList.add('warning');
+      else if (remaining <= 500) counter.classList.add('success');
     }
 
     // ==================== مدیریت فرم ====================
@@ -2358,7 +2160,7 @@
       
       const submitBtn = document.getElementById('submitBtn');
       const btnText = document.getElementById('btnText');
-      const spinner = submitBtn.querySelector('.spinner');
+      const spinner = document.getElementById('spinner');
       
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -2374,8 +2176,9 @@
           return;
         }
         
-        btnText.textContent = translations[currentLang]?.['work.form.sending'] || 'در حال ارسال...';
-        spinner.style.display = 'inline-block';
+        // تغییر وضعیت دکمه
+        if (btnText) btnText.textContent = translations[currentLang]?.['work.form.sending'] || 'در حال ارسال...';
+        if (spinner) spinner.style.display = 'inline-block';
         submitBtn.disabled = true;
         
         showGlobalStatus('sending');
@@ -2394,8 +2197,9 @@
         });
         
         xhr.addEventListener('load', function() {
-          btnText.textContent = translations[currentLang]?.['work.form.submit'] || 'ارسال درخواست';
-          spinner.style.display = 'none';
+          // بازگرداندن دکمه
+          if (btnText) btnText.textContent = translations[currentLang]?.['work.form.submit'] || 'ارسال درخواست';
+          if (spinner) spinner.style.display = 'none';
           submitBtn.disabled = false;
           
           if (xhr.status === 200 || xhr.status === 302) {
@@ -2408,8 +2212,8 @@
         });
         
         xhr.addEventListener('error', function() {
-          btnText.textContent = translations[currentLang]?.['work.form.submit'] || 'ارسال درخواست';
-          spinner.style.display = 'none';
+          if (btnText) btnText.textContent = translations[currentLang]?.['work.form.submit'] || 'ارسال درخواست';
+          if (spinner) spinner.style.display = 'none';
           submitBtn.disabled = false;
           showGlobalStatus('error', translations[currentLang]?.['work.form.networkError'] || 'خطای شبکه');
         });
@@ -2420,11 +2224,12 @@
 
     // ==================== رویدادهای صفحه ====================
     document.addEventListener('DOMContentLoaded', function() {
-      // اسپلش اسکرین
+      // اسپلش
       setTimeout(() => {
         const splash = document.getElementById('splashScreen');
         if (splash) {
-          splash.classList.add('hidden');
+          splash.style.opacity = '0';
+          splash.style.visibility = 'hidden';
           setTimeout(() => splash.style.display = 'none', 500);
         }
       }, 2000);
@@ -2436,7 +2241,7 @@
         });
       });
       
-      // بارگذاری زبان ذخیره شده
+      // زبان ذخیره شده
       const savedLang = localStorage.getItem('preferredLanguage');
       if (savedLang && translations[savedLang]) {
         changeLanguage(savedLang);
@@ -2455,25 +2260,20 @@
       }
       
       // Modal
-      window.openModal = openModal;
-      window.closeModal = closeModal;
-      
       document.getElementById('termsModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
+        if (e.target === this) window.closeModal();
       });
       
       // نوار اسکرول
       window.addEventListener('scroll', function() {
         const navbar = document.getElementById('navbar');
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
       });
       
       // انیمیشن
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('fade-in');
         });
       }, { threshold: 0.1 });
       
