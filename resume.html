@@ -164,7 +164,7 @@
       letter-spacing: 0.3px;
     }
     
-    /* ===== NAVIGATION - کاملاً مشابه صفحه اصلی ===== */
+    /* ===== NAVIGATION - حذف نوشته توسعه پردازان ===== */
     .nav {
       position: fixed;
       top: 0;
@@ -198,7 +198,6 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
     }
     
     .brand img {
@@ -212,9 +211,7 @@
     }
     
     .brand span {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-dark);
+      display: none;
     }
     
     .nav-links {
@@ -572,10 +569,13 @@
       opacity: 1;
     }
     
+    /* انتقال سمت‌ها به زیر نام - رفع تداخل با عکس */
     .card-badge {
-      position: absolute;
-      top: 24px;
-      right: 24px;
+      position: relative;
+      top: 0;
+      right: 0;
+      display: inline-block;
+      margin-bottom: 16px;
       background: linear-gradient(145deg, var(--primary), #2563eb);
       color: white;
       padding: 8px 22px;
@@ -585,6 +585,7 @@
       box-shadow: 0 8px 18px rgba(30, 64, 175, 0.25);
       z-index: 2;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      width: fit-content;
     }
     
     .card-header {
@@ -1040,7 +1041,6 @@
       .splash-logo { width: 140px; height: 140px; }
       .team-grid { grid-template-columns: 1fr; }
       .card-header { flex-direction: column; text-align: center; }
-      .card-badge { position: relative; top: 0; right: 0; margin-bottom: 16px; display: inline-block; }
       .back-btn-container { justify-content: center; }
       .modal-content { padding: 32px; }
     }
@@ -1072,12 +1072,12 @@
     <i class="fas fa-chevron-up"></i>
   </div>
 
-  <!-- ===== NAVIGATION - کاملاً مشابه صفحه اصلی ===== -->
+  <!-- ===== NAVIGATION - بدون نوشته توسعه پردازان ===== -->
   <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a href="index.html" class="brand">
         <img src="images/logo.png" alt="توسعه پردازان">
-        <span data-i18n="nav.brand">توسعه پردازان</span>
+        <span style="display: none;" data-i18n="nav.brand">توسعه پردازان</span>
       </a>
       
       <ul class="nav-links">
@@ -1862,7 +1862,6 @@
         'footer.hours.thu': 'پنجشنبه: ۸:۰۰ - ۱۴:۰۰',
         'footer.cta': 'درخواست پروژه و همکاری',
         'footer.copyright': '© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.',
-        // عناوین مودال
         'modal.personal': 'اطلاعات شخصی',
         'modal.contact': 'اطلاعات تماس',
         'modal.education': 'تحصیلات',
