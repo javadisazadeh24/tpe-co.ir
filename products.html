@@ -1366,7 +1366,7 @@
       <!-- آمار پروژه‌ها -->
       <div class="header-stats">
         <div class="stat-item">
-          <span class="stat-number" id="totalProjects">۴۰+</span>
+          <span class="stat-number" id="totalProjects">۴۲+</span>
           <span class="stat-label" data-i18n="stats.projects">پروژه موفق</span>
         </div>
         <div class="stat-item">
@@ -1445,7 +1445,7 @@
       </div>
       <div class="stats-badge">
         <i class="fas fa-chart-line"></i>
-        <span id="projectCounter">نمایش ۴۰ پروژه</span>
+        <span id="projectCounter">نمایش ۴۲ پروژه</span>
       </div>
     </div>
     
@@ -1458,7 +1458,7 @@
         <h3 data-i18n="table.fullList">لیست کامل پروژه‌ها</h3>
         <span class="stats-badge" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
           <i class="fas fa-table"></i>
-          <span data-i18n="table.total">۴۰ پروژه</span>
+          <span data-i18n="table.total">۴۲ پروژه</span>
         </span>
       </div>
       
@@ -1545,7 +1545,7 @@
   </footer>
 
   <script>
-    // ==================== داده‌های پروژه‌ها ====================
+    // ==================== داده‌های پروژه‌ها بر اساس فایل PDF شما ====================
     const projectsData = [
       { id: 1, title: "Air Purifier", client: "شرکت بهبود رایان", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 2, title: "Air Purifier UV Plus", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
@@ -1553,43 +1553,45 @@
       { id: 4, title: "Biometric Lock", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات IoT", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 5, title: "Caloric Irrigator", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 6, title: "Camera Sliding Part", client: "استودیو ایما", type: "reverse", field: "تجهیزات تصویربرداری", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 7, title: "Chain rests and Bites", client: "مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان و ...", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 8, title: "Clock with Poet", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 7, title: "Chain rests and Bites", client: "مراکز رادیولوژی + دانشکده دندانپزشکی زاهدان – بیمارستان نبی اکرم (ص) زاهدان", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 8, title: "Clock with Poet", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "ساختنی", designer: "مهندس مینا واصفیان", status: "completed" },
       { id: 9, title: "Defibration Machine", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 10, title: "Dental Suction Frame Cover", client: "پیشگامان ایرانیان طب کیانسه", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
       { id: 11, title: "ECG Simulator", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 12, title: "Economic Pin Lock", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات صنعتی", designer: "مهندس مینا واصفیان", status: "completed" },
-      { id: 13, title: "Face Guide", client: "-", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 14, title: "Floater", client: "-", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 13, title: "Face Guide", client: "دندانپزشکی", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 14, title: "Floater", client: "توسعه پردازان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
       { id: 15, title: "Gear (Worm)", client: "پیشگامان ایرانیان طب کیانسه", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 16, title: "Hand Dryer", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
       { id: 17, title: "Handy Tools (Screw drivers)", client: "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 18, title: "Holographic", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
-      { id: 19, title: "Labor Bed", client: "کشاورزی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 20, title: "Labor Bed", client: "-", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
+      { id: 18, title: "Holographic", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "هولوگرافی", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 19, title: "هیدروپونیک (کشاورزی)", client: "توسعه پردازان", type: "original", field: "تجهیزات کشاورزی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 20, title: "Labor Bed", client: "توسعه پردازان", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
       { id: 21, title: "Lamp Cover", client: "مهرنور الکترونیک پیشگام", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 22, title: "Light Box", client: "آوام گستر اینترنت اشیاء", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 23, title: "Mask Production Line", client: "دانشگاه سیستان و بلوچستان", type: "reverse", field: "تجهیزات صنعتی", designer: "مهندس مینا واصفیان", status: "completed" },
-      { id: 24, title: "Mirror", client: "آوام گستر اینترنت اشیاء", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 24, title: "Mirror", client: "آوام گستر اینترنت اشیاء", type: "original", field: "آینه هوشمند", designer: "مهندس مینا واصفیان", status: "completed" },
       { id: 25, title: "PCB Cutter", client: "مهرنور الکترونیک پیشگام", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 26, title: "PET&PVC Shredder", client: "شهرک صنعتی سراوان – آقای محمود درویشی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 27, title: "Pizza Machine", client: "مهندس سعید میرکی اناری", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 28, title: "Pulp Tester", client: "شرکت طب تجهیز آبادیس پارس", type: "reverse", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
       { id: 29, title: "Pulse Oximeter", client: "دانشگاه سیستان و بلوچستان", type: "original", field: "تجهیزات پزشکی", designer: "مهندس علی کیخا", status: "completed" },
-      { id: 30, title: "Puzzle Home Instruments", client: "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 30, title: "Puzzle Home Instruments", client: "دانشگاه علوم پزشکی زاهدان – مهندس سعید قلفی", type: "original", field: "ساختنی", designer: "مهندس مینا واصفیان", status: "completed" },
       { id: 31, title: "روشویی", client: "مصطفی صاحبالزمانی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مینا واصفیان", status: "completed" },
       { id: 32, title: "Step Generator", client: "مصطفی صاحبالزمانی", type: "original", field: "تجهیزات صنعتی", designer: "مهندس علی کیخا", status: "completed" },
-      { id: 33, title: "Taftan Trophy", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
-      { id: 34, title: "Trophy", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "-", designer: "مهندس مینا واصفیان", status: "completed" },
-      { id: 35, title: "UV Plus Sanitizer", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 36, title: "UV Sterilization", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 37, title: "Veinscope", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
-      { id: 38, title: "Water Consumption", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
-      { id: 39, title: "Water Purifier", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
-      { id: 40, title: "انژکتور شور پویا خودرو ایرانیان آدلی", client: "بزودی", type: "student", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "coming_soon" }
+      { id: 33, title: "Sun Ovens", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 34, title: "Sun Panel Lamp Post", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 35, title: "Taftan Trophy", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "ساختنی", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 36, title: "Trophy", client: "فبلب صنایع خلاق پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "ساختنی", designer: "مهندس مینا واصفیان", status: "completed" },
+      { id: 37, title: "UV Plus Sanitizer", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 38, title: "UV Sterilization", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 39, title: "Veinscope", client: "توسعه پردازان الکترونیک فیدار پارس راویس", type: "student", field: "تجهیزات پزشکی", designer: "مهندس جواد عیسی زاده", status: "completed" },
+      { id: 40, title: "Water Consumption", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 41, title: "Water Purifier", client: "پارک علم و فناوری سیستان و بلوچستان", type: "original", field: "تجهیزات صنعتی", designer: "مهندس مصطفی خیاطی", status: "completed" },
+      { id: 42, title: "انژکتور شور", client: "پویا خودرو ایرانیان آدلی", type: "student", field: "تجهیزات صنعتی", designer: "مهندس جواد عیسی زاده", status: "completed" }
     ];
 
-    // ==================== ترجمه‌ها ====================
+    // ==================== ترجمه‌های کامل ====================
     const translations = {
       fa: {
         "splash.title": "نمونه خدمات و محصولات",
@@ -1614,7 +1616,7 @@
         "legend.original": "اورجینال",
         "legend.reverse": "مهندسی معکوس",
         "table.fullList": "لیست کامل پروژه‌ها",
-        "table.total": "۴۰ پروژه",
+        "table.total": "۴۲ پروژه",
         "table.row": "ردیف",
         "table.title": "عنوان پروژه",
         "table.client": "مشتری",
@@ -1654,7 +1656,7 @@
         "legend.original": "Original",
         "legend.reverse": "Reverse Engineering",
         "table.fullList": "Complete Projects List",
-        "table.total": "40 Projects",
+        "table.total": "42 Projects",
         "table.row": "Row",
         "table.title": "Project Title",
         "table.client": "Client",
@@ -1681,7 +1683,7 @@
         "nav.contact": "اتصل بنا",
         "nav.work": "تعاون",
         "products.title": "محفظة الخدمات والمنتجات",
-        "products.subtitle": "شركة توسع پردازان الإلكترونية القائمة على المعرفة فيدار بارس راویس",
+        "products.subtitle": "شركة تطوير پردازان الإلكترونية القائمة على المعرفة فيدار بارس راویس",
         "products.back": "العودة إلى الرئيسية",
         "stats.projects": "مشروع ناجح",
         "stats.clients": "عميل",
@@ -1694,7 +1696,7 @@
         "legend.original": "أصلي",
         "legend.reverse": "هندسة عكسية",
         "table.fullList": "قائمة المشاريع الكاملة",
-        "table.total": "٤٠ مشروع",
+        "table.total": "٤٢ مشروع",
         "table.row": "رقم",
         "table.title": "عنوان المشروع",
         "table.client": "العميل",
@@ -1709,7 +1711,7 @@
         "footer.links": "روابط سريعة",
         "footer.social": "وسائل التواصل الاجتماعي",
         "footer.hours": "السبت إلى الأربعاء: ٨:٠٠ - ١٧:٠٠",
-        "footer.copyright": "© ٢٠٢٥ شركة توسع پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
+        "footer.copyright": "© ٢٠٢٥ شركة تطوير پردازان الهندسية القائمة على المعرفة. جميع الحقوق محفوظة."
       }
     };
 
@@ -1785,7 +1787,7 @@
       }
       
       // بروزرسانی شمارنده
-      projectCounter.textContent = translations[currentLanguage]['table.total'].replace('۴۰', filteredProjects.length).replace('40', filteredProjects.length);
+      projectCounter.textContent = translations[currentLanguage]['table.total'].replace('۴۲', filteredProjects.length).replace('42', filteredProjects.length);
       
       // ===== رندر کارت‌ها =====
       projectsGrid.innerHTML = '';
@@ -1794,8 +1796,8 @@
         projectsGrid.innerHTML = `
           <div class="empty-message">
             <i class="fas fa-folder-open"></i>
-            <p data-i18n="empty.message">${translations[currentLanguage]['empty.message']}</p>
-            <small style="color: var(--muted); margin-top: 10px; display: block;" data-i18n="empty.action">${translations[currentLanguage]['empty.action']}</small>
+            <p>${translations[currentLanguage]['empty.message']}</p>
+            <small style="color: var(--muted); margin-top: 10px; display: block;">${translations[currentLanguage]['empty.action']}</small>
           </div>
         `;
       } else {
@@ -1830,10 +1832,7 @@
               </div>
             </div>
             <div class="card-footer">
-              ${project.status === 'coming_soon' ? 
-                `<span class="coming-soon-badge"><i class="fas fa-clock"></i> ${translations[currentLanguage]['coming.soon']}</span>` : 
-                `<span></span>`
-              }
+              <span></span>
               <button class="share-btn" onclick="shareProject('${project.title}')">
                 <i class="fas fa-share-alt"></i>
               </button>
@@ -1923,17 +1922,10 @@
       
       // بارگذاری زبان ذخیره شده
       const savedLang = localStorage.getItem('preferredLanguage');
-      if (savedLang) {
+      if (savedLang && translations[savedLang]) {
         changeLanguage(savedLang);
       } else {
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang.startsWith('ar')) {
-          changeLanguage('ar');
-        } else if (browserLang.startsWith('fa')) {
-          changeLanguage('fa');
-        } else {
-          changeLanguage('en');
-        }
+        changeLanguage('fa');
       }
       
       // تنظیم رویداد فیلتر
@@ -1951,72 +1943,37 @@
       });
       
       // تنظیم منوی همبرگر
-      setupMobileMenu();
-      
-      // تنظیم اسکرول نرم
-      setupSmoothScroll();
-      
-      // تنظیم دکمه اسکرول به بالا
-      setupScrollTop();
-      
-      // تنظیم نوار ناوبری
-      setupNavbar();
-      
-      // رندر اولیه پروژه‌ها
-      renderProjects();
-    });
-
-    function setupMobileMenu() {
       const menuToggle = document.getElementById('mobileMenuToggle');
       const mobileMenu = document.getElementById('mobileMenu');
       const overlay = document.getElementById('mobileMenuOverlay');
       
-      if (!menuToggle || !mobileMenu || !overlay) return;
-      
-      menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-      });
-      
-      overlay.addEventListener('click', function() {
-        menuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        this.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function() {
+      if (menuToggle && mobileMenu && overlay) {
+        menuToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          this.classList.toggle('active');
+          mobileMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        overlay.addEventListener('click', function() {
           menuToggle.classList.remove('active');
           mobileMenu.classList.remove('active');
-          overlay.classList.remove('active');
+          this.classList.remove('active');
           document.body.style.overflow = '';
         });
-      });
-    }
-
-    function setupSmoothScroll() {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-              });
-            }
-          }
+        
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+          });
         });
-      });
-    }
-
-    function setupScrollTop() {
+      }
+      
+      // تنظیم دکمه اسکرول به بالا
       const scrollTopBtn = document.getElementById('scrollTop');
       scrollTopBtn.addEventListener('click', function() {
         window.scrollTo({
@@ -2024,9 +1981,7 @@
           behavior: 'smooth'
         });
       });
-    }
-
-    function setupNavbar() {
+      
       window.addEventListener('scroll', function() {
         const navbar = document.getElementById('navbar');
         const scrollTopBtn = document.getElementById('scrollTop');
@@ -2043,7 +1998,10 @@
           scrollTopBtn.classList.remove('visible');
         }
       });
-    }
+      
+      // رندر اولیه پروژه‌ها
+      renderProjects();
+    });
   </script>
 </body>
 </html>
