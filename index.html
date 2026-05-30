@@ -96,27 +96,22 @@
     }
     body { font-family: 'Vazirmatn', 'Inter', sans-serif; background: #050a15; color: var(--text-light); overflow-x: hidden; min-height: 100vh; }
     
-    /* ========== پس‌زمینه گرید شفاف با تصاویر پروژه‌های اصلی (shuffle ثابت) ========== */
-    .bg-grid-constant {
+    /* ========== پس‌زمینه گرید پویا با تصاویر واقعی و جابجایی مداوم ========== */
+    .dynamic-grid-bg {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      grid-auto-rows: minmax(180px, auto); gap: 12px; padding: 16px;
-      opacity: 0.45; transition: opacity 0.4s; pointer-events: none;
+      display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);
+      gap: 12px; padding: 16px; opacity: 0.5; transition: opacity 0.3s;
+      pointer-events: none;
     }
-    .bg-grid-constant img {
+    .dynamic-grid-bg img {
       width: 100%; height: 100%; object-fit: cover; border-radius: 24px;
-      filter: brightness(0.8) contrast(1.1); transition: transform 0.4s;
+      filter: brightness(0.75) contrast(1.1); transition: transform 0.5s ease, opacity 0.8s;
+      opacity: 0.9;
     }
     .dark-overlay {
-      position: fixed; inset: 0; background: radial-gradient(circle at 20% 40%, rgba(5,10,25,0.6), rgba(0,0,0,0.85));
+      position: fixed; inset: 0; background: radial-gradient(circle at 20% 40%, rgba(5,10,25,0.65), rgba(0,0,0,0.85));
       z-index: -1; pointer-events: none;
     }
-    /* حلقه اسلایدشو برای hover (فقط یک لایه کوتاه) */
-    .bg-slideshow-temp {
-      position: fixed; inset: 0; background-size: cover; background-position: center;
-      opacity: 0; transition: opacity 0.6s; pointer-events: none; z-index: -1;
-    }
-    .bg-slideshow-temp.active { opacity: 0.5; }
     
     /* نوار زبان */
     .lang-bar {
@@ -179,15 +174,14 @@
     .contact-mini a:hover { color: var(--primary-light); }
     .social-icons { display: flex; gap: 10px; }
     
-    @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; gap: 30px; } .circular-zone { min-height: auto; } .carousel-container { width: min(500px, 80vw); height: min(500px, 80vw); } .rotating-node { width: min(100px, 20vw); height: min(100px, 20vw); } .bg-grid-constant { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; } }
-    @media (max-width: 550px) { .gateway { padding: 1rem; } .carousel-container { width: min(380px, 85vw); height: min(380px, 85vw); } .rotating-node { width: min(80px, 18vw); height: min(80px, 18vw); } .rotating-node i { font-size: 1.2rem; } .rotating-node h4 { font-size: 0.55rem; } .info-glass { padding: 1.2rem; } .sector-title { font-size: 1.2rem; } .lang-bar { top: 12px; left: 12px; padding: 4px 12px; } }
+    @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; gap: 30px; } .circular-zone { min-height: auto; } .carousel-container { width: min(500px, 80vw); height: min(500px, 80vw); } .rotating-node { width: min(100px, 20vw); height: min(100px, 20vw); } .dynamic-grid-bg { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, 1fr); gap: 10px; } }
+    @media (max-width: 550px) { .gateway { padding: 1rem; } .carousel-container { width: min(380px, 85vw); height: min(380px, 85vw); } .rotating-node { width: min(80px, 18vw); height: min(80px, 18vw); } .rotating-node i { font-size: 1.2rem; } .rotating-node h4 { font-size: 0.55rem; } .info-glass { padding: 1.2rem; } .sector-title { font-size: 1.2rem; } .lang-bar { top: 12px; left: 12px; padding: 4px 12px; } .dynamic-grid-bg { gap: 8px; padding: 12px; } }
   </style>
 </head>
 <body>
 
-<!-- پس‌زمینه ثابت گرید با تصاویر اصلی سایت (shuffle هر بار) -->
-<div class="bg-grid-constant" id="constantGrid"></div>
-<div class="bg-slideshow-temp" id="tempSlideshow"></div>
+<!-- پس‌زمینه گرید پویا با جابجایی تصادفی و بدون وابستگی به تعامل کاربر -->
+<div class="dynamic-grid-bg" id="dynamicGridBg"></div>
 <div class="dark-overlay"></div>
 
 <div class="splash-screen" id="splashScreen">
@@ -228,63 +222,96 @@
 </div>
 
 <script>
-  // ========== لیست تصاویر واقعی از سایت اصلی (مسیرهایی که در فایل اول وجود داشت) ==========
-  const originalImages = [
-    "images/portfolio/air-purifier.jpg", "images/portfolio/biometric-lock.jpg", "images/portfolio/ecg-simulator.jpg",
-    "images/portfolio/injector-cleaner.jpg", "images/portfolio/veinscope.jpg", "images/portfolio/arm-porter.jpg",
-    "images/portfolio/taftan-trophy.jpg", "images/portfolio/pulp-tester.jpg", "images/portfolio/lamp-cover.jpg",
-    "images/projects/yunolit-factory.jpg", "images/projects/fablab-cafe.jpg", "images/logo.png", "images/logo-ravand.png"
-  ].filter(p => p);
-  const fallbackImg = "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=600";
-  
-  // شافل کردن تصاویر
+  // ========== لیست کامل تصاویر از سایت اصلی (منابع موجود در کد اولیه) ==========
+  const masterImageList = [
+    "images/portfolio/air-purifier.jpg",
+    "images/portfolio/biometric-lock.jpg",
+    "images/portfolio/ecg-simulator.jpg",
+    "images/portfolio/injector-cleaner.jpg",
+    "images/portfolio/veinscope.jpg",
+    "images/portfolio/arm-porter.jpg",
+    "images/portfolio/taftan-trophy.jpg",
+    "images/portfolio/pulp-tester.jpg",
+    "images/portfolio/lamp-cover.jpg",
+    "images/projects/yunolit-factory.jpg",
+    "images/projects/fablab-cafe.jpg",
+    "images/logo.png",
+    "images/logo-ravand.png",
+    "clients/university-sb.png",
+    "clients/park-sb.png",
+    "clients/health-center.png",
+    "clients/university-medical.png",
+    "clients/design-lab.png",
+    "clients/harir.png",
+    "clients/innovation.png",
+    "clients/fly-bar.png"
+  ].filter(src => src && src !== "");
+
+  const fallbackImage = "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=600";
+
+  // تابع Shuffle آرایه (Fisher-Yates)
   function shuffleArray(arr) {
-    for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
     return arr;
   }
-  
-  function buildConstantGrid() {
-    const gridContainer = document.getElementById('constantGrid');
+
+  // تولید گرید ۱۲ تصویری (۴x۳) با shuffle کامل
+  let currentGridImages = [];
+  function generateRandomGrid() {
+    const shuffledAll = shuffleArray([...masterImageList]);
+    // انتخاب ۱۲ تصویر منحصر‌به‌فرد (تکرار نشود مگر تعداد کم باشد)
+    let selected = [];
+    for (let i = 0; i < 12 && i < shuffledAll.length; i++) {
+      selected.push(shuffledAll[i]);
+    }
+    while (selected.length < 12) selected.push(fallbackImage); // پر کردن در صورت کمبود
+    return selected;
+  }
+
+  let gridContainer = document.getElementById('dynamicGridBg');
+  let currentImages = generateRandomGrid();
+  let shuffleInterval;
+
+  function renderGrid(imagesArray) {
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
-    let shuffled = shuffleArray([...originalImages]);
-    // تکرار تا پر شدن حداقل ۱۲ تصویر
-    while (shuffled.length < 18) shuffled.push(...shuffled);
-    const finalImages = shuffled.slice(0, 18);
-    finalImages.forEach(src => {
+    for (let i = 0; i < imagesArray.length; i++) {
       const img = document.createElement('img');
-      img.src = src;
+      img.src = imagesArray[i];
       img.alt = "نمونه پروژه توسعه پردازان";
       img.loading = "lazy";
-      img.onerror = function() { this.src = fallbackImg; };
+      img.onerror = function() { this.src = fallbackImage; };
       gridContainer.appendChild(img);
-    });
+    }
   }
-  
-  // اسلایدشو موقت برای hover (فقط یک لایه رویی)
-  const tempSlide = document.getElementById('tempSlideshow');
-  let slideInterval = null;
-  function startTempSlideshow(imagesArray) {
-    if (slideInterval) clearInterval(slideInterval);
-    if (!imagesArray || imagesArray.length === 0) imagesArray = [fallbackImg];
-    let idx = 0;
-    const update = () => {
-      let url = imagesArray[idx % imagesArray.length];
-      if (!url) url = fallbackImg;
-      tempSlide.style.backgroundImage = `url(${url})`;
-      tempSlide.classList.add('active');
-      idx++;
-    };
-    update();
-    slideInterval = setInterval(update, 5000);
+
+  // تابع جابجایی تصاویر با انیمیشن محو و ظاهر شدن (تغییر تدریجی)
+  function refreshGridWithShuffle() {
+    const newImages = generateRandomGrid();
+    if (gridContainer) {
+      // انیمیشن محو و fade in برای جلوه بهتر
+      gsap.to(gridContainer, { opacity: 0, duration: 0.5, onComplete: () => {
+        renderGrid(newImages);
+        gsap.to(gridContainer, { opacity: 1, duration: 0.8 });
+      }});
+    } else {
+      renderGrid(newImages);
+    }
+    currentImages = newImages;
   }
-  function stopTempSlideshow() {
-    if (slideInterval) clearInterval(slideInterval);
-    slideInterval = null;
-    tempSlide.classList.remove('active');
+
+  // شروع چرخش خودکار تصاویر پس‌زمینه (هر 6 ثانیه یکبار shuffle بدون دخالت کاربر)
+  function startBackgroundRotation() {
+    if (shuffleInterval) clearInterval(shuffleInterval);
+    shuffleInterval = setInterval(() => {
+      refreshGridWithShuffle();
+    }, 7000); // هر 7 ثانیه ترکیب تصاویر تغییر می‌کند
   }
-  
-  // ========== متون و داده‌های سه‌زبانه (برگرفته از سایت اصلی با حفظ هویت) ==========
+
+  // ========== متون و داده‌های سه‌زبانه (برگرفته از سایت اصلی) ==========
   const langData = {
     fa: {
       creative: { title: "واحد صنایع خلاق", desc: "طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی و نورپردازی هوشمند. ما در فبلب روند، ایده‌های خلاقانه شما را به محصولاتی منحصربه‌فرد تبدیل می‌کنیم.", services: ["طراحی مفهومی و جزئیات اجرایی", "مدل‌سازی سه‌بعدی پیشرفته", "پرینت سه‌بعدی رزین و فیلامنت", "مهندسی معکوس آثار هنری", "لایتینگ هوشمند و دکوراسیون"], cta: "ورود به واحد صنایع خلاق", url: "/fablab/creative" },
@@ -358,11 +385,6 @@
       } else { node.style.transform = ''; node.style.borderColor = ''; node.style.backgroundColor = ''; node.style.boxShadow = ''; }
     });
     updatePanel(sector);
-    // نمایش اسلایدشو مرتبط با دسته (تصاویر مرتبط از دیتابیس کوچک)
-    const catImgs = {
-      creative: originalImages.slice(0,4), industrial: originalImages.slice(2,6), medical: originalImages.slice(4,8), catalog: originalImages.slice(6,10), shop: originalImages.slice(8,12), resume: originalImages.slice(1,5), work: originalImages.slice(9,13)
-    };
-    startTempSlideshow(catImgs[sector] || originalImages);
   }
   function startRotation() {
     function rotate() { if (!isHovering) { angleOffset = (angleOffset + 0.12) % 360; sectorsList.forEach(sector => { const node = document.querySelector(`.rotating-node[data-sector="${sector}"]`); if (node) { const newAngle = baseAngles[sector] + angleOffset; const rad = newAngle * Math.PI / 180; const x = Math.cos(rad) * radius, y = Math.sin(rad) * radius; node.style.left = `calc(50% + ${x}px - 55px)`; node.style.top = `calc(50% + ${y}px - 55px)`; } }); } rotationFrame = requestAnimationFrame(rotate); }
@@ -372,7 +394,7 @@
   function bindEvents() {
     document.querySelectorAll('.rotating-node').forEach(node => {
       node.addEventListener('mouseenter', () => { isHovering = true; if (autoTimer) clearInterval(autoTimer); highlightNode(node.dataset.sector); });
-      node.addEventListener('mouseleave', () => { isHovering = false; startAutoHighlight(); stopTempSlideshow(); });
+      node.addEventListener('mouseleave', () => { isHovering = false; startAutoHighlight(); });
       node.addEventListener('click', (e) => { e.stopPropagation(); const url = langData[currentLang][node.dataset.sector].url; if (url) window.location.href = url; });
     });
   }
@@ -387,7 +409,8 @@
     updatePanel(currentSector);
   }
   window.addEventListener('load', () => {
-    buildConstantGrid();
+    renderGrid(currentImages);
+    startBackgroundRotation(); // شروع چرخش خودکار تصاویر پس‌زمینه
     createNodes();
     bindEvents();
     startRotation();
