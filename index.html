@@ -2,203 +2,651 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>فبلب روند | شرکت توسعه پردازان | FabLab Round</title>
-  <meta name="description" content="فبلب تخصصی شرکت دانش بنیان توسعه پردازان الکترونیک فیدار پارس راویس | برند فبلب روند | ساخت دیجیتال، مهندسی معکوس و نوآوری">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAVAND FabLab | فبلب روند | توسعه پردازان</title>
+  <meta name="description" content="فبلب تخصصی شرکت توسعه پردازان | طراحی مهندسی، ساخت دیجیتال، صنایع خلاق، مهندسی معکوس، تجهیزات پزشکی">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="RAVAND FabLab | فبلب روند">
+  <meta property="og:description" content="از ایده تا محصول در فبلب روند">
+  <meta property="og:image" content="https://tpe-co.ir/images/logo-ravand.png">
+  <meta property="og:url" content="https://tpe-co.ir">
+  
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- فونت‌های مدرن و جذاب -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     :root {
-      --primary: #1e40af; --primary-dark: #1e3a8a; --primary-light: #3b82f6;
-      --accent: #dc2626; --accent-light: #ef4444;
-      --creative: #8b5cf6; --industrial: #0f172a; --medical: #0891b2;
-      --bg: #f8fafc; --text: #0f172a; --gray: #64748b;
-      --shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #dc2626;
+      --accent-light: #ef4444;
+      --creative: #8b5cf6;
+      --industrial: #0f172a;
+      --medical: #0891b2;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --gray: #64748b;
+      --white: #ffffff;
+      --black: #000000;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+      --glow: 0 0 15px rgba(59,130,246,0.3);
     }
-    body { font-family: 'Vazirmatn', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    
+    body {
+      font-family: 'Vazirmatn', 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    
+    /* انیمیشن‌های ورودی */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .animate-up { animation: fadeInUp 0.8s ease forwards; }
+    .animate-right { animation: slideInRight 0.8s ease forwards; }
+    .animate-zoom { animation: zoomIn 0.6s ease forwards; }
+    .float { animation: float 4s ease-in-out infinite; }
+    
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     section { padding: 80px 0; }
-    h2 { font-size: 32px; text-align: center; margin-bottom: 48px; color: var(--primary); position: relative; }
-    h2:after { content: ''; position: absolute; bottom: -12px; right: 50%; transform: translateX(50%); width: 80px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--primary)); border-radius: 2px; }
-    .btn { display: inline-block; padding: 12px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s; }
-    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 4px 12px rgba(30,64,175,0.3); }
-    .btn-primary:hover { transform: translateY(-3px); }
-    .btn-outline { border: 1px solid var(--primary); color: var(--primary); background: transparent; }
-    .btn-outline:hover { background: var(--primary); color: white; }
     
-    /* Navbar (همانند قبل) */
-    .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; padding: 12px 0; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    .logo { display: flex; align-items: center; gap: 12px; }
-    .logo img { height: 45px; }
-    .logo-text { font-weight: 800; font-size: 1.2rem; }
-    .logo-text span { color: var(--primary); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-weight: 500; transition: 0.3s; }
+    h1, h2, h3 {
+      font-family: 'Orbitron', 'Vazirmatn', monospace;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--primary);
+      position: relative;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: 2px;
+    }
+    
+    /* نوار ناوبری شیشه‌ای */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 12px 0;
+      transition: all 0.3s;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-group img {
+      height: 45px;
+      transition: transform 0.3s;
+    }
+    .logo-group img:hover { transform: scale(1.05); }
+    .logo-divider {
+      width: 1px;
+      height: 35px;
+      background: #ccc;
+    }
+    .brand-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      direction: ltr;
+    }
+    .brand-text span { color: var(--primary); }
+    
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
     .nav-links a:hover { color: var(--primary); }
+    .lang-selector {
+      display: flex;
+      gap: 8px;
+      margin-right: 20px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      width: 28px;
+      height: 20px;
+      border-radius: 4px;
+      overflow: hidden;
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+    .lang-btn.active { opacity: 1; transform: scale(1.1); box-shadow: 0 0 0 2px var(--primary); }
+    .lang-btn img { width: 100%; height: 100%; object-fit: cover; }
+    
     .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .menu-toggle span { width: 25px; height: 2px; background: var(--text); transition: 0.3s; }
-    @media (max-width: 768px) { .nav-links { display: none; } .menu-toggle { display: flex; } }
     
-    /* اینترو تعاملی - Hero Special */
-    .intro-hero {
+    /* هیرو با ویدیو */
+    .hero {
+      position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: white;
-      position: relative;
       overflow: hidden;
     }
-    .intro-bg { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, rgba(59,130,246,0.15) 0%, transparent 50%); }
-    .intro-content { position: relative; z-index: 2; max-width: 900px; padding: 20px; }
-    .brand-stack { margin-bottom: 40px; }
-    .brand-stack .parent { font-size: 18px; letter-spacing: 2px; opacity: 0.8; margin-bottom: 10px; }
-    .brand-stack .fablab-name { font-size: 64px; font-weight: 800; background: linear-gradient(135deg, #fff, #60a5fa); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 20px 0; }
-    .typing-text { font-size: 24px; margin: 30px 0; min-height: 80px; }
-    .cta-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
-    .cta-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 20px 30px; width: 200px; text-align: center; transition: 0.3s; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; }
-    .cta-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.2); }
-    .cta-card i { font-size: 48px; margin-bottom: 15px; }
-    .cta-card span { display: block; font-weight: 700; font-size: 18px; }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(15,23,42,0.75), rgba(30,58,138,0.65));
+      z-index: -1;
+    }
+    .hero-content {
+      max-width: 900px;
+      padding: 0 20px;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', monospace;
+    }
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: 0 4px 15px rgba(30,64,175,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(30,64,175,0.4); }
+    .btn-outline {
+      border: 1px solid white;
+      color: white;
+      background: transparent;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
     
-    /* سه کارت اصلی */
-    .cards-section { background: var(--bg); }
-    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
-    .main-card { background: white; border-radius: 32px; padding: 40px 20px; text-align: center; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-    .main-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
-    .main-card i { font-size: 64px; margin-bottom: 20px; }
-    .main-card.creative i { color: var(--creative); }
-    .main-card.industrial i { color: var(--industrial); }
-    .main-card.medical i { color: var(--medical); }
-    .main-card h3 { font-size: 28px; margin-bottom: 15px; }
-    .main-card p { color: var(--gray); margin-bottom: 25px; }
+    /* بخش معرفی برند */
+    .intro-brand {
+      background: var(--white);
+      text-align: center;
+    }
+    .brand-showcase {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .brand-card {
+      background: var(--bg);
+      padding: 30px;
+      border-radius: 32px;
+      width: 260px;
+      transition: 0.3s;
+      border: 1px solid #e2e8f0;
+    }
+    .brand-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+    .brand-card img { height: 80px; margin-bottom: 20px; }
     
-    /* فوتر */
-    footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; margin-top: 60px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
-    .footer-col h4 { color: white; margin-bottom: 20px; }
-    .footer-col a { display: block; color: #94a3b8; margin-bottom: 10px; text-decoration: none; }
+    /* سه کارت اصلی (اسلایدی) */
+    .cards-slider {
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      perspective: 1000px;
+    }
+    .flip-card {
+      background: white;
+      border-radius: 32px;
+      padding: 40px 25px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .flip-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--shadow);
+    }
+    .flip-card i {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    .flip-card.creative i { color: var(--creative); }
+    .flip-card.industrial i { color: var(--industrial); }
+    .flip-card.medical i { color: var(--medical); }
+    .flip-card h3 { font-size: 28px; margin-bottom: 15px; }
+    .flip-card p { color: var(--gray); margin-bottom: 25px; }
+    
+    /* آمار و دستاوردها */
+    .stats {
+      background: var(--primary-dark);
+      color: white;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      font-family: 'Orbitron', monospace;
+    }
+    
+    /* فوتر تفصیلی */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 18px;
+      position: relative;
+    }
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary-light);
+    }
+    .footer-col p, .footer-col a {
+      color: #94a3b8;
+      line-height: 1.8;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
     .footer-col a:hover { color: white; }
-    .copyright { text-align: center; padding-top: 40px; border-top: 1px solid #334155; margin-top: 40px; font-size: 13px; }
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+    .social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #334155;
+      font-size: 13px;
+    }
     
     @media (max-width: 768px) {
       .cards-grid { grid-template-columns: 1fr; }
-      .brand-stack .fablab-name { font-size: 40px; }
-      .cta-card { width: 150px; padding: 15px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links, .lang-selector { display: none; }
+      .menu-toggle { display: flex; }
+      .hero h1 { font-size: 36px; }
+      .brand-showcase { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
+<!-- نوار ناوبری -->
 <nav class="navbar">
   <div class="nav-container">
-    <a href="#" class="logo"><img src="images/logo.png" alt="TPE"><div class="logo-text">توسعه پردازان <span>| فبلب روند</span></div></a>
+    <div class="logo-group">
+      <img src="images/logo.png" alt="TPE">
+      <div class="logo-divider"></div>
+      <img src="images/logo-ravand.png" alt="RAVAND">
+      <div class="brand-text"><span>RAVAND</span> FabLab</div>
+    </div>
     <ul class="nav-links">
-      <li><a href="#intro">خانه</a></li>
-      <li><a href="#cards">حوزه‌ها</a></li>
-      <li><a href="creative.html">صنایع خلاق</a></li>
-      <li><a href="industrial.html">مهندسی صنعتی</a></li>
-      <li><a href="medical.html">تجهیزات پزشکی</a></li>
-      <li><a href="digital-catalog.html">کاتالوگ دیجیتال</a></li>
-      <li><a href="work-with-us.html" class="btn-primary" style="padding: 6px 16px;">همکاری</a></li>
+      <li><a href="#hero" data-i18n="nav.home">خانه</a></li>
+      <li><a href="#brands" data-i18n="nav.brands">برندها</a></li>
+      <li><a href="#cards" data-i18n="nav.cards">حوزه‌ها</a></li>
+      <li><a href="creative.html" data-i18n="nav.creative">صنایع خلاق</a></li>
+      <li><a href="industrial.html" data-i18n="nav.industrial">صنعتی</a></li>
+      <li><a href="medical.html" data-i18n="nav.medical">پزشکی</a></li>
+      <li><a href="digital-catalog.html" data-i18n="nav.catalog">کاتالوگ دیجیتال</a></li>
     </ul>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="fa"><img src="https://flagcdn.com/w40/ir.png" alt="فارسی"></button>
+      <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w40/us.png" alt="English"></button>
+      <button class="lang-btn" data-lang="ar"><img src="https://flagcdn.com/w40/sa.png" alt="العربية"></button>
+    </div>
     <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- اینتروی تعاملی -->
-<section class="intro-hero" id="intro">
-  <div class="intro-bg"></div>
-  <div class="intro-content">
-    <div class="brand-stack">
-      <div class="parent">شرکت دانش بنیان فنی و مهندسی توسعه پردازان الکترونیک فیدار پارس راویس</div>
-      <div class="fablab-name">فبلب روند<br><span style="font-size: 24px;">Round FabLab</span></div>
-      <div style="width: 80px; height: 2px; background: var(--primary-light); margin: 20px auto;"></div>
-    </div>
-    <div class="typing-text" id="typing">طراحی، مهندسی، نمونه‌سازی، تولید</div>
-    <div class="cta-grid">
-      <div class="cta-card" onclick="location.href='creative.html'"><i class="fas fa-palette"></i><span>صنایع خلاق</span></div>
-      <div class="cta-card" onclick="location.href='industrial.html'"><i class="fas fa-industry"></i><span>مهندسی صنعتی</span></div>
-      <div class="cta-card" onclick="location.href='medical.html'"><i class="fas fa-microscope"></i><span>تجهیزات پزشکی</span></div>
+<!-- هیرو با ویدیو -->
+<section class="hero" id="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="videos/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content animate-zoom">
+    <div class="hero-badge">⚡ RAVAND FabLab | Since 2024</div>
+    <h1>از ایده تا <span>محصول</span><br>در فبلب <span>روند</span></h1>
+    <p data-i18n="hero.desc">طراحی، مهندسی، نمونه‌سازی و تولید دیجیتال برای صنایع خلاق، صنعتی و تجهیزات پزشکی</p>
+    <div class="cta-buttons">
+      <a href="#cards" class="btn btn-primary" data-i18n="hero.start">شروع کنید</a>
+      <a href="digital-catalog.html" class="btn btn-outline" data-i18n="hero.catalog">کاتالوگ دیجیتال</a>
     </div>
   </div>
 </section>
 
-<!-- سه کارت اصلی -->
-<section class="cards-section" id="cards">
+<!-- معرفی برندها -->
+<section id="brands" class="intro-brand">
   <div class="container">
-    <h2>حوزه‌های تخصصی فبلب روند</h2>
-    <div class="cards-grid">
-      <div class="main-card creative">
-        <i class="fas fa-palette"></i>
-        <h3>صنایع خلاق</h3>
-        <p>طراحی پارامتریک، محصولات دکوری، گلدان‌های هوشمند، تندیس‌های اختصاصی و ساخت دیجیتال آثار هنری</p>
-        <a href="creative.html" class="btn btn-outline">ورود به خلاق</a>
+    <h2 data-i18n="brands.title">شرکت مادر و برند تخصصی</h2>
+    <div class="brand-showcase">
+      <div class="brand-card">
+        <img src="images/logo.png" alt="TPE">
+        <h3>توسعه پردازان</h3>
+        <p>شرکت دانش بنیان فنی و مهندسی توسعه پردازان الکترونیک فیدار پارس راویس</p>
       </div>
-      <div class="main-card industrial">
-        <i class="fas fa-industry"></i>
-        <h3>مهندسی صنعتی</h3>
-        <p>مهندسی معکوس، ماشین‌سازی CNC، ساخت قطعات یدکی، بهینه‌سازی خط تولید و نمونه‌سازی صنعتی</p>
-        <a href="industrial.html" class="btn btn-outline">ورود به صنعتی</a>
-      </div>
-      <div class="main-card medical">
-        <i class="fas fa-microscope"></i>
-        <h3>تجهیزات پزشکی</h3>
-        <p>تعمیرات تخصصی، مهندسی معکوس قطعات، ساخت قطعات جایگزین، شبیه‌سازهای آموزشی</p>
-        <a href="medical.html" class="btn btn-outline">ورود به پزشکی</a>
+      <div class="brand-card">
+        <img src="images/logo-ravand.png" alt="RAVAND">
+        <h3>RAVAND FabLab</h3>
+        <p>فبلب تخصصی شرکت توسعه پردازان | ساخت دیجیتال و مهندسی معکوس</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- بخش کاتالوگ دیجیتال -->
-<section style="background: linear-gradient(135deg, #eef2ff, #ffffff);">
-  <div class="container" style="text-align: center;">
-    <h2>کاتالوگ دیجیتال تعاملی</h2>
-    <p style="max-width: 700px; margin: 0 auto 40px; color: var(--gray);">تجربه جدید مشاهده محصولات، خدمات و پروژه‌های فبلب روند به صورت پویا و قابل جستجو</p>
-    <a href="digital-catalog.html" class="btn btn-primary" style="font-size: 18px; padding: 14px 40px;"><i class="fas fa-qrcode"></i> مشاهده کاتالوگ دیجیتال</a>
+<!-- سه کارت اصلی (بخش حوزه‌ها) -->
+<section class="cards-slider" id="cards">
+  <div class="container">
+    <h2 data-i18n="cards.title">حوزه‌های تخصصی فبلب روند</h2>
+    <div class="cards-grid">
+      <div class="flip-card creative" onclick="location.href='creative.html'">
+        <i class="fas fa-palette"></i>
+        <h3 data-i18n="cards.creative">صنایع خلاق</h3>
+        <p data-i18n="cards.creativeDesc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال</p>
+        <span class="btn btn-outline" style="padding:8px 20px;">مشاهده</span>
+      </div>
+      <div class="flip-card industrial" onclick="location.href='industrial.html'">
+        <i class="fas fa-industry"></i>
+        <h3 data-i18n="cards.industrial">مهندسی صنعتی</h3>
+        <p data-i18n="cards.industrialDesc">مهندسی معکوس، ماشین‌سازی CNC، قطعات یدکی، بهینه‌سازی خط تولید</p>
+        <span class="btn btn-outline" style="padding:8px 20px;">مشاهده</span>
+      </div>
+      <div class="flip-card medical" onclick="location.href='medical.html'">
+        <i class="fas fa-microscope"></i>
+        <h3 data-i18n="cards.medical">تجهیزات پزشکی</h3>
+        <p data-i18n="cards.medicalDesc">تعمیرات تخصصی، مهندسی معکوس قطعات، ساخت قطعات جایگزین، شبیه‌سازها</p>
+        <span class="btn btn-outline" style="padding:8px 20px;">مشاهده</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- فوتر -->
+<!-- آمار -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="stat-number">50+</div><div data-i18n="stats.projects">پروژه موفق</div></div>
+      <div><div class="stat-number">8+</div><div data-i18n="stats.experts">متخصصین فنی</div></div>
+      <div><div class="stat-number">100%</div><div data-i18n="stats.satisfaction">رضایت مشتری</div></div>
+      <div><div class="stat-number">24/7</div><div data-i18n="stats.support">پشتیبانی فنی</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- کاتالوگ دیجیتال (دعوت به اقدام) -->
+<section style="background: linear-gradient(135deg, #eef2ff, #fff); text-align: center;">
+  <div class="container">
+    <h2 data-i18n="catalog.title">کاتالوگ دیجیتال تعاملی</h2>
+    <p style="max-width: 700px; margin: 0 auto 30px;" data-i18n="catalog.desc">تجربه جدید مشاهده محصولات، خدمات و پروژه‌های فبلب روند به صورت پویا و قابل جستجو</p>
+    <a href="digital-catalog.html" class="btn btn-primary" style="font-size: 18px; padding: 14px 40px;"><i class="fas fa-qrcode"></i> <span data-i18n="catalog.btn">مشاهده کاتالوگ دیجیتال</span></a>
+  </div>
+</section>
+
+<!-- فوتر تفصیلی -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col"><h4>فبلب روند</h4><p>بخش فبلب تخصصی شرکت توسعه پردازان<br>طراحی، مهندسی و ساخت دیجیتال</p></div>
-      <div class="footer-col"><h4>دسترسی سریع</h4><a href="creative.html">صنایع خلاق</a><a href="industrial.html">مهندسی صنعتی</a><a href="medical.html">تجهیزات پزشکی</a><a href="digital-catalog.html">کاتالوگ دیجیتال</a></div>
-      <div class="footer-col"><h4>تماس</h4><p>زاهدان، بلوار دانشگاه، پارک علم و فناوری</p><p>📞 09226704205</p><p>✉️ javadisazadeh24@gmail.com</p></div>
+      <div class="footer-col">
+        <h4>RAVAND FabLab</h4>
+        <p>فبلب تخصصی شرکت دانش بنیان فنی و مهندسی توسعه پردازان الکترونیک فیدار پارس راویس</p>
+        <p>متخصص در طراحی مهندسی، نمونه‌سازی سریع، شبیه‌سازی عددی، مهندسی معکوس و ساخت دیجیتال</p>
+        <p>ارائه خدمات به صنایع خلاق، صنعتی و تجهیزات پزشکی با بالاترین کیفیت و رعایت استانداردهای بین‌المللی</p>
+      </div>
+      <div class="footer-col">
+        <h4>دسترسی سریع</h4>
+        <a href="creative.html">صنایع خلاق</a>
+        <a href="industrial.html">مهندسی صنعتی</a>
+        <a href="medical.html">تجهیزات پزشکی</a>
+        <a href="digital-catalog.html">کاتالوگ دیجیتال</a>
+        <a href="work-with-us.html">همکاری با ما</a>
+      </div>
+      <div class="footer-col">
+        <h4>تماس با ما</h4>
+        <p><i class="fas fa-map-marker-alt"></i> زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
+        <p><i class="fas fa-phone"></i> <a href="https://wa.me/989226704205">09226704205 (واتساپ)</a></p>
+        <p><i class="fas fa-envelope"></i> javadisazadeh24@gmail.com</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/tpe-co" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://instagram.com/TPE_CO" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/989226704205" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/tpe_co" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="copyright">© ۱۴۰۴ شرکت توسعه پردازان الکترونیک فیدار پارس راویس | فبلب روند - تمامی حقوق محفوظ است</div>
+    <div class="copyright">
+      <p>© ۱۴۰۴ شرکت توسعه پردازان الکترونیک فیدار پارس راویس | تمامی حقوق محفوظ است</p>
+      <p style="margin-top: 10px;">طراحی و توسعه توسط تیم فنی فبلب روند</p>
+    </div>
   </div>
 </footer>
 
 <script>
-  // تایپینگ اینترو
-  const texts = ["طراحی، مهندسی، نمونه‌سازی، تولید", "از ایده تا محصول در فبلب روند", "ساخت دیجیتال برای صنایع خلاق، صنعتی و پزشکی"];
-  let idx = 0, charIdx = 0;
-  function typeEffect() {
-    if (charIdx <= texts[idx].length) {
-      document.getElementById("typing").innerHTML = texts[idx].substring(0, charIdx);
-      charIdx++;
-      setTimeout(typeEffect, 100);
-    } else {
-      setTimeout(() => { idx = (idx + 1) % texts.length; charIdx = 0; typeEffect(); }, 3000);
+  // ==================== ترجمه سه زبانه ====================
+  const translations = {
+    fa: {
+      "nav.home": "خانه", "nav.brands": "برندها", "nav.cards": "حوزه‌ها", "nav.creative": "صنایع خلاق", "nav.industrial": "مهندسی صنعتی", "nav.medical": "تجهیزات پزشکی", "nav.catalog": "کاتالوگ دیجیتال",
+      "hero.desc": "طراحی، مهندسی، نمونه‌سازی و تولید دیجیتال برای صنایع خلاق، صنعتی و تجهیزات پزشکی",
+      "hero.start": "شروع کنید", "hero.catalog": "کاتالوگ دیجیتال",
+      "brands.title": "شرکت مادر و برند تخصصی",
+      "cards.title": "حوزه‌های تخصصی فبلب روند",
+      "cards.creative": "صنایع خلاق", "cards.creativeDesc": "طراحی پارامتریک، گلدان‌های ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال",
+      "cards.industrial": "مهندسی صنعتی", "cards.industrialDesc": "مهندسی معکوس، ماشین‌سازی CNC، قطعات یدکی، بهینه‌سازی خط تولید",
+      "cards.medical": "تجهیزات پزشکی", "cards.medicalDesc": "تعمیرات تخصصی، مهندسی معکوس قطعات، ساخت قطعات جایگزین، شبیه‌سازها",
+      "stats.projects": "پروژه موفق", "stats.experts": "متخصصین فنی", "stats.satisfaction": "رضایت مشتری", "stats.support": "پشتیبانی فنی",
+      "catalog.title": "کاتالوگ دیجیتال تعاملی", "catalog.desc": "تجربه جدید مشاهده محصولات، خدمات و پروژه‌های فبلب روند به صورت پویا و قابل جستجو", "catalog.btn": "مشاهده کاتالوگ دیجیتال"
+    },
+    en: {
+      "nav.home": "Home", "nav.brands": "Brands", "nav.cards": "Divisions", "nav.creative": "Creative", "nav.industrial": "Industrial", "nav.medical": "Medical", "nav.catalog": "Digital Catalog",
+      "hero.desc": "Design, Engineering, Prototyping & Digital Fabrication for Creative, Industrial & Medical Sectors",
+      "hero.start": "Get Started", "hero.catalog": "Digital Catalog",
+      "brands.title": "Parent Company & Specialized Brand",
+      "cards.title": "RAVAND FabLab Specialized Divisions",
+      "cards.creative": "Creative Industries", "cards.creativeDesc": "Parametric design, organic vases, trophies, decorative products & digital art",
+      "cards.industrial": "Industrial Engineering", "cards.industrialDesc": "Reverse engineering, CNC machining, spare parts, production line optimization",
+      "cards.medical": "Medical Equipment", "cards.medicalDesc": "Specialized repairs, reverse engineering of parts, replacement parts, simulators",
+      "stats.projects": "Successful Projects", "stats.experts": "Technical Experts", "stats.satisfaction": "Client Satisfaction", "stats.support": "Technical Support",
+      "catalog.title": "Interactive Digital Catalog", "catalog.desc": "New experience to explore products, services and projects of RAVAND FabLab", "catalog.btn": "View Digital Catalog"
+    },
+    ar: {
+      "nav.home": "الرئيسية", "nav.brands": "العلامات", "nav.cards": "الأقسام", "nav.creative": "الصناعات الإبداعية", "nav.industrial": "الهندسة الصناعية", "nav.medical": "المعدات الطبية", "nav.catalog": "الكتالوج الرقمي",
+      "hero.desc": "التصميم والهندسة والنماذج الأولية والتصنيع الرقمي للقطاعات الإبداعية والصناعية والطبية",
+      "hero.start": "ابدأ", "hero.catalog": "الكتالوج الرقمي",
+      "brands.title": "الشركة الأم والعلامة التجارية المتخصصة",
+      "cards.title": "الأقسام المتخصصة في فبلب روند",
+      "cards.creative": "الصناعات الإبداعية", "cards.creativeDesc": "التصميم البارامتري، المزهريات العضوية، الجوائز، المنتجات الديكورية والفن الرقمي",
+      "cards.industrial": "الهندسة الصناعية", "cards.industrialDesc": "الهندسة العكسية، التصنيع باستخدام الحاسب الآلي، قطع الغيار، تحسين خط الإنتاج",
+      "cards.medical": "المعدات الطبية", "cards.medicalDesc": "الإصلاحات المتخصصة، الهندسة العكسية للأجزاء، الأجزاء البديلة، أجهزة المحاكاة",
+      "stats.projects": "مشروع ناجح", "stats.experts": "خبراء تقنيون", "stats.satisfaction": "رضا العملاء", "stats.support": "الدعم الفني",
+      "catalog.title": "الكتالوج الرقمي التفاعلي", "catalog.desc": "تجربة جديدة لاستكشاف منتجات وخدمات ومشاريع فبلب روند", "catalog.btn": "عرض الكتالوج الرقمي"
     }
+  };
+  
+  let currentLang = 'fa';
+  
+  function updateLanguage(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) el.innerHTML = translations[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
   }
-  typeEffect();
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => updateLanguage(btn.dataset.lang));
+  });
   
   // منوی موبایل
-  const toggle = document.getElementById("menuToggle");
-  const navLinks = document.querySelector(".nav-links");
-  toggle.addEventListener("click", () => {
-    navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
-    if (window.innerWidth <= 768) navLinks.style.flexDirection = "column";
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  const langSelector = document.querySelector('.lang-selector');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      langSelector.style.display = isOpen ? 'none' : 'flex';
+      if (window.innerWidth <= 768) {
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '70px';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'white';
+        navLinks.style.width = '100%';
+        navLinks.style.padding = '20px';
+        navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        langSelector.style.position = 'absolute';
+        langSelector.style.top = '280px';
+        langSelector.style.right = '20px';
+      }
+    });
+  }
+  
+  // اسکرول نرم
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href !== '#' && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
+  
+  updateLanguage('fa');
 </script>
 </body>
 </html>
