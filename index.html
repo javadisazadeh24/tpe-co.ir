@@ -3,739 +3,592 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>RAVAND FabLab | فبلب روند · انتخاب مقصد</title>
-  <meta name="description" content="فبلب نسل جدید توسعه پردازان | دروازه تعاملی صنایع خلاق، مهندسی صنعتی و تجهیزرات پزشکی">
-  <meta name="robots" content="index, follow">
+  <title>RAVAND FabLab | دروازه نوآوری ایرانی</title>
+  <meta name="description" content="فبلب روند · از ایده تا محصول · دروازه تعاملی صنایع خلاق، مهندسی صنعتی، تجهیزات پزشکی و کاتالوگ دیجیتال">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%238b5cf6' cx='50' cy='50' r='45'/%3E%3Ctext x='50' y='67' font-size='50' text-anchor='middle' fill='white' font-weight='bold'%3ER%3C/text%3E%3C/svg%3E">
   
-  <!-- Open Graph / تجربه حرفه‌ای -->
-  <meta property="og:title" content="RAVAND FabLab · Gateway to Digital Fabrication">
-  <meta property="og:description" content="از ایده تا محصول – انتخاب مسیر خلاقیت، صنعت یا پزشکی">
-  <meta property="og:image" content="https://tpe-co.ir/images/og-fablab.jpg">
-  <meta property="og:url" content="https://tpe-co.ir/fablab">
-  <meta property="og:type" content="website">
-  
-  <link rel="icon" href="images/logo.png" type="image/png">
-  
-  <!-- فونت‌های مدرن و صنعتی -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- فونت‌ها و آیکون -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <!-- GSAP برای انیمیشن‌های حرفه‌ای -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      user-select: none; /* better UX for interactive elements */
     }
 
     :root {
-      --bg-deep: #05070c;
-      --bg-surface: rgba(8, 12, 24, 0.68);
-      --grid-line: rgba(66, 153, 225, 0.12);
+      --bg-deep: #020617;
+      --grid-glow: rgba(59,130,246,0.15);
       --creative: #a855f7;
       --industrial: #f97316;
       --medical: #06b6d4;
-      --creative-glow: rgba(168, 85, 247, 0.25);
-      --industrial-glow: rgba(249, 115, 22, 0.25);
-      --medical-glow: rgba(6, 182, 212, 0.25);
-      --text-primary: #f1f5f9;
-      --text-secondary: #94a3b8;
-      --border-subtle: rgba(255,255,255,0.08);
-      --transition-smooth: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      --catalog: #3b82f6;
+      --creative-bg: rgba(168,85,247,0.12);
+      --industrial-bg: rgba(249,115,22,0.12);
+      --medical-bg: rgba(6,182,212,0.12);
+      --catalog-bg: rgba(59,130,246,0.12);
+      --text-light: #f8fafc;
+      --text-dim: #cbd5e1;
+      --border-glow: rgba(255,255,255,0.08);
     }
 
     body {
-      font-family: 'Inter', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
       background-color: var(--bg-deep);
-      color: var(--text-primary);
-      line-height: 1.5;
+      color: var(--text-light);
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    /* مش پس‌زمینه مهندسی - خطوط گرید ظریف */
-    .engineering-bg {
+    /* --- پس‌زمینه بلوپرینت و نقوش ایرانی --- */
+    .bg-engineering {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       z-index: -2;
-      background: radial-gradient(circle at 20% 30%, rgba(15, 25, 45, 0.6), #03050a);
+      background: radial-gradient(circle at 30% 20%, #0a0f2a, #020617);
     }
-    .engineering-bg::before {
-      content: "";
+    .grid-pattern {
       position: absolute;
       inset: 0;
       background-image: 
-        repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 40px),
-        repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 40px);
-      background-size: 40px 40px;
-      opacity: 0.45;
+        repeating-linear-gradient(0deg, rgba(59,130,246,0.12) 0px, rgba(59,130,246,0.12) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(90deg, rgba(59,130,246,0.12) 0px, rgba(59,130,246,0.12) 1px, transparent 1px, transparent 60px);
+      background-size: 60px 60px;
       pointer-events: none;
     }
-    /* افکت بلوپرینت لطیف */
-    .engineering-bg::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at 70% 20%, rgba(30,64,175,0.08), transparent 70%);
-      pointer-events: none;
-    }
-
-    /* نوار ناوبری مینیمال (فقط برند) */
-    .navbar-mini {
+    /* نقوش هندسی ایرانی - شمسه و گره چینی ساده (SVG) */
+    .persian-ornament {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(12px);
-      background: rgba(5, 7, 12, 0.55);
-      border-bottom: 1px solid var(--border-subtle);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.35;
     }
-    .logo-stack {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .logo-stack img {
-      height: 40px;
-      width: auto;
-      transition: transform 0.2s;
-    }
-    .logo-stack img:hover { transform: scale(1.02); }
-    .divider-vertical {
-      width: 1px;
-      height: 30px;
-      background: #334155;
-    }
-    .brand-name {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff, #94a3b8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-size: 1.1rem;
-    }
-    .brand-name strong { color: var(--creative); background: none; -webkit-background-clip: unset; background-clip: unset; }
+    .ornament-1 { top: 3%; right: 2%; width: 180px; }
+    .ornament-2 { bottom: 5%; left: 2%; width: 220px; transform: rotate(10deg); }
+    .ornament-3 { top: 20%; left: 5%; width: 140px; opacity: 0.2; }
 
-    /* ========== بخش اصلی گیت وی ========== */
-    .gateway-container {
+    /* پارتیکل‌های نورانی */
+    .floating-particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      background: rgba(168,85,247,0.4);
+      border-radius: 50%;
+      filter: blur(3px);
+      animation: floatParticle 18s infinite ease-in-out;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.3; }
+      50% { transform: translateY(-30px) translateX(20px) scale(1.2); opacity: 0.7; }
+      100% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.3; }
+    }
+
+    /* ============= MAIN GATEWAY ============= */
+    .gateway {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 100px 2rem 2rem;
+      position: relative;
+      padding: 2rem;
+    }
+    .radial-container {
+      position: relative;
+      width: min(85vw, 720px);
+      height: min(85vw, 720px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .interactive-landing {
-      max-width: 1440px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 2rem;
-      backdrop-filter: blur(2px);
+    /* مرکز: لوگو + انیمیشن سه‌بعدی لایه لایه */
+    .center-core {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: rgba(5,10,30,0.5);
+      backdrop-filter: blur(4px);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      box-shadow: 0 0 30px rgba(168,85,247,0.2);
+      border: 1px solid rgba(168,85,247,0.3);
+      transition: all 0.3s;
+      cursor: pointer;
     }
+    .logo-svg {
+      width: 110px;
+      height: 110px;
+    }
+    .motto {
+      margin-top: 10px;
+      font-size: 0.7rem;
+      text-align: center;
+      line-height: 1.3;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+    }
+    .motto div { margin: 3px 0; }
 
-    /* ---------- سمت چپ : منطقه بصری پویا ---------- */
-    .visual-zone {
-      position: relative;
-      border-radius: 2rem;
-      overflow: hidden;
-      aspect-ratio: 16 / 10;
-      background: #000;
-      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .image-stage {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    .image-stage img {
+    /* آیتم‌های ناوبری شعاعی (radial) */
+    .radial-item {
       position: absolute;
+      width: 160px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border-radius: 48px;
+      padding: 1rem 1.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 15;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    /* موقعیت‌های چهارگانه: بالا (medical)، چپ (creative)، راست (industrial)، پایین (catalog) */
+    .radial-item[data-sector="medical"] { top: -20px; left: 50%; transform: translateX(-50%); }
+    .radial-item[data-sector="creative"] { left: -30px; top: 50%; transform: translateY(-50%); }
+    .radial-item[data-sector="industrial"] { right: -30px; top: 50%; transform: translateY(-50%); }
+    .radial-item[data-sector="catalog"] { bottom: -20px; left: 50%; transform: translateX(-50%); }
+
+    /* استایل hover / expanded */
+    .radial-item.expanded {
+      transform: scale(1.2);
+      background: rgba(20, 28, 48, 0.95);
+      border-width: 1.5px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      z-index: 25;
+    }
+    .radial-item[data-sector="medical"].expanded { transform: translateX(-50%) scale(1.2); top: -25px; }
+    .radial-item[data-sector="creative"].expanded { transform: translateY(-50%) scale(1.2); left: -40px; }
+    .radial-item[data-sector="industrial"].expanded { transform: translateY(-50%) scale(1.2); right: -40px; }
+    .radial-item[data-sector="catalog"].expanded { transform: translateX(-50%) scale(1.2); bottom: -25px; }
+
+    .item-icon i { font-size: 2rem; margin-bottom: 6px; display: inline-block; }
+    .item-title { font-weight: 700; font-size: 1rem; letter-spacing: -0.3px; }
+    .expand-details {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      margin-top: 0;
+      text-align: right;
+    }
+    .radial-item.expanded .expand-details {
+      max-height: 260px;
+      opacity: 1;
+      margin-top: 12px;
+    }
+    .expand-details p { font-size: 0.7rem; margin-bottom: 8px; color: var(--text-dim); }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .service-tags span {
+      background: rgba(255,255,255,0.1);
+      padding: 2px 8px;
+      border-radius: 30px;
+      font-size: 0.6rem;
+    }
+    .cta-mini {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      padding: 4px 12px;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+    .cta-mini:hover { background: rgba(255,255,255,0.3); }
+
+    /* بخش کاتالوگ هولوگرافیک */
+    .hologram-cards {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      width: 320px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 12px;
+      display: none;
+      grid-template-columns: repeat(2,1fr);
+      gap: 10px;
+      z-index: 50;
+      border: 1px solid rgba(59,130,246,0.5);
+      box-shadow: 0 20px 30px -10px black;
+    }
+    .radial-item[data-sector="catalog"]:hover .hologram-cards {
+      display: grid;
+    }
+    .hologram-cards .card {
+      background: rgba(59,130,246,0.2);
+      border-radius: 16px;
+      padding: 8px;
+      text-align: center;
+      font-size: 0.7rem;
+      transition: 0.2s;
+    }
+    .hologram-cards .card i { font-size: 1.5rem; margin-bottom: 5px; display: block; }
+
+    /* پویا تغییر پس‌زمینه */
+    .dynamic-bg {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      z-index: -1;
+      transition: opacity 0.8s ease;
+      background-size: cover;
+      background-position: center;
       opacity: 0;
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-      filter: brightness(0.92) contrast(1.05);
-    }
-    .image-stage img.active {
-      opacity: 1;
-      z-index: 2;
-    }
-    /* گرادیانت لایه نرم روی تصاویر */
-    .visual-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background: linear-gradient(to top, rgba(5,7,12,0.85), transparent);
-      z-index: 5;
       pointer-events: none;
     }
-    .visual-caption {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.8rem;
-      z-index: 6;
-      font-weight: 500;
-      font-size: 0.9rem;
-      background: rgba(0,0,0,0.5);
+    .dynamic-bg.active {
+      opacity: 0.35;
+    }
+
+    /* زبان و هدر */
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      gap: 10px;
+      background: rgba(0,0,0,0.4);
       backdrop-filter: blur(8px);
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      letter-spacing: 0.3px;
-      border-left: 3px solid currentColor;
-      color: var(--text-primary);
+      padding: 5px 12px;
+      border-radius: 60px;
     }
-
-    /* ---------- سمت راست : پنل نیم‌دایره کنترل ---------- */
-    .control-panel {
-      background: rgba(8, 12, 24, 0.75);
-      backdrop-filter: blur(20px);
-      border-radius: 48px 32px 32px 48px;
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 1.8rem 1.2rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      transition: var(--transition-smooth);
-    }
-
-    .selector-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    /* کارت‌های داینامیک */
-    .gate-card {
-      background: rgba(15, 23, 42, 0.5);
-      border-radius: 2rem;
-      padding: 1.2rem 1.2rem 1.2rem 1.5rem;
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-weight: 500;
       cursor: pointer;
-      transition: var(--transition-smooth);
-      border: 1px solid transparent;
-      position: relative;
-      overflow: hidden;
-    }
-    .gate-card.active-auto {
-      border-left: 4px solid;
-      background: rgba(255,255,255,0.03);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-    }
-    /* استایل hover / expanded */
-    .gate-card.expanded {
-      background: rgba(20, 28, 48, 0.9);
-      border: 1px solid rgba(255,255,255,0.15);
-      transform: translateX(-6px);
-      box-shadow: 0 18px 30px -12px rgba(0,0,0,0.4);
-    }
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-    .title-icon {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .title-icon i {
-      font-size: 1.8rem;
-      transition: transform 0.2s;
-    }
-    .gate-card h3 {
-      font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .selector-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.4;
-      transition: 0.2s;
-    }
-    .gate-card.active-auto .selector-dot {
-      opacity: 1;
-      box-shadow: 0 0 8px currentColor;
-    }
-    /* محتوای expand شونده */
-    .expand-content {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease-out, opacity 0.4s ease;
-      margin-top: 0;
-    }
-    .gate-card.expanded .expand-content {
-      max-height: 380px;
-      opacity: 1;
-      margin-top: 1.2rem;
-    }
-    .tagline {
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-    .short-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-    .service-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 1rem 0 1.2rem;
-    }
-    .service-badge {
-      background: rgba(255,255,255,0.08);
-      padding: 4px 12px;
+      padding: 4px 8px;
       border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2px;
-    }
-    .cta-card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(4px);
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-decoration: none;
       transition: 0.2s;
-      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+    }
+    .lang-btn.active {
+      background: var(--creative);
       color: white;
     }
-    .cta-card-btn i { transition: transform 0.2s; }
-    .cta-card-btn:hover i { transform: translateX(-4px); }
-    .cta-card-btn:hover {
-      background: rgba(255,255,255,0.15);
-      gap: 12px;
-    }
 
-    /* فوتر مینیمال */
-    .footer-minimal {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.75rem;
-      color: #5b6e8c;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 2rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px) {
-      .interactive-landing {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .control-panel {
-        border-radius: 32px;
-      }
-      .gate-card.expanded {
-        transform: translateX(0);
-      }
-      .gate-card:hover {
-        transform: translateX(0);
-      }
-    }
-    @media (max-width: 640px) {
-      .gateway-container { padding: 90px 1rem 2rem; }
-      .gate-card h3 { font-size: 1.3rem; }
-      .title-icon i { font-size: 1.4rem; }
-      .control-panel { padding: 1rem; }
+    @media (max-width: 780px) {
+      .radial-container { width: 95vw; height: auto; min-height: 550px; position: relative; margin-top: 80px; }
+      .radial-item { position: relative; width: 85%; margin: 12px auto; left: auto !important; right: auto !important; top: auto !important; bottom: auto !important; transform: none !important; }
+      .radial-item.expanded { transform: scale(1.02) !important; }
+      .center-core { margin: 20px auto; }
+      .radial-container { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      .lang-switch { top: 10px; left: 10px; }
     }
   </style>
 </head>
 <body>
 
-<div class="engineering-bg"></div>
+<div class="bg-engineering">
+  <div class="grid-pattern"></div>
+</div>
+<!-- نقوش تذهیب SVG -->
+<svg class="persian-ornament ornament-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10 L120 40 L160 45 L135 70 L145 110 L100 95 L55 110 L65 70 L40 45 L80 40 L100 10Z" stroke="#8b5cf6" stroke-width="0.8" fill="none" opacity="0.5"/>
+  <circle cx="100" cy="60" r="8" stroke="#3b82f6" stroke-width="0.6" fill="none"/>
+</svg>
+<svg class="persian-ornament ornament-2" viewBox="0 0 240 240">
+  <path d="M30 120 L70 80 L120 70 L170 80 L210 120 L170 160 L120 170 L70 160 L30 120Z" stroke="#f97316" stroke-width="0.7" fill="none" opacity="0.4"/>
+  <path d="M70 120 L100 95 L120 100 L140 95 L170 120 L140 145 L120 140 L100 145 L70 120Z" stroke="#06b6d4" stroke-width="0.5" fill="none"/>
+</svg>
+<svg class="persian-ornament ornament-3" viewBox="0 0 120 120">
+  <path d="M60 10 L80 40 L60 70 L40 40 L60 10Z" stroke="#a855f7" stroke-width="0.6" fill="none"/>
+</svg>
 
-<!-- نوار ساده (فقط برند) -->
-<div class="navbar-mini">
-  <div class="logo-stack">
-    <img src="images/logo.png" alt="TPE" onerror="this.src='https://placehold.co/40x40?text=TPE'">
-    <div class="divider-vertical"></div>
-    <img src="images/logo-ravand.png" alt="RAVAND" onerror="this.src='https://placehold.co/40x40?text=RV'">
-    <span class="brand-name"><strong>RAVAND</strong> FabLab</span>
-  </div>
-  <div style="font-size:12px; background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 30px;">
-    <i class="fas fa-microchip"></i> Digital Fabrication
-  </div>
+<div class="floating-particles" id="particles"></div>
+<div class="dynamic-bg" id="dynamicBg"></div>
+
+<!-- زبان گردان -->
+<div class="lang-switch">
+  <button class="lang-btn active" data-lang="fa">فارسی</button>
+  <button class="lang-btn" data-lang="en">English</button>
+  <button class="lang-btn" data-lang="ar">العربية</button>
 </div>
 
-<!-- گیت وی اصلی تعاملی -->
-<div class="gateway-container">
-  <div class="interactive-landing">
-    
-    <!-- سمت چپ: منطقه تصاویر داینامیک -->
-    <div class="visual-zone">
-      <div class="image-stage" id="imageStage">
-        <img src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop" alt="Creative Fabrication" class="active" data-cat="creative">
-        <img src="https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop" alt="Industrial Engineering" data-cat="industrial">
-        <img src="https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop" alt="Medical Equipment" data-cat="medical">
-        <!-- تصاویر پشتیبان با کیفیت بالا و WebP شبیه سازی (منظور سبک) -->
+<div class="gateway">
+  <div class="radial-container" id="radialContainer">
+    <!-- مرکز: لوگو + موتو سه زبانه -->
+    <div class="center-core" id="centerCore">
+      <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 50 L50 20 L80 50 L50 80 L20 50Z" stroke="#a855f7" stroke-width="2" fill="none" class="logo-line"/>
+        <path d="M35 50 L50 35 L65 50 L50 65 L35 50Z" stroke="#f97316" stroke-width="1.8" fill="none" class="logo-line2"/>
+        <text x="50" y="54" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="monospace">R</text>
+      </svg>
+      <div class="motto">
+        <div data-i18n="motto.persian">از ایده تا محصول</div>
+        <div data-i18n="motto.english">From Idea To Product</div>
+        <div data-i18n="motto.arabic">من الفكرة إلى المنتج</div>
       </div>
-      <div class="visual-overlay"></div>
-      <div class="visual-caption" id="liveCaption">← Creative Fabrication</div>
     </div>
 
-    <!-- سمت راست: پنل کنترل نیم‌دایره‌ای با سه قطب -->
-    <div class="control-panel" id="controlPanel">
-      <div class="selector-list" id="selectorList">
-        <!-- Creative Card -->
-        <div class="gate-card" data-division="creative" data-accent="creative">
-          <div class="card-header">
-            <div class="title-icon">
-              <i class="fas fa-palette" style="color: var(--creative);"></i>
-              <h3 style="color: var(--creative);">Creative<br>Fabrication</h3>
-            </div>
-            <div class="selector-dot" style="background: var(--creative);"></div>
-          </div>
-          <div class="expand-content">
-            <div class="tagline" style="color: var(--creative);">DESIGN + ART + DIGITAL CRAFT</div>
-            <div class="short-desc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد و هنر دیجیتال با متریال پیشرفته.</div>
-            <div class="service-list">
-              <span class="service-badge">🖌️ مدلسازی پارامتریک</span>
-              <span class="service-badge">✨ پرینت سه‌بعدی هنری</span>
-              <span class="service-badge">🎨 دکور و لایتینگ سفارشی</span>
-              <span class="service-badge">📐 مهندسی معکوس خلاق</span>
-            </div>
-            <a href="/fablab/creative" class="cta-card-btn" data-nav="creative">Explore Creative <i class="fas fa-arrow-left"></i></a>
-          </div>
+    <!-- چهار بخش شعاعی -->
+    <div class="radial-item" data-sector="creative" data-color="creative">
+      <div class="item-icon"><i class="fas fa-palette" style="color: var(--creative);"></i></div>
+      <div class="item-title" data-i18n="creative.title">صنایع خلاق</div>
+      <div class="expand-details">
+        <p data-i18n="creative.desc">طراحی پارامتریک، گلدان ارگانیک، هنر دیجیتال و پرینت سه‌بعدی هنری</p>
+        <div class="service-tags">
+          <span data-i18n="creative.tag1">مدلسازی</span>
+          <span data-i18n="creative.tag2">دکوراسیون</span>
+          <span data-i18n="creative.tag3">لایتینگ</span>
         </div>
-        <!-- Industrial Card -->
-        <div class="gate-card" data-division="industrial" data-accent="industrial">
-          <div class="card-header">
-            <div class="title-icon">
-              <i class="fas fa-industry" style="color: var(--industrial);"></i>
-              <h3 style="color: var(--industrial);">Industrial<br>Engineering</h3>
-            </div>
-            <div class="selector-dot" style="background: var(--industrial);"></div>
-          </div>
-          <div class="expand-content">
-            <div class="tagline" style="color: var(--industrial);">REVERSE ENGINEERING · CNC · PRODUCTION</div>
-            <div class="short-desc">مهندسی معکوس دقیق، ماشین‌سازی CNC، ساخت قطعات یدکی و بهینه‌سازی خط تولید برای صنایع سنگین.</div>
-            <div class="service-list">
-              <span class="service-badge">⚙️ فرز و تراش CNC 5 محور</span>
-              <span class="service-badge">🔧 مهندسی معکوس قطعات</span>
-              <span class="service-badge">📈 بهینه‌سازی فرآیند</span>
-              <span class="service-badge">🛠️ فیکسچر و یراق صنعتی</span>
-            </div>
-            <a href="/fablab/industrial" class="cta-card-btn" data-nav="industrial">Explore Industrial <i class="fas fa-arrow-left"></i></a>
-          </div>
+        <a href="/fablab/creative" class="cta-mini" data-i18n="creative.cta">ورود به خلاقیت <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </div>
+
+    <div class="radial-item" data-sector="industrial" data-color="industrial">
+      <div class="item-icon"><i class="fas fa-industry" style="color: var(--industrial);"></i></div>
+      <div class="item-title" data-i18n="industrial.title">مهندسی صنعتی</div>
+      <div class="expand-details">
+        <p data-i18n="industrial.desc">مهندسی معکوس، ماشین‌سازی CNC، قطعات یدکی، بهینه‌سازی خط تولید</p>
+        <div class="service-tags">
+          <span data-i18n="industrial.tag1">CNC 5 محور</span>
+          <span data-i18n="industrial.tag2">CAD/CAM</span>
+          <span data-i18n="industrial.tag3">فیکسچر</span>
         </div>
-        <!-- Medical Card -->
-        <div class="gate-card" data-division="medical" data-accent="medical">
-          <div class="card-header">
-            <div class="title-icon">
-              <i class="fas fa-microscope" style="color: var(--medical);"></i>
-              <h3 style="color: var(--medical);">Medical<br>Equipment Support</h3>
-            </div>
-            <div class="selector-dot" style="background: var(--medical);"></div>
-          </div>
-          <div class="expand-content">
-            <div class="tagline" style="color: var(--medical);">PRECISION · REPLACEMENT · SIMULATORS</div>
-            <div class="short-desc">تعمیرات تخصصی، مهندسی معکوس قطعات پزشکی، ساخت ایمپلنت و شبیه‌سازهای آموزشی با استاندارد کلینیکال.</div>
-            <div class="service-list">
-              <span class="service-badge">🩻 قطعات دستگاه‌های دندانپزشکی</span>
-              <span class="service-badge">🧬 شبیه‌سازهای آموزشی</span>
-              <span class="service-badge">⚕️ مهندسی معکوس تجهیزات</span>
-              <span class="service-badge">🔬 مدل‌های آناتومیک سفارشی</span>
-            </div>
-            <a href="/fablab/medical" class="cta-card-btn" data-nav="medical">Explore Medical <i class="fas fa-arrow-left"></i></a>
-          </div>
+        <a href="/fablab/industrial" class="cta-mini" data-i18n="industrial.cta">ورود به صنعت <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </div>
+
+    <div class="radial-item" data-sector="medical" data-color="medical">
+      <div class="item-icon"><i class="fas fa-microscope" style="color: var(--medical);"></i></div>
+      <div class="item-title" data-i18n="medical.title">تجهیزات پزشکی</div>
+      <div class="expand-details">
+        <p data-i18n="medical.desc">تعمیرات تخصصی، مهندسی معکوس قطعات، شبیه‌سازها و ایمپلنت</p>
+        <div class="service-tags">
+          <span data-i18n="medical.tag1">دندانپزشکی</span>
+          <span data-i18n="medical.tag2">آناتومی</span>
+          <span data-i18n="medical.tag3">سی‌تی اسکن</span>
         </div>
+        <a href="/fablab/medical" class="cta-mini" data-i18n="medical.cta">ورود به پزشکی <i class="fas fa-arrow-left"></i></a>
+      </div>
+      <!-- hologram placeholder -->
+    </div>
+
+    <div class="radial-item" data-sector="catalog" data-color="catalog">
+      <div class="item-icon"><i class="fas fa-qrcode" style="color: var(--catalog);"></i></div>
+      <div class="item-title" data-i18n="catalog.title">کاتالوگ دیجیتال</div>
+      <div class="expand-details">
+        <p data-i18n="catalog.desc">کتابخانه تعاملی ۲۵۰+ محصول و خدمات در حوزه فبلب</p>
+        <a href="/fablab/explore" class="cta-mini" data-i18n="catalog.cta">مشاهده پورتال <i class="fas fa-qrcode"></i></a>
+      </div>
+      <!-- هولوگرافیک کارت‌ها -->
+      <div class="hologram-cards">
+        <div class="card"><i class="fas fa-cube"></i> قطعات صنعتی</div>
+        <div class="card"><i class="fas fa-heartbeat"></i> مدل پزشکی</div>
+        <div class="card"><i class="fas fa-lightbulb"></i> طراحی خلاق</div>
+        <div class="card"><i class="fas fa-microchip"></i> الکترونیک</div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="footer-minimal">
-  <span>© ۱۴۰۴ شرکت توسعه پردازان · RAVAND FabLab · از ایده تا محصول در فبلب نسل جدید</span>
 </div>
 
 <script>
-  (function(){
-    // داده‌های هر بخش
-    const categories = ['creative', 'industrial', 'medical'];
-    const accentMap = {
-      creative: 'var(--creative)',
-      industrial: 'var(--industrial)',
-      medical: 'var(--medical)'
-    };
-    const captionMap = {
-      creative: '✨ Creative Fabrication · طراحی و هنر دیجیتال',
-      industrial: '⚙️ Industrial Engineering · مهندسی معکوس و CNC',
-      medical: '🩺 Medical Equipment · قطعات دقیق و شبیه‌سازها'
-    };
-    // تصاویر با کیفیت (webp/optimized) - هر دسته حداقل یک تصویر اصلی
-    const imageMap = {
-      creative: 'https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      industrial: 'https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      medical: 'https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
-    };
-    // تصاویر fallback با کیفیت بالا
-    // گرفتن المان‌ها
-    const cards = document.querySelectorAll('.gate-card');
-    const images = document.querySelectorAll('.image-stage img');
-    const captionEl = document.getElementById('liveCaption');
-    let autoInterval = null;
-    let currentActiveIndex = 0;        // 0 creative, 1 industrial, 2 medical
-    let isHovering = false;
-    let hoverTimeout = null;
-    let panelElement = document.getElementById('controlPanel');
-    
-    // تابع به‌روزرسانی تصویر سمت چپ بر اساس دسته
-    function updateImageByCategory(category) {
-      const targetImgSrc = imageMap[category];
-      let targetImgElement = null;
-      for (let img of images) {
-        if (img.getAttribute('data-cat') === category) {
-          targetImgElement = img;
-          break;
-        }
+  // ---------- داده‌های ترجمه (JSON) ----------
+  const translations = {
+    fa: {
+      "motto.persian": "از ایده تا محصول", "motto.english": "From Idea To Product", "motto.arabic": "من الفكرة إلى المنتج",
+      "creative.title": "صنایع خلاق", "creative.desc": "طراحی پارامتریک، گلدان ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال",
+      "creative.tag1": "مدلسازی", "creative.tag2": "دکوراسیون", "creative.tag3": "لایتینگ", "creative.cta": "ورود به خلاقیت",
+      "industrial.title": "مهندسی صنعتی", "industrial.desc": "مهندسی معکوس، ماشین‌سازی CNC، قطعات یدکی، بهینه‌سازی خط تولید",
+      "industrial.tag1": "CNC 5 محور", "industrial.tag2": "CAD/CAM", "industrial.tag3": "فیکسچر", "industrial.cta": "ورود به صنعت",
+      "medical.title": "تجهیزات پزشکی", "medical.desc": "تعمیرات تخصصی، مهندسی معکوس قطعات، ساخت قطعات جایگزین، شبیه‌سازها",
+      "medical.tag1": "دندانپزشکی", "medical.tag2": "آناتومی", "medical.tag3": "سی‌تی اسکن", "medical.cta": "ورود به پزشکی",
+      "catalog.title": "کاتالوگ دیجیتال", "catalog.desc": "تجربه تعاملی ۲۵۰+ محصول و پروژه", "catalog.cta": "پورتال محصولات"
+    },
+    en: {
+      "motto.persian": "از ایده تا محصول", "motto.english": "From Idea To Product", "motto.arabic": "من الفكرة إلى المنتج",
+      "creative.title": "Creative Industries", "creative.desc": "Parametric design, organic vases, trophies, decorative & digital art",
+      "creative.tag1": "Modeling", "creative.tag2": "Decor", "creative.tag3": "Lighting", "creative.cta": "Enter Creative",
+      "industrial.title": "Industrial Eng.", "industrial.desc": "Reverse engineering, CNC machining, spare parts, production line optimization",
+      "industrial.tag1": "5-axis CNC", "industrial.tag2": "CAD/CAM", "industrial.tag3": "Fixtures", "industrial.cta": "Enter Industry",
+      "medical.title": "Medical Equipment", "medical.desc": "Specialized repairs, reverse engineering, replacement parts, simulators",
+      "medical.tag1": "Dental", "medical.tag2": "Anatomy", "medical.tag3": "CT Data", "medical.cta": "Enter Medical",
+      "catalog.title": "Digital Catalog", "catalog.desc": "Interactive portal 250+ products & projects", "catalog.cta": "Explore Portal"
+    },
+    ar: {
+      "motto.persian": "از ایده تا محصول", "motto.english": "From Idea To Product", "motto.arabic": "من الفكرة إلى المنتج",
+      "creative.title": "الصناعات الإبداعية", "creative.desc": "التصميم البارامتري، المزهريات العضوية، الجوائز، المنتجات الديكورية والفن الرقمي",
+      "creative.tag1": "نمذجة", "creative.tag2": "ديكور", "creative.tag3": "إضاءة", "creative.cta": "استكشف الإبداع",
+      "industrial.title": "الهندسة الصناعية", "industrial.desc": "الهندسة العكسية، التصنيع باستخدام الحاسب الآلي، قطع الغيار، تحسين خط الإنتاج",
+      "industrial.tag1": "CNC", "industrial.tag2": "CAD/CAM", "industrial.tag3": "تجهيزات", "industrial.cta": "استكشف الصناعة",
+      "medical.title": "المعدات الطبية", "medical.desc": "الإصلاحات المتخصصة، الهندسة العكسية للأجزاء، الأجزاء البديلة، أجهزة المحاكاة",
+      "medical.tag1": "طب الأسنان", "medical.tag2": "تشريح", "medical.tag3": "بيانات مقطعية", "medical.cta": "استكشف الطبي",
+      "catalog.title": "الكتالوج الرقمي", "catalog.desc": "بوابة تفاعلية 250+ منتج", "catalog.cta": "بوابة المنتجات"
+    }
+  };
+
+  let currentLang = 'fa';
+  const sectors = ['creative', 'industrial', 'medical', 'catalog'];
+  let autoTimer = null;
+  let currentIdx = 0;
+  let isHovering = false;
+
+  // تصاویر پس‌زمینه داینامیک (Creative, Industrial, Medical, Catalog)
+  const bgImages = {
+    creative: 'https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    industrial: 'https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    medical: 'https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    catalog: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1400'
+  };
+  const bgDiv = document.getElementById('dynamicBg');
+
+  function setBackground(sector) {
+    if (!bgImages[sector]) return;
+    bgDiv.style.backgroundImage = `url(${bgImages[sector]})`;
+    bgDiv.classList.add('active');
+    setTimeout(() => { if(bgDiv) bgDiv.style.opacity = '0.45'; }, 50);
+  }
+
+  // رفع active روی تمام آیتم‌ها و بزرگنمایی
+  function highlightSector(index, expand = true) {
+    const items = document.querySelectorAll('.radial-item');
+    items.forEach((item, i) => {
+      if (i === index && expand) {
+        item.classList.add('expanded');
+        item.classList.add('active-auto');
+      } else {
+        item.classList.remove('expanded');
+        item.classList.remove('active-auto');
       }
-      if (!targetImgElement) return;
-      // تغییر opacity با کلاس active
-      images.forEach(img => img.classList.remove('active'));
-      targetImgElement.classList.add('active');
-      // بروزرسانی کپشن
-      if (captionEl) captionEl.textContent = captionMap[category] || category;
-    }
-    
-    // هایلایت خودکار (selector dot بدون expand)
-    function highlightAutoCard(index) {
-      cards.forEach((card, i) => {
-        if (i === index) {
-          card.classList.add('active-auto');
-          // اطمینان از حذف expanded (در حالت خودکار هیچ کارتی باز نیست)
-          if (!isHovering) {
-            card.classList.remove('expanded');
-          }
-        } else {
-          card.classList.remove('active-auto');
-          if (!isHovering) {
-            card.classList.remove('expanded');
-          }
-        }
-      });
-      const cat = categories[index];
-      updateImageByCategory(cat);
-      // تنظیم accent برای border سمت چپ
-      cards.forEach(card => {
-        if (card.classList.contains('active-auto')) {
-          const accentColor = accentMap[cat];
-          card.style.borderLeftColor = accentColor;
-        } else {
-          card.style.borderLeftColor = 'transparent';
-        }
-      });
-    }
-    
-    // تابع چرخش خودکار
-    function startAutoRotate() {
-      if (autoInterval) clearInterval(autoInterval);
-      autoInterval = setInterval(() => {
-        if (!isHovering) {
-          currentActiveIndex = (currentActiveIndex + 1) % categories.length;
-          highlightAutoCard(currentActiveIndex);
-        }
-      }, 5000);
-    }
-    
-    // توقف چرخش و ریست تایمر هوور
-    function stopAutoRotate() {
-      if (autoInterval) {
-        clearInterval(autoInterval);
-        autoInterval = null;
-      }
-    }
-    
-    // ریستارت خودکار بعد از خروج هاور (با تأخیر)
-    function resumeAutoAfterDelay() {
-      if (hoverTimeout) clearTimeout(hoverTimeout);
-      hoverTimeout = setTimeout(() => {
-        if (!isHovering) {
-          startAutoRotate();
-        }
-      }, 1800);
-    }
-    
-    // تابع expand کامل یک کارت (برای حالت هاور)
-    function expandCard(card, index) {
-      // ابتدا همه کارتها expanded حذف شود
-      cards.forEach(c => c.classList.remove('expanded'));
-      card.classList.add('expanded');
-      // حذف active-auto از همه و تنظیم روی کارت جاری (برای نشانگر)
-      cards.forEach(c => c.classList.remove('active-auto'));
-      card.classList.add('active-auto');
-      // تنظیم رنگ لبه
-      const cat = categories[index];
-      const accentClr = accentMap[cat];
-      card.style.borderLeftColor = accentClr;
-      // تصویر مرتبط با هاور را آپدیت کن
-      updateImageByCategory(cat);
-      if (captionEl) captionEl.textContent = captionMap[cat];
-    }
-    
-    // ریست حالت expand بستن همه و برگشت به حالت خودکار (بدون هاور)
-    function collapseAllAndResetToAuto() {
-      cards.forEach(card => {
-        card.classList.remove('expanded');
-        // border reset بعداً توسط highlightAutoCard انجام می‌شود
-      });
+    });
+    const sector = sectors[index];
+    setBackground(sector);
+  }
+
+  function startAutoRotation() {
+    if (autoTimer) clearInterval(autoTimer);
+    if (isHovering) return;
+    autoTimer = setInterval(() => {
       if (!isHovering) {
-        highlightAutoCard(currentActiveIndex);
+        currentIdx = (currentIdx + 1) % sectors.length;
+        highlightSector(currentIdx, true);
       }
-    }
-    
-    // مدیریت hover روی کارت‌ها
-    function attachCardEvents() {
-      cards.forEach((card, idx) => {
-        card.addEventListener('mouseenter', (e) => {
-          // توقف خودکار
-          stopAutoRotate();
-          isHovering = true;
-          if (hoverTimeout) clearTimeout(hoverTimeout);
-          // expand کردن این کارت
-          expandCard(card, idx);
-          currentActiveIndex = idx;   // به‌روز رسانی ایندکس جاری
-          // حذف expanded از سایر کارت‌ها
-          cards.forEach((c, i) => {
-            if (i !== idx) c.classList.remove('expanded');
-          });
-          // اطمینان از انتخاب فعال
-          cards.forEach(c => c.classList.remove('active-auto'));
-          card.classList.add('active-auto');
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          isHovering = false;
-          // بستن تمام کارت‌های expanded
-          cards.forEach(c => c.classList.remove('expanded'));
-          // ریست هایلایت خودکار به اندیس قبلی که آخرین هاور داشته یا همان currentActiveIndex
-          highlightAutoCard(currentActiveIndex);
-          // ریستارت خودکار با تأخیر
-          resumeAutoAfterDelay();
-        });
-        
-        // کلیک روی CTA: لینک‌ها هدایت به صفحات (مسیرهای مد نظر کاربر)
-        const ctaBtn = card.querySelector('.cta-card-btn');
-        if (ctaBtn) {
-          ctaBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // بر اساس دسته مسیردهی
-            let division = '';
-            if (card.dataset.division === 'creative') division = 'creative';
-            else if (card.dataset.division === 'industrial') division = 'industrial';
-            else if (card.dataset.division === 'medical') division = 'medical';
-            // هدایت به آدرس‌های استاندارد /fablab/creative و ...
-            // لطفاً برای دمو از الگوی موردنظر استفاده می‌شود، در محیط واقعی مسیرها را تنظیم کنید
-            let targetUrl = `/fablab/${division}`;
-            // پشتیبانی از تغییر مسیر دلخواه (می‌توانید absolute/relative باشد)
-            if (division) {
-              window.location.href = targetUrl;
-            } else {
-              window.location.href = '#';
-            }
-          });
-        }
-        
-        // همچنین کلیک روی کل کارت هم می‌تواند هدایت کند؟ (طبق خواسته: وقتی کلیک شود به بخش مربوط ناوبری شود)
-        // اما برای تجربه بهتر فقط CTA هدایت کند، اما طبق سناریو: وقتی کاربر کلیک کند ناوبری شود.
-        // اضافه می‌کنیم در صورت کلیک روی خود کارت (نه دکمه) به همان مسیر برود
-        card.addEventListener('click', (e) => {
-          // اگر روی دکمه کلیک شده جلوگیری از دابل
-          if (e.target.closest('.cta-card-btn')) return;
-          let division = '';
-          if (card.dataset.division === 'creative') division = 'creative';
-          else if (card.dataset.division === 'industrial') division = 'industrial';
-          else if (card.dataset.division === 'medical') division = 'medical';
-          if (division) window.location.href = `/fablab/${division}`;
-        });
+    }, 5200);
+  }
+
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  // زبان گردان
+  function updateLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'fa' ? 'fa' : 'en');
+    document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) el.innerText = translations[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+  }
+
+  // راه‌اندازی رویدادهای hover و کلیک
+  function bindEvents() {
+    const items = document.querySelectorAll('.radial-item');
+    items.forEach((item, idx) => {
+      item.addEventListener('mouseenter', () => {
+        isHovering = true;
+        stopAuto();
+        highlightSector(idx, true);
       });
-    }
-    
-    // تابع نهایی‌سازی : خودکار شروع شود
-    function initGateway() {
-      attachCardEvents();
-      // تنظیم هایلایت اولیه روی creative
-      currentActiveIndex = 0;
-      highlightAutoCard(0);
-      startAutoRotate();
-      // تصویر اولیه لود شود
-      updateImageByCategory('creative');
-      
-      // اگر ماوس از کل پنل خارج شد و دوباره داخل شد دوباره توقف خودکار
-      if (panelElement) {
-        panelElement.addEventListener('mouseenter', () => {
-          if (autoInterval) stopAutoRotate();
-          isHovering = true;
-          if (hoverTimeout) clearTimeout(hoverTimeout);
-          // در زمان ورود ماوس به پنل اگر کارتی expanded نیست اما می‌خواهیم بماند ولی خودکار متوقف شود
-        });
-        panelElement.addEventListener('mouseleave', () => {
-          isHovering = false;
-          // بستن expandها
-          cards.forEach(c => c.classList.remove('expanded'));
-          // بازیابی هایلایت خودکار بر اساس currentActiveIndex
-          highlightAutoCard(currentActiveIndex);
-          resumeAutoAfterDelay();
-        });
-      }
-      
-      // مدیریت لود تصاویر با fallback
-      const allImgs = document.querySelectorAll('.image-stage img');
-      allImgs.forEach(img => {
-        img.onerror = function() {
-          if (img.getAttribute('data-cat') === 'creative') this.src = 'https://placehold.co/1200x800/1e293b/8b5cf6?text=Creative+Fab';
-          else if (img.getAttribute('data-cat') === 'industrial') this.src = 'https://placehold.co/1200x800/1e293b/f97316?text=Industrial+Engineering';
-          else this.src = 'https://placehold.co/1200x800/1e293b/06b6d4?text=Medical+Equipment';
-        };
+      item.addEventListener('mouseleave', () => {
+        isHovering = false;
+        startAutoRotation();
       });
-    }
-    
-    // اجرای سیستم
-    initGateway();
-    
-    // جلوگیری از تداخل رفرش خودکار روی لینک‌های هش
-    const allAnchors = document.querySelectorAll('a[href^="/fablab/"]');
-    allAnchors.forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        // فقط برای دمو اگر مسیرها موجود نبود یک پیام لاگ ولی عملی عادی
-        console.log(`Navigating to ${anchor.getAttribute('href')}`);
+      item.addEventListener('click', (e) => {
+        if (e.target.closest('.cta-mini')) return;
+        const sector = item.dataset.sector;
+        let url = '';
+        if (sector === 'creative') url = '/fablab/creative';
+        else if (sector === 'industrial') url = '/fablab/industrial';
+        else if (sector === 'medical') url = '/fablab/medical';
+        else if (sector === 'catalog') url = '/fablab/explore';
+        if (url) window.location.href = url;
       });
     });
-    
-    // small بهبود تجربه با ذخیره زبان و پاکسازی اینتروال
-    window.addEventListener('beforeunload', () => {
-      if (autoInterval) clearInterval(autoInterval);
+  }
+
+  // پارتیکل‌های سبک
+  function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 6 + 2;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDelay = Math.random() * 15 + 's';
+      p.style.animationDuration = 12 + Math.random() * 10 + 's';
+      p.style.background = `rgba(${100 + Math.random() * 155}, ${80 + Math.random() * 100}, 255, 0.4)`;
+      container.appendChild(p);
+    }
+  }
+
+  // انیمیشن ورودی با GSAP ( لوگو لایه لایه و خطوط )
+  function entranceAnim() {
+    const tl = gsap.timeline();
+    tl.fromTo('.center-core', { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "back.out(0.6)" })
+      .fromTo('.radial-item', { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.15, duration: 0.6 }, "-=0.4")
+      .fromTo('.logo-svg path', { strokeDashoffset: 200, strokeDasharray: 200 }, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" }, 0);
+    // خطوط تذهیب ریسه
+    gsap.fromTo('.persian-ornament', { opacity: 0, scale: 0.9 }, { opacity: 0.5, scale: 1, duration: 1.5, stagger: 0.2 });
+  }
+
+  // راه‌اندازی اولیه
+  function init() {
+    createParticles();
+    bindEvents();
+    startAutoRotation();
+    // فعال کردن اولین بخش به صورت پیشفرض
+    highlightSector(0, true);
+    entranceAnim();
+    // دکمه زبان
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const lang = btn.dataset.lang;
+        updateLanguage(lang);
+      });
     });
-  })();
+    updateLanguage('fa');
+    setBackground('creative');
+  }
+
+  init();
 </script>
 </body>
 </html>
