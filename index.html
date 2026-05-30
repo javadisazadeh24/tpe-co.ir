@@ -36,58 +36,13 @@
     }
     body { font-family: 'Vazirmatn', 'Inter', sans-serif; background: #050a15; color: var(--text-light); overflow-x: hidden; min-height: 100vh; }
     
-    /* ========== انیمیشن پس‌زمینه صنعتی و خلاق (بدون تصاویر سنگین) ========== */
-    .bg-animation {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-      background: radial-gradient(circle at 20% 30%, #0a0f2a, #020617);
-      overflow: hidden;
+    /* ========== ویدئوی پس‌زمینه ========== */
+    .bg-video {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3;
     }
-    /* خطوط مهندسی متحرک */
-    .engineering-lines {
-      position: absolute; inset: 0;
-      background-image: 
-        repeating-linear-gradient(0deg, rgba(96,165,250,0.12) 0px, rgba(96,165,250,0.12) 1px, transparent 1px, transparent 60px),
-        repeating-linear-gradient(90deg, rgba(96,165,250,0.12) 0px, rgba(96,165,250,0.12) 1px, transparent 1px, transparent 60px);
-      background-size: 60px 60px;
-      animation: lineMove 20s linear infinite;
+    .dark-overlay {
+      position: fixed; inset: 0; background: radial-gradient(circle at 20% 40%, rgba(5,10,25,0.65), rgba(0,0,0,0.85)); z-index: -2; pointer-events: none;
     }
-    @keyframes lineMove { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
-    
-    /* ذرات نورانی شناور (حس فناوری) */
-    .floating-particles {
-      position: absolute; inset: 0; pointer-events: none;
-    }
-    .particle {
-      position: absolute; width: 2px; height: 2px; background: rgba(234,179,8,0.6); border-radius: 50%;
-      animation: floatParticle 12s infinite linear;
-    }
-    @keyframes floatParticle {
-      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-      20% { opacity: 0.8; }
-      80% { opacity: 0.6; }
-      100% { transform: translateY(-20vh) translateX(40px); opacity: 0; }
-    }
-    
-    /* حلقه‌های نورانی مدور (دایره‌های متمرکز) */
-    .pulse-circles {
-      position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-    .pulse-circle {
-      position: absolute; top: 50%; left: 50%; border-radius: 50%; background: transparent;
-      border: 1px solid rgba(30,64,175,0.3); transform: translate(-50%, -50%);
-      animation: pulseRing 8s infinite ease-out;
-    }
-    .pulse-circle:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
-    .pulse-circle:nth-child(2) { width: 500px; height: 500px; animation-delay: 2s; }
-    .pulse-circle:nth-child(3) { width: 700px; height: 700px; animation-delay: 4s; }
-    .pulse-circle:nth-child(4) { width: 900px; height: 900px; animation-delay: 6s; }
-    @keyframes pulseRing {
-      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); border-color: rgba(96,165,250,0.6); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); border-color: rgba(96,165,250,0); }
-    }
-    
-    .dark-overlay { position: fixed; inset: 0; background: radial-gradient(circle at 20% 40%, rgba(5,10,25,0.55), rgba(0,0,0,0.75)); z-index: -1; pointer-events: none; }
     
     /* نوار زبان */
     .lang-bar {
@@ -156,17 +111,11 @@
 </head>
 <body>
 
-<!-- پس‌زمینه انیمیشن صنعتی (بدون تصاویر سنگین) -->
-<div class="bg-animation">
-  <div class="engineering-lines"></div>
-  <div class="pulse-circles">
-    <div class="pulse-circle"></div>
-    <div class="pulse-circle"></div>
-    <div class="pulse-circle"></div>
-    <div class="pulse-circle"></div>
-  </div>
-  <div class="floating-particles" id="particlesContainer"></div>
-</div>
+<!-- ویدئوی پس‌زمینه (مسیر: videos/BGVideo.mp4) -->
+<video autoplay muted loop playsinline class="bg-video" poster="images/hero.jpg">
+  <source src="videos/iran-flag.mp4" type="video/mp4">
+  مرورگر شما از ویدئو پشتیبانی نمی‌کند.
+</video>
 <div class="dark-overlay"></div>
 
 <div class="splash-screen" id="splashScreen">
@@ -208,22 +157,6 @@
 </div>
 
 <script>
-  // ========== تولید ذرات ==========
-  function createParticles() {
-    const container = document.getElementById('particlesContainer');
-    if (!container) return;
-    for (let i = 0; i < 80; i++) {
-      const p = document.createElement('div');
-      p.classList.add('particle');
-      p.style.left = Math.random() * 100 + '%';
-      p.style.animationDelay = Math.random() * 15 + 's';
-      p.style.animationDuration = 8 + Math.random() * 10 + 's';
-      p.style.opacity = Math.random() * 0.6 + 0.2;
-      p.style.background = `radial-gradient(circle, #eab308, #60a5fa)`;
-      container.appendChild(p);
-    }
-  }
-  
   // ========== داده‌های سه‌زبانه (برگرفته از سایت اصلی) ==========
   const langData = {
     fa: {
@@ -323,7 +256,6 @@
   }
   
   window.addEventListener('load', () => {
-    createParticles();
     createNodes();
     bindEvents();
     startRotation();
