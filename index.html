@@ -3,231 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAVAND | Gateway</title>
+<title>RAVAND | Industrial Gateway</title>
+
+<!-- FAVICON (browser tab logo placeholder) -->
+<link rel="icon" type="image/png" href="ravand-logo.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
+
 body{
-  overflow:hidden;
-  background:#05050a;
+  background:#05060a;
   color:#fff;
+  overflow:hidden;
 }
 
-/* ===== WORLD BACKGROUND ===== */
-.world {
+/* ===== INTRO LAYER ===== */
+.intro{
   position:fixed;
   inset:0;
-  background: radial-gradient(circle at center, #1a0f2e 0%, #05050a 60%, #000 100%);
+  background:radial-gradient(circle at center,#111827,#05060a 70%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
 }
 
-/* moving depth layer */
-.grid {
-  position:absolute;
-  inset:-200px;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: drift 12s linear infinite;
-  opacity:0.3;
-}
-@keyframes drift{
-  from{transform:translateY(0)}
-  to{transform:translateY(80px)}
+.brand-row{
+  display:flex;
+  gap:40px;
+  align-items:center;
 }
 
-/* ===== CENTRAL CORE ===== */
-.core {
+.logo{
+  width:140px;
+  height:140px;
+  opacity:0;
+  transform:scale(0.8);
+}
+
+.title{
+  text-align:center;
+  margin-top:30px;
+  opacity:0;
+}
+
+.title h1{
+  font-size:28px;
+  letter-spacing:10px;
+  font-weight:800;
+}
+
+.title p{
+  margin-top:10px;
+  font-size:12px;
+  opacity:0.6;
+}
+
+/* language selector */
+.lang{
+  margin-top:30px;
+  display:flex;
+  gap:10px;
+  opacity:0;
+}
+
+.lang button{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.2);
+  color:#aaa;
+  padding:6px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.lang button.active{
+  border-color:#d4af37;
+  color:#d4af37;
+}
+
+/* ENTER */
+.enter{
+  margin-top:40px;
+  opacity:0;
+  border:1px solid rgba(212,175,55,0.4);
+  padding:10px 24px;
+  border-radius:40px;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.enter:hover{
+  background:#d4af37;
+  color:#000;
+}
+
+/* ===== MAIN GATEWAY ===== */
+.gateway{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center,#0b0f1a,#05060a);
+  opacity:0;
+  pointer-events:none;
+}
+
+/* center core */
+.core{
   position:absolute;
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  width:180px;
-  height:180px;
+  width:220px;
+  height:220px;
   border-radius:50%;
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,215,120,0.3);
+  border:1px solid rgba(212,175,55,0.3);
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
-  box-shadow:0 0 80px rgba(255,215,120,0.08);
+  backdrop-filter:blur(10px);
 }
 
-.core h1{
+.core h2{
+  letter-spacing:8px;
   font-size:18px;
-  letter-spacing:6px;
-  font-weight:800;
 }
 
 .core small{
-  opacity:0.6;
   margin-top:8px;
+  opacity:0.6;
 }
 
-/* ===== PORTALS ===== */
-.portal {
+/* nodes */
+.node{
   position:absolute;
   width:160px;
   height:160px;
-  border-radius:40px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(15px);
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,0.1);
   display:flex;
-  align-items:center;
-  justify-content:center;
   flex-direction:column;
+  justify-content:center;
+  align-items:center;
   cursor:pointer;
-  transition:0.6s;
+  transition:0.4s;
+  background:rgba(255,255,255,0.02);
 }
 
-.portal:hover{
-  transform:scale(1.15);
-  border-color:rgba(255,215,120,0.4);
-  box-shadow:0 0 60px rgba(255,215,120,0.15);
+.node:hover{
+  transform:scale(1.1);
+  border-color:#d4af37;
 }
 
-.portal .title{
-  font-weight:700;
-  margin-top:10px;
+.node h3{
   font-size:14px;
+  margin-top:10px;
 }
 
-.portal .sub{
-  font-size:11px;
-  opacity:0.6;
+.node p{
+  font-size:10px;
+  opacity:0.5;
   text-align:center;
   padding:0 10px;
 }
 
-/* positions */
-#creative{left:10%;top:50%;transform:translateY(-50%)}
-#industrial{right:10%;top:50%;transform:translateY(-50%)}
-#medical{left:50%;top:10%;transform:translateX(-50%)}
-#catalog{left:50%;bottom:10%;transform:translateX(-50%)}
+/* positioning */
+#c{left:10%;top:50%;transform:translateY(-50%)}
+#i{right:10%;top:50%;transform:translateY(-50%)}
+#m{left:50%;top:10%;transform:translateX(-50%)}
+#d{left:50%;bottom:10%;transform:translateX(-50%)}
 
-/* ===== PARTICLES ===== */
-.particle {
+/* narrative */
+.story{
   position:absolute;
-  width:2px;
-  height:2px;
-  background:gold;
-  border-radius:50%;
-  opacity:0.5;
-  animation: float 6s linear infinite;
-}
-@keyframes float{
-  from{transform:translateY(100vh)}
-  to{transform:translateY(-10vh)}
-}
-
-/* ===== STORY TEXT ===== */
-.story {
-  position:absolute;
-  bottom:30px;
-  right:30px;
+  bottom:40px;
+  right:40px;
   max-width:300px;
   font-size:12px;
   opacity:0;
-  transition:0.4s;
-  padding:12px 16px;
-  border-right:2px solid gold;
-  background:rgba(0,0,0,0.3);
+  padding:14px 18px;
+  border-right:2px solid #d4af37;
+  background:rgba(0,0,0,0.4);
   backdrop-filter:blur(10px);
 }
-.story.active{
-  opacity:1;
-}
+.story.active{opacity:1}
 </style>
 </head>
 
 <body>
 
-<div class="world">
-  <div class="grid"></div>
+<!-- INTRO -->
+<div class="intro" id="intro">
+
+  <div class="brand-row">
+
+    <!-- LOGO RAVAND -->
+    <img src="ravand-logo.png" class="logo" id="logoR">
+
+    <!-- LOGO TPE -->
+    <img src="tpe-logo.png" class="logo" id="logoT">
+
+  </div>
+
+  <div class="title" id="title">
+    <h1>INDUSTRIAL GATEWAY</h1>
+    <p>From Idea to Systemized Reality</p>
+  </div>
+
+  <div class="lang" id="lang">
+    <button class="active" data-l="fa">FA</button>
+    <button data-l="en">EN</button>
+    <button data-l="ar">AR</button>
+  </div>
+
+  <div class="enter" id="enter">Enter System</div>
+
+</div>
+
+<!-- GATEWAY -->
+<div class="gateway" id="gateway">
 
   <div class="core">
-    <h1>RAVAND</h1>
+    <h2>RAVAND</h2>
     <small>TPE SYSTEM</small>
   </div>
 
-  <div class="portal" id="creative">
-    <div>🎨</div>
-    <div class="title">Creative</div>
-    <div class="sub">Form • Art • Parametric</div>
+  <div class="node" id="c">
+    <h3>Creative</h3>
+    <p>Parametric Design & Digital Form</p>
   </div>
 
-  <div class="portal" id="industrial">
-    <div>⚙️</div>
-    <div class="title">Industrial</div>
-    <div class="sub">CNC • Reverse • Systems</div>
+  <div class="node" id="i">
+    <h3>Industrial</h3>
+    <p>CNC · Reverse Engineering</p>
   </div>
 
-  <div class="portal" id="medical">
-    <div>🧬</div>
-    <div class="title">Medical</div>
-    <div class="sub">Precision • Bio • Devices</div>
+  <div class="node" id="m">
+    <h3>Medical</h3>
+    <p>Precision Systems</p>
   </div>
 
-  <div class="portal" id="catalog">
-    <div>∞</div>
-    <div class="title">Catalog</div>
-    <div class="sub">Explore Universe</div>
+  <div class="node" id="d">
+    <h3>Catalog</h3>
+    <p>Digital Product Universe</p>
   </div>
 
   <div class="story" id="story"></div>
+
 </div>
 
 <script>
 
+const intro = document.getElementById("intro");
+const gateway = document.getElementById("gateway");
 const story = document.getElementById("story");
 
 const texts = {
-  creative: "ورود به جهان فرم و خلاقیت... جایی که هندسه تبدیل به هنر می‌شود.",
-  industrial: "سیستم صنعتی فعال شد... مهندسی معکوس و ساخت در حال اجراست.",
-  medical: "دقت وارد فاز زیستی شد... ساختارهای حساس در حال تحلیل هستند.",
-  catalog: "دیتابیس جهانی باز شد... ورود به آرشیو کامل پروژه‌ها."
+  c:"ورود به قلمرو طراحی پارامتریک و فرم‌های زنده.",
+  i:"سیستم صنعتی فعال شد. مهندسی در حال اجراست.",
+  m:"دقت مهندسی در سطح زیستی فعال گردید.",
+  d:"دسترسی به کاتالوگ کامل پروژه‌ها."
 };
 
-function showStory(key){
-  story.innerText = texts[key];
-  story.classList.add("active");
-}
+/* ===== INTRO ANIMATION ===== */
+gsap.to("#logoR",{opacity:1,scale:1,duration:1});
+gsap.to("#logoT",{opacity:1,scale:1,duration:1,delay:0.2});
+gsap.to("#title",{opacity:1,duration:1,delay:0.6});
+gsap.to("#lang",{opacity:1,duration:1,delay:0.8});
+gsap.to("#enter",{opacity:1,duration:1,delay:1});
 
-function hideStory(){
-  story.classList.remove("active");
-}
+/* ENTER SYSTEM */
+document.getElementById("enter").onclick = ()=>{
+  gsap.to("#intro",{opacity:0,duration:1,onComplete:()=>{
+    intro.style.display="none";
+  }});
+  gsap.to("#gateway",{opacity:1,duration:1});
+};
 
-document.querySelectorAll(".portal").forEach(p=>{
-  p.addEventListener("mouseenter", ()=>{
-    showStory(p.id);
+/* STORY */
+document.querySelectorAll(".node").forEach(n=>{
+  n.addEventListener("mouseenter",()=>{
+    story.innerText = texts[n.id];
+    story.classList.add("active");
+  });
+  n.addEventListener("mouseleave",()=>{
+    story.classList.remove("active");
   });
 
-  p.addEventListener("mouseleave", hideStory);
-
-  p.addEventListener("click", ()=>{
-    gsap.to(".world",{opacity:0,duration:0.6,onComplete:()=>{
-      window.location.href = "/" + p.id;
-    }});
+  n.addEventListener("click",()=>{
+    window.location.href = "/"+n.id;
   });
 });
 
-/* particles */
-for(let i=0;i<40;i++){
-  const s=document.createElement("div");
-  s.className="particle";
-  s.style.left=Math.random()*100+"%";
-  s.style.animationDuration=(4+Math.random()*6)+"s";
-  document.querySelector(".world").appendChild(s);
-}
-
-/* intro animation */
-gsap.from(".core",{scale:0,opacity:0,duration:1,ease:"back"});
-gsap.from(".portal",{opacity:0,y:50,stagger:0.15,duration:1});
+/* LANG (minimal placeholder hook) */
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll(".lang button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+  }
+});
 
 </script>
+
 </body>
 </html>
