@@ -1,541 +1,1243 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>TPE Co. | کاتالوگ دیجیتال تعاملی</title>
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- PageFlip Library -->
-    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>TPE Co. | Engineering, Design & RAVAND Creative Fab Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-dark: #050814;
+      --bg-light: #0c1020;
+      --accent-gold: #d4af37;
+      --accent-turq: #1abc9c;
+      --accent-coffee: #7b4b2a;
+      --text-main: #f5f5f5;
+      --text-muted: #b0b0b0;
+      --card-bg: #151a2b;
+      --border-soft: rgba(255,255,255,0.08);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --transition-fast: 0.25s ease;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background: radial-gradient(circle at 20% 30%, #d9e2ec, #b9cad9);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow-x: hidden;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* ================= OVERLAY انتخاب زبان با تذهیب ================= */
-        #lang-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.97);
-            backdrop-filter: blur(20px);
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.6s ease;
-            text-align: center;
-        }
-        .lang-card {
-            background: rgba(255,255,255,0.05);
-            padding: 50px 40px;
-            border-radius: 60px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        .lang-card::before {
-            content: "✧";
-            font-size: 120px;
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            opacity: 0.1;
-            color: #d4af37;
-            transform: rotate(-15deg);
-        }
-        .lang-card::after {
-            content: "✧";
-            font-size: 80px;
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            opacity: 0.1;
-            color: #d4af37;
-        }
-        .lang-card h2 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #ffd966;
-            font-weight: 700;
-        }
-        .lang-btn {
-            background: linear-gradient(135deg, #d4af37, #b8860b);
-            border: none;
-            color: #1a1a2e;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 14px 35px;
-            margin: 12px;
-            border-radius: 50px;
-            cursor: pointer;
-            width: 220px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            letter-spacing: 1px;
-        }
-        .lang-btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: linear-gradient(135deg, #e6c35c, #d4af37);
-            box-shadow: 0 18px 30px rgba(0,0,0,0.4);
-        }
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, #1b2340 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        /* ================= کانتینر اصلی Flipbook ================= */
-        .catalog-wrapper {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: radial-gradient(circle at 70% 20%, #eef2f7, #cbd5e6);
-        }
-        .flip-book {
-            box-shadow: 0 35px 55px rgba(0,0,0,0.4);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* ================= استایل صفحات ================= */
-        .page {
-            background: #fffef7;
-            border-radius: 12px;
-            overflow-y: auto;
-            padding: 25px 28px;
-            position: relative;
-            box-shadow: inset 0 0 0 1px rgba(212,175,55,0.3), 0 0 0 2px rgba(255,255,240,0.8);
-            font-size: 14px;
-            line-height: 1.7;
-            scrollbar-width: thin;
-        }
-        .page::-webkit-scrollbar { width: 5px; }
-        .page::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        .page::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+    .app-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
 
-        /* جلد کتاب با طرح اسلیمی */
-        .page-cover {
-            background: linear-gradient(145deg, #0b132b, #1a2a4f);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-cover::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path fill="%23d4af37" d="M20,20 L80,20 L80,80 L20,80 Z" stroke="%23d4af37" stroke-width="1.5"/><circle cx="50" cy="50" r="18" stroke="%23d4af37" fill="none" stroke-width="1.5"/><path d="M50,28 L50,72 M28,50 L72,50" stroke="%23d4af37" stroke-width="1.2"/><path d="M30,30 L70,70 M70,30 L30,70" stroke="%23d4af37" stroke-width="0.8"/></svg>');
-            background-repeat: repeat;
-            background-size: 40px;
-            opacity: 0.2;
-        }
-        .cover-logo {
-            font-size: 4.2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffd966, #f4c542);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .cover-sub {
-            font-size: 1.2rem;
-            border-top: 2px solid #d4af37;
-            padding-top: 15px;
-            margin-top: 20px;
-            display: inline-block;
-        }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
 
-        /* هدر صفحات */
-        .page-header {
-            border-right: 5px solid #d4af37;
-            padding-right: 15px;
-            margin-bottom: 22px;
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .page-header i {
-            color: #d4af37;
-            font-size: 1.6rem;
-        }
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-        /* گرید تصاویر */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-        }
-        .card-img {
-            background: #fef9e6;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            text-align: center;
-            padding: 10px;
-            border: 1px solid rgba(212,175,55,0.3);
-        }
-        .card-img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.12);
-        }
-        .card-img img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        .card-img span {
-            display: block;
-            font-size: 0.85rem;
-            padding: 10px 5px 5px;
-            font-weight: 600;
-            color: #2c3e66;
-        }
+    .brand-main {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-        /* لیست محصولات و خدمات */
-        .product-list {
-            list-style: none;
-            padding: 0;
-        }
-        .product-list li {
-            background: #f8f3e0;
-            margin: 12px 0;
-            padding: 12px 18px;
-            border-radius: 50px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.2s;
-            border-left: 3px solid #d4af37;
-        }
-        .product-list li i {
-            color: #d4af37;
-            width: 28px;
-            font-size: 1.2rem;
-        }
+    .brand-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
 
-        /* تماس */
-        .contact-info-card {
-            background: #f0f4fa;
-            padding: 25px;
-            border-radius: 30px;
-            text-align: center;
-            margin-top: 20px;
-            border: 1px solid #d4af37;
-        }
-        .contact-info-card i {
-            color: #d4af37;
-            margin-left: 8px;
-        }
+    .top-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        @media (max-width: 768px) {
-            .page { padding: 18px; font-size: 12px; }
-            .page-header { font-size: 1.3rem; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .cover-logo { font-size: 2.8rem; }
-        }
-    </style>
+    .pill {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(10, 14, 30, 0.85);
+      padding: 6px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(10, 14, 30, 0.9);
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--accent-gold), #f39c12);
+      color: #050814;
+      font-weight: 600;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: rgba(8, 10, 24, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at top right, rgba(212,175,55,0.08), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(26,188,156,0.08), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+    }
+
+    .split-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .mode-btn {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: rgba(10, 14, 30, 0.9);
+      padding: 10px 12px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mode-btn span {
+      display: block;
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    .mode-btn.active {
+      border-color: var(--accent-gold);
+      color: var(--text-main);
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.4);
+      background: radial-gradient(circle at top, rgba(212,175,55,0.18), rgba(10,14,30,0.95));
+    }
+
+    .mode-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 55%);
+      opacity: 0;
+      transition: var(--transition-fast);
+    }
+
+    .mode-btn:hover::after {
+      opacity: 1;
+    }
+
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .section-tab {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      background: rgba(8, 10, 24, 0.9);
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .section-tab.active {
+      background: linear-gradient(135deg, var(--accent-turq), #3498db);
+      color: #050814;
+      font-weight: 600;
+      border-color: transparent;
+    }
+
+    .content-area {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: rgba(5, 8, 20, 0.9);
+      padding: 14px 12px;
+      max-height: 520px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-gold) transparent;
+      font-size: 0.86rem;
+    }
+
+    .content-area::-webkit-scrollbar {
+      width: 6px;
+    }
+    .content-area::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .content-area::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent-gold), var(--accent-turq));
+      border-radius: 999px;
+    }
+
+    .content-block {
+      margin-bottom: 16px;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--accent-gold);
+    }
+
+    .content-text {
+      color: var(--text-main);
+      opacity: 0.9;
+    }
+
+    .content-list {
+      margin-top: 6px;
+      padding-right: 16px;
+    }
+
+    .content-list li {
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 3px 8px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(10, 14, 30, 0.9);
+    }
+
+    .badge.gold {
+      border-color: rgba(212,175,55,0.7);
+      color: var(--accent-gold);
+    }
+
+    .badge.coffee {
+      border-color: rgba(123,75,42,0.7);
+      color: var(--accent-coffee);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .cta-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--accent-gold), #f39c12);
+      color: #050814;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+      transition: var(--transition-fast);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--accent-gold);
+      border: 1px solid rgba(212,175,55,0.6);
+      box-shadow: none;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.6);
+    }
+
+    .cta-btn.secondary:hover {
+      background: rgba(212,175,55,0.08);
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .hint span {
+      color: var(--accent-gold);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 10px;
+    }
+
+    .footer-brand {
+      color: var(--accent-gold);
+    }
+  </style>
 </head>
 <body>
-
-    <!-- صفحه انتخاب زبان -->
-    <div id="lang-overlay">
-        <div class="lang-card">
-            <h2><i class="fa-solid fa-globe"></i> <span class="fa">کاتالوگ TPE Co.</span><span class="en">TPE Co. Digital Catalog</span><span class="ar">الكتالوج الرقمي TPE</span></h2>
-            <button class="lang-btn" onclick="initCatalog('fa')">🇮🇷 فارسی</button>
-            <button class="lang-btn" onclick="initCatalog('en')">🇬🇧 English</button>
-            <button class="lang-btn" onclick="initCatalog('ar')">🇸🇦 العربية</button>
+  <div class="app-shell">
+    <header>
+      <div class="brand-block">
+        <div class="brand-main">TPE Co.</div>
+        <div class="brand-sub">
+          Engineering • Design • Innovation — <span style="color:var(--accent-gold)">RAVAND</span> | جایی میان فکر و فنجان
         </div>
-    </div>
+      </div>
+      <div class="top-controls">
+        <div class="pill">
+          <span>Mode</span>
+          <strong id="modeLabel">TPE • Industrial</strong>
+        </div>
+        <div class="lang-switch" id="langSwitch">
+          <button class="lang-btn active" data-lang="fa">FA</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ar">AR</button>
+        </div>
+      </div>
+    </header>
 
-    <!-- کانتینر اصلی Flipbook -->
-    <div class="catalog-wrapper" id="catalogWrapper">
-        <div class="flip-book" id="flipbook"></div>
-    </div>
+    <main>
+      <!-- Left panel: mode & section navigation -->
+      <section class="panel">
+        <div class="panel-inner">
+          <div class="panel-title">
+            <span id="panelTitleMain">انتخاب مسیر و بخش</span>
+          </div>
+          <div class="panel-subtitle" id="panelSubtitle">
+            ابتدا بین مسیر صنعتی TPE و فب‌لب خلاق RAVAND انتخاب کن، سپس بخش مورد نظر را ببین.
+          </div>
 
-    <script>
-        // ========== اطلاعات کامل سه زبانه (برگرفته از PDF و سایت) ==========
-        const catalogData = {
-            fa: {
-                cover_title: "توسعه پردازان",
-                cover_sub: "پیشگام در مهندسی، نوآوری و ساخت دیجیتال",
-                about_title: "درباره شرکت توسعه پردازان",
-                about_text: "شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان (TPE) با تکیه بر تیمی متخصص از مهندسان مکانیک، برق، شیمی و مواد، در پارک علم و فناوری سیستان و بلوچستان فعالیت می‌کند. ما در حوزه‌های طراحی صنعتی، ساخت تجهیزات پزشکی، مهندسی معکوس، بهینه‌سازی خطوط تولید و راه‌اندازی فب‌لب‌های تخصصی پیشرو هستیم. افتخار ما تبدیل ایده‌های خلاقانه به محصولات صنعتی و پزشکی با بالاترین کیفیت است.",
-                medical_title: "تجهیزات پزشکی و دندانپزشکی",
-                medical_desc: "طراحی و تولید پیشرفته‌ترین دستگاه‌ها با استانداردهای جهانی:",
-                medical_items: ["ردیاب ورید قابل حمل (Vein Finder)", "شبیه‌ساز سیگنال قلب ECG", "دستگاه خشک‌کن دست ضدباکتری", "اکستنشن رادیولوژی پیش‌چشمی", "فشارسنج جیوه‌ای هوشمند", "پالس اکسیمتر متصل به موبایل", "ضدعفونی‌کننده UV پلاس"],
-                industrial_title: "خدمات صنعتی و ماشین‌سازی",
-                industrial_desc: "ارائه خدمات تخصصی در حوزه صنعت و ماشین‌آلات پیشرفته: طراحی و ساخت دستگاه بسته‌بندی پنوماتیک، دستگاه خردایش کاغذ، قفل بیومتریک هوشمند، بهینه‌سازی خطوط تولید، تحلیل المان محدود (FEA) با آباکوس و انسیس، مهندسی معکوس قطعات پیچیده و مشاوره صنعتی.",
-                fablab_title: "فب‌لب تخصصی صنایع خلاق روند",
-                fablab_desc: "فضایی برای خلق ایده‌ها با استفاده از پرینترهای سه‌بعدی (FDM و رزین)، دستگاه‌های لیزر، ماشین‌های CNC، آزمایشگاه الکترونیک و استودیو هنر. برگزاری دوره‌های آموزشی، مشاوره رایگان به استارتاپ‌ها، نمونه‌سازی سریع و تولید محصولات هنری-صنعتی با الهام از نقوش ایرانی.",
-                products_title: "محصولات شاخص",
-                products_list: ["ردیاب ورید قابل حمل", "شبیه‌ساز سیگنال قلب ECG", "دستگاه خشک‌کن دست ضدباکتری", "اکستنشن رادیولوژی پیش‌چشمی", "دستگاه بسته‌بندی", "دستگاه خردایش کاغذ", "قفل بیومتریک", "فشارسنج جیوه‌ای", "پالس اکسیمتر", "ضدعفونی‌کننده UV پلاس"],
-                services_title: "خدمات تخصصی",
-                services_list: ["طراحی صنعتی با CATIA , SolidWorks", "شبیه‌سازی ABAQUS , ANSYS (تحلیل المان محدود)", "مهندسی معکوس و اسکن سه‌بعدی", "راه‌اندازی نیروگاه خورشیدی", "تعمیرات تخصصی تجهیزات پزشکی و دندانپزشکی", "دوره‌های آموزشی عملی (پرینت سه‌بعدی، CNC، الکترونیک)", "مشاوره رایگان ایده‌ها و اختراعات"],
-                portfolio_title: "نمونه کارهای درخشان",
-                portfolio_items: [
-                    { name: "ردیاب ورید (Vein Finder)", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=300&h=200&fit=crop" },
-                    { name: "شبیه‌ساز ECG", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=300&h=200&fit=crop" },
-                    { name: "دستگاه بسته‌بندی", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=300&h=200&fit=crop" },
-                    { name: "قطعات CNC شده", img: "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?w=300&h=200&fit=crop" },
-                    { name: "محصولات چاپ سه‌بعدی", img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=300&h=200&fit=crop" },
-                    { name: "قفل بیومتریک", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e9d15?w=300&h=200&fit=crop" }
+          <div class="split-toggle">
+            <button class="mode-btn active" id="modeTPE">
+              <strong>TPE — Engineering</strong>
+              <span>طراحی صنعتی، مهندسی، توسعه محصول</span>
+            </button>
+            <button class="mode-btn" id="modeRAVAND">
+              <strong>RAVAND — Creative Fab Lab</strong>
+              <span>صنایع خلاق، کارگاه‌ها، فب‌لب</span>
+            </button>
+          </div>
+
+          <div class="section-nav" id="sectionNav">
+            <!-- Tabs will be injected by JS -->
+          </div>
+
+          <div class="hint" id="hintText">
+            <span>راهنما:</span> روی هر تب کلیک کن تا محتوای آن بخش در پنل سمت راست نمایش داده شود.
+          </div>
+        </div>
+      </section>
+
+      <!-- Right panel: dynamic content -->
+      <section class="panel">
+        <div class="panel-inner">
+          <div class="panel-title" id="contentTitle">
+            معرفی کلی
+          </div>
+          <div class="panel-subtitle" id="contentSubtitle">
+            نمای کلی از شرکت TPE و زیر برند خلاق RAVAND.
+          </div>
+
+          <div class="content-area" id="contentArea">
+            <!-- Dynamic content -->
+          </div>
+
+          <div class="cta-row" id="ctaRow">
+            <button class="cta-btn">
+              <span id="primaryCtaLabel">دریافت نسخه PDF کاتالوگ</span>
+            </button>
+            <button class="cta-btn secondary">
+              <span id="secondaryCtaLabel">مشاهده نسخه تعاملی در سایت</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <span class="footer-brand">TPE Co.</span> — Engineering, Design & Innovation
+      </div>
+      <div>
+        RAVAND • Creative Fab Lab — جایی میان فکر و فنجان
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // --- Content model: languages, modes, sections ---
+    const contentModel = {
+      fa: {
+        labels: {
+          panelTitle: "انتخاب مسیر و بخش",
+          panelSubtitle: "ابتدا بین مسیر صنعتی TPE و فب‌لب خلاق RAVAND انتخاب کن، سپس بخش مورد نظر را ببین.",
+          hint: "راهنما: روی هر تب کلیک کن تا محتوای آن بخش در پنل سمت راست نمایش داده شود.",
+          primaryCta: "دریافت نسخه PDF کاتالوگ",
+          secondaryCta: "مشاهده نسخه تعاملی در سایت",
+          modeLabelTPE: "TPE • صنعتی",
+          modeLabelRAVAND: "RAVAND • خلاق",
+        },
+        modes: {
+          tpe: {
+            tabs: [
+              { id: "overview", label: "معرفی TPE" },
+              { id: "services", label: "خدمات مهندسی" },
+              { id: "products", label: "محصولات و نمونه‌ها" },
+              { id: "team", label: "تیم و همکاری" },
+              { id: "process", label: "فرآیند کار با ما" },
+              { id: "contact", label: "تماس و اطلاعات" },
+            ],
+            sections: {
+              overview: {
+                title: "TPE — Engineering, Design & Innovation",
+                subtitle: "شرکت چندرشته‌ای در حوزه طراحی صنعتی، مهندسی معکوس، نمونه‌سازی و توسعه محصول.",
+                blocks: [
+                  {
+                    title: "هویت و مأموریت",
+                    text: "TPE Co. با تمرکز بر طراحی صنعتی، مهندسی معکوس، نمونه‌سازی و توسعه محصول، تلاش می‌کند تا استانداردهای جهانی را با هویت بصری و فرهنگی ایرانی ترکیب کند. خروجی کار، محصولاتی است که هم از نظر عملکرد و هم از نظر زیبایی‌شناسی در سطح بالا قرار می‌گیرند.",
+                    badges: ["Industrial Design", "Reverse Engineering", "Prototyping", "Product Development"],
+                  },
+                  {
+                    title: "ارزش‌های کلیدی",
+                    text: "دقت مهندسی، شفافیت در فرآیند، مستندسازی کامل، و احترام به زمان و سرمایه مشتری، چهار ستون اصلی فعالیت TPE هستند.",
+                    list: [
+                      "ترکیب هنر ایرانی با مهندسی مدرن",
+                      "تمرکز بر قابلیت ساخت و تولید",
+                      "همراهی از ایده تا محصول نهایی",
+                      "توجه به تجربه کاربر و بازار هدف",
+                    ],
+                  },
                 ],
-                contact_title: "ارتباط با ما",
-                contact_address: "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
-                contact_phone: "09226704205",
-                contact_email: "usb.tpe.co@gmail.com",
-                contact_web: "www.tpe-co.ir"
+              },
+              services: {
+                title: "خدمات مهندسی و طراحی صنعتی",
+                subtitle: "طیف کامل خدمات از ایده تا تولید.",
+                blocks: [
+                  {
+                    title: "طراحی صنعتی (Industrial Design)",
+                    text: "طراحی فرم، ارگونومی، جزئیات و هویت محصول با رویکردی که هم به کاربر و هم به فرآیند تولید توجه دارد.",
+                    list: [
+                      "تحلیل نیاز و سناریوهای استفاده",
+                      "طراحی مفهومی و اسکچ",
+                      "مدل‌سازی سه‌بعدی دقیق",
+                      "آماده‌سازی برای ساخت و تولید",
+                    ],
+                  },
+                  {
+                    title: "مهندسی معکوس (Reverse Engineering)",
+                    text: "بازطراحی و تحلیل قطعات و مجموعه‌ها برای بازتولید، بهبود عملکرد یا مستندسازی.",
+                    list: [
+                      "اسکن و اندازه‌برداری دقیق",
+                      "مدل‌سازی سه‌بعدی از قطعه موجود",
+                      "تحلیل نقاط ضعف و بهبود",
+                      "تهیه نقشه‌ها و مستندات فنی",
+                    ],
+                  },
+                  {
+                    title: "نمونه‌سازی و پرینت سه‌بعدی",
+                    text: "ساخت نمونه‌های اولیه برای تست ارگونومی، مونتاژ، عملکرد و ارائه به سرمایه‌گذار یا مشتری.",
+                    list: [
+                      "پرینت سه‌بعدی صنعتی",
+                      "نمونه‌سازی سریع",
+                      "مونتاژ و تست اولیه",
+                      "بهینه‌سازی قبل از تولید نهایی",
+                    ],
+                  },
+                  {
+                    title: "توسعه محصول و مستندسازی",
+                    text: "همراهی در تمام مراحل توسعه محصول، از ایده تا آماده‌سازی برای تولید انبوه.",
+                    list: [
+                      "تعریف مشخصات فنی",
+                      "طراحی جزئیات و مکانیزم‌ها",
+                      "تهیه نقشه‌ها و BOM",
+                      "مستندسازی برای تولید و خدمات پس از فروش",
+                    ],
+                  },
+                ],
+              },
+              products: {
+                title: "محصولات، پروژه‌ها و نمونه کارها",
+                subtitle: "نمایی از پروژه‌های صنعتی و طراحی‌های انجام‌شده.",
+                blocks: [
+                  {
+                    title: "نمونه پروژه‌های صنعتی",
+                    text: "پروژه‌های طراحی و مهندسی در حوزه‌های مختلف، از تجهیزات صنعتی تا محصولات مصرفی.",
+                    list: [
+                      "طراحی و بهینه‌سازی قطعات مکانیکی",
+                      "طراحی بدنه و شاسی تجهیزات",
+                      "پروژه‌های سفارشی برای صنایع مختلف",
+                    ],
+                  },
+                  {
+                    title: "نمونه محصولات طراحی‌شده",
+                    text: "محصولاتی که از مرحله ایده تا نمونه‌سازی و آماده‌سازی برای تولید توسط TPE توسعه یافته‌اند.",
+                    list: [
+                      "محصولات با هویت بصری ایرانی–مدرن",
+                      "توجه به ارگونومی و تجربه کاربر",
+                      "قابلیت تولید با تکنولوژی‌های موجود",
+                    ],
+                  },
+                ],
+              },
+              team: {
+                title: "تیم، شبکه همکاری و مشتریان",
+                subtitle: "ترکیبی از مهندسان، طراحان و همکاران تخصصی.",
+                blocks: [
+                  {
+                    title: "تیم اصلی",
+                    text: "هسته اصلی TPE از مهندسان مکانیک، طراحان صنعتی و متخصصان ساخت تشکیل شده است که هر کدام تجربه عملی در پروژه‌های واقعی دارند.",
+                    list: [
+                      "طراحی صنعتی و مکانیکی",
+                      "مدل‌سازی سه‌بعدی و نقشه‌کشی",
+                      "مدیریت پروژه و ارتباط با مشتری",
+                    ],
+                  },
+                  {
+                    title: "شبکه همکاران",
+                    text: "بسته به نوع پروژه، TPE با شبکه‌ای از کارگاه‌ها، سازندگان، برنامه‌نویسان و طراحان گرافیک همکاری می‌کند تا خروجی نهایی کامل و قابل ارائه باشد.",
+                  },
+                ],
+              },
+              process: {
+                title: "فرآیند کار با TPE",
+                subtitle: "شفاف، مرحله‌به‌مرحله و مستند.",
+                blocks: [
+                  {
+                    title: "۱. تعریف مسئله و نیاز",
+                    text: "در این مرحله، مسئله، نیاز، محدودیت‌ها و انتظارات به‌صورت شفاف تعریف و ثبت می‌شوند.",
+                  },
+                  {
+                    title: "۲. ایده‌پردازی و طراحی مفهومی",
+                    text: "اسکچ‌ها، سناریوها و گزینه‌های مختلف طراحی بررسی و گزینه‌های مناسب انتخاب می‌شوند.",
+                  },
+                  {
+                    title: "۳. مدل‌سازی و تحلیل",
+                    text: "مدل سه‌بعدی دقیق ساخته می‌شود و در صورت نیاز تحلیل‌های مکانیکی و عملکردی انجام می‌گیرد.",
+                  },
+                  {
+                    title: "۴. نمونه‌سازی و تست",
+                    text: "نمونه اولیه ساخته و تست می‌شود تا قبل از تولید نهایی، ایرادات احتمالی برطرف شوند.",
+                  },
+                  {
+                    title: "۵. مستندسازی و تحویل",
+                    text: "نقشه‌ها، فایل‌ها و مستندات فنی به‌صورت کامل و قابل استفاده برای تولید تحویل می‌شوند.",
+                  },
+                ],
+              },
+              contact: {
+                title: "تماس، همکاری و سفارش پروژه",
+                subtitle: "برای شروع یک پروژه جدید یا دریافت اطلاعات بیشتر.",
+                blocks: [
+                  {
+                    title: "راه‌های ارتباطی",
+                    text: "از طریق وب‌سایت، ایمیل، شبکه‌های اجتماعی یا تماس مستقیم می‌توانید برای تعریف پروژه، مشاوره یا همکاری اقدام کنید.",
+                    list: [
+                      "وب‌سایت: tpe-co.ir",
+                      "امکان ارسال توضیحات اولیه پروژه",
+                      "هماهنگی جلسه آنلاین یا حضوری",
+                    ],
+                  },
+                  {
+                    title: "نوع همکاری‌ها",
+                    text: "از پروژه‌های کوچک و متمرکز تا همکاری‌های بلندمدت و توسعه محصول، امکان تعریف مدل همکاری متناسب با نیاز شما وجود دارد.",
+                  },
+                ],
+              },
             },
-            en: {
-                cover_title: "TPE Co.",
-                cover_sub: "Pioneer in Engineering, Innovation & Digital Fabrication",
-                about_title: "About TPE Co.",
-                about_text: "Technology of Pars Engineers (TPE) is a knowledge-based company located at Sistan & Baluchestan Science Park. With a multidisciplinary team of mechanical, electrical, chemical engineers, we excel in industrial design, medical equipment manufacturing, reverse engineering, production line optimization, and running a state-of-the-art FabLab. Our mission is to turn innovative ideas into high-quality industrial and medical products.",
-                medical_title: "Medical & Dental Equipment",
-                medical_desc: "Design and manufacturing of advanced devices:",
-                medical_items: ["Portable Vein Finder", "ECG Simulator", "Anti-Bacterial Hand Dryer", "Pre-optical Radiology Extension", "Smart Sphygmomanometer", "Mobile-connected Pulse Oximeter", "UV Plus Sanitizer"],
-                industrial_title: "Industrial Services & Machinery",
-                industrial_desc: "Specialized industrial services: pneumatic packing machine, paper defibration machine, biometric lock, production line optimization, FEA simulation (ABAQUS, ANSYS), reverse engineering of complex parts, industrial consulting.",
-                fablab_title: "Ravand FabLab for Creative Industries",
-                fablab_desc: "A creative hub with 3D printers (FDM/Resin), laser cutters, CNC machines, electronics lab, art studio. Offering workshops, startup consulting, rapid prototyping, and production of artistic-industrial products inspired by Persian patterns.",
-                products_title: "Key Products",
-                products_list: ["Portable Vein Finder", "ECG Simulator", "Anti-Bacterial Hand Dryer", "Pre-optical Radiology Extension", "Packing Machine", "Paper Defibration Machine", "Biometric Lock", "Sphygmomanometer", "Pulse Oximeter", "UV Plus Sanitizer"],
-                services_title: "Specialized Services",
-                services_list: ["Industrial design (CATIA, SolidWorks)", "FEA Simulation (ABAQUS, ANSYS)", "Reverse Engineering & 3D scanning", "Solar power plant installation", "Medical equipment repair", "Practical training courses (3D printing, CNC, Electronics)", "Free idea consultation"],
-                portfolio_title: "Featured Projects",
-                portfolio_items: [
-                    { name: "Vein Finder", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=300&h=200&fit=crop" },
-                    { name: "ECG Simulator", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=300&h=200&fit=crop" },
-                    { name: "Packing Machine", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=300&h=200&fit=crop" },
-                    { name: "CNC Machined Parts", img: "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?w=300&h=200&fit=crop" },
-                    { name: "3D Printed Products", img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=300&h=200&fit=crop" },
-                    { name: "Biometric Lock", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e9d15?w=300&h=200&fit=crop" }
+          },
+          ravand: {
+            tabs: [
+              { id: "overview", label: "معرفی RAVAND" },
+              { id: "fablab", label: "فب‌لب و تجهیزات" },
+              { id: "creativeServices", label: "خدمات خلاق و کارگاه‌ها" },
+              { id: "products", label: "محصولات خلاق" },
+              { id: "community", label: "جامعه و رویدادها" },
+              { id: "contact", label: "رزرو و ارتباط" },
+            ],
+            sections: {
+              overview: {
+                title: "RAVAND — جایی میان فکر و فنجان",
+                subtitle: "زیر برند خلاق TPE برای صنایع خلاق، هنر و تجربه‌گرایی.",
+                blocks: [
+                  {
+                    title: "هویت RAVAND",
+                    text: "RAVAND فضایی است که در آن هنر ایرانی، طراحی، فناوری و تجربه‌گرایی در کنار هم قرار می‌گیرند. این فب‌لب خلاق برای هنرمندان، طراحان، دانشجویان و کارآفرینان طراحی شده است تا بتوانند ایده‌های خود را به نمونه‌های واقعی تبدیل کنند.",
+                    badges: ["Creative Fab Lab", "Workshops", "Art & Design", "Prototyping"],
+                  },
+                  {
+                    title: "فضا و تجربه",
+                    text: "فضای RAVAND ترکیبی از حس یک کافه خلاق، کارگاه ساخت و استودیوی طراحی است؛ جایی که می‌توان هم فکر کرد، هم ساخت، هم گفتگو کرد.",
+                  },
                 ],
-                contact_title: "Contact Us",
-                contact_address: "Zahedan, University Blvd., Science & Technology Park",
-                contact_phone: "+989226704205",
-                contact_email: "usb.tpe.co@gmail.com",
-                contact_web: "www.tpe-co.ir"
+              },
+              fablab: {
+                title: "فب‌لب RAVAND و تجهیزات",
+                subtitle: "زیرساخت ساخت، تجربه و آزمایش.",
+                blocks: [
+                  {
+                    title: "تجهیزات اصلی",
+                    text: "RAVAND به مجموعه‌ای از تجهیزات ساخت دیجیتال و ابزارهای کارگاهی مجهز است.",
+                    list: [
+                      "پرینترهای سه‌بعدی برای هنر و طراحی",
+                      "لیزرکاتر و CNC برای برش و حکاکی",
+                      "ابزارهای دستی و کارگاهی",
+                      "فضای مونتاژ و تست",
+                    ],
+                  },
+                  {
+                    title: "کاربردها",
+                    text: "از ساخت ماکت و نمونه‌های هنری تا تولید سری محدود محصولات خلاق، فب‌لب RAVAND امکان تجربه و ساخت را فراهم می‌کند.",
+                  },
+                ],
+              },
+              creativeServices: {
+                title: "خدمات خلاق، کارگاه‌ها و برنامه‌ها",
+                subtitle: "برنامه‌های آموزشی و تجربی برای هنرمندان و علاقه‌مندان.",
+                blocks: [
+                  {
+                    title: "کارگاه‌های خلاق",
+                    text: "برگزاری کارگاه‌های کوتاه‌مدت و بلندمدت در حوزه‌های مختلف طراحی، ساخت، هنر دیجیتال و صنایع خلاق.",
+                    list: [
+                      "کارگاه طراحی و ساخت محصول خلاق",
+                      "آشنایی با پرینت سه‌بعدی برای هنرمندان",
+                      "کارگاه ترکیب هنر سنتی و ساخت دیجیتال",
+                    ],
+                  },
+                  {
+                    title: "خدمات ویژه",
+                    text: "امکان تعریف کارگاه‌های اختصاصی برای گروه‌ها، دانشگاه‌ها و سازمان‌ها وجود دارد.",
+                  },
+                ],
+              },
+              products: {
+                title: "محصولات خلاق RAVAND",
+                subtitle: "محصولاتی در مرز میان هنر و صنعت.",
+                blocks: [
+                  {
+                    title: "محصولات دست‌ساز و سری محدود",
+                    text: "محصولاتی که در RAVAND طراحی و تولید می‌شوند، اغلب در تیراژ محدود و با هویت بصری خاص عرضه می‌شوند.",
+                    list: [
+                      "اکسسوری‌های خلاق",
+                      "اشیای دکوراتیو با الهام از هنر ایرانی",
+                      "محصولات ترکیبی چوب، فلز و متریال‌های نو",
+                    ],
+                  },
+                  {
+                    title: "سفارش‌سازی",
+                    text: "امکان طراحی و ساخت محصولات اختصاصی برای برندها، فضاها و رویدادها وجود دارد.",
+                  },
+                ],
+              },
+              community: {
+                title: "جامعه، رویدادها و شبکه RAVAND",
+                subtitle: "جایی برای ارتباط، یادگیری و همکاری.",
+                blocks: [
+                  {
+                    title: "جامعه RAVAND",
+                    text: "RAVAND تلاش می‌کند جامعه‌ای از افراد خلاق، کنجکاو و علاقه‌مند به ساخت و تجربه را کنار هم جمع کند.",
+                    list: [
+                      "رویدادهای کوچک و صمیمی",
+                      "جلسات گفتگو و اشتراک تجربه",
+                      "شبکه‌سازی بین هنرمندان و طراحان",
+                    ],
+                  },
+                ],
+              },
+              contact: {
+                title: "رزرو، همکاری و ارتباط با RAVAND",
+                subtitle: "برای رزرو فضا، تجهیزات یا تعریف یک پروژه خلاق.",
+                blocks: [
+                  {
+                    title: "رزرو فضا و تجهیزات",
+                    text: "می‌توانید برای استفاده از فضا، تجهیزات یا برگزاری کارگاه، زمان رزرو کنید.",
+                    list: [
+                      "رزرو ساعتی یا روزانه",
+                      "امکان استفاده فردی یا گروهی",
+                      "هماهنگی برای پروژه‌های خاص",
+                    ],
+                  },
+                  {
+                    title: "ارتباط و همکاری",
+                    text: "برای تعریف پروژه مشترک، برگزاری رویداد یا سفارش محصولات خلاق، می‌توانید از طریق وب‌سایت یا شبکه‌های اجتماعی RAVAND اقدام کنید.",
+                  },
+                ],
+              },
             },
-            ar: {
-                cover_title: "TPE Co.",
-                cover_sub: "رائدة في الهندسة والابتكار والتصنيع الرقمي",
-                about_title: "نبذة عن TPE",
-                about_text: "شركة تكنولوجيا مهندسي فارس (TPE) هي شركة قائمة على المعرفة ومتمركزة في حديقة علوم وتكنولوجيا سيستان وبلوشستان. بفضل فريق متعدد التخصصات (ميكانيك، كهرباء، كيمياء)، نتميز في التصميم الصناعي، تصنيع المعدات الطبية، الهندسة العكسية، تحسين خطوط الإنتاج، وإدارة مختبر فاب لاب متطور. مهمتنا تحويل الأفكار المبتكرة إلى منتجات صناعية وطبية عالية الجودة.",
-                medical_title: "المعدات الطبية وطب الأسنان",
-                medical_desc: "تصنيع الأجهزة المتقدمة:",
-                medical_items: ["جهاز البحث عن الوريد المحمول", "محاكي ECG", "مجفف أيادي مضاد للبكتيريا", "ملحق الأشعة المسبقة", "جهاز ضغط الدم الذكي", "مقياس التأكسج المتصل بالهاتف", "معقم UV Plus"],
-                industrial_title: "الخدمات الصناعية والآلات",
-                industrial_desc: "خدمات صناعية متخصصة: آلة التعبئة والتغليف، آلة تفتيت الورق، قفل بيومتري، تحسين خطوط الإنتاج، محاكاة العناصر المحدودة (ABAQUS, ANSYS)، الهندسة العكسية، استشارات صناعية.",
-                fablab_title: "مختبر رافاند للصناعات الإبداعية",
-                fablab_desc: "مساحة إبداعية تضم طابعات ثلاثية الأبعاد، قواطع ليزر، آلات CNC، مختبر إلكترونيات، استوديو فني. نقدم ورش عمل، استشارات للشركات الناشئة، نمذجة سريعة، وإنتاج منتجات فنية-صناعية مستوحاة من الأنماط الفارسية.",
-                products_title: "أبرز المنتجات",
-                products_list: ["جهاز البحث عن الوريد", "محاكي ECG", "مجفف أيادي مضاد للبكتيريا", "ملحق الأشعة المسبقة", "آلة التعبئة", "آلة تفتيت الورق", "قفل بيومتري", "جهاز ضغط الدم", "مقياس التأكسج", "معقم UV Plus"],
-                services_title: "الخدمات المتخصصة",
-                services_list: ["تصميم صناعي (CATIA, SolidWorks)", "محاكاة (ABAQUS, ANSYS)", "هندسة عكسية ومسح ثلاثي الأبعاد", "تركيب محطات طاقة شمسية", "إصلاح المعدات الطبية", "دورات تدريبية عملية (طباعة ثلاثية الأبعاد، CNC، إلكترونيات)", "استشارات مجانية للأفكار"],
-                portfolio_title: "مشاريع متميزة",
-                portfolio_items: [
-                    { name: "جهاز البحث عن الوريد", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=300&h=200&fit=crop" },
-                    { name: "محاكي ECG", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=300&h=200&fit=crop" },
-                    { name: "آلة التعبئة", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=300&h=200&fit=crop" },
-                    { name: "أجزاء مُشَكَّلة بـCNC", img: "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?w=300&h=200&fit=crop" },
-                    { name: "منتجات طباعة ثلاثية الأبعاد", img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=300&h=200&fit=crop" },
-                    { name: "قفل بيومتري", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e9d15?w=300&h=200&fit=crop" }
+          },
+        },
+      },
+      // EN & AR placeholders – you can later fill with real translations
+      en: {
+        labels: {
+          panelTitle: "Select path & section",
+          panelSubtitle: "Choose between TPE industrial path and RAVAND creative fab lab, then pick a section.",
+          hint: "Tip: Click any tab to see its content in the right panel.",
+          primaryCta: "Download PDF catalog",
+          secondaryCta: "View interactive version",
+          modeLabelTPE: "TPE • Industrial",
+          modeLabelRAVAND: "RAVAND • Creative",
+        },
+        modes: {
+          tpe: {
+            tabs: [
+              { id: "overview", label: "About TPE" },
+              { id: "services", label: "Engineering Services" },
+              { id: "products", label: "Products & Portfolio" },
+              { id: "team", label: "Team & Collaboration" },
+              { id: "process", label: "Process" },
+              { id: "contact", label: "Contact" },
+            ],
+            sections: {
+              overview: {
+                title: "TPE — Engineering, Design & Innovation",
+                subtitle: "Multidisciplinary company in industrial design, reverse engineering, prototyping and product development.",
+                blocks: [
+                  {
+                    title: "Identity & Mission",
+                    text: "TPE combines engineering precision with Iranian-inspired aesthetics to deliver products that are both functional and visually refined.",
+                  },
                 ],
-                contact_title: "اتصل بنا",
-                contact_address: "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
-                contact_phone: "09226704205",
-                contact_email: "usb.tpe.co@gmail.com",
-                contact_web: "www.tpe-co.ir"
-            }
-        };
+              },
+              services: {
+                title: "Engineering & Industrial Services",
+                subtitle: "From idea to production.",
+                blocks: [
+                  {
+                    title: "Industrial Design",
+                    text: "Form, ergonomics and product identity with a production-oriented mindset.",
+                  },
+                ],
+              },
+              products: {
+                title: "Products & Portfolio",
+                subtitle: "Selected industrial and design projects.",
+                blocks: [
+                  {
+                    title: "Industrial Projects",
+                    text: "Design and optimization of mechanical parts, equipment housings and custom solutions.",
+                  },
+                ],
+              },
+              team: {
+                title: "Team & Collaboration",
+                subtitle: "Engineers, designers and a network of partners.",
+                blocks: [
+                  {
+                    title: "Core Team",
+                    text: "A compact team with real-world experience in design and engineering projects.",
+                  },
+                ],
+              },
+              process: {
+                title: "How We Work",
+                subtitle: "Clear, documented and step-by-step.",
+                blocks: [
+                  {
+                    title: "1. Brief & Requirements",
+                    text: "We define the problem, constraints and expectations together.",
+                  },
+                ],
+              },
+              contact: {
+                title: "Contact & New Projects",
+                subtitle: "Start a new project or request more information.",
+                blocks: [
+                  {
+                    title: "Channels",
+                    text: "Website, email, social media and direct calls.",
+                  },
+                ],
+              },
+            },
+          },
+          ravand: {
+            tabs: [
+              { id: "overview", label: "About RAVAND" },
+              { id: "fablab", label: "Fab Lab & Equipment" },
+              { id: "creativeServices", label: "Creative Services" },
+              { id: "products", label: "Creative Products" },
+              { id: "community", label: "Community & Events" },
+              { id: "contact", label: "Booking & Contact" },
+            ],
+            sections: {
+              overview: {
+                title: "RAVAND — Between Thought and Cup",
+                subtitle: "Creative fab lab for art, design and experimentation.",
+                blocks: [
+                  {
+                    title: "Identity",
+                    text: "A space where Iranian art, design and digital fabrication meet.",
+                  },
+                ],
+              },
+              fablab: {
+                title: "RAVAND Fab Lab",
+                subtitle: "Tools for making and experimenting.",
+                blocks: [
+                  {
+                    title: "Equipment",
+                    text: "3D printers, laser cutter, CNC and workshop tools.",
+                  },
+                ],
+              },
+              creativeServices: {
+                title: "Workshops & Creative Programs",
+                subtitle: "For artists, designers and students.",
+                blocks: [
+                  {
+                    title: "Workshops",
+                    text: "Short and long-term workshops on design, making and creative technologies.",
+                  },
+                ],
+              },
+              products: {
+                title: "Creative Products",
+                subtitle: "Limited series and handcrafted objects.",
+                blocks: [
+                  {
+                    title: "Handcrafted & Limited",
+                    text: "Objects at the intersection of art and industry.",
+                  },
+                ],
+              },
+              community: {
+                title: "Community & Events",
+                subtitle: "A place to connect and share.",
+                blocks: [
+                  {
+                    title: "Community",
+                    text: "Gathering curious and creative people around making.",
+                  },
+                ],
+              },
+              contact: {
+                title: "Booking & Collaboration",
+                subtitle: "Reserve space, tools or define a project.",
+                blocks: [
+                  {
+                    title: "Booking",
+                    text: "Hourly or daily reservations for individuals and groups.",
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+      ar: {
+        labels: {
+          panelTitle: "اختيار المسار والقسم",
+          panelSubtitle: "اختر بين مسار TPE الصناعي ومسار RAVAND الإبداعي، ثم اختر القسم المطلوب.",
+          hint: "تلميح: اضغط على أي تبويب لعرض محتواه في اللوحة اليمنى.",
+          primaryCta: "تحميل كتالوج PDF",
+          secondaryCta: "عرض النسخة التفاعلية",
+          modeLabelTPE: "TPE • صناعي",
+          modeLabelRAVAND: "RAVAND • إبداعي",
+        },
+        modes: {
+          tpe: {
+            tabs: [
+              { id: "overview", label: "نبذة عن TPE" },
+              { id: "services", label: "الخدمات الهندسية" },
+              { id: "products", label: "المنتجات والمشاريع" },
+              { id: "team", label: "الفريق والتعاون" },
+              { id: "process", label: "آلية العمل" },
+              { id: "contact", label: "التواصل" },
+            ],
+            sections: {
+              overview: {
+                title: "TPE — الهندسة والتصميم والابتكار",
+                subtitle: "شركة متعددة التخصصات في التصميم الصناعي والهندسة العكسية والنمذجة الأولية.",
+                blocks: [
+                  {
+                    title: "الهوية والرسالة",
+                    text: "دمج الدقة الهندسية مع الجماليات المستوحاة من الفن الإيراني.",
+                  },
+                ],
+              },
+              services: {
+                title: "الخدمات الهندسية",
+                subtitle: "من الفكرة إلى الإنتاج.",
+                blocks: [
+                  {
+                    title: "التصميم الصناعي",
+                    text: "تصميم الشكل والوظيفة مع مراعاة التصنيع.",
+                  },
+                ],
+              },
+              products: {
+                title: "المنتجات والمشاريع",
+                subtitle: "نماذج من المشاريع الصناعية.",
+                blocks: [
+                  {
+                    title: "مشاريع صناعية",
+                    text: "تصميم وتحسين الأجزاء الميكانيكية والحلول المخصصة.",
+                  },
+                ],
+              },
+              team: {
+                title: "الفريق والتعاون",
+                subtitle: "مهندسون ومصممون وشبكة شركاء.",
+                blocks: [
+                  {
+                    title: "الفريق الأساسي",
+                    text: "فريق صغير ذو خبرة عملية في المشاريع الواقعية.",
+                  },
+                ],
+              },
+              process: {
+                title: "آلية العمل",
+                subtitle: "خطوات واضحة وموثقة.",
+                blocks: [
+                  {
+                    title: "١. تعريف المتطلبات",
+                    text: "تحديد المشكلة والقيود والتوقعات.",
+                  },
+                ],
+              },
+              contact: {
+                title: "التواصل والمشاريع الجديدة",
+                subtitle: "لبدء مشروع جديد أو طلب معلومات.",
+                blocks: [
+                  {
+                    title: "قنوات التواصل",
+                    text: "الموقع الإلكتروني، البريد الإلكتروني، وسائل التواصل والاتصال المباشر.",
+                  },
+                ],
+              },
+            },
+          },
+          ravand: {
+            tabs: [
+              { id: "overview", label: "نبذة عن RAVAND" },
+              { id: "fablab", label: "فاب لاب والمعدات" },
+              { id: "creativeServices", label: "الخدمات الإبداعية" },
+              { id: "products", label: "المنتجات الإبداعية" },
+              { id: "community", label: "المجتمع والفعاليات" },
+              { id: "contact", label: "الحجز والتواصل" },
+            ],
+            sections: {
+              overview: {
+                title: "RAVAND — بين الفكرة والفنجان",
+                subtitle: "فاب لاب إبداعي للفن والتصميم والتجربة.",
+                blocks: [
+                  {
+                    title: "الهوية",
+                    text: "مساحة يلتقي فيها الفن الإيراني والتصميم والتقنيات الرقمية.",
+                  },
+                ],
+              },
+              fablab: {
+                title: "فاب لاب RAVAND",
+                subtitle: "أدوات للتصنيع والتجربة.",
+                blocks: [
+                  {
+                    title: "المعدات",
+                    text: "طابعات ثلاثية الأبعاد، ليزر، CNC وأدوات ورشة.",
+                  },
+                ],
+              },
+              creativeServices: {
+                title: "الورش والبرامج الإبداعية",
+                subtitle: "للفنانين والمصممين والطلاب.",
+                blocks: [
+                  {
+                    title: "ورش العمل",
+                    text: "ورش قصيرة وطويلة في التصميم والتصنيع والتقنيات الإبداعية.",
+                  },
+                ],
+              },
+              products: {
+                title: "المنتجات الإبداعية",
+                subtitle: "سلاسل محدودة وقطع يدوية.",
+                blocks: [
+                  {
+                    title: "منتجات يدوية",
+                    text: "قطع تجمع بين الفن والصناعة.",
+                  },
+                ],
+              },
+              community: {
+                title: "المجتمع والفعاليات",
+                subtitle: "مساحة للتواصل وتبادل الخبرات.",
+                blocks: [
+                  {
+                    title: "المجتمع",
+                    text: "جمع أشخاص مبدعين ومهتمين بالتجربة والتصنيع.",
+                  },
+                ],
+              },
+              contact: {
+                title: "الحجز والتعاون",
+                subtitle: "لحجز المساحة أو تعريف مشروع.",
+                blocks: [
+                  {
+                    title: "الحجز",
+                    text: "حجز بالساعة أو اليوم للأفراد والمجموعات.",
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    };
 
-        let currentLang = 'fa';
-        let flipBook = null;
+    let currentLang = "fa";
+    let currentMode = "tpe";
+    let currentSectionId = "overview";
 
-        // ساخت صفحات به صورت پویا
-        function buildPagesHTML(lang) {
-            const data = catalogData[lang];
-            const pages = [];
+    const langSwitchEl = document.getElementById("langSwitch");
+    const modeTPEEl = document.getElementById("modeTPE");
+    const modeRAVANDEl = document.getElementById("modeRAVAND");
+    const sectionNavEl = document.getElementById("sectionNav");
+    const contentAreaEl = document.getElementById("contentArea");
+    const contentTitleEl = document.getElementById("contentTitle");
+    const contentSubtitleEl = document.getElementById("contentSubtitle");
+    const panelTitleMainEl = document.getElementById("panelTitleMain");
+    const panelSubtitleEl = document.getElementById("panelSubtitle");
+    const hintTextEl = document.getElementById("hintText");
+    const primaryCtaLabelEl = document.getElementById("primaryCtaLabel");
+    const secondaryCtaLabelEl = document.getElementById("secondaryCtaLabel");
+    const modeLabelEl = document.getElementById("modeLabel");
 
-            // جلد
-            pages.push(`
-                <div class="page page-cover">
-                    <div style="position:relative; z-index:2;">
-                        <div class="cover-logo">${data.cover_title}</div>
-                        <div class="cover-sub">${data.cover_sub}</div>
-                        <p style="margin-top:40px;"><i class="fa-regular fa-hand-peace"></i> ${lang === 'fa' ? 'ورق بزنید' : (lang === 'en' ? 'Turn the page' : 'اقلب الصفحة')}</p>
-                    </div>
-                </div>
-            `);
+    function renderLangLabels() {
+      const labels = contentModel[currentLang].labels;
+      panelTitleMainEl.textContent = labels.panelTitle;
+      panelSubtitleEl.textContent = labels.panelSubtitle;
+      hintTextEl.innerHTML = `<span>${currentLang === "fa" ? "راهنما" : currentLang === "ar" ? "تلميح" : "Tip"}:</span> ${labels.hint.split(":").slice(-1)[0]}`;
+      primaryCtaLabelEl.textContent = labels.primaryCta;
+      secondaryCtaLabelEl.textContent = labels.secondaryCta;
+      modeLabelEl.textContent = currentMode === "tpe" ? labels.modeLabelTPE : labels.modeLabelRAVAND;
+    }
 
-            // درباره ما
-            pages.push(`
-                <div class="page">
-                    <div class="page-header"><i class="fa-solid fa-warehouse"></i> ${data.about_title}</div>
-                    <p>${data.about_text}</p>
-                    <div class="gallery-grid">
-                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop" alt="team"><span>${lang === 'fa' ? 'تیم مهندسی' : 'Engineering Team'}</span></div>
-                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581092160609-4f4e7d1c2f3a?w=300&h=200&fit=crop" alt="lab"><span>${lang === 'fa' ? 'آزمایشگاه پیشرفته' : 'Advanced Lab'}</span></div>
-                    </div>
-                </div>
-            `);
+    function renderTabs() {
+      sectionNavEl.innerHTML = "";
+      const tabs = contentModel[currentLang].modes[currentMode].tabs;
+      tabs.forEach((tab, index) => {
+        const btn = document.createElement("button");
+        btn.className = "section-tab" + (index === 0 ? " active" : "");
+        btn.textContent = tab.label;
+        btn.dataset.sectionId = tab.id;
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".section-tab").forEach(el => el.classList.remove("active"));
+          btn.classList.add("active");
+          currentSectionId = tab.id;
+          renderSection();
+        });
+        sectionNavEl.appendChild(btn);
+      });
+      currentSectionId = tabs[0]?.id || "overview";
+    }
 
-            // تجهیزات پزشکی (با لیست)
-            let medicalHtml = `<div class="page-header"><i class="fa-solid fa-stethoscope"></i> ${data.medical_title}</div><p>${data.medical_desc}</p><ul class="product-list">`;
-            data.medical_items.forEach(item => { medicalHtml += `<li><i class="fa-solid fa-check-circle"></i> ${item}</li>`; });
-            medicalHtml += `</ul>`;
-            pages.push(`<div class="page">${medicalHtml}</div>`);
+    function renderSection() {
+      const modeData = contentModel[currentLang].modes[currentMode];
+      const section = modeData.sections[currentSectionId];
+      if (!section) return;
+      contentTitleEl.textContent = section.title;
+      contentSubtitleEl.textContent = section.subtitle || "";
+      contentAreaEl.innerHTML = "";
+      section.blocks.forEach(block => {
+        const blockEl = document.createElement("div");
+        blockEl.className = "content-block";
 
-            // خدمات صنعتی
-            pages.push(`
-                <div class="page">
-                    <div class="page-header"><i class="fa-solid fa-industry"></i> ${data.industrial_title}</div>
-                    <p>${data.industrial_desc}</p>
-                    <div class="gallery-grid">
-                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=300&h=200&fit=crop" alt="packing"><span>${lang === 'fa' ? 'دستگاه بسته‌بندی' : 'Packing Machine'}</span></div>
-                        <div class="card-img"><img src="https://images.unsplash.com/photo-1504917595217-d4bf06117361?w=300&h=200&fit=crop" alt="cnc"><span>CNC Machining</span></div>
-                    </div>
-                </div>
-            `);
+        const titleEl = document.createElement("div");
+        titleEl.className = "content-title";
+        titleEl.textContent = block.title;
+        blockEl.appendChild(titleEl);
 
-            // فب‌لب روند
-            pages.push(`
-                <div class="page">
-                    <div class="page-header"><i class="fa-solid fa-cubes"></i> ${data.fablab_title}</div>
-                    <p>${data.fablab_desc}</p>
-                    <div class="gallery-grid">
-                        <div class="card-img"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=300&h=200&fit=crop" alt="3d printer"><span>3D Printer</span></div>
-                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=300&h=200&fit=crop" alt="laser"><span>Laser Cut</span></div>
-                    </div>
-                </div>
-            `);
-
-            // محصولات شاخص (لیست)
-            let prodHtml = `<div class="page-header"><i class="fa-solid fa-boxes"></i> ${data.products_title}</div><ul class="product-list">`;
-            data.products_list.forEach(p => { prodHtml += `<li><i class="fa-solid fa-cube"></i> ${p}</li>`; });
-            prodHtml += `</ul>`;
-            pages.push(`<div class="page">${prodHtml}</div>`);
-
-            // خدمات تخصصی (لیست)
-            let servHtml = `<div class="page-header"><i class="fa-solid fa-tools"></i> ${data.services_title}</div><ul class="product-list">`;
-            data.services_list.forEach(s => { servHtml += `<li><i class="fa-solid fa-wrench"></i> ${s}</li>`; });
-            servHtml += `</ul>`;
-            pages.push(`<div class="page">${servHtml}</div>`);
-
-            // نمونه کارها (گالری)
-            let portHtml = `<div class="page-header"><i class="fa-solid fa-images"></i> ${data.portfolio_title}</div><div class="gallery-grid">`;
-            data.portfolio_items.forEach(item => {
-                portHtml += `<div class="card-img"><img src="${item.img}" alt="${item.name}"><span>${item.name}</span></div>`;
-            });
-            portHtml += `</div>`;
-            pages.push(`<div class="page">${portHtml}</div>`);
-
-            // تماس با ما (صفحه مخصوص)
-            pages.push(`
-                <div class="page page-cover" style="background: linear-gradient(145deg, #132a3f, #0f172a);">
-                    <div style="text-align:center;">
-                        <div class="cover-logo" style="font-size:2rem;">${data.contact_title}</div>
-                        <div class="contact-info-card" style="background:rgba(255,255,245,0.1); backdrop-filter:blur(8px); margin-top:30px;">
-                            <p><i class="fa-solid fa-location-dot"></i> ${data.contact_address}</p>
-                            <p><i class="fa-solid fa-phone"></i> ${data.contact_phone}</p>
-                            <p><i class="fa-solid fa-envelope"></i> ${data.contact_email}</p>
-                            <p><i class="fa-solid fa-globe"></i> ${data.contact_web}</p>
-                        </div>
-                        <div style="margin-top:40px;"><i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-linkedin"></i> <i class="fa-brands fa-telegram"></i></div>
-                        <p style="margin-top:50px;">© TPE Co. - Digital Catalog</p>
-                    </div>
-                </div>
-            `);
-            return pages;
+        if (block.text) {
+          const textEl = document.createElement("div");
+          textEl.className = "content-text";
+          textEl.textContent = block.text;
+          blockEl.appendChild(textEl);
         }
 
-        // رندر کتاب
-        function renderFlipbook(lang) {
-            const container = document.getElementById('flipbook');
-            if (!container) return;
-            const pagesHtml = buildPagesHTML(lang);
-            container.innerHTML = pagesHtml.join('');
-            
-            if (flipBook && flipBook.destroy) flipBook.destroy();
-            
-            flipBook = new St.PageFlip(container, {
-                width: 480,
-                height: 680,
-                size: "stretch",
-                minWidth: 320,
-                maxWidth: 540,
-                minHeight: 520,
-                maxHeight: 760,
-                showCover: true,
-                mobileScrollSupport: false,
-                swipeDistance: 25,
-                startZIndex: 0,
-                maxShadowOpacity: 0.6,
-                autoSize: true,
-                useMouseEvents: true
-            });
-            flipBook.loadFromHTML(document.querySelectorAll('.page'));
+        if (block.list && block.list.length) {
+          const ul = document.createElement("ul");
+          ul.className = "content-list";
+          block.list.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            ul.appendChild(li);
+          });
+          blockEl.appendChild(ul);
         }
 
-        // تابع اصلی راه‌اندازی
-        function initCatalog(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            if (lang === 'fa' || lang === 'ar') {
-                document.documentElement.dir = 'rtl';
-            } else {
-                document.documentElement.dir = 'ltr';
-            }
-            // مخفی کردن متن‌های اضافی در overlay
-            document.querySelectorAll('.fa, .en, .ar').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'inline-block');
-            
-            const overlay = document.getElementById('lang-overlay');
-            overlay.style.opacity = '0';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                const wrapper = document.getElementById('catalogWrapper');
-                wrapper.style.display = 'flex';
-                renderFlipbook(lang);
-            }, 500);
+        if (block.badges && block.badges.length) {
+          const row = document.createElement("div");
+          row.className = "badge-row";
+          block.badges.forEach((b, idx) => {
+            const badge = document.createElement("span");
+            badge.className = "badge" + (idx === 0 ? " gold" : "");
+            badge.textContent = b;
+            row.appendChild(badge);
+          });
+          blockEl.appendChild(row);
         }
 
-        window.initCatalog = initCatalog;
-    </script>
+        contentAreaEl.appendChild(blockEl);
+      });
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      modeTPEEl.classList.toggle("active", mode === "tpe");
+      modeRAVANDEl.classList.toggle("active", mode === "ravand");
+      renderLangLabels();
+      renderTabs();
+      renderSection();
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+      renderLangLabels();
+      renderTabs();
+      renderSection();
+    }
+
+    langSwitchEl.addEventListener("click", e => {
+      if (e.target.classList.contains("lang-btn")) {
+        setLang(e.target.dataset.lang);
+      }
+    });
+
+    modeTPEEl.addEventListener("click", () => setMode("tpe"));
+    modeRAVANDEl.addEventListener("click", () => setMode("ravand"));
+
+    // Initial render
+    renderLangLabels();
+    renderTabs();
+    renderSection();
+  </script>
 </body>
 </html>
