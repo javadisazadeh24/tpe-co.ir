@@ -6,7 +6,7 @@
   <title>توسعه پردازان | RAVAND FabLab · دروازه صنعت و خلاقیت</title>
   <meta name="description" content="فبلب پیشرفته توسعه پردازان | طراحی مهندسی، ساخت دیجیتال، صنایع خلاق، مهندسی معکوس">
   
-  <!-- فونت اصلی سایت (Vazirmatn) و اینتر برای متن‌های انگلیسی -->
+  <!-- فونت اصلی سایت -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -55,32 +55,17 @@
       height: 100%;
       object-fit: cover;
       z-index: -3;
-      opacity: 0.55;
+      opacity: 0.6;
     }
     .gradient-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.7), rgba(0, 0, 0, 0.85));
+      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.65), rgba(0, 0, 0, 0.85));
       z-index: -2;
     }
-    /* خطوط مهندسی متحرک (شیشه‌ای و ظریف) */
-    .engineering-lines {
-      position: fixed;
-      inset: 0;
-      background-image: 
-        repeating-linear-gradient(0deg, rgba(96, 165, 250, 0.1) 0px, rgba(96, 165, 250, 0.1) 1px, transparent 1px, transparent 70px),
-        repeating-linear-gradient(90deg, rgba(96, 165, 250, 0.1) 0px, rgba(96, 165, 250, 0.1) 1px, transparent 1px, transparent 70px);
-      background-size: 70px 70px;
-      animation: lineShift 25s linear infinite;
-      pointer-events: none;
-      z-index: -1;
-    }
-    @keyframes lineShift {
-      0% { background-position: 0 0; }
-      100% { background-position: 70px 70px; }
-    }
+    /* خطوط مهندسی حذف شد (به درخواست) */
 
-    /* ========== نوار زبان (شیشه‌ای) ========== */
+    /* ========== نوار زبان شیشه‌ای ========== */
     .lang-bar {
       position: fixed;
       top: 24px;
@@ -113,6 +98,55 @@
       box-shadow: 0 0 8px rgba(30, 64, 175, 0.5);
     }
 
+    /* ========== اسپلش اسکرین خوش‌آمد (مثل سایت اصلی) ========== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    .splash-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .splash-logo {
+      width: 180px;
+      height: 180px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+    .splash-logo img {
+      width: 120px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .splash-text {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .splash-subtext {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,255,255,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+
     /* ========== محفظه اصلی ========== */
     .gateway {
       min-height: 100vh;
@@ -131,7 +165,7 @@
       align-items: center;
     }
 
-    /* ========== بخش چپ: چرخ دایره‌ای بی‌نهایت ========== */
+    /* ========== بخش چپ: چرخ دایره‌ای بی‌نهایت (کادرهای دایره‌ای) ========== */
     .circular-zone {
       position: relative;
       display: flex;
@@ -145,13 +179,14 @@
       height: 500px;
       margin: 0 auto;
     }
-    .center-logo {
+    /* لوگوی مرکزی (ترکیب برندها) */
+    .center-brand {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 170px;
-      height: 170px;
+      width: 180px;
+      height: 180px;
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
       border-radius: 50%;
@@ -163,47 +198,56 @@
       box-shadow: var(--glass-shadow);
       z-index: 30;
     }
-    .center-logo img {
-      width: 85px;
+    .center-brand img {
+      width: 70px;
       margin-bottom: 8px;
     }
-    .center-logo span {
-      font-size: 0.75rem;
-      font-weight: 600;
-      opacity: 0.9;
+    .center-brand .brand-stack {
+      text-align: center;
+      margin-top: 8px;
     }
-    /* گره‌های گردان */
-    .rotating-item {
+    .center-brand .main-brand {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary-light);
+    }
+    .center-brand .sub-brand {
+      font-size: 0.6rem;
+      opacity: 0.7;
+    }
+
+    /* گره‌های دایره‌ای (کاملاً گرد) */
+    .rotating-node {
       position: absolute;
-      width: 145px;
-      height: 145px;
+      width: 140px;
+      height: 140px;
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
-      border-radius: 32px;
+      border-radius: 50%; /* دایره کامل */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
       border: 1px solid var(--glass-border);
       box-shadow: 0 10px 25px -8px rgba(0,0,0,0.3);
-      will-change: transform;
+      will-change: transform, left, top;
     }
-    .rotating-item i {
+    .rotating-node i {
       font-size: 2.2rem;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .rotating-item h4 {
+    .rotating-node h4 {
       font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: -0.3px;
     }
-    .rotating-item:hover {
-      transform: scale(1.08);
+    .rotating-node:hover {
+      transform: scale(1.1);
       border-color: var(--gold);
       background: rgba(30, 64, 175, 0.3);
+      box-shadow: 0 0 20px rgba(234,179,8,0.3);
     }
 
     /* ========== بخش راست: پنل اطلاعات شیشه‌ای ========== */
@@ -259,7 +303,7 @@
       background: var(--primary-dark);
       transform: translateY(-2px);
     }
-    /* اطلاعات تماس (فوتر کوچک) */
+    /* اطلاعات تماس (از سایت اصلی) */
     .contact-mini {
       margin-top: 2rem;
       padding-top: 1.5rem;
@@ -282,11 +326,7 @@
       display: flex;
       gap: 12px;
     }
-    .social-icons a {
-      font-size: 1rem;
-    }
 
-    /* موبایل */
     @media (max-width: 900px) {
       .dashboard {
         grid-template-columns: 1fr;
@@ -296,22 +336,22 @@
         width: 350px;
         height: 350px;
       }
-      .rotating-item {
-        width: 110px;
-        height: 110px;
+      .rotating-node {
+        width: 100px;
+        height: 100px;
       }
-      .rotating-item i {
+      .rotating-node i {
         font-size: 1.6rem;
       }
-      .rotating-item h4 {
+      .rotating-node h4 {
         font-size: 0.7rem;
       }
-      .center-logo {
-        width: 120px;
-        height: 120px;
+      .center-brand {
+        width: 130px;
+        height: 130px;
       }
-      .center-logo img {
-        width: 60px;
+      .center-brand img {
+        width: 55px;
       }
     }
   </style>
@@ -323,7 +363,15 @@
   <source src="videos/hero-video.webm" type="video/webm">
 </video>
 <div class="gradient-overlay"></div>
-<div class="engineering-lines"></div>
+
+<!-- اسپلش اسکرین خوش‌آمد -->
+<div class="splash-screen" id="splashScreen">
+  <div class="splash-logo">
+    <img src="images/logo.png" alt="توسعه پردازان">
+  </div>
+  <div class="splash-text" data-i18n="splash.welcome">به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید</div>
+  <div class="splash-subtext" data-i18n="splash.subtext">پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی</div>
+</div>
 
 <div class="lang-bar">
   <button class="lang-btn active" data-lang="fa">فارسی</button>
@@ -333,21 +381,24 @@
 
 <div class="gateway">
   <div class="dashboard">
-    <!-- چرخ دایره‌ای بی‌نهایت -->
+    <!-- چرخ دایره‌ای بی‌نهایت با المان‌های دایره‌ای -->
     <div class="circular-zone">
       <div class="carousel-container" id="carouselContainer">
-        <div class="center-logo">
-          <img src="images/logo-ravand.png" alt="RAVAND" onerror="this.src='https://placehold.co/80x80?text=R'">
-          <span>توسعه پردازان</span>
+        <div class="center-brand">
+          <img src="images/logo.png" alt="توسعه پردازان">
+          <div class="brand-stack">
+            <div class="main-brand">توسعه پردازان</div>
+            <div class="sub-brand">RAVAND FabLab</div>
+          </div>
         </div>
-        <!-- چهار گره توسط جاوااسکریپت به صورت داینامیک و با چرخش بی‌نهایت ساخته می‌شوند -->
+        <!-- چهار گره توسط جاوااسکریپت ساخته می‌شوند -->
       </div>
     </div>
 
     <!-- پنل اطلاعات شیشه‌ای -->
     <div class="info-glass" id="infoPanel">
       <div class="sector-title" id="panelTitle">صنایع خلاق</div>
-      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال. از ایده تا محصول در بستر فبلب پیشرفته.</div>
+      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی.</div>
       <div class="services-badge" id="panelServices">
         <span>مدلسازی سه‌بعدی</span>
         <span>دکوراسیون هنری</span>
@@ -355,7 +406,6 @@
       </div>
       <a href="#" id="panelCta" class="glass-cta">ورود به خلاقیت</a>
       
-      <!-- اطلاعات تماس از سایت اصلی -->
       <div class="contact-mini">
         <div><i class="fas fa-map-marker-alt"></i> <span data-i18n="address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span></div>
         <div><i class="fas fa-phone-alt"></i> <a href="https://wa.me/989226704205">09226704205 (واتساپ)</a></div>
@@ -371,12 +421,12 @@
 </div>
 
 <script>
-  // ========== داده‌های سه‌زبانه (خلاقانه و مهندسی‌شده) ==========
+  // ========== داده‌های سه‌زبانه ==========
   const langData = {
     fa: {
       creative: {
         title: "صنایع خلاق",
-        desc: "طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی و کاشت‌های نوری.",
+        desc: "طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی و نورپردازی هوشمند.",
         services: ["مدلسازی سه‌بعدی", "دکوراسیون هنری", "پرینت سه‌بعدی رزین", "لایتینگ هوشمند"],
         cta: "ورود به خلاقیت",
         url: "/fablab/creative"
@@ -402,6 +452,7 @@
         cta: "مشاهده پورتال",
         url: "/fablab/explore"
       },
+      splash: { welcome: "به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید", subtext: "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی" },
       address: "زاهدان، بلوار دانشگاه، پارک علم و فناوری"
     },
     en: {
@@ -433,6 +484,7 @@
         cta: "Explore Portal",
         url: "/fablab/explore"
       },
+      splash: { welcome: "Welcome to TPE Co., Knowledge-Based Technical & Engineering Company", subtext: "Leading in engineering design, prototyping and numerical simulation" },
       address: "Zahedan, University Blvd, Science & Technology Park"
     },
     ar: {
@@ -464,61 +516,54 @@
         cta: "استكشاف البوابة",
         url: "/fablab/explore"
       },
+      splash: { welcome: "مرحبًا بكم في شركة التطوير الفنية والهندسية", subtext: "الريادة في التصميم الهندسي، النماذج الأولية والمحاكاة العددية" },
       address: "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا"
     }
   };
 
   let currentLang = 'fa';
   let currentSector = 'creative';
-  let rotationAnimation = null;
+  let rotationFrame = null;
+  let autoHighlightTimer = null;
   let isHovering = false;
+  let angleOffset = 0;
 
-  // عناصر
-  const container = document.getElementById('carouselContainer');
-  const panelTitle = document.getElementById('panelTitle');
-  const panelDesc = document.getElementById('panelDesc');
-  const panelServices = document.getElementById('panelServices');
-  const panelCta = document.getElementById('panelCta');
-
-  // لیست بخش‌ها
+  // لیست بخش‌ها و رنگ‌ها و آیکون‌ها
   const sectorsList = ['creative', 'industrial', 'medical', 'catalog'];
-  // رنگ‌ها (برای آیکون)
   const sectorColors = {
     creative: '#a855f7',
     industrial: '#f97316',
     medical: '#06b6d4',
     catalog: '#3b82f6'
   };
-  // آیکون‌ها
   const sectorIcons = {
     creative: 'fas fa-palette',
     industrial: 'fas fa-industry',
     medical: 'fas fa-microscope',
     catalog: 'fas fa-qrcode'
   };
+  // زوایای پایه برای چهار نقطه (درجه)
+  const baseAngles = {
+    creative: -90,   // بالا
+    industrial: 90,  // پایین
+    medical: 0,      // راست
+    catalog: 180     // چپ
+  };
+  const radius = 180; // شعاع بر حسب px
 
-  // ایجاد گره‌ها در موقعیت‌های دایره (۴ نقطه با فاصله ۹۰ درجه)
+  // ایجاد گره‌های دایره‌ای
   function createNodes() {
-    const radius = 180; // شعاع چرخش بر حسب px
-    const angles = [ -90, 0, 90, 180 ]; // درجه (بالا، راست، پایین، چپ) - با توجه به RTL کمی تنظیم
-    // برای RTL بهتر است: creative بالا، industrial پایین، medical راست، catalog چپ (اما با چرخش طبیعی)
-    // ترتیب: creative (زاویه -90), industrial (90), medical (0), catalog (180)
-    const order = ['creative', 'industrial', 'medical', 'catalog'];
-    const angleMap = {
-      creative: -90,
-      industrial: 90,
-      medical: 0,
-      catalog: 180
-    };
-    order.forEach(sector => {
-      const angleRad = (angleMap[sector] * Math.PI) / 180;
+    const container = document.getElementById('carouselContainer');
+    if (!container) return;
+    sectorsList.forEach(sector => {
+      const node = document.createElement('div');
+      node.className = 'rotating-node';
+      node.setAttribute('data-sector', sector);
+      const angleRad = (baseAngles[sector] * Math.PI) / 180;
       const x = Math.cos(angleRad) * radius;
       const y = Math.sin(angleRad) * radius;
-      const node = document.createElement('div');
-      node.className = 'rotating-item';
-      node.setAttribute('data-sector', sector);
-      node.style.left = `calc(50% + ${x}px - 72.5px)`;
-      node.style.top = `calc(50% + ${y}px - 72.5px)`;
+      node.style.left = `calc(50% + ${x}px - 70px)`; // 70 = نصف عرض 140px
+      node.style.top = `calc(50% + ${y}px - 70px)`;
       node.innerHTML = `
         <i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i>
         <h4>${langData[currentLang][sector].title}</h4>
@@ -531,104 +576,79 @@
   function updatePanel(sector) {
     const data = langData[currentLang][sector];
     if (!data) return;
-    panelTitle.innerText = data.title;
-    panelDesc.innerText = data.desc;
-    panelServices.innerHTML = data.services.map(s => `<span>${s}</span>`).join('');
-    panelCta.innerText = data.cta + ' ←';
-    panelCta.href = data.url;
+    document.getElementById('panelTitle').innerText = data.title;
+    document.getElementById('panelDesc').innerText = data.desc;
+    document.getElementById('panelServices').innerHTML = data.services.map(s => `<span>${s}</span>`).join('');
+    const cta = document.getElementById('panelCta');
+    cta.innerText = data.cta + ' ←';
+    cta.href = data.url;
     currentSector = sector;
   }
 
-  // هایلایت گره (بزرگنمایی و بروزرسانی پنل)
+  // هایلایت گره
   function highlightNode(sector) {
-    const nodes = document.querySelectorAll('.rotating-item');
+    const nodes = document.querySelectorAll('.rotating-node');
     nodes.forEach(node => {
       if (node.dataset.sector === sector) {
         node.style.transform = 'scale(1.08)';
         node.style.borderColor = '#eab308';
-        node.style.backgroundColor = 'rgba(30, 64, 175, 0.25)';
+        node.style.backgroundColor = 'rgba(30, 64, 175, 0.3)';
+        node.style.boxShadow = '0 0 20px rgba(234,179,8,0.4)';
       } else {
         node.style.transform = '';
         node.style.borderColor = '';
         node.style.backgroundColor = '';
+        node.style.boxShadow = '';
       }
     });
     updatePanel(sector);
   }
 
-  // چرخش بی‌نهایت آرام (دور مرکز)
+  // چرخش بی‌نهایت آرام (حرکت دایره‌ای همزمان همه گره‌ها)
   function startInfiniteRotation() {
-    const nodes = document.querySelectorAll('.rotating-item');
-    if (nodes.length === 0) return;
-    // محاسبه زاویه اولیه هر المان نسبت به مرکز و چرخاندن تدریجی همه با هم به صورت یکپارچه
-    // ساده‌ترین روش: چرخش کل کانتینر؟ نه، چون center-logo نباید بچرخد. بهتر است هر گره را روی یک دایره فرضی بچرخانیم.
-    // برای چرخش بی‌نهایت، زاویه هر گره را به صورت پیوسته افزایش می‌دهیم.
-    let angleOffset = 0;
-    const radius = 180;
-    const sectorsOrder = ['creative', 'industrial', 'medical', 'catalog'];
-    const anglesRef = { creative: -90, industrial: 90, medical: 0, catalog: 180 };
-    
-    function rotateNodes() {
-      angleOffset = (angleOffset + 0.2) % 360; // سرعت آرام
-      sectorsOrder.forEach(sector => {
-        const node = document.querySelector(`.rotating-item[data-sector="${sector}"]`);
-        if (!node) return;
-        const baseAngle = anglesRef[sector];
-        const newAngleRad = ((baseAngle + angleOffset) * Math.PI) / 180;
-        const x = Math.cos(newAngleRad) * radius;
-        const y = Math.sin(newAngleRad) * radius;
-        node.style.left = `calc(50% + ${x}px - 72.5px)`;
-        node.style.top = `calc(50% + ${y}px - 72.5px)`;
-      });
-      requestAnimationFrame(() => {
-        if (!isHovering) {
-          rotationFrame = requestAnimationFrame(rotateNodes);
-        }
-      });
-    }
-    let rotationFrame = requestAnimationFrame(rotateNodes);
-    // ذخیره برای توقف بعدی
-    window.currentRotationFrame = rotationFrame;
-    // تابع توقف
-    window.stopRotation = () => {
-      if (window.currentRotationFrame) cancelAnimationFrame(window.currentRotationFrame);
-    };
-    window.resumeRotation = () => {
+    function rotate() {
       if (!isHovering) {
-        if (window.currentRotationFrame) cancelAnimationFrame(window.currentRotationFrame);
-        rotationFrame = requestAnimationFrame(rotateNodes);
-        window.currentRotationFrame = rotationFrame;
+        angleOffset = (angleOffset + 0.25) % 360; // سرعت ملایم
+        sectorsList.forEach(sector => {
+          const node = document.querySelector(`.rotating-node[data-sector="${sector}"]`);
+          if (!node) return;
+          const newAngle = baseAngles[sector] + angleOffset;
+          const rad = (newAngle * Math.PI) / 180;
+          const x = Math.cos(rad) * radius;
+          const y = Math.sin(rad) * radius;
+          node.style.left = `calc(50% + ${x}px - 70px)`;
+          node.style.top = `calc(50% + ${y}px - 70px)`;
+        });
       }
-    };
+      rotationFrame = requestAnimationFrame(rotate);
+    }
+    rotationFrame = requestAnimationFrame(rotate);
   }
 
-  // اتوهایلایت با چرخش (هر ۵ ثانیه یک بخش برجسته شود)
-  let autoHighlightTimer = null;
-  let autoIndex = 0;
+  // اتو هایلایت (چرخش دسته‌ها)
   function startAutoHighlight() {
     if (autoHighlightTimer) clearInterval(autoHighlightTimer);
+    let idx = 0;
     autoHighlightTimer = setInterval(() => {
       if (!isHovering) {
-        autoIndex = (autoIndex + 1) % sectorsList.length;
-        highlightNode(sectorsList[autoIndex]);
+        idx = (idx + 1) % sectorsList.length;
+        highlightNode(sectorsList[idx]);
       }
     }, 5500);
   }
 
-  // راه‌اندازی رویدادها
+  // رویدادهای هاور و کلیک
   function bindEvents() {
-    const nodes = document.querySelectorAll('.rotating-item');
+    const nodes = document.querySelectorAll('.rotating-node');
     nodes.forEach(node => {
       node.addEventListener('mouseenter', () => {
         isHovering = true;
         if (autoHighlightTimer) clearInterval(autoHighlightTimer);
-        if (window.stopRotation) window.stopRotation();
         highlightNode(node.dataset.sector);
       });
       node.addEventListener('mouseleave', () => {
         isHovering = false;
         startAutoHighlight();
-        if (window.resumeRotation) window.resumeRotation();
       });
       node.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -639,46 +659,54 @@
     });
   }
 
-  // تغییر زبان
+  // تغییر زبان (بروزرسانی همه چیز)
   function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'fa' ? 'fa' : 'en');
     document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-    // به‌روزرسانی عنوان گره‌ها
-    const nodes = document.querySelectorAll('.rotating-item');
+    // به‌روزرسانی متن گره‌ها
+    const nodes = document.querySelectorAll('.rotating-node');
     nodes.forEach(node => {
       const sector = node.dataset.sector;
       const title = langData[lang][sector].title;
-      const iconHtml = `<i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i>`;
-      node.innerHTML = `${iconHtml}<h4>${title}</h4>`;
+      node.innerHTML = `<i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i><h4>${title}</h4>`;
     });
-    // به‌روزرسانی آدرس در پنل تماس
+    // به‌روزرسانی اسپلش و آدرس
+    const splashWelcome = document.querySelector('[data-i18n="splash.welcome"]');
+    const splashSub = document.querySelector('[data-i18n="splash.subtext"]');
     const addressSpan = document.querySelector('[data-i18n="address"]');
+    if (splashWelcome) splashWelcome.innerText = langData[lang].splash.welcome;
+    if (splashSub) splashSub.innerText = langData[lang].splash.subtext;
     if (addressSpan) addressSpan.innerText = langData[lang].address;
     updatePanel(currentSector);
   }
 
-  // اسپلش و راه‌اندازی اولیه
+  // اسپلش و شروع
   window.addEventListener('load', () => {
     createNodes();
     bindEvents();
     startInfiniteRotation();
     startAutoHighlight();
     highlightNode('creative');
-    // تنظیم زبان پیش‌فرض
     setLanguage('fa');
     // انیمیشن ورود با GSAP
-    gsap.fromTo('.dashboard', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });
-    gsap.fromTo('.center-logo', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 0.2, ease: "back.out(0.6)" });
+    gsap.fromTo('.dashboard', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" });
+    gsap.fromTo('.center-brand', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 0.2, ease: "back.out(0.6)" });
+    // اسپلش اسکرین
+    setTimeout(() => {
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        splash.classList.add('hide');
+        setTimeout(() => splash.style.display = 'none', 800);
+      }
+    }, 2500);
   });
 
   // دکمه‌های زبان
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      setLanguage(btn.dataset.lang);
-    });
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
   });
 </script>
 </body>
