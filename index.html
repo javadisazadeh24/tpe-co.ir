@@ -1,51 +1,875 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توسعه پردازان | فبلب روند (RAVAND FabLab)</title>
-    <style>
-        /* استایل‌های پایه و تم شیشه‌ای */
-        :root { --primary: #1e40af; --bg: #0f172a; --text: #ffffff; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Vazirmatn', sans-serif; overflow-x: hidden; }
-        
-        /* اینترو (Gateway) */
-        #gateway { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, #1e3a8a, #0f172a); transition: opacity 1s; }
-        .about-text { max-width: 600px; text-align: center; margin-bottom: 30px; line-height: 1.8; opacity: 0.8; }
-        .btn-enter { padding: 15px 40px; background: white; color: var(--primary); border-radius: 50px; cursor: pointer; font-weight: bold; }
-
-        /* بخش اصلی سایت (بعد از ورود) */
-        #main-content { display: none; padding: 50px; }
-        .grid-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>توسعه پردازان | RAVAND FabLab · دروازه نوآوری صنعتی و خلاق</title>
+  
+  <!-- SEO Meta Tags (پیشرفته و کامل) -->
+  <meta name="description" content="شرکت دانش‌بنیان توسعه پردازان (TPE) و فبلب تخصصی RAVAND FabLab – طراحی مهندسی، نمونه‌سازی سریع، شبیه‌سازی عددی، مهندسی معکوس، ماشین‌سازی CNC، پرینت سه‌بعدی صنعتی و تجهیزات پزشکی. تبدیل ایده به محصول از کانسپت تا تولید نهایی.">
+  <meta name="keywords" content="توسعه پردازان, RAVAND FabLab, TPE, فبلب, ساخت دیجیتال, مهندسی معکوس, طراحی صنعتی, CNC, پرینت سه بعدی, نمونه سازی, شبیه سازی عددی, تجهیزات پزشکی, دندانپزشکی دیجیتال, صنایع خلاق, پارک علم و فناوری">
+  <meta name="author" content="شرکت دانش بنیان فنی و مهندسی توسعه پردازان">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://tpe-co.ir/fablab">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="توسعه پردازان | RAVAND FabLab – دروازه نوآوری صنعتی و خلاق">
+  <meta property="og:description" content="فبلب نسل جدید: از ایده تا محصول در بستر مهندسی دیجیتال. طراحی، شبیه‌سازی، نمونه‌سازی و تولید.">
+  <meta property="og:image" content="https://tpe-co.ir/images/logo-ravand.png">
+  <meta property="og:url" content="https://tpe-co.ir/fablab">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:site_name" content="توسعه پردازان | RAVAND FabLab">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RAVAND FabLab – ساخت دیجیتال و مهندسی معکوس">
+  <meta name="twitter:description" content="پیشرو در طراحی مهندسی، نمونه‌سازی و فبلب خصوصی در ایران">
+  
+  <!-- Hreflang چندزبانه (SEO بین‌المللی) -->
+  <link rel="alternate" hreflang="fa" href="https://tpe-co.ir/fablab">
+  <link rel="alternate" hreflang="en" href="https://tpe-co.ir/en/fablab">
+  <link rel="alternate" hreflang="ar" href="https://tpe-co.ir/ar/fablab">
+  <link rel="alternate" hreflang="x-default" href="https://tpe-co.ir/fablab">
+  
+  <!-- Schema.org Organization + LocalBusiness (SEO پیشرفته) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+    "alternateName": "توسعه پردازان (TPE)",
+    "url": "https://tpe-co.ir",
+    "logo": "https://tpe-co.ir/images/logo.png",
+    "description": "شرکت توسعه پردازان ارائه‌دهنده خدمات طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی، ساخت دیجیتال و فبلب خصوصی RAVAND FabLab",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "بلوار دانشگاه، پارک علم و فناوری",
+      "addressLocality": "زاهدان",
+      "addressRegion": "سیستان و بلوچستان",
+      "addressCountry": "IR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "usb.tpe.co@gmail.com",
+      "telephone": "+989226704205",
+      "contactType": "technical support",
+      "availableLanguage": ["fa", "en", "ar"]
+    },
+    "sameAs": [
+      "https://instagram.com/TPE_CO",
+      "https://www.linkedin.com/company/tpe-co",
+      "https://wa.me/989226704205",
+      "https://t.me/tpe_co"
+    ]
+  }
+  </script>
+  
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #60a5fa;
+      --accent: #dc2626;
+      --gold: #eab308;
+      --creative: #a855f7;
+      --industrial: #f97316;
+      --medical: #06b6d4;
+      --catalog: #3b82f6;
+      --shop: #ec489a;
+      --work: #10b981;
+      --resume: #facc15;
+      --glass-bg: rgba(15, 25, 45, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --text-light: #f8fafc;
+      --text-dim: #cbd5e1;
+    }
+    body {
+      font-family: 'Vazirmatn', 'Inter', sans-serif;
+      background: #050a15;
+      color: var(--text-light);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    
+    /* ========== ویدئوی پس‌زمینه (مشابه سایت اصلی) ========== */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
+    .dark-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.7), rgba(0, 0, 0, 0.85));
+      z-index: -2;
+      pointer-events: none;
+    }
+    
+    /* نوار زبان شیشه‌ای تیره */
+    .lang-bar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      gap: 8px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      padding: 5px 16px;
+      border-radius: 60px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-weight: 600;
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 40px;
+      transition: 0.2s;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 0 8px rgba(30, 64, 175, 0.5);
+    }
+    
+    /* اسپلش اسکرین (مشابه سایت اصلی) */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    .splash-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .splash-logos {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 25px;
+    }
+    .splash-logos img {
+      height: 90px;
+      width: auto;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .splash-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      margin-bottom: 8px;
+      padding: 0 20px;
+    }
+    .splash-subtext {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    /* گیت وی اصلی */
+    .gateway {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .dashboard {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    /* چرخ دایره‌ای */
+    .circular-zone {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 600px;
+    }
+    .carousel-container {
+      position: relative;
+      width: min(620px, 85vw);
+      height: min(620px, 85vw);
+      margin: 0 auto;
+    }
+    .center-brand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(140px, 28vw);
+      height: min(140px, 28vw);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      z-index: 30;
+      text-align: center;
+      padding: 10px;
+    }
+    .center-brand img {
+      width: min(55px, 12vw);
+      margin-bottom: 6px;
+      border-radius: 12px;
+    }
+    .center-brand .brand-name {
+      font-size: clamp(0.65rem, 3vw, 0.75rem);
+      font-weight: 700;
+      color: var(--primary-light);
+    }
+    .center-brand .parent {
+      font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+      opacity: 0.7;
+    }
+    
+    .rotating-node {
+      position: absolute;
+      width: min(110px, 22vw);
+      height: min(110px, 22vw);
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.3);
+      will-change: transform, left, top;
+      padding: 8px;
+    }
+    .rotating-node i {
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+      margin-bottom: 5px;
+    }
+    .rotating-node h4 {
+      font-size: clamp(0.6rem, 2.5vw, 0.7rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .rotating-node:hover {
+      transform: scale(1.08);
+      border-color: var(--gold);
+      background: rgba(30, 64, 175, 0.4);
+      box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
+    }
+    
+    /* پنل اطلاعات شیشه‌ای */
+    .info-glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 36px;
+      padding: 1.8rem;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+    .sector-title {
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sector-desc {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+    .services-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 1rem 0 1.2rem;
+    }
+    .services-badge span {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    .glass-cta {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 8px 22px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .contact-mini {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--glass-border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      align-items: center;
+    }
+    .contact-mini a {
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .contact-mini a:hover {
+      color: var(--primary-light);
+    }
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+    
+    /* ریسپانسیو موبایل (بهبود یافته) */
+    @media (max-width: 1000px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .circular-zone {
+        min-height: auto;
+      }
+      .carousel-container {
+        width: min(500px, 80vw);
+        height: min(500px, 80vw);
+      }
+      .rotating-node {
+        width: min(100px, 20vw);
+        height: min(100px, 20vw);
+      }
+      .rotating-node h4 {
+        font-size: clamp(0.55rem, 2.2vw, 0.65rem);
+      }
+      .rotating-node i {
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+      }
+    }
+    @media (max-width: 550px) {
+      .gateway {
+        padding: 1rem;
+      }
+      .carousel-container {
+        width: min(380px, 85vw);
+        height: min(380px, 85vw);
+      }
+      .rotating-node {
+        width: min(80px, 18vw);
+        height: min(80px, 18vw);
+      }
+      .rotating-node i {
+        font-size: 1.2rem;
+      }
+      .rotating-node h4 {
+        font-size: 0.55rem;
+      }
+      .info-glass {
+        padding: 1.2rem;
+      }
+      .sector-title {
+        font-size: 1.2rem;
+      }
+      .lang-bar {
+        top: 12px;
+        left: 12px;
+        padding: 4px 12px;
+      }
+      .splash-logos img {
+        height: 60px;
+      }
+      .splash-text {
+        font-size: 1.2rem;
+      }
+    }
+    /* بهبود لمسی برای موبایل */
+    @media (hover: none) and (pointer: coarse) {
+      .rotating-node:active {
+        transform: scale(0.98);
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="gateway">
-        <h1>شرکت دانش بنیان توسعه پردازان</h1>
-        <p class="about-text">بستری برای تبدیل ایده به واقعیت صنعتی. فبلب «روند» بازوی عملیاتی ما برای نمونه‌سازی سریع، مهندسی معکوس و ساخت دیجیتال است. تخصص ما، تحقق پیچیده‌ترین ایده‌های صنعتی شماست.</p>
-        <div class="btn-enter" onclick="enterSite()">ورود به اکوسیستم</div>
-    </div>
+<video autoplay muted loop playsinline class="bg-video" poster="images/hero.jpg">
+  <source src="videos/BGVideo.mp4" type="video/mp4">
+  <source src="videos/hero-video.mp4" type="video/mp4">
+  مرورگر شما از ویدئو پشتیبانی نمی‌کند.
+</video>
+<div class="dark-overlay"></div>
 
-    <div id="main-content">
-        <nav><h2>RAVAND FabLab | دسته‌بندی خدمات</h2></nav>
-        <div class="grid-categories">
-            <div class="card"><h3>طراحی صنعتی و تولید</h3><p>طراحی تا ساخت دیجیتال</p></div>
-            <div class="card"><h3>تجهیزات پزشکی</h3><p>تولید دقیق قطعات حساس</p></div>
-            <div class="card"><h3>مهندسی معکوس</h3><p>بازآفرینی سیستم‌های صنعتی</p></div>
-            <div class="card"><h3>کاتالوگ دیجیتال</h3><a href="/catalog/" style="color:white">مشاهده پروژه‌ها</a></div>
+<!-- اسپلش اسکرین با دو لوگو (مشابه سایت اصلی) -->
+<div class="splash-screen" id="splashScreen">
+  <div class="splash-logos">
+    <img src="images/logo.png" alt="توسعه پردازان" onerror="this.src='https://placehold.co/90x90?text=TPE'">
+    <img src="images/logo-ravand.png" alt="RAVAND FabLab" onerror="this.src='https://placehold.co/90x90?text=R'">
+  </div>
+  <div class="splash-text" data-i18n="splash.welcome">به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید</div>
+  <div class="splash-subtext" data-i18n="splash.subtext">پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی</div>
+</div>
+
+<div class="lang-bar">
+  <button class="lang-btn active" data-lang="fa">فارسی</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="ar">العربية</button>
+</div>
+
+<div class="gateway">
+  <div class="dashboard">
+    <div class="circular-zone">
+      <div class="carousel-container" id="carouselContainer">
+        <div class="center-brand">
+          <img src="images/logo-ravand.png" alt="RAVAND FabLab" onerror="this.src='https://placehold.co/65x65?text=R'">
+          <div class="brand-name">RAVAND FabLab</div>
+          <div class="parent">توسعه پردازان</div>
         </div>
+      </div>
     </div>
+    <div class="info-glass" id="infoPanel">
+      <div class="sector-title" id="panelTitle">واحد صنایع خلاق</div>
+      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال با پیشرفته‌ترین تکنیک‌های ساخت دیجیتال.</div>
+      <div class="services-badge" id="panelServices">
+        <span>مدلسازی سه‌بعدی</span>
+        <span>دکوراسیون هنری</span>
+        <span>پرینت سه‌بعدی رزین</span>
+      </div>
+      <a href="#" id="panelCta" class="glass-cta">ورود به واحد صنایع خلاق</a>
+      <div class="contact-mini">
+        <div><i class="fas fa-map-marker-alt"></i> <span data-i18n="address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span></div>
+        <div><i class="fas fa-phone-alt"></i> <a href="tel:09226704205">0922 670 4205</a></div>
+        <div><i class="fas fa-envelope"></i> usb.tpe.co@gmail.com</div>
+        <div class="social-icons">
+          <a href="https://instagram.com/TPE_CO" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/tpe-co" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/989226704205" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/tpe_co" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script>
-        function enterSite() {
-            document.getElementById('gateway').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('gateway').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            }, 1000);
-        }
-    </script>
+<script>
+  // ========== داده‌های سه‌زبانه کامل (برگرفته از فایل اصلی سایت) ==========
+  const langData = {
+    fa: {
+      creative: {
+        title: "واحد صنایع خلاق",
+        desc: "طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی و نورپردازی هوشمند. ما در فبلب روند، ایده‌های خلاقانه شما را به محصولاتی منحصربه‌فرد تبدیل می‌کنیم.",
+        services: ["طراحی مفهومی و جزئیات اجرایی", "مدل‌سازی سه‌بعدی پیشرفته", "پرینت سه‌بعدی رزین و فیلامنت", "مهندسی معکوس آثار هنری", "لایتینگ هوشمند و دکوراسیون"],
+        cta: "ورود به واحد صنایع خلاق",
+        url: "/fablab/creative"
+      },
+      industrial: {
+        title: "واحد طراحی صنعتی و تولید",
+        desc: "مهندسی معکوس دقیق، ماشین‌کاری CNC چندمحوره، بهینه‌سازی خطوط تولید و ساخت قطعات یدکی با استانداردهای بین‌المللی. ما مسیر تبدیل ایده به محصول صنعتی را برای شما هموار می‌کنیم.",
+        services: ["طراحی صنعتی و مهندسی معکوس", "ماشین‌کاری CNC 5 محور", "طراحی قالب و فیکسچر", "بهینه‌سازی خط تولید", "اسکن سه‌بعدی صنعتی"],
+        cta: "ورود به واحد طراحی صنعتی",
+        url: "/fablab/industrial"
+      },
+      medical: {
+        title: "واحد تجهیزات پزشکی و دندانپزشکی",
+        desc: "تعمیرات تخصصی، مهندسی معکوس قطعات پزشکی، ساخت شبیه‌سازهای آموزشی، مدل‌های آناتومیک سفارشی و قطعات جایگزین با دقت میکرون. همراهی مطمئن برای مراکز درمانی و آموزشی.",
+        services: ["مهندسی معکوس قطعات پزشکی", "مدل‌های آناتومیک سه‌بعدی", "شبیه‌سازهای آموزشی", "قطعات جایگزین دندانپزشکی", "تبدیل تصاویر CT به CAD"],
+        cta: "خدمات تجهیزات پزشکی و دندانپزشکی",
+        url: "/fablab/medical"
+      },
+      catalog: {
+        title: "کاتالوگ دیجیتال",
+        desc: "کتابخانه تعاملی شامل بیش از ۲۵۰ محصول و پروژه واقعی از واحدهای صنایع خلاق، طراحی صنعتی و تجهیزات پزشکی. نمونه کارهای فبلب روند و توسعه پردازان را اینجا مشاهده کنید.",
+        services: ["قطعات صنعتی", "مدل‌های پزشکی", "طراحی‌های خلاقانه", "پروژه‌های مهندسی معکوس", "فایل‌های سه‌بعدی قابل دانلود"],
+        cta: "مشاهده کاتالوگ",
+        url: "/products.html"
+      },
+      shop: {
+        title: "فروشگاه محصولات",
+        desc: "محصولات دیجیتال، قطعات صنعتی، مدل‌های سه‌بعدی آماده و خدمات ساخت دیجیتال را به صورت آنلاین سفارش دهید. جدیدترین دستاوردهای فبلب روند را در فروشگاه ما ببینید.",
+        services: ["قطعات پرینت سه‌بعدی", "مدل‌های صنعتی و پزشکی", "فایل‌های سه‌بعدی", "خدمات ساخت سفارشی"],
+        cta: "مشاهده فروشگاه",
+        url: "/shop.html"
+      },
+      resume: {
+        title: "رزومه پرسنل متخصص",
+        desc: "تیم فبلب روند متشکل از مهندسان مکانیک، برق، مواد و نرم‌افزار با سال‌ها تجربه در طراحی، ساخت و مهندسی معکوس. رزومه تخصصی اعضای تیم را مشاهده کنید.",
+        services: ["مهندسی مکانیک و ساخت", "مهندسی برق و الکترونیک", "مهندسی مواد و ساخت افزودنی", "نرم‌افزار و شبیه‌سازی عددی"],
+        cta: "مشاهده رزومه تیم",
+        url: "/resume.html"
+      },
+      work: {
+        title: "همکاری با ما",
+        desc: "اگر صاحب ایده، طراح، مهندس یا مجموعه صنعتی هستید و می‌خواهید در کنار تیم تخصصی توسعه پردازان به نوآوری بپردازید، فرم همکاری را پر کنید. ما از طرح‌های دانش‌بنیان و استارتاپ‌های صنعتی حمایت می‌کنیم.",
+        services: ["ارسال ایده و پروژه", "همکاری فنی و مهندسی", "عضو شوید در شبکه فبلب", "درخواست مشاوره تخصصی"],
+        cta: "ثبت درخواست همکاری",
+        url: "/work-with-us.html"
+      },
+      splash: { welcome: "به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید", subtext: "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی" },
+      address: "زاهدان، بلوار دانشگاه، پارک علم و فناوری"
+    },
+    en: {
+      creative: {
+        title: "Creative Industries Unit",
+        desc: "Parametric design, organic vases, unique trophies, decorative & digital art. Utilizing advanced additive manufacturing and smart lighting.",
+        services: ["Conceptual & Detail Design", "Advanced 3D Modeling", "Resin & Filament 3D Printing", "Reverse Engineering for Art", "Smart Lighting & Decor"],
+        cta: "Enter Creative Unit",
+        url: "/fablab/creative"
+      },
+      industrial: {
+        title: "Industrial Design & Production Unit",
+        desc: "Precision reverse engineering, multi-axis CNC machining, production line optimization, and spare parts manufacturing with international standards.",
+        services: ["Industrial Design & Reverse Eng.", "5-axis CNC Machining", "Mold & Fixture Design", "Production Line Optimization", "Industrial 3D Scanning"],
+        cta: "Enter Industrial Unit",
+        url: "/fablab/industrial"
+      },
+      medical: {
+        title: "Medical & Dental Equipment Unit",
+        desc: "Specialized repairs, reverse engineering of medical parts, educational simulators, custom anatomical models, and micron-precision replacement components.",
+        services: ["Medical Reverse Engineering", "3D Anatomical Models", "Educational Simulators", "Dental Replacement Parts", "CT to CAD Conversion"],
+        cta: "Medical Services",
+        url: "/fablab/medical"
+      },
+      catalog: {
+        title: "Digital Catalog",
+        desc: "Interactive library featuring over 250 real products and projects from Creative, Industrial Design, and Medical Equipment units.",
+        services: ["Industrial Parts", "Medical Models", "Creative Designs", "Reverse Engineering Projects", "3D Files"],
+        cta: "View Catalog",
+        url: "/products.html"
+      },
+      shop: {
+        title: "Products Shop",
+        desc: "Order digital products, industrial parts, ready-to-use 3D models, and digital fabrication services online.",
+        services: ["3D Printed Parts", "Industrial & Medical Models", "3D Files", "Custom Fabrication"],
+        cta: "Visit Shop",
+        url: "/shop.html"
+      },
+      resume: {
+        title: "Expert Team Resume",
+        desc: "RAVAND FabLab team consists of mechanical, electrical, materials and software engineers with years of experience in design, manufacturing and reverse engineering.",
+        services: ["Mechanical & Manufacturing Eng.", "Electrical & Electronics Eng.", "Materials & Additive Manufacturing", "Software & Numerical Simulation"],
+        cta: "View Team Resume",
+        url: "/resume.html"
+      },
+      work: {
+        title: "Collaborate with Us",
+        desc: "If you have an idea, design, or industrial project, join TPE's expert team. We support knowledge-based startups and industrial innovations.",
+        services: ["Submit Idea/Project", "Technical Collaboration", "Join FabLab Network", "Request Consultation"],
+        cta: "Request Collaboration",
+        url: "/work-with-us.html"
+      },
+      splash: { welcome: "Welcome to TPE Co., Knowledge-Based Technical & Engineering Company", subtext: "Leading in engineering design, prototyping and numerical simulation" },
+      address: "Zahedan, University Blvd, Science & Technology Park"
+    },
+    ar: {
+      creative: {
+        title: "وحدة الصناعات الإبداعية",
+        desc: "التصميم البارامتري، المزهريات العضوية، الجوائز الفريدة، المنتجات الديكورية والفن الرقمي. باستخدام أحدث تقنيات التصنيع والإضاءة الذكية.",
+        services: ["التصميم المفاهيمي والتفصيلي", "النمذجة ثلاثية الأبعاد المتقدمة", "الطباعة ثلاثية الأبعاد بالراتنج والخيوط", "الهندسة العكسية للأعمال الفنية", "الإضاءة الذكية والديكور"],
+        cta: "الدخول إلى الوحدة الإبداعية",
+        url: "/fablab/creative"
+      },
+      industrial: {
+        title: "وحدة التصميم الصناعي والإنتاج",
+        desc: "الهندسة العكسية الدقيقة، التصنيع باستخدام الحاسب الآلي متعدد المحاور، تحسين خطوط الإنتاج، وتصنيع قطع الغيار وفق المعايير الدولية.",
+        services: ["التصميم الصناعي والهندسة العكسية", "التصنيع باستخدام الحاسب الآلي 5 محاور", "تصميم القوالب والتجهيزات", "تحسين خط الإنتاج", "المسح ثلاثي الأبعاد الصناعي"],
+        cta: "الدخول إلى الوحدة الصناعية",
+        url: "/fablab/industrial"
+      },
+      medical: {
+        title: "وحدة المعدات الطبية وطب الأسنان",
+        desc: "الإصلاحات المتخصصة، الهندسة العكسية للأجزاء الطبية، أجهزة المحاكاة التعليمية، النماذج التشريحية المخصصة، والأجزاء البديلة بدقة متناهية.",
+        services: ["الهندسة العكسية الطبية", "النماذج التشريحية ثلاثية الأبعاد", "أجهزة المحاكاة التعليمية", "أجزاء طب الأسنان البديلة", "تحويل CT إلى CAD"],
+        cta: "خدمات المعدات الطبية وطب الأسنان",
+        url: "/fablab/medical"
+      },
+      catalog: {
+        title: "الكتالوج الرقمي",
+        desc: "مكتبة تفاعلية تضم أكثر من 250 منتجًا ومشروعًا حقيقيًا من وحدات الصناعات الإبداعية والتصميم الصناعي والمعدات الطبية.",
+        services: ["قطع صناعية", "نماذج طبية", "تصاميم إبداعية", "مشاريع الهندسة العكسية", "ملفات ثلاثية الأبعاد"],
+        cta: "عرض الكتالوج",
+        url: "/products.html"
+      },
+      shop: {
+        title: "متجر المنتجات",
+        desc: "اطلب المنتجات الرقمية والقطع الصناعية والنماذج ثلاثية الأبعاد الجاهزة وخدمات التصنيع الرقمي عبر الإنترنت.",
+        services: ["أجزاء مطبوعة ثلاثية الأبعاد", "نماذج صناعية وطبية", "ملفات ثلاثية الأبعاد", "تصنيع مخصص"],
+        cta: "زيارة المتجر",
+        url: "/shop.html"
+      },
+      resume: {
+        title: "سيرة الفريق المتخصص",
+        desc: "يتكون فريق فبلب روند من مهندسي ميكانيكا وكهرباء ومواد وبرمجيات ذوي خبرة في التصميم والتصنيع والهندسة العكسية.",
+        services: ["هندسة الميكانيكا والتصنيع", "هندسة الكهرباء والإلكترونيات", "هندسة المواد والتصنيع الإضافي", "البرمجيات والمحاكاة العددية"],
+        cta: "عرض سيرة الفريق",
+        url: "/resume.html"
+      },
+      work: {
+        title: "تعاون معنا",
+        desc: "إذا كنت تملك فكرة أو تصميمًا أو مشروعًا صناعيًا، انضم إلى فريق تطوير پردازان الخبير. ندعم الشركات الناشئة القائمة على المعرفة والابتكارات الصناعية.",
+        services: ["تقديم فكرة / مشروع", "تعاون فني", "انضم إلى شبكة فبلب", "طلب استشارة"],
+        cta: "طلب تعاون",
+        url: "/work-with-us.html"
+      },
+      splash: { welcome: "مرحبًا بكم في شركة التطوير الفنية والهندسية", subtext: "الريادة في التصميم الهندسي والمحاكاة العددية" },
+      address: "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا"
+    }
+  };
+
+  let currentLang = 'fa';
+  let currentSector = 'creative';
+  let rotationFrame = null;
+  let autoHighlightTimer = null;
+  let isHovering = false;
+  let angleOffset = 0;
+
+  const sectorsList = ['creative', 'industrial', 'medical', 'catalog', 'shop', 'resume', 'work'];
+  const sectorColors = {
+    creative: '#a855f7', industrial: '#f97316', medical: '#06b6d4',
+    catalog: '#3b82f6', shop: '#ec489a', resume: '#facc15', work: '#10b981'
+  };
+  const sectorIcons = {
+    creative: 'fas fa-gem', industrial: 'fas fa-cogs', medical: 'fas fa-heartbeat',
+    catalog: 'fas fa-book-open', shop: 'fas fa-store', resume: 'fas fa-users', work: 'fas fa-handshake'
+  };
+  const baseAngles = {
+    creative: -90, industrial: -38.6, medical: 12.9, catalog: 64.3,
+    shop: 115.7, resume: 167.1, work: 218.6
+  };
+  let radius = 240;
+
+  function updateRadius() {
+    if (window.innerWidth <= 480) radius = 120;
+    else if (window.innerWidth <= 768) radius = 150;
+    else if (window.innerWidth <= 1000) radius = 180;
+    else radius = 240;
+  }
+
+  function createNodes() {
+    const container = document.getElementById('carouselContainer');
+    if (!container) return;
+    // حذف گره‌های قبلی اگر وجود داشته باشند
+    const existingNodes = document.querySelectorAll('.rotating-node');
+    existingNodes.forEach(n => n.remove());
+    
+    sectorsList.forEach(sector => {
+      const node = document.createElement('div');
+      node.className = 'rotating-node';
+      node.setAttribute('data-sector', sector);
+      const rad = (baseAngles[sector] * Math.PI) / 180;
+      const x = Math.cos(rad) * radius;
+      const y = Math.sin(rad) * radius;
+      node.style.left = `calc(50% + ${x}px - 55px)`;
+      node.style.top = `calc(50% + ${y}px - 55px)`;
+      node.innerHTML = `<i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i><h4>${langData[currentLang][sector].title}</h4>`;
+      container.appendChild(node);
+    });
+    bindEvents();
+  }
+
+  function updatePanel(sector) {
+    const data = langData[currentLang][sector];
+    if (!data) return;
+    document.getElementById('panelTitle').innerText = data.title;
+    document.getElementById('panelDesc').innerText = data.desc;
+    document.getElementById('panelServices').innerHTML = data.services.map(s => `<span>${s}</span>`).join('');
+    const cta = document.getElementById('panelCta');
+    cta.innerText = data.cta + ' ←';
+    cta.href = data.url;
+    currentSector = sector;
+  }
+
+  function highlightNode(sector) {
+    document.querySelectorAll('.rotating-node').forEach(node => {
+      if (node.dataset.sector === sector) {
+        node.style.transform = 'scale(1.1)';
+        node.style.borderColor = '#eab308';
+        node.style.backgroundColor = 'rgba(30, 64, 175, 0.4)';
+        node.style.boxShadow = '0 0 22px rgba(234, 179, 8, 0.5)';
+      } else {
+        node.style.transform = '';
+        node.style.borderColor = '';
+        node.style.backgroundColor = '';
+        node.style.boxShadow = '';
+      }
+    });
+    updatePanel(sector);
+  }
+
+  function startRotation() {
+    function rotate() {
+      if (!isHovering) {
+        angleOffset = (angleOffset + 0.12) % 360;
+        sectorsList.forEach(sector => {
+          const node = document.querySelector(`.rotating-node[data-sector="${sector}"]`);
+          if (node) {
+            const newAngle = baseAngles[sector] + angleOffset;
+            const rad = (newAngle * Math.PI) / 180;
+            const x = Math.cos(rad) * radius;
+            const y = Math.sin(rad) * radius;
+            node.style.left = `calc(50% + ${x}px - 55px)`;
+            node.style.top = `calc(50% + ${y}px - 55px)`;
+          }
+        });
+      }
+      rotationFrame = requestAnimationFrame(rotate);
+    }
+    if (rotationFrame) cancelAnimationFrame(rotationFrame);
+    rotationFrame = requestAnimationFrame(rotate);
+  }
+
+  function startAutoHighlight() {
+    if (autoHighlightTimer) clearInterval(autoHighlightTimer);
+    let idx = 0;
+    autoHighlightTimer = setInterval(() => {
+      if (!isHovering) {
+        idx = (idx + 1) % sectorsList.length;
+        highlightNode(sectorsList[idx]);
+      }
+    }, 7000);
+  }
+
+  function bindEvents() {
+    document.querySelectorAll('.rotating-node').forEach(node => {
+      node.removeEventListener('mouseenter', node._mouseEnter);
+      node.removeEventListener('mouseleave', node._mouseLeave);
+      node.removeEventListener('click', node._click);
+      
+      const mouseEnter = () => {
+        isHovering = true;
+        if (autoHighlightTimer) clearInterval(autoHighlightTimer);
+        highlightNode(node.dataset.sector);
+      };
+      const mouseLeave = () => {
+        isHovering = false;
+        startAutoHighlight();
+      };
+      const click = (e) => {
+        e.stopPropagation();
+        const sector = node.dataset.sector;
+        const url = langData[currentLang][sector].url;
+        if (url) window.location.href = url;
+      };
+      
+      node.addEventListener('mouseenter', mouseEnter);
+      node.addEventListener('mouseleave', mouseLeave);
+      node.addEventListener('click', click);
+      
+      node._mouseEnter = mouseEnter;
+      node._mouseLeave = mouseLeave;
+      node._click = click;
+    });
+  }
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'fa' ? 'fa' : 'en');
+    document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    
+    // به‌روزرسانی متن گره‌ها
+    document.querySelectorAll('.rotating-node').forEach(node => {
+      const sector = node.dataset.sector;
+      const title = langData[lang][sector].title;
+      node.innerHTML = `<i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i><h4>${title}</h4>`;
+    });
+    
+    // به‌روزرسانی متن‌های ثابت
+    const splashWelcome = document.querySelector('[data-i18n="splash.welcome"]');
+    const splashSub = document.querySelector('[data-i18n="splash.subtext"]');
+    const addressSpan = document.querySelector('[data-i18n="address"]');
+    if (splashWelcome) splashWelcome.innerText = langData[lang].splash.welcome;
+    if (splashSub) splashSub.innerText = langData[lang].splash.subtext;
+    if (addressSpan) addressSpan.innerText = langData[lang].address;
+    
+    updatePanel(currentSector);
+  }
+
+  window.addEventListener('load', () => {
+    updateRadius();
+    createNodes();
+    startRotation();
+    startAutoHighlight();
+    highlightNode('creative');
+    setLanguage('fa');
+    
+    gsap.fromTo('.dashboard', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" });
+    gsap.fromTo('.center-brand', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 0.2, ease: "back.out(0.6)" });
+    
+    setTimeout(() => {
+      const splash = document.getElementById('splashScreen');
+      if (splash) splash.classList.add('hide');
+    }, 2500);
+  });
+  
+  window.addEventListener('resize', () => {
+    updateRadius();
+    // بازآرایی گره‌ها با شعاع جدید
+    sectorsList.forEach(sector => {
+      const node = document.querySelector(`.rotating-node[data-sector="${sector}"]`);
+      if (node && !isHovering) {
+        const newAngle = baseAngles[sector] + angleOffset;
+        const rad = (newAngle * Math.PI) / 180;
+        const x = Math.cos(rad) * radius;
+        const y = Math.sin(rad) * radius;
+        node.style.left = `calc(50% + ${x}px - 55px)`;
+        node.style.top = `calc(50% + ${y}px - 55px)`;
+      }
+    });
+  });
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+</script>
 </body>
 </html>
