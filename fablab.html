@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">توسعه پردازان | TPE Co.</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -23,17 +23,11 @@
             --shadow: 0 10px 30px rgba(0,0,0,0.1);
             --gold-glow: 0 0 20px rgba(201, 160, 61, 0.5);
             
-            /* Background Pattern (SVG encoded) */
-            --pattern-bg: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a03d' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            /* الگوی تذهیب (اسلیمی) */
+            --pattern-bg: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a03d' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            --tazhib-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20'%3E%3Cpath fill='%23c9a03d' fill-opacity='0.3' d='M0,10 Q30,0 60,10 T120,10 T180,10 T240,10 T300,10 T360,10 T420,10 T480,10 T540,10 T600,10 T660,10 T720,10 T780,10 T840,10 T900,10 T960,10 T1020,10 T1080,10 T1140,10 T1200,10' stroke='%23c9a03d' stroke-width='2' fill='none'/%3E%3C/svg%3E");
         }
 
-        @font-face {
-            font-family: 'IranNastaliq';
-            src: url('https://cdn.staticaly.com/gh/rastikerdar/iran-nastaliq/master/fonts/iran-nastaliq.woff2') format('woff2');
-            fallback: Tahoma, serif;
-        }
-
-        /* ================= RESET & BASICS ================= */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
@@ -42,7 +36,6 @@
             color: var(--black-soft);
             overflow-x: hidden;
         }
-        .nastaliq { font-family: 'IranNastaliq', Tahoma, serif; font-size: 2rem; line-height: 2.5; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
         
@@ -58,12 +51,12 @@
         /* ================= HEADER & NAV ================= */
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px);
             border-bottom: 2px solid var(--glass-border); padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center; transition: var(--transition);
         }
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--navy); display: flex; align-items: center; gap: 10px; }
-        .logo i { color: var(--gold); }
+        .logo img { height: 45px; }
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--gold); }
@@ -84,15 +77,14 @@
             color: var(--white); padding: 0 20px;
         }
         #hero::before {
-            content: ""; position: absolute; inset: 0; background: var(--pattern-bg); opacity: 0.3; pointer-events: none;
+            content: ""; position: absolute; inset: 0; background: var(--pattern-bg); opacity: 0.4; pointer-events: none;
         }
         .hero-content { position: relative; z-index: 1; max-width: 800px; animation: fadeInUp 1s ease; }
-        .hero-title { color: var(--gold); margin-bottom: 20px; font-size: 3rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+        .hero-title { color: var(--gold); margin-bottom: 20px; font-size: 3rem; font-weight: 900; letter-spacing: 2px;}
         .hero-subtitle { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
         .btn {
             padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer;
             transition: var(--transition); border: none; outline: none; display: inline-block;
-            position: relative; overflow: hidden;
         }
         .btn-primary { background: var(--gold); color: var(--navy); }
         .btn-primary:hover { box-shadow: var(--gold-glow); transform: translateY(-3px); }
@@ -103,7 +95,11 @@
         section { padding: 80px 5%; position: relative; }
         .section-title { text-align: center; font-size: 2.5rem; color: var(--navy); margin-bottom: 50px; }
         .section-title span { color: var(--gold); }
-        .tazhib-divider { width: 100px; height: 10px; background: var(--gold); margin: 0 auto 40px; clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%); }
+        .tazhib-divider {
+            width: 120px; height: 20px;
+            background: var(--tazhib-border) repeat-x center;
+            margin: 0 auto 40px;
+        }
 
         /* ================= SERVICES ================= */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -125,7 +121,7 @@
         /* ================= RAVAND SECTION ================= */
         #ravand { background: #3e2723; color: var(--cream); text-align: center; }
         #ravand .section-title { color: var(--gold); }
-        .ravand-concept { font-size: 1.5rem; margin-bottom: 30px; color: var(--cream); }
+        .ravand-concept { font-size: 1.5rem; margin-bottom: 30px; color: var(--cream); font-weight: 300; }
         .ravand-wrapper { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; }
         .ravand-text { flex: 1; min-width: 300px; text-align: right; }
         .ravand-img { flex: 1; min-width: 300px; }
@@ -163,21 +159,31 @@
         .portfolio-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; }
         .portfolio-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease; }
         .portfolio-overlay {
-            position: absolute; inset: 0; background: rgba(30, 58, 138, 0.8);
+            position: absolute; inset: 0; background: rgba(30, 58, 138, 0.85);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             opacity: 0; transition: var(--transition); color: var(--white); text-align: center; padding: 20px;
         }
         .portfolio-item:hover img { transform: scale(1.1); }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
+        /* ================= CLIENTS MARQUEE ================= */
+        .clients-section { overflow: hidden; background: var(--cream); padding: 40px 5%; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);}
+        .clients-track { display: flex; animation: scrollClients 25s linear infinite; gap: 40px; align-items: center; width: max-content; }
+        .client-logo { flex: 0 0 auto; text-align: center; filter: grayscale(0.3); transition: var(--transition); }
+        .client-logo img { height: 60px; width: auto; max-width: 120px; object-fit: contain; }
+        .client-logo:hover { filter: grayscale(0); transform: scale(1.05); }
+        @keyframes scrollClients { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
         /* ================= ABOUT & CONTACT ================= */
-        .about-content { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+        .about-content { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
         .about-text { flex: 1; min-width: 300px; }
+        .about-text p { margin-bottom: 20px; line-height: 1.8; text-align: justify; }
+        .about-highlight { background: rgba(201, 160, 61, 0.1); border-right: 4px solid var(--gold); padding: 20px; border-radius: 12px; margin: 20px 0; }
         .about-text ul { margin-top: 20px; }
         .about-text li { margin-bottom: 10px; }
         .about-text i { color: var(--gold); margin-left: 10px; }
-        .about-img { flex: 1; text-align: center; min-width: 300px; }
-        .about-img img { width: 80%; max-width: 300px; border-radius: 50%; border: 10px solid var(--gold); padding: 10px; box-shadow: var(--shadow); }
+        .about-img { flex: 1; text-align: center; min-width: 250px; }
+        .about-img img { width: 80%; max-width: 280px; border-radius: 50%; border: 8px solid var(--gold); padding: 5px; box-shadow: var(--shadow); }
 
         .contact-container { display: flex; gap: 40px; flex-wrap: wrap; }
         .contact-form { flex: 1; min-width: 300px; background: var(--white); padding: 30px; border-radius: 15px; box-shadow: var(--shadow); }
@@ -191,10 +197,10 @@
         footer::before { content: ""; position: absolute; inset: 0; background: var(--pattern-bg); opacity: 0.1; pointer-events: none; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: right; margin-bottom: 40px; position: relative; z-index: 1;}
         .footer-title { color: var(--gold); margin-bottom: 20px; font-size: 1.2rem; }
-        .socials { display: flex; gap: 15px; margin-top: 20px; }
+        .socials { display: flex; gap: 15px; margin-top: 20px; justify-content: center; }
         .socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: var(--transition); }
         .socials a:hover { background: var(--gold); color: var(--navy); transform: translateY(-5px); box-shadow: var(--gold-glow); }
-        .quote { color: var(--gold); margin-top: 30px; }
+        .quote { color: var(--gold); margin-top: 30px; font-size: 1.2rem; letter-spacing: 1px; }
 
         /* ================= UTILS & RESPONSIVE ================= */
         .scroll-top { position: fixed; bottom: 30px; left: 30px; background: var(--gold); color: var(--navy); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition); z-index: 1000; box-shadow: var(--shadow); }
@@ -207,31 +213,30 @@
             .nav-links.active { right: 0; }
             .hamburger { display: block; }
             .hero-title { font-size: 2.2rem; }
-            .nastaliq { font-size: 1.5rem; }
             .btn-outline { margin-right: 0; margin-bottom: 15px; display: block; }
         }
 
-        /* LTR Adjustments for English */
         html[dir="ltr"] .nav-links { right: auto; left: -100%; }
-        html[dir="ltr"] .nav-links.active { left: 0; box-shadow: 5px 0 10px rgba(0,0,0,0.1); }
+        html[dir="ltr"] .nav-links.active { left: 0; }
         html[dir="ltr"] .scroll-top { left: auto; right: 30px; }
         html[dir="ltr"] .btn-outline { margin-right: 0; margin-left: 15px; }
         html[dir="ltr"] .about-text i { margin-left: 0; margin-right: 10px; }
         html[dir="ltr"] .footer-grid { text-align: left; }
-        html[dir="ltr"] #cart-sidebar { right: auto; left: -400px; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
+        html[dir="ltr"] #cart-sidebar { right: auto; left: -400px; }
         html[dir="ltr"] #cart-sidebar.active { left: 0; }
     </style>
 </head>
 <body>
 
     <div id="splash">
-        <h1 class="nastaliq">توسعه پردازان</h1>
+        <h1 style="font-weight:900;">توسعه پردازان</h1>
         <div class="loader"></div>
     </div>
 
     <header id="header">
         <div class="logo">
-            <i class="fa-solid fa-cube"></i> <span data-i18n="logo">TPE Co.</span>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231e3a8a'/%3E%3Cpath d='M30,35 L70,35 L70,65 L30,65 Z' fill='%23c9a03d'/%3E%3Ctext x='50' y='68' font-size='20' text-anchor='middle' fill='white' font-family='Arial'%3ETPE%3C/text%3E%3C/svg%3E" alt="Logo"> 
+            <span data-i18n="logo">TPE Co.</span>
         </div>
         <nav>
             <ul class="nav-links">
@@ -240,6 +245,7 @@
                 <li><a href="#ravand" data-i18n="nav_ravand">روند</a></li>
                 <li><a href="#store" data-i18n="nav_store">فروشگاه</a></li>
                 <li><a href="#portfolio" data-i18n="nav_portfolio">نمونه‌کارها</a></li>
+                <li><a href="#clients" data-i18n="nav_clients">مشتریان</a></li>
                 <li><a href="#about" data-i18n="nav_about">درباره ما</a></li>
                 <li><a href="#contact" data-i18n="nav_contact">تماس</a></li>
             </ul>
@@ -263,8 +269,7 @@
             <h3 data-i18n="cart_title">سبد خرید</h3>
             <i class="fa-solid fa-times close-cart" onclick="toggleCart()"></i>
         </div>
-        <div class="cart-items" id="cart-items-container">
-            </div>
+        <div class="cart-items" id="cart-items-container"></div>
         <div class="cart-total">
             <span data-i18n="cart_total">جمع کل: </span> <span id="cart-total-price">0</span> <span data-i18n="currency">تومان</span>
         </div>
@@ -273,7 +278,7 @@
 
     <section id="hero">
         <div class="hero-content">
-            <h1 class="hero-title nastaliq" data-i18n="hero_title">توسعه پردازان؛ پیوند هنر ایرانی و صنعت آینده</h1>
+            <h1 class="hero-title" data-i18n="hero_title">توسعه پردازان؛ پیوند هنر ایرانی و صنعت آینده</h1>
             <p class="hero-subtitle" data-i18n="hero_subtitle">از ایده تا محصول، با اصالت هزاره هنر و دقت مهندسی مدرن</p>
             <button class="btn btn-outline" onclick="location.href='#services'" data-i18n="btn_services">خدمات ما</button>
             <button class="btn btn-primary" onclick="location.href='#store'" data-i18n="btn_store">مشاهده محصولات</button>
@@ -284,36 +289,12 @@
         <h2 class="section-title"><span data-i18n="services_title_1">خدمات</span> <span style="color:var(--navy)" data-i18n="services_title_2">تخصصی</span></h2>
         <div class="tazhib-divider"></div>
         <div class="grid-container">
-            <div class="card">
-                <i class="fa-solid fa-drafting-compass"></i>
-                <h3 data-i18n="srv_1_title">طراحی مهندسی و شبیه‌سازی</h3>
-                <p data-i18n="srv_1_desc">طراحی دقیق CAD و تحلیل‌های CAE برای قطعات صنعتی پیچیده.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-cubes"></i>
-                <h3 data-i18n="srv_2_title">نمونه‌سازی و پرینت سه‌بعدی</h3>
-                <p data-i18n="srv_2_desc">تبدیل سریع ایده‌ها به واقعیت فیزیکی با بالاترین دقت.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-cogs"></i>
-                <h3 data-i18n="srv_3_title">ماشین‌کاری CNC</h3>
-                <p data-i18n="srv_3_desc">ساخت قطعات نهایی با متریال‌های مختلف فلزی و پلیمری.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-lightbulb"></i>
-                <h3 data-i18n="srv_4_title">فب‌لب صنایع خلاق</h3>
-                <p data-i18n="srv_4_desc">فضای کار اشتراکی و دسترسی به تجهیزات ساخت دیجیتال.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3 data-i18n="srv_5_title">آموزش تخصصی</h3>
-                <p data-i18n="srv_5_desc">دوره‌های عملی طراحی، ساخت و مهندسی معکوس.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3 data-i18n="srv_6_title">مشاوره صنعتی</h3>
-                <p data-i18n="srv_6_desc">مشاوره برای راه‌اندازی خط تولید و بهینه‌سازی فرآیندها.</p>
-            </div>
+            <div class="card"><i class="fa-solid fa-drafting-compass"></i><h3 data-i18n="srv_1_title">طراحی مهندسی و شبیه‌سازی</h3><p data-i18n="srv_1_desc">طراحی دقیق CAD و تحلیل‌های CAE برای قطعات صنعتی پیچیده.</p></div>
+            <div class="card"><i class="fa-solid fa-cubes"></i><h3 data-i18n="srv_2_title">نمونه‌سازی و پرینت سه‌بعدی</h3><p data-i18n="srv_2_desc">تبدیل سریع ایده‌ها به واقعیت فیزیکی با بالاترین دقت.</p></div>
+            <div class="card"><i class="fa-solid fa-cogs"></i><h3 data-i18n="srv_3_title">ماشین‌کاری CNC</h3><p data-i18n="srv_3_desc">ساخت قطعات نهایی با متریال‌های مختلف فلزی و پلیمری.</p></div>
+            <div class="card"><i class="fa-solid fa-lightbulb"></i><h3 data-i18n="srv_4_title">فب‌لب صنایع خلاق روند</h3><p data-i18n="srv_4_desc">فضای کار اشتراکی و دسترسی به تجهیزات ساخت دیجیتال.</p></div>
+            <div class="card"><i class="fa-solid fa-graduation-cap"></i><h3 data-i18n="srv_5_title">آموزش تخصصی</h3><p data-i18n="srv_5_desc">دوره‌های عملی طراحی، ساخت و مهندسی معکوس.</p></div>
+            <div class="card"><i class="fa-solid fa-chart-line"></i><h3 data-i18n="srv_6_title">مشاوره صنعتی</h3><p data-i18n="srv_6_desc">مشاوره برای راه‌اندازی خط تولید و بهینه‌سازی فرآیندها.</p></div>
         </div>
     </section>
 
@@ -322,7 +303,7 @@
         <div class="tazhib-divider"></div>
         <div class="ravand-wrapper">
             <div class="ravand-text">
-                <p class="ravand-concept nastaliq" data-i18n="ravand_quote">«جایی میان فکر و فنجان»</p>
+                <p class="ravand-concept" data-i18n="ravand_quote">«جایی میان فکر و فنجان»</p>
                 <p data-i18n="ravand_desc">روند، فب‌لب تخصصی و استودیوی خلاقیت ماست. جایی که هنر اصیل ایرانی با تکنولوژی‌های مدرن ساخت دیجیتال گره می‌خورد. کارگاه‌های آموزشی، نشست‌های تخصصی و تولید محصولات تلفیقی در این فضا اتفاق می‌افتد.</p>
             </div>
             <div class="ravand-img">
@@ -334,8 +315,7 @@
     <section id="store">
         <h2 class="section-title"><span data-i18n="store_title_1">فروشگاه</span> <span style="color:var(--navy)" data-i18n="store_title_2">آنلاین</span></h2>
         <div class="tazhib-divider"></div>
-        <div class="grid-container" id="products-grid">
-            </div>
+        <div class="grid-container" id="products-grid"></div>
     </section>
 
     <section id="portfolio">
@@ -347,57 +327,22 @@
             <button class="filter-btn" data-filter="reverse" data-i18n="filter_rev">مهندسی معکوس</button>
             <button class="filter-btn" data-filter="digital" data-i18n="filter_dig">ساخت دیجیتال</button>
         </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item industrial digital">
-                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_1_title">قطعه توربین</h3>
-                    <p data-i18n="port_1_desc">طراحی و پرینت سه‌بعدی</p>
-                </div>
-            </div>
-            <div class="portfolio-item reverse">
-                <img src="https://images.unsplash.com/photo-1504917595217-d4bf06117361?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_2_title">اسکن سه‌بعدی موتور</h3>
-                    <p data-i18n="port_2_desc">مهندسی معکوس دقیق</p>
-                </div>
-            </div>
-            <div class="portfolio-item digital">
-                <img src="https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_3_title">تندیس اسلیمی</h3>
-                    <p data-i18n="port_3_desc">ماشین‌کاری CNC</p>
-                </div>
-            </div>
-            <div class="portfolio-item industrial">
-                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_4_title">طراحی قالب</h3>
-                    <p data-i18n="port_4_desc">تزریق پلاستیک</p>
-                </div>
-            </div>
+        <div class="portfolio-grid" id="portfolio-grid"></div>
+    </section>
+
+    <!-- بخش مشتریان (اسکرول افقی) -->
+    <section id="clients" class="clients-section">
+        <h2 class="section-title" data-i18n="clients_title">مشتریان ما</h2>
+        <div class="tazhib-divider"></div>
+        <div style="overflow:hidden; white-space:nowrap;">
+            <div class="clients-track" id="clientsTrack"></div>
         </div>
     </section>
 
     <section id="about">
         <h2 class="section-title"><span data-i18n="about_title_1">درباره</span> <span style="color:var(--navy)" data-i18n="about_title_2">توسعه پردازان</span></h2>
         <div class="tazhib-divider"></div>
-        <div class="about-content">
-            <div class="about-text">
-                <p data-i18n="about_desc">شرکت دانش‌بنیان توسعه پردازان با هدف ارتقای سطح صنعت داخلی و پیوند آن با هنر غنی ایرانی تأسیس شده است. ما با بهره‌گیری از تجهیزات پیشرفته و تیمی متشکل از مهندسان و هنرمندان، از ایده تا تولید نهایی در کنار شما هستیم.</p>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_1">تیم متخصص و دانش‌بنیان</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_2">استفاده از تکنولوژی‌های روز دنیا</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_3">تضمین کیفیت و دقت بالا</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_4">تلفیق منحصر‌به‌فرد هنر و صنعت</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_5">پشتیبانی و مشاوره تخصصی</span></li>
-                </ul>
-            </div>
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="CEO">
-                <h4 style="margin-top: 15px; color: var(--navy);" data-i18n="about_ceo">مدیرعامل توسعه پردازان</h4>
-            </div>
-        </div>
+        <div class="about-content" id="aboutContent"></div>
     </section>
 
     <section id="contact" style="background: rgba(0, 165, 207, 0.05);">
@@ -406,116 +351,35 @@
         <div class="contact-container">
             <div class="contact-form">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="نام شما" data-i18n-placeholder="form_name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" placeholder="شماره تماس" data-i18n-placeholder="form_phone" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="5" placeholder="پیام شما..." data-i18n-placeholder="form_msg" required></textarea>
-                    </div>
+                    <div class="form-group"><input type="text" id="name" data-i18n-placeholder="form_name" required></div>
+                    <div class="form-group"><input type="tel" id="phone" data-i18n-placeholder="form_phone" required></div>
+                    <div class="form-group"><textarea id="message" rows="5" data-i18n-placeholder="form_msg" required></textarea></div>
                     <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="form_submit">ارسال پیام</button>
                 </form>
             </div>
             <div class="contact-info">
-                <p><i class="fa-solid fa-map-marker-alt" style="color:var(--gold)"></i> <span data-i18n="contact_address">زاهدان، پارک علم و فناوری</span></p>
-                <p><i class="fa-solid fa-phone" style="color:var(--gold)"></i> 09226704205</p>
-                <p><i class="fa-solid fa-envelope" style="color:var(--gold)"></i> info@tpe-co.ir</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54530.65582352899!2d60.84126785000001!3d29.49651525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f1c322d7411bc4b%3A0xc3ab353cd19ed624!2sZahedan%2C%20Sistan%20and%20Baluchestan%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                <p><i class="fa-solid fa-map-marker-alt"></i> <span data-i18n="contact_address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span></p>
+                <p><i class="fa-solid fa-phone"></i> <span>09226704205</span></p>
+                <p><i class="fa-solid fa-envelope"></i> <span>usb.tpe.co@gmail.com</span></p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27265.123456789!2d60.8529!3d29.4925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f1c322d7411bc4b%3A0xc3ab353cd19ed624!2sZahedan%20Science%20and%20Technology%20Park!5e0!3m2!1sen!2s!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <footer id="footer">
         <div class="footer-grid">
-            <div>
-                <h3 class="footer-title" data-i18n="foot_title_1">دسترسی سریع</h3>
-                <ul>
-                    <li><a href="#services" data-i18n="nav_services">خدمات</a></li>
-                    <li><a href="#store" data-i18n="nav_store">فروشگاه</a></li>
-                    <li><a href="#portfolio" data-i18n="nav_portfolio">نمونه کارها</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="footer-title" data-i18n="foot_title_2">شبکه‌های اجتماعی</h3>
-                <div class="socials">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                </div>
-            </div>
-            <div>
-                <h3 class="footer-title" data-i18n="foot_title_3">خبرنامه</h3>
-                <div style="display:flex; gap:10px;">
-                    <input type="email" placeholder="ایمیل..." data-i18n-placeholder="form_email" style="padding:10px; border-radius:5px; border:none; width:100%;">
-                    <button class="btn-primary" style="padding:10px 15px; border-radius:5px; border:none;" data-i18n="btn_subscribe">عضویت</button>
-                </div>
-            </div>
+            <div><h3 class="footer-title" data-i18n="foot_title_1">دسترسی سریع</h3><ul><li><a href="#services" data-i18n="nav_services">خدمات</a></li><li><a href="#store" data-i18n="nav_store">فروشگاه</a></li><li><a href="#portfolio" data-i18n="nav_portfolio">نمونه کارها</a></li></ul></div>
+            <div><h3 class="footer-title" data-i18n="foot_title_2">شبکه‌های اجتماعی</h3><div class="socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-whatsapp"></i></a><a href="#"><i class="fa-brands fa-telegram"></i></a></div></div>
+            <div><h3 class="footer-title" data-i18n="foot_title_3">خبرنامه</h3><div style="display:flex; gap:10px;"><input type="email" data-i18n-placeholder="form_email" style="padding:10px; border-radius:5px; border:none; width:100%;"><button class="btn-primary" style="padding:10px 15px;" data-i18n="btn_subscribe">عضویت</button></div></div>
         </div>
-        <p class="quote nastaliq" data-i18n="foot_quote">«هنر صنعتگر، پیوندِ دیروز و فرداست»</p>
+        <p class="quote" data-i18n="foot_quote">«هنر صنعتگر، پیوندِ دیروز و فرداست»</p>
         <p style="margin-top:20px; font-size:0.8rem;">&copy; <span id="year">1403</span> TPE Co. All Rights Reserved.</p>
     </footer>
 
     <div class="scroll-top" onclick="window.scrollTo(0,0)"><i class="fa-solid fa-chevron-up"></i></div>
 
     <script>
-        // ================= PRELOADER & SPLASH =================
-        window.addEventListener('load', () => {
-            const splash = document.getElementById('splash');
-            splash.style.opacity = '0';
-            setTimeout(() => { splash.style.display = 'none'; }, 800);
-            renderProducts();
-            updateCartUI();
-        });
-
-        // ================= MOBILE MENU =================
-        const navLinks = document.querySelector('.nav-links');
-        function toggleMenu() {
-            navLinks.classList.toggle('active');
-        }
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
-
-        // ================= SCROLL EFFECTS =================
-        const header = document.getElementById('header');
-        const scrollTopBtn = document.querySelector('.scroll-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'var(--shadow)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.7)';
-                header.style.boxShadow = 'none';
-            }
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
-
-        // ================= PORTFOLIO FILTER =================
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portItems = document.querySelectorAll('.portfolio-item');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.getAttribute('data-filter');
-                portItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // ================= STORE & CART LOGIC =================
+        // محصولات فروشگاه
         const products = [
             { id: 1, img: 'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=400&q=80', key_title: 'prod_1_title', price: 290000 },
             { id: 2, img: 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=400&q=80', key_title: 'prod_2_title', price: 350000 },
@@ -524,33 +388,182 @@
             { id: 5, img: 'https://images.unsplash.com/photo-1513506003901-1e6a229e9d15?auto=format&fit=crop&w=400&q=80', key_title: 'prod_5_title', price: 85000 },
             { id: 6, img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80', key_title: 'prod_6_title', price: 750000 }
         ];
-
         let cart = JSON.parse(localStorage.getItem('tpe_cart')) || [];
-        const currentLang = () => document.getElementById('lang-switch').value;
+
+        // داده‌های نمونه کارها
+        const portfolioItems = [
+            { img: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=400&q=80', titleKey: 'port_1_title', descKey: 'port_1_desc', cats: 'industrial digital' },
+            { img: 'https://images.unsplash.com/photo-1504917595217-d4bf06117361?auto=format&fit=crop&w=400&q=80', titleKey: 'port_2_title', descKey: 'port_2_desc', cats: 'reverse' },
+            { img: 'https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?auto=format&fit=crop&w=400&q=80', titleKey: 'port_3_title', descKey: 'port_3_desc', cats: 'digital' },
+            { img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80', titleKey: 'port_4_title', descKey: 'port_4_desc', cats: 'industrial' }
+        ];
+
+        // لوگوهای مشتریان (نمادین)
+        const clientLogos = [
+            '🏛️ دانشگاه سیستان و بلوچستان', '🏭 پارک علم و فناوری', '⚕️ مرکز بهداشت زاهدان', '🎓 دانشگاه علوم پزشکی', '🎨 دیزاین لب', '🏭 کارخانه حریر انار', '💡 مجتمع نوآوری', '✈️ پرواز یاران سیرنگ'
+        ];
+
+        // ================= ترجمه کامل (برگرفته از سایت اصلی با تغییرات) =================
+        const i18n = {
+            fa: {
+                page_title: "توسعه پردازان | TPE Co.", logo: "TPE Co.", nav_home: "خانه", nav_services: "خدمات", nav_ravand: "روند", nav_store: "فروشگاه", nav_portfolio: "نمونه‌کارها", nav_clients: "مشتریان", nav_about: "درباره ما", nav_contact: "تماس",
+                cart_title: "سبد خرید", cart_total: "جمع کل: ", currency: "تومان", cart_checkout: "ثبت سفارش",
+                hero_title: "توسعه پردازان؛ پیوند هنر ایرانی و صنعت آینده", hero_subtitle: "از ایده تا محصول، با اصالت هزاره هنر و دقت مهندسی مدرن", btn_services: "خدمات ما", btn_store: "مشاهده محصولات",
+                services_title_1: "خدمات", services_title_2: "تخصصی", srv_1_title: "طراحی مهندسی", srv_1_desc: "طراحی دقیق CAD و تحلیل‌های CAE", srv_2_title: "نمونه‌سازی و پرینت سه‌بعدی", srv_2_desc: "تبدیل سریع ایده‌ها به واقعیت", srv_3_title: "ماشین‌کاری CNC", srv_3_desc: "ساخت قطعات نهایی دقیق", srv_4_title: "فب‌لب صنایع خلاق روند", srv_4_desc: "فضای کار اشتراکی و ساخت دیجیتال", srv_5_title: "آموزش تخصصی", srv_5_desc: "دوره‌های عملی طراحی و ساخت", srv_6_title: "مشاوره صنعتی", srv_6_desc: "راه‌اندازی خط تولید و بهینه‌سازی",
+                ravand_title: "RAVAND | روند", ravand_quote: "«جایی میان فکر و فنجان»", ravand_desc: "روند، فب‌لب تخصصی و استودیوی خلاقیت ماست. جایی که هنر اصیل ایرانی با تکنولوژی‌های مدرن گره می‌خورد.",
+                store_title_1: "فروشگاه", store_title_2: "آنلاین", btn_add_cart: "افزودن به سبد",
+                prod_1_title: "قاب موبایل تذهیب", prod_2_title: "تندیس سفارشی چوبی", prod_3_title: "خدمات اسکن سه‌بعدی", prod_4_title: "ست زیورآلات پلیمری", prod_5_title: "ماژیک رزینی اسلیمی", prod_6_title: "دوره طراحی صنعتی",
+                port_title_1: "نمونه", port_title_2: "کارها", filter_all: "همه", filter_ind: "صنعتی", filter_rev: "مهندسی معکوس", filter_dig: "دیجیتال",
+                port_1_title: "قطعه توربین", port_1_desc: "طراحی و پرینت", port_2_title: "اسکن موتور", port_2_desc: "مهندسی معکوس", port_3_title: "تندیس اسلیمی", port_3_desc: "ماشین‌کاری CNC", port_4_title: "قالب تزریق", port_4_desc: "طراحی صنعتی",
+                clients_title: "مشتریان ما",
+                about_title_1: "درباره", about_title_2: "توسعه پردازان",
+                about_text1: "<p><strong>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</strong> نه تنها یک ارائه‌دهنده خدمات مهندسی، بلکه یک <strong>فب‌لب تخصصی صنایع خلاق روند</strong> است که با تکیه بر دانش عمیق تخصصی و زیرساخت‌های مدرن، مسیر تبدیل ایده به محصول را کوتاه و قابل اطمینان می‌سازد.</p>",
+                about_text2: "<p>ما بر این باوریم که <strong>تفکر مهندسی واقعی</strong> فراتر از طراحی و محاسبه است؛ شامل <strong>درک عمیق مسائل صنعتی</strong>، <strong>خلاقیت در راه‌حل‌یابی</strong> و <strong>تعهد به ساخت آینده‌ای ملموس</strong> است.</p>",
+                about_highlight: "<p>✓ <strong>فب‌لب تخصصی صنایع خلاق روند:</strong> دسترسی کامل به تجهیزات پیشرفته</p><p>✓ <strong>تیم متخصص چندرشته‌ای:</strong> مکانیک، برق، نرم‌افزار، مواد</p><p>✓ <strong>مسیر کامل از ایده تا محصول:</strong> طراحی، نمونه‌سازی، تست، تولید</p>",
+                about_text3: "<p><strong>رسالت ما</strong> ایجاد اکوسیستمی پویا برای تبدیل ایده‌های نوآورانه به محصولات قابل عرضه به بازار است.</p>",
+                about_adv_1: "تیم متخصص و دانش‌بنیان", about_adv_2: "استفاده از تکنولوژی‌های روز", about_adv_3: "تضمین کیفیت و دقت", about_adv_4: "تلفیق هنر و صنعت", about_adv_5: "پشتیبانی تخصصی", about_ceo: "مدیرعامل توسعه پردازان",
+                contact_title_1: "تماس", contact_title_2: "با ما", form_submit: "ارسال پیام", contact_address: "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
+                foot_title_1: "دسترسی سریع", foot_title_2: "شبکه‌های اجتماعی", foot_title_3: "خبرنامه", btn_subscribe: "عضویت", foot_quote: "«هنر صنعتگر، پیوندِ دیروز و فرداست»"
+            },
+            en: {
+                // خلاصه انگلیسی (مشابه قبل با تغییرات)
+                page_title: "TPE Co.", logo: "TPE Co.", nav_home: "Home", nav_services: "Services", nav_ravand: "Ravand", nav_store: "Store", nav_portfolio: "Portfolio", nav_clients: "Clients", nav_about: "About", nav_contact: "Contact",
+                cart_title: "Cart", cart_total: "Total: ", currency: "T", cart_checkout: "Checkout",
+                hero_title: "TPE Co; Iranian Art meets Modern Industry", hero_subtitle: "From idea to product", btn_services: "Services", btn_store: "Store",
+                services_title_1: "Expert", services_title_2: "Services", srv_1_title: "Engineering Design", srv_1_desc: "CAD & CAE", srv_2_title: "3D Printing", srv_2_desc: "Prototyping", srv_3_title: "CNC", srv_3_desc: "Precision", srv_4_title: "Ravand FabLab", srv_4_desc: "Digital Fabrication", srv_5_title: "Training", srv_5_desc: "Workshops", srv_6_title: "Consulting", srv_6_desc: "Production lines",
+                ravand_title: "RAVAND Studio", ravand_quote: '"Between thought and cup"', ravand_desc: "Our specialized FabLab.",
+                store_title_1: "Online", store_title_2: "Store", btn_add_cart: "Add",
+                prod_1_title: "Tazhib Case", prod_2_title: "Wooden Trophy", prod_3_title: "3D Scan", prod_4_title: "Jewelry Set", prod_5_title: "Resin Marker", prod_6_title: "Design Course",
+                port_title_1: "Our", port_title_2: "Portfolio", filter_all: "All", filter_ind: "Industrial", filter_rev: "Reverse", filter_dig: "Digital",
+                port_1_title: "Turbine", port_1_desc: "3D Printed", port_2_title: "Engine Scan", port_2_desc: "Reverse Eng.", port_3_title: "Islamic Trophy", port_3_desc: "CNC", port_4_title: "Injection Mold", port_4_desc: "Design",
+                clients_title: "Our Clients",
+                about_title_1: "About", about_title_2: "TPE Co.",
+                about_text1: "<p><strong>TPE Co.</strong> is a knowledge-based engineering company and a specialized FabLab.</p>",
+                about_text2: "<p>We believe in deep understanding and creative solutions.</p>",
+                about_highlight: "<p>✓ Specialized FabLab</p><p>✓ Multidisciplinary team</p><p>✓ Full product development path</p>",
+                about_text3: "<p>Our mission: turning innovative ideas into market-ready products.</p>",
+                about_adv_1: "Expert team", about_adv_2: "Modern tech", about_adv_3: "High quality", about_adv_4: "Art & Industry", about_adv_5: "Expert support", about_ceo: "CEO",
+                contact_title_1: "Contact", contact_title_2: "Us", form_submit: "Send", contact_address: "Zahedan, Science Park",
+                foot_title_1: "Quick links", foot_title_2: "Social", foot_title_3: "Newsletter", btn_subscribe: "Subscribe", foot_quote: '"Art connects yesterday and tomorrow"'
+            },
+            ar: {
+                // به اختصار برای تکمیل
+                page_title: "TPE Co.", logo: "TPE Co.", nav_home: "الرئيسية", nav_services: "الخدمات", nav_ravand: "رافاند", nav_store: "المتجر", nav_portfolio: "الأعمال", nav_clients: "العملاء", nav_about: "معلومات", nav_contact: "اتصل",
+                cart_title: "سلة", cart_total: "المجموع: ", currency: "تومان", cart_checkout: "الدفع",
+                hero_title: "TPE؛ الفن الإيراني والصناعة", hero_subtitle: "من الفكرة إلى المنتج", btn_services: "خدماتنا", btn_store: "المتجر",
+                services_title_1: "خدمات", services_title_2: "متخصصة", srv_1_title: "تصميم", srv_1_desc: "CAD & CAE", srv_2_title: "طباعة 3D", srv_2_desc: "نماذج أولية", srv_3_title: "CNC", srv_3_desc: "تصنيع", srv_4_title: "مختبر رافاند", srv_4_desc: "تصنيع رقمي", srv_5_title: "تدريب", srv_5_desc: "دورات", srv_6_title: "استشارات", srv_6_desc: "خطوط إنتاج",
+                ravand_title: "استوديو رافاند", ravand_quote: '"بين فكرة وفنجان"', ravand_desc: "مختبر التصنيع لدينا.",
+                store_title_1: "المتجر", store_title_2: "الإلكتروني", btn_add_cart: "أضف",
+                prod_1_title: "غطاء تذهيب", prod_2_title: "جائزة خشبية", prod_3_title: "مسح 3D", prod_4_title: "مجوهرات", prod_5_title: "قلم ريزن", prod_6_title: "دورة تصميم",
+                port_title_1: "معرض", port_title_2: "الأعمال", filter_all: "الكل", filter_ind: "صناعي", filter_rev: "هندسة عكسية", filter_dig: "رقمي",
+                port_1_title: "قطعة توربين", port_1_desc: "طباعة 3D", port_2_title: "مسح محرك", port_2_desc: "عكسي", port_3_title: "جائزة إسلامية", port_3_desc: "CNC", port_4_title: "قالب حقن", port_4_desc: "تصميم",
+                clients_title: "عملاؤنا",
+                about_title_1: "حول", about_title_2: "TPE Co.",
+                about_text1: "<p>شركة TPE هي مختبر تصنيع متخصص.</p>", about_text2: "<p>نؤمن بالحلول الإبداعية.</p>", about_highlight: "<p>✓ مختبر متخصص</p><p>✓ فريق متعدد التخصصات</p>", about_text3: "<p>مهمتنا: تحويل الأفكار إلى منتجات.</p>",
+                about_adv_1: "فريق خبير", about_adv_2: "تكنولوجيا حديثة", about_adv_3: "جودة عالية", about_adv_4: "الفن والصناعة", about_adv_5: "دعم متخصص", about_ceo: "المدير التنفيذي",
+                contact_title_1: "اتصل", contact_title_2: "بنا", form_submit: "إرسال", contact_address: "زاهدان، حديقة العلوم",
+                foot_title_1: "روابط سريعة", foot_title_2: "تواصل", foot_title_3: "نشرة", btn_subscribe: "اشتراك", foot_quote: '"فن الحرفي يربط بين الأمس والغد"'
+            }
+        };
+
+        let currentLang = 'fa';
+
+        function updatePageLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.setAttribute('dir', lang === 'en' ? 'ltr' : 'rtl');
+            document.documentElement.setAttribute('lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) el.innerHTML = i18n[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                const placeholders = { fa: { form_name: "نام شما", form_phone: "شماره تماس", form_msg: "پیام شما...", form_email: "ایمیل..." }, en: { form_name: "Your Name", form_phone: "Phone", form_msg: "Your Message...", form_email: "Email..." }, ar: { form_name: "الاسم", form_phone: "رقم الهاتف", form_msg: "رسالتك...", form_email: "البريد..." } };
+                if (placeholders[lang] && placeholders[lang][key]) el.placeholder = placeholders[lang][key];
+            });
+            renderProducts();
+            renderPortfolio();
+            renderAbout();
+            renderClients();
+            updateCartUI();
+        }
 
         function renderProducts() {
             const grid = document.getElementById('products-grid');
+            if (!grid) return;
             grid.innerHTML = '';
             products.forEach(p => {
-                grid.innerHTML += `
-                    <div class="card">
-                        <img src="${p.img}" alt="Product" class="product-img">
-                        <h3 data-i18n="${p.key_title}">${translateText(p.key_title)}</h3>
-                        <p class="product-price">${p.price.toLocaleString()} <span data-i18n="currency">${translateText('currency')}</span></p>
-                        <button class="btn-add" onclick="addToCart(${p.id})"><i class="fa-solid fa-cart-plus"></i> <span data-i18n="btn_add_cart">${translateText('btn_add_cart')}</span></button>
-                    </div>
-                `;
+                grid.innerHTML += `<div class="card"><img src="${p.img}" class="product-img"><h3>${i18n[currentLang][p.key_title]}</h3><p class="product-price">${p.price.toLocaleString()} ${i18n[currentLang]['currency']}</p><button class="btn-add" onclick="addToCart(${p.id})"><i class="fa-solid fa-cart-plus"></i> ${i18n[currentLang]['btn_add_cart']}</button></div>`;
             });
+        }
+
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            portfolioItems.forEach(item => {
+                grid.innerHTML += `<div class="portfolio-item ${item.cats}"><img src="${item.img}"><div class="portfolio-overlay"><h3>${i18n[currentLang][item.titleKey]}</h3><p>${i18n[currentLang][item.descKey]}</p></div></div>`;
+            });
+            // re-attach filter events after render
+            attachFilters();
+        }
+
+        function attachFilters() {
+            const btns = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.portfolio-item');
+            btns.forEach(btn => {
+                btn.removeEventListener('click', filterHandler);
+                btn.addEventListener('click', filterHandler);
+            });
+            function filterHandler(e) {
+                btns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                const filter = e.target.getAttribute('data-filter');
+                items.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) item.style.display = 'block';
+                    else item.style.display = 'none';
+                });
+            }
+        }
+
+        function renderAbout() {
+            const container = document.getElementById('aboutContent');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="about-text">
+                    ${i18n[currentLang]['about_text1']}
+                    ${i18n[currentLang]['about_text2']}
+                    <div class="about-highlight">${i18n[currentLang]['about_highlight']}</div>
+                    ${i18n[currentLang]['about_text3']}
+                    <ul><li><i class="fa-solid fa-check"></i> ${i18n[currentLang]['about_adv_1']}</li><li><i class="fa-solid fa-check"></i> ${i18n[currentLang]['about_adv_2']}</li><li><i class="fa-solid fa-check"></i> ${i18n[currentLang]['about_adv_3']}</li><li><i class="fa-solid fa-check"></i> ${i18n[currentLang]['about_adv_4']}</li><li><i class="fa-solid fa-check"></i> ${i18n[currentLang]['about_adv_5']}</li></ul>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="CEO">
+                    <h4 style="margin-top:15px; color:var(--navy);">${i18n[currentLang]['about_ceo']}</h4>
+                </div>
+            `;
+        }
+
+        function renderClients() {
+            const track = document.getElementById('clientsTrack');
+            if (!track) return;
+            track.innerHTML = '';
+            // دو برابر برای اسکرول پیوسته
+            for (let i = 0; i < 2; i++) {
+                clientLogos.forEach(logo => {
+                    const div = document.createElement('div');
+                    div.className = 'client-logo';
+                    div.innerHTML = `<div style="background:var(--white); padding:10px 20px; border-radius:40px; box-shadow:0 2px 8px rgba(0,0,0,0.1); font-weight:bold;">${logo}</div>`;
+                    track.appendChild(div);
+                });
+            }
         }
 
         function addToCart(id) {
             const prod = products.find(p => p.id === id);
             const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...prod, qty: 1 });
-            }
+            if (existing) existing.qty += 1;
+            else cart.push({ ...prod, qty: 1 });
             saveCart();
             updateCartUI();
         }
@@ -565,837 +578,56 @@
             }
         }
 
-        function saveCart() {
-            localStorage.setItem('tpe_cart', JSON.stringify(cart));
-        }
-
+        function saveCart() { localStorage.setItem('tpe_cart', JSON.stringify(cart)); }
         function updateCartUI() {
             const container = document.getElementById('cart-items-container');
-            const count = document.getElementById('cart-count');
-            const totalEl = document.getElementById('cart-total-price');
-            
+            const countSpan = document.getElementById('cart-count');
+            const totalSpan = document.getElementById('cart-total-price');
+            if (!container) return;
+            let totalQty = 0, totalPrice = 0;
             container.innerHTML = '';
-            let totalQty = 0;
-            let totalPrice = 0;
-
             cart.forEach(item => {
                 totalQty += item.qty;
-                totalPrice += (item.price * item.qty);
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <h4>${translateText(item.key_title)}</h4>
-                            <p>${(item.price * item.qty).toLocaleString()}</p>
-                        </div>
-                        <div class="cart-item-controls">
-                            <button onclick="updateQty(${item.id}, 1)">+</button>
-                            <span>${item.qty}</span>
-                            <button onclick="updateQty(${item.id}, -1)">-</button>
-                        </div>
-                    </div>
-                `;
+                totalPrice += item.price * item.qty;
+                container.innerHTML += `<div class="cart-item"><div class="cart-item-details"><h4>${i18n[currentLang][item.key_title]}</h4><p>${(item.price * item.qty).toLocaleString()}</p></div><div class="cart-item-controls"><button onclick="updateQty(${item.id},1)">+</button><span>${item.qty}</span><button onclick="updateQty(${item.id},-1)">-</button></div></div>`;
             });
-
-            count.innerText = totalQty;
-            totalEl.innerText = totalPrice.toLocaleString();
+            countSpan.innerText = totalQty;
+            totalSpan.innerText = totalPrice.toLocaleString();
         }
 
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('active');
-        }
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
+        function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
 
-        // ================= I18N / TRANSLATIONS LOGIC =================
-        const i18n = {
-            fa: {
-                page_title: "توسعه پردازان | TPE Co.", logo: "TPE Co.", nav_home: "خانه", nav_services: "خدمات", nav_ravand: "روند", nav_store: "فروشگاه", nav_portfolio: "نمونه‌کارها", nav_about: "درباره ما", nav_contact: "تماس",
-                cart_title: "سبد خرید", cart_total: "جمع کل: ", currency: "تومان", cart_checkout: "ثبت سفارش",
-                hero_title: "توسعه پردازان؛ پیوند هنر ایرانی و صنعت آینده", hero_subtitle: "از ایده تا محصول، با اصالت هزاره هنر و دقت مهندسی مدرن", btn_services: "خدمات ما", btn_store: "مشاهده محصولات",
-                services_title_1: "خدمات", services_title_2: "تخصصی", srv_1_title: "طراحی مهندسی", srv_1_desc: "طراحی دقیق CAD و تحلیل‌های CAE", srv_2_title: "نمونه‌سازی و پرینت سه‌بعدی", srv_2_desc: "تبدیل سریع ایده‌ها به واقعیت", srv_3_title: "ماشین‌کاری CNC", srv_3_desc: "ساخت قطعات نهایی دقیق", srv_4_title: "فب‌لب صنایع خلاق", srv_4_desc: "فضای کار اشتراکی و ساخت دیجیتال", srv_5_title: "آموزش تخصصی", srv_5_desc: "دوره‌های عملی طراحی و ساخت", srv_6_title: "مشاوره صنعتی", srv_6_desc: "راه‌اندازی خط تولید و بهینه‌سازی",
-                ravand_title: "RAVAND | روند", ravand_quote: "«جایی میان فکر و فنجان»", ravand_desc: "روند، فب‌لب تخصصی و استودیوی خلاقیت ماست. جایی که هنر اصیل ایرانی با تکنولوژی‌های مدرن گره می‌خورد.",
-                store_title_1: "فروشگاه", store_title_2: "آنلاین", btn_add_cart: "افزودن به سبد",
-                prod_1_title: "قاب موبایل تذهیب", prod_2_title: "تندیس سفارشی چوبی", prod_3_title: "خدمات اسکن سه‌بعدی", prod_4_title: "ست زیورآلات پلیمری", prod_5_title: "ماژیک رزینی اسلیمی", prod_6_title: "دوره طراحی صنعتی",
-                port_title_1: "نمونه", port_title_2: "کارها", filter_all: "همه", filter_ind: "صنعتی", filter_rev: "مهندسی معکوس", filter_dig: "دیجیتال",
-                port_1_title: "قطعه توربین", port_1_desc: "طراحی و پرینت", port_2_title: "اسکن موتور", port_2_desc: "مهندسی معکوس", port_3_title: "تندیس اسلیمی", port_3_desc: "ماشین‌کاری CNC", port_4_title: "قالب تزریق", port_4_desc: "طراحی صنعتی",
-                about_title_1: "درباره", about_title_2: "توسعه پردازان", about_desc: "شرکت دانش‌بنیان توسعه پردازان با هدف ارتقای سطح صنعت و پیوند با هنر ایرانی تأسیس شده است.", about_adv_1: "تیم متخصص", about_adv_2: "تکنولوژی روز", about_adv_3: "کیفیت بالا", about_adv_4: "تلفیق هنر و صنعت", about_adv_5: "پشتیبانی تخصصی", about_ceo: "مدیرعامل توسعه پردازان",
-                contact_title_1: "تماس", contact_title_2: "با ما", form_submit: "ارسال پیام", contact_address: "زاهدان، پارک علم و فناوری",
-                foot_title_1: "دسترسی سریع", foot_title_2: "شبکه‌های اجتماعی", foot_title_3: "خبرنامه", btn_subscribe: "عضویت", foot_quote: "«هنر صنعتگر، پیوندِ دیروز و فرداست»"
-            },
-            en: {
-                page_title: "TPE Co. | Innovation", logo: "TPE Co.", nav_home: "Home", nav_services: "Services", nav_ravand: "Ravand", nav_store: "Store", nav_portfolio: "Portfolio", nav_about: "About", nav_contact: "Contact",
-                cart_title: "Shopping Cart", cart_total: "Total: ", currency: "T", cart_checkout: "Checkout",
-                hero_title: "TPE Co; Where Iranian Art Meets Modern Industry", hero_subtitle: "From idea to product, with millennia of art and modern engineering.", btn_services: "Our Services", btn_store: "Explore Store",
-                services_title_1: "Expert", services_title_2: "Services", srv_1_title: "Engineering Design", srv_1_desc: "Accurate CAD & CAE", srv_2_title: "3D Printing", srv_2_desc: "Rapid Prototyping", srv_3_title: "CNC Machining", srv_3_desc: "High precision manufacturing", srv_4_title: "FabLab", srv_4_desc: "Creative co-working space", srv_5_title: "Training", srv_5_desc: "Practical engineering courses", srv_6_title: "Consulting", srv_6_desc: "Production line setup",
-                ravand_title: "RAVAND Studio", ravand_quote: '"Somewhere between a thought and a cup"', ravand_desc: "Ravand is our specialized FabLab and creative studio mixing Iranian art with digital fabrication.",
-                store_title_1: "Online", store_title_2: "Store", btn_add_cart: "Add to Cart",
-                prod_1_title: "Tazhib Phone Case", prod_2_title: "Custom Wooden Trophy", prod_3_title: "3D Scanning Service", prod_4_title: "Polymer Jewelry Set", prod_5_title: "Resin Marker", prod_6_title: "Industrial Design Course",
-                port_title_1: "Our", port_title_2: "Portfolio", filter_all: "All", filter_ind: "Industrial", filter_rev: "Reverse Eng.", filter_dig: "Digital Fab.",
-                port_1_title: "Turbine Part", port_1_desc: "3D Printed", port_2_title: "Engine Scan", port_2_desc: "Reverse Engineering", port_3_title: "Islamic Trophy", port_3_desc: "CNC Machining", port_4_title: "Injection Mold", port_4_desc: "Industrial Design",
-                about_title_1: "About", about_title_2: "TPE Co.", about_desc: "TPE Co is a knowledge-based company linking domestic industry capabilities with rich Iranian art.", about_adv_1: "Expert Team", about_adv_2: "Modern Tech", about_adv_3: "High Quality", about_adv_4: "Art & Industry", about_adv_5: "Expert Support", about_ceo: "CEO of TPE Co.",
-                contact_title_1: "Contact", contact_title_2: "Us", form_submit: "Send Message", contact_address: "Zahedan, Science & Tech Park",
-                foot_title_1: "Quick Links", foot_title_2: "Social Media", foot_title_3: "Newsletter", btn_subscribe: "Subscribe", foot_quote: '"The craftsman art connects yesterday and tomorrow"'
-            },
-            ar: {
-                page_title: "TPE Co. | تطوير", logo: "TPE Co.", nav_home: "الرئيسية", nav_services: "الخدمات", nav_ravand: "رافاند", nav_store: "المتجر", nav_portfolio: "الأعمال", nav_about: "معلومات عنا", nav_contact: "اتصل بنا",
-                cart_title: "سلة التسوق", cart_total: "المجموع: ", currency: "تومان", cart_checkout: "الدفع",
-                hero_title: "TPE؛ حيث يلتقي الفن الإيراني بالصناعة الحديثة", hero_subtitle: "من الفكرة إلى المنتج، بأصالة الفن ودقة الهندسة", btn_services: "خدماتنا", btn_store: "المتجر",
-                services_title_1: "خدمات", services_title_2: "متخصصة", srv_1_title: "تصميم هندسي", srv_1_desc: "تصميم CAD و CAE", srv_2_title: "طباعة ثلاثية الأبعاد", srv_2_desc: "نماذج أولية سريعة", srv_3_title: "تصنيع CNC", srv_3_desc: "تصنيع دقيق", srv_4_title: "مختبر التصنيع", srv_4_desc: "مساحة عمل إبداعية", srv_5_title: "تدريب", srv_5_desc: "دورات هندسية", srv_6_title: "استشارات", srv_6_desc: "إعداد خطوط الإنتاج",
-                ravand_title: "استوديو رافاند", ravand_quote: '"في مكان ما بين فكرة وفنجان"', ravand_desc: "رافاند هو مختبر التصنيع واستوديو الإبداع لدينا.",
-                store_title_1: "المتجر", store_title_2: "الإلكتروني", btn_add_cart: "أضف للسلة",
-                prod_1_title: "غطاء هاتف تذهيب", prod_2_title: "جائزة خشبية", prod_3_title: "مسح 3D", prod_4_title: "مجوهرات بوليمر", prod_5_title: "قلم ريزن", prod_6_title: "دورة تصميم",
-                port_title_1: "معرض", port_title_2: "الأعمال", filter_all: "الكل", filter_ind: "صناعي", filter_rev: "هندسة عكسية", filter_dig: "تصنيع رقمي",
-                port_1_title: "قطعة توربين", port_1_desc: "طباعة 3D", port_2_title: "مسح محرك", port_2_desc: "هندسة عكسية", port_3_title: "جائزة إسلامية", port_3_desc: "تصنيع CNC", port_4_title: "قالب حقن", port_4_desc: "تصميم صناعي",
-                about_title_1: "حول", about_title_2: "TPE Co.", about_desc: "شركة TPE تهدف إلى ربط قدرات الصناعة المحلية بالفن الإيراني.", about_adv_1: "فريق خبير", about_adv_2: "تكنولوجيا حديثة", about_adv_3: "جودة عالية", about_adv_4: "الفن والصناعة", about_adv_5: "دعم متخصص", about_ceo: "المدير التنفيذي",
-                contact_title_1: "اتصل", contact_title_2: "بنا", form_submit: "إرسال رسالة", contact_address: "زاهدان، حديقة العلوم والتكنولوجيا",
-                foot_title_1: "روابط سريعة", foot_title_2: "تواصل اجتماعي", foot_title_3: "نشرة إخبارية", btn_subscribe: "اشتراك", foot_quote: '"فن الحرفي يربط بين الأمس والغد"'
-            }
-        };
-
-        function translateText(key) {
-            const lang = currentLang();
-            return i18n[lang][key] || key;
-        }
-
-        document.getElementById('lang-switch').addEventListener('change', function() {
-            const lang = this.value;
-            
-            // Set DIR
-            document.documentElement.setAttribute('dir', lang === 'en' ? 'ltr' : 'rtl');
-            document.documentElement.setAttribute('lang', lang);
-
-            // Translate Text Nodes
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(i18n[lang][key]) el.innerHTML = i18n[lang][key];
-            });
-
-            // Translate Placeholders
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                // Use a generic placeholder logic or add to i18n if needed
-                if(lang==='en' && key==='form_name') el.placeholder = "Your Name";
-                if(lang==='en' && key==='form_phone') el.placeholder = "Phone Number";
-                if(lang==='en' && key==='form_msg') el.placeholder = "Your Message...";
-                if(lang==='en' && key==='form_email') el.placeholder = "Email...";
-                
-                if(lang==='ar' && key==='form_name') el.placeholder = "الاسم";
-                if(lang==='ar' && key==='form_phone') el.placeholder = "رقم الهاتف";
-                if(lang==='ar' && key==='form_msg') el.placeholder = "رسالتك...";
-                if(lang==='ar' && key==='form_email') el.placeholder = "البريد الإلكتروني...";
-                
-                if(lang==='fa' && key==='form_name') el.placeholder = "نام شما";
-                if(lang==='fa' && key==='form_phone') el.placeholder = "شماره تماس";
-                if(lang==='fa' && key==='form_msg') el.placeholder = "پیام شما...";
-                if(lang==='fa' && key==='form_email') el.placeholder = "ایمیل...";
-            });
-
-            // Re-render JS dynamic content
-            renderProducts();
-            updateCartUI();
-        });
-
-        // Current Year for Footer
-        const pc = new Intl.DateTimeFormat('fa-IR').format(new Date());
-        document.getElementById('year').innerText = pc.split('/')[0];
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">توسعه پردازان | TPE Co.</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* ================= VARIABLES ================= */
-        :root {
-            --navy: #1e3a8a;
-            --turquoise: #00a5cf;
-            --gold: #c9a03d;
-            --cream: #fef7e0;
-            --white: #ffffff;
-            --black-soft: #1a1a1a;
-            --glass-bg: rgba(254, 247, 224, 0.85);
-            --glass-border: rgba(201, 160, 61, 0.3);
-            --transition: all 0.3s ease;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --gold-glow: 0 0 20px rgba(201, 160, 61, 0.5);
-            
-            /* Background Pattern (SVG encoded) */
-            --pattern-bg: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a03d' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        @font-face {
-            font-family: 'IranNastaliq';
-            src: url('https://cdn.staticaly.com/gh/rastikerdar/iran-nastaliq/master/fonts/iran-nastaliq.woff2') format('woff2');
-            fallback: Tahoma, serif;
-        }
-
-        /* ================= RESET & BASICS ================= */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--cream);
-            color: var(--black-soft);
-            overflow-x: hidden;
-        }
-        .nastaliq { font-family: 'IranNastaliq', Tahoma, serif; font-size: 2rem; line-height: 2.5; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        
-        /* ================= SPLASH SCREEN ================= */
-        #splash {
-            position: fixed; inset: 0; background: var(--navy); z-index: 9999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: var(--gold); transition: opacity 0.8s ease;
-        }
-        #splash .loader { border: 4px solid var(--cream); border-top-color: var(--gold); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-top: 20px;}
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* ================= HEADER & NAV ================= */
-        header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 2px solid var(--glass-border); padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center; transition: var(--transition);
-        }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--navy); display: flex; align-items: center; gap: 10px; }
-        .logo i { color: var(--gold); }
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { font-weight: 500; transition: var(--transition); }
-        .nav-links a:hover { color: var(--gold); }
-        .actions { display: flex; gap: 15px; align-items: center; }
-        .lang-select { background: transparent; border: 1px solid var(--gold); padding: 5px; border-radius: 5px; font-family: inherit; outline: none; cursor:pointer;}
-        .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; }
-        .cart-count {
-            position: absolute; top: -10px; right: -10px; background: var(--turquoise); color: var(--white);
-            font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; font-weight: bold;
-        }
-        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
-
-        /* ================= HERO SECTION ================= */
-        #hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; position: relative;
-            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(0, 165, 207, 0.8)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80') center/cover;
-            color: var(--white); padding: 0 20px;
-        }
-        #hero::before {
-            content: ""; position: absolute; inset: 0; background: var(--pattern-bg); opacity: 0.3; pointer-events: none;
-        }
-        .hero-content { position: relative; z-index: 1; max-width: 800px; animation: fadeInUp 1s ease; }
-        .hero-title { color: var(--gold); margin-bottom: 20px; font-size: 3rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5);}
-        .hero-subtitle { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
-        .btn {
-            padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer;
-            transition: var(--transition); border: none; outline: none; display: inline-block;
-            position: relative; overflow: hidden;
-        }
-        .btn-primary { background: var(--gold); color: var(--navy); }
-        .btn-primary:hover { box-shadow: var(--gold-glow); transform: translateY(-3px); }
-        .btn-outline { background: transparent; border: 2px solid var(--white); color: var(--white); margin-right: 15px; }
-        .btn-outline:hover { background: var(--white); color: var(--navy); }
-
-        /* ================= SECTIONS COMMONS ================= */
-        section { padding: 80px 5%; position: relative; }
-        .section-title { text-align: center; font-size: 2.5rem; color: var(--navy); margin-bottom: 50px; }
-        .section-title span { color: var(--gold); }
-        .tazhib-divider { width: 100px; height: 10px; background: var(--gold); margin: 0 auto 40px; clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%); }
-
-        /* ================= SERVICES ================= */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card {
-            background: var(--white); padding: 30px; border-radius: 15px; text-align: center;
-            box-shadow: var(--shadow); transition: var(--transition); position: relative;
-            border: 1px solid transparent; overflow: hidden;
-        }
-        .card::before {
-            content: ""; position: absolute; inset: 0; background: var(--pattern-bg); opacity: 0; transition: var(--transition);
-        }
-        .card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: var(--gold-glow); }
-        .card:hover::before { opacity: 0.1; }
-        .card i { font-size: 3rem; color: var(--turquoise); margin-bottom: 20px; transition: var(--transition); }
-        .card:hover i { color: var(--gold); }
-        .card h3 { margin-bottom: 15px; color: var(--navy); position: relative; z-index: 1; }
-        .card p { color: #666; font-size: 0.95rem; position: relative; z-index: 1; }
-
-        /* ================= RAVAND SECTION ================= */
-        #ravand { background: #3e2723; color: var(--cream); text-align: center; }
-        #ravand .section-title { color: var(--gold); }
-        .ravand-concept { font-size: 1.5rem; margin-bottom: 30px; color: var(--cream); }
-        .ravand-wrapper { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; }
-        .ravand-text { flex: 1; min-width: 300px; text-align: right; }
-        .ravand-img { flex: 1; min-width: 300px; }
-        .ravand-img img { width: 100%; border-radius: 20px; border: 2px solid var(--gold); }
-
-        /* ================= STORE ================= */
-        .product-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
-        .product-price { font-weight: bold; color: var(--turquoise); margin: 15px 0; font-size: 1.1rem; }
-        .btn-add { width: 100%; background: var(--navy); color: var(--white); padding: 10px; border-radius: 5px; cursor: pointer; border: none; transition: var(--transition); }
-        .btn-add:hover { background: var(--gold); color: var(--navy); }
-
-        /* ================= CART SIDEBAR ================= */
-        #cart-sidebar {
-            position: fixed; top: 0; right: -400px; width: 350px; height: 100vh;
-            background: var(--white); box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            z-index: 2000; transition: var(--transition); padding: 20px;
-            display: flex; flex-direction: column;
-        }
-        #cart-sidebar.active { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 15px; margin-bottom: 15px; }
-        .close-cart { cursor: pointer; font-size: 1.5rem; color: var(--navy); }
-        .cart-items { flex: 1; overflow-y: auto; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 10px 0; }
-        .cart-item-details h4 { font-size: 0.9rem; margin-bottom: 5px; }
-        .cart-item-controls { display: flex; align-items: center; gap: 10px; }
-        .cart-item-controls button { background: #eee; border: none; padding: 2px 8px; cursor: pointer; border-radius: 3px; }
-        .cart-total { border-top: 2px solid var(--navy); padding-top: 15px; margin-top: 15px; font-weight: bold; text-align: center; }
-        .btn-checkout { width: 100%; background: var(--turquoise); color: var(--white); padding: 12px; border: none; border-radius: 5px; margin-top: 15px; cursor: pointer; font-weight: bold; }
-
-        /* ================= PORTFOLIO ================= */
-        .filter-btns { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        .filter-btn { padding: 8px 20px; border: 1px solid var(--navy); background: transparent; border-radius: 20px; cursor: pointer; transition: var(--transition); }
-        .filter-btn.active, .filter-btn:hover { background: var(--navy); color: var(--white); }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .portfolio-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; }
-        .portfolio-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease; }
-        .portfolio-overlay {
-            position: absolute; inset: 0; background: rgba(30, 58, 138, 0.8);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            opacity: 0; transition: var(--transition); color: var(--white); text-align: center; padding: 20px;
-        }
-        .portfolio-item:hover img { transform: scale(1.1); }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-
-        /* ================= ABOUT & CONTACT ================= */
-        .about-content { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
-        .about-text { flex: 1; min-width: 300px; }
-        .about-text ul { margin-top: 20px; }
-        .about-text li { margin-bottom: 10px; }
-        .about-text i { color: var(--gold); margin-left: 10px; }
-        .about-img { flex: 1; text-align: center; min-width: 300px; }
-        .about-img img { width: 80%; max-width: 300px; border-radius: 50%; border: 10px solid var(--gold); padding: 10px; box-shadow: var(--shadow); }
-
-        .contact-container { display: flex; gap: 40px; flex-wrap: wrap; }
-        .contact-form { flex: 1; min-width: 300px; background: var(--white); padding: 30px; border-radius: 15px; box-shadow: var(--shadow); }
-        .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
-        .contact-info { flex: 1; min-width: 300px; }
-        .contact-info iframe { width: 100%; height: 250px; border: none; border-radius: 10px; margin-top: 20px; }
-
-        /* ================= FOOTER ================= */
-        footer { background: var(--navy); color: var(--white); padding: 60px 5% 20px; position: relative; text-align: center; }
-        footer::before { content: ""; position: absolute; inset: 0; background: var(--pattern-bg); opacity: 0.1; pointer-events: none; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: right; margin-bottom: 40px; position: relative; z-index: 1;}
-        .footer-title { color: var(--gold); margin-bottom: 20px; font-size: 1.2rem; }
-        .socials { display: flex; gap: 15px; margin-top: 20px; }
-        .socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: var(--transition); }
-        .socials a:hover { background: var(--gold); color: var(--navy); transform: translateY(-5px); box-shadow: var(--gold-glow); }
-        .quote { color: var(--gold); margin-top: 30px; }
-
-        /* ================= UTILS & RESPONSIVE ================= */
-        .scroll-top { position: fixed; bottom: 30px; left: 30px; background: var(--gold); color: var(--navy); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition); z-index: 1000; box-shadow: var(--shadow); }
-        .scroll-top.show { opacity: 1; visibility: visible; }
-        
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media(max-width: 768px) {
-            .nav-links { position: fixed; top: 70px; right: -100%; width: 250px; height: 100vh; background: var(--white); flex-direction: column; padding: 40px 20px; box-shadow: -5px 0 10px rgba(0,0,0,0.1); transition: var(--transition); }
-            .nav-links.active { right: 0; }
-            .hamburger { display: block; }
-            .hero-title { font-size: 2.2rem; }
-            .nastaliq { font-size: 1.5rem; }
-            .btn-outline { margin-right: 0; margin-bottom: 15px; display: block; }
-        }
-
-        /* LTR Adjustments for English */
-        html[dir="ltr"] .nav-links { right: auto; left: -100%; }
-        html[dir="ltr"] .nav-links.active { left: 0; box-shadow: 5px 0 10px rgba(0,0,0,0.1); }
-        html[dir="ltr"] .scroll-top { left: auto; right: 30px; }
-        html[dir="ltr"] .btn-outline { margin-right: 0; margin-left: 15px; }
-        html[dir="ltr"] .about-text i { margin-left: 0; margin-right: 10px; }
-        html[dir="ltr"] .footer-grid { text-align: left; }
-        html[dir="ltr"] #cart-sidebar { right: auto; left: -400px; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
-        html[dir="ltr"] #cart-sidebar.active { left: 0; }
-    </style>
-</head>
-<body>
-
-    <div id="splash">
-        <h1 class="nastaliq">توسعه پردازان</h1>
-        <div class="loader"></div>
-    </div>
-
-    <header id="header">
-        <div class="logo">
-            <i class="fa-solid fa-cube"></i> <span data-i18n="logo">TPE Co.</span>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#hero" data-i18n="nav_home">خانه</a></li>
-                <li><a href="#services" data-i18n="nav_services">خدمات</a></li>
-                <li><a href="#ravand" data-i18n="nav_ravand">روند</a></li>
-                <li><a href="#store" data-i18n="nav_store">فروشگاه</a></li>
-                <li><a href="#portfolio" data-i18n="nav_portfolio">نمونه‌کارها</a></li>
-                <li><a href="#about" data-i18n="nav_about">درباره ما</a></li>
-                <li><a href="#contact" data-i18n="nav_contact">تماس</a></li>
-            </ul>
-        </nav>
-        <div class="actions">
-            <select class="lang-select" id="lang-switch">
-                <option value="fa">فارسی</option>
-                <option value="en">English</option>
-                <option value="ar">العربية</option>
-            </select>
-            <div class="cart-icon" onclick="toggleCart()">
-                <i class="fa-solid fa-shopping-bag"></i>
-                <span class="cart-count" id="cart-count">0</span>
-            </div>
-            <div class="hamburger" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div>
-        </div>
-    </header>
-
-    <div id="cart-sidebar">
-        <div class="cart-header">
-            <h3 data-i18n="cart_title">سبد خرید</h3>
-            <i class="fa-solid fa-times close-cart" onclick="toggleCart()"></i>
-        </div>
-        <div class="cart-items" id="cart-items-container">
-            </div>
-        <div class="cart-total">
-            <span data-i18n="cart_total">جمع کل: </span> <span id="cart-total-price">0</span> <span data-i18n="currency">تومان</span>
-        </div>
-        <button class="btn-checkout" data-i18n="cart_checkout">ثبت سفارش</button>
-    </div>
-
-    <section id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title nastaliq" data-i18n="hero_title">توسعه پردازان؛ پیوند هنر ایرانی و صنعت آینده</h1>
-            <p class="hero-subtitle" data-i18n="hero_subtitle">از ایده تا محصول، با اصالت هزاره هنر و دقت مهندسی مدرن</p>
-            <button class="btn btn-outline" onclick="location.href='#services'" data-i18n="btn_services">خدمات ما</button>
-            <button class="btn btn-primary" onclick="location.href='#store'" data-i18n="btn_store">مشاهده محصولات</button>
-        </div>
-    </section>
-
-    <section id="services">
-        <h2 class="section-title"><span data-i18n="services_title_1">خدمات</span> <span style="color:var(--navy)" data-i18n="services_title_2">تخصصی</span></h2>
-        <div class="tazhib-divider"></div>
-        <div class="grid-container">
-            <div class="card">
-                <i class="fa-solid fa-drafting-compass"></i>
-                <h3 data-i18n="srv_1_title">طراحی مهندسی و شبیه‌سازی</h3>
-                <p data-i18n="srv_1_desc">طراحی دقیق CAD و تحلیل‌های CAE برای قطعات صنعتی پیچیده.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-cubes"></i>
-                <h3 data-i18n="srv_2_title">نمونه‌سازی و پرینت سه‌بعدی</h3>
-                <p data-i18n="srv_2_desc">تبدیل سریع ایده‌ها به واقعیت فیزیکی با بالاترین دقت.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-cogs"></i>
-                <h3 data-i18n="srv_3_title">ماشین‌کاری CNC</h3>
-                <p data-i18n="srv_3_desc">ساخت قطعات نهایی با متریال‌های مختلف فلزی و پلیمری.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-lightbulb"></i>
-                <h3 data-i18n="srv_4_title">فب‌لب صنایع خلاق</h3>
-                <p data-i18n="srv_4_desc">فضای کار اشتراکی و دسترسی به تجهیزات ساخت دیجیتال.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3 data-i18n="srv_5_title">آموزش تخصصی</h3>
-                <p data-i18n="srv_5_desc">دوره‌های عملی طراحی، ساخت و مهندسی معکوس.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3 data-i18n="srv_6_title">مشاوره صنعتی</h3>
-                <p data-i18n="srv_6_desc">مشاوره برای راه‌اندازی خط تولید و بهینه‌سازی فرآیندها.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="ravand">
-        <h2 class="section-title" data-i18n="ravand_title">RAVAND | روند</h2>
-        <div class="tazhib-divider"></div>
-        <div class="ravand-wrapper">
-            <div class="ravand-text">
-                <p class="ravand-concept nastaliq" data-i18n="ravand_quote">«جایی میان فکر و فنجان»</p>
-                <p data-i18n="ravand_desc">روند، فب‌لب تخصصی و استودیوی خلاقیت ماست. جایی که هنر اصیل ایرانی با تکنولوژی‌های مدرن ساخت دیجیتال گره می‌خورد. کارگاه‌های آموزشی، نشست‌های تخصصی و تولید محصولات تلفیقی در این فضا اتفاق می‌افتد.</p>
-            </div>
-            <div class="ravand-img">
-                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80" alt="Ravand Fablab">
-            </div>
-        </div>
-    </section>
-
-    <section id="store">
-        <h2 class="section-title"><span data-i18n="store_title_1">فروشگاه</span> <span style="color:var(--navy)" data-i18n="store_title_2">آنلاین</span></h2>
-        <div class="tazhib-divider"></div>
-        <div class="grid-container" id="products-grid">
-            </div>
-    </section>
-
-    <section id="portfolio">
-        <h2 class="section-title"><span data-i18n="port_title_1">نمونه</span> <span style="color:var(--navy)" data-i18n="port_title_2">کارها</span></h2>
-        <div class="tazhib-divider"></div>
-        <div class="filter-btns">
-            <button class="filter-btn active" data-filter="all" data-i18n="filter_all">همه</button>
-            <button class="filter-btn" data-filter="industrial" data-i18n="filter_ind">طراحی صنعتی</button>
-            <button class="filter-btn" data-filter="reverse" data-i18n="filter_rev">مهندسی معکوس</button>
-            <button class="filter-btn" data-filter="digital" data-i18n="filter_dig">ساخت دیجیتال</button>
-        </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item industrial digital">
-                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_1_title">قطعه توربین</h3>
-                    <p data-i18n="port_1_desc">طراحی و پرینت سه‌بعدی</p>
-                </div>
-            </div>
-            <div class="portfolio-item reverse">
-                <img src="https://images.unsplash.com/photo-1504917595217-d4bf06117361?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_2_title">اسکن سه‌بعدی موتور</h3>
-                    <p data-i18n="port_2_desc">مهندسی معکوس دقیق</p>
-                </div>
-            </div>
-            <div class="portfolio-item digital">
-                <img src="https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_3_title">تندیس اسلیمی</h3>
-                    <p data-i18n="port_3_desc">ماشین‌کاری CNC</p>
-                </div>
-            </div>
-            <div class="portfolio-item industrial">
-                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80" alt="Project">
-                <div class="portfolio-overlay">
-                    <h3 data-i18n="port_4_title">طراحی قالب</h3>
-                    <p data-i18n="port_4_desc">تزریق پلاستیک</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2 class="section-title"><span data-i18n="about_title_1">درباره</span> <span style="color:var(--navy)" data-i18n="about_title_2">توسعه پردازان</span></h2>
-        <div class="tazhib-divider"></div>
-        <div class="about-content">
-            <div class="about-text">
-                <p data-i18n="about_desc">شرکت دانش‌بنیان توسعه پردازان با هدف ارتقای سطح صنعت داخلی و پیوند آن با هنر غنی ایرانی تأسیس شده است. ما با بهره‌گیری از تجهیزات پیشرفته و تیمی متشکل از مهندسان و هنرمندان، از ایده تا تولید نهایی در کنار شما هستیم.</p>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_1">تیم متخصص و دانش‌بنیان</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_2">استفاده از تکنولوژی‌های روز دنیا</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_3">تضمین کیفیت و دقت بالا</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_4">تلفیق منحصر‌به‌فرد هنر و صنعت</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span data-i18n="about_adv_5">پشتیبانی و مشاوره تخصصی</span></li>
-                </ul>
-            </div>
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="CEO">
-                <h4 style="margin-top: 15px; color: var(--navy);" data-i18n="about_ceo">مدیرعامل توسعه پردازان</h4>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" style="background: rgba(0, 165, 207, 0.05);">
-        <h2 class="section-title"><span data-i18n="contact_title_1">تماس</span> <span style="color:var(--navy)" data-i18n="contact_title_2">با ما</span></h2>
-        <div class="tazhib-divider"></div>
-        <div class="contact-container">
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="نام شما" data-i18n-placeholder="form_name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" placeholder="شماره تماس" data-i18n-placeholder="form_phone" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="5" placeholder="پیام شما..." data-i18n-placeholder="form_msg" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="form_submit">ارسال پیام</button>
-                </form>
-            </div>
-            <div class="contact-info">
-                <p><i class="fa-solid fa-map-marker-alt" style="color:var(--gold)"></i> <span data-i18n="contact_address">زاهدان، پارک علم و فناوری</span></p>
-                <p><i class="fa-solid fa-phone" style="color:var(--gold)"></i> 09226704205</p>
-                <p><i class="fa-solid fa-envelope" style="color:var(--gold)"></i> info@tpe-co.ir</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54530.65582352899!2d60.84126785000001!3d29.49651525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f1c322d7411bc4b%3A0xc3ab353cd19ed624!2sZahedan%2C%20Sistan%20and%20Baluchestan%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <footer id="footer">
-        <div class="footer-grid">
-            <div>
-                <h3 class="footer-title" data-i18n="foot_title_1">دسترسی سریع</h3>
-                <ul>
-                    <li><a href="#services" data-i18n="nav_services">خدمات</a></li>
-                    <li><a href="#store" data-i18n="nav_store">فروشگاه</a></li>
-                    <li><a href="#portfolio" data-i18n="nav_portfolio">نمونه کارها</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="footer-title" data-i18n="foot_title_2">شبکه‌های اجتماعی</h3>
-                <div class="socials">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                </div>
-            </div>
-            <div>
-                <h3 class="footer-title" data-i18n="foot_title_3">خبرنامه</h3>
-                <div style="display:flex; gap:10px;">
-                    <input type="email" placeholder="ایمیل..." data-i18n-placeholder="form_email" style="padding:10px; border-radius:5px; border:none; width:100%;">
-                    <button class="btn-primary" style="padding:10px 15px; border-radius:5px; border:none;" data-i18n="btn_subscribe">عضویت</button>
-                </div>
-            </div>
-        </div>
-        <p class="quote nastaliq" data-i18n="foot_quote">«هنر صنعتگر، پیوندِ دیروز و فرداست»</p>
-        <p style="margin-top:20px; font-size:0.8rem;">&copy; <span id="year">1403</span> TPE Co. All Rights Reserved.</p>
-    </footer>
-
-    <div class="scroll-top" onclick="window.scrollTo(0,0)"><i class="fa-solid fa-chevron-up"></i></div>
-
-    <script>
-        // ================= PRELOADER & SPLASH =================
         window.addEventListener('load', () => {
-            const splash = document.getElementById('splash');
-            splash.style.opacity = '0';
-            setTimeout(() => { splash.style.display = 'none'; }, 800);
-            renderProducts();
+            document.getElementById('splash').style.opacity = '0';
+            setTimeout(() => document.getElementById('splash').style.display = 'none', 800);
+            const savedLang = localStorage.getItem('tpe_lang') || 'fa';
+            document.getElementById('lang-switch').value = savedLang;
+            updatePageLanguage(savedLang);
             updateCartUI();
+            renderPortfolio();
+            renderClients();
+            renderAbout();
         });
-
-        // ================= MOBILE MENU =================
-        const navLinks = document.querySelector('.nav-links');
-        function toggleMenu() {
-            navLinks.classList.toggle('active');
-        }
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        document.getElementById('lang-switch').addEventListener('change', (e) => {
+            const newLang = e.target.value;
+            localStorage.setItem('tpe_lang', newLang);
+            updatePageLanguage(newLang);
         });
-
-        // ================= SCROLL EFFECTS =================
         const header = document.getElementById('header');
-        const scrollTopBtn = document.querySelector('.scroll-top');
+        const scrollBtn = document.querySelector('.scroll-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'var(--shadow)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.7)';
-                header.style.boxShadow = 'none';
-            }
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
+            if (window.scrollY > 50) header.style.background = 'rgba(255,255,255,0.95)';
+            else header.style.background = 'rgba(255,255,255,0.7)';
+            if (window.scrollY > 500) scrollBtn.classList.add('show');
+            else scrollBtn.classList.remove('show');
         });
-
-        // ================= PORTFOLIO FILTER =================
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portItems = document.querySelectorAll('.portfolio-item');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.getAttribute('data-filter');
-                portItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // ================= STORE & CART LOGIC =================
-        const products = [
-            { id: 1, img: 'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=400&q=80', key_title: 'prod_1_title', price: 290000 },
-            { id: 2, img: 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=400&q=80', key_title: 'prod_2_title', price: 350000 },
-            { id: 3, img: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=400&q=80', key_title: 'prod_3_title', price: 1200000 },
-            { id: 4, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80', key_title: 'prod_4_title', price: 480000 },
-            { id: 5, img: 'https://images.unsplash.com/photo-1513506003901-1e6a229e9d15?auto=format&fit=crop&w=400&q=80', key_title: 'prod_5_title', price: 85000 },
-            { id: 6, img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80', key_title: 'prod_6_title', price: 750000 }
-        ];
-
-        let cart = JSON.parse(localStorage.getItem('tpe_cart')) || [];
-        const currentLang = () => document.getElementById('lang-switch').value;
-
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = '';
-            products.forEach(p => {
-                grid.innerHTML += `
-                    <div class="card">
-                        <img src="${p.img}" alt="Product" class="product-img">
-                        <h3 data-i18n="${p.key_title}">${translateText(p.key_title)}</h3>
-                        <p class="product-price">${p.price.toLocaleString()} <span data-i18n="currency">${translateText('currency')}</span></p>
-                        <button class="btn-add" onclick="addToCart(${p.id})"><i class="fa-solid fa-cart-plus"></i> <span data-i18n="btn_add_cart">${translateText('btn_add_cart')}</span></button>
-                    </div>
-                `;
-            });
-        }
-
-        function addToCart(id) {
-            const prod = products.find(p => p.id === id);
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...prod, qty: 1 });
-            }
-            saveCart();
-            updateCartUI();
-        }
-
-        function updateQty(id, change) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty += change;
-                if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
-                saveCart();
-                updateCartUI();
-            }
-        }
-
-        function saveCart() {
-            localStorage.setItem('tpe_cart', JSON.stringify(cart));
-        }
-
-        function updateCartUI() {
-            const container = document.getElementById('cart-items-container');
-            const count = document.getElementById('cart-count');
-            const totalEl = document.getElementById('cart-total-price');
-            
-            container.innerHTML = '';
-            let totalQty = 0;
-            let totalPrice = 0;
-
-            cart.forEach(item => {
-                totalQty += item.qty;
-                totalPrice += (item.price * item.qty);
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <h4>${translateText(item.key_title)}</h4>
-                            <p>${(item.price * item.qty).toLocaleString()}</p>
-                        </div>
-                        <div class="cart-item-controls">
-                            <button onclick="updateQty(${item.id}, 1)">+</button>
-                            <span>${item.qty}</span>
-                            <button onclick="updateQty(${item.id}, -1)">-</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            count.innerText = totalQty;
-            totalEl.innerText = totalPrice.toLocaleString();
-        }
-
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('active');
-        }
-
-        // ================= I18N / TRANSLATIONS LOGIC =================
-        const i18n = {
-            fa: {
-                page_title: "توسعه پردازان | TPE Co.", logo: "TPE Co.", nav_home: "خانه", nav_services: "خدمات", nav_ravand: "روند", nav_store: "فروشگاه", nav_portfolio: "نمونه‌کارها", nav_about: "درباره ما", nav_contact: "تماس",
-                cart_title: "سبد خرید", cart_total: "جمع کل: ", currency: "تومان", cart_checkout: "ثبت سفارش",
-                hero_title: "توسعه پردازان؛ پیوند هنر ایرانی و صنعت آینده", hero_subtitle: "از ایده تا محصول، با اصالت هزاره هنر و دقت مهندسی مدرن", btn_services: "خدمات ما", btn_store: "مشاهده محصولات",
-                services_title_1: "خدمات", services_title_2: "تخصصی", srv_1_title: "طراحی مهندسی", srv_1_desc: "طراحی دقیق CAD و تحلیل‌های CAE", srv_2_title: "نمونه‌سازی و پرینت سه‌بعدی", srv_2_desc: "تبدیل سریع ایده‌ها به واقعیت", srv_3_title: "ماشین‌کاری CNC", srv_3_desc: "ساخت قطعات نهایی دقیق", srv_4_title: "فب‌لب صنایع خلاق", srv_4_desc: "فضای کار اشتراکی و ساخت دیجیتال", srv_5_title: "آموزش تخصصی", srv_5_desc: "دوره‌های عملی طراحی و ساخت", srv_6_title: "مشاوره صنعتی", srv_6_desc: "راه‌اندازی خط تولید و بهینه‌سازی",
-                ravand_title: "RAVAND | روند", ravand_quote: "«جایی میان فکر و فنجان»", ravand_desc: "روند، فب‌لب تخصصی و استودیوی خلاقیت ماست. جایی که هنر اصیل ایرانی با تکنولوژی‌های مدرن گره می‌خورد.",
-                store_title_1: "فروشگاه", store_title_2: "آنلاین", btn_add_cart: "افزودن به سبد",
-                prod_1_title: "قاب موبایل تذهیب", prod_2_title: "تندیس سفارشی چوبی", prod_3_title: "خدمات اسکن سه‌بعدی", prod_4_title: "ست زیورآلات پلیمری", prod_5_title: "ماژیک رزینی اسلیمی", prod_6_title: "دوره طراحی صنعتی",
-                port_title_1: "نمونه", port_title_2: "کارها", filter_all: "همه", filter_ind: "صنعتی", filter_rev: "مهندسی معکوس", filter_dig: "دیجیتال",
-                port_1_title: "قطعه توربین", port_1_desc: "طراحی و پرینت", port_2_title: "اسکن موتور", port_2_desc: "مهندسی معکوس", port_3_title: "تندیس اسلیمی", port_3_desc: "ماشین‌کاری CNC", port_4_title: "قالب تزریق", port_4_desc: "طراحی صنعتی",
-                about_title_1: "درباره", about_title_2: "توسعه پردازان", about_desc: "شرکت دانش‌بنیان توسعه پردازان با هدف ارتقای سطح صنعت و پیوند با هنر ایرانی تأسیس شده است.", about_adv_1: "تیم متخصص", about_adv_2: "تکنولوژی روز", about_adv_3: "کیفیت بالا", about_adv_4: "تلفیق هنر و صنعت", about_adv_5: "پشتیبانی تخصصی", about_ceo: "مدیرعامل توسعه پردازان",
-                contact_title_1: "تماس", contact_title_2: "با ما", form_submit: "ارسال پیام", contact_address: "زاهدان، پارک علم و فناوری",
-                foot_title_1: "دسترسی سریع", foot_title_2: "شبکه‌های اجتماعی", foot_title_3: "خبرنامه", btn_subscribe: "عضویت", foot_quote: "«هنر صنعتگر، پیوندِ دیروز و فرداست»"
-            },
-            en: {
-                page_title: "TPE Co. | Innovation", logo: "TPE Co.", nav_home: "Home", nav_services: "Services", nav_ravand: "Ravand", nav_store: "Store", nav_portfolio: "Portfolio", nav_about: "About", nav_contact: "Contact",
-                cart_title: "Shopping Cart", cart_total: "Total: ", currency: "T", cart_checkout: "Checkout",
-                hero_title: "TPE Co; Where Iranian Art Meets Modern Industry", hero_subtitle: "From idea to product, with millennia of art and modern engineering.", btn_services: "Our Services", btn_store: "Explore Store",
-                services_title_1: "Expert", services_title_2: "Services", srv_1_title: "Engineering Design", srv_1_desc: "Accurate CAD & CAE", srv_2_title: "3D Printing", srv_2_desc: "Rapid Prototyping", srv_3_title: "CNC Machining", srv_3_desc: "High precision manufacturing", srv_4_title: "FabLab", srv_4_desc: "Creative co-working space", srv_5_title: "Training", srv_5_desc: "Practical engineering courses", srv_6_title: "Consulting", srv_6_desc: "Production line setup",
-                ravand_title: "RAVAND Studio", ravand_quote: '"Somewhere between a thought and a cup"', ravand_desc: "Ravand is our specialized FabLab and creative studio mixing Iranian art with digital fabrication.",
-                store_title_1: "Online", store_title_2: "Store", btn_add_cart: "Add to Cart",
-                prod_1_title: "Tazhib Phone Case", prod_2_title: "Custom Wooden Trophy", prod_3_title: "3D Scanning Service", prod_4_title: "Polymer Jewelry Set", prod_5_title: "Resin Marker", prod_6_title: "Industrial Design Course",
-                port_title_1: "Our", port_title_2: "Portfolio", filter_all: "All", filter_ind: "Industrial", filter_rev: "Reverse Eng.", filter_dig: "Digital Fab.",
-                port_1_title: "Turbine Part", port_1_desc: "3D Printed", port_2_title: "Engine Scan", port_2_desc: "Reverse Engineering", port_3_title: "Islamic Trophy", port_3_desc: "CNC Machining", port_4_title: "Injection Mold", port_4_desc: "Industrial Design",
-                about_title_1: "About", about_title_2: "TPE Co.", about_desc: "TPE Co is a knowledge-based company linking domestic industry capabilities with rich Iranian art.", about_adv_1: "Expert Team", about_adv_2: "Modern Tech", about_adv_3: "High Quality", about_adv_4: "Art & Industry", about_adv_5: "Expert Support", about_ceo: "CEO of TPE Co.",
-                contact_title_1: "Contact", contact_title_2: "Us", form_submit: "Send Message", contact_address: "Zahedan, Science & Tech Park",
-                foot_title_1: "Quick Links", foot_title_2: "Social Media", foot_title_3: "Newsletter", btn_subscribe: "Subscribe", foot_quote: '"The craftsman art connects yesterday and tomorrow"'
-            },
-            ar: {
-                page_title: "TPE Co. | تطوير", logo: "TPE Co.", nav_home: "الرئيسية", nav_services: "الخدمات", nav_ravand: "رافاند", nav_store: "المتجر", nav_portfolio: "الأعمال", nav_about: "معلومات عنا", nav_contact: "اتصل بنا",
-                cart_title: "سلة التسوق", cart_total: "المجموع: ", currency: "تومان", cart_checkout: "الدفع",
-                hero_title: "TPE؛ حيث يلتقي الفن الإيراني بالصناعة الحديثة", hero_subtitle: "من الفكرة إلى المنتج، بأصالة الفن ودقة الهندسة", btn_services: "خدماتنا", btn_store: "المتجر",
-                services_title_1: "خدمات", services_title_2: "متخصصة", srv_1_title: "تصميم هندسي", srv_1_desc: "تصميم CAD و CAE", srv_2_title: "طباعة ثلاثية الأبعاد", srv_2_desc: "نماذج أولية سريعة", srv_3_title: "تصنيع CNC", srv_3_desc: "تصنيع دقيق", srv_4_title: "مختبر التصنيع", srv_4_desc: "مساحة عمل إبداعية", srv_5_title: "تدريب", srv_5_desc: "دورات هندسية", srv_6_title: "استشارات", srv_6_desc: "إعداد خطوط الإنتاج",
-                ravand_title: "استوديو رافاند", ravand_quote: '"في مكان ما بين فكرة وفنجان"', ravand_desc: "رافاند هو مختبر التصنيع واستوديو الإبداع لدينا.",
-                store_title_1: "المتجر", store_title_2: "الإلكتروني", btn_add_cart: "أضف للسلة",
-                prod_1_title: "غطاء هاتف تذهيب", prod_2_title: "جائزة خشبية", prod_3_title: "مسح 3D", prod_4_title: "مجوهرات بوليمر", prod_5_title: "قلم ريزن", prod_6_title: "دورة تصميم",
-                port_title_1: "معرض", port_title_2: "الأعمال", filter_all: "الكل", filter_ind: "صناعي", filter_rev: "هندسة عكسية", filter_dig: "تصنيع رقمي",
-                port_1_title: "قطعة توربين", port_1_desc: "طباعة 3D", port_2_title: "مسح محرك", port_2_desc: "هندسة عكسية", port_3_title: "جائزة إسلامية", port_3_desc: "تصنيع CNC", port_4_title: "قالب حقن", port_4_desc: "تصميم صناعي",
-                about_title_1: "حول", about_title_2: "TPE Co.", about_desc: "شركة TPE تهدف إلى ربط قدرات الصناعة المحلية بالفن الإيراني.", about_adv_1: "فريق خبير", about_adv_2: "تكنولوجيا حديثة", about_adv_3: "جودة عالية", about_adv_4: "الفن والصناعة", about_adv_5: "دعم متخصص", about_ceo: "المدير التنفيذي",
-                contact_title_1: "اتصل", contact_title_2: "بنا", form_submit: "إرسال رسالة", contact_address: "زاهدان، حديقة العلوم والتكنولوجيا",
-                foot_title_1: "روابط سريعة", foot_title_2: "تواصل اجتماعي", foot_title_3: "نشرة إخبارية", btn_subscribe: "اشتراك", foot_quote: '"فن الحرفي يربط بين الأمس والغد"'
-            }
-        };
-
-        function translateText(key) {
-            const lang = currentLang();
-            return i18n[lang][key] || key;
-        }
-
-        document.getElementById('lang-switch').addEventListener('change', function() {
-            const lang = this.value;
-            
-            // Set DIR
-            document.documentElement.setAttribute('dir', lang === 'en' ? 'ltr' : 'rtl');
-            document.documentElement.setAttribute('lang', lang);
-
-            // Translate Text Nodes
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(i18n[lang][key]) el.innerHTML = i18n[lang][key];
-            });
-
-            // Translate Placeholders
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                // Use a generic placeholder logic or add to i18n if needed
-                if(lang==='en' && key==='form_name') el.placeholder = "Your Name";
-                if(lang==='en' && key==='form_phone') el.placeholder = "Phone Number";
-                if(lang==='en' && key==='form_msg') el.placeholder = "Your Message...";
-                if(lang==='en' && key==='form_email') el.placeholder = "Email...";
-                
-                if(lang==='ar' && key==='form_name') el.placeholder = "الاسم";
-                if(lang==='ar' && key==='form_phone') el.placeholder = "رقم الهاتف";
-                if(lang==='ar' && key==='form_msg') el.placeholder = "رسالتك...";
-                if(lang==='ar' && key==='form_email') el.placeholder = "البريد الإلكتروني...";
-                
-                if(lang==='fa' && key==='form_name') el.placeholder = "نام شما";
-                if(lang==='fa' && key==='form_phone') el.placeholder = "شماره تماس";
-                if(lang==='fa' && key==='form_msg') el.placeholder = "پیام شما...";
-                if(lang==='fa' && key==='form_email') el.placeholder = "ایمیل...";
-            });
-
-            // Re-render JS dynamic content
-            renderProducts();
-            updateCartUI();
-        });
-
-        // Current Year for Footer
-        const pc = new Intl.DateTimeFormat('fa-IR').format(new Date());
-        document.getElementById('year').innerText = pc.split('/')[0];
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); alert(i18n[currentLang]['form_submit'] || 'پیام ارسال شد'); });
+        document.getElementById('year').innerText = new Date().toLocaleDateString('fa-IR').split('/')[0];
+        window.addToCart = addToCart;
+        window.updateQty = updateQty;
+        window.toggleCart = toggleCart;
+        window.toggleMenu = toggleMenu;
     </script>
 </body>
 </html>
