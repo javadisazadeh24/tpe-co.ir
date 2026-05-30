@@ -1,19 +1,33 @@
+من درک می‌کنم. چیزی که می‌خواهی فراتر از یک صفحه ساده با چهار دایره است. می‌خواهی **حس دروازه ورود به یک مرکز نوآوری سطح جهانی** را داشته باشد، مثل ورود به سایت GE که حس سنگینی، مهندسی، و در عین حال مدرنیته را منتقل می‌کند.  
+
+من از ایده‌های GE.com استفاده می‌کنم:  
+- **ویدیوی پس‌زمینه با کیفیت بالا** (حس صنعت زنده)  
+- **لایه‌های عمیق** با خطوط مهندسی متحرک  
+- **تایپوگرافی درشت و صنعتی**  
+- **تعامل ماوس با تغییر پویای محتوا**  
+- **حس داشبورد فرماندهی** نه کارت‌های ساده  
+
+و با **هویت سایت اصلی شما** (رنگ‌ها، فونت وزیرمتن، لوگوها، محتوای دانش‌بنیان) تلفیق می‌شود.  
+
+نتیجه صفحه‌ای است که نه ساده و مسخره است، نه با باقی صفحات سایتت بی‌رابطه. بلکه یک **Gateway صنعتی-خلاق** است که کاربر را شگفت‌زده می‌کند.  
+
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>RAVAND FabLab | دروازه ساخت دیجیتال</title>
-  <meta name="description" content="فبلب پیشرفته توسعه پردازان | طراحی مهندسی، ساخت دیجیتال، صنایع خلاق، مهندسی معکوس">
+  <title>توسعه پردازان | RAVAND Gateway</title>
+  <meta name="description" content="دروازه نوآوری صنعتی و دیجیتال | طراحی مهندسی، ساخت دیجیتال، فبلب پیشرفته">
   
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- فونت وزیرمتن مانند سایت اصلی -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   
-  <!-- favicon با لوگوی واقعی (از مسیر اصلی) -->
+  <!-- favicon از لوگوی واقعی -->
   <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="apple-touch-icon" href="images/logo.png">
   
   <style>
     * {
@@ -23,49 +37,61 @@
     }
 
     :root {
-      --bg-deep: #0a0c15;
-      --glass-bg: rgba(20, 25, 40, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --creative: #c084fc;
-      --industrial: #fb923c;
-      --medical: #2dd4bf;
-      --catalog: #60a5fa;
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #dc2626;
       --gold: #eab308;
-      --text-light: #f1f5f9;
+      --creative: #a855f7;
+      --industrial: #f97316;
+      --medical: #06b6d4;
+      --catalog: #3b82f6;
+      --text-light: #f8fafc;
       --text-dim: #94a3b8;
-      --shadow-glow: 0 20px 35px -12px rgba(0,0,0,0.5);
+      --bg-dark: #050a15;
     }
 
     body {
-      font-family: 'Inter', 'Space Grotesk', sans-serif;
-      background: var(--bg-deep);
+      font-family: 'Vazirmatn', 'Inter', sans-serif;
+      background: var(--bg-dark);
       color: var(--text-light);
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
-    /* ========== پس‌زمینه مهندسی + ذرات ========== */
-    .canvas-bg {
+    /* ========== پس‌زمینه لایه‌ای الهام از GE ========== */
+    .hero-video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+      opacity: 0.5;
+    }
+    .gradient-overlay {
       position: fixed;
       inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(5,10,25,0.7), rgba(0,0,0,0.85));
       z-index: -2;
-      background: radial-gradient(circle at 30% 20%, #111827, #03050a);
     }
     .engineering-grid {
-      position: absolute;
+      position: fixed;
       inset: 0;
       background-image: 
-        repeating-linear-gradient(0deg, rgba(234, 179, 8, 0.08) 0px, rgba(234, 179, 8, 0.08) 1px, transparent 1px, transparent 60px),
-        repeating-linear-gradient(90deg, rgba(234, 179, 8, 0.08) 0px, rgba(234, 179, 8, 0.08) 1px, transparent 1px, transparent 60px);
-      background-size: 60px 60px;
-      animation: gridMove 25s linear infinite;
+        repeating-linear-gradient(0deg, rgba(59,130,246,0.15) 0px, rgba(59,130,246,0.15) 1px, transparent 1px, transparent 80px),
+        repeating-linear-gradient(90deg, rgba(59,130,246,0.15) 0px, rgba(59,130,246,0.15) 1px, transparent 1px, transparent 80px);
+      background-size: 80px 80px;
+      animation: gridShift 20s linear infinite;
+      z-index: -1;
+      pointer-events: none;
     }
-    @keyframes gridMove {
+    @keyframes gridShift {
       0% { background-position: 0 0; }
-      100% { background-position: 60px 60px; }
+      100% { background-position: 80px 80px; }
     }
-    /* ذرات معلق */
-    .floating-particles {
+    /* ذرات نورانی صنعتی */
+    .particles-layer {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -73,534 +99,456 @@
     }
     .particle {
       position: absolute;
-      width: 3px;
-      height: 3px;
-      background: radial-gradient(circle, #eab308, transparent);
+      width: 2px;
+      height: 2px;
+      background: var(--gold);
       border-radius: 50%;
-      animation: floatParticle 12s infinite linear;
+      opacity: 0.6;
+      animation: floatParticle 15s infinite linear;
     }
     @keyframes floatParticle {
       0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-      20% { opacity: 0.6; }
-      80% { opacity: 0.6; }
-      100% { transform: translateY(-20vh) translateX(30px); opacity: 0; }
-    }
-    /* نقوش ایرانی SVG */
-    .persian-motif {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 200px;
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .persian-motif svg {
-      width: 100%;
-      stroke: var(--gold);
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) translateX(40px); opacity: 0; }
     }
 
-    /* ========== اسپلش اسکرین (با لوگوهای واقعی) ========== */
-    .splash-screen {
+    /* ========== اسپلش اسکرین پیشرفته ========== */
+    .splash-industrial {
       position: fixed;
       inset: 0;
-      background: linear-gradient(145deg, #0f1222, #05070e);
+      background: #0a0f1f;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      transition: opacity 1s ease, visibility 1s;
+      transition: opacity 1s ease;
     }
-    .splash-screen.hide {
-      opacity: 0;
-      visibility: hidden;
+    .splash-content {
+      text-align: center;
     }
     .splash-logos {
       display: flex;
       gap: 40px;
+      justify-content: center;
       margin-bottom: 30px;
     }
     .splash-logos img {
       height: 100px;
-      width: auto;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 0 15px rgba(30,64,175,0.5));
     }
     .splash-title {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #eab308, #c084fc);
+      background: linear-gradient(135deg, #fff, #60a5fa);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       letter-spacing: -0.02em;
     }
-    .splash-sub {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: var(--text-dim);
+    .splash-loading {
+      margin-top: 40px;
+      width: 200px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .splash-progress {
+      width: 0%;
+      height: 100%;
+      background: var(--gold);
+      transition: width 0.3s;
     }
 
-    /* ========== نوار زبان ========== */
-    .lang-bar {
+    /* ========== نوار ناوبری زبان ========== */
+    .lang-control {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 25px;
+      left: 25px;
       z-index: 200;
       display: flex;
-      gap: 8px;
+      gap: 5px;
       background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      padding: 6px 16px;
-      border-radius: 60px;
-      border: 1px solid rgba(234,179,8,0.3);
+      backdrop-filter: blur(12px);
+      padding: 5px 15px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,215,0,0.3);
     }
     .lang-btn {
       background: none;
       border: none;
-      color: #aaa;
+      color: #ccc;
       font-weight: 600;
-      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 30px;
       cursor: pointer;
-      padding: 4px 12px;
-      border-radius: 40px;
-      transition: 0.2s;
+      font-family: 'Vazirmatn', sans-serif;
     }
     .lang-btn.active {
       background: var(--gold);
       color: #000;
     }
 
-    /* ========== گیت وی اصلی (رادیال) ========== */
-    .gateway {
+    /* ========== دروازه اصلی (داشبورد صنعتی) ========== */
+    .gateway-dashboard {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       padding: 2rem;
-      position: relative;
     }
-    .radial-stage {
-      position: relative;
-      width: min(85vw, 800px);
-      height: min(85vw, 800px);
-      margin: 0 auto;
+    .dashboard-container {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
     }
-
-    /* هسته مرکزی با لوگوی RAVAND + TPE */
-    .core-center {
+    /* بخش چپ: هاب مرکزی با لوگو و دایره تعاملی */
+    .hub-center {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .radial-menu {
+      position: relative;
+      width: 480px;
+      height: 480px;
+    }
+    .core-logo {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 240px;
-      height: 240px;
-      background: rgba(10, 15, 30, 0.7);
+      width: 180px;
+      height: 180px;
+      background: rgba(10,20,40,0.7);
       backdrop-filter: blur(16px);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 30;
       border: 1px solid rgba(234,179,8,0.4);
-      box-shadow: 0 0 40px rgba(234,179,8,0.15);
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      z-index: 10;
     }
-    .core-center img {
-      width: 100px;
-      margin-bottom: 12px;
+    .core-logo img {
+      width: 90px;
+      margin-bottom: 8px;
     }
-    .core-center .brand-text {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 2px;
+    .core-logo span {
+      font-size: 0.8rem;
+      font-weight: 600;
     }
-    .core-center .motto {
-      font-size: 0.7rem;
-      opacity: 0.7;
-      margin-top: 6px;
-    }
-
-    /* آیتم‌های چهارگانه شعاعی */
-    .gate-item {
+    /* حلقه بیرونی با چهار گره */
+    .node {
       position: absolute;
-      width: 180px;
-      background: rgba(15, 20, 35, 0.85);
+      width: 140px;
+      height: 140px;
+      background: rgba(20, 30, 55, 0.8);
       backdrop-filter: blur(12px);
-      border-radius: 48px;
-      padding: 1rem 1.2rem;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
-      z-index: 20;
     }
-    /* موقعیت‌ها */
-    .gate-item[data-sector="medical"] { top: -20px; left: 50%; transform: translateX(-50%); }
-    .gate-item[data-sector="creative"] { left: -35px; top: 50%; transform: translateY(-50%); }
-    .gate-item[data-sector="industrial"] { right: -35px; top: 50%; transform: translateY(-50%); }
-    .gate-item[data-sector="catalog"] { bottom: -20px; left: 50%; transform: translateX(-50%); }
-
-    /* حالت expanded */
-    .gate-item.expanded {
-      transform: scale(1.2);
-      background: rgba(20, 28, 48, 0.98);
-      border-color: var(--gold);
-      box-shadow: var(--shadow-glow);
-      z-index: 40;
-    }
-    .gate-item[data-sector="creative"].expanded { transform: translateY(-50%) scale(1.2); left: -50px; }
-    .gate-item[data-sector="industrial"].expanded { transform: translateY(-50%) scale(1.2); right: -50px; }
-    .gate-item[data-sector="medical"].expanded { transform: translateX(-50%) scale(1.2); top: -35px; }
-    .gate-item[data-sector="catalog"].expanded { transform: translateX(-50%) scale(1.2); bottom: -35px; }
-
-    .item-icon {
-      font-size: 2.2rem;
+    .node i {
+      font-size: 2rem;
       margin-bottom: 8px;
     }
-    .item-title {
-      font-weight: 800;
+    .node h4 {
       font-size: 1rem;
+      font-weight: 700;
     }
-    .expand-story {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.45s ease, opacity 0.35s ease;
-      margin-top: 0;
+    /* موقعیت‌ها بر روی دایره فرضی با شعاع 180px */
+    .node[data-sector="creative"] { top: -20px; left: 50%; transform: translateX(-50%); }
+    .node[data-sector="industrial"] { bottom: -20px; left: 50%; transform: translateX(-50%); }
+    .node[data-sector="medical"] { left: -20px; top: 50%; transform: translateY(-50%); }
+    .node[data-sector="catalog"] { right: -20px; top: 50%; transform: translateY(-50%); }
+    /* هاور و بزرگنمایی */
+    .node:hover {
+      transform: scale(1.08);
+      border-color: var(--gold);
+      background: rgba(30, 45, 80, 0.95);
     }
-    .gate-item.expanded .expand-story {
-      max-height: 320px;
-      opacity: 1;
-      margin-top: 14px;
+    /* بخش راست: پنل اطلاعات داینامیک (مثل GE که هنگام hover توضیحات عوض می‌شود) */
+    .info-panel {
+      background: rgba(10, 15, 30, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 32px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 35px -12px black;
     }
-    .story-desc {
-      font-size: 0.7rem;
-      color: #cbd5e1;
-      margin-bottom: 12px;
-      line-height: 1.5;
+    .sector-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
     }
-    .service-pills {
+    .sector-desc {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .services-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-      margin: 10px 0;
+      gap: 12px;
+      margin: 1.5rem 0;
     }
-    .service-pills span {
-      background: rgba(255,255,255,0.1);
-      padding: 4px 10px;
-      border-radius: 30px;
-      font-size: 0.6rem;
-      font-weight: 500;
-    }
-    .gate-cta-btn {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-decoration: none;
-      background: var(--gold);
-      color: #000;
+    .service-tag {
+      background: rgba(255,255,255,0.08);
       padding: 6px 16px;
       border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
       transition: 0.2s;
     }
-    .gate-cta-btn:hover {
+    .cta-button:hover {
       background: #ca8a04;
+      transform: translateY(-2px);
     }
-
-    /* پنل روایت سفر (نوشته داستانی) */
-    .journey-narrative {
+    /* استوری لاین متحرک (نوشته‌های روایی) */
+    .story-line {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      max-width: 300px;
-      background: rgba(0,0,0,0.6);
+      max-width: 320px;
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 14px 20px;
+      border-radius: 16px;
+      padding: 12px 20px;
       border-right: 3px solid var(--gold);
       font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-light);
       opacity: 0;
-      transform: translateX(30px);
       transition: 0.4s;
       pointer-events: none;
-      z-index: 100;
     }
-    .journey-narrative.show {
+    .story-line.show {
       opacity: 1;
-      transform: translateX(0);
     }
-
-    /* داینامیک بک‌گراند */
-    .dynamic-bg-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.3) contrast(1.2);
-      pointer-events: none;
-    }
-    .dynamic-bg-layer.active {
-      opacity: 0.45;
-    }
-
-    /* ریسپانسیو موبایل */
-    @media (max-width: 780px) {
-      .radial-stage { width: 95vw; height: auto; min-height: 500px; display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 70px; }
-      .gate-item { position: relative; width: 85%; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; transform: none !important; margin: 8px auto; }
-      .gate-item.expanded { transform: scale(1.02) !important; margin: 12px auto; }
-      .core-center { position: relative; top: 0; left: 0; transform: none; margin: 20px auto; }
-      .journey-narrative { bottom: 15px; right: 15px; max-width: 70%; }
-      .lang-bar { top: 12px; left: 12px; }
+    @media (max-width: 900px) {
+      .dashboard-container { grid-template-columns: 1fr; text-align: center; }
+      .radial-menu { width: 300px; height: 300px; margin: 0 auto; }
+      .core-logo { width: 120px; height: 120px; }
+      .core-logo img { width: 60px; }
+      .node { width: 100px; height: 100px; }
+      .node i { font-size: 1.4rem; }
+      .node h4 { font-size: 0.7rem; }
+      .info-panel { margin-top: 40px; }
     }
   </style>
 </head>
 <body>
 
-<div class="canvas-bg">
-  <div class="engineering-grid"></div>
-</div>
-<div class="floating-particles" id="particles"></div>
-<div class="persian-motif">
-  <svg viewBox="0 0 200 200">
-    <path d="M100 15 L115 45 L150 50 L130 75 L145 110 L100 95 L55 110 L70 75 L50 50 L85 45 L100 15Z" stroke="#eab308" stroke-width="1.2" fill="none" opacity="0.6"/>
-    <circle cx="100" cy="62" r="10" stroke="#eab308" stroke-width="0.8" fill="none"/>
-  </svg>
-</div>
-
-<div class="dynamic-bg-layer" id="dynamicBgLayer"></div>
+<video autoplay muted loop playsinline class="hero-video-bg" poster="images/hero.jpg">
+  <source src="videos/hero-video.mp4" type="video/mp4">
+</video>
+<div class="gradient-overlay"></div>
+<div class="engineering-grid"></div>
+<div class="particles-layer" id="particlesLayer"></div>
 
 <!-- اسپلش اسکرین با لوگوهای واقعی -->
-<div class="splash-screen" id="splashScreen">
-  <div class="splash-logos">
-    <img src="images/logo.png" alt="توسعه پردازان" onerror="this.src='https://placehold.co/100x100?text=TPE'">
-    <img src="images/logo-ravand.png" alt="RAVAND FabLab" onerror="this.src='https://placehold.co/100x100?text=RAVAND'">
+<div class="splash-industrial" id="splash">
+  <div class="splash-content">
+    <div class="splash-logos">
+      <img src="images/logo.png" alt="توسعه پردازان" onerror="this.src='https://placehold.co/100x100?text=TPE'">
+      <img src="images/logo-ravand.png" alt="RAVAND" onerror="this.src='https://placehold.co/100x100?text=R'">
+    </div>
+    <div class="splash-title">RAVAND FabLab</div>
+    <div class="splash-loading"><div class="splash-progress" id="progressBar"></div></div>
   </div>
-  <div class="splash-title">RAVAND FabLab</div>
-  <div class="splash-sub">از ایده تا محصول · مهندسی آینده</div>
 </div>
 
-<div class="lang-bar">
+<div class="lang-control">
   <button class="lang-btn active" data-lang="fa">فارسی</button>
   <button class="lang-btn" data-lang="en">EN</button>
   <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
-<div class="gateway">
-  <div class="radial-stage" id="radialStage">
-    <!-- مرکز -->
-    <div class="core-center">
-      <img src="images/logo-ravand.png" alt="RAVAND" onerror="this.src='https://placehold.co/80x80?text=R'">
-      <div class="brand-text">RAVAND FABLAB</div>
-      <div class="motto">توسعه پردازان · ساخت دیجیتال</div>
-    </div>
-
-    <!-- چهار قطب تعاملی با محتوای غنی از فایل اصلی -->
-    <div class="gate-item" data-sector="creative" data-color="creative">
-      <div class="item-icon"><i class="fas fa-palette" style="color: #c084fc;"></i></div>
-      <div class="item-title" data-i18n="creative.title">صنایع خلاق</div>
-      <div class="expand-story">
-        <div class="story-desc" data-i18n="creative.desc">طراحی پارامتریک، گلدان ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال</div>
-        <div class="service-pills">
-          <span data-i18n="creative.tag1">مدلسازی سه‌بعدی</span>
-          <span data-i18n="creative.tag2">دکوراسیون هنری</span>
-          <span data-i18n="creative.tag3">پرینت سه‌بعدی رزین</span>
+<div class="gateway-dashboard">
+  <div class="dashboard-container">
+    <!-- بخش چپ: منوی رادیال -->
+    <div class="hub-center">
+      <div class="radial-menu">
+        <div class="core-logo">
+          <img src="images/logo-ravand.png" alt="RAVAND" onerror="this.src='https://placehold.co/80x80?text=R'">
+          <span>TPE Co.</span>
         </div>
-        <a href="/fablab/creative" class="gate-cta-btn" data-i18n="creative.cta">سفر به خلاقیت <i class="fas fa-arrow-left"></i></a>
+        <div class="node" data-sector="creative">
+          <i class="fas fa-palette" style="color: #a855f7;"></i>
+          <h4>صنایع خلاق</h4>
+        </div>
+        <div class="node" data-sector="industrial">
+          <i class="fas fa-industry" style="color: #f97316;"></i>
+          <h4>مهندسی صنعتی</h4>
+        </div>
+        <div class="node" data-sector="medical">
+          <i class="fas fa-microscope" style="color: #06b6d4;"></i>
+          <h4>تجهیزات پزشکی</h4>
+        </div>
+        <div class="node" data-sector="catalog">
+          <i class="fas fa-qrcode" style="color: #3b82f6;"></i>
+          <h4>کاتالوگ دیجیتال</h4>
+        </div>
       </div>
     </div>
 
-    <div class="gate-item" data-sector="industrial" data-color="industrial">
-      <div class="item-icon"><i class="fas fa-industry" style="color: #fb923c;"></i></div>
-      <div class="item-title" data-i18n="industrial.title">مهندسی صنعتی</div>
-      <div class="expand-story">
-        <div class="story-desc" data-i18n="industrial.desc">مهندسی معکوس، ماشین‌سازی CNC، قطعات یدکی، بهینه‌سازی خط تولید</div>
-        <div class="service-pills">
-          <span data-i18n="industrial.tag1">CNC 5 محور</span>
-          <span data-i18n="industrial.tag2">CAD/CAM</span>
-          <span data-i18n="industrial.tag3">مهندسی معکوس پیشرفته</span>
-        </div>
-        <a href="/fablab/industrial" class="gate-cta-btn" data-i18n="industrial.cta">ورود به صنعت <i class="fas fa-arrow-left"></i></a>
+    <!-- بخش راست: پنل داینامیک محتوا -->
+    <div class="info-panel" id="infoPanel">
+      <div class="sector-title" id="panelTitle">صنایع خلاق</div>
+      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال با پیشرفته‌ترین تکنولوژی‌های ساخت دیجیتال.</div>
+      <div class="services-list" id="panelServices">
+        <span class="service-tag">مدلسازی سه‌بعدی</span>
+        <span class="service-tag">دکوراسیون هنری</span>
+        <span class="service-tag">پرینت سه‌بعدی رزین</span>
       </div>
-    </div>
-
-    <div class="gate-item" data-sector="medical" data-color="medical">
-      <div class="item-icon"><i class="fas fa-microscope" style="color: #2dd4bf;"></i></div>
-      <div class="item-title" data-i18n="medical.title">تجهیزات پزشکی</div>
-      <div class="expand-story">
-        <div class="story-desc" data-i18n="medical.desc">تعمیرات تخصصی، مهندسی معکوس قطعات، ساخت قطعات جایگزین، شبیه‌سازها</div>
-        <div class="service-pills">
-          <span data-i18n="medical.tag1">دندانپزشکی دقیق</span>
-          <span data-i18n="medical.tag2">آناتومی سه‌بعدی</span>
-          <span data-i18n="medical.tag3">سی‌تی اسکن</span>
-        </div>
-        <a href="/fablab/medical" class="gate-cta-btn" data-i18n="medical.cta">پزشکی نوین <i class="fas fa-arrow-left"></i></a>
-      </div>
-    </div>
-
-    <div class="gate-item" data-sector="catalog" data-color="catalog">
-      <div class="item-icon"><i class="fas fa-qrcode" style="color: #60a5fa;"></i></div>
-      <div class="item-title" data-i18n="catalog.title">کاتالوگ دیجیتال</div>
-      <div class="expand-story">
-        <div class="story-desc" data-i18n="catalog.desc">کتابخانه تعاملی ۲۵۰+ محصول و خدمات فبلب، نمونه‌کارهای صنعتی و خلاقانه</div>
-        <div class="service-pills">
-          <span data-i18n="catalog.tag1">قطعات صنعتی</span>
-          <span data-i18n="catalog.tag2">مدل پزشکی</span>
-          <span data-i18n="catalog.tag3">طراحی خلاق</span>
-        </div>
-        <a href="/fablab/explore" class="gate-cta-btn" data-i18n="catalog.cta">مشاهده پورتال <i class="fas fa-qrcode"></i></a>
-      </div>
+      <a href="#" id="panelCta" class="cta-button">ورود به خلاقیت <i class="fas fa-arrow-left"></i></a>
     </div>
   </div>
 </div>
 
-<div class="journey-narrative" id="narrativeBox"></div>
+<div class="story-line" id="storyLine"></div>
 
 <script>
-  // ========== داده‌های ترجمه و داستان (بر اساس فایل اصلی) ==========
-  const translations = {
+  // ========== داده‌های محتوایی (برگرفته از سایت اصلی شما) ==========
+  const content = {
     fa: {
-      "creative.title": "صنایع خلاق",
-      "creative.desc": "طراحی پارامتریک، گلدان ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال",
-      "creative.tag1": "مدلسازی سه‌بعدی", "creative.tag2": "دکوراسیون هنری", "creative.tag3": "پرینت سه‌بعدی رزین", "creative.cta": "سفر به خلاقیت",
-      "industrial.title": "مهندسی صنعتی",
-      "industrial.desc": "مهندسی معکوس، ماشین‌سازی CNC، قطعات یدکی، بهینه‌سازی خط تولید",
-      "industrial.tag1": "CNC 5 محور", "industrial.tag2": "CAD/CAM", "industrial.tag3": "مهندسی معکوس پیشرفته", "industrial.cta": "ورود به صنعت",
-      "medical.title": "تجهیزات پزشکی",
-      "medical.desc": "تعمیرات تخصصی، مهندسی معکوس قطعات، ساخت قطعات جایگزین، شبیه‌سازها",
-      "medical.tag1": "دندانپزشکی دقیق", "medical.tag2": "آناتومی سه‌بعدی", "medical.tag3": "سی‌تی اسکن", "medical.cta": "پزشکی نوین",
-      "catalog.title": "کاتالوگ دیجیتال",
-      "catalog.desc": "کتابخانه تعاملی ۲۵۰+ محصول و خدمات فبلب، نمونه‌کارهای صنعتی و خلاقانه",
-      "catalog.tag1": "قطعات صنعتی", "catalog.tag2": "مدل پزشکی", "catalog.tag3": "طراحی خلاق", "catalog.cta": "مشاهده پورتال",
-      "story.creative": "🎨 قلمرو خلاقیت: فرم‌های ارگانیک، طراحی پارامتریک و هنر دیجیتال در بستر فبلب.",
-      "story.industrial": "⚙️ قلمرو صنعت: مهندسی معکوس دقیق، ماشین‌کاری CNC، ساخت قطعات پیشرفته.",
-      "story.medical": "🩺 قلمرو پزشکی: قطعات با دقت میکرون، شبیه‌سازهای آموزشی، مدل‌های آناتومیک.",
-      "story.catalog": "📚 قلمرو کاتالوگ: دسترسی به ۲۵۰ پروژه و محصول از صنایع خلاق تا پزشکی."
+      creative: {
+        title: "صنایع خلاق",
+        desc: "طراحی پارامتریک، گلدان ارگانیک، تندیس، محصولات دکوری و هنر دیجیتال. از ایده تا محصول در بستر فبلب پیشرفته.",
+        services: ["مدلسازی سه‌بعدی", "دکوراسیون هنری", "پرینت سه‌بعدی رزین", "لایتینگ هوشمند"],
+        cta: "ورود به خلاقیت",
+        story: "🎨 مسیر خلاقیت: فرم‌های ارگانیک و طراحی پارامتریک، مرزهای هنر و صنعت را جابه‌جا می‌کند."
+      },
+      industrial: {
+        title: "مهندسی صنعتی",
+        desc: "مهندسی معکوس دقیق، ماشین‌سازی CNC، بهینه‌سازی خط تولید و ساخت قطعات یدکی با استانداردهای جهانی.",
+        services: ["CNC 5 محور", "CAD/CAM", "مهندسی معکوس", "فیکسچر صنعتی"],
+        cta: "ورود به صنعت",
+        story: "⚙️ قلمرو صنعت: دقت میکرونی، چرخدنده‌های فولادی و نوآوری در تولید."
+      },
+      medical: {
+        title: "تجهیزات پزشکی",
+        desc: "تعمیرات تخصصی، مهندسی معکوس قطعات پزشکی، ساخت شبیه‌سازهای آموزشی و مدل‌های آناتومیک با دقت بالا.",
+        services: ["دندانپزشکی دیجیتال", "مدل‌های آناتومیک", "سی‌تی اسکن به CAD", "شبیه‌سازهای پزشکی"],
+        cta: "پزشکی نوین",
+        story: "🩺 زیست‌فناوری: قطعات با دقت میکرون، نجات‌بخش زندگی و آموزش دقیق."
+      },
+      catalog: {
+        title: "کاتالوگ دیجیتال",
+        desc: "کتابخانه تعاملی شامل بیش از ۲۵۰ محصول و پروژه از صنایع خلاق، صنعتی و پزشکی. نمونه‌کارهای واقعی فبلب روند.",
+        services: ["قطعات صنعتی", "مدل پزشکی", "طراحی خلاق", "پروژه‌های مهندسی"],
+        cta: "مشاهده پورتال",
+        story: "📚 کاتالوگ زنده: هر محصول یک داستان از مهندسی تا خلق نهایی."
+      }
     },
     en: {
-      "creative.title": "Creative Industries",
-      "creative.desc": "Parametric design, organic vases, trophies, decorative & digital art",
-      "creative.tag1": "3D Modeling", "creative.tag2": "Art Decor", "creative.tag3": "Resin 3D Print", "creative.cta": "Journey to Creative",
-      "industrial.title": "Industrial Engineering",
-      "industrial.desc": "Reverse engineering, CNC machining, spare parts, production line optimization",
-      "industrial.tag1": "5-axis CNC", "industrial.tag2": "CAD/CAM", "industrial.tag3": "Advanced Reverse", "industrial.cta": "Enter Industry",
-      "medical.title": "Medical Equipment",
-      "medical.desc": "Specialized repairs, reverse engineering, replacement parts, simulators",
-      "medical.tag1": "Precision Dental", "medical.tag2": "3D Anatomy", "medical.tag3": "CT Data", "medical.cta": "Modern Medical",
-      "catalog.title": "Digital Catalog",
-      "catalog.desc": "Interactive library 250+ products, industrial & creative projects",
-      "catalog.tag1": "Industrial Parts", "catalog.tag2": "Medical Models", "catalog.tag3": "Creative Design", "catalog.cta": "Explore Portal",
-      "story.creative": "🎨 Creative realm: organic forms, parametric design, digital art inside FabLab.",
-      "story.industrial": "⚙️ Industrial realm: precision reverse engineering, CNC machining, advanced parts.",
-      "story.medical": "🩺 Medical realm: micro-precision parts, educational simulators, anatomical models.",
-      "story.catalog": "📚 Catalog realm: access to 250 projects from creative to medical industries."
+      creative: { title: "Creative Industries", desc: "Parametric design, organic vases, trophies, decorative & digital art.", services: ["3D Modeling", "Art Decor", "Resin Printing", "Smart Lighting"], cta: "Enter Creative", story: "🎨 Creative realm: organic forms, parametric design, digital art inside FabLab." },
+      industrial: { title: "Industrial Engineering", desc: "Precision reverse engineering, CNC machining, production line optimization.", services: ["5-axis CNC", "CAD/CAM", "Reverse Eng.", "Industrial Fixtures"], cta: "Enter Industry", story: "⚙️ Industrial realm: micro-precision, steel gears, innovation in production." },
+      medical: { title: "Medical Equipment", desc: "Specialized repairs, reverse engineering of parts, educational simulators, anatomical models.", services: ["Digital Dentistry", "Anatomical Models", "CT to CAD", "Medical Simulators"], cta: "Modern Medical", story: "🩺 Biotech zone: micro-precision parts, educational simulators, anatomical models." },
+      catalog: { title: "Digital Catalog", desc: "Interactive library 250+ products & projects from creative, industrial & medical fields.", services: ["Industrial Parts", "Medical Models", "Creative Design", "Engineering Projects"], cta: "Explore Portal", story: "📚 Living catalog: each product tells a story of engineering & creation." }
     },
     ar: {
-      "creative.title": "الصناعات الإبداعية",
-      "creative.desc": "التصميم البارامتري، المزهريات العضوية، الجوائز، المنتجات الديكورية والفن الرقمي",
-      "creative.tag1": "نمذجة ثلاثية", "creative.tag2": "ديكور فني", "creative.tag3": "طباعة راتنجية", "creative.cta": "رحلة الإبداع",
-      "industrial.title": "الهندسة الصناعية",
-      "industrial.desc": "الهندسة العكسية، التصنيع باستخدام الحاسب الآلي، قطع الغيار، تحسين خط الإنتاج",
-      "industrial.tag1": "CNC 5 محاور", "industrial.tag2": "CAD/CAM", "industrial.tag3": "هندسة عكسية", "industrial.cta": "الدخول إلى الصناعة",
-      "medical.title": "المعدات الطبية",
-      "medical.desc": "الإصلاحات المتخصصة، الهندسة العكسية للأجزاء، الأجزاء البديلة، أجهزة المحاكاة",
-      "medical.tag1": "طب الأسنان الدقيق", "medical.tag2": "تشريح ثلاثي", "medical.tag3": "بيانات مقطعية", "medical.cta": "الطب الحديث",
-      "catalog.title": "الكتالوج الرقمي",
-      "catalog.desc": "مكتبة تفاعلية 250+ منتج وخدمات فبلب",
-      "catalog.tag1": "قطع صناعية", "catalog.tag2": "نماذج طبية", "catalog.tag3": "تصميم إبداعي", "catalog.cta": "استكشاف البوابة",
-      "story.creative": "🎨 عالم الإبداع: أشكال عضوية، تصميم بارامتري، فن رقمي داخل فبلب.",
-      "story.industrial": "⚙️ عالم الصناعة: هندسة عكسية دقيقة، تصنيع CNC، أجزاء متقدمة.",
-      "story.medical": "🩺 عالم الطبي: أجزاء دقيقة، أجهزة محاكاة تعليمية، نماذج تشريحية.",
-      "story.catalog": "📚 عالم الكتالوج: الوصول إلى 250 مشروعًا من الصناعات الإبداعية إلى الطبية."
+      creative: { title: "الصناعات الإبداعية", desc: "التصميم البارامتري، المزهريات العضوية، الجوائز، المنتجات الديكورية والفن الرقمي.", services: ["نمذجة ثلاثية", "ديكور فني", "طباعة راتنجية", "إضاءة ذكية"], cta: "استكشف الإبداع", story: "🎨 عالم الإبداع: أشكال عضوية، تصميم بارامتري، فن رقمي داخل فبلب." },
+      industrial: { title: "الهندسة الصناعية", desc: "الهندسة العكسية الدقيقة، التصنيع باستخدام الحاسب الآلي، تحسين خط الإنتاج.", services: ["CNC 5 محاور", "CAD/CAM", "هندسة عكسية", "تجهيزات صناعية"], cta: "استكشف الصناعة", story: "⚙️ عالم الصناعة: دقة متناهية، تروس فولاذية، ابتكار في الإنتاج." },
+      medical: { title: "المعدات الطبية", desc: "الإصلاحات المتخصصة، الهندسة العكسية للأجزاء، أجهزة المحاكاة التعليمية، النماذج التشريحية.", services: ["طب الأسنان الرقمي", "نماذج تشريحية", "CT إلى CAD", "أجهزة محاكاة"], cta: "الطب الحديث", story: "🩺 منطقة التكنولوجيا الحيوية: أجزاء دقيقة، أجهزة محاكاة تعليمية، نماذج تشريحية." },
+      catalog: { title: "الكتالوج الرقمي", desc: "مكتبة تفاعلية تضم أكثر من 250 منتجًا ومشروعًا من المجالات الإبداعية والصناعية والطبية.", services: ["قطع صناعية", "نماذج طبية", "تصميم إبداعي", "مشاريع هندسية"], cta: "استكشاف البوابة", story: "📚 كتالوج حي: كل منتج يروي قصة الهندسة والإبداع." }
     }
   };
 
   let currentLang = 'fa';
   let currentSector = 'creative';
-  let autoTimer = null;
+  let autoInterval = null;
   let isHovering = false;
-  const sectors = ['creative', 'industrial', 'medical', 'catalog'];
-  const gateItems = document.querySelectorAll('.gate-item');
-  const narrativeBox = document.getElementById('narrativeBox');
-  const dynamicBg = document.getElementById('dynamicBgLayer');
 
-  // تصاویر پس‌زمینه غنی (از فایل اصلی الهام گرفته)
-  const bgMap = {
-    creative: 'https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    industrial: 'https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    medical: 'https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    catalog: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  };
+  const nodes = document.querySelectorAll('.node');
+  const panelTitle = document.getElementById('panelTitle');
+  const panelDesc = document.getElementById('panelDesc');
+  const panelServices = document.getElementById('panelServices');
+  const panelCta = document.getElementById('panelCta');
+  const storyLine = document.getElementById('storyLine');
 
-  function setBg(sector) {
-    if (bgMap[sector]) {
-      dynamicBg.style.backgroundImage = `url(${bgMap[sector]})`;
-      dynamicBg.classList.add('active');
-    }
+  function updatePanel(sector) {
+    const data = content[currentLang][sector];
+    if (!data) return;
+    panelTitle.innerText = data.title;
+    panelDesc.innerText = data.desc;
+    panelServices.innerHTML = data.services.map(s => `<span class="service-tag">${s}</span>`).join('');
+    panelCta.innerText = data.cta + '  ←';
+    panelCta.href = sector === 'creative' ? '/fablab/creative' : (sector === 'industrial' ? '/fablab/industrial' : (sector === 'medical' ? '/fablab/medical' : '/fablab/explore'));
+    // نمایش استوری لاین
+    storyLine.innerText = data.story;
+    storyLine.classList.add('show');
+    setTimeout(() => { if (!isHovering) storyLine.classList.remove('show'); }, 3500);
   }
 
-  function showNarrative(sector) {
-    const key = `story.${sector}`;
-    narrativeBox.innerHTML = `<i class="fas fa-route" style="margin-left: 8px;"></i> ${translations[currentLang][key]}`;
-    narrativeBox.classList.add('show');
-    setTimeout(() => {
-      if (!isHovering) narrativeBox.classList.remove('show');
-    }, 4000);
-  }
-
-  function expandSector(index) {
-    gateItems.forEach((item, i) => {
-      if (i === index) item.classList.add('expanded');
-      else item.classList.remove('expanded');
+  function highlightNode(sector) {
+    nodes.forEach(node => {
+      if (node.dataset.sector === sector) {
+        node.style.transform = 'scale(1.08)';
+        node.style.borderColor = '#eab308';
+      } else {
+        node.style.transform = '';
+        node.style.borderColor = '';
+      }
     });
-    const sectorName = sectors[index];
-    currentSector = sectorName;
-    setBg(sectorName);
-    showNarrative(sectorName);
+    updatePanel(sector);
+    currentSector = sector;
   }
 
   function startAutoRotate() {
-    if (autoTimer) clearInterval(autoTimer);
-    if (isHovering) return;
-    let idx = 0;
-    autoTimer = setInterval(() => {
+    if (autoInterval) clearInterval(autoInterval);
+    const sectorsList = ['creative', 'industrial', 'medical', 'catalog'];
+    let idx = sectorsList.indexOf(currentSector);
+    autoInterval = setInterval(() => {
       if (!isHovering) {
-        idx = (idx + 1) % sectors.length;
-        expandSector(idx);
+        idx = (idx + 1) % sectorsList.length;
+        const nextSector = sectorsList[idx];
+        highlightNode(nextSector);
       }
     }, 5500);
   }
 
   function stopAuto() {
-    if (autoTimer) clearInterval(autoTimer);
-    autoTimer = null;
+    if (autoInterval) clearInterval(autoInterval);
+    autoInterval = null;
   }
 
-  // رویدادهای موس
-  gateItems.forEach((item, idx) => {
-    item.addEventListener('mouseenter', () => {
+  nodes.forEach(node => {
+    node.addEventListener('mouseenter', () => {
       isHovering = true;
       stopAuto();
-      expandSector(idx);
+      highlightNode(node.dataset.sector);
     });
-    item.addEventListener('mouseleave', () => {
+    node.addEventListener('mouseleave', () => {
       isHovering = false;
       startAutoRotate();
     });
-    item.addEventListener('click', (e) => {
-      if (e.target.closest('.gate-cta-btn')) return;
-      const sector = item.dataset.sector;
+    node.addEventListener('click', () => {
+      const sector = node.dataset.sector;
       let url = '';
       if (sector === 'creative') url = '/fablab/creative';
       else if (sector === 'industrial') url = '/fablab/industrial';
@@ -611,56 +559,53 @@
   });
 
   // زبان
-  function updateLanguage(lang) {
+  function setLanguage(lang) {
     currentLang = lang;
-    document.documentElement.lang = (lang === 'ar' ? 'ar' : (lang === 'fa' ? 'fa' : 'en'));
+    document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'fa' ? 'fa' : 'en');
     document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[lang][key]) el.innerText = translations[lang][key];
-    });
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-    if (!isHovering) showNarrative(currentSector);
+    updatePanel(currentSector);
   }
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => updateLanguage(btn.dataset.lang));
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
   });
 
-  // پارتیکل‌ها (انیمیشن لایه دوم)
+  // اسپلش اسکرین با انیمیشن پیشرفت
+  let progress = 0;
+  const progressBar = document.getElementById('progressBar');
+  const splash = document.getElementById('splash');
+  const interval = setInterval(() => {
+    progress += Math.random() * 15;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(interval);
+      gsap.to(splash, { opacity: 0, duration: 0.8, onComplete: () => splash.style.display = 'none' });
+      // انیمیشن ورود
+      gsap.fromTo('.hub-center', { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(0.5)" });
+      gsap.fromTo('.info-panel', { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, delay: 0.2 });
+      startAutoRotate();
+    }
+    progressBar.style.width = progress + '%';
+  }, 50);
+
+  // ایجاد ذرات
   function createParticles() {
-    const container = document.getElementById('particles');
-    for (let i = 0; i < 70; i++) {
+    const container = document.getElementById('particlesLayer');
+    for (let i = 0; i < 60; i++) {
       const p = document.createElement('div');
       p.classList.add('particle');
       p.style.left = Math.random() * 100 + '%';
       p.style.animationDelay = Math.random() * 15 + 's';
-      p.style.animationDuration = 8 + Math.random() * 10 + 's';
-      p.style.background = `radial-gradient(circle, #eab308, #c084fc)`;
+      p.style.animationDuration = 8 + Math.random() * 12 + 's';
+      p.style.background = `radial-gradient(circle, #eab308, #3b82f6)`;
       container.appendChild(p);
     }
   }
-
-  // اسپلش و انیمیشن ورودی (لایه‌های متعدد)
-  window.addEventListener('load', () => {
-    createParticles();
-    const splash = document.getElementById('splashScreen');
-    const tl = gsap.timeline();
-    tl.fromTo('.splash-logos img', { scale: 0.5, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.8, stagger: 0.2 })
-      .fromTo('.splash-title', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
-      .fromTo('.splash-sub', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, "-=0.2")
-      .to(splash, { opacity: 0, duration: 1, delay: 1.3, onComplete: () => {
-        splash.style.display = 'none';
-        // انیمیشن ورود گیت وی
-        gsap.fromTo('.core-center', { scale: 0.6, opacity: 0, rotateY: 90 }, { scale: 1, opacity: 1, rotateY: 0, duration: 0.9, ease: "back.out(0.6)" });
-        gsap.fromTo('.gate-item', { opacity: 0, y: 60, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', stagger: 0.12, duration: 0.7, ease: "power2.out" });
-        startAutoRotate();
-        expandSector(0);
-      }});
-  });
-
-  setBg('creative');
-  updateLanguage('fa');
+  createParticles();
+  setLanguage('fa');
+  highlightNode('creative');
 </script>
 </body>
 </html>
+```
