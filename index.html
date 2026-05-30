@@ -3,1304 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TPE FabLab | Digital Fabrication & Product Engineering Studio</title>
-  <meta name="description" content="Digital Fabrication & Product Engineering Studio. Transforming ideas into functional reality through 3D printing, CNC, reverse engineering and product development.">
-  <meta name="keywords" content="TPE, FabLab, Digital Fabrication, 3D Printing, CNC, Reverse Engineering, Product Development, Industrial Design">
-  <meta name="author" content="Tose'e Pardazan Electronic Co.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="TPE FabLab | Digital Fabrication Studio">
-  <meta property="og:description" content="Transforming ideas into functional reality. Engineering, prototyping and manufacturing services.">
-  <meta property="og:image" content="/fablab/assets/images/og-image.jpg">
-  <meta property="og:url" content="https://tpe-co.ir/fablab">
-  <meta property="og:type" content="website">
-  
-  <!-- Canonical & Alternate -->
-  <link rel="canonical" href="https://tpe-co.ir/fablab">
-  <link rel="alternate" hreflang="fa" href="https://tpe-co.ir/fablab">
-  <link rel="alternate" hreflang="en" href="https://tpe-co.ir/en/fablab">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/images/logo.png" type="image/png">
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
+  <title>TPE FabLab | دانش بنیان توسعه پردازان | ساخت دیجیتال و مهندسی محصول</title>
+  <meta name="description" content="فب‌لب خصوصی توسعه پردازان | طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی، ساخت دیجیتال، مهندسی معکوس و خدمات تخصصی صنعتی، خلاق و پزشکی">
+  <meta name="keywords" content="فب لب, ساخت دیجیتال, پرینت سه بعدی, سی ان سی, مهندسی معکوس, طراحی صنعتی, تجهیزات پزشکی">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   <style>
-    /* ============================================
-       DESIGN SYSTEM
-       Industrial - Creative - Technical - Clean
-    ============================================ */
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      /* Core Colors */
-      --black: #000000;
-      --white: #ffffff;
-      --gray-900: #1a1a1a;
-      --gray-800: #2d2d2d;
-      --gray-700: #404040;
-      --gray-600: #595959;
-      --gray-500: #737373;
-      --gray-400: #a3a3a3;
-      --gray-300: #d4d4d4;
-      --gray-200: #e5e5e5;
-      --gray-100: #f5f5f5;
-      
-      /* Accent Options - Industrial Cyan (primary) */
-      --accent-cyan: #00b4d8;
-      --accent-cyan-dark: #0096c7;
-      --accent-cyan-light: #48cae4;
-      
-      /* Alternative Orange (for secondary) */
-      --accent-orange: #f48c06;
-      --accent-orange-dark: #dc2f02;
-      
-      /* Current Accent */
-      --accent: var(--accent-cyan);
-      --accent-dark: var(--accent-cyan-dark);
-      --accent-light: var(--accent-cyan-light);
-      
-      /* Spacing */
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 1rem;
-      --spacing-md: 1.5rem;
-      --spacing-lg: 2rem;
-      --spacing-xl: 3rem;
-      --spacing-2xl: 4rem;
-      --spacing-3xl: 6rem;
-      
-      /* Typography */
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'IBM Plex Sans', 'Space Grotesk', monospace;
-      
-      /* Layout */
-      --container-max: 1280px;
-      --container-padding: 1.5rem;
-      
-      /* Transitions */
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.3s ease;
-      --transition-slow: 0.5s ease;
+      --bg: #f8fafc; --text: #0f172a; --muted: #64748b;
+      --primary: #1e40af; --primary-dark: #1e3a8a; --primary-light: #3b82f6;
+      --accent: #dc2626; --accent-light: #ef4444;
+      --creative: #8b5cf6; --industrial: #0f172a; --medical: #0891b2;
+      --glass: rgba(255,255,255,0.8); --shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+      --maxw: 1280px;
     }
-    
-    /* Reset & Base */
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-    
     body {
-      font-family: var(--font-sans);
-      background-color: var(--white);
-      color: var(--gray-800);
-      line-height: 1.6;
+      font-family: 'Inter', 'Vazirmatn', sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
       overflow-x: hidden;
     }
-    
-    /* RTL Support */
-    body[dir="rtl"] {
-      text-align: right;
-    }
-    
-    body[dir="ltr"] {
-      text-align: left;
-    }
-    
-    /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-    
-    h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; }
-    h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: var(--spacing-lg); }
-    h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
-    h4 { font-size: 1.125rem; }
-    
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color var(--transition-fast);
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    /* Container */
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 var(--container-padding);
-    }
-    
-    section {
-      padding: var(--spacing-3xl) 0;
-    }
-    
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--font-mono);
-      font-weight: 500;
-      font-size: 0.875rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      border-radius: 0;
-      transition: all var(--transition-fast);
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-    
-    .btn-primary {
-      background: var(--black);
-      color: var(--white);
-      border: 1px solid var(--black);
-    }
-    
-    .btn-primary:hover {
-      background: var(--gray-800);
-      transform: translateY(-2px);
-    }
-    
-    .btn-outline {
-      border: 1px solid var(--black);
-      color: var(--black);
-      background: transparent;
-    }
-    
-    .btn-outline:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-    
-    .btn-accent {
-      background: var(--accent);
-      color: var(--black);
-      border: 1px solid var(--accent);
-    }
-    
-    .btn-accent:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px);
-    }
-    
-    /* ============================================
-       NAVIGATION - Industrial Minimal
-    ============================================ */
-    
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--gray-200);
-      transition: all var(--transition-normal);
-    }
-    
-    .navbar.scrolled {
-      padding: 0.5rem 0;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem var(--container-padding);
-      max-width: var(--container-max);
-      margin: 0 auto;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .logo img {
-      height: 40px;
-    }
-    
-    .logo-text {
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .logo-text span {
-      color: var(--accent);
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-    
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-    }
-    
-    .menu-toggle span {
-      width: 25px;
-      height: 2px;
-      background: var(--black);
-      transition: var(--transition-fast);
-    }
-    
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    h2 { font-size: 32px; text-align: center; margin-bottom: 48px; color: var(--primary); position: relative; }
+    h2:after { content: ''; position: absolute; bottom: -12px; right: 50%; transform: translateX(50%); width: 80px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--primary)); border-radius: 2px; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s; border: none; cursor: pointer; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 4px 12px rgba(30,64,175,0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30,64,175,0.4); }
+    .btn-outline { border: 1px solid var(--primary); color: var(--primary); background: transparent; }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    /* navbar */
+    .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; transition: 0.3s; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .logo img { height: 42px; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-weight: 500; font-size: 14px; transition: 0.3s; }
+    .nav-links a:hover { color: var(--primary); }
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .menu-toggle span { width: 25px; height: 2px; background: var(--text); transition: 0.3s; }
+    @media (max-width: 768px) { .nav-links { display: none; } .menu-toggle { display: flex; } }
+    /* hero with semi-circle & rotating visual */
+    .hero { min-height: 90vh; display: flex; align-items: center; padding-top: 80px; background: white; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .visual-rotator { position: relative; aspect-ratio: 4/3; background: #eef2ff; border-radius: 24px; overflow: hidden; }
+    .rotator-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.6s ease; }
+    .rotator-slide.active { opacity: 1; }
+    .rotator-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; }
+    .semi-circle { position: relative; height: 340px; display: flex; justify-content: center; align-items: center; }
+    .category-btn { position: absolute; width: 130px; height: 130px; background: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; cursor: pointer; transition: 0.3s; text-align: center; }
+    .category-btn i { font-size: 42px; margin-bottom: 8px; }
+    .category-btn span { font-weight: 700; font-size: 16px; }
+    .category-btn small { font-size: 11px; color: var(--muted); }
+    .category-btn.active { transform: scale(1.08); border-color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; }
+    .category-btn.active small { color: rgba(255,255,255,0.8); }
+    .cat1 { top: 0; left: 50%; transform: translateX(-50%); }
+    .cat2 { bottom: 0; left: 0; }
+    .cat3 { bottom: 0; right: 0; }
+    .hero-text { text-align: center; margin-top: 48px; }
+    .hero-text h1 { font-size: 44px; margin-bottom: 16px; }
+    .hero-badges { display: flex; justify-content: center; gap: 32px; margin: 24px 0; flex-wrap: wrap; }
+    .hero-badges span { font-weight: 600; letter-spacing: 1px; }
+    .cta-group { display: flex; justify-content: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
+    /* category content sections */
+    .cat-section { transition: 0.3s; }
+    .services-grid, .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 32px; }
+    .service-card, .portfolio-card { background: white; border-radius: 20px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0; }
+    .service-card:hover, .portfolio-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .service-icon i { font-size: 26px; color: white; }
+    .client-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; margin-top: 40px; }
+    .client-logos img { height: 60px; width: auto; filter: grayscale(1); opacity: 0.7; transition: 0.3s; }
+    .client-logos img:hover { filter: grayscale(0); opacity: 1; }
+    .download-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 32px; padding: 40px; text-align: center; margin-top: 40px; }
+    .download-card h3 { margin-bottom: 16px; }
+    .qr-placeholder { background: white; width: 140px; height: 140px; margin: 20px auto; border-radius: 20px; display: flex; align-items: center; justify-content: center; }
+    .qr-placeholder img { width: 120px; }
+    footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; margin-top: 60px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+    .footer-col h4 { color: white; margin-bottom: 20px; }
+    .footer-col a { display: block; color: #94a3b8; margin-bottom: 10px; text-decoration: none; }
+    .footer-col a:hover { color: white; }
+    .copyright { text-align: center; padding-top: 40px; border-top: 1px solid #334155; margin-top: 40px; font-size: 13px; }
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-    }
-    
-    /* ============================================
-       HERO SECTION - Rotating Visual + Semi-Circle
-    ============================================ */
-    
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-      background: var(--white);
-    }
-    
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-2xl);
-      align-items: center;
-    }
-    
-    /* Left Side - Rotating Visual */
-    .hero-visual {
-      position: relative;
-      aspect-ratio: 4/3;
-      background: var(--gray-100);
-      overflow: hidden;
-    }
-    
-    .visual-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-    
-    .visual-slide.active {
-      opacity: 1;
-    }
-    
-    .visual-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .visual-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: var(--spacing-lg);
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      color: var(--white);
-    }
-    
-    .visual-overlay h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    /* Right Side - Semi-Circle Selector */
-    .hero-selector {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .semi-circle-nav {
-      position: relative;
-      width: 320px;
-      height: 320px;
-    }
-    
-    .nav-option {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all var(--transition-normal);
-      z-index: 2;
-    }
-    
-    .nav-option:hover {
-      transform: scale(1.05);
-      border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    
-    .nav-option.active {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--white);
-      transform: scale(1.1);
-    }
-    
-    .nav-option i {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .nav-option span {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .nav-option small {
-      font-size: 0.7rem;
-      opacity: 0.7;
-    }
-    
-    /* Position options in semi-circle */
-    .opt-1 { top: 0; left: 50%; transform: translateX(-50%); }
-    .opt-2 { bottom: 0; left: 0; }
-    .opt-3 { bottom: 0; right: 0; }
-    
-    .hero-text {
-      margin-top: var(--spacing-xl);
-      text-align: center;
-    }
-    
-    .hero-text h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      margin-bottom: var(--spacing-sm);
-    }
-    
-    .hero-text .tagline {
-      font-size: 1.25rem;
-      color: var(--gray-600);
-      margin-bottom: var(--spacing-lg);
-    }
-    
-    .hero-badges {
-      display: flex;
-      justify-content: center;
-      gap: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
-    }
-    
-    .hero-badges span {
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    
-    .hero-cta {
-      display: flex;
-      justify-content: center;
-      gap: var(--spacing-md);
-      margin-top: var(--spacing-xl);
-    }
-    
-    /* ============================================
-       EXPLORE SECTION - Three Premium Cards
-    ============================================ */
-    
-    .explore-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-lg);
-    }
-    
-    .explore-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      padding: var(--spacing-xl);
-      transition: all var(--transition-normal);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .explore-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: var(--accent);
-      transition: width var(--transition-normal);
-    }
-    
-    .explore-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    }
-    
-    .explore-card:hover::before {
-      width: 100%;
-    }
-    
-    .explore-card i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: var(--spacing-md);
-    }
-    
-    .explore-card h3 {
-      margin-bottom: var(--spacing-sm);
-    }
-    
-    .explore-card p {
-      color: var(--gray-600);
-      font-size: 0.875rem;
-      margin-bottom: var(--spacing-lg);
-    }
-    
-    .card-link {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .card-link i {
-      font-size: 0.75rem;
-      margin-bottom: 0;
-    }
-    
-    /* ============================================
-       CAPABILITIES SECTION
-    ============================================ */
-    
-    .capabilities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-lg);
-    }
-    
-    .capability-card {
-      text-align: center;
-      padding: var(--spacing-lg);
-      border: 1px solid var(--gray-200);
-      background: var(--white);
-      transition: all var(--transition-fast);
-    }
-    
-    .capability-card:hover {
-      border-color: var(--accent);
-    }
-    
-    .capability-card i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: var(--spacing-sm);
-    }
-    
-    .capability-card h4 {
-      margin-bottom: 0.5rem;
-    }
-    
-    .capability-card p {
-      font-size: 0.75rem;
-      color: var(--gray-500);
-    }
-    
-    /* ============================================
-       WORKFLOW SECTION - Timeline
-    ============================================ */
-    
-    .workflow {
-      background: var(--gray-100);
-    }
-    
-    .workflow-timeline {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      position: relative;
-      margin-top: var(--spacing-xl);
-    }
-    
-    .workflow-timeline::before {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--gray-300);
-    }
-    
-    .workflow-step {
-      flex: 1;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      background: var(--white);
-      padding: var(--spacing-md);
-      margin: 0 var(--spacing-xs);
-    }
-    
-    .step-number {
-      width: 48px;
-      height: 48px;
-      background: var(--black);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin: 0 auto var(--spacing-md);
-    }
-    
-    .workflow-step h4 {
-      margin-bottom: 0.25rem;
-    }
-    
-    .workflow-step p {
-      font-size: 0.75rem;
-      color: var(--gray-500);
-    }
-    
-    /* ============================================
-       PROJECT SHOWCASE - Grid
-    ============================================ */
-    
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: var(--spacing-lg);
-    }
-    
-    .project-item {
-      border: 1px solid var(--gray-200);
-      overflow: hidden;
-      transition: all var(--transition-normal);
-    }
-    
-    .project-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    
-    .project-image {
-      aspect-ratio: 16/9;
-      overflow: hidden;
-    }
-    
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .project-item:hover .project-image img {
-      transform: scale(1.05);
-    }
-    
-    .project-content {
-      padding: var(--spacing-lg);
-    }
-    
-    .project-category {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    
-    .project-content h3 {
-      margin-bottom: 0.5rem;
-    }
-    
-    .project-content p {
-      font-size: 0.875rem;
-      color: var(--gray-600);
-      margin-bottom: var(--spacing-md);
-    }
-    
-    /* ============================================
-       QR CODE SECTION
-    ============================================ */
-    
-    .qr-section {
-      background: var(--black);
-      color: var(--white);
-    }
-    
-    .qr-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-2xl);
-      align-items: center;
-    }
-    
-    .qr-info h2 {
-      color: var(--white);
-    }
-    
-    .qr-info p {
-      color: var(--gray-400);
-      margin-bottom: var(--spacing-lg);
-    }
-    
-    .qr-code-box {
-      background: var(--white);
-      padding: var(--spacing-lg);
-      text-align: center;
-      border-radius: 4px;
-    }
-    
-    .qr-code-box img {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto;
-    }
-    
-    .qr-code-box p {
-      margin-top: var(--spacing-md);
-      color: var(--black);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-    
-    /* ============================================
-       PRODUCT GRID (for /products page)
-    ============================================ */
-    
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--spacing-lg);
-    }
-    
-    .product-card {
-      border: 1px solid var(--gray-200);
-      padding: var(--spacing-lg);
-      transition: all var(--transition-normal);
-    }
-    
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    
-    .product-image {
-      aspect-ratio: 1;
-      background: var(--gray-100);
-      margin-bottom: var(--spacing-md);
-    }
-    
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .product-id {
-      font-size: 0.7rem;
-      font-family: var(--font-mono);
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-    
-    .product-card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .product-card p {
-      font-size: 0.75rem;
-      color: var(--gray-500);
-      margin-bottom: var(--spacing-md);
-    }
-    
-    /* ============================================
-       FOOTER
-    ============================================ */
-    
-    footer {
-      background: var(--gray-100);
-      padding: var(--spacing-3xl) 0 var(--spacing-lg);
-      border-top: 1px solid var(--gray-200);
-    }
-    
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-xl);
-      margin-bottom: var(--spacing-xl);
-    }
-    
-    .footer-col h4 {
-      margin-bottom: var(--spacing-md);
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .footer-col a {
-      display: block;
-      font-size: 0.875rem;
-      color: var(--gray-600);
-      margin-bottom: 0.5rem;
-    }
-    
-    .footer-col a:hover {
-      color: var(--accent);
-    }
-    
-    .footer-bottom {
-      text-align: center;
-      padding-top: var(--spacing-lg);
-      border-top: 1px solid var(--gray-200);
-      font-size: 0.75rem;
-      color: var(--gray-500);
-    }
-    
-    /* ============================================
-       UTILITIES
-    ============================================ */
-    
-    .text-center { text-align: center; }
-    .mt-2 { margin-top: var(--spacing-lg); }
-    .mb-2 { margin-bottom: var(--spacing-lg); }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-      
-      .explore-cards {
-        grid-template-columns: 1fr;
-      }
-      
-      .workflow-timeline {
-        flex-direction: column;
-        gap: var(--spacing-md);
-      }
-      
-      .workflow-timeline::before {
-        display: none;
-      }
-      
-      .qr-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .projects-grid,
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      animation: fadeIn 0.6s ease forwards;
-    }
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .semi-circle { height: 280px; }
+      .category-btn { width: 100px; height: 100px; }
+      .category-btn i { font-size: 32px; }
+      .hero-text h1 { font-size: 32px; }
+      section { padding: 50px 0; }
+    }
+    .fade-in { animation: fadeInUp 0.6s ease; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body dir="rtl">
+<body>
 
 <!-- Navigation -->
-<nav class="navbar" id="navbar">
+<nav class="navbar">
   <div class="nav-container">
-    <a href="/fablab" class="logo">
-      <img src="/images/logo.png" alt="TPE Logo">
-      <span class="logo-text">TPE <span>FabLab</span></span>
-    </a>
+    <a href="#" class="logo"><img src="images/logo.png" alt="TPE"></a>
     <ul class="nav-links">
       <li><a href="#hero">خانه</a></li>
-      <li><a href="#explore">خدمات</a></li>
-      <li><a href="#capabilities">توانمندی‌ها</a></li>
-      <li><a href="#projects">پروژه‌ها</a></li>
-      <li><a href="/fablab/products">محصولات</a></li>
-      <li><a href="/fablab/about">درباره</a></li>
-      <li><a href="#contact" class="btn-outline" style="padding: 0.5rem 1rem;">تماس</a></li>
+      <li><a href="#services">خدمات</a></li>
+      <li><a href="#portfolio">نمونه کارها</a></li>
+      <li><a href="#clients">مشتریان</a></li>
+      <li><a href="shop.html" target="_blank">فروشگاه</a></li>
+      <li><a href="work-with-us.html" class="btn-primary" style="padding: 6px 16px;">همکاری</a></li>
     </ul>
-    <div class="menu-toggle" id="menuToggle">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero with semi-circle selector -->
 <section class="hero" id="hero">
   <div class="container">
     <div class="hero-grid">
-      <!-- Left: Rotating Visual -->
-      <div class="hero-visual" id="heroVisual">
-        <div class="visual-slide active" data-cat="creative">
-          <img src="/fablab/assets/images/creative-hero.jpg" alt="Creative Fabrication" onerror="this.src='/images/logo.png'">
-          <div class="visual-overlay">
-            <h3>Creative Fabrication</h3>
-            <p>Consumer products & creative manufacturing</p>
-          </div>
-        </div>
-        <div class="visual-slide" data-cat="industrial">
-          <img src="/fablab/assets/images/industrial-hero.jpg" alt="Industrial Engineering" onerror="this.src='/images/logo.png'">
-          <div class="visual-overlay">
-            <h3>Industrial Engineering</h3>
-            <p>B2B engineering & reverse engineering</p>
-          </div>
-        </div>
-        <div class="visual-slide" data-cat="medical">
-          <img src="/fablab/assets/images/medical-hero.jpg" alt="Medical Equipment" onerror="this.src='/images/logo.png'">
-          <div class="visual-overlay">
-            <h3>Medical Equipment Support</h3>
-            <p>Engineering support for medical sectors</p>
-          </div>
-        </div>
+      <div class="visual-rotator" id="visualRotator">
+        <div class="rotator-slide active" data-cat="creative"><img src="images/portfolio/taftan-trophy.jpg" alt="Creative"><div class="slide-caption"><h3>صنایع خلاق</h3><p>طراحی پارامتریک | ساخت دیجیتال | محصولات مصرفی</p></div></div>
+        <div class="rotator-slide" data-cat="industrial"><img src="images/portfolio/arm-porter.jpg" alt="Industrial"><div class="slide-caption"><h3>مهندسی صنعتی</h3><p>مهندسی معکوس | نمونه‌سازی صنعتی | قطعات یدکی</p></div></div>
+        <div class="rotator-slide" data-cat="medical"><img src="images/portfolio/ecg-simulator.jpg" alt="Medical"><div class="slide-caption"><h3>تجهیزات پزشکی</h3><p>تعمیرات تخصصی | مهندسی معکوس قطعات | پشتیبانی فنی</p></div></div>
       </div>
-      
-      <!-- Right: Semi-Circle Selector -->
-      <div class="hero-selector">
-        <div class="semi-circle-nav">
-          <div class="nav-option opt-1" data-cat="creative">
-            <i class="fas fa-palette"></i>
-            <span>Creative</span>
-            <small>Fabrication</small>
-          </div>
-          <div class="nav-option opt-2" data-cat="industrial">
-            <i class="fas fa-industry"></i>
-            <span>Industrial</span>
-            <small>Engineering</small>
-          </div>
-          <div class="nav-option opt-3" data-cat="medical">
-            <i class="fas fa-microscope"></i>
-            <span>Medical</span>
-            <small>Equipment</small>
-          </div>
-        </div>
+      <div class="semi-circle" id="semiCircle">
+        <div class="category-btn cat1 active" data-cat="creative"><i class="fas fa-palette"></i><span>صنایع خلاق</span><small>Creative</small></div>
+        <div class="category-btn cat2" data-cat="industrial"><i class="fas fa-industry"></i><span>صنعتی</span><small>Industrial</small></div>
+        <div class="category-btn cat3" data-cat="medical"><i class="fas fa-microscope"></i><span>تجهیزات پزشکی</span><small>Medical</small></div>
       </div>
     </div>
-    
     <div class="hero-text">
-      <h1>Digital Fabrication & Product Engineering Studio</h1>
-      <p class="tagline">Transforming Ideas Into Functional Reality</p>
-      <div class="hero-badges">
-        <span>Design</span>
-        <span>Engineer</span>
-        <span>Prototype</span>
-        <span>Manufacture</span>
-      </div>
-      <div class="hero-cta">
-        <a href="#explore" class="btn btn-primary">Explore FabLab</a>
-        <a href="#projects" class="btn btn-outline">View Projects</a>
-      </div>
+      <h1>فب‌لب خصوصی توسعه پردازان</h1>
+      <div class="hero-badges"><span>طراحی</span><span>مهندسی</span><span>نمونه‌سازی</span><span>تولید</span></div>
+      <div class="cta-group"><a href="#services" class="btn btn-primary">مشاهده خدمات</a><a href="#download" class="btn btn-outline">دانلود کاتالوگ</a></div>
     </div>
   </div>
 </section>
 
-<!-- Explore Section - Three Premium Cards -->
-<section id="explore">
+<!-- Dynamic Services Section -->
+<section id="services">
   <div class="container">
-    <h2 class="text-center">Explore FabLab</h2>
-    <div class="explore-cards">
-      <div class="explore-card">
-        <i class="fas fa-palette"></i>
-        <h3>Creative Fabrication</h3>
-        <p>Consumer-focused products and creative manufacturing. Parametric vases, modular lighting, decorative objects, and custom gifts.</p>
-        <a href="/fablab/creative" class="card-link">Explore Creative <i class="fas fa-arrow-left"></i></a>
-      </div>
-      <div class="explore-card">
-        <i class="fas fa-industry"></i>
-        <h3>Industrial Engineering</h3>
-        <p>B2B engineering services including reverse engineering, CAD modeling, product development, and small batch production.</p>
-        <a href="/fablab/industrial" class="card-link">Explore Industrial <i class="fas fa-arrow-left"></i></a>
-      </div>
-      <div class="explore-card">
-        <i class="fas fa-microscope"></i>
-        <h3>Medical Equipment Support</h3>
-        <p>Engineering support for medical and dental sectors. Equipment holders, mounts, fixtures, and educational models.</p>
-        <a href="/fablab/medical" class="card-link">Explore Medical <i class="fas fa-arrow-left"></i></a>
-      </div>
+    <h2 id="servicesTitle">خدمات صنایع خلاق</h2>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- Dynamic Portfolio Section -->
+<section id="portfolio" style="background: white;">
+  <div class="container">
+    <h2 id="portfolioTitle">نمونه کارها | خلاق</h2>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+    <div class="text-center" style="margin-top: 32px;"><a href="products.html" class="btn btn-outline">مشاهده تمام نمونه کارها</a></div>
+  </div>
+</section>
+
+<!-- Clients (unchanged from original) -->
+<section id="clients">
+  <div class="container">
+    <h2>مشتریان ما</h2>
+    <div class="client-logos">
+      <img src="clients/university-sb.png" alt="دانشگاه"><img src="clients/park-sb.png" alt="پارک"><img src="clients/health-center.png" alt="بهداشت"><img src="clients/university-medical.png" alt="پزشکی"><img src="clients/design-lab.png" alt="دیزاین لب"><img src="clients/harir.png" alt="حریر"><img src="clients/innovation.png" alt="نوآوری"><img src="clients/fly-bar.png" alt="پرواز یاران">
     </div>
   </div>
 </section>
 
-<!-- Capabilities Section -->
-<section id="capabilities">
+<!-- Download Catalog with QR -->
+<section id="download">
   <div class="container">
-    <h2 class="text-center">Core Capabilities</h2>
-    <div class="capabilities-grid" id="capabilitiesGrid"></div>
-  </div>
-</section>
-
-<!-- Workflow Section -->
-<section class="workflow" id="workflow">
-  <div class="container">
-    <h2 class="text-center">Engineering Workflow</h2>
-    <div class="workflow-timeline">
-      <div class="workflow-step"><div class="step-number">01</div><h4>Idea</h4><p>Concept & Requirements</p></div>
-      <div class="workflow-step"><div class="step-number">02</div><h4>CAD Design</h4><p>3D Modeling & Simulation</p></div>
-      <div class="workflow-step"><div class="step-number">03</div><h4>Engineering</h4><p>Analysis & Optimization</p></div>
-      <div class="workflow-step"><div class="step-number">04</div><h4>Prototype</h4><p>Rapid Prototyping</p></div>
-      <div class="workflow-step"><div class="step-number">05</div><h4>Testing</h4><p>Validation & Iteration</p></div>
-      <div class="workflow-step"><div class="step-number">06</div><h4>Final Product</h4><p>Production & Delivery</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- Project Showcase -->
-<section id="projects">
-  <div class="container">
-    <h2 class="text-center">Featured Projects</h2>
-    <div class="projects-grid" id="projectsGrid"></div>
-    <div class="text-center mt-2">
-      <a href="/fablab/projects" class="btn btn-outline">View All Projects <i class="fas fa-arrow-left"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- QR Code Section -->
-<section class="qr-section">
-  <div class="container">
-    <div class="qr-grid">
-      <div class="qr-info">
-        <h2>QR Code Connected</h2>
-        <p>Every product includes a QR code that leads directly to detailed specifications, technical documentation, and customization options.</p>
-        <p>Scan any TPE product QR code to access:</p>
-        <ul style="margin-top: 1rem; list-style: none;">
-          <li>✓ Product specifications</li>
-          <li>✓ Technical drawings</li>
-          <li>✓ Manufacturing methods</li>
-          <li>✓ Customization options</li>
-          <li>✓ Contact information</li>
-        </ul>
-      </div>
-      <div class="qr-code-box">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Crect x='40' y='40' width='40' height='40' fill='black'/%3E%3Crect x='120' y='40' width='40' height='40' fill='black'/%3E%3Crect x='40' y='120' width='40' height='40' fill='black'/%3E%3Crect x='120' y='120' width='40' height='40' fill='black'/%3E%3C/svg%3E" alt="Sample QR Code">
-        <p>tpe-co.ir/fablab/p/crv-001</p>
-      </div>
+    <div class="download-card">
+      <h3 id="catalogTitle">کاتالوگ تخصصی صنایع خلاق</h3>
+      <p id="catalogDesc">دانلود مستندات فنی، نمونه پروژه‌ها و خدمات فب‌لب در حوزه طراحی خلاق و ساخت دیجیتال</p>
+      <div class="qr-placeholder"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Crect x='40' y='40' width='40' height='40' fill='black'/%3E%3Crect x='120' y='40' width='40' height='40' fill='black'/%3E%3Crect x='40' y='120' width='40' height='40' fill='black'/%3E%3C/svg%3E" alt="QR"></div>
+      <a id="catalogLink" href="files/creative-catalog.pdf" class="btn btn-primary" download>📥 دانلود کاتالوگ صنایع خلاق</a>
+      <p style="margin-top: 16px; font-size: 13px;">اسکن QR برای دسترسی سریع | کد محصول: FAB-CRE-001</p>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer id="contact">
+<footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4>TPE FabLab</h4>
-        <p>Digital Fabrication &<br>Product Engineering Studio</p>
-        <div style="margin-top: 1rem;">
-          <a href="https://instagram.com/TPE_CO" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="https://www.linkedin.com/company/tpe-co" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://wa.me/989226704205" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Divisions</h4>
-        <a href="/fablab/creative">Creative Fabrication</a>
-        <a href="/fablab/industrial">Industrial Engineering</a>
-        <a href="/fablab/medical">Medical Equipment Support</a>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="/fablab/products">Products</a>
-        <a href="/fablab/projects">Projects</a>
-        <a href="/fablab/about">About Us</a>
-        <a href="/fablab/contact">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>Zahedan, University Blvd<br>Science & Technology Park</p>
-        <p>📞 <a href="https://wa.me/989226704205">09226704205</a></p>
-        <p>✉️ javadisazadeh24@gmail.com</p>
-      </div>
+      <div class="footer-col"><h4>TPE FabLab</h4><p>شرکت دانش بنیان توسعه پردازان<br>فب‌لب خصوصی و مرکز ساخت دیجیتال</p><div class="social" style="margin-top: 16px;"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin"></i></a> <a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+      <div class="footer-col"><h4>دسته‌بندی</h4><a href="#" data-cat="creative">صنایع خلاق</a><a href="#" data-cat="industrial">مهندسی صنعتی</a><a href="#" data-cat="medical">تجهیزات پزشکی</a><a href="shop.html">فروشگاه تخصصی</a></div>
+      <div class="footer-col"><h4>تماس</h4><p>زاهدان، بلوار دانشگاه، پارک علم و فناوری</p><p>تلفن: 09226704205</p><p>ایمیل: javadisazadeh24@gmail.com</p></div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 Tose'e Pardazan Electronic Co. | Digital Fabrication & Product Engineering Studio</p>
-    </div>
+    <div class="copyright">© ۱۴۰۴ شرکت توسعه پردازان | طراحی مهندسی، نمونه‌سازی و فب‌لب | تمامی حقوق محفوظ است</div>
   </div>
-</section>
+</footer>
 
 <script>
-  // ============================================
-  // DATA - JSON Driven Architecture
-  // ============================================
-  
-  const capabilities = [
-    { icon: "fa-print", title: "Digital Manufacturing", desc: "3D Printing & CNC" },
-    { icon: "fa-drafting-compass", title: "Industrial Design", desc: "CAD Modeling & Simulation" },
-    { icon: "fa-undo-alt", title: "Reverse Engineering", desc: "3D Scanning & Reconstruction" },
-    { icon: "fa-cubes", title: "Product Development", desc: "From Idea to Production" },
-    { icon: "fa-flask", title: "Rapid Prototyping", desc: "Fast Iteration & Testing" },
-    { icon: "fa-microscope", title: "3D Printing", desc: "SLA, DLP, FDM" },
-    { icon: "fa-qrcode", title: "3D Scanning", desc: "High Precision Scanning" },
-    { icon: "fa-chalkboard-user", title: "Engineering Consultation", desc: "Technical Advisory" }
-  ];
-  
-  const projects = [
-    { category: "Creative", title: "Parametric Vase Series", desc: "Generative design with 3D printed ceramic finish", image: "/images/portfolio/taftan-trophy.jpg", link: "/fablab/p/crv-001" },
-    { category: "Industrial", title: "Industrial Robot Arm", desc: "Reverse engineering and functional prototype", image: "/images/portfolio/arm-porter.jpg", link: "/fablab/p/ind-002" },
-    { category: "Medical", title: "ECG Training Simulator", desc: "Educational medical device prototype", image: "/images/portfolio/ecg-simulator.jpg", link: "/fablab/p/med-003" }
-  ];
-  
-  // Render Capabilities
-  function renderCapabilities() {
-    const grid = document.getElementById('capabilitiesGrid');
-    if (!grid) return;
-    grid.innerHTML = capabilities.map(cap => `
-      <div class="capability-card">
-        <i class="fas ${cap.icon}"></i>
-        <h4>${cap.title}</h4>
-        <p>${cap.desc}</p>
-      </div>
+  // ==================== DATA (همه محتوای قبلی حفظ شده) ====================
+  const content = {
+    creative: {
+      services: [
+        { icon: "fa-palette", title: "طراحی پارامتریک و صنایع خلاق", items: ["طراحی محصولات تزئینی و کاربردی", "ساخت گلدان‌های پارامتریک", "لوازم دکوری و روشنایی مدولار"] },
+        { icon: "fa-cube", title: "ساخت دیجیتال و پرینت سه بعدی", items: ["پرینت رزین با کیفیت بالا", "پرینت FDM برای نمونه‌های رنگی", "پرداخت سطح و رنگ‌آمیزی"] },
+        { icon: "fa-gift", title: "تولید هدایای اختصاصی", items: ["سفارشی‌سازی برای برندها", "ساخت جایزه و تندیس", "بسته‌بندی خلاقانه"] }
+      ],
+      portfolio: [
+        { img: "images/portfolio/taftan-trophy.jpg", title: "تندیس تفتان", desc: "طراحی پارامتریک و ساخت با رزین", client: "پارک علم و فناوری" },
+        { img: "images/portfolio/lamp-cover.jpg", title: "کاور لامپ مدرن", desc: "طراحی ارگانیک و نورپردازی", client: "مهرنور الکترونیک" }
+      ],
+      catalog: { title: "کاتالوگ صنایع خلاق", desc: "نمونه‌ای از محصولات خلاق، گلدان‌های پارامتریک، آباژورهای مدولار و هدایای اختصاصی", link: "files/creative-catalog.pdf", qr: "FAB-CRE-001" }
+    },
+    industrial: {
+      services: [
+        { icon: "fa-industry", title: "مهندسی معکوس و مدلسازی CAD", items: ["اسکن سه بعدی قطعات صنعتی", "مدلسازی دقیق برای تولید", "آماده‌سازی فایل برای CNC"] },
+        { icon: "fa-cogs", title: "نمونه‌سازی و ساخت قطعات", items: ["ماشینکاری CNC چند محوره", "پرینت سه بعدی صنعتی", "ساخت یراق آلات و فیکسچر"] },
+        { icon: "fa-chart-line", title: "توسعه محصول و خط تولید", items: ["بهینه‌سازی فرآیند", "مشاوره ساخت قطعات یدکی", "تولید تیراژ پایین"] }
+      ],
+      portfolio: [
+        { img: "images/portfolio/arm-porter.jpg", title: "بازوی رباتیک صنعتی", desc: "مهندسی معکوس و ساخت نمونه عملکردی", client: "استانبول" },
+        { img: "images/portfolio/injector-cleaner.jpg", title: "دستگاه انژکتور شور", desc: "طراحی مکانیکی و ساخت", client: "پویا خودرو" }
+      ],
+      catalog: { title: "کاتالوگ خدمات مهندسی صنعتی", desc: "مهندسی معکوس، طراحی قطعات، نمونه‌سازی و ساخت با CNC و پرینتر سه بعدی صنعتی", link: "files/industrial-catalog.pdf", qr: "FAB-IND-001" }
+    },
+    medical: {
+      services: [
+        { icon: "fa-microscope", title: "تعمیرات تخصصی تجهیزات پزشکی", items: ["عیب‌یابی بردهای الکترونیکی", "تعمیرات مکانیکی تجهیزات", "تامین قطعات جایگزین"] },
+        { icon: "fa-draw-polygon", title: "مهندسی معکوس قطعات پزشکی", items: ["اسکن سه بعدی قطعات نایاب", "طراحی مجدد و ساخت", "مستندسازی فنی"] },
+        { icon: "fa-stethoscope", title: "ساخت قطعات و اکسسوری", items: ["نگهدارنده تجهیزات", "محفظه‌های محافظ", "مدل‌های آموزشی"] }
+      ],
+      portfolio: [
+        { img: "images/portfolio/ecg-simulator.jpg", title: "شبیه‌ساز ECG", desc: "طراحی و ساخت نمونه آموزشی", client: "دانشگاه علوم پزشکی" },
+        { img: "images/portfolio/veinscope.jpg", title: "دستگاه مشاهده رگ", desc: "مهندسی معکوس و بهینه‌سازی", client: "تجهیزات پزشکی" }
+      ],
+      catalog: { title: "کاتالوگ پشتیبانی تجهیزات پزشکی", desc: "خدمات مهندسی معکوس، تعمیرات تخصصی و ساخت قطعات جایگزین برای دستگاه‌های پزشکی", link: "files/medical-catalog.pdf", qr: "FAB-MED-001" }
+    }
+  };
+
+  let currentCat = "creative";
+  let autoInterval;
+
+  function updateUI(cat) {
+    currentCat = cat;
+    const data = content[cat];
+    // update services
+    document.getElementById("servicesTitle").innerHTML = data.services[0].title.includes("خلاق") ? "خدمات صنایع خلاق" : (cat === "industrial" ? "خدمات مهندسی صنعتی" : "خدمات تخصصی تجهیزات پزشکی");
+    const servicesHtml = data.services.map(s => `
+      <div class="service-card"><div class="service-icon"><i class="fas ${s.icon}"></i></div><h3>${s.title}</h3><ul style="padding-right:20px;">${s.items.map(i => `<li>${i}</li>`).join('')}</ul></div>
     `).join('');
-  }
-  
-  // Render Projects
-  function renderProjects() {
-    const grid = document.getElementById('projectsGrid');
-    if (!grid) return;
-    grid.innerHTML = projects.map(proj => `
-      <div class="project-item">
-        <div class="project-image">
-          <img src="${proj.image}" alt="${proj.title}" onerror="this.src='/images/logo.png'">
-        </div>
-        <div class="project-content">
-          <div class="project-category">${proj.category}</div>
-          <h3>${proj.title}</h3>
-          <p>${proj.desc}</p>
-          <a href="${proj.link}" class="card-link">View Project <i class="fas fa-arrow-left"></i></a>
-        </div>
-      </div>
+    document.getElementById("servicesGrid").innerHTML = servicesHtml;
+    // update portfolio
+    document.getElementById("portfolioTitle").innerHTML = `نمونه کارها | ${cat === "creative" ? "صنایع خلاق" : cat === "industrial" ? "مهندسی صنعتی" : "تجهیزات پزشکی"}`;
+    const portfolioHtml = data.portfolio.map(p => `
+      <div class="portfolio-card"><img src="${p.img}" style="width:100%; height:180px; object-fit:cover; border-radius:12px; margin-bottom:12px;" onerror="this.src='images/logo.png'"><h3>${p.title}</h3><p>${p.desc}</p><div style="color:var(--muted); font-size:13px;">${p.client}</div></div>
     `).join('');
+    document.getElementById("portfolioGrid").innerHTML = portfolioHtml;
+    // update catalog
+    document.getElementById("catalogTitle").innerHTML = data.catalog.title;
+    document.getElementById("catalogDesc").innerHTML = data.catalog.desc;
+    document.getElementById("catalogLink").href = data.catalog.link;
+    document.querySelector(".download-card p:last-child").innerHTML = `اسکن QR برای دسترسی سریع | کد محصول: ${data.catalog.qr}`;
+    // update active button & rotator
+    document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`.category-btn[data-cat="${cat}"]`).classList.add("active");
+    document.querySelectorAll(".rotator-slide").forEach(slide => slide.classList.remove("active"));
+    document.querySelector(`.rotator-slide[data-cat="${cat}"]`).classList.add("active");
   }
-  
-  // ============================================
-  // HERO: Rotating Visual + Semi-Circle
-  // ============================================
-  
-  let autoRotateInterval;
-  let currentIndex = 0;
-  const slides = document.querySelectorAll('.visual-slide');
-  const navOptions = document.querySelectorAll('.nav-option');
-  const categories = ['creative', 'industrial', 'medical'];
-  
-  function showCategory(category) {
-    // Update slides
-    slides.forEach((slide, index) => {
-      if (slide.dataset.cat === category) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
-      }
-    });
-    
-    // Update nav options
-    navOptions.forEach(opt => {
-      if (opt.dataset.cat === category) {
-        opt.classList.add('active');
-      } else {
-        opt.classList.remove('active');
-      }
-    });
-    
-    currentIndex = categories.indexOf(category);
-  }
-  
-  function nextCategory() {
-    currentIndex = (currentIndex + 1) % categories.length;
-    showCategory(categories[currentIndex]);
-  }
-  
+
   function startAutoRotate() {
-    if (autoRotateInterval) clearInterval(autoRotateInterval);
-    autoRotateInterval = setInterval(nextCategory, 4000);
+    if (autoInterval) clearInterval(autoInterval);
+    autoInterval = setInterval(() => {
+      const cats = ["creative", "industrial", "medical"];
+      let next = cats[(cats.indexOf(currentCat) + 1) % cats.length];
+      updateUI(next);
+    }, 5000);
   }
-  
-  function stopAutoRotate() {
-    if (autoRotateInterval) {
-      clearInterval(autoRotateInterval);
-      autoRotateInterval = null;
-    }
-  }
-  
-  // Setup hero interactions
-  navOptions.forEach(opt => {
-    opt.addEventListener('mouseenter', () => {
-      stopAutoRotate();
-      showCategory(opt.dataset.cat);
-    });
-    opt.addEventListener('mouseleave', () => {
-      startAutoRotate();
-    });
-    opt.addEventListener('click', () => {
-      stopAutoRotate();
-      showCategory(opt.dataset.cat);
-      setTimeout(startAutoRotate, 5000);
-    });
+  function stopAutoRotate() { if (autoInterval) clearInterval(autoInterval); }
+
+  // event listeners for category buttons + hover stop
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.addEventListener("click", () => { stopAutoRotate(); updateUI(btn.dataset.cat); startAutoRotate(); });
+    btn.addEventListener("mouseenter", stopAutoRotate);
+    btn.addEventListener("mouseleave", startAutoRotate);
   });
-  
-  // Start auto rotation
+  // also stop on hover over rotator
+  const rotator = document.getElementById("visualRotator");
+  rotator.addEventListener("mouseenter", stopAutoRotate);
+  rotator.addEventListener("mouseleave", startAutoRotate);
+
+  // mobile menu toggle (simple)
+  const toggle = document.getElementById("menuToggle");
+  const navLinks = document.querySelector(".nav-links");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
+      if (window.innerWidth <= 768) navLinks.style.flexDirection = "column";
+    });
+  }
+  // init
+  updateUI("creative");
   startAutoRotate();
-  
-  // ============================================
-  // NAVBAR SCROLL EFFECT
-  // ============================================
-  
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-  
-  // ============================================
-  // MOBILE MENU
-  // ============================================
-  
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileOverlay = document.createElement('div');
-  mobileOverlay.className = 'mobile-menu-overlay';
-  document.body.appendChild(mobileOverlay);
-  
-  let mobileMenuActive = false;
-  
-  function toggleMobileMenu() {
-    mobileMenuActive = !mobileMenuActive;
-    menuToggle.classList.toggle('active');
-    mobileOverlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenuActive ? 'hidden' : '';
-  }
-  
-  if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMobileMenu);
-  }
-  
-  mobileOverlay.addEventListener('click', toggleMobileMenu);
-  
-  // ============================================
-  // SMOOTH SCROLL
-  // ============================================
-  
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href && href !== '#' && href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          if (mobileMenuActive) toggleMobileMenu();
-        }
-      }
-    });
-  });
-  
-  // ============================================
-  // INITIALIZE
-  // ============================================
-  
-  renderCapabilities();
-  renderProjects();
-  
-  // Fade-in animation on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('.explore-card, .capability-card, .project-item, .workflow-step').forEach(el => {
-    observer.observe(el);
-  });
 </script>
-
-<style>
-  .mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 998;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-  }
-  .mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-</style>
-
 </body>
 </html>
