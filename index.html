@@ -151,7 +151,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* استایل های اصلی */
+    /* استایل های اصلی - بدون تغییر */
     :root {
       --bg: #f8fafc;
       --text: #0f172a;
@@ -1096,8 +1096,6 @@
       animation-play-state: paused;
     }
     
-    /* پروژه‌های توسعه - این بخش حذف می‌شود، اما استایل‌هایش برای سایر بخش‌ها مشکلی ایجاد نمی‌کند */
-    
     /* دانلود با استایل iOS */
     .download-section {
       background: var(--bg);
@@ -1152,21 +1150,117 @@
       box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4) !important;
     }
     
-    /* ========== فوتر با تصویر پس‌زمینه و افکت شیشه‌ای - اصلاح شده ========== */
+    /* بخش اخبار - عکس مدیرعامل بسیار کوچک و درون باکس شیشه‌ای مرتب */
+    .news-section {
+      background: var(--bg);
+      position: relative;
+    }
+    
+    .news-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .news-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.4s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* عکس کوچک و باکس مرتب */
+    .news-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
+      transition: transform 0.4s ease;
+      background: white;
+      margin: 0 auto 20px;
+    }
+    
+    .news-card:hover .news-avatar {
+      transform: scale(1.05);
+    }
+    
+    .news-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .news-content {
+      text-align: center;
+    }
+    
+    .news-content h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    
+    .news-date {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 30px;
+      display: block;
+      font-weight: 500;
+    }
+    
+    .news-text {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-size: 16px;
+      text-align: justify;
+    }
+    
+    .news-text p {
+      margin-bottom: 20px;
+    }
+    
+    .signature {
+      text-align: left;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid var(--primary-light);
+    }
+    
+    .signature strong {
+      display: block;
+      color: var(--primary);
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .signature span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    /* ========== فوتر با تصویر پس‌زمینه و افکت شیشه‌ای ========== */
     footer {
       position: relative;
       padding: 0;
       overflow: hidden;
       color: var(--text);
-      /* تصویر پس‌زمینه - کاربر عکس خود را در این مسیر قرار می‌دهد */
       background-image: url('images/footer-bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* افکت پارالاکس ملایم */
+      background-attachment: fixed;
     }
     
-    /* لایه شیشه‌ای روی تصویر پس‌زمینه - اصلاح شده برای نمایش کامل */
     footer::before {
       content: '';
       position: absolute;
@@ -1343,327 +1437,92 @@
       font-weight: 500;
     }
     
-    /* موبایل */
+    /* موبایل - تنظیمات ریسپانسیو */
     @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-      
-      .hero-tagline {
-        font-size: 16px;
-      }
-      
-      h2 {
-        font-size: 32px;
-      }
-      
-      .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      }
-      
-      .gallery-wrapper {
-        height: 320px;
-      }
-      
-      .gallery-item {
-        height: 280px;
-        width: 340px;
-      }
-      
-      .splash-text {
-        font-size: 28px;
-      }
-      
-      .splash-subtext {
-        font-size: 18px;
-      }
-      
-      .splash-logo {
-        width: 150px;
-        height: 150px;
-      }
-      
-      .splash-logo img {
-        width: 100%;
-        height: 100%;
-      }
-      
-      .footer-content {
-        gap: 30px;
-      }
-      
-      .download-content {
-        padding: 40px 30px;
-      }
-      
-      .clients-wrapper {
-        height: 120px;
-      }
-      
-      .client-logo {
-        height: 60px;
-        padding: 0 35px;
-      }
-      
-      .about-content {
-        padding: 40px 30px;
-      }
-      
-      .about-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-      }
-      
-      .about-title {
-        font-size: 24px;
-      }
-      
-      .about-text {
-        font-size: 16px;
-      }
+      .hero h1 { font-size: 32px; }
+      .hero-tagline { font-size: 16px; }
+      h2 { font-size: 32px; }
+      .services-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+      .gallery-wrapper { height: 320px; }
+      .gallery-item { height: 280px; width: 340px; }
+      .splash-text { font-size: 28px; }
+      .splash-subtext { font-size: 18px; }
+      .splash-logo { width: 150px; height: 150px; }
+      .footer-content { gap: 30px; }
+      .download-content { padding: 40px 30px; }
+      .clients-wrapper { height: 120px; }
+      .client-logo { height: 60px; padding: 0 35px; }
+      .about-content { padding: 40px 30px; }
+      .about-icon { width: 60px; height: 60px; font-size: 24px; }
+      .about-title { font-size: 24px; }
+      .about-text { font-size: 16px; }
     }
     
     @media (max-width: 768px) {
-      .nav .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      
-      .nav-wrap {
-        justify-content: space-between;
-      }
-      
-      .brand img {
-        height: 40px;
-      }
-      
-      .hero {
-        padding: 120px 20px 60px;
-      }
-      
-      .hero h1 {
-        font-size: 28px;
-      }
-      
-      .hero-tagline {
-        font-size: 15px;
-        gap: 8px;
-      }
-      
-      .hero-tagline i {
-        font-size: 16px;
-      }
-      
-      .cta {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 280px;
-        padding: 12px 24px;
-      }
-      
-      h2 {
-        font-size: 28px;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .clients-wrapper {
-        height: 100px;
-      }
-      
-      .client-logo {
-        height: 50px;
-        padding: 0 30px;
-      }
-      
-      .gallery-wrapper {
-        height: 300px;
-      }
-      
-      .gallery-item {
-        height: 260px;
-        width: 300px;
-        margin: 0 15px;
-      }
-      
-      .gallery-img {
-        height: 170px;
-      }
-      
-      .news-card {
-        padding: 25px;
-      }
-      
-      .news-avatar {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 20px;
-      }
-      
-      .splash-logo {
-        width: 130px;
-        height: 130px;
-      }
-      
-      .splash-logo img {
-        width: 100%;
-        height: 100%;
-      }
-      
-      .splash-text {
-        font-size: 24px;
-      }
-      
-      .download-section {
-        padding: 70px 20px;
-      }
-      
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-      
-      .footer-section h3 {
-        font-size: 17px;
-      }
-      
-      .about-section {
-        padding: 70px 20px;
-      }
-      
-      .about-content {
-        padding: 30px 20px;
-      }
-      
-      .about-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-        margin-bottom: 20px;
-      }
-      
-      .about-title {
-        font-size: 22px;
-      }
+      .nav .nav-links { display: none; }
+      .mobile-menu-toggle { display: flex; }
+      .nav-wrap { justify-content: space-between; }
+      .brand img { height: 40px; }
+      .hero { padding: 120px 20px 60px; }
+      .hero h1 { font-size: 28px; }
+      .hero-tagline { font-size: 15px; gap: 8px; }
+      .hero-tagline i { font-size: 16px; }
+      .cta { flex-direction: column; align-items: center; gap: 12px; }
+      .btn { width: 100%; max-width: 280px; padding: 12px 24px; }
+      h2 { font-size: 28px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .clients-wrapper { height: 100px; }
+      .client-logo { height: 50px; padding: 0 30px; }
+      .gallery-wrapper { height: 300px; }
+      .gallery-item { height: 260px; width: 300px; margin: 0 15px; }
+      .gallery-img { height: 170px; }
+      .news-card { padding: 25px; }
+      .news-avatar { width: 70px; height: 70px; margin-bottom: 15px; }
+      .splash-logo { width: 130px; height: 130px; }
+      .splash-text { font-size: 24px; }
+      .download-section { padding: 70px 20px; }
+      .footer-content { grid-template-columns: 1fr; gap: 35px; }
+      .footer-section h3 { font-size: 17px; }
+      .about-section { padding: 70px 20px; }
+      .about-content { padding: 30px 20px; }
+      .about-icon { width: 50px; height: 50px; font-size: 22px; margin-bottom: 20px; }
+      .about-title { font-size: 22px; }
     }
     
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 24px;
-      }
-      
-      .hero-tagline {
-        font-size: 14px;
-      }
-      
-      .brand img {
-        height: 36px;
-      }
-      
-      .service-card {
-        padding: 20px;
-      }
-      
-      .gallery-wrapper {
-        height: 280px;
-      }
-      
-      .gallery-item {
-        height: 240px;
-        width: 260px;
-        margin: 0 10px;
-      }
-      
-      .gallery-img {
-        height: 150px;
-      }
-      
-      .news-avatar {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 15px;
-      }
-      
-      .splash-logo {
-        width: 120px;
-        height: 120px;
-      }
-      
-      .splash-text {
-        font-size: 22px;
-      }
-      
-      .download-content {
-        padding: 30px 20px;
-      }
-      
-      .clients-wrapper {
-        height: 80px;
-      }
-      
-      .client-logo {
-        height: 40px;
-        padding: 0 20px;
-      }
-      
-      .about-content {
-        padding: 25px 15px;
-      }
-      
-      .about-title {
-        font-size: 20px;
-      }
-      
-      .about-text {
-        font-size: 15px;
-      }
+      .hero h1 { font-size: 24px; }
+      .hero-tagline { font-size: 14px; }
+      .brand img { height: 36px; }
+      .service-card { padding: 20px; }
+      .gallery-wrapper { height: 280px; }
+      .gallery-item { height: 240px; width: 260px; margin: 0 10px; }
+      .gallery-img { height: 150px; }
+      .news-avatar { width: 60px; height: 60px; margin-bottom: 12px; }
+      .splash-logo { width: 120px; height: 120px; }
+      .splash-text { font-size: 22px; }
+      .download-content { padding: 30px 20px; }
+      .clients-wrapper { height: 80px; }
+      .client-logo { height: 40px; padding: 0 20px; }
+      .about-content { padding: 25px 15px; }
+      .about-title { font-size: 20px; }
+      .about-text { font-size: 15px; }
     }
     
     /* انیمیشن‌ها */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-      }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
     }
     
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-20px) rotate(180deg);
-      }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
     }
     
     .fade-in {
@@ -1730,7 +1589,7 @@
     <i class="fas fa-chevron-up"></i>
   </div>
 
-  <!-- ناوبری مینیمال -->
+  <!-- ناوبری مینیمال - فروشگاه آنلاین حذف شد -->
   <header class="nav" id="navbar">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
@@ -1744,10 +1603,9 @@
           <li><a href="products.html" data-i18n="nav.products">نمونه خدمات و محصولات</a></li>
           <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="#clients" data-i18n="nav.clients">مشتریان</a></li>
-          <!-- آیتم پروژه‌ها حذف شد -->
-          <!-- اضافه شدن فبلب روند و فروشگاه آنلاین -->
+          <!-- فبلب روند باقی می‌ماند -->
           <li><a href="https://fablab.tpe-co.ir" target="_blank" data-i18n="nav.fablab">فبلب روند</a></li>
-          <li><a href="https://shop.tpe-co.ir" target="_blank" data-i18n="nav.shop">فروشگاه آنلاین</a></li>
+          <!-- فروشگاه آنلاین حذف شد -->
           <li><a href="work-with-us.html" class="main-cta-btn" data-i18n="nav.work" style="padding: 8px 16px; border-radius: 8px; font-size: 13px;">همکاری با ما</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
           <li class="language-selector">
@@ -1782,12 +1640,11 @@
           <li><a href="resume.html" data-i18n="nav.resume">رزومه پرسنل</a></li>
           <li><a href="#clients" data-i18n="nav.clients">مشتریان</a></li>
           <li><a href="https://fablab.tpe-co.ir" target="_blank" data-i18n="nav.fablab">فبلب روند</a></li>
-          <li><a href="https://shop.tpe-co.ir" target="_blank" data-i18n="nav.shop">فروشگاه آنلاین</a></li>
+          <!-- فروشگاه آنلاین حذف شد -->
           <li><a href="work-with-us.html" class="main-cta-btn" data-i18n="nav.work">همکاری با ما</a></li>
           <li><a href="https://wa.me/989226704205" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">تماس</a></li>
         </ul>
         
-        <!-- انتخابگر زبان در منوی موبایل -->
         <div class="mobile-language-selector">
           <button class="lang-btn active" data-lang="fa" title="فارسی">
             <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران - زبان فارسی">
@@ -1803,7 +1660,7 @@
     </div>
   </header>
 
-  <!-- هیرو با فیلم -->
+  <!-- هیرو با فیلم (بدون تغییر) -->
   <section id="hero" class="hero">
     <video autoplay muted loop playsinline class="video-background" poster="images/hero.jpg">
       <source src="videos/hero-video.mp4" type="video/mp4">
@@ -1836,7 +1693,7 @@
     </div>
   </section>
 
-  <!-- بخش معرفی شرکت (درباره ما) -->
+  <!-- بخش درباره ما (بدون تغییر) -->
   <section id="about" class="about-section">
     <div class="container">
       <div class="about-content fade-in">
@@ -1877,7 +1734,7 @@
     </div>
   </section>
 
-  <!-- خدمات با استایل iOS -->
+  <!-- خدمات (بدون تغییر) -->
   <section id="services" class="services-section">
     <div class="container">
       <h2 data-i18n="services.title">خدمات تخصصی فب‌لب خصوصی ما</h2>
@@ -2005,7 +1862,7 @@
     </div>
   </section>
 
-  <!-- نمونه کارها -->
+  <!-- نمونه کارها (بدون تغییر) -->
   <section id="portfolio" class="gallery-section">
     <div class="container">
       <h2 data-i18n="portfolio.title">نمونه کارهای ما</h2>
@@ -2018,13 +1875,12 @@
     </div>
   </section>
 
-  <!-- مشتریان با اسکرول پیوسته واقعی -->
+  <!-- مشتریان (بدون تغییر) -->
   <section id="clients" class="clients-section">
     <div class="container">
       <h2 data-i18n="clients.title">برخی از مشتریان ما</h2>
       <div class="clients-wrapper">
         <div class="clients-track">
-          <!-- ردیف اول - alt با data-i18n-alt برای ترجمه -->
           <div class="client-logo">
             <img src="clients/university-sb.png" data-i18n-alt="client.university_sb" alt="دانشگاه سیستان و بلوچستان" loading="lazy" onerror="this.onerror=null; this.src='images/logo.png';">
           </div>
@@ -2049,7 +1905,7 @@
           <div class="client-logo">
             <img src="clients/fly-bar.png" data-i18n-alt="client.fly_bar" alt="شرکت پرواز یاران سیرنگ" loading="lazy" onerror="this.onerror=null; this.src='images/logo.png';">
           </div>
-          <!-- تکرار برای اسکرول پیوسته -->
+          <!-- تکرار برای اسکرول -->
           <div class="client-logo">
             <img src="clients/university-sb.png" data-i18n-alt="client.university_sb" alt="دانشگاه سیستان و بلوچستان" loading="lazy" onerror="this.onerror=null; this.src='images/logo.png';">
           </div>
@@ -2079,26 +1935,24 @@
     </div>
   </section>
 
-  <!-- بخش پروژه‌های توسعه به طور کامل حذف شد -->
+  <!-- بخش پروژه‌های توسعه حذف شد -->
 
-  <!-- دانلود با استایل iOS -->
+  <!-- دانلود (بدون تغییر) -->
   <section class="download-section">
     <div class="container">
       <div class="download-content">
         <h2 data-i18n="downloads.title">مستندات فنی و مهندسی</h2>
         <p data-i18n="downloads.description">برای آشنایی کامل با قابلیت‌های فنی، پروژه‌های اجرایی و خدمات تخصصی شرکت، مستندات جامع زیر را دریافت نمایید</p>
         <div class="cta">
-          <!-- تغییر عبارت به "کاتالوگ دیجیتال" -->
           <a href="files/catalog.pdf" class="btn btn-primary" data-i18n="downloads.catalog">کاتالوگ دیجیتال</a>
           <a href="files/resume.pdf" class="btn btn-primary btn-resume" data-i18n="downloads.resume">رزومه فنی شرکت</a>
-          <!-- تغییر عبارت به "رزومه پرسنل" -->
           <a href="resume.html" class="btn btn-primary" data-i18n="downloads.teamResume">رزومه پرسنل</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- بخش اخبار (انتقال به آخر) -->
+  <!-- بخش اخبار با عکس کوچک‌شده مدیرعامل -->
   <section id="news" class="news-section">
     <div class="container">
       <h2 data-i18n="news.title">اخبار و رویدادها</h2>
@@ -2111,7 +1965,7 @@
             <h3 data-i18n="news.messageTitle">پیام مدیرعامل</h3>
             <span class="news-date" data-i18n="news.date">پیشواز نوروز ۱۴۰۵</span>
             <div class="news-text" data-i18n="news.content">
-              <!-- محتوا از طریق ترجمه درون‌جا پر می‌شود -->
+              <!-- محتوا از طریق ترجمه پر می‌شود -->
             </div>
             <div class="signature">
               <strong data-i18n="news.ceo_name">دکتر جواد عیسی زاده لنگرودی</strong>
@@ -2123,7 +1977,7 @@
     </div>
   </section>
 
-  <!-- فوتر شیشه‌ای iOS با پس‌زمینه تصویری - اصلاح شده -->
+  <!-- فوتر (فروشگاه آنلاین در فوتر باقی می‌ماند) -->
   <footer id="contact">
     <div class="container">
       <div class="footer-content">
@@ -2160,8 +2014,9 @@
             <a href="#services" data-i18n="footer.link.consulting">مشاوره فنی و مهندسی</a>
             <a href="products.html" data-i18n="footer.link.products">نمونه خدمات و محصولات</a>
             <a href="resume.html" data-i18n="footer.link.resume">رزومه پرسنل</a>
-            <!-- اضافه شدن لینک‌های جدید در فوتر -->
-            <a href="https://fablab.tpe-co.ir" target="_blank" data-i18n="footer.link.fablab">فبلب روند</a>
+            <!-- فبلب روند -->
+            <a href="https://fablab.tpe-co.ir" target="_blank" data-i18n="footer.link.fablabExternal">فبلب روند</a>
+            <!-- فروشگاه آنلاین در فوتر باقی می‌ماند -->
             <a href="https://shop.tpe-co.ir" target="_blank" data-i18n="footer.link.shop">فروشگاه آنلاین</a>
           </div>
         </div>
@@ -2203,81 +2058,31 @@
   <script>
     // ==================== داده‌های نمونه کارها ====================
     const portfolioData = [
-      { 
-        img: 'images/portfolio/air-purifier.jpg', 
-        key: 'item1',
-        client: 'شرکت بهبود رایان', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/biometric-lock.jpg', 
-        key: 'item2',
-        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/ecg-simulator.jpg', 
-        key: 'item3',
-        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/injector-cleaner.jpg', 
-        key: 'item4',
-        client: 'پویا خودرو ایرانیان آدلی', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/veinscope.jpg', 
-        key: 'item5',
-        client: 'توسعه پردازان الکترونیک فیدار پارس راویس', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/arm-porter.jpg', 
-        key: 'item6',
-        client: 'شخصی حقیقی در ترکیه - استانبول', 
-        type: 'reverse'
-      },
-      { 
-        img: 'images/portfolio/taftan-trophy.jpg', 
-        key: 'item7',
-        client: 'فبلب صنایع خلاق پارک علم و فناوری', 
-        type: 'original'
-      },
-      { 
-        img: 'images/portfolio/pulp-tester.jpg', 
-        key: 'item8',
-        client: 'شرکت طب تجهیز آبادیس پارس', 
-        type: 'reverse'
-      },
-      { 
-        img: 'images/portfolio/lamp-cover.jpg', 
-        key: 'item9',
-        client: 'مهرنور الکترونیک پیشگام', 
-        type: 'original'
-      }
+      { img: 'images/portfolio/air-purifier.jpg', key: 'item1', client: 'شرکت بهبود رایان', type: 'original' },
+      { img: 'images/portfolio/biometric-lock.jpg', key: 'item2', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original' },
+      { img: 'images/portfolio/ecg-simulator.jpg', key: 'item3', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original' },
+      { img: 'images/portfolio/injector-cleaner.jpg', key: 'item4', client: 'پویا خودرو ایرانیان آدلی', type: 'original' },
+      { img: 'images/portfolio/veinscope.jpg', key: 'item5', client: 'توسعه پردازان الکترونیک فیدار پارس راویس', type: 'original' },
+      { img: 'images/portfolio/arm-porter.jpg', key: 'item6', client: 'شخصی حقیقی در ترکیه - استانبول', type: 'reverse' },
+      { img: 'images/portfolio/taftan-trophy.jpg', key: 'item7', client: 'فبلب صنایع خلاق پارک علم و فناوری', type: 'original' },
+      { img: 'images/portfolio/pulp-tester.jpg', key: 'item8', client: 'شرکت طب تجهیز آبادیس پارس', type: 'reverse' },
+      { img: 'images/portfolio/lamp-cover.jpg', key: 'item9', client: 'مهرنور الکترونیک پیشگام', type: 'original' }
     ];
 
-    // ==================== ترجمه‌ها (فقط تغییرات کلیدی اعمال شده) ====================
+    // ==================== ترجمه‌ها (فقط برای فارسی به‌روز شده - بقیه مشابه قبل) ====================
     const translations = {
       fa: {
-        // اسپلش
         "splash.welcome": "به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید",
         "splash.subtext": "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی",
-        // ناوبری
         "nav.home": "خانه",
         "nav.about": "درباره ما",
         "nav.services": "خدمات ما",
         "nav.products": "نمونه خدمات و محصولات",
-        "nav.resume": "رزومه پرسنل",   // اصلاح شد
+        "nav.resume": "رزومه پرسنل",
         "nav.clients": "مشتریان",
-        "nav.projects": "پروژه‌ها",   // حذف می‌شود ولی کلید باقی می‌ماند (استفاده نمی‌شود)
-        "nav.fablab": "فبلب روند",    // اضافه شد
-        "nav.shop": "فروشگاه آنلاین", // اضافه شد
+        "nav.fablab": "فبلب روند",
         "nav.work": "همکاری با ما",
         "nav.contact": "تماس",
-        // هیرو
         "hero.title": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
         "hero.line1": "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی",
         "hero.line2": "تحقق ایده‌های صنعتی از کانسپت تا تولید نهایی",
@@ -2285,7 +2090,6 @@
         "hero.viewServices": "خدمات تخصصی ما",
         "hero.workWithUs": "درخواست همکاری و پروژه",
         "hero.viewPortfolio": "تماس با ما",
-        // درباره ما
         "about.title": "فب‌لب خصوصی توسعه پردازان: پلی میان ایده و محصول",
         "about.text1": "<p><strong>شرکت دانش بنیان فنی و مهندسی توسعه پردازان</strong> نه تنها یک ارائه‌دهنده خدمات مهندسی، بلکه یک <strong>فب‌لب خصوصی پیشرفته</strong> است که با تکیه بر دانش عمیق تخصصی و زیرساخت‌های مدرن، مسیر تبدیل ایده به محصول را برای صنعتگران، مخترعین و کسب‌وکارها کوتاه و قابل اطمینان می‌سازد.</p>",
         "about.text2": "<p>ما بر این باوریم که <strong>تفکر مهندسی واقعی</strong> فراتر از طراحی و محاسبه است؛ این تفکر شامل <strong>درک عمیق مسائل صنعتی</strong>، <strong>خلاقیت در راه‌حل‌یابی</strong> و <strong>تعهد به ساخت آینده‌ای ملموس</strong> است. در فضای رقابتی امروز، دسترسی سریع به امکانات نمونه‌سازی و ساخت دیجیتال، تفاوت میان موفقیت و شکست یک ایده را تعیین می‌کند.</p>",
@@ -2293,7 +2097,6 @@
         "about.text3": "<p><strong>رسالت ما</strong> ایجاد اکوسیستمی پویا است که در آن <strong>ایده‌های نوآورانه</strong> در کوتاه‌ترین زمان و با بالاترین کیفیت به <strong>محصولات قابل عرضه به بازار</strong> تبدیل می‌شوند. ما خود را همراهی مطمئن برای کسانی می‌دانیم که به‌دنبال ساخت آینده‌ای مبتنی بر فناوری و مهندسی هستند.</p>",
         "about.text4": "<p>در توسعه پردازان، هر پروژه تنها یک سفارش نیست؛ بلکه <strong>شریکی در مسیر نوآوری</strong> است. ما به‌جای تکیه بر فرمول‌های کلیشه‌ای، برای هر چالش، راه‌حلی منحصربه‌فرد طراحی می‌کنیم که هم از نظر فنی بهینه و هم از نظر اقتصادی مقرون‌به‌صرفه باشد.</p>",
         "about.cta": "شروع پروژه با توسعه پردازان",
-        // خدمات
         "services.title": "خدمات تخصصی فب‌لب خصوصی ما",
         "services.design.title": "طراحی مهندسی و شبیه‌سازی عددی",
         "services.design.sub1": "مدل‌سازی سه‌بعدی پیشرفته",
@@ -2334,7 +2137,6 @@
         "services.consulting.sub1": "مشاوره توسعه محصول",
         "services.consulting.item1": "راهبری فرآیند توسعه محصول از ایده تا تولید",
         "services.consulting.item2": "بهینه‌سازی طراحی برای ساخت‌پذیری و هزینه",
-        // نمونه کارها
         "portfolio.title": "نمونه کارهای ما",
         "portfolio.viewAll": "مشاهده تمام نمونه خدمات و محصولات",
         "portfolio.item1.title": "دستگاه تصفیه هوا صنعتی",
@@ -2357,7 +2159,6 @@
         "portfolio.item9.desc": "طراحی و ساخت کاور لامپ با دوام و زیبایی",
         "portfolio.type.original": "اورجینال",
         "portfolio.type.reverse": "مهندسی معکوس",
-        // مشتریان
         "clients.title": "برخی از مشتریان ما",
         "client.university_sb": "دانشگاه سیستان و بلوچستان",
         "client.park_sb": "پارک علم و فناوری سیستان و بلوچستان",
@@ -2367,28 +2168,23 @@
         "client.harir": "کارخانه حریر انار کرمان",
         "client.innovation": "مجتمع نوآوری",
         "client.fly_bar": "شرکت پرواز یاران سیرنگ",
-        // دانلود
         "downloads.title": "مستندات فنی و مهندسی",
         "downloads.description": "برای آشنایی کامل با قابلیت‌های فنی، پروژه‌های اجرایی و خدمات تخصصی شرکت، مستندات جامع زیر را دریافت نمایید",
-        "downloads.catalog": "کاتالوگ دیجیتال",   // اصلاح شد
+        "downloads.catalog": "کاتالوگ دیجیتال",
         "downloads.resume": "رزومه فنی شرکت",
-        "downloads.teamResume": "رزومه پرسنل",   // اصلاح شد
-        // اخبار
+        "downloads.teamResume": "رزومه پرسنل",
         "news.title": "اخبار و رویدادها",
         "news.messageTitle": "پیام مدیرعامل",
         "news.date": "پیشواز نوروز ۱۴۰۵",
-        "news.content": `
-          <p><strong>نوروز، فقط تغییر تقویم نیست؛<br>نوروز یادآور بازطراحی مسیرهاست.</strong></p>
+        "news.content": `<p><strong>نوروز، فقط تغییر تقویم نیست؛<br>نوروز یادآور بازطراحی مسیرهاست.</strong></p>
           <p>در آستانه سال ۱۴۰۵، زمانی که طبیعت با دقتی مهندسی‌شده خود را نوسازی می‌کند، ما نیز در شرکت، به بازنگری، بهبود و ارتقای آنچه ساخته‌ایم می‌اندیشیم. سالی که پشت سر گذاشتیم، سال آزمون ایده‌ها، تحلیل داده‌ها، اصلاح فرآیندها و تبدیل مفاهیم مهندسی به راهکارهای واقعی بود.</p>
           <p><strong>ما باور داریم مهندسی، صرفاً محاسبه و طراحی نیست؛<br>مهندسی یعنی فهم مسئله، جسارت در حل آن و خلاقیت در ساخت آینده.</strong></p>
           <p>در سال پیش‌رو، تمرکز ما بر توسعه زیرساخت‌های ساخت دیجیتال، فب‌لب و نمونه‌سازی پیشرفته خواهد بود؛ جایی که ایده‌ها سریع‌تر متولد می‌شوند، خطاها زودتر دیده می‌شوند و نوآوری، به جای شعار، به محصول تبدیل می‌شود. هدف ما ایجاد پلی مؤثر میان دانش، صنعت و فناوری است؛ پلی که از آن، راه‌حل‌های بومی و قابل اتکا عبور می‌کنند.</p>
           <p>به آینده خوش‌بین هستم، نه از سر امیدواری صرف، بلکه به پشتوانه تیمی متخصص، شرکایی همراه و مشتریانی که به تفکر مهندسی اعتماد کرده‌اند.<br>سال ۱۴۰۵ را با این نگاه آغاز می‌کنیم که بهتر بسازیم، هوشمندانه‌تر تصمیم بگیریم و مسئولانه‌تر اثر بگذاریم.</p>
-          <p><strong>نوروزتان نو،<br>مسیرتان مهندسی‌شده،<br>و آینده‌تان قابل ساخت.</strong></p>
-        `,
+          <p><strong>نوروزتان نو،<br>مسیرتان مهندسی‌شده،<br>و آینده‌تان قابل ساخت.</strong></p>`,
         "news.ceo_name": "دکتر جواد عیسی زاده لنگرودی",
         "news.ceo_title": "مدیرعامل",
         "news.ceo_alt": "مدیرعامل توسعه پردازان",
-        // فوتر
         "footer.contact": "تماس با ما",
         "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
         "footer.links": "خدمات تخصصی",
@@ -2400,40 +2196,37 @@
         "footer.link.consulting": "مشاوره فنی و مهندسی",
         "footer.link.products": "نمونه خدمات و محصولات",
         "footer.link.resume": "رزومه پرسنل",
-        "footer.link.fablabExternal": "فبلب روند",     // اضافه شد
-        "footer.link.shop": "فروشگاه آنلاین",          // اضافه شد
+        "footer.link.fablabExternal": "فبلب روند",
+        "footer.link.shop": "فروشگاه آنلاین",
         "footer.social": "ارتباط با ما",
         "footer.hours.sat_wed": "شنبه تا چهارشنبه: ۸:۰۰ - ۱۷:۰۰",
         "footer.hours.thu": "پنجشنبه: ۸:۰۰ - ۱۴:۰۰",
         "footer.cta": "درخواست پروژه و همکاری",
         "footer.copyright": "© ۱۴۰۵ شرکت دانش بنیان فنی و مهندسی توسعه پردازان. تمامی حقوق محفوظ است.",
-        // متا (برای بروزرسانی عنوان و توضیحات)
         "meta.title": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان | طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب",
         "meta.description": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان | پیشرو در طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و خدمات فب‌لب | ساخت دستگاه‌های صنعتی، ماشین‌سازی CNC، پرینت سه بعدی و مهندسی معکوس",
         "meta.og_title": "شرکت توسعه پردازان | طراحی مهندسی، نمونه‌سازی و خدمات فب‌لب",
         "meta.og_description": "پیشرو در خدمات طراحی مهندسی، نمونه‌سازی، شبیه‌سازی عددی و ساخت دیجیتال | تحقق ایده‌های صنعتی شما از کانسپت تا تولید"
       },
       en: {
-        // ... (سایر زبان‌ها مشابه قبل با اعمال تغییرات مشابه)
-        // برای اختصار از تکرار انگلیسی و عربی صرف نظر می‌شود اما در کد نهایی باید وجود داشته باشند
+        // همان ترجمه انگلیسی قبلی (برای اختصار در اینجا نیامده، اما در کد نهایی باید کامل باشد)
       },
       ar: {
-        // ...
+        // همان ترجمه عربی قبلی (برای اختصار در اینجا نیامده، اما در کد نهایی باید کامل باشد)
       }
     };
 
-    // توابع جاوااسکریپت (بدون تغییر - فقط ترجمه‌ها به‌روز شده)
+    // ==================== متغییرهای سراسری ====================
     let currentLanguage = 'fa';
 
+    // ==================== سیستم چندزبانه ====================
     function changeLanguage(lang) {
       if (!translations[lang]) return;
       currentLanguage = lang;
-
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.lang === lang) btn.classList.add('active');
       });
-
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang][key]) {
@@ -2444,14 +2237,10 @@
           }
         }
       });
-
       document.querySelectorAll('[data-i18n-alt]').forEach(element => {
         const key = element.getAttribute('data-i18n-alt');
-        if (translations[lang][key]) {
-          element.setAttribute('alt', translations[lang][key]);
-        }
+        if (translations[lang][key]) element.setAttribute('alt', translations[lang][key]);
       });
-
       if (translations[lang]['meta.title']) document.title = translations[lang]['meta.title'];
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc && translations[lang]['meta.description']) metaDesc.setAttribute('content', translations[lang]['meta.description']);
@@ -2459,11 +2248,9 @@
       if (ogTitle && translations[lang]['meta.og_title']) ogTitle.setAttribute('content', translations[lang]['meta.og_title']);
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogDesc && translations[lang]['meta.og_description']) ogDesc.setAttribute('content', translations[lang]['meta.og_description']);
-
       if (lang === 'ar') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar'; }
       else if (lang === 'fa') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'fa'; }
       else { document.documentElement.dir = 'ltr'; document.documentElement.lang = 'en'; }
-
       updatePortfolio(lang);
       localStorage.setItem('preferredLanguage', lang);
     }
@@ -2542,7 +2329,7 @@
       const ceoImage = document.querySelector('.news-avatar img');
       if (ceoImage) {
         ceoImage.onerror = function() {
-          this.src = 'data:image/svg+xml;base64,' + btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><rect width="120" height="120" fill="#1e40af"/><circle cx="60" cy="45" r="25" fill="white"/><path d="M40,85 L80,85 C90,85 95,95 60,95 C25,95 30,85 40,85 Z" fill="white"/><text x="60" y="115" text-anchor="middle" fill="white" font-family="Arial" font-size="12">${translations[currentLanguage]['news.ceo_title'] || 'CEO'}</text></svg>`);
+          this.src = 'data:image/svg+xml;base64,' + btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" fill="#1e40af"/><circle cx="40" cy="35" r="18" fill="white"/><path d="M30,65 L50,65 C60,65 65,75 40,75 C15,75 20,65 30,65 Z" fill="white"/><text x="40" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="10">CEO</text></svg>`);
           this.onerror = null;
         };
       }
@@ -2593,7 +2380,17 @@
     }
 
     function setupPerformance() {
-      const criticalImages = ['images/logo.png','images/hero.jpg','images/ceo.jpg','images/portfolio/air-purifier.jpg','images/portfolio/biometric-lock.jpg','images/portfolio/ecg-simulator.jpg','images/portfolio/injector-cleaner.jpg','images/portfolio/veinscope.jpg','images/portfolio/arm-porter.jpg','images/portfolio/taftan-trophy.jpg','images/portfolio/pulp-tester.jpg','images/portfolio/lamp-cover.jpg','clients/university-sb.png','clients/park-sb.png','clients/health-center.png','clients/university-medical.png','clients/design-lab.png','clients/harir.png','clients/innovation.png','clients/fly-bar.png'];
+      const criticalImages = [
+        'images/logo.png','images/hero.jpg','images/ceo.jpg',
+        'images/portfolio/air-purifier.jpg','images/portfolio/biometric-lock.jpg',
+        'images/portfolio/ecg-simulator.jpg','images/portfolio/injector-cleaner.jpg',
+        'images/portfolio/veinscope.jpg','images/portfolio/arm-porter.jpg',
+        'images/portfolio/taftan-trophy.jpg','images/portfolio/pulp-tester.jpg',
+        'images/portfolio/lamp-cover.jpg',
+        'clients/university-sb.png','clients/park-sb.png','clients/health-center.png',
+        'clients/university-medical.png','clients/design-lab.png','clients/harir.png',
+        'clients/innovation.png','clients/fly-bar.png'
+      ];
       criticalImages.forEach(src => { const img = new Image(); img.src = src; });
     }
 
