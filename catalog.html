@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPE Co. - Digital Catalog</title>
+    <!-- استایل‌ها -->
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #3b82f6;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ----- Language Overlay ----- */
+        #lang-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: opacity 0.5s ease;
+        }
+
+        .lang-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 200px;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+            background: #2563eb;
+        }
+
+        /* ----- Flipbook Container ----- */
+        .container {
+            display: none; /* بعد از انتخاب زبان نمایش داده میشود */
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flip-book {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        /* ----- Page Styles ----- */
+        .page {
+            background-color: white;
+            border: solid 1px #cbd5e1;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-cover {
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page-cover h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .page-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .page-text {
+            line-height: 1.8;
+            color: var(--text-dark);
+            text-align: justify;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+            margin-top: auto;
+            border: 2px dashed #cbd5e1;
+        }
+
+        /* مدیریت نمایش زبان‌ها */
+        .en, .ar { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- صفحه انتخاب زبان -->
+    <div id="lang-overlay">
+        <h2 style="margin-bottom: 30px;">زبان کاتالوگ را انتخاب کنید</h2>
+        <h2 style="margin-bottom: 30px; display: none;" class="en">Choose your language</h2>
+        <h2 style="margin-bottom: 30px; display: none;" class="ar">اختر لغة الكتالوج</h2>
+        
+        <button class="lang-btn" onclick="initBook('fa')">فارسی</button>
+        <button class="lang-btn" onclick="initBook('en')">English</button>
+        <button class="lang-btn" onclick="initBook('ar')">العربية</button>
+    </div>
+
+    <!-- کانتینر کاتالوگ -->
+    <div class="container" id="catalog-container">
+        <div class="flip-book" id="book">
+            
+            <!-- جلد کاتالوگ -->
+            <div class="page page-cover">
+                <div class="page-content">
+                    <h1>TPE Co.</h1>
+                    <h3 class="fa">پیشگام در صنعت و نوآوری</h3>
+                    <h3 class="en">Pioneers in Industry & Innovation</h3>
+                    <h3 class="ar">رواد في الصناعة والابتكار</h3>
+                    <p style="margin-top:50px;">Swipe / ورق بزنید</p>
+                </div>
+            </div>
+
+            <!-- صفحه معرفی -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="fa">درباره ما</span>
+                        <span class="en">About Us</span>
+                        <span class="ar">معلومات عنا</span>
+                    </div>
+                    <div class="page-text">
+                        <span class="fa">ما ترکیبی از تخصص صنعتی و خلاقیت هستیم. تمرکز ما بر ارائه راهکارهای نوین در حوزه‌های مهندسی، پزشکی و صنایع خلاق است.</span>
+                        <span class="en">We are a blend of industrial expertise and creativity. We focus on providing innovative solutions in engineering, medical, and creative industries.</span>
+                        <span class="ar">نحن مزيج من الخبرة الصناعية والإبداع. نركز على تقديم حلول مبتكرة في الهندسة والصناعات الطبية والإبداعية.</span>
+                    </div>
+                    <div class="image-placeholder">تصویر شرکت / Company Image</div>
+                </div>
+            </div>
+
+            <!-- صفحه تجهیزات پزشکی -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="fa">تجهیزات پزشکی و دندانپزشکی</span>
+                        <span class="en">Medical & Dental Equipment</span>
+                        <span class="ar">المعدات الطبية وطب الأسنان</span>
+                    </div>
+                    <div class="page-text">
+                        <span class="fa">تأمین و تولید پیشرفته‌ترین تجهیزات پزشکی و دندانپزشکی با بالاترین استانداردهای جهانی برای ارتقای سطح سلامت.</span>
+                        <span class="en">Supplying and manufacturing advanced medical and dental equipment with global standards.</span>
+                        <span class="ar">توريد وتصنيع المعدات الطبية وطب الأسنان المتقدمة وفقًا للمعايير العالمية.</span>
+                    </div>
+                    <div class="image-placeholder">تصویر تجهیزات / Equipment Image</div>
+                </div>
+            </div>
+
+            <!-- صفحه خدمات صنعتی -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="fa">خدمات صنعتی</span>
+                        <span class="en">Industrial Services</span>
+                        <span class="ar">الخدمات الصناعية</span>
+                    </div>
+                    <div class="page-text">
+                        <span class="fa">ارائه خدمات مشاوره، طراحی و اجرای پروژه‌های صنعتی با تکیه بر دانش فنی مهندسین مجرب TPE.</span>
+                        <span class="en">Consulting, designing, and executing industrial projects relying on the technical knowledge of TPE engineers.</span>
+                        <span class="ar">استشارات وتصميم وتنفيذ المشاريع الصناعية بالاعتماد على المعرفة الفنية لمهندسينا.</span>
+                    </div>
+                    <div class="image-placeholder">تصویر پروژه صنعتی / Industrial Project Image</div>
+                </div>
+            </div>
+
+            <!-- صفحه فب‌لب و صنایع خلاق -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="fa">فب‌لب و صنایع خلاق</span>
+                        <span class="en">FabLab & Creative Industries</span>
+                        <span class="ar">فاب لاب والصناعات الإبداعية</span>
+                    </div>
+                    <div class="page-text">
+                        <span class="fa">فضای ساخت (FabLab) ما جایی است که ایده‌ها به واقعیت تبدیل می‌شوند. پشتیبانی از استارتاپ‌ها، طراحی محصول و نمونه‌سازی سریع.</span>
+                        <span class="en">Our FabLab is where ideas become reality. Supporting startups, product design, and rapid prototyping.</span>
+                        <span class="ar">مختبرنا هو المكان الذي تتحول فيه الأفكار إلى حقيقة. دعم الشركات الناشئة وتصميم المنتجات.</span>
+                    </div>
+                    <div class="image-placeholder">تصویر فب‌لب / FabLab Image</div>
+                </div>
+            </div>
+
+            <!-- جلد پشتی (تماس با ما) -->
+            <div class="page page-cover">
+                <div class="page-content" style="justify-content: center;">
+                    <h2>
+                        <span class="fa">با ما در ارتباط باشید</span>
+                        <span class="en">Contact Us</span>
+                        <span class="ar">اتصل بنا</span>
+                    </h2>
+                    <p>Website: www.tpe-co.ir</p>
+                    <p>Email: info@tpe-co.ir</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- بارگذاری کتابخانه PageFlip -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    
+    <!-- اسکریپت‌های اجرایی -->
+    <script>
+        let book; // متغیر گلوبال برای کتاب
+
+        function initBook(lang) {
+            // ۱. تنظیمات زبان و جهت‌گیری صفحه
+            document.documentElement.lang = lang;
+            
+            // مخفی کردن همه زبان‌ها ابتدا
+            document.querySelectorAll('.fa, .en, .ar').forEach(el => el.style.display = 'none');
+            
+            // نمایش زبان انتخاب شده
+            document.querySelectorAll('.' + lang).forEach(el => {
+                // اگر عنصر از نوع inline مثل span بود همان inline بماند، در غیر اینصورت block
+                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+            });
+
+            // تنظیم راست‌چین یا چپ‌چین
+            if(lang === 'fa' || lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+
+            // ۲. مخفی کردن پاپ‌آپ و نمایش کانتینر
+            document.getElementById('lang-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('lang-overlay').style.display = 'none';
+                document.getElementById('catalog-container').style.display = 'flex';
+                
+                // ۳. اجرای افکت ورق زدن کتاب بعد از رندر شدن صفحه
+                renderFlipBook();
+            }, 500);
+        }
+
+        function renderFlipBook() {
+            const bookElement = document.getElementById('book');
+            
+            // پیکربندی کتابخانه StPageFlip
+            book = new St.PageFlip(bookElement, {
+                width: 400, // عرض پایه
+                height: 600, // ارتفاع پایه
+                size: "stretch", // تطبیق با ابعاد صفحه
+                minWidth: 300,
+                maxWidth: 500,
+                minHeight: 400,
+                maxHeight: 700,
+                maxShadowOpacity: 0.5,
+                showCover: true,
+                mobileScrollSupport: false // برای جلوگیری از باگ اسکرول در موبایل
+            });
+
+            // بارگذاری صفحات HTML داخل کتاب
+            book.loadFromHTML(document.querySelectorAll('.page'));
+        }
+    </script>
+</body>
+</html>
