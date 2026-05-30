@@ -2,308 +2,492 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TPE Co. - Digital Catalog</title>
-    <!-- استایل‌ها -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>TPE Co. | کاتالوگ دیجیتال تعاملی</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PageFlip Library -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    
     <style>
-        :root {
-            --primary-color: #0f172a;
-            --accent-color: #3b82f6;
-            --text-dark: #333;
-            --text-light: #fff;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Tahoma, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(145deg, #e6e9f0 0%, #d1d9e8 100%);
             min-height: 100vh;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* ----- Language Overlay ----- */
+        /* زبان‌ها (پیش‌فرض همه مخفی) */
+        .fa, .en, .ar { display: none; }
+
+        /* ================= OVERLAY انتخاب زبان ================= */
         #lang-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            z-index: 9999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 10000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            transition: opacity 0.6s ease;
             color: white;
-            transition: opacity 0.5s ease;
+            text-align: center;
         }
-
+        .lang-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 40px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,215,0,0.3);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+        }
+        .lang-card h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #ffd966;
+        }
         .lang-btn {
-            background: var(--accent-color);
-            color: white;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
             border: none;
-            padding: 15px 40px;
-            margin: 10px;
-            font-size: 18px;
-            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 14px 35px;
+            margin: 12px;
+            border-radius: 50px;
             cursor: pointer;
-            width: 200px;
-            transition: transform 0.2s, background 0.3s;
+            width: 220px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
-
         .lang-btn:hover {
-            transform: scale(1.05);
-            background: #2563eb;
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
         }
 
-        /* ----- Flipbook Container ----- */
-        .container {
-            display: none; /* بعد از انتخاب زبان نمایش داده میشود */
+        /* ================= کانتینر اصلی Flipbook ================= */
+        .catalog-wrapper {
+            display: none;
             width: 100%;
             height: 100vh;
             justify-content: center;
             align-items: center;
-        }
-
-        .flip-book {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        /* ----- Page Styles ----- */
-        .page {
-            background-color: white;
-            border: solid 1px #cbd5e1;
-            overflow: hidden;
             padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
+            background: radial-gradient(circle at 20% 30%, #eef2f7, #cbd5e6);
+        }
+        .flip-book {
+            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
+        /* ================= استایل صفحات ================= */
+        .page {
+            background: #fffef7;
+            border-radius: 8px;
+            overflow-y: auto;
+            padding: 20px 25px;
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(255,215,0,0.2);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        /* اسکرول زیبا برای صفحات */
+        .page::-webkit-scrollbar { width: 5px; }
+        .page::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .page::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+
+        /* جلد کتاب */
         .page-cover {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
             color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-cover::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="%23ffd966" d="M20,20 L80,20 L80,80 L20,80 Z" stroke="gold" stroke-width="1"/><circle cx="50" cy="50" r="15" stroke="gold" fill="none"/><path d="M50,30 L50,70 M30,50 L70,50" stroke="gold"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.1;
+        }
+        .cover-logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd966, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .cover-sub {
+            font-size: 1.2rem;
+            border-top: 2px solid #ffd966;
+            padding-top: 15px;
+            margin-top: 20px;
         }
 
-        .page-cover h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-        }
-
-        .page-content {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* هدر صفحات */
         .page-header {
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
+            border-right: 4px solid #fbbf24;
+            padding-right: 12px;
             margin-bottom: 20px;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .page-header i {
+            color: #fbbf24;
+            margin-left: 8px;
         }
 
-        .page-text {
-            line-height: 1.8;
-            color: var(--text-dark);
-            text-align: justify;
+        /* تصاویر و کارتها */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
         }
-
-        .image-placeholder {
+        .card-img {
+            background: #f8fafc;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 10px;
+        }
+        .card-img img {
             width: 100%;
-            height: 200px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .card-img span {
+            display: block;
+            font-size: 12px;
+            padding: 8px;
+            color: #334155;
+        }
+        .product-list {
+            list-style: none;
+            padding: 0;
+        }
+        .product-list li {
             background: #f1f5f9;
-            border-radius: 8px;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 40px;
+            font-weight: 500;
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: #94a3b8;
-            margin-top: auto;
-            border: 2px dashed #cbd5e1;
+            gap: 10px;
+        }
+        .product-list li i {
+            color: #fbbf24;
+            width: 25px;
+        }
+        .stat-badge {
+            background: #e2e8f0;
+            border-radius: 30px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin: 5px;
         }
 
-        /* مدیریت نمایش زبان‌ها */
-        .en, .ar { display: none; }
+        /* فوتر کتاب */
+        .contact-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #cbd5e1;
+        }
+        @media (max-width: 768px) {
+            .page { padding: 15px; font-size: 12px; }
+            .page-header { font-size: 1.3rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
 
     <!-- صفحه انتخاب زبان -->
     <div id="lang-overlay">
-        <h2 style="margin-bottom: 30px;">زبان کاتالوگ را انتخاب کنید</h2>
-        <h2 style="margin-bottom: 30px; display: none;" class="en">Choose your language</h2>
-        <h2 style="margin-bottom: 30px; display: none;" class="ar">اختر لغة الكتالوج</h2>
-        
-        <button class="lang-btn" onclick="initBook('fa')">فارسی</button>
-        <button class="lang-btn" onclick="initBook('en')">English</button>
-        <button class="lang-btn" onclick="initBook('ar')">العربية</button>
-    </div>
-
-    <!-- کانتینر کاتالوگ -->
-    <div class="container" id="catalog-container">
-        <div class="flip-book" id="book">
-            
-            <!-- جلد کاتالوگ -->
-            <div class="page page-cover">
-                <div class="page-content">
-                    <h1>TPE Co.</h1>
-                    <h3 class="fa">پیشگام در صنعت و نوآوری</h3>
-                    <h3 class="en">Pioneers in Industry & Innovation</h3>
-                    <h3 class="ar">رواد في الصناعة والابتكار</h3>
-                    <p style="margin-top:50px;">Swipe / ورق بزنید</p>
-                </div>
-            </div>
-
-            <!-- صفحه معرفی -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="page-header">
-                        <span class="fa">درباره ما</span>
-                        <span class="en">About Us</span>
-                        <span class="ar">معلومات عنا</span>
-                    </div>
-                    <div class="page-text">
-                        <span class="fa">ما ترکیبی از تخصص صنعتی و خلاقیت هستیم. تمرکز ما بر ارائه راهکارهای نوین در حوزه‌های مهندسی، پزشکی و صنایع خلاق است.</span>
-                        <span class="en">We are a blend of industrial expertise and creativity. We focus on providing innovative solutions in engineering, medical, and creative industries.</span>
-                        <span class="ar">نحن مزيج من الخبرة الصناعية والإبداع. نركز على تقديم حلول مبتكرة في الهندسة والصناعات الطبية والإبداعية.</span>
-                    </div>
-                    <div class="image-placeholder">تصویر شرکت / Company Image</div>
-                </div>
-            </div>
-
-            <!-- صفحه تجهیزات پزشکی -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="page-header">
-                        <span class="fa">تجهیزات پزشکی و دندانپزشکی</span>
-                        <span class="en">Medical & Dental Equipment</span>
-                        <span class="ar">المعدات الطبية وطب الأسنان</span>
-                    </div>
-                    <div class="page-text">
-                        <span class="fa">تأمین و تولید پیشرفته‌ترین تجهیزات پزشکی و دندانپزشکی با بالاترین استانداردهای جهانی برای ارتقای سطح سلامت.</span>
-                        <span class="en">Supplying and manufacturing advanced medical and dental equipment with global standards.</span>
-                        <span class="ar">توريد وتصنيع المعدات الطبية وطب الأسنان المتقدمة وفقًا للمعايير العالمية.</span>
-                    </div>
-                    <div class="image-placeholder">تصویر تجهیزات / Equipment Image</div>
-                </div>
-            </div>
-
-            <!-- صفحه خدمات صنعتی -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="page-header">
-                        <span class="fa">خدمات صنعتی</span>
-                        <span class="en">Industrial Services</span>
-                        <span class="ar">الخدمات الصناعية</span>
-                    </div>
-                    <div class="page-text">
-                        <span class="fa">ارائه خدمات مشاوره، طراحی و اجرای پروژه‌های صنعتی با تکیه بر دانش فنی مهندسین مجرب TPE.</span>
-                        <span class="en">Consulting, designing, and executing industrial projects relying on the technical knowledge of TPE engineers.</span>
-                        <span class="ar">استشارات وتصميم وتنفيذ المشاريع الصناعية بالاعتماد على المعرفة الفنية لمهندسينا.</span>
-                    </div>
-                    <div class="image-placeholder">تصویر پروژه صنعتی / Industrial Project Image</div>
-                </div>
-            </div>
-
-            <!-- صفحه فب‌لب و صنایع خلاق -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="page-header">
-                        <span class="fa">فب‌لب و صنایع خلاق</span>
-                        <span class="en">FabLab & Creative Industries</span>
-                        <span class="ar">فاب لاب والصناعات الإبداعية</span>
-                    </div>
-                    <div class="page-text">
-                        <span class="fa">فضای ساخت (FabLab) ما جایی است که ایده‌ها به واقعیت تبدیل می‌شوند. پشتیبانی از استارتاپ‌ها، طراحی محصول و نمونه‌سازی سریع.</span>
-                        <span class="en">Our FabLab is where ideas become reality. Supporting startups, product design, and rapid prototyping.</span>
-                        <span class="ar">مختبرنا هو المكان الذي تتحول فيه الأفكار إلى حقيقة. دعم الشركات الناشئة وتصميم المنتجات.</span>
-                    </div>
-                    <div class="image-placeholder">تصویر فب‌لب / FabLab Image</div>
-                </div>
-            </div>
-
-            <!-- جلد پشتی (تماس با ما) -->
-            <div class="page page-cover">
-                <div class="page-content" style="justify-content: center;">
-                    <h2>
-                        <span class="fa">با ما در ارتباط باشید</span>
-                        <span class="en">Contact Us</span>
-                        <span class="ar">اتصل بنا</span>
-                    </h2>
-                    <p>Website: www.tpe-co.ir</p>
-                    <p>Email: info@tpe-co.ir</p>
-                </div>
-            </div>
-            
+        <div class="lang-card">
+            <h2><i class="fa-solid fa-language"></i> <span class="fa">انتخاب زبان کاتالوگ</span><span class="en">Select Catalog Language</span><span class="ar">اختر لغة الكتالوج</span></h2>
+            <button class="lang-btn" onclick="initCatalog('fa')">فارسی</button>
+            <button class="lang-btn" onclick="initCatalog('en')">English</button>
+            <button class="lang-btn" onclick="initCatalog('ar')">العربية</button>
         </div>
     </div>
 
-    <!-- بارگذاری کتابخانه PageFlip -->
-    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
-    
-    <!-- اسکریپت‌های اجرایی -->
+    <!-- کانتینر اصلی Flipbook -->
+    <div class="catalog-wrapper" id="catalogWrapper">
+        <div class="flip-book" id="flipbook">
+            <!-- صفحات به صورت داینامیک توسط جاوااسکریپت ساخته می‌شوند تا محتوای چندزبانه کامل شود -->
+        </div>
+    </div>
+
     <script>
-        let book; // متغیر گلوبال برای کتاب
+        // ========== اطلاعات چندزبانه کامل (برگرفته از PDF و سایت) ==========
+        const translations = {
+            fa: {
+                cover_title: "TPE Co.",
+                cover_sub: "پیشگام در مهندسی، نوآوری و ساخت دیجیتال",
+                about_title: "درباره شرکت توسعه پردازان",
+                about_text: "شرکت دانش‌بنیان فنی و مهندسی توسعه پردازان (TPE) با تکیه بر تیمی متشکل از مهندسان مکانیک، برق، شیمی و مواد، به ارائه خدمات پیشرفته در حوزه‌های طراحی صنعتی، ساخت تجهیزات پزشکی، مهندسی معکوس، بهینه‌سازی خطوط تولید و راه‌اندازی فب‌لب می‌پردازد. این مجموعه در پارک علم و فناوری سیستان و بلوچستان مستقر بوده و پروژه‌های موفق متعددی را در سطح ملی به انجام رسانده است.",
+                medical_title: "تجهیزات پزشکی و دندانپزشکی",
+                medical_desc: "طراحی و تولید دستگاه‌های پیشرفته از جمله: ردیاب ورید قابل حمل (Vein Finder)، شبیه‌ساز ECG، اکستنشن رادیولوژی پیش‌چشمی، دستگاه فشارسنج جیوه‌ای هوشمند، پالس اکسیمتر متصل به موبایل و دستگاه ضدعفونی‌کننده UV پلاس.",
+                industrial_title: "خدمات صنعتی و ماشین‌سازی",
+                industrial_desc: "طراحی و ساخت ماشین‌آلات صنعتی نظیر دستگاه بسته‌بندی پنوماتیک، دستگاه خردایش کاغذ، قفل بیومتریک هوشمند، بهینه‌سازی خطوط تولید، تحلیل المان محدود (FEA) با آباکوس و انسیس، مهندسی معکوس قطعات پیچیده.",
+                fablab_title: "فب‌لب تخصصی صنایع خلاق روند",
+                fablab_desc: "فضایی برای خلق ایده‌ها با استفاده از پرینترهای سه‌بعدی (FDM و رزین)، دستگاه‌های لیزر، ماشین‌های CNC، آزمایشگاه الکترونیک و استودیو هنر. برگزاری دوره‌های آموزشی، مشاوره رایگان به استارتاپ‌ها و نمونه‌سازی سریع.",
+                products_title: "برخی محصولات شاخص",
+                products_list: ["ردیاب ورید قابل حمل", "شبیه‌ساز سیگنال قلب ECG", "دستگاه خشک‌کن دست ضدباکتری", "اکستنشن رادیولوژی پیش‌چشمی", "دستگاه بسته‌بندی", "دستگاه خردایش کاغذ", "قفل بیومتریک", "فشارسنج جیوه‌ای", "پالس اکسیمتر", "ضدعفونی‌کننده UV پلاس"],
+                services_title: "خدمات تخصصی",
+                services_list: ["طراحی صنعتی با CATIA , SolidWorks", "شبیه‌سازی ABAQUS , ANSYS", "مهندسی معکوس و اسکن سه‌بعدی", "راه‌اندازی نیروگاه خورشیدی", "تعمیرات تخصصی تجهیزات پزشکی و دندانپزشکی", "دوره‌های آموزشی عملی", "مشاوره رایگان ایده‌ها و اختراعات"],
+                portfolio_title: "نمونه کارهای درخشان",
+                portfolio_items: [
+                    { name: "ردیاب ورید (Vein Finder)", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" },
+                    { name: "شبیه‌ساز ECG", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&h=150&fit=crop" },
+                    { name: "دستگاه بسته‌بندی", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=200&h=150&fit=crop" },
+                    { name: "قطعات CNC شده", img: "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?w=200&h=150&fit=crop" }
+                ],
+                contact_title: "ارتباط با ما",
+                contact_info: "وب‌سایت: www.tpe-co.ir | ایمیل: usb.tpe.co@gmail.com | تلفن: 09226704205 | زاهدان، پارک علم و فناوری"
+            },
+            en: {
+                cover_title: "TPE Co.",
+                cover_sub: "Pioneer in Engineering, Innovation & Digital Fabrication",
+                about_title: "About TPE Co.",
+                about_text: "Technology of Pars Engineers (TPE) is a knowledge-based company located at Sistan & Baluchestan Science Park. With a multidisciplinary team of mechanical, electrical, chemical engineers, we excel in industrial design, medical equipment manufacturing, reverse engineering, production line optimization, and running a state-of-the-art FabLab.",
+                medical_title: "Medical & Dental Equipment",
+                medical_desc: "Advanced devices: Portable Vein Finder, ECG Simulator, Pre-optical radiology extension, Smart Sphygmomanometer, Mobile-connected Pulse Oximeter, UV Plus Sanitizer.",
+                industrial_title: "Industrial Services & Machinery",
+                industrial_desc: "Design & manufacturing of pneumatic packing machines, paper defibration machine, biometric lock, FEA simulation (ABAQUS, ANSYS), reverse engineering, production line optimization.",
+                fablab_title: "Ravand FabLab for Creative Industries",
+                fablab_desc: "A creative hub with 3D printers (FDM/Resin), laser cutters, CNC machines, electronics lab, art studio. Offering workshops, startup consulting, rapid prototyping.",
+                products_title: "Key Products",
+                products_list: ["Portable Vein Finder", "ECG Simulator", "Anti-Bacterial Hand Dryer", "Pre-optical Radiology Extension", "Packing Machine", "Paper Defibration Machine", "Biometric Lock", "Sphygmomanometer", "Pulse Oximeter", "UV Plus Sanitizer"],
+                services_title: "Specialized Services",
+                services_list: ["Industrial design (CATIA, SolidWorks)", "FEA Simulation (ABAQUS, ANSYS)", "Reverse Engineering & 3D scanning", "Solar power plant installation", "Medical equipment repair", "Practical training courses", "Free idea consultation"],
+                portfolio_title: "Featured Projects",
+                portfolio_items: [
+                    { name: "Vein Finder", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" },
+                    { name: "ECG Simulator", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&h=150&fit=crop" },
+                    { name: "Packing Machine", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=200&h=150&fit=crop" },
+                    { name: "CNC Machined Parts", img: "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?w=200&h=150&fit=crop" }
+                ],
+                contact_title: "Contact Us",
+                contact_info: "Web: www.tpe-co.ir | Email: usb.tpe.co@gmail.com | Tel: +989226704205 | Zahedan, Science & Technology Park"
+            },
+            ar: {
+                cover_title: "TPE Co.",
+                cover_sub: "رائدة في الهندسة والابتكار والتصنيع الرقمي",
+                about_title: "نبذة عن TPE",
+                about_text: "شركة تكنولوجيا مهندسي فارس (TPE) هي شركة قائمة على المعرفة ومتمركزة في حديقة علوم وتكنولوجيا سيستان وبلوشستان. بفضل فريق متعدد التخصصات، نتميز في التصميم الصناعي، تصنيع المعدات الطبية، الهندسة العكسية، تحسين خطوط الإنتاج، وإدارة مختبر فاب لاب متطور.",
+                medical_title: "المعدات الطبية وطب الأسنان",
+                medical_desc: "أجهزة متطورة: جهاز البحث عن الوريد المحمول، محاكي ECG، ملحق الأشعة المسبقة، جهاز ضغط الدم الذكي، مقياس التأكسج المتصل بالهاتف، معقم UV Plus.",
+                industrial_title: "الخدمات الصناعية والآلات",
+                industrial_desc: "تصميم وتصنيع آلات التعبئة والتغليف، آلة تفتيت الورق، قفل بيومتري، محاكاة العناصر المحدودة (ABAQUS, ANSYS)، الهندسة العكسية، تحسين خطوط الإنتاج.",
+                fablab_title: "مختبر رافاند للصناعات الإبداعية",
+                fablab_desc: "مساحة إبداعية تضم طابعات ثلاثية الأبعاد، قواطع ليزر، آلات CNC، مختبر إلكترونيات، استوديو فني. نقدم ورش عمل، استشارات للشركات الناشئة، ونمذجة سريعة.",
+                products_title: "أبرز المنتجات",
+                products_list: ["جهاز البحث عن الوريد", "محاكي ECG", "مجفف أيادي مضاد للبكتيريا", "ملحق الأشعة المسبقة", "آلة التعبئة", "آلة تفتيت الورق", "قفل بيومتري", "جهاز ضغط الدم", "مقياس التأكسج", "معقم UV Plus"],
+                services_title: "الخدمات المتخصصة",
+                services_list: ["تصميم صناعي (CATIA, SolidWorks)", "محاكاة (ABAQUS, ANSYS)", "هندسة عكسية ومسح ثلاثي الأبعاد", "تركيب محطات طاقة شمسية", "إصلاح المعدات الطبية", "دورات تدريبية عملية", "استشارات مجانية للأفكار"],
+                portfolio_title: "مشاريع متميزة",
+                portfolio_items: [
+                    { name: "جهاز البحث عن الوريد", img: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" },
+                    { name: "محاكي ECG", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&h=150&fit=crop" },
+                    { name: "آلة التعبئة", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=200&h=150&fit=crop" },
+                    { name: "أجزاء مُشَكَّلة بـCNC", img: "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?w=200&h=150&fit=crop" }
+                ],
+                contact_title: "اتصل بنا",
+                contact_info: "الموقع: www.tpe-co.ir | البريد الإلكتروني: usb.tpe.co@gmail.com | الهاتف: 09226704205 | زاهدان، حديقة العلوم والتكنولوجيا"
+            }
+        };
 
-        function initBook(lang) {
-            // ۱. تنظیمات زبان و جهت‌گیری صفحه
-            document.documentElement.lang = lang;
-            
-            // مخفی کردن همه زبان‌ها ابتدا
-            document.querySelectorAll('.fa, .en, .ar').forEach(el => el.style.display = 'none');
-            
-            // نمایش زبان انتخاب شده
-            document.querySelectorAll('.' + lang).forEach(el => {
-                // اگر عنصر از نوع inline مثل span بود همان inline بماند، در غیر اینصورت block
-                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+        let currentLang = 'fa';
+        let flipBook = null;
+
+        // تابع ساخت صفحات داینامیک بر اساس زبان
+        function buildPages(lang) {
+            const data = translations[lang];
+            const pagesArray = [];
+
+            // جلد
+            pagesArray.push(`
+                <div class="page page-cover">
+                    <div style="position:relative; z-index:2;">
+                        <div class="cover-logo">${data.cover_title}</div>
+                        <div class="cover-sub">${data.cover_sub}</div>
+                        <p style="margin-top:50px;"><i class="fa-solid fa-hand-peace"></i> <span>${lang === 'fa' ? 'ورق بزنید' : (lang === 'en' ? 'Turn the page' : 'اقلب الصفحة')}</span></p>
+                    </div>
+                </div>
+            `);
+
+            // صفحه درباره ما
+            pagesArray.push(`
+                <div class="page">
+                    <div class="page-header"><i class="fa-solid fa-building"></i> ${data.about_title}</div>
+                    <p>${data.about_text}</p>
+                    <div class="gallery-grid" style="margin-top:20px;">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=150&fit=crop" alt="team"><span>${lang === 'fa' ? 'تیم مهندسی' : 'Engineering Team'}</span></div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581092160609-4f4e7d1c2f3a?w=200&h=150&fit=crop" alt="lab"><span>${lang === 'fa' ? 'آزمایشگاه' : 'Lab'}</span></div>
+                    </div>
+                </div>
+            `);
+
+            // صفحه تجهیزات پزشکی
+            pagesArray.push(`
+                <div class="page">
+                    <div class="page-header"><i class="fa-solid fa-stethoscope"></i> ${data.medical_title}</div>
+                    <p>${data.medical_desc}</p>
+                    <div class="gallery-grid">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1579154392128-bf8c7ebee541?w=200&h=150&fit=crop" alt="vein finder"><span>Vein Finder</span></div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581594543225-cc8d9801b1f2?w=200&h=150&fit=crop" alt="ecg"><span>ECG Simulator</span></div>
+                    </div>
+                </div>
+            `);
+
+            // صفحه خدمات صنعتی
+            pagesArray.push(`
+                <div class="page">
+                    <div class="page-header"><i class="fa-solid fa-industry"></i> ${data.industrial_title}</div>
+                    <p>${data.industrial_desc}</p>
+                    <div class="gallery-grid">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" alt="packing"><span>Packing Machine</span></div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1504917595217-d4bf06117361?w=200&h=150&fit=crop" alt="cnc"><span>CNC Machining</span></div>
+                    </div>
+                </div>
+            `);
+
+            // صفحه فب‌لب و صنایع خلاق
+            pagesArray.push(`
+                <div class="page">
+                    <div class="page-header"><i class="fa-solid fa-cube"></i> ${data.fablab_title}</div>
+                    <p>${data.fablab_desc}</p>
+                    <div class="gallery-grid">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=200&h=150&fit=crop" alt="3d printer"><span>3D Printer</span></div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=200&h=150&fit=crop" alt="laser"><span>Laser Cut</span></div>
+                    </div>
+                </div>
+            `);
+
+            // صفحه محصولات (لیستی)
+            let productsHtml = `<div class="page-header"><i class="fa-solid fa-boxes"></i> ${data.products_title}</div><ul class="product-list">`;
+            data.products_list.forEach(p => { productsHtml += `<li><i class="fa-solid fa-check-circle"></i> ${p}</li>`; });
+            productsHtml += `</ul>`;
+            pagesArray.push(`<div class="page">${productsHtml}</div>`);
+
+            // صفحه خدمات (لیستی)
+            let servicesHtml = `<div class="page-header"><i class="fa-solid fa-tools"></i> ${data.services_title}</div><ul class="product-list">`;
+            data.services_list.forEach(s => { servicesHtml += `<li><i class="fa-solid fa-star-of-life"></i> ${s}</li>`; });
+            servicesHtml += `</ul>`;
+            pagesArray.push(`<div class="page">${servicesHtml}</div>`);
+
+            // صفحه نمونه کارها (گالری تصاویر)
+            let portfolioHtml = `<div class="page-header"><i class="fa-solid fa-images"></i> ${data.portfolio_title}</div><div class="gallery-grid">`;
+            data.portfolio_items.forEach(item => {
+                portfolioHtml += `<div class="card-img"><img src="${item.img}" alt="${item.name}"><span>${item.name}</span></div>`;
             });
+            portfolioHtml += `</div>`;
+            pagesArray.push(`<div class="page">${portfolioHtml}</div>`);
 
-            // تنظیم راست‌چین یا چپ‌چین
-            if(lang === 'fa' || lang === 'ar') {
+            // صفحه تماس و اطلاعات
+            pagesArray.push(`
+                <div class="page page-cover" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                    <div style="text-align:center;">
+                        <div class="cover-logo" style="font-size:2rem;">${data.contact_title}</div>
+                        <div style="margin-top:30px; font-size:1rem; line-height:2;">${data.contact_info}</div>
+                        <div style="margin-top:40px;"><i class="fa-solid fa-envelope"></i> <i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-linkedin"></i></div>
+                        <p style="margin-top:50px;">© TPE Co. - Digital Catalog</p>
+                    </div>
+                </div>
+            `);
+            return pagesArray;
+        }
+
+        // رندر کتاب با صفحات ساخته شده
+        function renderFlipbook(lang) {
+            const container = document.getElementById('flipbook');
+            if (!container) return;
+            const pagesHtml = buildPages(lang);
+            container.innerHTML = pagesHtml.join('');
+            
+            // نابود کردن نمونه قبلی اگر وجود داشت
+            if (flipBook && flipBook.destroy) flipBook.destroy();
+            
+            // راه‌اندازی مجدد StPageFlip
+            flipBook = new St.PageFlip(container, {
+                width: 450,
+                height: 650,
+                size: "stretch",
+                minWidth: 320,
+                maxWidth: 520,
+                minHeight: 500,
+                maxHeight: 750,
+                showCover: true,
+                mobileScrollSupport: false,
+                swipeDistance: 30,
+                startZIndex: 0,
+                maxShadowOpacity: 0.5,
+                useMouseEvents: true,
+                autoSize: true
+            });
+            flipBook.loadFromHTML(document.querySelectorAll('.page'));
+        }
+
+        // تابع اصلی راه‌اندازی کاتالوگ پس از انتخاب زبان
+        function initCatalog(lang) {
+            currentLang = lang;
+            // تنظیم جهت صفحه و نمایش زبان صحیح
+            document.documentElement.lang = lang;
+            if (lang === 'fa' || lang === 'ar') {
                 document.documentElement.dir = 'rtl';
             } else {
                 document.documentElement.dir = 'ltr';
             }
-
-            // ۲. مخفی کردن پاپ‌آپ و نمایش کانتینر
-            document.getElementById('lang-overlay').style.opacity = '0';
+            // نمایش صحیح عناصر زبان در overlay (فقط برای زیبایی)
+            document.querySelectorAll('.fa, .en, .ar').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'inline-block');
+            
+            const overlay = document.getElementById('lang-overlay');
+            overlay.style.opacity = '0';
             setTimeout(() => {
-                document.getElementById('lang-overlay').style.display = 'none';
-                document.getElementById('catalog-container').style.display = 'flex';
-                
-                // ۳. اجرای افکت ورق زدن کتاب بعد از رندر شدن صفحه
-                renderFlipBook();
+                overlay.style.display = 'none';
+                const wrapper = document.getElementById('catalogWrapper');
+                wrapper.style.display = 'flex';
+                renderFlipbook(lang);
             }, 500);
         }
 
-        function renderFlipBook() {
-            const bookElement = document.getElementById('book');
-            
-            // پیکربندی کتابخانه StPageFlip
-            book = new St.PageFlip(bookElement, {
-                width: 400, // عرض پایه
-                height: 600, // ارتفاع پایه
-                size: "stretch", // تطبیق با ابعاد صفحه
-                minWidth: 300,
-                maxWidth: 500,
-                minHeight: 400,
-                maxHeight: 700,
-                maxShadowOpacity: 0.5,
-                showCover: true,
-                mobileScrollSupport: false // برای جلوگیری از باگ اسکرول در موبایل
-            });
-
-            // بارگذاری صفحات HTML داخل کتاب
-            book.loadFromHTML(document.querySelectorAll('.page'));
-        }
+        // دسترسی به تابع از طریق گلوبال
+        window.initCatalog = initCatalog;
     </script>
 </body>
 </html>
