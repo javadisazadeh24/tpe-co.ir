@@ -1,272 +1,925 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>توسعه پردازان | RAVAND FabLab · پیشرو در ساخت دیجیتال و مهندسی معکوس</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="شرکت دانش‌بنیان توسعه پردازان (TPE) و فبلب تخصصی RAVAND FabLab – طراحی مهندسی، نمونه‌سازی سریع، شبیه‌سازی عددی، مهندسی معکوس، ماشین‌سازی CNC، پرینت سه‌بعدی صنعتی و تجهیزات پزشکی.">
-  <meta name="keywords" content="توسعه پردازان, RAVAND FabLab, TPE, فبلب, ساخت دیجیتال, مهندسی معکوس, طراحی صنعتی, CNC, پرینت سه بعدی, نمونه سازی, تجهیزات پزشکی, دندانپزشکی دیجیتال, صنایع خلاق">
-  <meta name="author" content="شرکت دانش بنیان فنی و مهندسی توسعه پردازان">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://tpe-co.ir/fablab">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="توسعه پردازان | RAVAND FabLab – دروازه نوآوری صنعتی و خلاق">
-  <meta property="og:description" content="فبلب نسل جدید: از ایده تا محصول در بستر مهندسی دیجیتال.">
-  <meta property="og:image" content="https://tpe-co.ir/images/logo-ravand.png">
-  <meta property="og:url" content="https://tpe-co.ir/fablab">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fa_IR">
-  
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    :root {
-      --primary: #1e40af; --primary-dark: #1e3a8a; --primary-light: #60a5fa;
-      --gold: #eab308; --creative: #a855f7; --industrial: #f97316; --medical: #06b6d4;
-      --catalog: #3b82f6; --shop: #ec489a; --work: #10b981; --resume: #facc15;
-      --glass-bg: rgba(255,255,255,0.08); --glass-border: rgba(255,255,255,0.12);
-      --glass-shadow: 0 8px 32px rgba(0,0,0,0.2); --text-light: #f8fafc; --text-dim: #cbd5e1;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>توسعه پردازان | TPE Co. & RAVAND FabLab</title>
+    
+    <meta name="description" content="شرکت دانش بنیان توسعه پردازان (TPE) و فبلب تخصصی روند (RAVAND FabLab) - پیشرو در طراحی مهندسی، نمونه‌سازی سریع، ماشین‌سازی CNC و مهندسی معکوس.">
+    <meta name="keywords" content="TPE, توسعه پردازان, RAVAND FabLab, فبلب, ساخت دیجیتال, مهندسی معکوس, طراحی صنعتی, CNC, پرینت سه بعدی, نوآوری">
+    <meta name="author" content="TPE Co.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://tpe-co.ir">
+    
+    <meta property="og:title" content="TPE Co. | RAVAND FabLab - دروازه نوآوری صنعتی">
+    <meta property="og:description" content="از ایده تا محصول در بستر مهندسی دیجیتال و ساخت پیشرفته.">
+    <meta property="og:url" content="https://tpe-co.ir">
+    <meta property="og:type" content="website">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TPE Co. (Tose'e Pardazan Electronic)",
+      "alternateName": "شرکت دانش بنیان فنی و مهندسی توسعه پردازان",
+      "url": "https://tpe-co.ir",
+      "logo": "https://tpe-co.ir/images/logo.png",
+      "department": {
+        "@type": "Organization",
+        "name": "RAVAND FabLab"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+98-922-670-4205",
+        "contactType": "customer service"
+      }
     }
-    body { font-family: 'Vazirmatn', 'Inter', sans-serif; background: #050a15; color: var(--text-light); overflow-x: hidden; min-height: 100vh; }
-    
-    /* ========== ویدئوی پس‌زمینه ========== */
-    .bg-video {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3;
-    }
-    .dark-overlay {
-      position: fixed; inset: 0; background: radial-gradient(circle at 20% 40%, rgba(5,10,25,0.65), rgba(0,0,0,0.85)); z-index: -2; pointer-events: none;
-    }
-    
-    /* نوار زبان */
-    .lang-bar {
-      position: fixed; top: 20px; left: 20px; z-index: 200;
-      display: flex; gap: 8px; background: var(--glass-bg); backdrop-filter: blur(12px);
-      padding: 5px 16px; border-radius: 60px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
-    }
-    .lang-btn { background: none; border: none; color: var(--text-dim); font-weight: 600; font-size: 0.75rem; cursor: pointer; padding: 4px 12px; border-radius: 40px; transition: 0.2s; font-family: 'Vazirmatn', sans-serif; }
-    .lang-btn.active { background: var(--primary); color: white; box-shadow: 0 0 8px rgba(30,64,175,0.5); }
-    
-    /* اسپلش اسکرین */
-    .splash-screen {
-      position: fixed; inset: 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.8s ease, visibility 0.8s;
-    }
-    .splash-screen.hide { opacity: 0; visibility: hidden; }
-    .splash-logo { width: 160px; height: 160px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; animation: pulse 2s infinite; }
-    .splash-logo img { width: 100px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
-    .splash-text { font-size: 1.6rem; font-weight: 700; color: white; text-align: center; margin-bottom: 8px; padding: 0 20px; }
-    .splash-subtext { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
-    @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.4); } 70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,255,255,0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
-    
-    /* گیت وی اصلی */
-    .gateway { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: relative; }
-    .dashboard { max-width: 1400px; width: 100%; display: grid; grid-template-columns: 1fr 0.9fr; gap: 40px; align-items: center; }
-    
-    /* چرخ دایره‌ای */
-    .circular-zone { position: relative; display: flex; justify-content: center; align-items: center; min-height: 600px; }
-    .carousel-container { position: relative; width: min(620px, 85vw); height: min(620px, 85vw); margin: 0 auto; }
-    .center-brand {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: min(140px, 28vw); height: min(140px, 28vw); background: var(--glass-bg); backdrop-filter: blur(16px);
-      border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); z-index: 30; text-align: center; padding: 10px;
-    }
-    .center-brand img { width: min(55px, 12vw); margin-bottom: 6px; border-radius: 12px; }
-    .center-brand .brand-name { font-size: clamp(0.65rem, 3vw, 0.75rem); font-weight: 700; color: var(--primary-light); }
-    .center-brand .parent { font-size: clamp(0.5rem, 2.5vw, 0.6rem); opacity: 0.7; }
-    
-    .rotating-node {
-      position: absolute; width: min(110px, 22vw); height: min(110px, 22vw); background: var(--glass-bg);
-      backdrop-filter: blur(12px); border-radius: 50%; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.2,0.9,0.4,1.2);
-      border: 1px solid var(--glass-border); box-shadow: 0 10px 25px -8px rgba(0,0,0,0.3); will-change: transform, left, top; padding: 8px;
-    }
-    .rotating-node i { font-size: clamp(1.3rem, 5vw, 1.8rem); margin-bottom: 5px; }
-    .rotating-node h4 { font-size: clamp(0.6rem, 2.5vw, 0.7rem); font-weight: 700; line-height: 1.3; }
-    .rotating-node:hover { transform: scale(1.08); border-color: var(--gold); background: rgba(30,64,175,0.4); box-shadow: 0 0 20px rgba(234,179,8,0.4); }
-    
-    /* پنل اطلاعات شیشه‌ای */
-    .info-glass { background: var(--glass-bg); backdrop-filter: blur(20px); border-radius: 36px; padding: 1.8rem; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
-    .sector-title { font-size: clamp(1.3rem, 5vw, 1.8rem); font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--primary-light)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .sector-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text-dim); margin-bottom: 1.2rem; }
-    .services-badge { display: flex; flex-wrap: wrap; gap: 8px; margin: 1rem 0 1.2rem; }
-    .services-badge span { background: rgba(255,255,255,0.08); padding: 5px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 500; }
-    .glass-cta { display: inline-block; background: var(--primary); color: white; padding: 8px 22px; border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: 0.2s; border: 1px solid rgba(255,255,255,0.2); }
-    .glass-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
-    .contact-mini { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--glass-border); display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.65rem; color: var(--text-dim); align-items: center; }
-    .contact-mini a { color: var(--text-dim); text-decoration: none; }
-    .contact-mini a:hover { color: var(--primary-light); }
-    .social-icons { display: flex; gap: 10px; }
-    
-    @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; gap: 30px; } .circular-zone { min-height: auto; } .carousel-container { width: min(500px, 80vw); height: min(500px, 80vw); } .rotating-node { width: min(100px, 20vw); height: min(100px, 20vw); } }
-    @media (max-width: 550px) { .gateway { padding: 1rem; } .carousel-container { width: min(380px, 85vw); height: min(380px, 85vw); } .rotating-node { width: min(80px, 18vw); height: min(80px, 18vw); } .rotating-node i { font-size: 1.2rem; } .info-glass { padding: 1.2rem; } .lang-bar { top: 12px; left: 12px; padding: 4px 12px; } }
-  </style>
+    </script>
+
+    <style>
+        /* CSS Variables & Theme */
+        :root {
+            --brand-blue: #0A192F;
+            --brand-light-blue: #112240;
+            --accent-gold: #FFC857;
+            --accent-cyan: #00F0FF;
+            --accent-purple: #B24CFF;
+            --text-main: #E6F1FF;
+            --text-muted: #8892B0;
+            --glass-bg: rgba(17, 34, 64, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+
+        body {
+            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+            background-color: var(--brand-blue);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 { color: #fff; font-weight: 700; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Multi-layered Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .blueprint-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+            perspective: 1000px;
+            transform-origin: center;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        .ambient-glow {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--brand-blue); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-light-blue); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+        /* -----------------------------------
+           INTRO SEQUENCE
+        ----------------------------------- */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--brand-blue);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        }
+
+        .scene {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        .scene.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Scene 1 & 2: Logo & Geometry */
+        .intro-geometry {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .svg-girih {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: slowRotate 20s linear infinite;
+        }
+        
+        .svg-girih path {
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 1;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+
+        .draw-lines path {
+            animation: dashDraw 3s ease forwards;
+        }
+
+        @keyframes dashDraw {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes slowRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scene 3: Innovation Sphere */
+        .innovation-sphere {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            animation: rotateSphere 10s linear infinite;
+        }
+
+        .sphere-ring {
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(0, 240, 255, 0.4);
+            border-radius: 50%;
+        }
+        .sphere-ring:nth-child(1) { transform: rotateY(0deg); }
+        .sphere-ring:nth-child(2) { transform: rotateY(45deg); }
+        .sphere-ring:nth-child(3) { transform: rotateY(90deg); }
+        .sphere-ring:nth-child(4) { transform: rotateY(135deg); }
+        .sphere-ring:nth-child(5) { transform: rotateX(90deg); border-color: var(--accent-purple); }
+
+        @keyframes rotateSphere {
+            from { transform: rotateX(20deg) rotateY(0deg); }
+            to { transform: rotateX(20deg) rotateY(360deg); }
+        }
+
+        .orbiting-texts {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            animation: counterRotate 15s linear infinite;
+        }
+        .orbit-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        @keyframes counterRotate {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        /* Scene 4: Slogan */
+        .intro-slogan {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+        .intro-slogan.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scene 5: Enter Button */
+        .btn-enter {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-family: inherit;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .btn-enter.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .btn-enter::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--accent-cyan);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        .btn-enter:hover {
+            color: var(--brand-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+        .btn-enter:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        html[dir="ltr"] .btn-enter::before { transform-origin: left; }
+        html[dir="ltr"] .btn-enter:hover::before { transform-origin: right; }
+
+        /* -----------------------------------
+           MAIN LAYOUT
+        ----------------------------------- */
+        #main-wrapper {
+            position: relative;
+            z-index: 10;
+            display: none;
+            padding: 20px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 40px;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+            fill: none;
+            stroke: var(--accent-cyan);
+            stroke-width: 2;
+        }
+        
+        .brand-text h1 {
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        .brand-text span {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+            background: var(--glass-bg);
+            padding: 5px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--brand-light-blue);
+            color: var(--text-main);
+            box-shadow: inset 0 0 0 1px var(--accent-cyan);
+        }
+
+        /* Hierarchy & Intro Text */
+        .gateway-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .gateway-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .gateway-intro p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Business Portals Grid */
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .portal-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .portal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.1);
+        }
+
+        .portal-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Card Themes */
+        .portal-card[data-theme="industrial"]:hover { border-color: rgba(255, 200, 87, 0.5); }
+        .portal-card[data-theme="industrial"]::before { background: linear-gradient(90deg, transparent, var(--accent-gold), transparent); }
+        .portal-card[data-theme="creative"]:hover { border-color: rgba(178, 76, 255, 0.5); }
+        .portal-card[data-theme="creative"]::before { background: linear-gradient(90deg, transparent, var(--accent-purple), transparent); }
+        .portal-card[data-theme="medical"]:hover { border-color: rgba(0, 240, 255, 0.5); }
+        
+        .portal-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .portal-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+        }
+
+        .portal-card[data-theme="industrial"] .portal-icon { color: var(--accent-gold); }
+        .portal-card[data-theme="creative"] .portal-icon { color: var(--accent-purple); }
+        .portal-card[data-theme="medical"] .portal-icon { color: var(--accent-cyan); }
+        .portal-card[data-theme="catalog"] .portal-icon { color: #fff; }
+        .portal-card[data-theme="store"] .portal-icon { color: #4CAF50; }
+        .portal-card[data-theme="collab"] .portal-icon { color: #FF5252; }
+
+        .portal-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .portal-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .portal-cta {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .portal-card:hover .portal-cta {
+            opacity: 1;
+            gap: 15px;
+        }
+
+        .portal-cta svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            transition: transform 0.3s ease;
+        }
+        html[dir="rtl"] .portal-cta svg { transform: rotate(180deg); }
+        html[dir="rtl"] .portal-card:hover .portal-cta svg { transform: rotate(180deg) translateX(5px); }
+        html[dir="ltr"] .portal-card:hover .portal-cta svg { transform: translateX(5px); }
+
+        /* Footer / Contact */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--brand-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; align-items: flex-start; }
+            .portals-grid { grid-template-columns: 1fr; }
+            .gateway-intro h2 { font-size: 2rem; }
+            footer { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ویدئوی پس‌زمینه (مسیر: videos/BGVideo.mp4) -->
-<video autoplay muted loop playsinline class="bg-video" poster="images/hero.jpg">
-  <source src="videos/iran-flag.gif" type="video/gif">
-  مرورگر شما از ویدئو پشتیبانی نمی‌کند.
-</video>
-<div class="dark-overlay"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div class="blueprint-grid"></div>
+    <div class="ambient-glow"></div>
 
-<div class="splash-screen" id="splashScreen">
-  <div class="splash-logo"><img src="images/logo.png" alt="توسعه پردازان"></div>
-  <div class="splash-text" data-i18n="splash.welcome">به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید</div>
-  <div class="splash-subtext" data-i18n="splash.subtext">پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی</div>
-</div>
-
-<div class="lang-bar">
-  <button class="lang-btn active" data-lang="fa">فارسی</button>
-  <button class="lang-btn" data-lang="en">EN</button>
-  <button class="lang-btn" data-lang="ar">العربية</button>
-</div>
-
-<div class="gateway">
-  <div class="dashboard">
-    <div class="circular-zone">
-      <div class="carousel-container" id="carouselContainer">
-        <div class="center-brand">
-          <img src="images/logo-ravand.png" alt="RAVAND FabLab" onerror="this.src='https://placehold.co/65x65?text=R'">
-          <div class="brand-name">RAVAND FabLab</div>
-          <div class="parent">توسعه پردازان</div>
+    <div id="intro-overlay">
+        
+        <div id="scene-1" class="scene active">
+            <div class="intro-geometry">
+                <svg class="svg-girih draw-lines" viewBox="0 0 200 200">
+                    <g transform="translate(100, 100)">
+                        <path d="M0,-80 L20,-20 L80,0 L20,20 L0,80 L-20,20 L-80,0 L-20,-20 Z" />
+                        <path d="M0,-80 L20,-20 L80,0 L20,20 L0,80 L-20,20 L-80,0 L-20,-20 Z" transform="rotate(45)" />
+                        <polygon points="0,-40 34,-17 34,17 0,40 -34,17 -34,-17" stroke="var(--accent-cyan)" stroke-width="1" fill="none"/>
+                        <polygon points="0,-40 34,-17 34,17 0,40 -34,17 -34,-17" transform="rotate(30)" stroke="var(--accent-cyan)" stroke-width="1" fill="none"/>
+                    </g>
+                </svg>
+            </div>
         </div>
-      </div>
+
+        <div id="scene-3" class="scene">
+            <div class="innovation-sphere">
+                <div class="sphere-ring"></div>
+                <div class="sphere-ring"></div>
+                <div class="sphere-ring"></div>
+                <div class="sphere-ring"></div>
+                <div class="sphere-ring"></div>
+            </div>
+            <div class="orbiting-texts">
+                <div class="orbit-text" style="transform: rotate(0deg) translate(180px) rotate(0deg);" data-t="orbit.ind">Industrial Eng</div>
+                <div class="orbit-text" style="transform: rotate(60deg) translate(180px) rotate(-60deg);" data-t="orbit.rev">Reverse Eng</div>
+                <div class="orbit-text" style="transform: rotate(120deg) translate(180px) rotate(-120deg);" data-t="orbit.cnc">CNC Manufacturing</div>
+                <div class="orbit-text" style="transform: rotate(180deg) translate(180px) rotate(-180deg);" data-t="orbit.med">Medical Tech</div>
+                <div class="orbit-text" style="transform: rotate(240deg) translate(180px) rotate(-240deg);" data-t="orbit.cre">Creative Industries</div>
+                <div class="orbit-text" style="transform: rotate(300deg) translate(180px) rotate(-300deg);" data-t="orbit.add">Additive Mfg</div>
+            </div>
+        </div>
+
+        <div id="scene-4" class="scene">
+            <div class="intro-slogan" id="slogan-text" data-t="slogan">از ایده تا محصول</div>
+            <button class="btn-enter" id="btn-enter" data-t="enter">ورود به اکوسیستم TPE</button>
+        </div>
     </div>
-    <div class="info-glass" id="infoPanel">
-      <div class="sector-title" id="panelTitle">واحد صنایع خلاق</div>
-      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال با پیشرفته‌ترین تکنیک‌های ساخت دیجیتال.</div>
-      <div class="services-badge" id="panelServices"><span>مدلسازی سه‌بعدی</span><span>دکوراسیون هنری</span><span>پرینت سه‌بعدی رزین</span></div>
-      <a href="#" id="panelCta" class="glass-cta">ورود به واحد صنایع خلاق</a>
-      <div class="contact-mini">
-        <div><i class="fas fa-map-marker-alt"></i> <span data-i18n="address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</span></div>
-        <div><i class="fas fa-phone-alt"></i> <a href="tel:09226704205">0922 670 4205</a></div>
-        <div><i class="fas fa-envelope"></i> usb.tpe.co@gmail.com</div>
-        <div class="social-icons"><a href="https://instagram.com/TPE_CO" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/company/tpe-co" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="https://t.me/tpe_co" target="_blank"><i class="fab fa-telegram"></i></a></div>
-      </div>
+
+    <div id="main-wrapper">
+        <header>
+            <div class="brand-container">
+                <svg class="logo-svg" viewBox="0 0 100 100">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" />
+                    <path d="M50,5 L50,50 L95,75 M50,50 L5,75" />
+                    <circle cx="50" cy="50" r="10" fill="var(--accent-gold)" stroke="none"/>
+                </svg>
+                <div class="brand-text">
+                    <h1 data-t="brand.title">TPE Co.</h1>
+                    <span data-t="brand.subtitle">RAVAND FabLab Innovation Center</span>
+                </div>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="fa">FA</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+            </div>
+        </header>
+
+        <section class="gateway-intro">
+            <h2 data-t="intro.title">اکوسیستم جامع مهندسی و ساخت</h2>
+            <p data-t="intro.desc">ما با تلفیق هنر، مهندسی و تکنولوژی‌های ساخت دیجیتال، مرزهای نوآوری را گسترش می‌دهیم. دپارتمان تخصصی خود را انتخاب کنید.</p>
+        </section>
+
+        <section class="portals-grid">
+            
+            <div class="portal-card" data-theme="industrial">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="portal-content">
+                    <h3 data-t="p1.title">مهندسی صنعتی و تولید</h3>
+                    <p data-t="p1.desc">شبیه‌سازی عددی، مهندسی معکوس، ماشین‌کاری CNC و بهینه‌سازی خطوط تولید با استانداردهای جهانی.</p>
+                </div>
+                <div class="portal-cta">
+                    <span data-t="cta.explore">کاوش</span>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+
+            <div class="portal-card" data-theme="creative">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="portal-content">
+                    <h3 data-t="p2.title">صنایع خلاق و طراحی پارامتریک</h3>
+                    <p data-t="p2.desc">تلفیق هندسه ایرانی با ساخت دیجیتال، تولید محصولات دکوراتیو هوشمند و لایتینگ‌های ارگانیک.</p>
+                </div>
+                <div class="portal-cta">
+                    <span data-t="cta.explore">کاوش</span>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+
+            <div class="portal-card" data-theme="medical">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="portal-content">
+                    <h3 data-t="p3.title">فناوری‌های پزشکی و دندانپزشکی</h3>
+                    <p data-t="p3.desc">ساخت مدل‌های آناتومیک، تجهیزات شبیه‌ساز جراحی و قطعات دقیق جایگزین پزشکی.</p>
+                </div>
+                <div class="portal-cta">
+                    <span data-t="cta.explore">کاوش</span>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+
+            <div class="portal-card" data-theme="catalog">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="portal-content">
+                    <h3 data-t="p4.title">کاتالوگ دیجیتال</h3>
+                    <p data-t="p4.desc">کتابخانه تعاملی پروژه‌ها، دستگاه‌های ساخته شده و محصولات نوآورانه فبلب روند.</p>
+                </div>
+                <div class="portal-cta">
+                    <span data-t="cta.explore">کاوش</span>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+
+            <div class="portal-card" data-theme="store">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="portal-content">
+                    <h3 data-t="p5.title">فروشگاه هوشمند</h3>
+                    <p data-t="p5.desc">سفارش آنلاین قطعات صنعتی، مدل‌های سه بعدی و تجهیزات فناورانه تولید شده در TPE.</p>
+                </div>
+                <div class="portal-cta">
+                    <span data-t="cta.explore">کاوش</span>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+
+            <div class="portal-card" data-theme="collab">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="portal-content">
+                    <h3 data-t="p6.title">شبکه همکاری و رزومه</h3>
+                    <p data-t="p6.desc">ارسال درخواست همکاری، پروژه‌های مشترک و دسترسی به رزومه تیم نخبگان توسعه پردازان.</p>
+                </div>
+                <div class="portal-cta">
+                    <span data-t="cta.explore">کاوش</span>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="footer-info">
+                <p data-t="footer.address">زاهدان، بلوار دانشگاه، پارک علم و فناوری</p>
+                <p data-t="footer.contact">ایمیل: javadisazadeh24@gmail.com | تلفن: 09226704205</p>
+                <p data-t="footer.copy">© 2026 TPE Co. & RAVAND FabLab. تمامی حقوق محفوظ است.</p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.88-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+            </div>
+        </footer>
     </div>
-  </div>
-</div>
 
-<script>
-  // ========== داده‌های سه‌زبانه (برگرفته از سایت اصلی) ==========
-  const langData = {
-    fa: {
-      creative: { title: "واحد صنایع خلاق", desc: "طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی و نورپردازی هوشمند. ما در فبلب روند، ایده‌های خلاقانه شما را به محصولاتی منحصربه‌فرد تبدیل می‌کنیم.", services: ["طراحی مفهومی و جزئیات اجرایی", "مدل‌سازی سه‌بعدی پیشرفته", "پرینت سه‌بعدی رزین و فیلامنت", "مهندسی معکوس آثار هنری", "لایتینگ هوشمند و دکوراسیون"], cta: "ورود به واحد صنایع خلاق", url: "/fablab/creative" },
-      industrial: { title: "واحد طراحی صنعتی و تولید", desc: "مهندسی معکوس دقیق، ماشین‌کاری CNC چندمحوره، بهینه‌سازی خطوط تولید و ساخت قطعات یدکی با استانداردهای بین‌المللی. ما مسیر تبدیل ایده به محصول صنعتی را برای شما هموار می‌کنیم.", services: ["طراحی صنعتی و مهندسی معکوس", "ماشین‌کاری CNC 5 محور", "طراحی قالب و فیکسچر", "بهینه‌سازی خط تولید", "اسکن سه‌بعدی صنعتی"], cta: "ورود به واحد طراحی صنعتی", url: "/fablab/industrial" },
-      medical: { title: "واحد تجهیزات پزشکی و دندانپزشکی", desc: "تعمیرات تخصصی، مهندسی معکوس قطعات پزشکی، ساخت شبیه‌سازهای آموزشی، مدل‌های آناتومیک سفارشی و قطعات جایگزین با دقت میکرون. همراهی مطمئن برای مراکز درمانی و آموزشی.", services: ["مهندسی معکوس قطعات پزشکی", "مدل‌های آناتومیک سه‌بعدی", "شبیه‌سازهای آموزشی", "قطعات جایگزین دندانپزشکی", "تبدیل تصاویر CT به CAD"], cta: "خدمات تجهیزات پزشکی و دندانپزشکی", url: "/fablab/medical" },
-      catalog: { title: "کاتالوگ دیجیتال", desc: "کتابخانه تعاملی شامل بیش از ۲۵۰ محصول و پروژه واقعی از واحدهای صنایع خلاق، طراحی صنعتی و تجهیزات پزشکی. نمونه کارهای فبلب روند و توسعه پردازان را اینجا مشاهده کنید.", services: ["قطعات صنعتی", "مدل‌های پزشکی", "طراحی‌های خلاقانه", "پروژه‌های مهندسی معکوس", "فایل‌های سه‌بعدی قابل دانلود"], cta: "مشاهده کاتالوگ", url: "/products.html" },
-      shop: { title: "فروشگاه محصولات", desc: "محصولات دیجیتال، قطعات صنعتی، مدل‌های سه‌بعدی آماده و خدمات ساخت دیجیتال را به صورت آنلاین سفارش دهید. جدیدترین دستاوردهای فبلب روند را در فروشگاه ما ببینید.", services: ["قطعات پرینت سه‌بعدی", "مدل‌های صنعتی و پزشکی", "فایل‌های سه‌بعدی", "خدمات ساخت سفارشی"], cta: "مشاهده فروشگاه", url: "/shop.html" },
-      resume: { title: "رزومه پرسنل متخصص", desc: "تیم فبلب روند متشکل از مهندسان مکانیک، برق، مواد و نرم‌افزار با سال‌ها تجربه در طراحی، ساخت و مهندسی معکوس. رزومه تخصصی اعضای تیم را مشاهده کنید.", services: ["مهندسی مکانیک و ساخت", "مهندسی برق و الکترونیک", "مهندسی مواد و ساخت افزودنی", "نرم‌افزار و شبیه‌سازی عددی"], cta: "مشاهده رزومه تیم", url: "/resume.html" },
-      work: { title: "همکاری با ما", desc: "اگر صاحب ایده، طراح، مهندس یا مجموعه صنعتی هستید و می‌خواهید در کنار تیم تخصصی توسعه پردازان به نوآوری بپردازید، فرم همکاری را پر کنید. ما از طرح‌های دانش‌بنیان و استارتاپ‌های صنعتی حمایت می‌کنیم.", services: ["ارسال ایده و پروژه", "همکاری فنی و مهندسی", "عضو شوید در شبکه فبلب", "درخواست مشاوره تخصصی"], cta: "ثبت درخواست همکاری", url: "/work-with-us.html" },
-      splash: { welcome: "به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید", subtext: "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی" }, address: "زاهدان، بلوار دانشگاه، پارک علم و فناوری"
-    },
-    en: {
-      creative: { title: "Creative Industries Unit", desc: "Parametric design, organic vases, unique trophies, decorative & digital art with advanced additive manufacturing.", services: ["Conceptual Design", "Advanced 3D Modeling", "Resin & Filament 3DP", "Reverse Eng. for Art", "Smart Lighting"], cta: "Enter Creative Unit", url: "/fablab/creative" },
-      industrial: { title: "Industrial Design & Production", desc: "Precision reverse engineering, multi-axis CNC, production optimization, spare parts with intl. standards.", services: ["Industrial Design & Reverse Eng.", "5-axis CNC", "Mold & Fixture Design", "Production Optimization", "Industrial 3D Scanning"], cta: "Enter Industrial Unit", url: "/fablab/industrial" },
-      medical: { title: "Medical & Dental Equipment", desc: "Specialized repairs, reverse engineering, educational simulators, custom anatomical models, micron precision.", services: ["Medical Reverse Eng.", "3D Anatomical Models", "Educational Simulators", "Dental Replacement", "CT to CAD"], cta: "Medical Services", url: "/fablab/medical" },
-      catalog: { title: "Digital Catalog", desc: "Interactive library of 250+ real products & projects from all units.", services: ["Industrial Parts", "Medical Models", "Creative Designs", "Reverse Eng. Projects", "3D Files"], cta: "View Catalog", url: "/products.html" },
-      shop: { title: "Products Shop", desc: "Order digital products, industrial parts, 3D models, custom fabrication online.", services: ["3D Printed Parts", "Industrial & Medical Models", "3D Files", "Custom Fabrication"], cta: "Visit Shop", url: "/shop.html" },
-      resume: { title: "Expert Team Resume", desc: "Mechanical, electrical, materials, software engineers with years of experience.", services: ["Mechanical & Manufacturing", "Electrical & Electronics", "Materials & Additive", "Software & Simulation"], cta: "View Resume", url: "/resume.html" },
-      work: { title: "Collaborate with Us", desc: "Join TPE's expert team. Submit your ideas or industrial projects.", services: ["Submit Idea/Project", "Technical Collaboration", "Join FabLab Network", "Consultation"], cta: "Request Collaboration", url: "/work-with-us.html" },
-      splash: { welcome: "Welcome to TPE Co., Knowledge-Based Technical & Engineering Company", subtext: "Leading in engineering design, prototyping & simulation" }, address: "Zahedan, University Blvd, Science & Technology Park"
-    },
-    ar: {
-      creative: { title: "وحدة الصناعات الإبداعية", desc: "التصميم البارامتري، المزهريات العضوية، الجوائز الفنية، المنتجات الديكورية والفن الرقمي.", services: ["التصميم المفاهيمي", "النمذجة ثلاثية الأبعاد", "الطباعة ثلاثية الأبعاد", "الهندسة العكسية الفنية", "الإضاءة الذكية"], cta: "الدخول", url: "/fablab/creative" },
-      industrial: { title: "التصميم الصناعي والإنتاج", desc: "الهندسة العكسية الدقيقة، التصنيع باستخدام الحاسب الآلي، تحسين خطوط الإنتاج.", services: ["التصميم الصناعي", "CNC 5 محاور", "CAD/CAM", "الهندسة العكسية", "المسح ثلاثي الأبعاد"], cta: "الدخول", url: "/fablab/industrial" },
-      medical: { title: "المعدات الطبية وطب الأسنان", desc: "الإصلاحات المتخصصة، الهندسة العكسية، النماذج التشريحية، أجهزة المحاكاة.", services: ["الهندسة العكسية الطبية", "النماذج التشريحية", "أجهزة المحاكاة", "أجزاء طب الأسنان", "تحويل CT إلى CAD"], cta: "الخدمات الطبية", url: "/fablab/medical" },
-      catalog: { title: "الكتالوج الرقمي", desc: "مكتبة تفاعلية تضم أكثر من 250 منتجًا ومشروعًا.", services: ["قطع صناعية", "نماذج طبية", "تصاميم إبداعية", "مشاريع الهندسة العكسية", "ملفات ثلاثية الأبعاد"], cta: "عرض الكتالوج", url: "/products.html" },
-      shop: { title: "متجر المنتجات", desc: "منتجات رقمية، قطع صناعية، نماذج ثلاثية، تصنيع مخصص.", services: ["أجزاء مطبوعة", "نماذج صناعية", "ملفات ثلاثية", "تصنيع مخصص"], cta: "زيارة المتجر", url: "/shop.html" },
-      resume: { title: "سيرة الفريق", desc: "مهندسي ميكانيكا، كهرباء، مواد وبرمجيات.", services: ["هندسة ميكانيكا", "هندسة كهرباء", "هندسة مواد", "برمجيات ومحاكاة"], cta: "عرض السيرة", url: "/resume.html" },
-      work: { title: "تعاون معنا", desc: "انضم إلى فريق تطوير پردازان. شارك بأفكارك ومشاريعك.", services: ["تقديم فكرة", "تعاون فني", "انضم لشبكة فبلب", "استشارة"], cta: "طلب تعاون", url: "/work-with-us.html" },
-      splash: { welcome: "مرحبًا بكم في شركة التطوير الفنية والهندسية", subtext: "الريادة في التصميم الهندسي والمحاكاة العددية" }, address: "زاهدان، شارع الجامعة، حديقة العلوم"
-    }
-  };
+    <script>
+        // Dictionary for Multilingual Support
+        const dict = {
+            fa: {
+                "orbit.ind": "مهندسی صنعتی", "orbit.rev": "مهندسی معکوس", "orbit.cnc": "ساخت CNC",
+                "orbit.med": "فناوری پزشکی", "orbit.cre": "صنایع خلاق", "orbit.add": "تولید افزایشی",
+                "slogan": "از ایده تا محصول", "enter": "ورود به اکوسیستم TPE",
+                "brand.title": "TPE Co.", "brand.subtitle": "مرکز نوآوری RAVAND FabLab",
+                "intro.title": "اکوسیستم جامع مهندسی و ساخت",
+                "intro.desc": "ما با تلفیق هنر، مهندسی و تکنولوژی‌های ساخت دیجیتال، مرزهای نوآوری را گسترش می‌دهیم. دپارتمان تخصصی خود را انتخاب کنید.",
+                "p1.title": "مهندسی صنعتی و تولید", "p1.desc": "شبیه‌سازی عددی، مهندسی معکوس، ماشین‌کاری CNC و بهینه‌سازی خطوط تولید با استانداردهای جهانی.",
+                "p2.title": "صنایع خلاق و طراحی پارامتریک", "p2.desc": "تلفیق هندسه ایرانی با ساخت دیجیتال، تولید محصولات دکوراتیو هوشمند و لایتینگ‌های ارگانیک.",
+                "p3.title": "فناوری‌های پزشکی و دندانپزشکی", "p3.desc": "ساخت مدل‌های آناتومیک، تجهیزات شبیه‌ساز جراحی و قطعات دقیق جایگزین پزشکی.",
+                "p4.title": "کاتالوگ دیجیتال", "p4.desc": "کتابخانه تعاملی پروژه‌ها، دستگاه‌های ساخته شده و محصولات نوآورانه فبلب روند.",
+                "p5.title": "فروشگاه هوشمند", "p5.desc": "سفارش آنلاین قطعات صنعتی، مدل‌های سه بعدی و تجهیزات فناورانه تولید شده در TPE.",
+                "p6.title": "شبکه همکاری و رزومه", "p6.desc": "ارسال درخواست همکاری، پروژه‌های مشترک و دسترسی به رزومه تیم نخبگان توسعه پردازان.",
+                "cta.explore": "کاوش",
+                "footer.address": "زاهدان، بلوار دانشگاه، پارک علم و فناوری",
+                "footer.contact": "ایمیل: javadisazadeh24@gmail.com | تلفن: 09226704205",
+                "footer.copy": "© 2026 TPE Co. & RAVAND FabLab. تمامی حقوق محفوظ است."
+            },
+            en: {
+                "orbit.ind": "Industrial Eng", "orbit.rev": "Reverse Eng", "orbit.cnc": "CNC Manufacturing",
+                "orbit.med": "Medical Tech", "orbit.cre": "Creative Industries", "orbit.add": "Additive Mfg",
+                "slogan": "From Idea to Innovation", "enter": "Enter TPE Ecosystem",
+                "brand.title": "TPE Co.", "brand.subtitle": "RAVAND FabLab Innovation Center",
+                "intro.title": "Comprehensive Engineering & Manufacturing Ecosystem",
+                "intro.desc": "We expand the boundaries of innovation by combining art, engineering, and digital manufacturing technologies. Select your specialized department.",
+                "p1.title": "Industrial Engineering & Production", "p1.desc": "Numerical simulation, reverse engineering, CNC machining, and production line optimization with global standards.",
+                "p2.title": "Creative Industries & Parametric Design", "p2.desc": "Blending Persian geometry with digital fabrication, smart decorative products, and organic lighting.",
+                "p3.title": "Medical & Dental Technologies", "p3.desc": "Manufacturing anatomical models, surgical simulators, and precision medical replacement parts.",
+                "p4.title": "Digital Catalog", "p4.desc": "Interactive library of projects, manufactured machines, and innovative RAVAND FabLab products.",
+                "p5.title": "Smart Store", "p5.desc": "Order industrial parts, 3D models, and technological equipment produced at TPE online.",
+                "p6.title": "Collaboration Network & Resume", "p6.desc": "Submit collaboration requests, joint projects, and access the resume of the TPE elite team.",
+                "cta.explore": "Explore",
+                "footer.address": "Zahedan, University Blvd, Science & Technology Park",
+                "footer.contact": "Email: javadisazadeh24@gmail.com | Phone: +98-9226704205",
+                "footer.copy": "© 2026 TPE Co. & RAVAND FabLab. All rights reserved."
+            },
+            ar: {
+                "orbit.ind": "الهندسة الصناعية", "orbit.rev": "الهندسة العكسية", "orbit.cnc": "تصنيع CNC",
+                "orbit.med": "التكنولوجيا الطبية", "orbit.cre": "الصناعات الإبداعية", "orbit.add": "التصنيع بالإضافة",
+                "slogan": "من الفكرة إلى المنتج", "enter": "أدخل نظام TPE",
+                "brand.title": "TPE Co.", "brand.subtitle": "مركز RAVAND FabLab للابتكار",
+                "intro.title": "النظام البيئي الشامل للهندسة والتصنيع",
+                "intro.desc": "نوسع حدود الابتكار من خلال الجمع بين الفن والهندسة وتقنيات التصنيع الرقمي. حدد القسم المتخصص.",
+                "p1.title": "الهندسة الصناعية والإنتاج", "p1.desc": "المحاكاة العددية، الهندسة العكسية، التصنيع باستخدام CNC، وتحسين خطوط الإنتاج بالمعايير العالمية.",
+                "p2.title": "الصناعات الإبداعية والتصميم البارامتري", "p2.desc": "مزج الهندسة الفارسية بالتصنيع الرقمي، ومنتجات ديكورية ذكية، وإضاءة عضوية.",
+                "p3.title": "التقنيات الطبية وطب الأسنان", "p3.desc": "تصنيع النماذج التشريحية، ومحاكيات الجراحة، والأجزاء الطبية البديلة الدقيقة.",
+                "p4.title": "الكتالوج الرقمي", "p4.desc": "مكتبة تفاعلية للمشاريع، والآلات المُصنعة، والمنتجات المبتكرة لـ RAVAND FabLab.",
+                "p5.title": "المتجر الذكي", "p5.desc": "اطلب عبر الإنترنت أجزاء صناعية، نماذج ثلاثية الأبعاد، ومعدات تكنولوجية تم إنتاجها في TPE.",
+                "p6.title": "شبكة التعاون والسيرة الذاتية", "p6.desc": "إرسال طلبات التعاون والمشاريع المشتركة والوصول إلى السيرة الذاتية لفريق النخبة في TPE.",
+                "cta.explore": "يكتشف",
+                "footer.address": "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا",
+                "footer.contact": "البريد: javadisazadeh24@gmail.com | هاتف: 09226704205",
+                "footer.copy": "© 2026 TPE Co. & RAVAND FabLab. جميع الحقوق محفوظة."
+            }
+        };
 
-  let currentLang = 'fa', currentSector = 'creative', rotationFrame = null, autoTimer = null, isHovering = false, angleOffset = 0;
-  const sectorsList = ['creative', 'industrial', 'medical', 'catalog', 'shop', 'resume', 'work'];
-  const sectorColors = { creative: '#a855f7', industrial: '#f97316', medical: '#06b6d4', catalog: '#3b82f6', shop: '#ec489a', resume: '#facc15', work: '#10b981' };
-  const sectorIcons = { creative: 'fas fa-palette', industrial: 'fas fa-cogs', medical: 'fas fa-heartbeat', catalog: 'fas fa-book-open', shop: 'fas fa-store', resume: 'fas fa-users', work: 'fas fa-handshake' };
-  const baseAngles = { creative: -90, industrial: -38.6, medical: 12.9, catalog: 64.3, shop: 115.7, resume: 167.1, work: 218.6 };
-  const radius = 240;
+        // Language Switcher Logic
+        const htmlTag = document.documentElement;
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const textNodes = document.querySelectorAll('[data-t]');
 
-  function createNodes() {
-    const container = document.getElementById('carouselContainer');
-    if (!container) return;
-    sectorsList.forEach(sector => {
-      const node = document.createElement('div');
-      node.className = 'rotating-node';
-      node.setAttribute('data-sector', sector);
-      const rad = (baseAngles[sector] * Math.PI) / 180;
-      const x = Math.cos(rad) * radius, y = Math.sin(rad) * radius;
-      node.style.left = `calc(50% + ${x}px - 55px)`;
-      node.style.top = `calc(50% + ${y}px - 55px)`;
-      node.innerHTML = `<i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i><h4>${langData[currentLang][sector].title}</h4>`;
-      container.appendChild(node);
-    });
-  }
-  function updatePanel(sector) {
-    const data = langData[currentLang][sector];
-    if (!data) return;
-    document.getElementById('panelTitle').innerText = data.title;
-    document.getElementById('panelDesc').innerText = data.desc;
-    document.getElementById('panelServices').innerHTML = data.services.map(s => `<span>${s}</span>`).join('');
-    const cta = document.getElementById('panelCta');
-    cta.innerText = data.cta + ' ←';
-    cta.href = data.url;
-    currentSector = sector;
-  }
-  function highlightNode(sector) {
-    document.querySelectorAll('.rotating-node').forEach(node => {
-      if (node.dataset.sector === sector) {
-        node.style.transform = 'scale(1.1)'; node.style.borderColor = '#eab308'; node.style.backgroundColor = 'rgba(30,64,175,0.4)'; node.style.boxShadow = '0 0 22px rgba(234,179,8,0.5)';
-      } else { node.style.transform = ''; node.style.borderColor = ''; node.style.backgroundColor = ''; node.style.boxShadow = ''; }
-    });
-    updatePanel(sector);
-  }
-  function startRotation() {
-    function rotate() { if (!isHovering) { angleOffset = (angleOffset + 0.12) % 360; sectorsList.forEach(sector => { const node = document.querySelector(`.rotating-node[data-sector="${sector}"]`); if (node) { const newAngle = baseAngles[sector] + angleOffset; const rad = newAngle * Math.PI / 180; const x = Math.cos(rad) * radius, y = Math.sin(rad) * radius; node.style.left = `calc(50% + ${x}px - 55px)`; node.style.top = `calc(50% + ${y}px - 55px)`; } }); } rotationFrame = requestAnimationFrame(rotate); }
-    rotationFrame = requestAnimationFrame(rotate);
-  }
-  function startAutoHighlight() { if (autoTimer) clearInterval(autoTimer); let idx = 0; autoTimer = setInterval(() => { if (!isHovering) { idx = (idx+1)%sectorsList.length; highlightNode(sectorsList[idx]); } }, 7000); }
-  function bindEvents() {
-    document.querySelectorAll('.rotating-node').forEach(node => {
-      node.addEventListener('mouseenter', () => { isHovering = true; if (autoTimer) clearInterval(autoTimer); highlightNode(node.dataset.sector); });
-      node.addEventListener('mouseleave', () => { isHovering = false; startAutoHighlight(); });
-      node.addEventListener('click', (e) => { e.stopPropagation(); const url = langData[currentLang][node.dataset.sector].url; if (url) window.location.href = url; });
-    });
-  }
-  function setLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.lang = lang==='ar'?'ar':(lang==='fa'?'fa':'en');
-    document.documentElement.dir = (lang==='ar'||lang==='fa')?'rtl':'ltr';
-    document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
-    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-    document.querySelectorAll('.rotating-node').forEach(node => { const s = node.dataset.sector; node.innerHTML = `<i class="${sectorIcons[s]}" style="color: ${sectorColors[s]};"></i><h4>${langData[lang][s].title}</h4>`; });
-    document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if(langData[lang][key]) el.innerText = langData[lang][key]; });
-    updatePanel(currentSector);
-  }
-  
-  window.addEventListener('load', () => {
-    createNodes();
-    bindEvents();
-    startRotation();
-    startAutoHighlight();
-    highlightNode('creative');
-    setLanguage('fa');
-    gsap.fromTo('.dashboard', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" });
-    gsap.fromTo('.center-brand', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 0.2, ease: "back.out(0.6)" });
-    setTimeout(() => { const splash = document.getElementById('splashScreen'); if(splash) { splash.classList.add('hide'); setTimeout(()=>splash.style.display='none',800); } }, 2500);
-  });
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
-</script>
+        function setLanguage(lang) {
+            htmlTag.lang = lang;
+            htmlTag.dir = (lang === 'en') ? 'ltr' : 'rtl';
+            
+            langBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            textNodes.forEach(node => {
+                const key = node.getAttribute('data-t');
+                if (dict[lang][key]) {
+                    node.textContent = dict[lang][key];
+                }
+            });
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        // Background Particle Canvas Logic
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function initParticles() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // Draw connections
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    if (dx*dx + dy*dy < 10000) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawParticles);
+        }
+
+        window.addEventListener('resize', initParticles);
+        initParticles();
+        drawParticles();
+
+        // Intro Sequence Timing Logic
+        window.addEventListener('load', () => {
+            const scene1 = document.getElementById('scene-1');
+            const scene3 = document.getElementById('scene-3');
+            const scene4 = document.getElementById('scene-4');
+            const sloganText = document.getElementById('slogan-text');
+            const btnEnter = document.getElementById('btn-enter');
+            const introOverlay = document.getElementById('intro-overlay');
+            const mainWrapper = document.getElementById('main-wrapper');
+
+            // Scene 2 is intrinsic to Scene 1's rotating animation
+            // Transition to Scene 3 (Innovation Sphere)
+            setTimeout(() => {
+                scene1.classList.remove('active');
+                scene3.classList.add('active');
+            }, 3500);
+
+            // Transition to Scene 4 (Slogan & CTA)
+            setTimeout(() => {
+                scene3.classList.remove('active');
+                scene4.classList.add('active');
+                setTimeout(() => sloganText.classList.add('show'), 500);
+                setTimeout(() => btnEnter.classList.add('show'), 1500);
+            }, 7500);
+
+            // Enter Button Logic
+            btnEnter.addEventListener('click', () => {
+                introOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                    mainWrapper.style.display = 'block';
+                    // Trigger reflow for smooth entry
+                    window.scrollTo(0,0);
+                }, 1000);
+            });
+        });
+    </script>
 </body>
 </html>
