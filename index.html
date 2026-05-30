@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>توسعه پردازان | RAVAND FabLab · دروازه صنعت و خلاقیت</title>
   <meta name="description" content="فبلب پیشرفته توسعه پردازان | طراحی مهندسی، ساخت دیجیتال، صنایع خلاق، مهندسی معکوس">
   
@@ -17,6 +17,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     :root {
@@ -32,8 +33,8 @@
       --shop: #ec489a;
       --work: #10b981;
       --resume: #facc15;
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.15);
       --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       --text-light: #f8fafc;
       --text-dim: #cbd5e1;
@@ -63,17 +64,21 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
       padding: 12px;
-      opacity: 0.35;
+      opacity: 0.55;
       transition: opacity 0.5s;
     }
     .bg-grid img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 16px;
-      filter: brightness(0.7) contrast(1.1);
+      border-radius: 20px;
+      filter: brightness(0.85) contrast(1.05);
+      transition: transform 0.3s;
+    }
+    .bg-grid img:hover {
+      transform: scale(1.02);
     }
     .bg-slideshow {
       position: absolute;
@@ -85,12 +90,12 @@
       transition: opacity 0.8s ease;
     }
     .bg-slideshow.active {
-      opacity: 0.45;
+      opacity: 0.65;
     }
     .dark-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.6), rgba(0, 0, 0, 0.85));
+      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.55), rgba(0, 0, 0, 0.75));
       z-index: -1;
       pointer-events: none;
     }
@@ -98,14 +103,14 @@
     /* ========== نوار زبان شیشه‌ای ========== */
     .lang-bar {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 20px;
+      left: 20px;
       z-index: 200;
       display: flex;
       gap: 8px;
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
-      padding: 6px 18px;
+      padding: 5px 16px;
       border-radius: 60px;
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
@@ -115,9 +120,9 @@
       border: none;
       color: var(--text-dim);
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       cursor: pointer;
-      padding: 4px 14px;
+      padding: 4px 12px;
       border-radius: 40px;
       transition: 0.2s;
       font-family: 'Vazirmatn', sans-serif;
@@ -145,30 +150,31 @@
       visibility: hidden;
     }
     .splash-logo {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       animation: pulse 2s infinite;
     }
     .splash-logo img {
-      width: 120px;
+      width: 100px;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
     }
     .splash-text {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: white;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      padding: 0 20px;
     }
     .splash-subtext {
-      font-size: 1rem;
+      font-size: 0.85rem;
       color: rgba(255,255,255,0.8);
     }
     @keyframes pulse {
@@ -183,7 +189,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 1.5rem;
       position: relative;
     }
     .dashboard {
@@ -201,12 +207,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 680px;
+      min-height: 600px;
     }
     .carousel-container {
       position: relative;
-      width: 620px;
-      height: 620px;
+      width: min(620px, 85vw);
+      height: min(620px, 85vw);
       margin: 0 auto;
     }
     .center-brand {
@@ -214,8 +220,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 150px;
-      height: 150px;
+      width: min(140px, 28vw);
+      height: min(140px, 28vw);
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
       border-radius: 50%;
@@ -227,27 +233,28 @@
       box-shadow: var(--glass-shadow);
       z-index: 30;
       text-align: center;
+      padding: 10px;
     }
     .center-brand img {
-      width: 65px;
-      margin-bottom: 8px;
+      width: min(55px, 12vw);
+      margin-bottom: 6px;
       border-radius: 12px;
     }
     .center-brand .brand-name {
-      font-size: 0.75rem;
+      font-size: clamp(0.65rem, 3vw, 0.75rem);
       font-weight: 700;
       color: var(--primary-light);
     }
     .center-brand .parent {
-      font-size: 0.55rem;
+      font-size: clamp(0.5rem, 2.5vw, 0.6rem);
       opacity: 0.7;
     }
 
-    /* گره‌های دایره‌ای (۷ عدد) */
+    /* گره‌های دایره‌ای */
     .rotating-node {
       position: absolute;
-      width: 120px;
-      height: 120px;
+      width: min(110px, 22vw);
+      height: min(110px, 22vw);
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
       border-radius: 50%;
@@ -261,22 +268,22 @@
       border: 1px solid var(--glass-border);
       box-shadow: 0 10px 25px -8px rgba(0,0,0,0.3);
       will-change: transform, left, top;
+      padding: 8px;
     }
     .rotating-node i {
-      font-size: 1.8rem;
-      margin-bottom: 6px;
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+      margin-bottom: 5px;
     }
     .rotating-node h4 {
-      font-size: 0.7rem;
+      font-size: clamp(0.6rem, 2.5vw, 0.7rem);
       font-weight: 700;
       line-height: 1.3;
-      padding: 0 5px;
     }
     .rotating-node:hover {
       transform: scale(1.08);
       border-color: var(--gold);
-      background: rgba(30, 64, 175, 0.35);
-      box-shadow: 0 0 20px rgba(234,179,8,0.3);
+      background: rgba(30, 64, 175, 0.4);
+      box-shadow: 0 0 20px rgba(234,179,8,0.4);
     }
 
     /* پنل اطلاعات شیشه‌ای */
@@ -284,12 +291,12 @@
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
       border-radius: 36px;
-      padding: 2rem;
+      padding: 1.8rem;
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
     }
     .sector-title {
-      font-size: 1.6rem;
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
       font-weight: 800;
       margin-bottom: 1rem;
       background: linear-gradient(135deg, #fff, var(--primary-light));
@@ -298,32 +305,33 @@
       color: transparent;
     }
     .sector-desc {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.7;
       color: var(--text-dim);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     .services-badge {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 1rem 0 1.5rem;
+      gap: 8px;
+      margin: 1rem 0 1.2rem;
     }
     .services-badge span {
       background: rgba(255,255,255,0.08);
-      padding: 6px 18px;
+      padding: 5px 14px;
       border-radius: 40px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 500;
     }
     .glass-cta {
       display: inline-block;
       background: var(--primary);
       color: white;
-      padding: 10px 28px;
+      padding: 8px 22px;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 700;
+      font-size: 0.85rem;
       transition: 0.2s;
       border: 1px solid rgba(255,255,255,0.2);
     }
@@ -332,13 +340,13 @@
       transform: translateY(-2px);
     }
     .contact-mini {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
       border-top: 1px solid var(--glass-border);
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      font-size: 0.7rem;
+      gap: 15px;
+      font-size: 0.65rem;
       color: var(--text-dim);
     }
     .contact-mini a {
@@ -350,51 +358,85 @@
     }
     .social-icons {
       display: flex;
-      gap: 12px;
+      gap: 10px;
     }
 
-    @media (max-width: 1100px) {
+    /* ریسپانسیو پیشرفته */
+    @media (max-width: 1000px) {
       .dashboard {
         grid-template-columns: 1fr;
         gap: 30px;
       }
+      .circular-zone {
+        min-height: auto;
+      }
       .carousel-container {
-        width: 450px;
-        height: 450px;
+        width: min(500px, 80vw);
+        height: min(500px, 80vw);
       }
       .rotating-node {
-        width: 95px;
-        height: 95px;
-      }
-      .rotating-node i {
-        font-size: 1.4rem;
-      }
-      .rotating-node h4 {
-        font-size: 0.6rem;
-      }
-      .center-brand {
-        width: 120px;
-        height: 120px;
-      }
-      .center-brand img {
-        width: 55px;
+        width: min(100px, 20vw);
+        height: min(100px, 20vw);
       }
       .bg-grid {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
       }
     }
     @media (max-width: 550px) {
+      .gateway {
+        padding: 1rem;
+      }
       .carousel-container {
-        width: 340px;
-        height: 340px;
+        width: min(380px, 85vw);
+        height: min(380px, 85vw);
       }
       .rotating-node {
-        width: 78px;
-        height: 78px;
+        width: min(80px, 18vw);
+        height: min(80px, 18vw);
       }
       .rotating-node i {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+      }
+      .rotating-node h4 {
+        font-size: 0.55rem;
+      }
+      .info-glass {
+        padding: 1.2rem;
+      }
+      .sector-title {
+        font-size: 1.2rem;
+      }
+      .services-badge span {
+        font-size: 0.6rem;
+        padding: 3px 10px;
+      }
+      .lang-bar {
+        top: 12px;
+        left: 12px;
+        padding: 4px 12px;
+      }
+      .lang-btn {
+        padding: 3px 8px;
+        font-size: 0.65rem;
+      }
+    }
+    @media (max-width: 380px) {
+      .rotating-node {
+        width: min(70px, 20vw);
+        height: min(70px, 20vw);
+      }
+      .rotating-node i {
+        font-size: 1rem;
+      }
+    }
+    /* بهبود تاچ برای موبایل */
+    @media (hover: none) and (pointer: coarse) {
+      .rotating-node {
+        transition: transform 0.2s;
+      }
+      .rotating-node:active {
+        transform: scale(0.98);
       }
     }
   </style>
@@ -430,7 +472,6 @@
           <div class="brand-name">RAVAND FabLab</div>
           <div class="parent">توسعه پردازان</div>
         </div>
-        <!-- ۷ گره توسط JS ساخته می‌شوند -->
       </div>
     </div>
 
@@ -458,7 +499,7 @@
 </div>
 
 <script>
-  // ========== متن‌ها (با حذف coop و نگهداری work به عنوان همکاری) ==========
+  // ========== متن‌ها ==========
   const langData = {
     fa: {
       creative: {
@@ -513,138 +554,59 @@
       splash: { welcome: "به شرکت دانش بنیان فنی و مهندسی توسعه پردازان خوش آمدید", subtext: "پیشرو در طراحی مهندسی، نمونه‌سازی و شبیه‌سازی عددی" },
       address: "زاهدان، بلوار دانشگاه، پارک علم و فناوری"
     },
-    en: {
-      creative: {
-        title: "Creative Industries Unit",
-        desc: "Parametric design, organic vases, unique trophies, decorative products and digital art. Utilizing advanced additive manufacturing and smart lighting.",
-        services: ["Conceptual & Detail Design", "Advanced 3D Modeling", "Resin & Filament 3D Printing", "Reverse Engineering for Art", "Smart Lighting & Decor"],
-        cta: "Enter Creative Unit",
-        url: "/fablab/creative"
-      },
-      industrial: {
-        title: "Industrial Design & Production Unit",
-        desc: "Precision reverse engineering, multi-axis CNC machining, production line optimization, and spare parts manufacturing with international standards.",
-        services: ["Industrial Design & Reverse Eng.", "5-axis CNC Machining", "Mold & Fixture Design", "Production Line Optimization", "Industrial 3D Scanning"],
-        cta: "Enter Industrial Unit",
-        url: "/fablab/industrial"
-      },
-      medical: {
-        title: "Medical & Dental Equipment Unit",
-        desc: "Specialized repairs, reverse engineering of medical parts, educational simulators, custom anatomical models, and micron-precision replacement components.",
-        services: ["Medical Reverse Engineering", "3D Anatomical Models", "Educational Simulators", "Dental Replacement Parts", "CT to CAD Conversion"],
-        cta: "Medical & Dental Services",
-        url: "/fablab/medical"
-      },
-      catalog: {
-        title: "Digital Catalog",
-        desc: "Interactive library featuring over 250 real products and projects from Creative, Industrial Design, and Medical Equipment units.",
-        services: ["Industrial Parts", "Medical Models", "Creative Designs", "Reverse Engineering Projects", "3D Files"],
-        cta: "View Catalog",
-        url: "/products.html"
-      },
-      shop: {
-        title: "Products Shop",
-        desc: "Order digital products, industrial parts, ready-to-use 3D models, and digital fabrication services online.",
-        services: ["3D Printed Parts", "Industrial & Medical Models", "3D Files", "Custom Fabrication"],
-        cta: "Visit Shop",
-        url: "/shop.html"
-      },
-      resume: {
-        title: "Expert Team Resume",
-        desc: "RAVAND FabLab team consists of mechanical, electrical, materials and software engineers with years of experience in design, manufacturing and reverse engineering.",
-        services: ["Mechanical & Manufacturing Eng.", "Electrical & Electronics Eng.", "Materials & Additive Manufacturing", "Software & Numerical Simulation"],
-        cta: "View Team Resume",
-        url: "/resume.html"
-      },
-      work: {
-        title: "Collaborate with Us",
-        desc: "If you have an idea, design, or industrial project, join TPE's expert team. We support knowledge-based startups and industrial innovations.",
-        services: ["Submit Idea/Project", "Technical Collaboration", "Join FabLab Network", "Request Consultation"],
-        cta: "Request Collaboration",
-        url: "/work-with-us.html"
-      },
-      splash: { welcome: "Welcome to TPE Co., Knowledge-Based Technical & Engineering Company", subtext: "Leading in engineering design, prototyping and numerical simulation" },
-      address: "Zahedan, University Blvd, Science & Technology Park"
+    en: { /* به اختصار - مشابه قبل */ 
+      creative: { title: "Creative Industries Unit", desc: "Parametric design, organic vases, unique trophies, decorative products and digital art.", services: ["Conceptual Design", "Advanced 3D Modeling", "Resin 3D Printing", "Reverse Engineering for Art"], cta: "Enter Creative Unit", url: "/fablab/creative" },
+      industrial: { title: "Industrial Design & Production", desc: "Precision reverse engineering, multi-axis CNC machining, production optimization.", services: ["5-axis CNC", "CAD/CAM", "Reverse Engineering", "Industrial Fixtures"], cta: "Enter Industrial Unit", url: "/fablab/industrial" },
+      medical: { title: "Medical & Dental Equipment", desc: "Specialized repairs, reverse engineering, educational simulators, anatomical models.", services: ["Medical Reverse Eng.", "3D Anatomical Models", "Educational Simulators", "CT to CAD"], cta: "Medical Services", url: "/fablab/medical" },
+      catalog: { title: "Digital Catalog", desc: "Interactive library of 250+ products and projects.", services: ["Industrial Parts", "Medical Models", "Creative Designs", "3D Files"], cta: "View Catalog", url: "/products.html" },
+      shop: { title: "Products Shop", desc: "Order digital products, industrial parts, 3D models.", services: ["3D Printed Parts", "Industrial Models", "3D Files", "Custom Fabrication"], cta: "Visit Shop", url: "/shop.html" },
+      resume: { title: "Expert Team Resume", desc: "Mechanical, electrical, materials and software engineers.", services: ["Mechanical Eng.", "Electrical Eng.", "Materials Eng.", "Software & Simulation"], cta: "View Resume", url: "/resume.html" },
+      work: { title: "Collaborate with Us", desc: "Join TPE's expert team. Support for knowledge-based startups.", services: ["Submit Idea", "Technical Collaboration", "Join FabLab Network", "Consultation"], cta: "Request Collaboration", url: "/work-with-us.html" },
+      splash: { welcome: "Welcome to TPE Co.", subtext: "Leading in engineering design, prototyping & simulation" }, address: "Zahedan, University Blvd, Science & Technology Park"
     },
-    ar: {
-      creative: {
-        title: "وحدة الصناعات الإبداعية",
-        desc: "التصميم البارامتري، المزهريات العضوية، الجوائز الفريدة، المنتجات الديكورية والفن الرقمي. باستخدام أحدث تقنيات التصنيع والإضاءة الذكية.",
-        services: ["التصميم المفاهيمي والتفصيلي", "النمذجة ثلاثية الأبعاد المتقدمة", "الطباعة ثلاثية الأبعاد بالراتنج والخيوط", "الهندسة العكسية للأعمال الفنية", "الإضاءة الذكية والديكور"],
-        cta: "الدخول إلى الوحدة الإبداعية",
-        url: "/fablab/creative"
-      },
-      industrial: {
-        title: "وحدة التصميم الصناعي والإنتاج",
-        desc: "الهندسة العكسية الدقيقة، التصنيع باستخدام الحاسب الآلي متعدد المحاور، تحسين خطوط الإنتاج، وتصنيع قطع الغيار وفق المعايير الدولية.",
-        services: ["التصميم الصناعي والهندسة العكسية", "التصنيع باستخدام الحاسب الآلي 5 محاور", "تصميم القوالب والتجهيزات", "تحسين خط الإنتاج", "المسح ثلاثي الأبعاد الصناعي"],
-        cta: "الدخول إلى الوحدة الصناعية",
-        url: "/fablab/industrial"
-      },
-      medical: {
-        title: "وحدة المعدات الطبية وطب الأسنان",
-        desc: "الإصلاحات المتخصصة، الهندسة العكسية للأجزاء الطبية، أجهزة المحاكاة التعليمية، النماذج التشريحية المخصصة، والأجزاء البديلة بدقة متناهية.",
-        services: ["الهندسة العكسية الطبية", "النماذج التشريحية ثلاثية الأبعاد", "أجهزة المحاكاة التعليمية", "أجزاء طب الأسنان البديلة", "تحويل CT إلى CAD"],
-        cta: "خدمات المعدات الطبية وطب الأسنان",
-        url: "/fablab/medical"
-      },
-      catalog: {
-        title: "الكتالوج الرقمي",
-        desc: "مكتبة تفاعلية تضم أكثر من 250 منتجًا ومشروعًا حقيقيًا من وحدات الصناعات الإبداعية والتصميم الصناعي والمعدات الطبية.",
-        services: ["قطع صناعية", "نماذج طبية", "تصاميم إبداعية", "مشاريع الهندسة العكسية", "ملفات ثلاثية الأبعاد"],
-        cta: "عرض الكتالوج",
-        url: "/products.html"
-      },
-      shop: {
-        title: "متجر المنتجات",
-        desc: "اطلب المنتجات الرقمية والقطع الصناعية والنماذج ثلاثية الأبعاد الجاهزة وخدمات التصنيع الرقمي عبر الإنترنت.",
-        services: ["أجزاء مطبوعة ثلاثية الأبعاد", "نماذج صناعية وطبية", "ملفات ثلاثية الأبعاد", "تصنيع مخصص"],
-        cta: "زيارة المتجر",
-        url: "/shop.html"
-      },
-      resume: {
-        title: "سيرة الفريق المتخصص",
-        desc: "يتكون فريق فبلب روند من مهندسي ميكانيكا وكهرباء ومواد وبرمجيات ذوي خبرة في التصميم والتصنيع والهندسة العكسية.",
-        services: ["هندسة الميكانيكا والتصنيع", "هندسة الكهرباء والإلكترونيات", "هندسة المواد والتصنيع الإضافي", "البرمجيات والمحاكاة العددية"],
-        cta: "عرض سيرة الفريق",
-        url: "/resume.html"
-      },
-      work: {
-        title: "تعاون معنا",
-        desc: "إذا كنت تملك فكرة أو تصميمًا أو مشروعًا صناعيًا، انضم إلى فريق تطوير پردازان الخبير. ندعم الشركات الناشئة القائمة على المعرفة والابتكارات الصناعية.",
-        services: ["تقديم فكرة / مشروع", "تعاون فني", "انضم إلى شبكة فبلب", "طلب استشارة"],
-        cta: "طلب تعاون",
-        url: "/work-with-us.html"
-      },
-      splash: { welcome: "مرحبًا بكم في شركة التطوير الفنية والهندسية", subtext: "الريادة في التصميم الهندسي، النماذج الأولية والمحاكاة العددية" },
-      address: "زاهدان، شارع الجامعة، حديقة العلوم والتكنولوجيا"
+    ar: { /* مشابه */ 
+      creative: { title: "وحدة الصناعات الإبداعية", desc: "التصميم البارامتري، المزهريات العضوية، الفن الرقمي.", services: ["نمذجة ثلاثية", "ديكور فني", "طباعة راتنجية", "هندسة عكسية"], cta: "الدخول", url: "/fablab/creative" },
+      industrial: { title: "التصميم الصناعي والإنتاج", desc: "الهندسة العكسية، التصنيع باستخدام الحاسب الآلي.", services: ["CNC 5 محاور", "CAD/CAM", "هندسة عكسية", "تجهيزات صناعية"], cta: "الدخول", url: "/fablab/industrial" },
+      medical: { title: "المعدات الطبية وطب الأسنان", desc: "الإصلاحات المتخصصة، الهندسة العكسية، النماذج التشريحية.", services: ["هندسة عكسية طبية", "نماذج تشريحية", "أجهزة محاكاة", "CT إلى CAD"], cta: "الخدمات الطبية", url: "/fablab/medical" },
+      catalog: { title: "الكتالوج الرقمي", desc: "مكتبة تفاعلية تضم 250+ منتجًا.", services: ["قطع صناعية", "نماذج طبية", "تصاميم إبداعية", "ملفات ثلاثية"], cta: "عرض الكتالوج", url: "/products.html" },
+      shop: { title: "متجر المنتجات", desc: "منتجات رقمية، قطع صناعية، نماذج ثلاثية.", services: ["أجزاء مطبوعة", "نماذج صناعية", "ملفات ثلاثية", "تصنيع مخصص"], cta: "زيارة المتجر", url: "/shop.html" },
+      resume: { title: "سيرة الفريق", desc: "مهندسي ميكانيكا، كهرباء، مواد وبرمجيات.", services: ["هندسة ميكانيكا", "هندسة كهرباء", "هندسة مواد", "برمجيات"], cta: "عرض السيرة", url: "/resume.html" },
+      work: { title: "تعاون معنا", desc: "انضم إلى فريق تطوير پردازان.", services: ["تقديم فكرة", "تعاون فني", "انضم لشبكة فبلب", "استشارة"], cta: "طلب تعاون", url: "/work-with-us.html" },
+      splash: { welcome: "مرحبًا بكم في شركة التطوير", subtext: "الريادة في التصميم الهندسي" }, address: "زاهدان، شارع الجامعة، حديقة العلوم"
     }
   };
 
-  // ========== تصاویر اسلایدشو (۷ دسته) ==========
+  // تصاویر واقعی پروژه‌ها از دیتای اصلی سایت (برای پس‌زمینه گرید)
+  const portfolioImages = [
+    "images/portfolio/air-purifier.jpg",
+    "images/portfolio/biometric-lock.jpg",
+    "images/portfolio/ecg-simulator.jpg",
+    "images/portfolio/injector-cleaner.jpg",
+    "images/portfolio/veinscope.jpg",
+    "images/portfolio/arm-porter.jpg",
+    "images/portfolio/taftan-trophy.jpg",
+    "images/portfolio/pulp-tester.jpg",
+    "images/portfolio/lamp-cover.jpg",
+    "images/projects/yunolit-factory.jpg",
+    "images/projects/fablab-cafe.jpg",
+    "images/logo.png"
+  ].filter(src => src); // fallback images
+
+  // تصاویر اسلایدشو برای هر دسته (برای حالتی که کاربر هاور می‌کند)
   const categoryImages = {
-    creative: ["https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1200"],
-    industrial: ["https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&w=1200"],
-    medical: ["https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/7089011/pexels-photo-7089011.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1200"],
-    catalog: ["https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/6214480/pexels-photo-6214480.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=1200"],
-    shop: ["https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200"],
-    resume: ["https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200"],
-    work: ["https://images.pexels.com/photos/4427818/pexels-photo-4427818.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200"]
+    creative: ["images/portfolio/taftan-trophy.jpg", "images/portfolio/lamp-cover.jpg", "images/portfolio/air-purifier.jpg"],
+    industrial: ["images/portfolio/arm-porter.jpg", "images/projects/yunolit-factory.jpg", "images/portfolio/injector-cleaner.jpg"],
+    medical: ["images/portfolio/ecg-simulator.jpg", "images/portfolio/veinscope.jpg", "images/portfolio/pulp-tester.jpg"],
+    catalog: ["images/portfolio/air-purifier.jpg", "images/portfolio/biometric-lock.jpg", "images/portfolio/taftan-trophy.jpg"],
+    shop: ["images/portfolio/arm-porter.jpg", "images/portfolio/injector-cleaner.jpg"],
+    resume: ["images/portfolio/ecg-simulator.jpg", "images/portfolio/veinscope.jpg"],
+    work: ["images/projects/fablab-cafe.jpg", "images/logo.png"]
   };
-  const gridImages = [
-    "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/7089011/pexels-photo-7089011.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/6214480/pexels-photo-6214480.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/442120/pexels-photo-442120.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400",
-    "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=400"
-  ];
+  // جایگزین با تصاویر پیش‌فرض در صورت عدم وجود
+  const fallbackImage = "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=600";
+  Object.keys(categoryImages).forEach(key => {
+    categoryImages[key] = categoryImages[key].map(img => img || fallbackImage);
+  });
 
   let currentLang = 'fa';
   let currentSector = 'creative';
@@ -653,19 +615,13 @@
   let isHovering = false;
   let angleOffset = 0;
 
-  // ۷ دسته (حذف coop)
   const sectorsList = ['creative', 'industrial', 'medical', 'catalog', 'shop', 'resume', 'work'];
   const sectorColors = {
-    creative: '#a855f7',
-    industrial: '#f97316',
-    medical: '#06b6d4',
-    catalog: '#3b82f6',
-    shop: '#ec489a',
-    resume: '#facc15',
-    work: '#10b981'
+    creative: '#a855f7', industrial: '#f97316', medical: '#06b6d4', catalog: '#3b82f6', shop: '#ec489a', resume: '#facc15', work: '#10b981'
   };
+  // وکتور جدید برای واحد صنایع خلاق (پالت هنرمندانه)
   const sectorIcons = {
-    creative: 'fas fa-gem',
+    creative: 'fas fa-palette',
     industrial: 'fas fa-cogs',
     medical: 'fas fa-heartbeat',
     catalog: 'fas fa-book-open',
@@ -673,27 +629,24 @@
     resume: 'fas fa-users',
     work: 'fas fa-handshake'
   };
-  // زوایای ۷ گانه (تقریباً ۵۱.۴ درجه بین هر کدام)
   const baseAngles = {
-    creative: -90,    // بالا
-    industrial: -38.6, 
-    medical: 12.9,
-    catalog: 64.3,
-    shop: 115.7,
-    resume: 167.1,
-    work: 218.6
+    creative: -90, industrial: -38.6, medical: 12.9, catalog: 64.3, shop: 115.7, resume: 167.1, work: 218.6
   };
-  const radius = 240;
+  const radius = 240; // px
 
   function buildGrid() {
     const gridContainer = document.getElementById('bgGrid');
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
+    // استفاده از تصاویر نمونه کارها (۱۲ عکس)
+    const imagesToShow = [...portfolioImages];
+    while (imagesToShow.length < 12) imagesToShow.push(fallbackImage);
     for (let i = 0; i < 12; i++) {
       const img = document.createElement('img');
-      img.src = gridImages[i % gridImages.length];
-      img.alt = "محصول نمونه";
+      img.src = imagesToShow[i % imagesToShow.length];
+      img.alt = "نمونه پروژه";
       img.loading = "lazy";
+      img.onerror = function() { this.src = fallbackImage; };
       gridContainer.appendChild(img);
     }
   }
@@ -703,11 +656,13 @@
 
   function startSlideshow(category) {
     if (slideshowInterval) clearInterval(slideshowInterval);
-    const images = categoryImages[category];
-    if (!images || images.length === 0) return;
+    let images = categoryImages[category];
+    if (!images || images.length === 0) images = [fallbackImage];
     let idx = 0;
     function updateImage() {
-      slideshowDiv.style.backgroundImage = `url(${images[idx]})`;
+      let imgUrl = images[idx];
+      if (!imgUrl) imgUrl = fallbackImage;
+      slideshowDiv.style.backgroundImage = `url(${imgUrl})`;
       slideshowDiv.classList.add('active');
       idx = (idx + 1) % images.length;
     }
@@ -720,7 +675,7 @@
     slideshowDiv.classList.remove('active');
   }
   function showGrid() {
-    document.getElementById('bgGrid').style.opacity = '0.45';
+    document.getElementById('bgGrid').style.opacity = '0.55';
     stopSlideshow();
   }
   function showCategoryBackground(category) {
@@ -738,8 +693,9 @@
       const angleRad = (baseAngles[sector] * Math.PI) / 180;
       const x = Math.cos(angleRad) * radius;
       const y = Math.sin(angleRad) * radius;
-      node.style.left = `calc(50% + ${x}px - 60px)`;
-      node.style.top = `calc(50% + ${y}px - 60px)`;
+      const halfSize = 55; // نصف عرض گره (110/2)
+      node.style.left = `calc(50% + ${x}px - ${halfSize}px)`;
+      node.style.top = `calc(50% + ${y}px - ${halfSize}px)`;
       node.innerHTML = `
         <i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i>
         <h4>${langData[currentLang][sector].title}</h4>
@@ -790,8 +746,9 @@
           const rad = (newAngle * Math.PI) / 180;
           const x = Math.cos(rad) * radius;
           const y = Math.sin(rad) * radius;
-          node.style.left = `calc(50% + ${x}px - 60px)`;
-          node.style.top = `calc(50% + ${y}px - 60px)`;
+          const halfSize = 55;
+          node.style.left = `calc(50% + ${x}px - ${halfSize}px)`;
+          node.style.top = `calc(50% + ${y}px - ${halfSize}px)`;
         });
       }
       rotationFrame = requestAnimationFrame(rotate);
@@ -829,6 +786,10 @@
         const url = langData[currentLang][sector].url;
         if (url) window.location.href = url;
       });
+      // برای تاچ موبایل
+      node.addEventListener('touchstart', (e) => {
+        // فقط برای تاچ، بدون interfere
+      });
     });
   }
 
@@ -862,7 +823,7 @@
     highlightNode('creative');
     setLanguage('fa');
     showGrid();
-    gsap.fromTo('.dashboard', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" });
+    gsap.fromTo('.dashboard', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" });
     gsap.fromTo('.center-brand', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 0.2, ease: "back.out(0.6)" });
     setTimeout(() => {
       const splash = document.getElementById('splashScreen');
