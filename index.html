@@ -6,12 +6,10 @@
   <title>توسعه پردازان | RAVAND FabLab · دروازه صنعت و خلاقیت</title>
   <meta name="description" content="فبلب پیشرفته توسعه پردازان | طراحی مهندسی، ساخت دیجیتال، صنایع خلاق، مهندسی معکوس">
   
-  <!-- فونت اصلی سایت -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   
-  <!-- آیکون مرورگر با لوگوی واقعی -->
   <link rel="icon" type="image/png" href="images/logo.png">
   
   <style>
@@ -46,24 +44,55 @@
       min-height: 100vh;
     }
 
-    /* ========== ویدئوی پس‌زمینه (همان هیروی سایت اصلی) ========== */
-    .hero-video-bg {
+    /* ========== پس‌زمینه داینامیک (گرید / اسلایدشو) ========== */
+    .bg-dynamic {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      z-index: -3;
-      opacity: 0.6;
+      z-index: -2;
+      overflow: hidden;
     }
-    .gradient-overlay {
+    /* حالت گرید (پیش‌فرض) */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 8px;
+      padding: 12px;
+      opacity: 0.35;
+      transition: opacity 0.5s;
+    }
+    .bg-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      filter: brightness(0.7) contrast(1.1);
+    }
+    /* حالت اسلایدشو (تک عکس برای هر دسته) */
+    .bg-slideshow {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .bg-slideshow.active {
+      opacity: 0.45;
+    }
+    .dark-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.65), rgba(0, 0, 0, 0.85));
-      z-index: -2;
+      background: radial-gradient(circle at 20% 40%, rgba(5, 10, 25, 0.6), rgba(0, 0, 0, 0.85));
+      z-index: -1;
+      pointer-events: none;
     }
-    /* خطوط مهندسی حذف شد (به درخواست) */
 
     /* ========== نوار زبان شیشه‌ای ========== */
     .lang-bar {
@@ -98,7 +127,7 @@
       box-shadow: 0 0 8px rgba(30, 64, 175, 0.5);
     }
 
-    /* ========== اسپلش اسکرین خوش‌آمد (مثل سایت اصلی) ========== */
+    /* ========== اسپلش اسکرین ========== */
     .splash-screen {
       position: fixed;
       inset: 0;
@@ -165,7 +194,7 @@
       align-items: center;
     }
 
-    /* ========== بخش چپ: چرخ دایره‌ای بی‌نهایت (کادرهای دایره‌ای) ========== */
+    /* بخش چپ: چرخ دایره‌ای */
     .circular-zone {
       position: relative;
       display: flex;
@@ -179,7 +208,7 @@
       height: 500px;
       margin: 0 auto;
     }
-    /* لوگوی مرکزی (ترکیب برندها) */
+    /* لوگوی مرکزی (RAVAND FabLab) */
     .center-brand {
       position: absolute;
       top: 50%;
@@ -197,33 +226,31 @@
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
       z-index: 30;
+      text-align: center;
     }
     .center-brand img {
-      width: 70px;
+      width: 80px;
       margin-bottom: 8px;
+      border-radius: 12px;
     }
-    .center-brand .brand-stack {
-      text-align: center;
-      margin-top: 8px;
-    }
-    .center-brand .main-brand {
-      font-size: 0.7rem;
+    .center-brand .brand-name {
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--primary-light);
     }
-    .center-brand .sub-brand {
+    .center-brand .parent {
       font-size: 0.6rem;
       opacity: 0.7;
     }
 
-    /* گره‌های دایره‌ای (کاملاً گرد) */
+    /* گره‌های دایره‌ای */
     .rotating-node {
       position: absolute;
       width: 140px;
       height: 140px;
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
-      border-radius: 50%; /* دایره کامل */
+      border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -250,7 +277,7 @@
       box-shadow: 0 0 20px rgba(234,179,8,0.3);
     }
 
-    /* ========== بخش راست: پنل اطلاعات شیشه‌ای ========== */
+    /* پنل اطلاعات شیشه‌ای */
     .info-glass {
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
@@ -258,7 +285,6 @@
       padding: 2rem;
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
-      transition: all 0.3s;
     }
     .sector-title {
       font-size: 2rem;
@@ -303,7 +329,6 @@
       background: var(--primary-dark);
       transform: translateY(-2px);
     }
-    /* اطلاعات تماس (از سایت اصلی) */
     .contact-mini {
       margin-top: 2rem;
       padding-top: 1.5rem;
@@ -317,7 +342,6 @@
     .contact-mini a {
       color: var(--text-dim);
       text-decoration: none;
-      transition: 0.2s;
     }
     .contact-mini a:hover {
       color: var(--primary-light);
@@ -351,20 +375,25 @@
         height: 130px;
       }
       .center-brand img {
-        width: 55px;
+        width: 60px;
+      }
+      .bg-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
       }
     }
   </style>
 </head>
 <body>
 
-<video autoplay muted loop playsinline class="hero-video-bg" poster="images/hero.jpg">
-  <source src="videos/hero-video.mp4" type="video/mp4">
-  <source src="videos/hero-video.webm" type="video/webm">
-</video>
-<div class="gradient-overlay"></div>
+<!-- لایه پس‌زمینه داینامیک -->
+<div class="bg-dynamic">
+  <div class="bg-grid" id="bgGrid"></div>
+  <div class="bg-slideshow" id="bgSlideshow"></div>
+</div>
+<div class="dark-overlay"></div>
 
-<!-- اسپلش اسکرین خوش‌آمد -->
+<!-- اسپلش اسکرین -->
 <div class="splash-screen" id="splashScreen">
   <div class="splash-logo">
     <img src="images/logo.png" alt="توسعه پردازان">
@@ -381,24 +410,21 @@
 
 <div class="gateway">
   <div class="dashboard">
-    <!-- چرخ دایره‌ای بی‌نهایت با المان‌های دایره‌ای -->
     <div class="circular-zone">
       <div class="carousel-container" id="carouselContainer">
         <div class="center-brand">
-          <img src="images/logo.png" alt="توسعه پردازان">
-          <div class="brand-stack">
-            <div class="main-brand">توسعه پردازان</div>
-            <div class="sub-brand">RAVAND FabLab</div>
-          </div>
+          <!-- لوگوی RAVAND FabLab (قابل آپلود توسط کاربر) -->
+          <img src="images/logo-ravand.png" alt="RAVAND FabLab" onerror="this.src='https://placehold.co/80x80?text=RAVAND'">
+          <div class="brand-name">RAVAND FabLab</div>
+          <div class="parent">توسعه پردازان</div>
         </div>
-        <!-- چهار گره توسط جاوااسکریپت ساخته می‌شوند -->
+        <!-- چهار گره توسط JS ساخته می‌شوند -->
       </div>
     </div>
 
-    <!-- پنل اطلاعات شیشه‌ای -->
     <div class="info-glass" id="infoPanel">
       <div class="sector-title" id="panelTitle">صنایع خلاق</div>
-      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال. همراه با پیشرفته‌ترین تکنیک‌های ساخت افزایشی.</div>
+      <div class="sector-desc" id="panelDesc">طراحی پارامتریک، گلدان‌های ارگانیک، تندیس‌های منحصربه‌فرد، محصولات دکوری و هنر دیجیتال.</div>
       <div class="services-badge" id="panelServices">
         <span>مدلسازی سه‌بعدی</span>
         <span>دکوراسیون هنری</span>
@@ -421,7 +447,7 @@
 </div>
 
 <script>
-  // ========== داده‌های سه‌زبانه ==========
+  // ========== داده‌های سه‌زبانه (همان سایت اصلی) ==========
   const langData = {
     fa: {
       creative: {
@@ -521,6 +547,102 @@
     }
   };
 
+  // تصاویر نمونه برای هر دسته (قابل تعویض توسط کاربر)
+  const categoryImages = {
+    creative: [
+      "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    industrial: [
+      "https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/442120/pexels-photo-442120.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    medical: [
+      "https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/7089011/pexels-photo-7089011.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/7089014/pexels-photo-7089014.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    catalog: [
+      "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/6214480/pexels-photo-6214480.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ]
+  };
+  // تصاویر گرید (نمونه محصولات متنوع - برای حالت پیش‌فرض)
+  const gridImages = [
+    "https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/3347238/pexels-photo-3347238.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/2280545/pexels-photo-2280545.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/7089011/pexels-photo-7089011.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/6214480/pexels-photo-6214480.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/442120/pexels-photo-442120.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=400"
+  ];
+
+  // ایجاد گرید در بک‌گراند
+  function buildGrid() {
+    const gridContainer = document.getElementById('bgGrid');
+    if (!gridContainer) return;
+    gridContainer.innerHTML = '';
+    // 12 عکس (4x3)
+    for (let i = 0; i < 12; i++) {
+      const img = document.createElement('img');
+      img.src = gridImages[i % gridImages.length];
+      img.alt = "محصول نمونه";
+      img.loading = "lazy";
+      gridContainer.appendChild(img);
+    }
+  }
+
+  // مدیریت اسلایدشو دسته‌بندی
+  let slideshowInterval = null;
+  let currentCategory = null;
+  const slideshowDiv = document.getElementById('bgSlideshow');
+
+  function startSlideshow(category) {
+    if (slideshowInterval) clearInterval(slideshowInterval);
+    const images = categoryImages[category];
+    if (!images || images.length === 0) return;
+    let idx = Math.floor(Math.random() * images.length);
+    function updateImage() {
+      slideshowDiv.style.backgroundImage = `url(${images[idx]})`;
+      slideshowDiv.classList.add('active');
+      idx = (idx + 1) % images.length;
+    }
+    updateImage();
+    slideshowInterval = setInterval(updateImage, 4000);
+  }
+
+  function stopSlideshow() {
+    if (slideshowInterval) {
+      clearInterval(slideshowInterval);
+      slideshowInterval = null;
+    }
+    slideshowDiv.classList.remove('active');
+  }
+
+  function showGrid() {
+    document.getElementById('bgGrid').style.opacity = '0.45';
+    stopSlideshow();
+  }
+
+  function showCategoryBackground(category) {
+    document.getElementById('bgGrid').style.opacity = '0';
+    startSlideshow(category);
+  }
+
+  // ---------- منطق چرخ دایره‌ای و گره‌ها ----------
   let currentLang = 'fa';
   let currentSector = 'creative';
   let rotationFrame = null;
@@ -528,7 +650,6 @@
   let isHovering = false;
   let angleOffset = 0;
 
-  // لیست بخش‌ها و رنگ‌ها و آیکون‌ها
   const sectorsList = ['creative', 'industrial', 'medical', 'catalog'];
   const sectorColors = {
     creative: '#a855f7',
@@ -542,16 +663,9 @@
     medical: 'fas fa-microscope',
     catalog: 'fas fa-qrcode'
   };
-  // زوایای پایه برای چهار نقطه (درجه)
-  const baseAngles = {
-    creative: -90,   // بالا
-    industrial: 90,  // پایین
-    medical: 0,      // راست
-    catalog: 180     // چپ
-  };
-  const radius = 180; // شعاع بر حسب px
+  const baseAngles = { creative: -90, industrial: 90, medical: 0, catalog: 180 };
+  const radius = 180;
 
-  // ایجاد گره‌های دایره‌ای
   function createNodes() {
     const container = document.getElementById('carouselContainer');
     if (!container) return;
@@ -562,7 +676,7 @@
       const angleRad = (baseAngles[sector] * Math.PI) / 180;
       const x = Math.cos(angleRad) * radius;
       const y = Math.sin(angleRad) * radius;
-      node.style.left = `calc(50% + ${x}px - 70px)`; // 70 = نصف عرض 140px
+      node.style.left = `calc(50% + ${x}px - 70px)`;
       node.style.top = `calc(50% + ${y}px - 70px)`;
       node.innerHTML = `
         <i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i>
@@ -572,7 +686,6 @@
     });
   }
 
-  // به‌روزرسانی پنل اطلاعات
   function updatePanel(sector) {
     const data = langData[currentLang][sector];
     if (!data) return;
@@ -585,7 +698,6 @@
     currentSector = sector;
   }
 
-  // هایلایت گره
   function highlightNode(sector) {
     const nodes = document.querySelectorAll('.rotating-node');
     nodes.forEach(node => {
@@ -602,13 +714,14 @@
       }
     });
     updatePanel(sector);
+    // تغییر پس‌زمینه به اسلایدشو دسته مربوطه
+    showCategoryBackground(sector);
   }
 
-  // چرخش بی‌نهایت آرام (حرکت دایره‌ای همزمان همه گره‌ها)
   function startInfiniteRotation() {
     function rotate() {
       if (!isHovering) {
-        angleOffset = (angleOffset + 0.25) % 360; // سرعت ملایم
+        angleOffset = (angleOffset + 0.25) % 360;
         sectorsList.forEach(sector => {
           const node = document.querySelector(`.rotating-node[data-sector="${sector}"]`);
           if (!node) return;
@@ -625,7 +738,6 @@
     rotationFrame = requestAnimationFrame(rotate);
   }
 
-  // اتو هایلایت (چرخش دسته‌ها)
   function startAutoHighlight() {
     if (autoHighlightTimer) clearInterval(autoHighlightTimer);
     let idx = 0;
@@ -637,7 +749,6 @@
     }, 5500);
   }
 
-  // رویدادهای هاور و کلیک
   function bindEvents() {
     const nodes = document.querySelectorAll('.rotating-node');
     nodes.forEach(node => {
@@ -649,6 +760,7 @@
       node.addEventListener('mouseleave', () => {
         isHovering = false;
         startAutoHighlight();
+        showGrid(); // برگشت به گرید
       });
       node.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -659,21 +771,18 @@
     });
   }
 
-  // تغییر زبان (بروزرسانی همه چیز)
   function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'fa' ? 'fa' : 'en');
     document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-    // به‌روزرسانی متن گره‌ها
     const nodes = document.querySelectorAll('.rotating-node');
     nodes.forEach(node => {
       const sector = node.dataset.sector;
       const title = langData[lang][sector].title;
       node.innerHTML = `<i class="${sectorIcons[sector]}" style="color: ${sectorColors[sector]};"></i><h4>${title}</h4>`;
     });
-    // به‌روزرسانی اسپلش و آدرس
     const splashWelcome = document.querySelector('[data-i18n="splash.welcome"]');
     const splashSub = document.querySelector('[data-i18n="splash.subtext"]');
     const addressSpan = document.querySelector('[data-i18n="address"]');
@@ -683,18 +792,18 @@
     updatePanel(currentSector);
   }
 
-  // اسپلش و شروع
+  // راه‌اندازی اولیه
   window.addEventListener('load', () => {
+    buildGrid();
     createNodes();
     bindEvents();
     startInfiniteRotation();
     startAutoHighlight();
     highlightNode('creative');
     setLanguage('fa');
-    // انیمیشن ورود با GSAP
+    showGrid(); // نمایش گرید در حالت پیش‌فرض
     gsap.fromTo('.dashboard', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" });
     gsap.fromTo('.center-brand', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 0.2, ease: "back.out(0.6)" });
-    // اسپلش اسکرین
     setTimeout(() => {
       const splash = document.getElementById('splashScreen');
       if (splash) {
@@ -704,7 +813,6 @@
     }, 2500);
   });
 
-  // دکمه‌های زبان
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
   });
